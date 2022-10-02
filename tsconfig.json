@@ -20,8 +20,15 @@
     "typeRoots": [
       "node_modules/@types"
     ],
+    "paths": {
+      "@jopau-react/utils/*": [
+        "packages/utils/src/*"
+      ]
+    },
     "types": [
-      "node"
+      "node",
+      "react",
+      "jest"
     ]
   },
   "exclude": [
