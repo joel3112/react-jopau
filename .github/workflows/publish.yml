@@ -1,0 +1,43 @@
+name: publish
+
+on:
+  push:
+    paths:
+      - 'packages/**/*'
+      - '!CHANGELOG.md'
+      - '!lerna.json'
+      - '!packages/**/CHANGELOG.md'
+      - '!packages/**/package.json'
+    branches:
+      - main
+
+env:
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  ci:
+    uses: ./.github/workflows/reusable.yml
+
+  publish:
+    needs: ci
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: ⬇️ Check out repository
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: '0'
+      - name: 📥 Setup Node and Install dependencies
+        uses: ./.github/actions/setup
+      - name: 📦 Publish package to NPM
+        run: |
+          git config user.name "Release Bot"
+          git config user.email "<>"
+          yarn build
+          npm run publish
+          echo "Packages published successfully 🎉"
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

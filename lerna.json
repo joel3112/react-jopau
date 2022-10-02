@@ -1,10 +1,66 @@
 {
-  "$schema": "node_modules/lerna/schemas/lerna-schema.json",
   "useNx": true,
   "useWorkspaces": true,
   "version": "0.0.0",
   "npmClient": "yarn",
   "packages": [
     "packages/*"
-  ]
+  ],
+  "command": {
+    "version": {
+      "allowBranch": "main",
+      "message": "chore(release): %s",
+      "conventionalCommits": true
+    }
+  },
+  "changelogPreset": {
+    "name": "conventionalcommits",
+    "types": [
+      {
+        "type": "feat",
+        "section": "🚀 New Features"
+      },
+      {
+        "type": "fix",
+        "section": "🐛 Bug Fixes"
+      },
+      {
+        "type": "chore",
+        "section": "🏠 Internal",
+        "hidden": false
+      },
+      {
+        "type": "docs",
+        "section": "📝 Documentation",
+        "hidden": false
+      },
+      {
+        "type": "style",
+        "section": "💄 Styles",
+        "hidden": false
+      },
+      {
+        "type": "refactor",
+        "section": "🛠 Refactors",
+        "hidden": false
+      },
+      {
+        "type": "perf",
+        "section": "🏃 Performance",
+        "hidden": false
+      },
+      {
+        "type": "test",
+        "section": "🧪 Tests",
+        "hidden": false
+      }
+    ],
+    "issuePrefixes": [
+      "#"
+    ],
+    "issueUrlFormat": "{{host}}/{{owner}}/{{repository}}/issues/{{id}}",
+    "commitUrlFormat": "{{host}}/{{owner}}/{{repository}}/commit/{{hash}}",
+    "compareUrlFormat": "{{host}}/{{owner}}/{{repository}}/compare/{{previousTag}}...{{currentTag}}",
+    "userUrlFormat": "{{host}}/{{user}}"
+  }
 }
