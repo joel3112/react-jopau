@@ -1,9 +1,5 @@
 {
-  "plugins": [
-    "react",
-    "@typescript-eslint",
-    "testing-library"
-  ],
+  "plugins": ["react", "@typescript-eslint", "testing-library"],
   "settings": {
     "react": {
       "version": "detect"
@@ -18,12 +14,8 @@
   "parser": "@typescript-eslint/parser",
   "overrides": [
     {
-      "files": [
-        "**/?(*.)+(spec|test).[jt]s?(x)"
-      ],
-      "extends": [
-        "plugin:testing-library/react"
-      ]
+      "files": ["**/?(*.)+(spec|test).[jt]s?(x)"],
+      "extends": ["plugin:testing-library/react"]
     }
   ],
   "rules": {
@@ -32,12 +24,7 @@
     "react/jsx-filename-extension": [
       1,
       {
-        "extensions": [
-          ".ts",
-          ".tsx",
-          ".js",
-          ".jsx"
-        ]
+        "extensions": [".ts", ".tsx", ".js", ".jsx"]
       }
     ]
   }
