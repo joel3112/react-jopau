@@ -2,14 +2,25 @@
   "name": "@react-jopau/root",
   "version": "0.0.1",
   "description": "Monorepo of common functionality for React projects",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/joel3112/react-jopau.git"
   },
   "author": "Joel Paucarima Franco <jopau3112@gmail.com>",
   "license": "MIT",
-  "homepage": "https://github.com/joel3112/react-jopau#readme"
+  "homepage": "https://github.com/joel3112/react-jopau#readme",
+  "private": true,
+  "scripts": {
+    "bootstrap": "lerna bootstrap",
+    "build": "lerna run build --stream",
+    "clean": "lerna clean && rm -rf yarn.lock",
+    "publish": "lerna publish --yes",
+    "test": "lerna run test --stream"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "lerna": "^5.5.4"
+  }
 }
