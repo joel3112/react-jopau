@@ -1,0 +1,16 @@
+name: setup action
+description: 'Setup the environment'
+
+runs:
+  using: 'composite'
+  steps:
+    - uses: actions/setup-node@v3
+      with:
+        node-version: '14'
+        cache: 'yarn'
+        cache-dependency-path: 'yarn.lock'
+        registry-url: 'https://registry.npmjs.org'
+        scope: '@jopau-react'
+
+    - run: yarn install
+      shell: bash
