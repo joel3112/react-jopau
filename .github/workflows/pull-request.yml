@@ -4,8 +4,8 @@ on:
   pull_request:
     paths:
       - 'packages/**/*'
-    branches: [ main ]
-    types: [ opened, synchronize, reopened ]
+    branches: [main]
+    types: [opened, synchronize, reopened]
 
 jobs:
   ci:

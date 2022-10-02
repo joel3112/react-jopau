@@ -2,10 +2,7 @@
   "compilerOptions": {
     "module": "esnext",
     "target": "esnext",
-    "lib": [
-      "es2020",
-      "dom"
-    ],
+    "lib": ["es2020", "dom"],
     "jsx": "preserve",
     "moduleResolution": "node",
     "forceConsistentCasingInFileNames": true,
@@ -17,22 +14,11 @@
     "noErrorTruncation": false,
     "allowJs": true,
     "skipLibCheck": true,
-    "typeRoots": [
-      "node_modules/@types"
-    ],
+    "typeRoots": ["node_modules/@types"],
     "paths": {
-      "@jopau-react/utils/*": [
-        "packages/utils/src/*"
-      ]
+      "@jopau-react/utils/*": ["packages/utils/src/*"]
     },
-    "types": [
-      "node",
-      "react",
-      "jest"
-    ]
+    "types": ["node", "react", "jest"]
   },
-  "exclude": [
-    "node_modules",
-    "packages/**/*.test.ts"
-  ]
+  "exclude": ["node_modules", "packages/**/*.test.ts"]
 }

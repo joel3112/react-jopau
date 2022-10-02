@@ -49,7 +49,7 @@ jobs:
         run: yarn build
 
   unit-tests:
-    needs: [ lint, build ]
+    needs: [lint, build]
     runs-on: ubuntu-latest
     steps:
       - name: ⬇️ Check out repository
