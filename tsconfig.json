@@ -16,7 +16,7 @@
     "skipLibCheck": true,
     "typeRoots": ["node_modules/@types"],
     "paths": {
-      "@jopau-react/utils/*": ["packages/utils/src/*"]
+      "@react-jopau/utils/*": ["packages/utils/src/*"]
     },
     "types": ["node", "react", "jest"]
   },

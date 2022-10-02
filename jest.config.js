@@ -5,7 +5,7 @@ module.exports = {
   },
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
   moduleNameMapper: {
-    '@jopau-react/utils': '<rootDir>/packages/utils/src',
-    '@jopau-react/utils/(.*)$': '<rootDir>/packages/utils/src/$1'
+    '@react-jopau/utils': '<rootDir>/packages/utils/src',
+    '@react-jopau/utils/(.*)$': '<rootDir>/packages/utils/src/$1'
   }
 };
