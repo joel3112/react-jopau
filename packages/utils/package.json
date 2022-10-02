@@ -1,26 +1,33 @@
 {
   "name": "@react-jopau/utils",
   "version": "0.0.0",
-  "description": "> TODO: description",
-  "author": "Joel Paucarima Franco <joel.dev.3112@outlook.es>",
-  "homepage": "https://github.com/joel3112/react-jopau/tree/main/packages/utils#readme",
-  "license": "ISC",
-  "main": "lib/utils.js",
-  "directories": {
-    "lib": "lib",
-    "test": "__tests__"
-  },
-  "files": [
-    "lib"
-  ],
+  "description": "Common utils for React projects",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/joel3112/react-jopau.git"
   },
+  "author": "Joel Paucarima Franco <joel.dev.3112@outlook.es>",
+  "license": "MIT",
+  "homepage": "https://github.com/joel3112/react-jopau/tree/main/packages/utils#readme",
+  "type": "module",
+  "main": "index.js",
+  "module": "index.js",
   "scripts": {
-    "test": "node ./__tests__/utils.test.js"
+    "build": "rm -rf dist && tsc -p tsconfig.build.json",
+    "test": "jest --config ../../jest.config.js",
+    "prepublishOnly": "cp package.json dist/package.json && cp README.md dist/README.md"
   },
-  "bugs": {
-    "url": "https://github.com/joel3112/react-jopau/issues"
+  "publishConfig": {
+    "access": "public",
+    "directory": "dist"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21",
+    "luxon": "^3.0.3"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.185",
+    "@types/luxon": "^3.0.1",
+    "typescript": "^4.8.3"
   }
 }
