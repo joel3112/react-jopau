@@ -1,0 +1,12 @@
+name: pull request
+
+on:
+  pull_request:
+    paths:
+      - 'packages/**/*'
+    branches: [ main ]
+    types: [ opened, synchronize, reopened ]
+
+jobs:
+  ci:
+    uses: ./.github/workflows/reusable.yml
