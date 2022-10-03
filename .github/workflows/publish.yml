@@ -12,7 +12,7 @@ on:
       - main
 
 env:
-  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
 jobs:
   ci:
@@ -27,7 +27,7 @@ jobs:
       - name: ⬇️ Check out repository
         uses: actions/checkout@v3
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GH_TOKEN }}
           fetch-depth: '0'
       - name: 📥 Setup Node and Install dependencies
         uses: ./.github/actions/setup
@@ -40,4 +40,4 @@ jobs:
           echo "Packages published successfully 🎉"
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
