@@ -19,6 +19,5 @@
       "@react-jopau/utils/*": ["packages/utils/src/*"]
     },
     "types": ["node", "react", "jest"]
-  },
-  "exclude": ["node_modules", "packages/**/*.test.ts"]
+  }
 }
