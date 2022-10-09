@@ -1,4 +1,14 @@
-import { compact, first, nth, last, multiply, remove, split, uniq, splitByCriteria } from './array';
+import {
+  compact,
+  first,
+  nth,
+  last,
+  multiply,
+  remove,
+  split,
+  uniq,
+  splitByCriteria
+} from '../src/array';
 
 describe('Array helper methods', () => {
   describe('first', () => {
