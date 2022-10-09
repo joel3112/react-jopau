@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.0](https://github.com/joel3112/react-jopau/compare/v0.1.0...v0.2.0) (2022-10-09)
+
+
+### 🐛 Bug Fixes
+
+* **utils:** move tests to __tests__ folder ([4955300](https://github.com/joel3112/react-jopau/commit/49553009c5c71d26b6f25142ffb69c70eb8cfa04))
+
+
+### 🏠 Internal
+
+* remove exclude redundant in jest config ([bb6299b](https://github.com/joel3112/react-jopau/commit/bb6299b3f952d1dc0dc67411c8a921b8dde4736b))
+
+
+### 🚀 New Features
+
+* **utils:** add breakpoint helpers ([04dad25](https://github.com/joel3112/react-jopau/commit/04dad25b808e68f42ac1d12b17d81e7c7260ee06))
+
+
+
 ## 0.1.0 (2022-10-03)
 
 
