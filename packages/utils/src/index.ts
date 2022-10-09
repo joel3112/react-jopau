@@ -5,4 +5,5 @@ export type TBasic = string | number | boolean | null | undefined;
 export type TAny = TBasic | TObject<unknown> | TArray<unknown> | unknown;
 
 export * from './array';
+export * from './breakpoint';
 export * from './object';
