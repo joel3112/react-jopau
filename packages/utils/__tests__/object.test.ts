@@ -1,4 +1,4 @@
-import { TObject, getPropValue, mapValuesBy } from './object';
+import { TObject, getPropValue, mapValuesBy } from '../src/object';
 
 describe('Object helper methods', () => {
   const example: TObject<unknown> = {
