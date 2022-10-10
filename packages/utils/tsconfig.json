@@ -9,5 +9,6 @@
     "types": ["node", "jest"],
     "baseUrl": "./"
   },
-  "include": ["src/**/*.ts"]
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules"]
 }
