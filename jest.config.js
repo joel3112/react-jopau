@@ -7,6 +7,7 @@ module.exports = {
   testRegex: '(/__tests__/.*|\\.tests?)\\.(ts|tsx)$',
   moduleNameMapper: {
     '@react-jopau/utils': '<rootDir>/packages/utils/src',
-    '@react-jopau/utils/(.*)$': '<rootDir>/packages/utils/src/$1'
+    '@react-jopau/utils/(.*)$': '<rootDir>/packages/utils/src/$1',
+    '@react-jopau/hooks/(.*)$': '<rootDir>/packages/hooks/src/$1'
   }
 };
