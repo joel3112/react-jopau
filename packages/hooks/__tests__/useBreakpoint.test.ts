@@ -1,6 +1,6 @@
 import { act, renderHook } from '@testing-library/react';
 import { BreakpointsRules } from '@react-jopau/utils/breakpoint';
-import { UseBreakpoint, useBreakpoint } from '@react-jopau/hooks/useBreakpoint';
+import { UseBreakpoint, useBreakpoint } from '../src/useBreakpoint';
 
 const rules: BreakpointsRules = {
   xs: 0,
