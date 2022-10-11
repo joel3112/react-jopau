@@ -4,7 +4,7 @@ import {
   BreakpointsRules,
   createBreakpoints,
   DEFAULT_CONFIG
-} from '../src/breakpoint/breakpoint';
+} from '../src/breakpoint';
 
 describe('Breakpoint helper methods', () => {
   describe('createBreakpoints', () => {

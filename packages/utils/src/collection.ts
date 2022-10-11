@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
-import { TAny, TArray, TBasic, TObject } from '../index';
-import { compact } from '../array';
+import { TAny, TArray, TBasic, TObject } from './index';
+import { compact } from './array';
 
 export type TCollection<T = TBasic> = TArray<T> | TObject<T>;
 export type TCollectionSortOrder = 'asc' | 'desc';
