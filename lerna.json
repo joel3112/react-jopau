@@ -1,11 +1,9 @@
 {
   "useNx": true,
   "useWorkspaces": true,
-  "version": "0.3.0",
+  "version": "0.4.0",
   "npmClient": "yarn",
-  "packages": [
-    "packages/*"
-  ],
+  "packages": ["packages/*"],
   "command": {
     "version": {
       "allowBranch": "main",
@@ -55,9 +53,7 @@
         "hidden": false
       }
     ],
-    "issuePrefixes": [
-      "#"
-    ],
+    "issuePrefixes": ["#"],
     "issueUrlFormat": "{{host}}/{{owner}}/{{repository}}/issues/{{id}}",
     "commitUrlFormat": "{{host}}/{{owner}}/{{repository}}/commit/{{hash}}",
     "compareUrlFormat": "{{host}}/{{owner}}/{{repository}}/compare/{{previousTag}}...{{currentTag}}",
