@@ -1,13 +1,25 @@
-module.exports = {
+const commonConfig = (name) => ({
+  preset: 'ts-jest',
   testEnvironment: 'jest-environment-jsdom',
+  displayName: `@react-jopau/${name}`,
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
+  testMatch: [`<rootDir>/packages/${name}/__tests__/*.test.ts`],
   transform: {
     '^.+\\.(js|jsx|ts|tsx)$': 'ts-jest'
-  },
-  setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
-  testRegex: '(/__tests__/.*|\\.tests?)\\.(ts|tsx)$',
-  moduleNameMapper: {
-    '@react-jopau/utils': '<rootDir>/packages/utils/src',
-    '@react-jopau/utils/(.*)$': '<rootDir>/packages/utils/src/$1',
-    '@react-jopau/hooks/(.*)$': '<rootDir>/packages/hooks/src/$1'
   }
+});
+
+module.exports = {
+  projects: [
+    {
+      ...commonConfig('utils')
+    },
+    {
+      ...commonConfig('hooks'),
+      moduleNameMapper: {
+        '@react-jopau/utils/(.*)$': '<rootDir>/packages/utils/src/$1',
+        '@react-jopau/hooks/(.*)$': '<rootDir>/packages/hooks/src/$1'
+      }
+    }
+  ]
 };

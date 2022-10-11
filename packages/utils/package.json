@@ -14,7 +14,6 @@
   "module": "index.js",
   "scripts": {
     "build": "rm -rf dist && tsc -p tsconfig.build.json",
-    "test": "jest --config ../../jest.config.js",
     "prepublishOnly": "cp package.json dist/package.json && cp README.md dist/README.md"
   },
   "publishConfig": {
