@@ -1,19 +1,19 @@
 {
-  "name": "@react-jopau/utils",
+  "name": "@react-jopau/hooks",
   "version": "0.3.0",
-  "description": "Common utils for React projects",
+  "description": "Common hooks for React projects",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/joel3112/react-jopau.git"
   },
   "author": "Joel Paucarima Franco <joel.dev.3112@outlook.es>",
   "license": "MIT",
-  "homepage": "https://github.com/joel3112/react-jopau/tree/main/packages/utils#readme",
+  "homepage": "https://github.com/joel3112/react-jopau/tree/main/packages/hooks#readme",
   "type": "module",
   "main": "index.js",
   "module": "index.js",
   "scripts": {
-    "build": "rm -rf dist && tsc -p tsconfig.build.json",
+    "build": "rm -rf dist && tsc",
     "prepublishOnly": "cp package.json dist/package.json && cp README.md dist/README.md"
   },
   "publishConfig": {
@@ -21,13 +21,17 @@
     "directory": "dist"
   },
   "dependencies": {
-    "classnames": "^2.3.2",
-    "lodash": "^4.17.21",
-    "luxon": "^3.0.3"
+    "@react-jopau/utils": "^0.3.0",
+    "swr": "^1.3.0"
+  },
+  "peerDependencies": {
+    "@types/react": "^17.0.0 || ^18.0.0",
+    "@types/react-dom": "^17.0.0 || ^18.0.0",
+    "react": "^17.0.0 || ^18.0.0",
+    "react-dom": "^17.0.0 || ^18.0.0"
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.185",
-    "@types/luxon": "^3.0.1",
-    "typescript": "^4.8.3"
+    "axios": "0.27.2",
+    "typescript": "^4.6.4"
   }
 }

@@ -1,4 +1,4 @@
-import { getPropValue } from '../object';
+import { getPropValue } from './object';
 
 export type Breakpoint = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
