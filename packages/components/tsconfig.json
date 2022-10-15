@@ -4,13 +4,13 @@
     "target": "ESNext",
     "declaration": true,
     "noEmit": false,
+    "esModuleInterop": true,
     "rootDir": "src",
     "outDir": "dist",
-    "types": ["node", "jest", "react"],
+    "types": ["node", "jest", "@testing-library/jest-dom"],
     "baseUrl": "./",
     "jsx": "react-jsx",
     "paths": {
-      "@types": ["./types.d.ts"],
       "@react-jopau/utils": ["../utils/dist"],
       "@react-jopau/utils/*": ["../utils/dist/*"]
     }

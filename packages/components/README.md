@@ -16,7 +16,7 @@ yarn install @react-jopau/components
 ## Usage
 
 ```javascript
-import { Header } from '@react-jopau/components/header';
+import { Space } from '@react-jopau/components/space';
 ```
 
 ## Author

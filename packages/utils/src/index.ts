@@ -1,4 +1,3 @@
-import classes from 'classnames';
 import { TArray } from './array';
 import { TDate } from './date';
 import { TFunction, TFunctionVoid } from './function';
@@ -21,4 +20,3 @@ export * from './date';
 export * from './function';
 export * from './object';
 export * from './string';
-export { classes };

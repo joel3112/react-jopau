@@ -9,6 +9,9 @@
   "author": "Joel Paucarima Franco <joel.dev.3112@outlook.es>",
   "license": "MIT",
   "homepage": "https://github.com/joel3112/react-jopau/tree/main/packages/components#readme",
+  "type": "module",
+  "main": "index.js",
+  "module": "index.js",
   "scripts": {
     "build": "rm -rf dist && tsc",
     "prepublishOnly": "cp package.json dist/package.json && cp README.md dist/README.md"
