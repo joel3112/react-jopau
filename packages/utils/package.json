@@ -28,6 +28,6 @@
   "devDependencies": {
     "@types/lodash": "^4.14.185",
     "@types/luxon": "^3.0.1",
-    "typescript": "^4.8.3"
+    "typescript": "^4.8.4"
   }
 }

@@ -17,9 +17,10 @@
     "typeRoots": ["node_modules/@types"],
     "paths": {
       "@react-jopau/utils/*": ["packages/utils/src/*"],
-      "@react-jopau/hooks/*": ["packages/hooks/src/*"]
+      "@react-jopau/hooks/*": ["packages/hooks/src/*"],
+      "@react-jopau/components/*": ["packages/components/src/*"]
     },
     "types": ["node", "react", "jest"]
   },
-  "exclude": ["node_modules", "__tests__"]
+  "exclude": ["node_modules", "__tests__", "**/*.test.tsx"]
 }
