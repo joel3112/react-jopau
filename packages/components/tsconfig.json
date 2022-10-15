@@ -1,0 +1,19 @@
+{
+  "extends": "../../tsconfig",
+  "compilerOptions": {
+    "target": "ESNext",
+    "declaration": true,
+    "noEmit": false,
+    "esModuleInterop": true,
+    "rootDir": "src",
+    "outDir": "dist",
+    "types": ["node", "jest", "@testing-library/jest-dom"],
+    "baseUrl": "./",
+    "jsx": "react-jsx",
+    "paths": {
+      "@react-jopau/utils": ["../utils/dist"],
+      "@react-jopau/utils/*": ["../utils/dist/*"]
+    }
+  },
+  "exclude": ["node_modules", "src/**/*.test.tsx", "src/**/*.stories.tsx"]
+}
