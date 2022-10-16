@@ -9,9 +9,8 @@ module.exports = {
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
-    '@storybook/addon-interactions',
-    'storybook-dark-mode'
+    '@storybook/addon-interactions'
   ],
   framework: '@storybook/react',
-  staticDirs: ['./public']
+  staticDirs: ['../public']
 };
