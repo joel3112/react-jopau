@@ -20,7 +20,7 @@
       "@react-jopau/hooks/*": ["packages/hooks/src/*"],
       "@react-jopau/components/*": ["packages/components/src/*"]
     },
-    "types": ["node", "react", "jest"]
+    "types": ["node", "react", "jest", "mdx"]
   },
   "exclude": ["node_modules", "__tests__", "**/*.test.tsx"]
 }
