@@ -1,14 +1,32 @@
 <style>
   @font-face {
     font-family: 'Apercu';
-    src: url('/assets/fonts/Apercu-Regular.otf') format('otf');
+    src: url('/assets/fonts/NunitoSans-Regular.ttf') format('ttf');
     font-weight: 400;
     font-style: normal;
+  }
+
+  html {
+    --font-family: 'Nunito Sans', -apple-system, '.SFNSText-Regular', 'San Francisco',
+      BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .theme-light {
+    --background-color: #f8f8f8;
+  }
+
+  .theme-dark {
+    --background-color: #333;
+  }
+
+  body {
+    background-color: var(--background-color);
+    font-family: var(--font-family) !important;
   }
 
   *,
   button,
   input {
-    font-family: 'Apercu', system-ui, sans-serif;
+    font-family: var(--font-family) !important;
   }
 </style>

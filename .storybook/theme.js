@@ -8,7 +8,7 @@ const colorBlack = 'black';
 const colorGray200 = 'rgb(20, 20, 20)';
 const colorGray80 = 'rgb(120,120,120)';
 
-export default create({
+export const customTheme = create({
   base: 'light',
 
   colorPrimary: colorPrimary,
@@ -21,7 +21,8 @@ export default create({
   appBorderRadius: 4,
 
   // Typography
-  fontBase: '"Apercu", system-ui, sans-serif',
+  fontBase:
+    '"Nunito Sans", -apple-system, ".SFNSText-Regular", "San Francisco", BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif',
   fontCode: 'monospace',
 
   // Text colors

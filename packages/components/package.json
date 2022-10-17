@@ -21,8 +21,7 @@
     "directory": "dist"
   },
   "dependencies": {
-    "@react-jopau/utils": "^0.5.0",
-    "@stitches/react": "^1.2.8"
+    "@react-jopau/utils": "^0.5.0"
   },
   "peerDependencies": {
     "@types/react": "^17.0.0 || ^18.0.0",
