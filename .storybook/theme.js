@@ -2,7 +2,6 @@ import { create } from '@storybook/theming/create';
 
 const colorPrimary = 'rgb(32, 35, 42)';
 const colorSecondary = 'rgb(4, 207, 250)';
-const colorBackgroundContent = '#f7f8f9';
 const colorWhite = 'white';
 const colorBlack = 'black';
 const colorGray200 = 'rgb(20, 20, 20)';
@@ -15,7 +14,7 @@ export const customTheme = create({
   colorSecondary: colorPrimary,
 
   // UI
-  appBg: colorBackgroundContent,
+  appBg: colorWhite,
   appContentBg: colorWhite,
   appBorderColor: colorGray200,
   appBorderRadius: 4,
@@ -23,7 +22,7 @@ export const customTheme = create({
   // Typography
   fontBase:
     '"Nunito Sans", -apple-system, ".SFNSText-Regular", "San Francisco", BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif',
-  fontCode: 'monospace',
+  fontCode: '"Apercu", -apple-system, sans-serif',
 
   // Text colors
   textColor: colorBlack,
@@ -41,6 +40,6 @@ export const customTheme = create({
   inputBorderRadius: 4,
 
   brandTitle: 'react-jopau',
-  brandUrl: '#',
+  brandUrl: 'https://github.com/joel3112/react-jopau/tree/main/packages/components',
   brandImage: './images/banner.png'
 });

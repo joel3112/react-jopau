@@ -1,14 +1,27 @@
 <style>
   @font-face {
     font-family: 'Apercu';
+    src: url('/assets/fonts/Apercu-Regular.otf') format('otf');
+    font-weight: 400;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Nunito Sans';
     src: url('/assets/fonts/NunitoSans-Regular.ttf') format('ttf');
     font-weight: 400;
     font-style: normal;
   }
+  @font-face {
+    font-family: 'MonoLisa';
+    src: url('/assets/fonts/MonoLisa-Regular.ttf') format('ttf');
+    font-weight: 400;
+    font-style: normal;
+  }
 
-  html {
+  :root {
     --font-family: 'Nunito Sans', -apple-system, '.SFNSText-Regular', 'San Francisco',
       BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --font-family-code: 'MonoLisa', 'SFMono-Regular', Consolas, sans-serif;
   }
 
   .theme-light {
@@ -28,5 +41,10 @@
   button,
   input {
     font-family: var(--font-family) !important;
+  }
+
+  pre,
+  code {
+    font-family: var(--font-family-code) !important;
   }
 </style>

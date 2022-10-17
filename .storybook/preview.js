@@ -1,4 +1,3 @@
-import { themes } from '@storybook/theming';
 import { globalDecorators } from './decorators';
 import { customTheme } from './theme';
 
@@ -34,7 +33,6 @@ export const globalTypes = {
         { value: 'light', icon: 'circlehollow', title: 'light' },
         { value: 'dark', icon: 'circle', title: 'dark' }
       ],
-      showName: true,
       dynamicTitle: true
     }
   }
