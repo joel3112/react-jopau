@@ -1,5 +1,6 @@
 import { globalDecorators } from './decorators';
-import { customTheme } from './theme';
+import { storyTheme } from './theme';
+import '../styles/styles.css';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -12,7 +13,7 @@ export const parameters = {
     expanded: true
   },
   docs: {
-    theme: customTheme
+    theme: storyTheme
   },
   backgrounds: {
     disable: true,

@@ -7,7 +7,7 @@ const colorBlack = 'black';
 const colorGray200 = 'rgb(20, 20, 20)';
 const colorGray80 = 'rgb(120,120,120)';
 
-export const customTheme = create({
+export const storyTheme = create({
   base: 'light',
 
   colorPrimary: colorPrimary,
