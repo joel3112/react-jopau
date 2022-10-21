@@ -27,6 +27,7 @@
       {
         "extensions": [".ts", ".tsx", ".js", ".jsx"]
       }
-    ]
+    ],
+    "@typescript-eslint/no-var-requires": 0
   }
 }

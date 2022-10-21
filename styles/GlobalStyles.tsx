@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { globalCss } from '@stitches/react';
-import { lightTheme, darkTheme } from './theme';
+import { lightTheme, darkTheme } from './themes';
 
 const globalStyles = globalCss({
   body: {

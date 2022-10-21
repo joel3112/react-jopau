@@ -1,7 +1,7 @@
 import { useLayoutEffect, useRef } from 'react';
 import { DecoratorFn } from '@storybook/react';
 import { GlobalStyles } from '../styles/GlobalStyles';
-import { lightTheme, darkTheme } from '../styles/theme';
+import { lightTheme, darkTheme } from '../styles/themes';
 
 export const withTheme: DecoratorFn = (StoryFn, { globals: { theme: themeKey = 'light' } }) => {
   const storyRef = useRef<HTMLDivElement>(null);

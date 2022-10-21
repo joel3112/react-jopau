@@ -1,5 +1,5 @@
-import { create } from '@storybook/theming/create';
-import { baseTheme as theme } from '../styles/theme';
+import { create } from '@storybook/theming';
+import { baseTheme as theme } from '../styles/themes';
 
 const { colors, fonts } = theme;
 

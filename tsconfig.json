@@ -14,8 +14,10 @@
     "noErrorTruncation": false,
     "allowJs": true,
     "skipLibCheck": true,
-    "typeRoots": ["node_modules/@types"],
+    "typeRoots": ["node_modules/@types", "typings/**/*.d.ts"],
     "paths": {
+      "@static/*": ["public/*"],
+      "@styles/*": ["styles/*"],
       "@react-jopau/utils/*": ["packages/utils/src/*"],
       "@react-jopau/hooks/*": ["packages/hooks/src/*"],
       "@react-jopau/components/*": ["packages/components/src/*"]
