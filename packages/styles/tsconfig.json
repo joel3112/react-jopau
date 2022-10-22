@@ -1,0 +1,18 @@
+{
+  "extends": "../../tsconfig",
+  "compilerOptions": {
+    "target": "ESNext",
+    "declaration": true,
+    "noEmit": false,
+    "esModuleInterop": true,
+    "rootDir": "src",
+    "outDir": "dist",
+    "baseUrl": "./",
+    "jsx": "react-jsx",
+    "paths": {
+      "@react-jopau/utils": ["../utils/dist"],
+      "@react-jopau/utils/*": ["../utils/dist/*"]
+    }
+  },
+  "exclude": ["node_modules"]
+}

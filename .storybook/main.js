@@ -2,6 +2,9 @@ const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const path = require('path');
 
 module.exports = {
+  core: {
+    builder: 'webpack5'
+  },
   stories: [
     {
       directory: '../packages/components',
@@ -26,11 +29,12 @@ module.exports = {
           implementation: require('postcss')
         }
       }
-    }
+    },
+    './theme-selector-addon/register',
+    './dark-mode-addon/register'
   ],
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  webpackFinal: async (config: any) => {
-    if (!config.resolve) return config;
+  webpackFinal: async (config) => {
     config.resolve.plugins = [
       ...(config.resolve.plugins || []),
       new TsconfigPathsPlugin({
@@ -40,13 +44,6 @@ module.exports = {
     ];
     return config;
   },
-  features: {
-    storyStoreV7: true,
-    interactionsDebugger: true
-  },
   framework: '@storybook/react',
-  staticDirs: ['../public'],
-  core: {
-    builder: 'webpack5'
-  }
+  staticDirs: ['../public']
 };
