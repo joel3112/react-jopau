@@ -13,8 +13,8 @@
   "main": "index.js",
   "module": "index.js",
   "scripts": {
-    "build": "rm -rf dist && tsc",
-    "prepublishOnly": "cp package.json dist/package.json && cp README.md dist/README.md"
+    "build": "rimraf dist && tsc",
+    "prepublishOnly": "copyfiles package.json README.md dist"
   },
   "publishConfig": {
     "access": "public",

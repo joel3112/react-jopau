@@ -7,7 +7,11 @@ module.exports = {
       secondary: 'var(--colors-secondary)',
       black: 'var(--colors-black)',
       white: 'var(--colors-white)',
-      text: 'var(--color-text)'
+      gray: 'var(--colors-gray)',
+      text: 'var(--colors-text)',
+      background: 'var(--colors-background)',
+      grayBorder: 'var(--colors-grayBorder)',
+      blackBorder: 'var(--colors-blackBorder)'
     },
     extend: {}
   },

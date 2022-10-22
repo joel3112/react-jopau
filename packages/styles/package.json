@@ -10,10 +10,13 @@
   "license": "MIT",
   "homepage": "https://github.com/joel3112/react-jopau/tree/main/packages/styles#readme",
   "type": "module",
-  "main": "index.js",
-  "module": "index.js",
   "scripts": {
-    "build": "rm -rf dist && tsc"
+    "build": "rimraf dist && tsc",
+    "prepublishOnly": "copyfiles -f package.json README.md src/**/*.css dist"
+  },
+  "publishConfig": {
+    "access": "public",
+    "directory": "dist"
   },
   "dependencies": {
     "@react-jopau/utils": "^0.5.0"

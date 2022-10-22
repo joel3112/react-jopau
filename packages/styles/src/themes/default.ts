@@ -7,8 +7,9 @@ export default {
         text: '#000',
         white: '#fff',
         black: '#000',
-        gray200: '#141414',
-        gray80: '#787878',
+        blackBorder: '#141414',
+        gray: '#b9bdcf',
+        grayBorder: '#787878',
         background: '#f8f8f8'
       },
       dark: {
@@ -17,9 +18,10 @@ export default {
         text: '#fff',
         white: '#fff',
         black: '#000',
-        gray200: '#141414',
-        gray80: '#787878',
-        background: '#333'
+        blackBorder: '#141414',
+        gray: '#b9bdcf',
+        grayBorder: '#787878',
+        background: '#1d1f20'
       }
     },
     space: {
@@ -28,9 +30,10 @@ export default {
       3: '15px'
     },
     fontSizes: {
-      1: '12px',
-      2: '13px',
-      3: '15px'
+      1: '1rem',
+      2: '1.5rem',
+      3: '0.8rem',
+      4: '0.5rem'
     },
     fonts: {
       base: '"Nunito Sans", -apple-system, ".SFNSText-Regular", "San Francisco", BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif',
