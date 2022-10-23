@@ -1,7 +1,6 @@
 import { ReactNode, useEffect, useState } from 'react';
 import { createStitches, globalCss } from '@stitches/react';
 import type { ConfigType } from '@stitches/react/types/config';
-import { getPropValue } from '@react-jopau/utils/object';
 import { Theme, ThemeProps, themes, ThemeScheme, ThemeSchemes } from './themes';
 
 const globalStyles = globalCss({
@@ -18,7 +17,7 @@ const globalStyles = globalCss({
 });
 
 export const getProps = (themeKey: string): Theme => {
-  return getPropValue(themes, `${themeKey}.value`);
+  return themes[themeKey].value;
 };
 
 export const getTheme = (themeKey: string): ThemeProps => {

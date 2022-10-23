@@ -10,10 +10,22 @@ module.exports = {
       gray: 'var(--colors-gray)',
       text: 'var(--colors-text)',
       background: 'var(--colors-background)',
-      grayBorder: 'var(--colors-grayBorder)',
-      blackBorder: 'var(--colors-blackBorder)'
+      border: {
+        DEFAULT: 'var(--colors-border)',
+        gray: 'var(--colors-grayBorder)',
+        black: 'var(--colors-blackBorder)'
+      }
     },
-    extend: {}
+    extend: {
+      opacity: {
+        0: 'var(--opacity-0)',
+        20: 'var(--opacity-20)',
+        40: 'var(--opacity-40)',
+        60: 'var(--opacity-60)',
+        80: 'var(--opacity-80)',
+        100: 'var(--opacity-100)'
+      }
+    }
   },
   plugins: []
 };

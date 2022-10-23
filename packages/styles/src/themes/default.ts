@@ -10,7 +10,8 @@ export default {
         blackBorder: '#141414',
         gray: '#b9bdcf',
         grayBorder: '#787878',
-        background: '#f8f8f8'
+        background: '#f8f8f8',
+        border: '#eaeaea'
       },
       dark: {
         primary: '#04cffa',
@@ -21,7 +22,8 @@ export default {
         blackBorder: '#141414',
         gray: '#b9bdcf',
         grayBorder: '#787878',
-        background: '#1d1f20'
+        background: '#1d1f20',
+        border: '#333'
       }
     },
     space: {
@@ -42,6 +44,14 @@ export default {
     fontWeights: {},
     lineHeights: {},
     letterSpacings: {},
+    opacity: {
+      '0': '0',
+      '20': '0.2',
+      '40': '0.4',
+      '60': '0.6',
+      '80': '0.8',
+      '100': '1'
+    },
     sizes: {},
     borderWidths: {},
     borderStyles: {},

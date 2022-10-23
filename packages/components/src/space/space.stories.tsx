@@ -5,7 +5,7 @@ import { Space } from './space';
 
 const Items = (size: number, percentage50 = false) => {
   const classes = classnames({
-    'px-8 py-4 text-text bg-gray border-solid border border-grayBorder': true,
+    'px-8 py-4 text-text border-solid border border-gray bg-border': true,
     'flex-[0_0_48%]': percentage50
   });
 
@@ -35,7 +35,7 @@ export default {
 } as ComponentMeta<typeof Space>;
 
 const Template: ComponentStory<typeof Space> = (args) => {
-  return <Space {...args} className="border-solid border border-grayBorder" />;
+  return <Space {...args} className="border-solid border border-gray" />;
 };
 
 export const Default = Template.bind({
