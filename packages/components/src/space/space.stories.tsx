@@ -1,8 +1,9 @@
 import classnames from 'classnames';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { multiply } from '@react-jopau/utils/array';
 import { Space } from './space';
 
-const Items = (items: number, percentage50 = false) => {
+const Items = (size: number, percentage50 = false) => {
   const classes = classnames({
     'px-8 py-4 text-text bg-gray border-solid border border-grayBorder': true,
     'flex-[0_0_48%]': percentage50
@@ -10,9 +11,9 @@ const Items = (items: number, percentage50 = false) => {
 
   return (
     <>
-      {[...Array(items).keys()].map((i) => (
-        <div key={i} className={classes}>
-          Item {i + 1}
+      {multiply([null], size).map((_, index) => (
+        <div key={index} className={classes}>
+          Item {index + 1}
         </div>
       ))}
     </>

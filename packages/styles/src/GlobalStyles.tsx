@@ -1,8 +1,8 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { ReactNode, useEffect, useState } from 'react';
 import { createStitches, globalCss } from '@stitches/react';
 import type { ConfigType } from '@stitches/react/types/config';
-import { ThemeProps, themes } from './themes';
+import { getPropValue } from '@react-jopau/utils/object';
+import { Theme, ThemeProps, themes, ThemeScheme, ThemeSchemes } from './themes';
 
 const globalStyles = globalCss({
   body: {
@@ -17,23 +17,22 @@ const globalStyles = globalCss({
   }
 });
 
-export const getProps = (themeKey: string) => {
-  return themes[themeKey].value;
+export const getProps = (themeKey: string): Theme => {
+  return getPropValue(themes, `${themeKey}.value`);
 };
 
-export const getTheme = (themeKey: string) => {
+export const getTheme = (themeKey: string): ThemeProps => {
   return getProps(themeKey).theme;
 };
 
 export const getColors = (themeKey: string, scheme: 'light' | 'dark' = 'light') => {
-  return getTheme(themeKey).colors[scheme];
+  return getTheme(themeKey).colors[scheme] as ConfigType.Theme<ThemeProps>['colors'];
 };
 
 const getSchemes = (themeKey: string) => {
-  // eslint-disable-next-line @typescript-eslint/ban-types
-  const currenTheme: any = getTheme(themeKey);
+  const currenTheme: ThemeProps = getTheme(themeKey);
   const { createTheme } = createStitches({
-    theme: currenTheme as ConfigType.Theme<ThemeProps>
+    theme: currenTheme as unknown as ConfigType.Theme<ThemeProps>
   });
   const lightTheme = createTheme('light-theme', {
     ...currenTheme,
@@ -56,23 +55,28 @@ export const GlobalStyles = ({
   themeKey: string;
   darkMode: boolean;
 }) => {
-  const [schemes, setSchemes] = useState<any>({});
-  const [currentScheme, setCurrentScheme] = useState<any>(null);
+  const [schemes, setSchemes] = useState<ThemeSchemes>({});
+  const [currentScheme, setCurrentScheme] = useState<ThemeScheme>(null);
 
   useEffect(() => {
-    handleSchemesChange(getSchemes(themeKey));
+    const _schemes: ThemeSchemes = getSchemes(themeKey);
+    setSchemes({ ..._schemes });
+    handleSchemeChange(_schemes);
   }, [themeKey]);
 
   useEffect(() => {
-    if (schemes.lightTheme && schemes.darkTheme) {
-      setCurrentScheme({ ...schemes[darkMode ? 'darkTheme' : 'lightTheme'] });
-    }
+    handleSchemeChange(schemes);
   }, [darkMode]);
 
-  const handleSchemesChange = (schemes: any) => {
-    setSchemes({ ...schemes });
-    setCurrentScheme({ ...schemes[darkMode ? 'darkTheme' : 'lightTheme'] });
+  const handleSchemeChange = (schemes: ThemeSchemes) => {
+    if (schemes.lightTheme && schemes.darkTheme) {
+      setCurrentScheme(darkMode ? schemes.darkTheme : schemes.lightTheme);
+    }
   };
+
+  if (!currentScheme) {
+    return null;
+  }
 
   return (
     <div className={currentScheme}>

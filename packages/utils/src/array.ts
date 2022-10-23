@@ -1,7 +1,7 @@
 import * as _ from 'lodash';
 import { TBasic } from './index';
 
-export type TArray<T = TBasic> = ArrayLike<T>;
+export type TArray<T = TBasic> = Array<T>;
 export type TArrayDouble<T = TBasic> = [Array<T>, Array<T>];
 export type TArrayCriteriaSplit<T = TBasic> = (value: T, index: number) => boolean;
 
