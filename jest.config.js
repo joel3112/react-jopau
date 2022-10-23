@@ -12,25 +12,23 @@ module.exports = {
   projects: [
     {
       ...commonConfig('utils'),
-      testMatch: ['<rootDir>/packages/utils/__tests__/*.test.ts'],
+      testMatch: ['<rootDir>/packages/utils/**/*.test.ts'],
       setupFilesAfterEnv: ['<rootDir>/jest.setup.js']
     },
     {
       ...commonConfig('hooks'),
-      testMatch: ['<rootDir>/packages/hooks/__tests__/*.test.ts'],
+      testMatch: ['<rootDir>/packages/hooks/**/*.test.ts'],
+      setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
       moduleNameMapper: {
-        '@react-jopau/utils/(.*)$': '<rootDir>/packages/utils/src/$1',
-        '@react-jopau/hooks/(.*)$': '<rootDir>/packages/hooks/src/$1'
-      },
-      setupFilesAfterEnv: ['<rootDir>/jest.setup.js']
+        '@react-jopau/utils/(.*)$': '<rootDir>/packages/utils/src/$1'
+      }
     },
     {
       ...commonConfig('components'),
-      testMatch: ['<rootDir>/src/**/*.test.tsx'],
+      testMatch: ['<rootDir>/packages/components/**/*.test.tsx'],
       moduleNameMapper: {
-        '@types': '<rootDir>/types.d.ts'
-      },
-      rootDir: 'packages/components'
+        '@react-jopau/utils/(.*)$': '<rootDir>/packages/utils/src/$1'
+      }
     }
   ]
 };
