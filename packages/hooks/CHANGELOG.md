@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.0](https://github.com/joel3112/react-jopau/compare/v0.5.0...v0.6.0) (2022-10-23)
+
+### 🚀 New Features
+
+- **components:** space stories ([b80874a](https://github.com/joel3112/react-jopau/commit/b80874ad095b9699db407f090dec7b4d8584632a))
+
 ## [0.5.0](https://github.com/joel3112/react-jopau/compare/v0.4.0...v0.5.0) (2022-10-15)
 
 ### 📝 Documentation

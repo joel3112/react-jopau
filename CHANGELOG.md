@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.0](https://github.com/joel3112/react-jopau/compare/v0.5.0...v0.6.0) (2022-10-23)
+
+### 🚀 New Features
+
+- **components:** space stories ([b80874a](https://github.com/joel3112/react-jopau/commit/b80874ad095b9699db407f090dec7b4d8584632a))
+
+### 🐛 Bug Fixes
+
+- **utils:** change array type ([b6c1645](https://github.com/joel3112/react-jopau/commit/b6c16457c4e53a351b2504985aed3823e9f44df8))
+
+### 🏠 Internal
+
+- add tailwind css ([3305d78](https://github.com/joel3112/react-jopau/commit/3305d7824ed275c5cedda915cfa2a23d24ead897))
+- configure storybooks ([076de68](https://github.com/joel3112/react-jopau/commit/076de688ed91ee0ab1207cc374a8e56e41b9e971))
+- storybook + theme/scheme addons ([623f22c](https://github.com/joel3112/react-jopau/commit/623f22c5e5e54c70e9fc9d15fb20326efc025832))
+- storybook + webpack5 ([e7ed6b0](https://github.com/joel3112/react-jopau/commit/e7ed6b03fa0a49ee3c892cb0de8d1f4077d4c51e))
+- storybook dark mode ([4e073fb](https://github.com/joel3112/react-jopau/commit/4e073fbee2083afc9631b989f7c7157b95e0ce22))
+- storybook favicon ([d1278b8](https://github.com/joel3112/react-jopau/commit/d1278b837752e328780a97b8020951fd4110f26a))
+- storybook font code ([392dada](https://github.com/joel3112/react-jopau/commit/392dada7a9caeefb4c42dee64a9b9055b04a2e41))
+- storybook theming ([1aa7d80](https://github.com/joel3112/react-jopau/commit/1aa7d806cd8f755242e8568ab012f021c1ae2139))
+- storybook theming toolbar ([1d15e7b](https://github.com/joel3112/react-jopau/commit/1d15e7bf5d5ff7f12ab286d4b51b241ff2106c49))
+- storybook workflow ([87ab523](https://github.com/joel3112/react-jopau/commit/87ab523a1abf3c207af496dae722bdccf0f00ad5))
+- **styles:** stitches global theme ([b831549](https://github.com/joel3112/react-jopau/commit/b831549d88a2ebee99b106164c4485326bc994ca))
+
 ## [0.5.0](https://github.com/joel3112/react-jopau/compare/v0.4.0...v0.5.0) (2022-10-15)
 
 ### 📝 Documentation
