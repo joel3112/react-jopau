@@ -18,6 +18,7 @@ yarn install @react-jopau/styles
 ```javascript
 import { themes } from '@react-jopau/styles/themes';
 import { getColors, GlobalStyles } from '/packages/styles/GlobalStyles';
+import { createBreakpoints } from '/packages/styles/breakpoint';
 ```
 
 ## Author

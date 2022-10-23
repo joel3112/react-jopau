@@ -16,7 +16,6 @@ yarn install @react-jopau/utils
 ## Usage
 
 ```javascript
-import { createBreakpoints } from '@react-jopau/utils/breakpoint';
 import { yearsFromNow, TDate } from '@react-jopau/utils/date';
 import { debounce } from '@react-jopau/utils/function';
 ```

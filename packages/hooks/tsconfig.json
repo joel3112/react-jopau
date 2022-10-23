@@ -11,7 +11,8 @@
     "jsx": "react-jsx",
     "paths": {
       "@react-jopau/utils": ["../utils/dist"],
-      "@react-jopau/utils/*": ["../utils/dist/*"]
+      "@react-jopau/utils/*": ["../utils/dist/*"],
+      "@react-jopau/styles/*": ["../styles/dist/*"]
     }
   },
   "exclude": ["node_modules", "src/**/*.test.ts", "src/**/*.stories.tsx"]

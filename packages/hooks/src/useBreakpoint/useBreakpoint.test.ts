@@ -1,8 +1,7 @@
 import { act, renderHook } from '@testing-library/react';
-import { BreakpointsRules } from '@react-jopau/utils/breakpoint';
 import { UseBreakpoint, useBreakpoint } from './useBreakpoint';
 
-const rules: BreakpointsRules = {
+const rules = {
   xs: 650,
   sm: 960,
   md: 1280,
@@ -30,7 +29,7 @@ describe('useBreakpoint hook', () => {
     { width: 1300, key: 'isDesktop', label: 'desktop' },
     { width: 1600, key: 'isLargeDesktop', label: 'large-desktop' }
   ].forEach(({ width, key, label }) => {
-    test.only(`returns true in ${label} viewport`, () => {
+    test(`returns true in ${label} viewport`, () => {
       const { result } = renderHook(() => useBreakpoint());
 
       act(() => {

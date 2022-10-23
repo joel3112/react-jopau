@@ -60,6 +60,13 @@ export default {
     zIndices: {},
     transitions: {}
   },
+  media: {
+    xs: 650,
+    sm: 960,
+    md: 1280,
+    lg: 1400,
+    xl: 1920
+  },
   brand: {
     title: 'react-jopau',
     url: 'https://github.com/joel3112/react-jopau/tree/main/packages/components',

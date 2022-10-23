@@ -9,10 +9,10 @@ const globalStyles = globalCss({
     color: '$text'
   },
   '*, button, input': {
-    fontFamily: '$base !important'
+    fontFamily: '$base'
   },
   'pre *, code *': {
-    fontFamily: '$code !important'
+    fontFamily: '$code'
   }
 });
 
@@ -28,15 +28,29 @@ export const getColors = (themeKey: string, scheme: 'light' | 'dark' = 'light') 
   return getTheme(themeKey).colors[scheme] as ConfigType.Theme<ThemeProps>['colors'];
 };
 
+export const getBreakpoints = (themeKey: string) => {
+  return getProps(themeKey).media;
+};
+
 const getSchemes = (themeKey: string) => {
   const currenTheme: ThemeProps = getTheme(themeKey);
   const { createTheme } = createStitches({
-    theme: currenTheme as unknown as ConfigType.Theme<ThemeProps>
+    theme: currenTheme as unknown as ConfigType.Theme<ThemeProps>,
+    media: Object.entries(getBreakpoints(themeKey)).reduce(
+      (acc, [key, value]) => ({
+        ...acc,
+        [key]: `(max-width: ${value}px)`
+      }),
+      {}
+    )
   });
+
+  // Light theme
   const lightTheme = createTheme('light-theme', {
     ...currenTheme,
     colors: getColors(themeKey, 'light')
   });
+  // Dark theme
   const darkTheme = createTheme('dark-theme', {
     ...currenTheme,
     colors: getColors(themeKey, 'dark')

@@ -3,8 +3,9 @@ import {
   Breakpoint,
   BreakpointsHelper,
   BreakpointsRules,
-  createBreakpoints
-} from '@react-jopau/utils/breakpoint';
+  createBreakpoints,
+  DEFAULT_CONFIG as breakpoints
+} from '@react-jopau/styles/breakpoint';
 
 export type UseBreakpoint = {
   key: Breakpoint | null;
@@ -15,7 +16,7 @@ export type UseBreakpoint = {
   isLargeDesktop: boolean;
 };
 
-export const useBreakpoint = (rules?: BreakpointsRules): UseBreakpoint => {
+export const useBreakpoint = (rules: BreakpointsRules = breakpoints): UseBreakpoint => {
   const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
   const [config, setConfig] = useState<BreakpointsHelper>(createBreakpoints({ rules }));
 
@@ -40,6 +41,6 @@ export const useBreakpoint = (rules?: BreakpointsRules): UseBreakpoint => {
     isTablet: config.between('xs', 'sm'),
     isSmallDesktop: config.between('sm', 'md'),
     isDesktop: config.between('md', 'lg'),
-    isLargeDesktop: config.between('lg', 'xl')
+    isLargeDesktop: config.between('lg', 'xl') || config.up('xl')
   };
 };

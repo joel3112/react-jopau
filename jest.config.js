@@ -16,11 +16,20 @@ module.exports = {
       setupFilesAfterEnv: ['<rootDir>/jest.setup.js']
     },
     {
+      ...commonConfig('styles'),
+      testMatch: ['<rootDir>/packages/styles/**/*.test.ts'],
+      setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
+      moduleNameMapper: {
+        '@react-jopau/utils/(.*)$': '<rootDir>/packages/utils/src/$1'
+      }
+    },
+    {
       ...commonConfig('hooks'),
       testMatch: ['<rootDir>/packages/hooks/**/*.test.ts'],
       setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
       moduleNameMapper: {
-        '@react-jopau/utils/(.*)$': '<rootDir>/packages/utils/src/$1'
+        '@react-jopau/utils/(.*)$': '<rootDir>/packages/utils/src/$1',
+        '@react-jopau/styles/(.*)$': '<rootDir>/packages/styles/src/$1'
       }
     },
     {

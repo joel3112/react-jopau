@@ -1,4 +1,5 @@
-import { getPropValue } from './object';
+import { getPropValue } from '@react-jopau/utils/object';
+import defaultTheme from './themes/default';
 
 export type Breakpoint = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
@@ -11,13 +12,7 @@ export interface BreakpointsConfig {
   targetWidth?: number;
 }
 
-export const DEFAULT_CONFIG: BreakpointsRules = {
-  xs: 650,
-  sm: 960,
-  md: 1280,
-  lg: 1400,
-  xl: 1920
-};
+export const DEFAULT_CONFIG: BreakpointsRules = defaultTheme.media;
 
 export class BreakpointsHelper {
   rules: BreakpointsRules = {};
@@ -54,8 +49,8 @@ export class BreakpointsHelper {
       return false;
     }
     return this.#getValue(max) !== undefined
-      ? this.#targetWidth >= this.#getValue(min) && this.#targetWidth <= this.#getValue(max)
-      : this.#targetWidth >= this.#getValue(min);
+      ? this.#targetWidth > this.#getValue(min) && this.#targetWidth <= this.#getValue(max)
+      : this.#targetWidth > this.#getValue(min);
   }
 
   up(min: Breakpoint): boolean {
