@@ -26,7 +26,7 @@ export const some = <T>(
 ): boolean => {
   return _.some<T>(
     collection as TArray<T>,
-    predicate as (value: T, index: number, collection: TArray<T>) => boolean
+    predicate as (value: T, index: number, collection: ArrayLike<T>) => boolean
   );
 };
 
@@ -36,7 +36,7 @@ export const includes = <T>(collection: TCollection<T>, value: TAny, fromIndex =
 
 export const sortBy = <T>(
   collection: TCollection<T>,
-  key: string | Array<string> | ((value: T, index: number, collection: TArray<T>) => TBasic),
+  key: string | Array<string> | ((value: T, index: number, collection: ArrayLike<T>) => TBasic),
   orders: Array<TCollectionSortOrder> | TCollectionSortOrder = 'asc'
 ): TArray<T> | TArray<T[keyof T]> => {
   return _.orderBy<T>(collection as TArray<T>, key, orders);

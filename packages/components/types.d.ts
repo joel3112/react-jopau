@@ -1,21 +1,12 @@
-import { CSSProperties, ReactNode } from 'react';
-import { UrlObject } from 'url';
+import { CSSProperties } from 'react';
 
-declare global {
-  type ElementHTML = {
-    className?: string;
-    style?: CSSProperties;
-  };
-
-  type ElementChildren<T = ReactNode> = {
-    children?: T;
-  };
-
-  type ElementSkeleton = {
-    skeleton?: boolean;
-  };
-
-  type ElementLink = {
-    href?: string | UrlObject;
-  };
-}
+export type ElementHTML = {
+  /**
+   * Classnames applied to root element
+   */
+  className?: string;
+  /**
+   * Styles applied to root element
+   */
+  style?: CSSProperties;
+};

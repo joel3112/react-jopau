@@ -41,3 +41,27 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
+  deploy:
+    needs: [ci, publish]
+    runs-on: ubuntu-latest
+    environment:
+      name: 'Production'
+      url: ${{ steps.deploy-to-vercel.outputs.url }}
+    steps:
+      - name: ⬇️ Check out repository
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GH_TOKEN }}
+          fetch-depth: '0'
+      - name: 📥 Setup Node and Install dependencies
+        uses: ./.github/actions/setup
+      - name: 🚀 Deploy to Vercel (Production)
+        id: deploy-to-vercel
+        run: |
+          yarn run build-storybook
+          npm i -g vercel --no-save --no-fund --no-audit --no-scripts
+          DEPLOYMENT_URL=$(vercel ./dist/storybook --token $VERCEL_TOKEN --yes --prod)
+          echo "url=$(echo $DEPLOYMENT_URL)" >> $GITHUB_OUTPUT
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}

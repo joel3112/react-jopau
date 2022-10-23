@@ -10,3 +10,27 @@ on:
 jobs:
   ci:
     uses: ./.github/workflows/reusable.yml
+
+  deploy_preview:
+    needs: ci
+    runs-on: ubuntu-latest
+    environment:
+      name: 'Preview'
+      url: ${{ steps.deploy-to-vercel.outputs.url }}
+    steps:
+      - name: ⬇️ Check out repository
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GH_TOKEN }}
+          fetch-depth: '0'
+      - name: 📥 Setup Node and Install dependencies
+        uses: ./.github/actions/setup
+      - name: 🚀 Deploy to Vercel (Preview)
+        id: deploy-to-vercel
+        run: |
+          yarn run build-storybook
+          npm i -g vercel --no-save --no-fund --no-audit --no-scripts
+          DEPLOYMENT_URL=$(vercel ./dist/storybook --token $VERCEL_TOKEN --yes)
+          echo "url=$(echo $DEPLOYMENT_URL)" >> $GITHUB_OUTPUT
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}

@@ -14,5 +14,5 @@
       "@react-jopau/utils/*": ["../utils/dist/*"]
     }
   },
-  "exclude": ["node_modules", "src/**/*.test.tsx", "src/**/*.stories.tsx"]
+  "exclude": ["node_modules"]
 }

@@ -13,15 +13,14 @@
   "main": "index.js",
   "module": "index.js",
   "scripts": {
-    "build": "rm -rf dist && tsc -p tsconfig.build.json",
-    "prepublishOnly": "cp package.json dist/package.json && cp README.md dist/README.md"
+    "build": "rimraf dist && tsc -p tsconfig.build.json",
+    "prepublishOnly": "copyfiles package.json README.md dist"
   },
   "publishConfig": {
     "access": "public",
     "directory": "dist"
   },
   "dependencies": {
-    "classnames": "^2.3.2",
     "lodash": "^4.17.21",
     "luxon": "^3.0.3"
   },
