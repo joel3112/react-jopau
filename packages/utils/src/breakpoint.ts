@@ -12,11 +12,11 @@ export interface BreakpointsConfig {
 }
 
 export const DEFAULT_CONFIG: BreakpointsRules = {
-  xs: 0,
-  sm: 600,
-  md: 900,
-  lg: 1200,
-  xl: 1536
+  xs: 650,
+  sm: 960,
+  md: 1280,
+  lg: 1400,
+  xl: 1920
 };
 
 export class BreakpointsHelper {
@@ -26,11 +26,11 @@ export class BreakpointsHelper {
 
   get #matches(): { [key in Breakpoint]: boolean } {
     return {
-      xs: this.between('xs', 'sm'),
-      sm: this.between('sm', 'md'),
-      md: this.between('md', 'lg'),
-      lg: this.between('lg', 'xl'),
-      xl: this.up('xl')
+      xs: this.down('xs'),
+      sm: this.between('xs', 'sm'),
+      md: this.between('sm', 'md'),
+      lg: this.between('md', 'lg'),
+      xl: this.between('lg', 'xl')
     };
   }
 
@@ -60,6 +60,10 @@ export class BreakpointsHelper {
 
   up(min: Breakpoint): boolean {
     return this.#getValue(min) !== undefined ? this.#targetWidth >= this.#getValue(min) : false;
+  }
+
+  down(max: Breakpoint): boolean {
+    return this.#getValue(max) !== undefined ? this.#targetWidth <= this.#getValue(max) : false;
   }
 
   #getValue(key: Breakpoint): number {

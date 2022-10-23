@@ -36,10 +36,10 @@ export const useBreakpoint = (rules?: BreakpointsRules): UseBreakpoint => {
 
   return {
     key: config.current,
-    isMobile: config.between('xs', 'sm'),
-    isTablet: config.between('sm', 'md'),
-    isSmallDesktop: config.between('md', 'lg'),
-    isDesktop: config.between('lg', 'xl'),
-    isLargeDesktop: config.up('xl')
+    isMobile: config.down('xs'),
+    isTablet: config.between('xs', 'sm'),
+    isSmallDesktop: config.between('sm', 'md'),
+    isDesktop: config.between('md', 'lg'),
+    isLargeDesktop: config.between('lg', 'xl')
   };
 };
