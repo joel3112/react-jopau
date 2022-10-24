@@ -12,7 +12,7 @@
   "private": true,
   "scripts": {
     "bootstrap": "lerna bootstrap",
-    "build": "lerna run build --concurrency 1",
+    "build": "lerna run build --sort --concurrency 1",
     "clean": "lerna clean --yes && rimraf node_modules yarn.lock",
     "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,scss,md,json,yml}' --config ./.prettierrc.json",
     "lint": "eslint .",
