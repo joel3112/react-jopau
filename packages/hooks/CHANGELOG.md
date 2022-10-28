@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.0](https://github.com/joel3112/react-jopau/compare/v0.6.0...v0.7.0) (2022-10-28)
+
+### ⚠ BREAKING CHANGES
+
+- **hooks:** add options in useFetch
+
+### 🏠 Internal
+
+- optimize jest config per package ([d96d998](https://github.com/joel3112/react-jopau/commit/d96d998329f207ba8d71d7767fe4215f8b2b2854))
+
+### 🐛 Bug Fixes
+
+- **hooks:** link package styles ([e95befc](https://github.com/joel3112/react-jopau/commit/e95befc14f1af9bf0888c9cf770c0acd4afb5957))
+- **hooks:** test useBreakpoint errors ([b0fdb53](https://github.com/joel3112/react-jopau/commit/b0fdb53948486e22f1bf47d43c90b90e2c8d349f))
+- **utils:** change breakpoint sizes ([3e89440](https://github.com/joel3112/react-jopau/commit/3e89440c5b616f024e0484dcae2dc30b2c1555d6))
+
+### 🛠 Refactors
+
+- **hooks:** add options in useFetch ([668bd4b](https://github.com/joel3112/react-jopau/commit/668bd4bdd50546cff327c1a890c1a968a70cc267))
+
+### 🚀 New Features
+
+- **hooks:** add useFetch stories ([3599e50](https://github.com/joel3112/react-jopau/commit/3599e50a55426316fd039d3aa85c68635386711c))
+- **styles:** breakpoints and stitches ([51317e6](https://github.com/joel3112/react-jopau/commit/51317e6c796d481b1568b6e1cda2a9296294ccb9))
+
 ## [0.6.0](https://github.com/joel3112/react-jopau/compare/v0.5.0...v0.6.0) (2022-10-23)
 
 ### 🚀 New Features

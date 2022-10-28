@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.0](https://github.com/joel3112/react-jopau/compare/v0.6.0...v0.7.0) (2022-10-28)
+
+### 🚀 New Features
+
+- **styles:** breakpoints and stitches ([51317e6](https://github.com/joel3112/react-jopau/commit/51317e6c796d481b1568b6e1cda2a9296294ccb9))
+
 ## [0.6.0](https://github.com/joel3112/react-jopau/compare/v0.5.0...v0.6.0) (2022-10-23)
 
 ### 🚀 New Features

@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.0](https://github.com/joel3112/react-jopau/compare/v0.6.0...v0.7.0) (2022-10-28)
+
+### 🏠 Internal
+
+- optimize jest config per package ([d96d998](https://github.com/joel3112/react-jopau/commit/d96d998329f207ba8d71d7767fe4215f8b2b2854))
+
+### 🐛 Bug Fixes
+
+- **utils:** change breakpoint sizes ([3e89440](https://github.com/joel3112/react-jopau/commit/3e89440c5b616f024e0484dcae2dc30b2c1555d6))
+
+### 🚀 New Features
+
+- **styles:** breakpoints and stitches ([51317e6](https://github.com/joel3112/react-jopau/commit/51317e6c796d481b1568b6e1cda2a9296294ccb9))
+
 ## [0.6.0](https://github.com/joel3112/react-jopau/compare/v0.5.0...v0.6.0) (2022-10-23)
 
 ### 🚀 New Features
