@@ -41,7 +41,7 @@ const Template = (args: { rules: BreakpointsRules }) => {
 
       <div className="my-5 text-base flex flex-col gap-3">
         <p>
-          <Highlight>key</Highlight>: {key}
+          <Highlight>key</Highlight>: <span className="ml-2 font-code">{key}</span>
         </p>
         <p>
           <Highlight>isMobile</Highlight>: {isMobile ? '✅' : '❌'}

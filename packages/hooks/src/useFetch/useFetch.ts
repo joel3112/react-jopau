@@ -5,7 +5,7 @@ import { getPropValue } from '@react-jopau/utils/object';
 type useFetchData<T> = Array<T> | T | null;
 type useFetchError<U> = U | null;
 
-type UseFetchOptions<T, U> = {
+export type UseFetchOptions<T = {}, U = {}> = {
   method?: string;
   params?: Record<string, string>;
   headers?: Record<string, string>;
