@@ -1,25 +1,17 @@
 import { renderHook, waitFor } from '@testing-library/react';
 import axios from 'axios';
-import { useFetch } from '../src/useFetch';
+import { useFetch } from './useFetch';
 
 const mockData = 'data';
 const mockError = 'error';
-const fetcher = () => {
-  return axios
-    .get('/api/test')
-    .then((res) => res)
-    .catch((err) => {
-      throw err;
-    });
-};
 
 jest.mock('axios');
 
 describe('Tests useFetch hook', () => {
   test('returns data correctly', async () => {
-    (axios.get as jest.Mock).mockResolvedValueOnce(mockData);
+    (axios.request as jest.Mock).mockResolvedValueOnce({ data: mockData });
 
-    const { result } = renderHook(() => useFetch('/api/test1', fetcher));
+    const { result } = renderHook(() => useFetch<string>('/api/test'));
 
     await waitFor(() => {
       expect(result.current.data).toBe(mockData);
@@ -27,9 +19,9 @@ describe('Tests useFetch hook', () => {
   });
 
   test('returns error correctly', async () => {
-    (axios.get as jest.Mock).mockRejectedValue(mockError);
+    (axios.request as jest.Mock).mockRejectedValueOnce(mockError);
 
-    const { result } = renderHook(() => useFetch('/api/test3', fetcher));
+    const { result } = renderHook(() => useFetch<{}, string>('/api/test2'));
 
     await waitFor(() => {
       expect(result.current.error).toBe(mockError);

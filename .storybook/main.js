@@ -10,10 +10,16 @@ module.exports = {
       directory: '../packages/components',
       titlePrefix: 'Components',
       files: 'src/**/*.stories.*'
+    },
+    {
+      directory: '../packages/hooks',
+      titlePrefix: 'Hooks',
+      files: 'src/**/*.stories.*'
     }
   ],
   addons: [
     '@storybook/addon-links',
+    '@storybook/addon-viewport',
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
     {

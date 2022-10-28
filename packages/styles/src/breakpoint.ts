@@ -1,4 +1,5 @@
-import { getPropValue } from './object';
+import { getPropValue } from '@react-jopau/utils/object';
+import defaultTheme from './themes/default';
 
 export type Breakpoint = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
@@ -11,13 +12,7 @@ export interface BreakpointsConfig {
   targetWidth?: number;
 }
 
-export const DEFAULT_CONFIG: BreakpointsRules = {
-  xs: 0,
-  sm: 600,
-  md: 900,
-  lg: 1200,
-  xl: 1536
-};
+export const DEFAULT_CONFIG: BreakpointsRules = defaultTheme.media;
 
 export class BreakpointsHelper {
   rules: BreakpointsRules = {};
@@ -26,11 +21,11 @@ export class BreakpointsHelper {
 
   get #matches(): { [key in Breakpoint]: boolean } {
     return {
-      xs: this.between('xs', 'sm'),
-      sm: this.between('sm', 'md'),
-      md: this.between('md', 'lg'),
-      lg: this.between('lg', 'xl'),
-      xl: this.up('xl')
+      xs: this.down('xs'),
+      sm: this.between('xs', 'sm'),
+      md: this.between('sm', 'md'),
+      lg: this.between('md', 'lg'),
+      xl: this.between('lg', 'xl')
     };
   }
 
@@ -54,12 +49,16 @@ export class BreakpointsHelper {
       return false;
     }
     return this.#getValue(max) !== undefined
-      ? this.#targetWidth >= this.#getValue(min) && this.#targetWidth <= this.#getValue(max)
-      : this.#targetWidth >= this.#getValue(min);
+      ? this.#targetWidth > this.#getValue(min) && this.#targetWidth <= this.#getValue(max)
+      : this.#targetWidth > this.#getValue(min);
   }
 
   up(min: Breakpoint): boolean {
     return this.#getValue(min) !== undefined ? this.#targetWidth >= this.#getValue(min) : false;
+  }
+
+  down(max: Breakpoint): boolean {
+    return this.#getValue(max) !== undefined ? this.#targetWidth <= this.#getValue(max) : false;
   }
 
   #getValue(key: Breakpoint): number {

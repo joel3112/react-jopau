@@ -4,15 +4,16 @@
     "target": "ESNext",
     "declaration": true,
     "noEmit": false,
+    "esModuleInterop": true,
     "rootDir": "src",
     "outDir": "dist",
-    "types": ["node", "jest"],
     "baseUrl": "./",
+    "jsx": "react-jsx",
     "paths": {
       "@react-jopau/utils": ["../utils/dist"],
       "@react-jopau/utils/*": ["../utils/dist/*"],
-      "@react-jopau/hooks/*": ["../hooks/src/*"]
+      "@react-jopau/styles/*": ["../styles/dist/*"]
     }
   },
-  "include": ["src/**/*.ts"]
+  "exclude": ["node_modules", "src/**/*.test.ts", "src/**/*.stories.tsx"]
 }

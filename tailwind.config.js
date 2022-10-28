@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./packages/components/**/*.{js,jsx,ts,tsx}'],
+  content: ['./packages/**/*.stories.{js,jsx,ts,tsx}'],
   theme: {
     colors: {
       primary: 'var(--colors-primary)',
@@ -15,6 +15,10 @@ module.exports = {
         gray: 'var(--colors-grayBorder)',
         black: 'var(--colors-blackBorder)'
       }
+    },
+    fontFamily: {
+      base: 'var(--fonts-base)',
+      code: 'var(--fonts-code)'
     },
     extend: {
       opacity: {

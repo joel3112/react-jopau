@@ -12,14 +12,14 @@
   "private": true,
   "scripts": {
     "bootstrap": "lerna bootstrap",
-    "build": "lerna run build --stream",
+    "build": "lerna run build --sort --concurrency 1",
     "clean": "lerna clean --yes && rimraf node_modules yarn.lock",
     "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,scss,md,json,yml}' --config ./.prettierrc.json",
     "lint": "eslint .",
     "publish": "lerna publish --yes",
-    "test": "jest",
+    "test": "lerna run test --stream --concurrency 1",
     "type-check": "tsc --pretty --noEmit",
-    "storybook": "start-storybook -p 6006",
+    "storybook": "start-storybook -p 6006 --no-open",
     "build-storybook": "build-storybook -o ./dist/storybook -c .storybook"
   },
   "workspaces": [
@@ -34,6 +34,7 @@
     "@storybook/addon-interactions": "^6.5.12",
     "@storybook/addon-links": "^6.5.12",
     "@storybook/addon-postcss": "^2.0.0",
+    "@storybook/addon-viewport": "^6.5.12",
     "@storybook/addons": "^6.5.12",
     "@storybook/builder-webpack4": "^6.5.12",
     "@storybook/builder-webpack5": "^6.5.9",

@@ -1,3 +1,4 @@
+import { MINIMAL_VIEWPORTS } from '@storybook/addon-viewport';
 import { globalDecorators } from './decorators';
 import { createStorybookTheme } from './theme';
 import '/packages/styles/src/styles.css';
@@ -19,6 +20,11 @@ export const parameters = {
     disable: true,
     grid: {
       disable: true
+    }
+  },
+  viewport: {
+    viewports: {
+      ...MINIMAL_VIEWPORTS
     }
   }
 };

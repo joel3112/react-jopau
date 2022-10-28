@@ -1,12 +1,11 @@
 import { act, renderHook } from '@testing-library/react';
-import { BreakpointsRules } from '@react-jopau/utils/breakpoint';
-import { UseBreakpoint, useBreakpoint } from '../src/useBreakpoint';
+import { UseBreakpoint, useBreakpoint } from './useBreakpoint';
 
-const rules: BreakpointsRules = {
-  xs: 0,
-  sm: 600,
-  md: 900,
-  lg: 1200
+const rules = {
+  xs: 650,
+  sm: 960,
+  md: 1280,
+  lg: 1400
 };
 const MOCK_HEIGHT = 500;
 
@@ -16,7 +15,7 @@ describe('useBreakpoint hook', () => {
       const { result } = renderHook(() => useBreakpoint());
 
       act(() => {
-        window.resizeTo(width + 100, MOCK_HEIGHT);
+        window.resizeTo(width - 100, MOCK_HEIGHT);
       });
 
       expect(result.current).toHaveProperty('key', key);
@@ -27,8 +26,8 @@ describe('useBreakpoint hook', () => {
     { width: 400, key: 'isMobile', label: 'mobile' },
     { width: 700, key: 'isTablet', label: 'tablet' },
     { width: 1000, key: 'isSmallDesktop', label: 'small-desktop' },
-    { width: 1400, key: 'isDesktop', label: 'desktop' },
-    { width: 1700, key: 'isLargeDesktop', label: 'large-desktop' }
+    { width: 1300, key: 'isDesktop', label: 'desktop' },
+    { width: 1600, key: 'isLargeDesktop', label: 'large-desktop' }
   ].forEach(({ width, key, label }) => {
     test(`returns true in ${label} viewport`, () => {
       const { result } = renderHook(() => useBreakpoint());

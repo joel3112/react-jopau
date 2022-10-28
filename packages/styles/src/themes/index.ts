@@ -1,6 +1,7 @@
 import defaultTheme from './default';
 import type { ConfigType } from '@stitches/react/types/config';
 import Stitches from '@stitches/react/types/stitches';
+import { BreakpointsRules } from '../breakpoint';
 
 export type ThemeProps = Omit<ConfigType.Theme, 'colors'> & {
   colors: {
@@ -10,6 +11,7 @@ export type ThemeProps = Omit<ConfigType.Theme, 'colors'> & {
 };
 export type Theme = {
   theme: ThemeProps;
+  media: BreakpointsRules;
   brand: {
     title: string;
     url: string;
