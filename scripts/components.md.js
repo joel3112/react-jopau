@@ -4,11 +4,7 @@ const { template } = require('react-docgen-renderer-template');
 const generatePropsType = (type) => {
   const types = type.split(' | ');
 
-  return types
-    .map((t) => {
-      return `\`${t.replaceAll('"', '')}\``;
-    })
-    .join(' \\| ');
+  return types.map((t) => `\`${t}\``).join(' \\| ');
 };
 
 const generatePropsTable = (props) => {
@@ -39,9 +35,6 @@ const templateObject = templateCreator`### ${({ context }) => context.componentN
   context
 }) => {
   let headerValue = '';
-  if (context.srcLinkUrl) {
-    headerValue = `${os.EOL}From [\`${context.srcLink}\`](${context.srcLinkUrl})`;
-  }
   if (context.description) {
     headerValue += os.EOL + os.EOL + context.description;
   }
