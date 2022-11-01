@@ -3,20 +3,27 @@
   "settings": {
     "react": {
       "version": "detect"
-    }
+    },
+    "mdx/code-blocks": true
   },
   "extends": [
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
     "prettier",
     "plugin:prettier/recommended",
-    "plugin:storybook/recommended"
+    "plugin:storybook/recommended",
+    "plugin:markdown/recommended",
+    "plugin:mdx/recommended"
   ],
   "parser": "@typescript-eslint/parser",
   "overrides": [
     {
       "files": ["**/?(*.)+(spec|test).[jt]s?(x)"],
       "extends": ["plugin:testing-library/react"]
+    },
+    {
+      "files": ["**/*.mdx"],
+      "extends": ["plugin:mdx/overrides"]
     }
   ],
   "rules": {
@@ -26,7 +33,7 @@
     "react/jsx-filename-extension": [
       1,
       {
-        "extensions": [".ts", ".tsx", ".js", ".jsx"]
+        "extensions": [".ts", ".tsx", ".js", ".jsx", ".mdx"]
       }
     ],
     "@typescript-eslint/no-var-requires": 0
