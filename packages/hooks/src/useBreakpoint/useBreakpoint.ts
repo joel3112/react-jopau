@@ -34,7 +34,7 @@ export type UseBreakpoint = {
 };
 
 /**
- * Current breakpoint key and boolean values for each breakpoint
+ * Get current breakpoint key and boolean values for each breakpoint.
  *
  * @param   {BreakpointsRules} [rules] - Custom breakpoints rules
  * @returns {UseBreakpoint}

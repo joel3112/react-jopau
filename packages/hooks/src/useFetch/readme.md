@@ -1,6 +1,6 @@
 ### useFetch
 
-Fetch data from an API endpoint, with optional success and error handlers
+Fetch data from an API endpoint, with optional success and error handlers.
 
 #### Import
 

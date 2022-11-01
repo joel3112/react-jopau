@@ -21,6 +21,13 @@ const Template = () => {
     onSuccess: async (res: any) => {
       await new Promise((resolve) => setTimeout(resolve, 500));
       return res.data;
+    },
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    onError: (err: any) => {
+      throw {
+        message: err.message,
+        code: err.code
+      };
     }
   });
 

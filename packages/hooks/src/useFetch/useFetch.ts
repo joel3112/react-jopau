@@ -30,7 +30,7 @@ export type UseFetch<T, U> = {
 };
 
 /**
- * Fetch data from an API endpoint, with optional success and error handlers
+ * Fetch data from an API endpoint, with optional success and error handlers.
  *
  * @param   {string} path - API endpoint
  * @param   {UseFetchOptions} [options] - Fetch options and handlers
@@ -81,7 +81,7 @@ export const useFetch = <T, U = {}>(
   };
 
   const { data, error } = useSWR<T, U>(path, fetcher as unknown as Fetcher<T>);
-  const loading = !error && !data;
+  const loading = !error && !data && !!path;
 
   return {
     data: data as T,
