@@ -15,16 +15,54 @@ export type UseFetchOptions<T = {}, U = {}> = {
 };
 
 export type UseFetch<T, U> = {
+  /**
+   * Data returned by the fetch
+   */
   data: useFetchData<T>;
+  /**
+   * Flag to indicate if the fetch is loading
+   */
   loading: boolean;
+  /**
+   * Error returned by the fetch
+   */
   error: useFetchError<U>;
 };
 
+/**
+ * Fetch data from an API endpoint, with optional success and error handlers
+ *
+ * @param   {string} path - API endpoint
+ * @param   {UseFetchOptions} [options] - Fetch options and handlers
+ * @returns {UseFetch}
+ *
+ * @import import { useFetch } from '@react-jopau/hooks';
+ * @example
+ * // Without options
+ * const { data, loading, error } = useFetch('https://jsonplaceholder.typicode.com/todos/1');
+ *
+ * console.log(data); // { userId: 1, id: 1, title: 'delectus aut autem', completed: false }
+ * console.log(loading); // true | false
+ * console.log(error); // null
+ * @example
+ * // With options
+ * const { data } = useFetch('https://jsonplaceholder.typicode.com/todos', {
+ *  method: 'POST',
+ *  headers: { 'Content-Type': 'application/json' },
+ *  params: { userId: 1 },
+ *  body: { title: 'foo', body: 'bar' }
+ * });
+ * @example
+ * // With success and error handlers
+ * const { data, error } = useFetch('https://jsonplaceholder.typicode.com/todos/1', {
+ *  onSuccess: (res) => res.data,
+ *  onError: (error) => throw { message: error.message }
+ * });
+ */
 export const useFetch = <T, U = {}>(
-  path: string | false | null,
+  path: string,
   options?: UseFetchOptions<T, U>
 ): UseFetch<T, U> => {
-  console.log('useFetch', path, options);
   const fetcher = () => {
     return axios
       .request({

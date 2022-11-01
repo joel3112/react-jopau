@@ -1,0 +1,59 @@
+import { ArgsTable as PureArgsTable } from '@storybook/components';
+import { SBDescription, SBSubTitle, SBTitle } from '@react-jopau/styles/components';
+
+<SBTitle>useFetch</SBTitle>
+
+<SBDescription>
+  Fetch data from an API endpoint, with optional success and error handlers
+</SBDescription>
+
+```jsx dark
+import { useFetch } from '@react-jopau/hooks';
+```
+
+```jsx dark
+// Without options
+const { data, loading, error } = useFetch('https://jsonplaceholder.typicode.com/todos/1');
+
+console.log(data); // { userId: 1, id: 1, title: 'delectus aut autem', completed: false }
+console.log(loading); // true | false
+console.log(error); // null
+```
+
+```jsx dark
+// With options
+const { data } = useFetch('https://jsonplaceholder.typicode.com/todos', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  params: { userId: 1 },
+  body: { title: 'foo', body: 'bar' }
+});
+```
+
+```jsx dark
+// With success and error handlers
+const { data, error } = useFetch('https://jsonplaceholder.typicode.com/todos/1', {
+  onSuccess: (res) => res.data,
+  onError: (error) => throw { message: error.message }
+});
+```
+
+<SBSubTitle>Params</SBSubTitle>
+
+<PureArgsTable
+  sort="requiredFirst"
+  rows={{
+    options: {
+      name: 'options',
+      description: 'Fetch options and handlers',
+      type: { required: false },
+      table: { type: { required: false, summary: 'UseFetchOptions' } }
+    },
+    path: {
+      name: 'path',
+      description: 'API endpoint',
+      type: { required: true },
+      table: { type: { required: true, summary: 'string' } }
+    }
+  }}
+/>

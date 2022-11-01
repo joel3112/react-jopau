@@ -4,7 +4,8 @@
     "react": {
       "version": "detect"
     },
-    "mdx/code-blocks": true
+    "mdx/code-blocks": true,
+    "mdx/language-mapper": {}
   },
   "extends": [
     "plugin:react/recommended",
@@ -22,8 +23,11 @@
       "extends": ["plugin:testing-library/react"]
     },
     {
-      "files": ["**/*.mdx"],
-      "extends": ["plugin:mdx/overrides"]
+      "files": ["*.mdx", "*.md"],
+      "extends": "plugin:mdx/recommended",
+      "parserOptions": {
+        "ecmaVersion": "latest"
+      }
     }
   ],
   "rules": {

@@ -3,10 +3,10 @@ module.exports = {
 
   '**/*.(ts|tsx)': () => 'yarn type-check',
 
-  '**/*.(ts|tsx|js|jsx)': (filenames) => [
+  '**/*.(ts|tsx|js|jsx|mdx)': (filenames) => [
     `yarn lint --fix . ${filenames.join(' ')}`,
     `yarn format ${filenames.join(' ')}`
   ],
 
-  '**/*.(md|mdx|json|yml)': (filenames) => `yarn format ${filenames.join(' ')}`
+  '**/*.(md|json|yml)': (filenames) => `yarn format ${filenames.join(' ')}`
 };
