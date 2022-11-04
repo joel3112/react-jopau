@@ -1,0 +1,122 @@
+import { SBArgsTable, SBDescription, SBSubTitle, SBTitle } from '@react-jopau/styles/components';
+
+<SBTitle>useBreakpoint</SBTitle>
+
+<SBDescription>Get current breakpoint key and boolean values for each breakpoint.</SBDescription>
+
+```jsx dark
+import { useBreakpoint } from '@react-jopau/hooks';
+```
+
+```jsx dark
+// Default breakpoint rules
+// By default will use the default values: { xs: 650, sm: 960, md: 1280, lg: 1400, xl: 1920 }
+const { key, isMobile, isTablet, isSmallDesktop, isDesktop, isLargeDesktop } = useBreakpoint();
+
+console.log(key); // 'xs' | 'sm' | 'md' | 'lg' | 'xl'
+console.log(isMobile); // true | false
+console.log(isTablet); // true | false
+console.log(isSmallDesktop); // true | false
+console.log(isDesktop); // true | false
+console.log(isLargeDesktop); // true | false
+```
+
+```jsx dark
+// With custom breakpoint rules
+// This rules will be merged with the default rules
+const rules = { xs: 650, sm: 960 };
+const { key } = useBreakpoint(rules);
+```
+
+<SBSubTitle>Params</SBSubTitle>
+
+<SBArgsTable
+  rows={{
+    rules: {
+      name: 'rules',
+      description: 'Custom breakpoints rules',
+      required: false,
+      type: 'Object'
+    },
+    'rules.lg': {
+      name: 'rules.lg',
+      description: 'Large breakpoint size',
+      required: false,
+      type: 'number'
+    },
+    'rules.md': {
+      name: 'rules.md',
+      description: 'Medium breakpoint size',
+      required: false,
+      type: 'number'
+    },
+    'rules.sm': {
+      name: 'rules.sm',
+      description: 'Small breakpoint size',
+      required: false,
+      type: 'number'
+    },
+    'rules.xl': {
+      name: 'rules.xl',
+      description: 'Extra large breakpoint size',
+      required: false,
+      type: 'number'
+    },
+    'rules.xs': {
+      name: 'rules.xs',
+      description: 'Extra small breakpoint',
+      required: false,
+      type: 'number'
+    }
+  }}
+/>
+
+<SBSubTitle>Returns</SBSubTitle>
+
+<SBArgsTable
+  noDefaults
+  rows={{
+    result: {
+      name: 'result',
+      description: 'Current breakpoint key and boolean values for each breakpoint',
+      required: false,
+      type: 'Object'
+    },
+    'result.isDesktop': {
+      name: 'result.isDesktop',
+      description: 'true if the viewport is desktop',
+      required: false,
+      type: 'boolean'
+    },
+    'result.isLargeDesktop': {
+      name: 'result.isLargeDesktop',
+      description: 'true if the viewport is large desktop',
+      required: false,
+      type: 'boolean'
+    },
+    'result.isMobile': {
+      name: 'result.isMobile',
+      description: 'true if the viewport is mobile',
+      required: false,
+      type: 'boolean'
+    },
+    'result.isSmallDesktop': {
+      name: 'result.isSmallDesktop',
+      description: 'true if the viewport is small desktop',
+      required: false,
+      type: 'boolean'
+    },
+    'result.isTablet': {
+      name: 'result.isTablet',
+      description: 'true if the viewport is tablet',
+      required: false,
+      type: 'boolean'
+    },
+    'result.key': {
+      name: 'result.key',
+      description: 'Current breakpoint key',
+      required: false,
+      type: '"xs" | "sm" | "md" | "lg" | "xl"'
+    }
+  }}
+/>

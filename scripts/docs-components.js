@@ -84,7 +84,7 @@ glob(
           /**
            * Generate file MDX
            */
-          const documentationMDXPath = path.join(componentPath, '../') + componentName + '.mdx';
+          const documentationMDXPath = path.join(componentPath, '../') + 'readme.mdx';
           const rendererMDX = new DocGenMarkdownRenderer({
             template: componentMDXTemplate
           });

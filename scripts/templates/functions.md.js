@@ -6,13 +6,14 @@ const generatePropsType = (type) => {
   return types.map((t) => `\`${t}\``).join(' \\| ');
 };
 
-const generatePropsTable = (props) => {
+const generatePropsTable = (props, noDefaults) => {
   const entries = Object.entries(props);
   if (entries.length === 0) return 'This component does not have any props.';
 
-  let propsTableHeader =
-    `| Name | Type | Default value | Description |${os.EOL}` +
-    `| ---- | ---- | ------------- | ----------- |${os.EOL}`;
+  let propsTableHeader = !noDefaults
+    ? `| Name | Type | Default value | Description |${os.EOL}` +
+      `| ---- | ---- | ------------- | ----------- |${os.EOL}`
+    : `| Name | Type | Description |${os.EOL}` + `| ---- | ---- | ----------- |${os.EOL}`;
   return (
     propsTableHeader +
     entries
@@ -20,7 +21,9 @@ const generatePropsTable = (props) => {
         ([propName, propValue]) =>
           `| ${propName}${propValue.required ? ' _(required)_' : ''} ` +
           `| ${generatePropsType(propValue.type.name)} ` +
-          `| ${propValue.defaultValue ? `\`${propValue.defaultValue}\`` : ''} ` +
+          (!noDefaults
+            ? `| ${propValue.defaultValue ? `\`${propValue.defaultValue}\`` : ''} `
+            : '') +
           `| ${propValue.description ? propValue.description : ''} ` +
           `|`
       )
@@ -72,6 +75,16 @@ ${({ context }) => {
   params += os.EOL;
 
   return params;
+}}
+${({ context }) => {
+  let returns = '';
+  if (Object.keys(context.returns).length > 0) {
+    returns = '#### Returns';
+    returns += `${os.EOL}${os.EOL}${generatePropsTable(context.returns, true)}`;
+  }
+  returns += os.EOL;
+
+  return returns;
 }}
 `;
 

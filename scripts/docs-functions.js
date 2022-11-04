@@ -37,6 +37,21 @@ const getCustomTag = (customTags, tagName) => {
   return tag ? tag.value : null;
 };
 
+const parseJSONSchemaProps = (prop, requiredProp = true) => {
+  const { name, type, description, defaultvalue, optional } = prop;
+  return {
+    defaultValue: defaultvalue ? { value: defaultvalue } : null,
+    description: parseDescription(description),
+    name,
+    required: requiredProp && !optional,
+    type: type
+      ? {
+          name: get(type, 'names', []).join(' \\| ')
+        }
+      : null
+  };
+};
+
 glob(
   'packages/hooks/src/**/use*.ts',
   {
@@ -81,20 +96,26 @@ glob(
             displayName: get(jsdocSchema, '[0].name'),
             import: getCustomTag(get(jsdocSchema, '[0].customTags', []), 'import'),
             examples: get(jsdocSchema, '[0].examples'),
-            params: get(jsdocSchema, '[0].params', []).reduce((acc, param) => {
-              const { name, type, description, defaultvalue, optional } = param;
-              acc[name] = {
-                defaultValue: defaultvalue ? { value: defaultvalue } : null,
-                description: parseDescription(description),
-                name,
-                declarations: [],
-                required: !optional,
-                type: type
-                  ? {
-                      name: get(type, 'names', []).join(' \\| ')
-                    }
-                  : null
-              };
+            params: get(jsdocSchema, '[0].params', []).reduce((acc, item) => {
+              acc[item.name] = parseJSONSchemaProps(item);
+              return acc;
+            }, {}),
+            returns: get(jsdocSchema, '[0].returns', []).reduce((acc, item) => {
+              const returnsCustomType = (jsdocSchema || []).find(
+                ({ id }) => id === get(item.type, 'names', [])[0]
+              );
+
+              if (returnsCustomType) {
+                // Parse custom types
+                return {
+                  result: { ...parseJSONSchemaProps(item, false), type: { name: 'Object' } },
+                  ...returnsCustomType.properties.reduce((acc, item) => {
+                    acc[`result.${item.name}`] = parseJSONSchemaProps(item, false);
+                    return acc;
+                  }, {})
+                };
+              }
+              acc[item.name] = parseJSONSchemaProps(item, false);
               return acc;
             }, {})
           };
@@ -112,7 +133,7 @@ glob(
           /**
            * Generate file MDX
            */
-          const documentationMDXPath = path.join(componentPath, '../') + componentName + '.mdx';
+          const documentationMDXPath = path.join(componentPath, '../') + 'readme.mdx';
           const rendererMDX = new DocGenMarkdownRenderer({
             template: functionMDXTemplate
           });

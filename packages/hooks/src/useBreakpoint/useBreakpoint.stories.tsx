@@ -1,7 +1,7 @@
 import { TWContainer, TWItem, TWText } from '@react-jopau/styles/components';
 import { Space } from '@react-jopau/components/space';
 import { useBreakpoint } from './useBreakpoint';
-import docs from './useBreakpoint.mdx';
+import docs from './readme.mdx';
 
 export default {
   title: 'useBreakpoint',

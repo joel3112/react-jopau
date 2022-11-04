@@ -2,7 +2,7 @@ import classnames from 'classnames';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { multiply } from '@react-jopau/utils/array';
 import { Space } from './space';
-import docs from './space.mdx';
+import docs from './readme.mdx';
 
 const Items = (size: number, percentage30 = false) => {
   const classes = classnames({

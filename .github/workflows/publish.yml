@@ -13,6 +13,8 @@ on:
 
 env:
   GH_TOKEN: ${{ secrets.GH_TOKEN }}
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 
 jobs:
   ci:
@@ -61,7 +63,7 @@ jobs:
         run: |
           yarn run build-storybook
           npm i -g vercel --no-save --no-fund --no-audit --no-scripts
-          DEPLOYMENT_URL=$(vercel ./dist/storybook --token $VERCEL_TOKEN --yes --prod)
+          DEPLOYMENT_URL=$(vercel ./dist/storybook --token=$VERCEL_TOKEN --yes --prod)
           echo "url=$(echo $DEPLOYMENT_URL)" >> $GITHUB_OUTPUT
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}

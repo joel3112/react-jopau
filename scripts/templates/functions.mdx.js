@@ -8,26 +8,19 @@ const prop =
     get(context, key);
 const componentName = prop('componentName');
 
-const generatePropsTable = (props) => {
-  return `<PureArgsTable 
-      sort="requiredFirst"
+const generatePropsTable = (props, noDefaults) => {
+  return `<SBArgsTable 
+      ${noDefaults ? 'noDefaults' : ''}
       rows={{
         ${Object.keys(props).map((key) => {
           const param = props[key];
 
-          return `${key}: {
+          return `"${key}": {
             name: '${key}',${os.EOL}
             ${param.description ? `description: '${param.description}',` : ''}
-            type: {${os.EOL}
-              required: ${param.required},${os.EOL}
-            },${os.EOL}
-            table: {${os.EOL}
-              type: {${os.EOL}
-                required: ${param.required},${os.EOL} 
-                summary: '${param.type.name}',${os.EOL}
-              },${os.EOL}
-              ${param.defaultValue ? `defaultValue: { summary:'${param.defaultValue}' },` : ''}
-            }
+            required: ${param.required},${os.EOL}
+            type: '${param.type.name}',${os.EOL}
+            ${param.defaultValue ? `defaultValue: '${param.defaultValue}',` : ''}
           }${os.EOL}`;
         })}
       }}
@@ -36,8 +29,7 @@ const generatePropsTable = (props) => {
 
 const templateCreator = template({});
 
-const templateObject = templateCreator`import { ArgsTable as PureArgsTable } from '@storybook/components';
-import { SBDescription, SBSubTitle, SBTitle } from '@react-jopau/styles/components';
+const templateObject = templateCreator`import { SBArgsTable, SBDescription, SBSubTitle, SBTitle } from '@react-jopau/styles/components';
 
 <SBTitle>${componentName}</SBTitle>
 
@@ -66,6 +58,16 @@ ${({ context }) => {
   }
 
   return params;
+}}
+
+${({ context }) => {
+  let returns = '';
+  if (context.returns && Object.keys(context.returns).length > 0) {
+    returns += `<SBSubTitle>Returns</SBSubTitle>`;
+    returns += os.EOL + os.EOL + generatePropsTable(context.returns, true);
+  }
+
+  return returns;
 }}
 `;
 

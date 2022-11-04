@@ -5,35 +5,25 @@ import { getPropValue } from '@react-jopau/utils/object';
 type useFetchData<T> = Array<T> | T | null;
 type useFetchError<U> = U | null;
 
-export type UseFetchOptions<T = {}, U = {}> = {
-  method?: string;
-  params?: Record<string, string>;
-  headers?: Record<string, string>;
-  body?: Record<string, string>;
-  onSuccess?: (data: unknown) => useFetchData<T>;
-  onError?: (error: unknown) => useFetchError<U>;
-};
-
-export type UseFetch<T, U> = {
-  /**
-   * Data returned by the fetch
-   */
-  data: useFetchData<T>;
-  /**
-   * Flag to indicate if the fetch is loading
-   */
-  loading: boolean;
-  /**
-   * Error returned by the fetch
-   */
-  error: useFetchError<U>;
-};
-
+/**
+ * @typedef  {Object} UseFetch
+ * @property {Object} data - Data returned by the fetch
+ * @property {boolean} loading - Flag to indicate if the fetch is loading
+ * @property {Object} error - Error returned by the fetch
+ */
 /**
  * Fetch data from an API endpoint, with optional success and error handlers.
  *
+ * @template T Type of the data returned by the fetch
+ * @template U Type of the error returned by the fetch
  * @param   {string} path - API endpoint
- * @param   {UseFetchOptions} [options] - Fetch options and handlers
+ * @param   {Object} [options] - Fetch options and handlers
+ * @param   {("GET"|"POST"|"PUT"|"PATCH"|"DELETE")} [options.method=GET] - HTTP method
+ * @param   {Object} [options.params] - Query params
+ * @param   {Object} [options.headers] - Request headers
+ * @param   {Object} [options.body] - Request body
+ * @param   {Function} [options.onSuccess=(res) => res.data] - Success handler
+ * @param   {Function} [options.onError=(error) => { throw error }] - Error handler
  * @returns {UseFetch}
  *
  * @import import { useFetch } from '@react-jopau/hooks';
@@ -61,13 +51,24 @@ export type UseFetch<T, U> = {
  */
 export const useFetch = <T, U = {}>(
   path: string,
-  options?: UseFetchOptions<T, U>
-): UseFetch<T, U> => {
+  options?: {
+    method?: string;
+    params?: Record<string, string>;
+    headers?: Record<string, string>;
+    body?: Record<string, string>;
+    onSuccess?: (data: unknown) => useFetchData<T>;
+    onError?: (error: unknown) => useFetchError<U>;
+  }
+): {
+  data: useFetchData<T>;
+  loading: boolean;
+  error: useFetchError<U>;
+} => {
   const fetcher = () => {
     return axios
       .request({
         url: path || '',
-        method: getPropValue(options, 'method', 'get'),
+        method: getPropValue(options, 'method', 'GET'),
         params: getPropValue(options, 'params', {}),
         headers: getPropValue(options, 'headers', {}),
         data: getPropValue(options, 'body', {})

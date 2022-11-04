@@ -1,6 +1,8 @@
 import { ReactNode } from 'react';
 import classes from 'classnames';
 import ReactJson from 'react-json-view';
+import { styled } from '@stitches/react';
+import { ArgsTable as PureArgsTable } from '@storybook/components';
 
 /**
  * Component custom tailwindcss classes
@@ -131,4 +133,64 @@ export const SBSubTitle = ({ children }: { children: string }) => {
 
 export const SBDemo = ({ children }: { children: ReactNode }) => {
   return <div className="text-text border rounded p-3 mb-4 bg-background">{children}</div>;
+};
+
+export const SBArgsTable = ({
+  rows,
+  noDefaults
+}: {
+  rows: Record<
+    string,
+    {
+      name: string;
+      description: string;
+      type: string;
+      required?: string;
+      defaultValue?: string;
+    }
+  >;
+  noDefaults?: boolean;
+}) => {
+  const PureArgsTableStyled = styled('div', {
+    variants: {
+      noDefaults: {
+        true: {
+          'th:nth-of-type(2), td:nth-of-type(2)': {
+            width: '60% !important'
+          },
+          'th:last-of-type, td:last-of-type': {
+            display: 'none'
+          }
+        }
+      }
+    }
+  });
+
+  return (
+    <PureArgsTableStyled noDefaults={noDefaults}>
+      <PureArgsTable
+        sort="requiredFirst"
+        rows={Object.keys(rows).reduce((acc, key) => {
+          const { name, description, required, type, defaultValue } = rows[key];
+
+          return {
+            ...acc,
+            ...{
+              [key]: {
+                name,
+                ...(description && { description }),
+                type: { required },
+                table: {
+                  type: { summary: type },
+                  ...(defaultValue && !noDefaults
+                    ? { defaultValue: { summary: String(defaultValue) } }
+                    : {})
+                }
+              }
+            }
+          };
+        }, {})}
+      />
+    </PureArgsTableStyled>
+  );
 };

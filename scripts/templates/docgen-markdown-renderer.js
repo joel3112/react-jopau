@@ -18,7 +18,7 @@ const escape = (s) => {
 };
 
 const normalizeValue = (value) =>
-  value ? escape(value.replace(new RegExp(os.EOL, 'g'), ' ')) : value;
+  value && typeof value === 'string' ? escape(value.replace(new RegExp(os.EOL, 'g'), ' ')) : value;
 
 const flattenProp = (seed, currentObj, name, isImmediateNesting) => {
   let typeObject;

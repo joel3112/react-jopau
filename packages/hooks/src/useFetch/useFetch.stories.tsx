@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Space } from '@react-jopau/components/space';
 import { TWContainer, TWInput, TWItem, TWJSONPreview } from '@react-jopau/styles/components';
 import { useFetch } from './useFetch';
-import docs from './useFetch.mdx';
+import docs from './readme.mdx';
 
 export default {
   title: 'useFetch',

@@ -32,6 +32,23 @@ const { key } = useBreakpoint(rules);
 
 #### Params
 
-| Name  | Type               | Default value | Description              |
-| ----- | ------------------ | ------------- | ------------------------ |
-| rules | `BreakpointsRules` |               | Custom breakpoints rules |
+| Name     | Type     | Default value | Description                 |
+| -------- | -------- | ------------- | --------------------------- |
+| rules    | `Object` |               | Custom breakpoints rules    |
+| rules.lg | `number` |               | Large breakpoint size       |
+| rules.md | `number` |               | Medium breakpoint size      |
+| rules.sm | `number` |               | Small breakpoint size       |
+| rules.xl | `number` |               | Extra large breakpoint size |
+| rules.xs | `number` |               | Extra small breakpoint      |
+
+#### Returns
+
+| Name                  | Type                                   | Description                                                   |
+| --------------------- | -------------------------------------- | ------------------------------------------------------------- |
+| result                | `Object`                               | Current breakpoint key and boolean values for each breakpoint |
+| result.isDesktop      | `boolean`                              | true if the viewport is desktop                               |
+| result.isLargeDesktop | `boolean`                              | true if the viewport is large desktop                         |
+| result.isMobile       | `boolean`                              | true if the viewport is mobile                                |
+| result.isSmallDesktop | `boolean`                              | true if the viewport is small desktop                         |
+| result.isTablet       | `boolean`                              | true if the viewport is tablet                                |
+| result.key            | `"xs" \| "sm" \| "md" \| "lg" \| "xl"` | Current breakpoint key                                        |

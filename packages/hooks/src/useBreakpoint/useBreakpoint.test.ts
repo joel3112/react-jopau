@@ -1,5 +1,5 @@
 import { act, renderHook } from '@testing-library/react';
-import { UseBreakpoint, useBreakpoint } from './useBreakpoint';
+import { useBreakpoint } from './useBreakpoint';
 
 const rules = {
   xs: 650,
@@ -28,7 +28,7 @@ describe('useBreakpoint hook', () => {
     { width: 1000, key: 'isSmallDesktop', label: 'small-desktop' },
     { width: 1300, key: 'isDesktop', label: 'desktop' },
     { width: 1600, key: 'isLargeDesktop', label: 'large-desktop' }
-  ].forEach(({ width, key, label }) => {
+  ].forEach(({ width, key, label }: { width: number; key: string; label: string }) => {
     test(`returns true in ${label} viewport`, () => {
       const { result } = renderHook(() => useBreakpoint());
 
@@ -36,7 +36,11 @@ describe('useBreakpoint hook', () => {
         window.resizeTo(width, MOCK_HEIGHT);
       });
 
-      expect(result.current[key as keyof UseBreakpoint]).toBeTruthy();
+      expect(
+        result.current[
+          key as 'isMobile' | 'isTablet' | 'isSmallDesktop' | 'isDesktop' | 'isLargeDesktop'
+        ]
+      ).toBeTruthy();
     });
   });
 });
