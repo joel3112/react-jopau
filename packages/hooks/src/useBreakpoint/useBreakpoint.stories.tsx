@@ -1,66 +1,32 @@
-import { BreakpointsRules, DEFAULT_CONFIG as breakpoints } from '@react-jopau/styles/breakpoint';
+import { TWContainer, TWItem, TWText } from '@react-jopau/styles/components';
+import { Space } from '@react-jopau/components/space';
 import { useBreakpoint } from './useBreakpoint';
+import docs from './readme.mdx';
 
 export default {
   title: 'useBreakpoint',
-  args: {
-    rules: breakpoints
-  },
-  argTypes: {
-    rules: {
-      description: 'The size rules to use for the breakpoint',
-      table: {
-        type: { summary: 'object' },
-        defaultValue: { summary: JSON.stringify(breakpoints) }
-      }
-    }
-  },
   parameters: {
-    previewTabs: {
-      'storybook/docs/panel': {
-        hidden: true
-      }
+    docs: {
+      page: docs
     }
   }
 };
 
-const Template = (args: { rules: BreakpointsRules }) => {
-  const { key, isMobile, isTablet, isDesktop, isSmallDesktop, isLargeDesktop } = useBreakpoint(
-    args.rules
-  );
-
-  const Highlight = ({ children }: { children: string }) => {
-    return (
-      <span className="font-code text-black text-sm p-1 rounded-md bg-[#ccc]">{children}</span>
-    );
-  };
+export const Default = () => {
+  const { key, isMobile, isTablet, isDesktop, isSmallDesktop, isLargeDesktop } = useBreakpoint();
 
   return (
-    <div className="text-text p-5">
-      <div className="w-fit text-lg flex gap-2">Target width: {window.innerWidth}px</div>
+    <TWContainer>
+      <TWText size="lg">Target width: {window.innerWidth}px</TWText>
 
-      <div className="my-5 text-base flex flex-col gap-3">
-        <p>
-          <Highlight>key</Highlight>: <span className="ml-2 font-code">{key}</span>
-        </p>
-        <p>
-          <Highlight>isMobile</Highlight>: {isMobile ? '✅' : '❌'}
-        </p>
-        <p>
-          <Highlight>isTablet</Highlight>: {isTablet ? '✅' : '❌'}
-        </p>
-        <p>
-          <Highlight>isSmallDesktop</Highlight>: {isSmallDesktop ? '✅' : '❌'}
-        </p>
-        <p>
-          <Highlight>isDesktop</Highlight>: {isDesktop ? '✅' : '❌'}
-        </p>
-        <p>
-          <Highlight>isLargeDesktop</Highlight>: {isLargeDesktop ? '✅' : '❌'}
-        </p>
-      </div>
-    </div>
+      <Space direction="column" gap={10}>
+        <TWItem label="key">{key}</TWItem>
+        <TWItem label="isMobile">{isMobile ? '✅' : '❌'}</TWItem>
+        <TWItem label="isTablet">{isTablet ? '✅' : '❌'}</TWItem>
+        <TWItem label="isSmallDesktop">{isSmallDesktop ? '✅' : '❌'}</TWItem>
+        <TWItem label="isDesktop">{isDesktop ? '✅' : '❌'}</TWItem>
+        <TWItem label="isLargeDesktop">{isLargeDesktop ? '✅' : '❌'}</TWItem>
+      </Space>
+    </TWContainer>
   );
 };
-
-export const Default = Template.bind({});

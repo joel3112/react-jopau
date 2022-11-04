@@ -12,7 +12,7 @@ const globalStyles = globalCss({
     fontFamily: '$base'
   },
   'pre *, code *': {
-    fontFamily: '$code'
+    fontFamily: '$code !important'
   }
 });
 

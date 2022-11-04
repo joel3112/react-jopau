@@ -3,20 +3,64 @@ import {
   Breakpoint,
   BreakpointsHelper,
   BreakpointsRules,
-  createBreakpoints,
-  DEFAULT_CONFIG as breakpoints
+  createBreakpoints
 } from '@react-jopau/styles/breakpoint';
 
-export type UseBreakpoint = {
+/**
+ * @typedef  {Object} UseBreakpoint
+ * @property {("xs"|"sm"|"md"|"lg"|"xl")} key - Current breakpoint key
+ * @property {boolean} isMobile - true if the viewport is mobile
+ * @property {boolean} isTablet - true if the viewport is tablet
+ * @property {boolean} isSmallDesktop - true if the viewport is small desktop
+ * @property {boolean} isDesktop - true if the viewport is desktop
+ * @property {boolean} isLargeDesktop - true if the viewport is large desktop
+ */
+/**
+ * Get current breakpoint key and boolean values for each breakpoint.
+ *
+ * @param   {Object} [rules] - Custom breakpoints rules
+ * @param   {number} [rules.xs] - Extra small breakpoint
+ * @param   {number} [rules.sm] - Small breakpoint size
+ * @param   {number} [rules.md] - Medium breakpoint size
+ * @param   {number} [rules.lg] - Large breakpoint size
+ * @param   {number} [rules.xl] - Extra large breakpoint size
+ * @returns {UseBreakpoint} Current breakpoint key and boolean values for each breakpoint
+ *
+ * @import import { useBreakpoint } from '@react-jopau/hooks';
+ * @example
+ * // Default breakpoint rules
+ * // By default will use the default values: { xs: 650, sm: 960, md: 1280, lg: 1400, xl: 1920 }
+ * const {
+ *  key,
+ *  isMobile,
+ *  isTablet,
+ *  isSmallDesktop,
+ *  isDesktop,
+ *  isLargeDesktop
+ * } = useBreakpoint();
+ *
+ * console.log(key); // 'xs' | 'sm' | 'md' | 'lg' | 'xl'
+ * console.log(isMobile); // true | false
+ * console.log(isTablet); // true | false
+ * console.log(isSmallDesktop); // true | false
+ * console.log(isDesktop); // true | false
+ * console.log(isLargeDesktop); // true | false
+ * @example
+ * // With custom breakpoint rules
+ * // This rules will be merged with the default rules
+ * const rules = { xs:650, sm:960 };
+ * const { key } = useBreakpoint(rules);
+ */
+export const useBreakpoint = (
+  rules?: BreakpointsRules
+): {
   key: Breakpoint | null;
   isMobile: boolean;
   isTablet: boolean;
   isSmallDesktop: boolean;
   isDesktop: boolean;
   isLargeDesktop: boolean;
-};
-
-export const useBreakpoint = (rules: BreakpointsRules = breakpoints): UseBreakpoint => {
+} => {
   const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
   const [config, setConfig] = useState<BreakpointsHelper>(createBreakpoints({ rules }));
 

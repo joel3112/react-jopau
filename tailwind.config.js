@@ -1,19 +1,20 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./packages/**/*.stories.{js,jsx,ts,tsx}'],
+  content: ['./packages/**/*.{js,jsx,ts,tsx,mdx}'],
   theme: {
     colors: {
       primary: 'var(--colors-primary)',
       secondary: 'var(--colors-secondary)',
       black: 'var(--colors-black)',
       white: 'var(--colors-white)',
-      gray: 'var(--colors-gray)',
+      gray: {
+        DEFAULT: 'var(--colors-gray)',
+        dark: 'var(--colors-gray-dark)'
+      },
       text: 'var(--colors-text)',
       background: 'var(--colors-background)',
       border: {
-        DEFAULT: 'var(--colors-border)',
-        gray: 'var(--colors-grayBorder)',
-        black: 'var(--colors-blackBorder)'
+        DEFAULT: 'var(--colors-border)'
       }
     },
     fontFamily: {

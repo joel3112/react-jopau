@@ -1,0 +1,58 @@
+import { ArgsTable, Canvas, Story } from '@storybook/addon-docs';
+import { SBDescription, SBSubTitle, SBTitle } from '@react-jopau/styles/components';
+import { Space } from './space';
+
+<SBTitle>Space</SBTitle>
+
+<SBDescription>Component flexbox-based spacing.</SBDescription>
+
+```jsx dark
+import { Space } from '@react-jopau/components/space';
+```
+
+<Canvas withToolbar>
+  <Story id="components-space--default" />
+</Canvas>
+
+<SBSubTitle>Properties</SBSubTitle>
+
+<ArgsTable of={Space} />
+
+<SBSubTitle>Stories</SBSubTitle>
+<br />
+
+<span className="!text-lg font-medium">Direction Row</span>
+
+<Canvas>
+  <Story id="components-space--direction-row" />
+</Canvas>
+
+<span className="!text-lg font-medium">Direction Column</span>
+
+<Canvas>
+  <Story id="components-space--direction-column" />
+</Canvas>
+
+<span className="!text-lg font-medium">Wrap False</span>
+
+<Canvas>
+  <Story id="components-space--wrap-false" />
+</Canvas>
+
+<span className="!text-lg font-medium">Wrap True</span>
+
+<Canvas>
+  <Story id="components-space--wrap-true" />
+</Canvas>
+
+<span className="!text-lg font-medium">Gap Unique</span>
+
+<Canvas>
+  <Story id="components-space--gap-unique" />
+</Canvas>
+
+<span className="!text-lg font-medium">Gap Multiple</span>
+
+<Canvas>
+  <Story id="components-space--gap-multiple" />
+</Canvas>

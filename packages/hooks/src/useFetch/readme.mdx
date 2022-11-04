@@ -1,0 +1,118 @@
+import { SBArgsTable, SBDescription, SBSubTitle, SBTitle } from '@react-jopau/styles/components';
+
+<SBTitle>useFetch</SBTitle>
+
+<SBDescription>
+  Fetch data from an API endpoint, with optional success and error handlers.
+</SBDescription>
+
+```jsx dark
+import { useFetch } from '@react-jopau/hooks';
+```
+
+```jsx dark
+// Without options
+const { data, loading, error } = useFetch('https://jsonplaceholder.typicode.com/todos/1');
+
+console.log(data); // { userId: 1, id: 1, title: 'delectus aut autem', completed: false }
+console.log(loading); // true | false
+console.log(error); // null
+```
+
+```jsx dark
+// With options
+const { data } = useFetch('https://jsonplaceholder.typicode.com/todos', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  params: { userId: 1 },
+  body: { title: 'foo', body: 'bar' }
+});
+```
+
+```jsx dark
+// With success and error handlers
+const { data, error } = useFetch('https://jsonplaceholder.typicode.com/todos/1', {
+  onSuccess: (res) => res.data,
+  onError: (error) => throw { message: error.message }
+});
+```
+
+<SBSubTitle>Params</SBSubTitle>
+
+<SBArgsTable
+  rows={{
+    options: {
+      name: 'options',
+      description: 'Fetch options and handlers',
+      required: false,
+      type: 'Object'
+    },
+    'options.body': {
+      name: 'options.body',
+      description: 'Request body',
+      required: false,
+      type: 'Object'
+    },
+    'options.headers': {
+      name: 'options.headers',
+      description: 'Request headers',
+      required: false,
+      type: 'Object'
+    },
+    'options.method': {
+      name: 'options.method',
+      description: 'HTTP method',
+      required: false,
+      type: '"GET" | "POST" | "PUT" | "PATCH" | "DELETE"',
+      defaultValue: 'GET'
+    },
+    'options.onError': {
+      name: 'options.onError',
+      description: 'Error handler',
+      required: false,
+      type: 'function',
+      defaultValue: '(error) =\x3E { throw error }'
+    },
+    'options.onSuccess': {
+      name: 'options.onSuccess',
+      description: 'Success handler',
+      required: false,
+      type: 'function',
+      defaultValue: '(res) =\x3E res.data'
+    },
+    'options.params': {
+      name: 'options.params',
+      description: 'Query params',
+      required: false,
+      type: 'Object'
+    },
+    path: { name: 'path', description: 'API endpoint', required: true, type: 'string' }
+  }}
+/>
+
+<SBSubTitle>Returns</SBSubTitle>
+
+<SBArgsTable
+  noDefaults
+  rows={{
+    result: { name: 'result', required: false, type: 'Object' },
+    'result.data': {
+      name: 'result.data',
+      description: 'Data returned by the fetch',
+      required: false,
+      type: 'Object'
+    },
+    'result.error': {
+      name: 'result.error',
+      description: 'Error returned by the fetch',
+      required: false,
+      type: 'Object'
+    },
+    'result.loading': {
+      name: 'result.loading',
+      description: 'Flag to indicate if the fetch is loading',
+      required: false,
+      type: 'boolean'
+    }
+  }}
+/>

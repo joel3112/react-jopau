@@ -14,8 +14,8 @@ export const createStorybookTheme = (themeKey = 'default') => {
 
     // UI
     appBg: colors.white,
-    appContentBg: colors.white,
-    appBorderColor: colors.blackBorder,
+    appContentBg: '#f6f6f6',
+    appBorderColor: colors.grayDark,
     appBorderRadius: 4,
 
     // Typography
@@ -23,17 +23,17 @@ export const createStorybookTheme = (themeKey = 'default') => {
     fontCode: fonts.code,
 
     // Text colors
-    textColor: colors.black,
+    textColor: colors.text,
     textInverseColor: colors.white,
 
     // Toolbar default and active colors
-    barTextColor: colors.grayBorder,
+    barTextColor: colors.grayDark,
     barSelectedColor: colors.secondary,
     barBg: colors.white,
 
     // Form colors
     inputBg: colors.white,
-    inputBorder: colors.blackBorder,
+    inputBorder: colors.grayDark,
     inputTextColor: colors.black,
     inputBorderRadius: 4,
 

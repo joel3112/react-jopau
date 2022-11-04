@@ -7,22 +7,22 @@ export default {
         text: '#000',
         white: '#fff',
         black: '#000',
-        blackBorder: '#141414',
         gray: '#b9bdcf',
-        grayBorder: '#787878',
-        background: '#f8f8f8',
-        border: '#eaeaea'
+        grayDark: '#787878',
+        background: '#fcfcfc',
+        backgroundSecondary: '#e0f9fe',
+        border: '#dedede'
       },
       dark: {
-        primary: '#04cffa',
-        secondary: '#20232a',
+        primary: '#20232a',
+        secondary: '#04cffa',
         text: '#fff',
         white: '#fff',
         black: '#000',
-        blackBorder: '#141414',
         gray: '#b9bdcf',
-        grayBorder: '#787878',
+        grayDark: '#787878',
         background: '#1d1f20',
+        backgroundSecondary: '#e0f9fe',
         border: '#333'
       }
     },

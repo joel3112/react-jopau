@@ -7,6 +7,10 @@ on:
     branches: [main]
     types: [opened, synchronize, reopened]
 
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
 jobs:
   ci:
     uses: ./.github/workflows/reusable.yml
@@ -30,7 +34,7 @@ jobs:
         run: |
           yarn run build-storybook
           npm i -g vercel --no-save --no-fund --no-audit --no-scripts
-          DEPLOYMENT_URL=$(vercel ./dist/storybook --token $VERCEL_TOKEN --yes)
+          DEPLOYMENT_URL=$(vercel ./dist/storybook --token=$VERCEL_TOKEN --yes)
           echo "url=$(echo $DEPLOYMENT_URL)" >> $GITHUB_OUTPUT
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
