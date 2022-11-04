@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.1](https://github.com/joel3112/react-jopau/compare/v0.7.0...v0.7.1) (2022-11-04)
+
+### 🏠 Internal
+
+- **hooks:** docs scripts + templates ([12b3e46](https://github.com/joel3112/react-jopau/commit/12b3e464f8a7eb068f08c21dd9c3281010aabecd))
+
 ## [0.7.0](https://github.com/joel3112/react-jopau/compare/v0.6.0...v0.7.0) (2022-10-28)
 
 ### 🏠 Internal

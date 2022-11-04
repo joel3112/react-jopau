@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.1](https://github.com/joel3112/react-jopau/compare/v0.7.0...v0.7.1) (2022-11-04)
+
+### 🐛 Bug Fixes
+
+- **hooks:** useFetch empty path ([e3dc053](https://github.com/joel3112/react-jopau/commit/e3dc0539bcfbe3a9f9fefa625e78110ffe5167d3))
+
+### 🏠 Internal
+
+- add jsdoc schema dependency ([2c198df](https://github.com/joel3112/react-jopau/commit/2c198df097afd25467000dee3b69891892bc1d38))
+- **components:** docs scripts + templates ([fb4890d](https://github.com/joel3112/react-jopau/commit/fb4890d44f4b2ab478c0572c80682e8fa4f1e57d))
+- eslint mdx ([da45167](https://github.com/joel3112/react-jopau/commit/da45167a5f7f3a288bee6e896216ef448e537a2d))
+- **hooks:** docs scripts + templates ([12b3e46](https://github.com/joel3112/react-jopau/commit/12b3e464f8a7eb068f08c21dd9c3281010aabecd))
+- scripts docs mdx for components ([be3d8fe](https://github.com/joel3112/react-jopau/commit/be3d8fe9992f44d9829c7690527236cfe50f1c23))
+- **styles:** update storybook theme ([12c1f26](https://github.com/joel3112/react-jopau/commit/12c1f26f50959283a62e4b4ad33673de110ae037))
+- update doc scripts + returns + params + types ([8899f73](https://github.com/joel3112/react-jopau/commit/8899f7333d38a884051522696ec42bf918abab57))
+
 ## [0.7.0](https://github.com/joel3112/react-jopau/compare/v0.6.0...v0.7.0) (2022-10-28)
 
 ### ⚠ BREAKING CHANGES

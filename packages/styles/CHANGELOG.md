@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.1](https://github.com/joel3112/react-jopau/compare/v0.7.0...v0.7.1) (2022-11-04)
+
+### 🐛 Bug Fixes
+
+- **hooks:** useFetch empty path ([e3dc053](https://github.com/joel3112/react-jopau/commit/e3dc0539bcfbe3a9f9fefa625e78110ffe5167d3))
+
+### 🏠 Internal
+
+- **hooks:** docs scripts + templates ([12b3e46](https://github.com/joel3112/react-jopau/commit/12b3e464f8a7eb068f08c21dd9c3281010aabecd))
+- **styles:** update storybook theme ([12c1f26](https://github.com/joel3112/react-jopau/commit/12c1f26f50959283a62e4b4ad33673de110ae037))
+- update doc scripts + returns + params + types ([8899f73](https://github.com/joel3112/react-jopau/commit/8899f7333d38a884051522696ec42bf918abab57))
+
 ## [0.7.0](https://github.com/joel3112/react-jopau/compare/v0.6.0...v0.7.0) (2022-10-28)
 
 ### 🚀 New Features
