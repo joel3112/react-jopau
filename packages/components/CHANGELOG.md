@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.1](https://github.com/joel3112/react-jopau/compare/v0.8.0...v0.8.1) (2022-11-05)
+
+### 🐛 Bug Fixes
+
+- **components:** add stitches dependency ([38b7f2f](https://github.com/joel3112/react-jopau/commit/38b7f2fa696287eca240ec489a35c345c6c0fa1f))
+- publish changes in package.json ([0581887](https://github.com/joel3112/react-jopau/commit/0581887fcdb81fdc13323b48df6d80fe095fb0f7))
+
 ## [0.8.0](https://github.com/joel3112/react-jopau/compare/v0.7.1...v0.8.0) (2022-11-05)
 
 ### 🚀 New Features
