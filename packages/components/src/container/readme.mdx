@@ -1,0 +1,54 @@
+import { ArgsTable, Canvas, Story } from '@storybook/addon-docs';
+import { SBDescription, SBSubTitle, SBTitle } from '@react-jopau/styles/components';
+import { Container } from './container';
+
+<SBTitle>Container</SBTitle>
+
+<SBDescription>
+  Containers are used to constrain a content\x27s width to the current breakpoint.
+</SBDescription>
+
+```jsx dark
+import { Container } from '@react-jopau/components/container';
+```
+
+<Canvas withToolbar>
+  <Story id="components-container--default" />
+</Canvas>
+
+<SBSubTitle>Properties</SBSubTitle>
+
+<ArgsTable of={Container} />
+
+<SBSubTitle>Stories</SBSubTitle>
+<br />
+
+<span className="!text-lg font-medium">Default</span>
+
+<Canvas>
+  <Story id="components-container--default" />
+</Canvas>
+
+<span className="!text-lg font-medium">Gap Unique</span>
+
+<Canvas>
+  <Story id="components-container--gap-unique" />
+</Canvas>
+
+<span className="!text-lg font-medium">Gap Multiple</span>
+
+<Canvas>
+  <Story id="components-container--gap-multiple" />
+</Canvas>
+
+<span className="!text-lg font-medium">Max Width</span>
+
+<Canvas>
+  <Story id="components-container--max-width" />
+</Canvas>
+
+<span className="!text-lg font-medium">Centered</span>
+
+<Canvas>
+  <Story id="components-container--centered" />
+</Canvas>

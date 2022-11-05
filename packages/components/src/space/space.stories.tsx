@@ -1,17 +1,17 @@
-import classnames from 'classnames';
+import classes from 'classnames';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { multiply } from '@react-jopau/utils/array';
 import { Space } from './space';
 import docs from './readme.mdx';
 
 const Items = (size: number, percentage30 = false) => {
-  const classes = classnames({
+  const classNames = classes({
     'px-8 py-3 border border-secondary border-solid': true,
     'flex-[0_0_30%]': percentage30
   });
 
   return multiply([null], size).map((_, index) => (
-    <div key={index} className={classes}>
+    <div key={index} className={classNames}>
       Item {index + 1}
     </div>
   ));
