@@ -39,16 +39,16 @@ const { data, error } = useFetch('https://jsonplaceholder.typicode.com/todos/1',
 
 #### Params
 
-| Name              | Type                                              | Default value                   | Description                |
-| ----------------- | ------------------------------------------------- | ------------------------------- | -------------------------- |
-| options           | `Object`                                          |                                 | Fetch options and handlers |
-| options.body      | `Object`                                          |                                 | Request body               |
-| options.headers   | `Object`                                          |                                 | Request headers            |
-| options.method    | `"GET" \| "POST" \| "PUT" \| "PATCH" \| "DELETE"` | `GET`                           | HTTP method                |
-| options.onError   | `function`                                        | `(error) =\x3E { throw error }` | Error handler              |
-| options.onSuccess | `function`                                        | `(res) =\x3E res.data`          | Success handler            |
-| options.params    | `Object`                                          |                                 | Query params               |
-| path _(required)_ | `string`                                          |                                 | API endpoint               |
+| Name              | Type                                              | Default value                | Description                |
+| ----------------- | ------------------------------------------------- | ---------------------------- | -------------------------- |
+| options           | `Object`                                          |                              | Fetch options and handlers |
+| options.body      | `Object`                                          |                              | Request body               |
+| options.headers   | `Object`                                          |                              | Request headers            |
+| options.method    | `"GET" \| "POST" \| "PUT" \| "PATCH" \| "DELETE"` | `GET`                        | HTTP method                |
+| options.onError   | `function`                                        | `(error) => { throw error }` | Error handler              |
+| options.onSuccess | `function`                                        | `(res) => res.data`          | Success handler            |
+| options.params    | `Object`                                          |                              | Query params               |
+| path _(required)_ | `string`                                          |                              | API endpoint               |
 
 #### Returns
 

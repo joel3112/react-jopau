@@ -3,7 +3,7 @@ export default {
     colors: {
       light: {
         primary: '#20232a',
-        secondary: '#04cffa',
+        secondary: '#8316ea',
         text: '#000',
         white: '#fff',
         black: '#000',
@@ -15,7 +15,7 @@ export default {
       },
       dark: {
         primary: '#20232a',
-        secondary: '#04cffa',
+        secondary: '#8316ea',
         text: '#fff',
         white: '#fff',
         black: '#000',
@@ -38,7 +38,7 @@ export default {
       4: '0.5rem'
     },
     fonts: {
-      base: '"Nunito Sans", -apple-system, ".SFNSText-Regular", "San Francisco", BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif',
+      base: '"Apercu", -apple-system, ".SFNSText-Regular", "San Francisco", BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif',
       code: '"MonoLisa", -apple-system, sans-serif'
     },
     fontWeights: {},
@@ -77,6 +77,6 @@ export default {
   brand: {
     title: 'react-jopau',
     url: 'https://github.com/joel3112/react-jopau/tree/main/packages/components',
-    image: './images/banner.png'
+    image: './images/logo.png'
   }
 };

@@ -12,9 +12,9 @@ const escape = (s) => {
     .replace(/\u00A0/g, '\\u00A0')
     .replace(/&/g, '\\x26')
     .replace(/'/g, '\\x27')
-    .replace(/"/g, '\\x22')
-    .replace(/</g, '\\x3C')
-    .replace(/>/g, '\\x3E');
+    .replace(/"/g, '\\x22');
+  // .replace(/</g, '\\x3C')
+  // .replace(/>/g, '\\x3E');
 };
 
 const normalizeValue = (value) =>
