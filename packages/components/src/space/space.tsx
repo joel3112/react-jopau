@@ -1,5 +1,5 @@
-import classes from 'classnames';
 import { ReactNode } from 'react';
+import classes from 'classnames';
 import { ElementHTML } from '../../types';
 import { SpaceWrapper } from './space.styled';
 
@@ -8,7 +8,7 @@ export type DirectionSpace = 'row' | 'column' | 'row-reverse' | 'column-reverse'
 export type JustifySpace = BasicPosition | 'between' | 'around';
 export type AlignSpace = BasicPosition | 'baseline' | 'stretch';
 
-export type SpaceProps = ElementHTML & {
+type SpaceProps = ElementHTML & {
   /**
    * Defines the children of the component.
    */
