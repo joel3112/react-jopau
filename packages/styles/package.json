@@ -1,6 +1,6 @@
 {
   "name": "@react-jopau/styles",
-  "version": "0.7.1",
+  "version": "0.8.0",
   "description": "Common styles and themes for React projects",
   "repository": {
     "type": "git",
@@ -20,7 +20,7 @@
     "directory": "dist"
   },
   "dependencies": {
-    "@react-jopau/utils": "^0.7.1"
+    "@react-jopau/utils": "^0.8.0"
   },
   "devDependencies": {
     "react-json-view": "^1.21.3",

@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.0](https://github.com/joel3112/react-jopau/compare/v0.7.1...v0.8.0) (2022-11-05)
+
+### 🚀 New Features
+
+- **components:** add container component ([06de42f](https://github.com/joel3112/react-jopau/commit/06de42f012829aeedb8b442ee3cf0effb796b021))
+
+### 🐛 Bug Fixes
+
+- **styles:** rerender hooks global styles ([a5c993c](https://github.com/joel3112/react-jopau/commit/a5c993cf847c72d0eefdf5c4abf7022501fa496d))
+
 ## [0.7.1](https://github.com/joel3112/react-jopau/compare/v0.7.0...v0.7.1) (2022-11-04)
 
 ### 🐛 Bug Fixes
