@@ -1,7 +1,7 @@
-import { ReactNode, useEffect, useState } from 'react';
+import { memo, ReactNode } from 'react';
 import { createStitches, globalCss } from '@stitches/react';
 import type { ConfigType } from '@stitches/react/types/config';
-import { Theme, ThemeProps, themes, ThemeScheme, ThemeSchemes } from './themes';
+import { Theme, ThemeProps, themes, ThemeSchemes } from './themes';
 
 const globalStyles = globalCss({
   body: {
@@ -59,42 +59,35 @@ const getSchemes = (themeKey: string) => {
   return { lightTheme, darkTheme };
 };
 
-export const GlobalStyles = ({
-  children,
-  themeKey,
-  darkMode
-}: {
-  children: ReactNode;
-  themeKey: string;
-  darkMode: boolean;
-}) => {
-  const [schemes, setSchemes] = useState<ThemeSchemes>({});
-  const [currentScheme, setCurrentScheme] = useState<ThemeScheme>(null);
-
-  useEffect(() => {
-    const _schemes: ThemeSchemes = getSchemes(themeKey);
-    setSchemes({ ..._schemes });
-    handleSchemeChange(_schemes);
-  }, [themeKey]);
-
-  useEffect(() => {
-    handleSchemeChange(schemes);
-  }, [darkMode]);
-
-  const handleSchemeChange = (schemes: ThemeSchemes) => {
-    if (schemes.lightTheme && schemes.darkTheme) {
-      setCurrentScheme(darkMode ? schemes.darkTheme : schemes.lightTheme);
-    }
-  };
-
-  if (!currentScheme) {
-    return null;
+const computeScheme = (schemes: ThemeSchemes, darkMode: boolean) => {
+  if (schemes.lightTheme && schemes.darkTheme) {
+    return darkMode ? schemes.darkTheme : schemes.lightTheme;
   }
-
-  return (
-    <div className={currentScheme}>
-      {globalStyles()}
-      {children}
-    </div>
-  );
 };
+
+// eslint-disable-next-line react/display-name
+export const GlobalStyles = memo(
+  ({
+    children,
+    themeKey,
+    darkMode
+  }: {
+    children: ReactNode;
+    themeKey: string;
+    darkMode: boolean;
+  }) => {
+    const schemes = getSchemes(themeKey);
+    const currentScheme = computeScheme(schemes, darkMode);
+
+    if (!currentScheme) {
+      return null;
+    }
+
+    return (
+      <div className={currentScheme}>
+        {globalStyles()}
+        {children}
+      </div>
+    );
+  }
+);

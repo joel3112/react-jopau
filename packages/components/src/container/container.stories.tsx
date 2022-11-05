@@ -19,7 +19,7 @@ export default {
 } as ComponentMeta<typeof Container>;
 
 const Template: ComponentStory<typeof Container> = (args) => {
-  return <Container className="border border-solid border-secondary text-text" {...args} />;
+  return <Container {...args} className="border border-solid border-secondary text-text" />;
 };
 
 export const Default = Template.bind({});
