@@ -1,29 +1,8 @@
-import type { ConfigType } from '@stitches/react/types/config';
 import Stitches from '@stitches/react/types/stitches';
-import { BreakpointsRules } from '../breakpoint';
+import { ThemeConfig } from './types';
 
 import defaultTheme from './default';
 import purpleTheme from './purple';
-
-export type ThemeProps = Omit<ConfigType.Theme, 'colors' | 'shadows'> & {
-  colors: {
-    light: ConfigType.Theme['colors'];
-    dark: ConfigType.Theme['colors'];
-  };
-  shadows: {
-    light: ConfigType.Theme['shadows'];
-    dark: ConfigType.Theme['shadows'];
-  };
-};
-export type Theme = {
-  theme: ThemeProps;
-  media: BreakpointsRules;
-  brand: {
-    title: string;
-    url: string;
-    image: string;
-  };
-};
 
 export type ThemeStitches = Stitches['styled'] | null;
 
@@ -34,7 +13,7 @@ export type ThemeSchemes = {
   darkTheme?: ThemeScheme;
 };
 
-export const themes: Record<string, { label: string; value: Theme }> = {
+export const themes: Record<string, { label: string; value: ThemeConfig }> = {
   default: { label: 'Default', value: defaultTheme },
   purple: { label: 'Purple', value: purpleTheme }
 };

@@ -16,7 +16,8 @@ export const HeaderWrapper = styledTheme('div', {
   },
   '.title': {
     fontSize: 20,
-    fontWeight: 500
+    fontWeight: 500,
+    color: '$text'
   },
 
   // Breakpoints

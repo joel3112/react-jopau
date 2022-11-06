@@ -1,7 +1,8 @@
 import { createContext, ReactNode, useContext, useEffect, useState } from 'react';
 import { globalCss } from '@stitches/react';
 import { ThemeBuilder } from './ThemeBuilder';
-import { Theme, ThemeScheme } from './themes';
+import { ThemeConfig } from './themes/types';
+import { ThemeScheme } from './themes';
 import { computeScheme } from './utils';
 
 const globalStyles = globalCss({
@@ -18,7 +19,7 @@ const globalStyles = globalCss({
 });
 
 export const ThemeContext = createContext<{
-  config?: Theme | string;
+  config?: ThemeConfig | string;
   darkMode?: boolean;
   onToggle?: () => void;
 }>({});
@@ -34,7 +35,7 @@ export const ThemeProvider = ({
   darkMode
 }: {
   children: ReactNode;
-  config: Theme | string;
+  config: ThemeConfig | string;
   darkMode?: boolean;
 }) => {
   const [dark, setDark] = useState<boolean>();

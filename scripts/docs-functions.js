@@ -56,7 +56,7 @@ const parseJSONSchemaProps = (prop, requiredProp = true) => {
 glob(
   'packages/hooks/src/**/use*.ts',
   {
-    ignore: ['**/*.{test,stories}.{ts,tsx}', '**/index.ts']
+    ignore: ['**/*.{test,stories}.{ts,tsx}', '**/utils.ts']
   },
   function (er, files) {
     files.forEach((componentPath) => {
