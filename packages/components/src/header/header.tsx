@@ -22,6 +22,10 @@ type HeaderProps = ElementHTML & {
    * Defines the logo href of the header.
    */
   href?: string;
+  /**
+   * Maximum width of the container or breakpoint.
+   */
+  maxWidth?: number | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 } & typeof defaultProps;
 
 const defaultProps = {
@@ -37,14 +41,22 @@ const defaultProps = {
  *    <div>+ Action 1</div>
  * </Header>
  */
-export const Header = ({ className, style, children, title, renderLogo, href }: HeaderProps) => {
+export const Header = ({
+  className,
+  style,
+  children,
+  maxWidth,
+  title,
+  renderLogo,
+  href
+}: HeaderProps) => {
   return (
     <HeaderWrapper
       className={classes('header-wrapper', className)}
       css={{
         ...style
       }}>
-      <Container className="container">
+      <Container maxWidth={maxWidth} centered className="container">
         <a className="link" href={href}>
           {renderLogo && renderLogo()}
           {title && <h1 className="title">{title}</h1>}

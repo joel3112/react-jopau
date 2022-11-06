@@ -34,9 +34,14 @@ GapMultiple.args = {
   gap: [30, 50]
 };
 
-export const MaxWidth = Template.bind({});
-MaxWidth.args = {
-  maxWidth: 500
+export const MaxWidthNumber = Template.bind({});
+MaxWidthNumber.args = {
+  maxWidth: 600
+};
+
+export const MaxWidthBreakpoint = Template.bind({});
+MaxWidthBreakpoint.args = {
+  maxWidth: 'xs'
 };
 
 export const Centered = Template.bind({});

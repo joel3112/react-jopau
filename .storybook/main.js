@@ -48,6 +48,7 @@ module.exports = {
         extensions: config.resolve.extensions
       })
     ];
+    config.resolve.extensions.push('.ts', '.js');
     return config;
   },
   framework: '@storybook/react',

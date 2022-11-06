@@ -2,7 +2,6 @@ import { styledTheme } from '../index';
 
 export const HeaderWrapper = styledTheme('div', {
   boxShadow: '$boxShadow',
-  color: '$text',
   height: 58,
   '.container': {
     alignBetween: 'row',
@@ -10,6 +9,8 @@ export const HeaderWrapper = styledTheme('div', {
     maxWidth: 'inherit'
   },
   '.link': {
+    textDecoration: 'none',
+    color: '$text',
     width: 'fit-content',
     alignCenterX: 'row',
     gap: 8,

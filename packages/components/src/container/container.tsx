@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import classes from 'classnames';
 import { ElementHTML } from '../../types';
+import { breakpoints } from '../index';
 import { ContainerWrapper } from './container.styled';
 
 type ContainerProps = ElementHTML & {
@@ -9,13 +10,13 @@ type ContainerProps = ElementHTML & {
    */
   children: ReactNode;
   /**
+   * Maximum width of the container or breakpoint.
+   */
+  maxWidth?: number | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  /**
    * Defines the gap horizontally and vertically in the container.
    */
   gap?: number | Array<number>;
-  /**
-   * Maximum width of the container.
-   */
-  maxWidth?: number;
   /**
    * Centered horizontally the container.
    */
@@ -23,7 +24,6 @@ type ContainerProps = ElementHTML & {
 } & typeof defaultProps;
 
 const defaultProps = {
-  maxWidth: 1500,
   centered: false
 };
 
@@ -34,6 +34,16 @@ const spacing = (gap?: number | Array<number>): string => {
     return [`${gap}px`, `${gap}px`].join(' ');
   }
   return '0';
+};
+
+const computeMaxWidth = (maxWidth?: number | 'xs' | 'sm' | 'md' | 'lg' | 'xl'): number => {
+  if (typeof maxWidth === 'number') {
+    return maxWidth;
+  }
+  if (typeof maxWidth === 'string' && breakpoints[maxWidth]) {
+    return breakpoints[maxWidth] as number;
+  }
+  return 1500;
 };
 
 /**
@@ -58,7 +68,7 @@ export const Container = ({
       className={classes('container-wrapper', className)}
       css={{
         padding: spacing(gap),
-        maxWidth: `${!isNaN(maxWidth) ? maxWidth : 0}px`,
+        maxWidth: `${computeMaxWidth(maxWidth)}px !important`,
         ...style
       }}
       centered={centered}>

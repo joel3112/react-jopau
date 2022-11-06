@@ -1,7 +1,9 @@
 import { ReactNode } from 'react';
+import * as path from 'path';
 import { createStitches, globalCss, styled } from '@stitches/react';
 import type { ConfigType } from '@stitches/react/types/config';
 import { Theme, ThemeProps, ThemeScheme, ThemeStitches } from './themes';
+import { BreakpointsRules } from './breakpoint';
 import { computeScheme, getBreakpoints, getColors, getTheme, getThemeInstance } from './utils';
 
 const globalStyles = globalCss({
@@ -56,14 +58,24 @@ export class ThemeBuilder {
   styledTheme: ThemeStitches = styled;
   lightTheme: ThemeScheme = null;
   darkTheme: ThemeScheme = null;
+  breakpoints: BreakpointsRules = {};
   #configuration: string | null = null;
 
-  constructor(configJSON?: string) {
-    if (configJSON) {
+  constructor(configPath?: string) {
+    this.loadConfig(configPath);
+  }
+
+  loadConfig(configPath?: string) {
+    if (configPath) {
       try {
-        this.#configuration = require(configJSON || '');
+        const configuration = require(path.join(__dirname, configPath));
+        console.log('__dirname', path.dirname(__dirname));
+        console.log('Configure theme from JSON', configPath, configuration);
+        if (configuration) {
+          this.#configuration = configuration;
+        }
       } catch (e) {
-        console.warn('Invalid theme configuration path', configJSON);
+        console.warn('Invalid theme configuration path', configPath, e);
       }
     }
   }
@@ -157,6 +169,7 @@ export class ThemeBuilder {
     });
 
     this.styledTheme = styled;
+    this.breakpoints = getBreakpoints(currentConfig);
 
     // Light theme
     this.lightTheme = createStitchesTheme('light-theme', {
