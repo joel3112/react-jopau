@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { addons } from '@storybook/addons';
 import { getColors, getThemeQueryParam } from '/packages/styles/src/utils';
-import { GlobalStyles } from '/packages/styles/src/GlobalStyles';
+import { ThemeProvider } from '/packages/styles/src/ThemeProvider';
 import { themes } from '/packages/styles/src/themes';
 
 export const getThemeKey = () => {
@@ -11,7 +11,7 @@ export const getThemeKey = () => {
   return Object.keys(themes).find((key) => key === qsKey) || 'default';
 };
 
-const ThemeProvider = ({ Story, context }) => {
+const ThemeStoryProvider = ({ Story, context }) => {
   const [themeKey, setThemeKey] = React.useState(getThemeKey);
   const [colorScheme, setColorScheme] = React.useState('light');
   const storyRef = React.useRef(null);
@@ -39,13 +39,13 @@ const ThemeProvider = ({ Story, context }) => {
 
   return (
     <div ref={storyRef}>
-      <GlobalStyles themeConfig={themeKey} darkMode={colorScheme === 'dark'}>
+      <ThemeProvider config={themeKey} darkMode={colorScheme === 'dark'}>
         <Story {...context} />
-      </GlobalStyles>
+      </ThemeProvider>
     </div>
   );
 };
 
-const withTheme = (Story, context) => <ThemeProvider Story={Story} context={context} />;
+const withTheme = (Story, context) => <ThemeStoryProvider Story={Story} context={context} />;
 
 export const globalDecorators = [withTheme];

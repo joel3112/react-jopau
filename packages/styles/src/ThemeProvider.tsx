@@ -19,19 +19,19 @@ const globalStyles = globalCss({
 });
 
 /**
- * Global styles for the application with the theme
+ * Theme provider component that allows to define the theme and the scheme to use.
  */
-export const GlobalStyles = ({
+export const ThemeProvider = ({
   children,
-  themeConfig,
+  config,
   darkMode
 }: {
   children: ReactNode;
-  themeConfig: Theme | string;
-  darkMode: boolean;
+  config: Theme | string;
+  darkMode?: boolean;
 }) => {
   const builder = new ThemeBuilder();
-  builder.createTheme(themeConfig);
+  builder.createTheme(config);
 
   const currentScheme = computeScheme(
     {

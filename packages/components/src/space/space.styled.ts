@@ -1,4 +1,4 @@
-import { styled } from '@stitches/react';
+import { styledTheme } from '../index';
 
 const basicPositionStyles = (key: string) => ({
   start: { [key]: 'flex-start' },
@@ -6,7 +6,7 @@ const basicPositionStyles = (key: string) => ({
   end: { [key]: 'flex-end' }
 });
 
-export const SpaceWrapper = styled('div', {
+export const SpaceWrapper = styledTheme('div', {
   display: 'flex',
   variants: {
     justify: {
