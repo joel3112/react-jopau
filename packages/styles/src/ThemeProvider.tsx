@@ -1,7 +1,7 @@
 import { createContext, ReactNode, useContext, useEffect, useState } from 'react';
 import { globalCss } from '@stitches/react';
 import { ThemeBuilder } from './ThemeBuilder';
-import { Theme } from './themes';
+import { Theme, ThemeScheme } from './themes';
 import { computeScheme } from './utils';
 
 const globalStyles = globalCss({
@@ -18,10 +18,10 @@ const globalStyles = globalCss({
 });
 
 export const ThemeContext = createContext<{
-  config: Theme | string;
-  darkMode: boolean;
-  onToggle: () => void;
-} | null>(null);
+  config?: Theme | string;
+  darkMode?: boolean;
+  onToggle?: () => void;
+}>({});
 
 export const useThemeContext = () => useContext(ThemeContext);
 
@@ -38,25 +38,17 @@ export const ThemeProvider = ({
   darkMode?: boolean;
 }) => {
   const [dark, setDark] = useState<boolean>();
+  const [schemes, setSchemes] = useState<{ lightTheme?: ThemeScheme; darkTheme?: ThemeScheme }>({});
 
   useEffect(() => {
     setDark(darkMode);
   }, [darkMode]);
 
-  const builder = new ThemeBuilder();
-  builder.createTheme(config);
-
-  const currentScheme = computeScheme(
-    {
-      lightTheme: builder.lightTheme,
-      darkTheme: builder.darkTheme
-    },
-    dark
-  );
-
-  if (!currentScheme) {
-    return null;
-  }
+  useEffect(() => {
+    const builder = new ThemeBuilder();
+    builder.createTheme(config);
+    setSchemes({ lightTheme: builder.lightTheme, darkTheme: builder.darkTheme });
+  }, [config]);
 
   return (
     <ThemeContext.Provider
@@ -65,7 +57,7 @@ export const ThemeProvider = ({
         darkMode: !!dark,
         onToggle: () => setDark((prev) => !prev)
       }}>
-      <div className={currentScheme}>
+      <div className={computeScheme(schemes, dark)}>
         {globalStyles()}
         {children}
       </div>
