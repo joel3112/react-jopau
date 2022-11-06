@@ -1,12 +1,21 @@
 import { Theme, ThemeProps, themes, ThemeSchemes } from '../themes';
 import { ConfigType } from '@stitches/react/types/config';
 
-export const getThemeQueryParam = () => {
+const getQueryParam = (key: string) => {
   if (typeof window === 'undefined') {
     return null;
   }
-  const searchParams = new URLSearchParams(location.search);
-  return searchParams.get('theme');
+
+  const searchParams = new URLSearchParams(window.location.search);
+  return searchParams.get(key);
+};
+
+export const getThemeQueryParam = (): string | null => {
+  return getQueryParam('theme');
+};
+
+export const getSchemeQueryParam = (): boolean => {
+  return !!getQueryParam('darkMode');
 };
 
 export const getThemeInstance = (themeConfig?: Theme | string) => {

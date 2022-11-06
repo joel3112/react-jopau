@@ -19,18 +19,12 @@ type HeaderProps = ElementHTML & {
    */
   renderLogo?: () => ReactNode;
   /**
-   * Defines the logo href of the header.
-   */
-  href?: string;
-  /**
    * Maximum width of the container or breakpoint.
    */
   maxWidth?: number | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 } & typeof defaultProps;
 
-const defaultProps = {
-  href: '/'
-};
+const defaultProps = {};
 
 /**
  * Header component with logo, title and actions area.
@@ -45,10 +39,9 @@ export const Header = ({
   className,
   style,
   children,
-  maxWidth,
   title,
-  renderLogo,
-  href
+  maxWidth,
+  renderLogo
 }: HeaderProps) => {
   return (
     <HeaderWrapper
@@ -57,10 +50,10 @@ export const Header = ({
         ...style
       }}>
       <Container maxWidth={maxWidth} centered className="container">
-        <a className="link" href={href}>
+        <div className="logo">
           {renderLogo && renderLogo()}
           {title && <h1 className="title">{title}</h1>}
-        </a>
+        </div>
 
         {children && (
           <Space className="actions" gap={10}>

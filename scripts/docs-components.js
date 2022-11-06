@@ -13,7 +13,7 @@ const componentMDTemplate = require('./templates/components.md');
 const componentMDXTemplate = require('./templates/components.mdx');
 const jsdoc2md = require('jsdoc-to-markdown');
 
-console.log('Generating documentation...');
+console.log('Generating components documentation...');
 
 const parseOptions = {
   propFilter: (prop) => {

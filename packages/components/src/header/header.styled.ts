@@ -8,17 +8,11 @@ export const HeaderWrapper = styledTheme('div', {
     size: '100%',
     maxWidth: 'inherit'
   },
-  '.link': {
-    textDecoration: 'none',
-    color: '$text',
-    width: 'fit-content',
-    alignCenterX: 'row',
-    gap: 8,
-    height: '100%'
-  },
   '.logo': {
-    display: 'block',
-    height: '100%'
+    width: 'fit-content',
+    height: '100%',
+    alignCenterX: 'row',
+    gap: 8
   },
   '.title': {
     fontSize: 20,

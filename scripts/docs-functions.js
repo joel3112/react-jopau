@@ -13,7 +13,7 @@ const DocGenMarkdownRenderer = require('./templates/docgen-markdown-renderer.js'
 const functionMDTemplate = require('./templates/functions.md');
 const functionMDXTemplate = require('./templates/functions.mdx');
 
-console.log('Generating documentation...');
+console.log('Generating hooks/functions documentation...');
 
 const writeFile = (filePath, content) => {
   fs.writeFileSync(

@@ -32,7 +32,9 @@ const renderIcon = (scheme) => {
 
 const DarkModeAddon = ({ api }) => {
   const channel = addons.getChannel();
-  const [colorScheme, setColorScheme] = React.useState('light');
+  const [colorScheme, setColorScheme] = React.useState(() =>
+    !!api.getQueryParam('darkMode') ? 'dark' : 'light'
+  );
 
   React.useEffect(() => {
     const notifyColorScheme = () => {
@@ -61,6 +63,14 @@ const DarkModeAddon = ({ api }) => {
             onClick: () => {
               setColorScheme(id);
               onHide();
+
+              const searchParams = new URLSearchParams(location.search);
+              if (id === 'dark') {
+                searchParams.set('darkMode', 'true');
+              } else {
+                searchParams.delete('darkMode');
+              }
+              api.navigateUrl(`/?${decodeURIComponent(searchParams.toString())}`);
             }
           }))}
         />
