@@ -2,8 +2,8 @@ import { ReactNode } from 'react';
 import * as path from 'path';
 import { createStitches, globalCss, styled } from '@stitches/react';
 import type { ConfigType } from '@stitches/react/types/config';
-import { Theme, ThemeProps, ThemeScheme, ThemeStitches } from './themes';
 import { BreakpointsRules } from './breakpoint';
+import { Theme, ThemeProps, ThemeScheme, ThemeStitches } from './themes';
 import { computeScheme, getBreakpoints, getColors, getTheme, getThemeInstance } from './utils';
 
 const globalStyles = globalCss({
