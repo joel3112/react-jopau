@@ -2,8 +2,8 @@ import type { ConfigType } from '@stitches/react/types/config';
 import Stitches from '@stitches/react/types/stitches';
 import { BreakpointsRules } from '../breakpoint';
 
-const defaultTheme = require('./default.json');
-const purpleTheme = require('./purple.json');
+import defaultTheme from './default';
+import purpleTheme from './purple';
 
 export type ThemeProps = Omit<ConfigType.Theme, 'colors' | 'shadows'> & {
   colors: {

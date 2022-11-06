@@ -40,3 +40,27 @@ WithActions.args = {
     </div>
   )
 };
+
+export const MaxWidthNumber = Template.bind({});
+MaxWidthNumber.args = {
+  maxWidth: 400,
+  children: (
+    <div className="flex gap-4">
+      <a href="#" className="text-secondary">
+        + Action 1
+      </a>
+    </div>
+  )
+};
+
+export const MaxWidthBreakpoint = Template.bind({});
+MaxWidthBreakpoint.args = {
+  maxWidth: 'xs',
+  children: (
+    <div className="flex gap-4">
+      <a href="#" className="text-secondary">
+        + Action 1
+      </a>
+    </div>
+  )
+};
