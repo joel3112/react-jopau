@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.0](https://github.com/joel3112/react-jopau/compare/v0.9.3...v0.10.0) (2022-11-06)
+
+**Note:** Version bump only for package @react-jopau/hooks
+
 ## [0.9.3](https://github.com/joel3112/react-jopau/compare/v0.9.2...v0.9.3) (2022-11-06)
 
 **Note:** Version bump only for package @react-jopau/hooks
