@@ -38,6 +38,12 @@ const spacing = (gap?: number | Array<number>): string => {
 
 /**
  * Containers are used to constrain a content's width to the current breakpoint.
+ *
+ * @import import { Container } from '@react-jopau/components/container';
+ * @example
+ * <Container gap={10} maxWidth={1000} centered>
+ *    <p>lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+ * </Container>
  */
 export const Container = ({
   className,

@@ -2,13 +2,16 @@
 const fs = require('fs');
 const path = require('path');
 const glob = require('glob');
+const clc = require('cli-color');
 const prettier = require('prettier');
+const { get } = require('lodash');
 const docgen = require('react-docgen-typescript');
 const DocGenMarkdownRenderer = require('./templates/docgen-markdown-renderer.js');
 
 // Component templates
 const componentMDTemplate = require('./templates/components.md');
 const componentMDXTemplate = require('./templates/components.mdx');
+const jsdoc2md = require('jsdoc-to-markdown');
 
 console.log('Generating documentation...');
 
@@ -24,6 +27,11 @@ const parseOptions = {
 
     return true;
   }
+};
+
+const getCustomTag = (customTags, tagName) => {
+  const tag = customTags.find((tag) => tag.tag === tagName);
+  return tag ? tag.value : null;
 };
 
 const getStories = (componentPath, componentName) => {
@@ -67,6 +75,17 @@ glob(
         fs.readFile(componentPath, () => {
           const componentName = path.basename(componentPath, path.extname(componentPath));
 
+          console.log(clc.blue('-', componentName, '>>', componentPath));
+
+          /**
+           * Generate JSON schema from JSDoc
+           */
+          const jsdocSchema = jsdoc2md.getTemplateDataSync({
+            files: componentPath,
+            configure: './jsdoc2md.json'
+          });
+          // console.log('>> jsdoc', JSON.stringify(jsdocSchema, null, 2));
+
           // Generate documentation from JSDoc comments
           const customParser = docgen.withCompilerOptions(
             {
@@ -79,7 +98,7 @@ glob(
           );
           const componentDocs = customParser.parse(componentPath);
           const stories = getStories(componentPath, componentName);
-          console.log('-', componentName, '>>', JSON.stringify(componentDocs, null, 2));
+          // console.log('>> componenetDoc', JSON.stringify(componentDocs, null, 2));
 
           /**
            * Generate file MDX
@@ -100,7 +119,16 @@ glob(
           const rendererMD = new DocGenMarkdownRenderer({
             template: componentMDTemplate
           });
-          writeFile(documentationMDPath, rendererMD.render(componentPath, componentDocs[0]));
+          writeFile(
+            documentationMDPath,
+            rendererMD.render(componentPath, {
+              ...componentDocs[0],
+              import: getCustomTag(get(jsdocSchema, '[0].customTags', []), 'import'),
+              examples: get(jsdocSchema, '[0].examples')
+            })
+          );
+
+          console.log(clc.green('Documentation generated successfully!'));
         });
       } catch (error) {
         console.error('There was an error generating the documentation for', componentPath, error);

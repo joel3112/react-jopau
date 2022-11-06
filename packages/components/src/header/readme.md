@@ -2,6 +2,20 @@
 
 Header component with logo, title and actions area.
 
+#### Import
+
+```jsx
+import { Header } from '@react-jopau/components/header';
+```
+
+#### Examples
+
+```jsx
+<Header title="Title" renderLogo={() => <img src="./images/logo.png" alt="Logo" />}>
+  <div>+ Action 1</div>
+</Header>
+```
+
 #### Props
 
 | Name       | Type              | Default value | Description                            |

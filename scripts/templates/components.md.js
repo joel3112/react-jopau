@@ -42,6 +42,28 @@ const templateObject = templateCreator`### ${({ context }) => context.componentN
 
   return headerValue;
 }}
+${({ context }) => {
+  let module = '';
+  if (context.import) {
+    module = '#### Import';
+    module += `${os.EOL}${os.EOL}\`\`\`jsx${os.EOL}${context.import}${os.EOL}\`\`\``;
+  }
+  module += os.EOL;
+
+  return module;
+}}
+${({ context }) => {
+  let examples = '';
+  if (context.examples && context.examples.length > 0) {
+    examples = '#### Examples';
+    context.examples.forEach((example) => {
+      examples += `${os.EOL}${os.EOL}\`\`\`jsx${os.EOL}${example}${os.EOL}\`\`\``;
+    });
+  }
+  examples += os.EOL;
+
+  return examples;
+}}
 #### Props
 
 ${({ context }) => generatePropsTable(context.props)}

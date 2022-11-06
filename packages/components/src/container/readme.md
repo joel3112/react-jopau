@@ -2,6 +2,20 @@
 
 Containers are used to constrain a content\x27s width to the current breakpoint.
 
+#### Import
+
+```jsx
+import { Container } from '@react-jopau/components/container';
+```
+
+#### Examples
+
+```jsx
+<Container gap={10} maxWidth={1000} centered>
+  <p>lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+</Container>
+```
+
 #### Props
 
 | Name                  | Type                   | Default value | Description                                                   |
