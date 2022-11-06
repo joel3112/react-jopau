@@ -45,7 +45,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
   deploy:
-    needs: [ci, publish]
+    needs: [publish]
     runs-on: ubuntu-latest
     environment:
       name: 'Production'
