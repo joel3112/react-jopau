@@ -1,5 +1,5 @@
 import { create } from '@storybook/theming';
-import { getColors, getProps, getTheme } from '/packages/styles/src/GlobalStyles';
+import { getColors, getProps, getTheme } from '/packages/styles/src/utils';
 
 export const createStorybookTheme = (themeKey = 'default') => {
   const colors = getColors(themeKey);
@@ -9,8 +9,8 @@ export const createStorybookTheme = (themeKey = 'default') => {
   return create({
     base: 'light',
 
-    colorPrimary: colors.primary,
-    colorSecondary: colors.primary,
+    colorPrimary: colors.secondary,
+    colorSecondary: colors.secondary,
 
     // UI
     appBg: colors.white,

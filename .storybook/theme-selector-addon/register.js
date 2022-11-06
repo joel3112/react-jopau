@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { addons, types } from '@storybook/addons';
 import { IconButton, Separator, TooltipLinkList, WithTooltip } from '@storybook/components';
-import { getColors } from '/packages/styles/src/GlobalStyles';
+import { getColors } from '/packages/styles/src/utils';
 import { themes } from '/packages/styles/src/themes';
 import { createStorybookTheme } from '../theme';
 
@@ -70,6 +70,11 @@ const ThemeSelectorAddon = ({ api }) => {
               onClick: () => {
                 setCurrentThemeKey(themeKey);
                 onHide();
+
+                const searchParams = new URLSearchParams(location.search);
+                searchParams.set('theme', themeKey);
+                // api.navigateUrl(`/?${decodeURIComponent(searchParams.toString())}`);
+                location.search = decodeURIComponent(searchParams.toString());
               }
             }))}
           />

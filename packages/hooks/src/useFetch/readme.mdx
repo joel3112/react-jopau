@@ -71,14 +71,14 @@ const { data, error } = useFetch('https://jsonplaceholder.typicode.com/todos/1',
       description: 'Error handler',
       required: false,
       type: 'function',
-      defaultValue: '(error) =\x3E { throw error }'
+      defaultValue: '(error) => { throw error }'
     },
     'options.onSuccess': {
       name: 'options.onSuccess',
       description: 'Success handler',
       required: false,
       type: 'function',
-      defaultValue: '(res) =\x3E res.data'
+      defaultValue: '(res) => res.data'
     },
     'options.params': {
       name: 'options.params',

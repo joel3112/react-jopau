@@ -1,17 +1,18 @@
 /* eslint-disable react/prop-types */
 import * as React from 'react';
 import { addons } from '@storybook/addons';
-import { getColors, GlobalStyles } from '/packages/styles/src/GlobalStyles';
+import { getColors, getThemeQueryParam } from '/packages/styles/src/utils';
+import { GlobalStyles } from '/packages/styles/src/GlobalStyles';
 import { themes } from '/packages/styles/src/themes';
 
-export const getThemeKey = (searchParams) => {
-  const qsKey = searchParams.get('theme');
+export const getThemeKey = () => {
+  const qsKey = getThemeQueryParam();
+
   return Object.keys(themes).find((key) => key === qsKey) || 'default';
 };
 
 const ThemeProvider = ({ Story, context }) => {
-  const searchParams = new URLSearchParams(location.search);
-  const [themeKey, setThemeKey] = React.useState(getThemeKey(searchParams));
+  const [themeKey, setThemeKey] = React.useState(getThemeKey);
   const [colorScheme, setColorScheme] = React.useState('light');
   const storyRef = React.useRef(null);
   const background = getColors(themeKey, colorScheme).background;
@@ -38,7 +39,7 @@ const ThemeProvider = ({ Story, context }) => {
 
   return (
     <div ref={storyRef}>
-      <GlobalStyles themeKey={themeKey} darkMode={colorScheme === 'dark'}>
+      <GlobalStyles themeConfig={themeKey} darkMode={colorScheme === 'dark'}>
         <Story {...context} />
       </GlobalStyles>
     </div>

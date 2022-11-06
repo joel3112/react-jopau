@@ -4,6 +4,7 @@ const jsdoc2md = require('jsdoc-to-markdown');
 const fs = require('fs');
 const path = require('path');
 const glob = require('glob');
+const clc = require('cli-color');
 const prettier = require('prettier');
 const { get } = require('lodash');
 const DocGenMarkdownRenderer = require('./templates/docgen-markdown-renderer.js');
@@ -63,7 +64,7 @@ glob(
         fs.readFile(componentPath, () => {
           const componentName = path.basename(componentPath, path.extname(componentPath));
 
-          console.log('>>', componentName, '>>', componentPath, '>>');
+          console.log(clc.blue('-', componentName, '>>', componentPath));
 
           /**
            * Generate JSON schema from JSDoc
@@ -72,7 +73,7 @@ glob(
             files: componentPath,
             configure: './jsdoc2md.json'
           });
-          console.log('>> jsdoc', JSON.stringify(jsdocSchema, null, 2));
+          // console.log('>> jsdoc', JSON.stringify(jsdocSchema, null, 2));
 
           /**
            * Generate JSON schema from TypeScript
@@ -119,7 +120,7 @@ glob(
               return acc;
             }, {})
           };
-          console.log('>> parsedSchema', JSON.stringify(parsedSchema, null, 2));
+          // console.log('>> parsedSchema', JSON.stringify(parsedSchema, null, 2));
 
           /**
            * Generate file markdown
@@ -138,6 +139,8 @@ glob(
             template: functionMDXTemplate
           });
           writeFile(documentationMDXPath, rendererMDX.render(componentPath, parsedSchema));
+
+          console.log(clc.green('Documentation generated successfully!'));
         });
       } catch (error) {
         console.error('There was an error generating the documentation for', componentPath, error);

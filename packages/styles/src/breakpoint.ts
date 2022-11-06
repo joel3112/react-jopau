@@ -1,5 +1,6 @@
 import { getPropValue } from '@react-jopau/utils/object';
-import defaultTheme from './themes/default';
+
+const defaultTheme = require('./themes/default.json');
 
 export type Breakpoint = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 

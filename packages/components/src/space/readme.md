@@ -2,6 +2,21 @@
 
 Component flexbox-based spacing.
 
+#### Import
+
+```jsx
+import { Space } from '@react-jopau/components/space';
+```
+
+#### Examples
+
+```jsx
+<Space direction="row" align="center" justify="center" gap={10}>
+  <div>Item 1</div>
+  <div>Item 2</div>
+</Space>
+```
+
 #### Props
 
 | Name                  | Type                                                           | Default value | Description                                               |

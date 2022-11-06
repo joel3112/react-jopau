@@ -29,6 +29,9 @@ module.exports = {
         60: 'var(--opacity-60)',
         80: 'var(--opacity-80)',
         100: 'var(--opacity-100)'
+      },
+      boxShadow: {
+        DEFAULT: 'var(--shadows-boxShadow)'
       }
     }
   },

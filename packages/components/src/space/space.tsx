@@ -16,7 +16,7 @@ type SpaceProps = ElementHTML & {
   /**
    * Defines the direction of the flex container.
    */
-  direction: Required<DirectionSpace>;
+  direction?: Required<DirectionSpace>;
   /**
    * Defines if the flex container is wrapped or not.
    */
@@ -49,11 +49,18 @@ const spacing = (gap?: number | Array<number>): string =>
 
 /**
  * Component flexbox-based spacing.
+ *
+ * @import import { Space } from '@react-jopau/components/space';
+ * @example
+ * <Space direction="row" align="center" justify="center" gap={10}>
+ *    <div>Item 1</div>
+ *    <div>Item 2</div>
+ * </Space>
  */
 export const Space = ({
   className,
-  children,
   style,
+  children,
   direction,
   wrap,
   gap,
