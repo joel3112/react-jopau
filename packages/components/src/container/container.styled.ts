@@ -1,6 +1,6 @@
-import { styled } from '@stitches/react';
+import { styledTheme } from '../index';
 
-export const ContainerWrapper = styled('div', {
+export const ContainerWrapper = styledTheme('div', {
   display: 'block',
   boxSizing: 'border-box',
   padding: '0 50px',

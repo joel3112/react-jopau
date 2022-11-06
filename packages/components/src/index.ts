@@ -1,5 +1,5 @@
 import { styled } from '@stitches/react';
-import { ThemeBuilder } from '@react-jopau/styles/GlobalStyles';
+import { ThemeBuilder } from '@react-jopau/styles/ThemeProvider';
 import { BreakpointsRules } from '@react-jopau/styles/breakpoint';
 
 const builder = new ThemeBuilder();

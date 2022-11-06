@@ -2,6 +2,9 @@ import { Theme, ThemeProps, themes, ThemeSchemes } from '../themes';
 import { ConfigType } from '@stitches/react/types/config';
 
 export const getThemeQueryParam = () => {
+  if (typeof window === 'undefined') {
+    return null;
+  }
   const searchParams = new URLSearchParams(location.search);
   return searchParams.get('theme');
 };
@@ -34,7 +37,7 @@ export const getBreakpoints = (themeConfig: Theme | string) => {
   return getProps(themeConfig).media;
 };
 
-export const computeScheme = (schemes: ThemeSchemes, darkMode: boolean) => {
+export const computeScheme = (schemes: ThemeSchemes, darkMode?: boolean) => {
   if (schemes.lightTheme && schemes.darkTheme) {
     return darkMode ? schemes.darkTheme : schemes.lightTheme;
   }
