@@ -9,8 +9,8 @@ export const createStorybookTheme = (themeKey = 'default') => {
   return create({
     base: 'light',
 
-    colorPrimary: colors.primary,
-    colorSecondary: colors.primary,
+    colorPrimary: colors.secondary,
+    colorSecondary: colors.secondary,
 
     // UI
     appBg: colors.white,

@@ -1,13 +1,12 @@
 /* eslint-disable react/prop-types */
 import * as React from 'react';
 import { addons } from '@storybook/addons';
-import { getColors } from '/packages/styles/src/utils';
+import { getColors, getThemeQueryParam } from '/packages/styles/src/utils';
 import { GlobalStyles } from '/packages/styles/src/GlobalStyles';
 import { themes } from '/packages/styles/src/themes';
 
 export const getThemeKey = () => {
-  const searchParams = new URLSearchParams(location.search);
-  const qsKey = searchParams.get('theme');
+  const qsKey = getThemeQueryParam();
 
   return Object.keys(themes).find((key) => key === qsKey) || 'default';
 };

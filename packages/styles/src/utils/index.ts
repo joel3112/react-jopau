@@ -1,7 +1,16 @@
 import { Theme, ThemeProps, themes, ThemeSchemes } from '../themes';
 import { ConfigType } from '@stitches/react/types/config';
 
-const getThemeInstance = (themeConfig: Theme | string) => {
+export const getThemeQueryParam = () => {
+  const searchParams = new URLSearchParams(location.search);
+  return searchParams.get('theme');
+};
+
+export const getThemeInstance = (themeConfig?: Theme | string) => {
+  if (!themeConfig) {
+    return themes[getThemeQueryParam() || 'default'].value;
+  }
+
   if (typeof themeConfig === 'string') {
     return themes[themeConfig].value;
   }

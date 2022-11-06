@@ -36,7 +36,8 @@ module.exports = {
       ...commonConfig('components'),
       testMatch: ['<rootDir>/packages/components/**/*.test.tsx'],
       moduleNameMapper: {
-        '@react-jopau/utils/(.*)$': '<rootDir>/packages/utils/src/$1'
+        '@react-jopau/utils/(.*)$': '<rootDir>/packages/utils/src/$1',
+        '@react-jopau/styles/(.*)$': '<rootDir>/packages/styles/src/$1'
       }
     }
   ]
