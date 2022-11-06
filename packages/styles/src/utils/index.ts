@@ -41,4 +41,5 @@ export const computeScheme = (schemes: ThemeSchemes, darkMode?: boolean) => {
   if (schemes.lightTheme && schemes.darkTheme) {
     return darkMode ? schemes.darkTheme : schemes.lightTheme;
   }
+  return '';
 };

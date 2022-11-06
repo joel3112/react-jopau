@@ -141,7 +141,7 @@ class DocgenMarkdownRenderer {
         componentName: docs.displayName
           ? docs.displayName
           : path.basename(file, path.extname(file)),
-        description: escape(docs.description),
+        description: docs.description,
         package: docs.package,
         import: docs.import,
         examples: docs.examples,
