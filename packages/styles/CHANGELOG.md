@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.1](https://github.com/joel3112/react-jopau/compare/v0.9.0...v0.9.1) (2022-11-06)
+
+### 🏠 Internal
+
+- revert sort import ([47befde](https://github.com/joel3112/react-jopau/commit/47befde8d9ace16b9ac6a09d5469404548838102))
+- sort import ([cd09191](https://github.com/joel3112/react-jopau/commit/cd091913e6e29776e68d37b5af39d55b0740ff8d))
+- update dependencies ([368ad06](https://github.com/joel3112/react-jopau/commit/368ad06cdf2d69a91cfb5effed35d61abca0edcf))
+
 ## [0.9.0](https://github.com/joel3112/react-jopau/compare/v0.8.1...v0.9.0) (2022-11-06)
 
 ### ⚠ BREAKING CHANGES

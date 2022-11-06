@@ -1,6 +1,6 @@
 {
   "name": "@react-jopau/utils",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "description": "Common utils for React projects",
   "repository": {
     "type": "git",
