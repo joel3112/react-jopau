@@ -17,7 +17,6 @@ export class ThemeBuilder {
     const currentConfig = getThemeInstance(config);
     const currentTheme: ThemeProps = getTheme(currentConfig);
     const { createTheme: createStitchesTheme, styled } = createStitches({
-      theme: currentTheme as unknown as ConfigType.Theme<ThemeProps>,
       media: Object.entries(getBreakpoints(currentConfig)).reduce(
         (acc, [key, value]) => ({
           ...acc,
