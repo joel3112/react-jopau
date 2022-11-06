@@ -41,6 +41,7 @@ const { data, error } = useFetch('https://jsonplaceholder.typicode.com/todos/1',
 
 | Name              | Type                                              | Default value                | Description                |
 | ----------------- | ------------------------------------------------- | ---------------------------- | -------------------------- |
+| path _(required)_ | `string`                                          |                              | API endpoint               |
 | options           | `Object`                                          |                              | Fetch options and handlers |
 | options.body      | `Object`                                          |                              | Request body               |
 | options.headers   | `Object`                                          |                              | Request headers            |
@@ -48,7 +49,6 @@ const { data, error } = useFetch('https://jsonplaceholder.typicode.com/todos/1',
 | options.onError   | `function`                                        | `(error) => { throw error }` | Error handler              |
 | options.onSuccess | `function`                                        | `(res) => res.data`          | Success handler            |
 | options.params    | `Object`                                          |                              | Query params               |
-| path _(required)_ | `string`                                          |                              | API endpoint               |
 
 #### Returns
 

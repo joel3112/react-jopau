@@ -12,7 +12,7 @@ import { Header } from '@react-jopau/components/header';
 
 ```jsx
 <Header title="Title" renderLogo={() => <img src="./images/logo.png" alt="Logo" />}>
-  <div>+ Action 1</div>
+  <div>Action 1</div>
 </Header>
 ```
 
@@ -22,7 +22,6 @@ import { Header } from '@react-jopau/components/header';
 | ---------- | ---------------------------------------------------------- | ------------- | --------------------------------------------- |
 | children   | `ReactNode`                                                |               | Defines the children of the component.        |
 | className  | `string`                                                   |               | Classnames applied to root element            |
-| href       | `string`                                                   | `/`           | Defines the logo href of the header.          |
 | maxWidth   | `number` \| `"xs"` \| `"sm"` \| `"md"` \| `"lg"` \| `"xl"` |               | Maximum width of the container or breakpoint. |
 | renderLogo | `() => ReactNode`                                          |               | Defines the render of the logo.               |
 | style      | `CSSProperties`                                            |               | Styles applied to root element                |

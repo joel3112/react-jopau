@@ -10,13 +10,23 @@ const generatePropsTable = (props, noDefaults) => {
   const entries = Object.entries(props);
   if (entries.length === 0) return 'This component does not have any props.';
 
+  const sortedEntries = entries.sort((a, b) => {
+    if (a[1].required && !b[1].required) {
+      return -1;
+    }
+    if (!a[1].required && b[1].required) {
+      return 1;
+    }
+    return 0;
+  });
+
   let propsTableHeader = !noDefaults
     ? `| Name | Type | Default value | Description |${os.EOL}` +
       `| ---- | ---- | ------------- | ----------- |${os.EOL}`
     : `| Name | Type | Description |${os.EOL}` + `| ---- | ---- | ----------- |${os.EOL}`;
   return (
     propsTableHeader +
-    entries
+    sortedEntries
       .map(
         ([propName, propValue]) =>
           `| ${propName}${propValue.required ? ' _(required)_' : ''} ` +
