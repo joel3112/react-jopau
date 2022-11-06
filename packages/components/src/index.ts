@@ -2,7 +2,7 @@ import { styled } from '@stitches/react';
 import { ThemeBuilder } from '@react-jopau/styles/GlobalStyles';
 import { BreakpointsRules } from '@react-jopau/styles/breakpoint';
 
-const builder = new ThemeBuilder('./theme.config.js');
+const builder = new ThemeBuilder();
 builder.createTheme();
 
 export const styledTheme = builder.styledTheme || styled;

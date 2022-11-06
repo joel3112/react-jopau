@@ -67,7 +67,7 @@ export const Container = ({
     <ContainerWrapper
       className={classes('container-wrapper', className)}
       css={{
-        padding: spacing(gap),
+        ...(gap && { padding: spacing(gap) }),
         maxWidth: `${computeMaxWidth(maxWidth)}px !important`,
         ...style
       }}

@@ -1,5 +1,4 @@
 import { ReactNode } from 'react';
-import * as path from 'path';
 import { createStitches, globalCss, styled } from '@stitches/react';
 import type { ConfigType } from '@stitches/react/types/config';
 import { Theme, ThemeProps, ThemeScheme, ThemeStitches } from './themes';
@@ -59,32 +58,12 @@ export class ThemeBuilder {
   lightTheme: ThemeScheme = null;
   darkTheme: ThemeScheme = null;
   breakpoints: BreakpointsRules = {};
-  #configuration: string | null = null;
-
-  constructor(configPath?: string) {
-    this.loadConfig(configPath);
-  }
-
-  loadConfig(configPath?: string) {
-    if (configPath) {
-      try {
-        const configuration = require(path.join(__dirname, configPath));
-        console.log('__dirname', path.dirname(__dirname));
-        console.log('Configure theme from JSON', configPath, configuration);
-        if (configuration) {
-          this.#configuration = configuration;
-        }
-      } catch (e) {
-        console.warn('Invalid theme configuration path', configPath, e);
-      }
-    }
-  }
 
   /**
    * Creates a new theme by configuration or theme key.
    */
   createTheme(config?: Theme | string) {
-    const currentConfig = this.#configuration || getThemeInstance(config);
+    const currentConfig = getThemeInstance(config);
     const currentTheme: ThemeProps = getTheme(currentConfig);
     const { createTheme: createStitchesTheme, styled } = createStitches({
       theme: currentTheme as unknown as ConfigType.Theme<ThemeProps>,
