@@ -1,0 +1,40 @@
+import { ArgsTable, Canvas, Story } from '@storybook/addon-docs';
+import { SBDescription, SBSubTitle, SBTitle } from '@react-jopau/styles/components';
+import { Header } from './header';
+
+<SBTitle>Header</SBTitle>
+
+<SBDescription>Header component with logo, title and actions area.</SBDescription>
+
+```jsx dark
+import { Header } from '@react-jopau/components/header';
+```
+
+<Canvas withToolbar>
+  <Story id="components-header--default" />
+</Canvas>
+
+<SBSubTitle>Properties</SBSubTitle>
+
+<ArgsTable of={Header} />
+
+<SBSubTitle>Stories</SBSubTitle>
+<br />
+
+<span className="!text-lg font-medium">Default</span>
+
+<Canvas>
+  <Story id="components-header--default" />
+</Canvas>
+
+<span className="!text-lg font-medium">With Logo</span>
+
+<Canvas>
+  <Story id="components-header--with-logo" />
+</Canvas>
+
+<span className="!text-lg font-medium">With Actions</span>
+
+<Canvas>
+  <Story id="components-header--with-actions" />
+</Canvas>

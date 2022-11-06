@@ -16,7 +16,7 @@ type SpaceProps = ElementHTML & {
   /**
    * Defines the direction of the flex container.
    */
-  direction: Required<DirectionSpace>;
+  direction?: Required<DirectionSpace>;
   /**
    * Defines if the flex container is wrapped or not.
    */
@@ -52,8 +52,8 @@ const spacing = (gap?: number | Array<number>): string =>
  */
 export const Space = ({
   className,
-  children,
   style,
+  children,
   direction,
   wrap,
   gap,
