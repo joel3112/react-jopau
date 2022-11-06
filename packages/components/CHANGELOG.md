@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.3](https://github.com/joel3112/react-jopau/compare/v0.9.2...v0.9.3) (2022-11-06)
+
+### 🏠 Internal
+
+- **styles:** rename theme provider ([6d68e97](https://github.com/joel3112/react-jopau/commit/6d68e97d6ad714c4d23e1891a44f3062eacca814))
+
 ## [0.9.2](https://github.com/joel3112/react-jopau/compare/v0.9.1...v0.9.2) (2022-11-06)
 
 ### 🏠 Internal
