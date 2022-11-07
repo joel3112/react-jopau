@@ -1,12 +1,12 @@
 import { ReactNode } from 'react';
 import classes from 'classnames';
 import ReactJson from 'react-json-view';
-import { styled } from '@stitches/react';
-import { ArgsTable as PureArgsTable } from '@storybook/components';
 
 /**
  * Component custom tailwindcss classes
  */
+
+/* ----------------------------------------------------------- */
 
 export const TWContainer = ({
   className,
@@ -21,6 +21,8 @@ export const TWContainer = ({
     </div>
   );
 };
+
+/* ----------------------------------------------------------- */
 
 export const TWItem = ({
   children,
@@ -39,6 +41,8 @@ export const TWItem = ({
   );
 };
 
+/* ----------------------------------------------------------- */
+
 export const TWHighlight = ({ children }: { children: string }) => {
   return (
     <div className="font-code text-black text-sm w-fit h-[22px] flex items-center px-1 rounded-md bg-[#ccc]">
@@ -46,6 +50,8 @@ export const TWHighlight = ({ children }: { children: string }) => {
     </div>
   );
 };
+
+/* ----------------------------------------------------------- */
 
 export const TWText = ({
   children,
@@ -62,6 +68,8 @@ export const TWText = ({
     </span>
   );
 };
+
+/* ----------------------------------------------------------- */
 
 export const TWInput = ({
   label,
@@ -84,6 +92,8 @@ export const TWInput = ({
   );
 };
 
+/* ----------------------------------------------------------- */
+
 export const TWJSONPreview = ({ code }: { code: unknown }) => {
   if (!code) return <span className="flex items-center font-code text-text">null</span>;
 
@@ -100,97 +110,5 @@ export const TWJSONPreview = ({ code }: { code: unknown }) => {
         iconStyle="square"
       />
     </div>
-  );
-};
-
-/**
- * Component story mdx
- */
-
-export const SBTitle = ({ children }: { children: string }) => {
-  return <h1 className="text-2xl border-0 font-bold mb-5">{children}</h1>;
-};
-
-export const SBDescription = ({
-  children,
-  className,
-  tag
-}: {
-  children: string;
-  className?: string;
-  tag?: 'span' | 'p';
-}) => {
-  const Tag = tag || 'p';
-
-  return <Tag className={classes('text-base font-light', className)}>{children}</Tag>;
-};
-
-export const SBSubTitle = ({ children }: { children: string }) => {
-  return (
-    <h4 className="text-xl font-semibold underline decoration-4 underline-offset-8">{children}</h4>
-  );
-};
-
-export const SBDemo = ({ children }: { children: ReactNode }) => {
-  return <div className="text-text border rounded p-3 mb-4 bg-background">{children}</div>;
-};
-
-export const SBArgsTable = ({
-  rows,
-  noDefaults
-}: {
-  rows: Record<
-    string,
-    {
-      name: string;
-      description: string;
-      type: string;
-      required?: string;
-      defaultValue?: string;
-    }
-  >;
-  noDefaults?: boolean;
-}) => {
-  const PureArgsTableStyled = styled('div', {
-    variants: {
-      noDefaults: {
-        true: {
-          'th:nth-of-type(2), td:nth-of-type(2)': {
-            width: '60% !important'
-          },
-          'th:last-of-type, td:last-of-type': {
-            display: 'none'
-          }
-        }
-      }
-    }
-  });
-
-  return (
-    <PureArgsTableStyled noDefaults={noDefaults}>
-      <PureArgsTable
-        sort="requiredFirst"
-        rows={Object.keys(rows).reduce((acc, key) => {
-          const { name, description, required, type, defaultValue } = rows[key];
-
-          return {
-            ...acc,
-            ...{
-              [key]: {
-                name,
-                ...(description && { description }),
-                type: { required },
-                table: {
-                  type: { summary: type },
-                  ...(defaultValue && !noDefaults
-                    ? { defaultValue: { summary: String(defaultValue) } }
-                    : {})
-                }
-              }
-            }
-          };
-        }, {})}
-      />
-    </PureArgsTableStyled>
   );
 };

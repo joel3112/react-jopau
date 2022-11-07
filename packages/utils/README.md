@@ -9,8 +9,12 @@
 
 ## Install
 
-```sh
+```shell
+# yarn
 yarn install @react-jopau/utils
+
+# npm
+npm install @react-jopau/utils
 ```
 
 ## Usage

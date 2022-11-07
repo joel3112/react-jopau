@@ -48,11 +48,11 @@ const parseJSONSchemaProps = (prop, requiredProp = true) => {
   };
 };
 
-const parseComponentCardProps = (package, componentName, props) => {
+const parseComponentCardProps = (packageName, componentName, props) => {
   return {
     title: get(props, 'name'),
     description: parseDescription(get(props, 'description')),
-    kind: `${package}-${componentName}`.toLowerCase()
+    kind: `${packageName}-${componentName}`.toLowerCase()
   };
 };
 

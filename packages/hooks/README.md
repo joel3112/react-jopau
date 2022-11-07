@@ -9,8 +9,12 @@
 
 ## Install
 
-```sh
+```shell
+# yarn
 yarn install @react-jopau/hooks
+
+# npm
+npm install @react-jopau/hooks
 ```
 
 ## Usage
