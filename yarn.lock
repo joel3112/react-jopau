@@ -3783,6 +3783,11 @@
     regenerator-runtime "^0.13.7"
     resolve-from "^5.0.0"
 
+"@tailwindcss/line-clamp@^0.4.2":
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/@tailwindcss/line-clamp/-/line-clamp-0.4.2.tgz#f353c5a8ab2c939c6267ac5b907f012e5ee130f9"
+  integrity sha512-HFzAQuqYCjyy/SX9sLGB1lroPzmcnWv1FHkIpmypte10hptf4oPUfucryMKovZh2u0uiS9U5Ty3GghWfEJGwVw==
+
 "@testing-library/dom@^8.14.0", "@testing-library/dom@^8.3.0", "@testing-library/dom@^8.5.0":
   version "8.19.0"
   resolved "https://registry.yarnpkg.com/@testing-library/dom/-/dom-8.19.0.tgz#bd3f83c217ebac16694329e413d9ad5fdcfd785f"
@@ -3956,7 +3961,7 @@
     "@types/minimatch" "*"
     "@types/node" "*"
 
-"@types/glob@^7.1.1":
+"@types/glob@^7.1.1", "@types/glob@^7.2.0":
   version "7.2.0"
   resolved "https://registry.yarnpkg.com/@types/glob/-/glob-7.2.0.tgz#bc1b5bf3aa92f25bd5dd39f35c57361bdce5b2eb"
   integrity sha512-ZUxbzKl0IfJILTS6t7ip5fQQM/J3TJYubDm3nMbgubNNYS62eXeUpoLUC8/7fJNiFYHTrGPQn7hspDUzIHX3UA==
@@ -8794,6 +8799,13 @@ glob-promise@^3.4.0:
   integrity sha512-q08RJ6O+eJn+dVanerAndJwIcumgbDdYiUT7zFQl3Wm1xD6fBKtah7H8ZJChj4wP+8C+QfeVy8xautR7rdmKEw==
   dependencies:
     "@types/glob" "*"
+
+glob-promise@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/glob-promise/-/glob-promise-5.0.0.tgz#aee3317ee1c211866d0425e1ac2e9089ded09c28"
+  integrity sha512-YQ7+beqmmQ3yUzybHoxnj7XMImztIdusIFate36/aB1gEWugR1qZI9a2u1A5mt6gYRqYldipZ7NB9s1UEq3vzw==
+  dependencies:
+    "@types/glob" "^7.2.0"
 
 glob-to-regexp@^0.3.0:
   version "0.3.0"
