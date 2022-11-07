@@ -73,7 +73,6 @@ const ThemeSelectorAddon = ({ api }) => {
 
                 const searchParams = new URLSearchParams(location.search);
                 searchParams.set('theme', themeKey);
-                // api.navigateUrl(`/?${decodeURIComponent(searchParams.toString())}`);
                 location.search = decodeURIComponent(searchParams.toString());
               }
             }))}
