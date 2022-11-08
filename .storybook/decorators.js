@@ -1,19 +1,17 @@
 /* eslint-disable react/prop-types */
 import * as React from 'react';
 import { addons } from '@storybook/addons';
-import { getColors, getThemeQueryParam } from '/packages/styles/src/utils';
-import { ThemeProvider } from '/packages/styles/src/ThemeProvider';
-import { themes } from '/packages/styles/src/themes';
-
-export const getThemeKey = () => {
-  const qsKey = getThemeQueryParam();
-
-  return Object.keys(themes).find((key) => key === qsKey) || 'default';
-};
+import { getColors } from '/packages/styles/src/utils';
+import { useLocalStorage } from '/packages/hooks/src/useLocalStorage';
+import {
+  DARK_MODE_STORAGE_KEY,
+  THEME_SELECTOR_STORAGE_KEY,
+  ThemeProvider
+} from '/packages/styles/src/ThemeProvider';
 
 const ThemeStoryProvider = ({ Story, context }) => {
-  const [themeKey, setThemeKey] = React.useState(getThemeKey);
-  const [colorScheme, setColorScheme] = React.useState('light');
+  const [themeKey, setThemeKey] = useLocalStorage(THEME_SELECTOR_STORAGE_KEY, 'default');
+  const [colorScheme, setColorScheme] = useLocalStorage(DARK_MODE_STORAGE_KEY, 'light');
   const storyRef = React.useRef(null);
   const background = getColors(themeKey, colorScheme).background;
 

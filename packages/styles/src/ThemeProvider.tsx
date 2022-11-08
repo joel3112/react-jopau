@@ -5,6 +5,9 @@ import { ThemeConfig } from './themes/types';
 import { ThemeScheme } from './themes';
 import { computeScheme } from './utils';
 
+export const THEME_SELECTOR_STORAGE_KEY = 'key-theme-selector';
+export const DARK_MODE_STORAGE_KEY = 'key-dark-mode';
+
 const globalStyles = globalCss({
   body: {
     backgroundColor: '$background',

@@ -1,14 +1,5 @@
 import { Dispatch, SetStateAction, useState } from 'react';
 
-const parseJSON = <T>(value: string | null): T | undefined => {
-  try {
-    return value === 'undefined' ? undefined : JSON.parse(value ?? '');
-  } catch {
-    console.log('parsing error on', { value });
-    return undefined;
-  }
-};
-
 /**
  * @template T The type of the value to persist.
  */
@@ -47,7 +38,7 @@ export const useLocalStorage = <T>(
 
     try {
       const item = window.localStorage.getItem(key);
-      return item ? (parseJSON(item) as T) : initialValue;
+      return item ? JSON.parse(item) : initialValue;
     } catch (error) {
       console.error(error);
       return initialValue;
