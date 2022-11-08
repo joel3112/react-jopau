@@ -10,7 +10,8 @@ const {
   getCustomTag,
   parseDescription,
   parseComponentCardProps,
-  writeIntroduction
+  writeIntroduction,
+  parseTypes
 } = require('./utils');
 
 // Component templates
@@ -54,7 +55,42 @@ const generateFunctionDocs = async () => {
         import: getCustomTag(get(jsdocSchema, '[0].customTags', []), 'import'),
         examples: get(jsdocSchema, '[0].examples'),
         params: get(jsdocSchema, '[0].params', []).reduce((acc, item) => {
-          acc[item.name] = parseJSONSchemaProps(item);
+          // Check if param is callback
+          const itemIsCallback = get(item, 'type.names', []).join().includes('Callback');
+          if (itemIsCallback) {
+            const returnsCustomCallback = (jsdocSchema || []).find(
+              ({ id }) => id === get(item.type, 'names', [])[0]
+            );
+
+            if (returnsCustomCallback) {
+              // Check if callback returns or throws
+              const params = get(returnsCustomCallback, 'params', []).map((param) => {
+                const parseParam = parseJSONSchemaProps(param);
+                return `${parseParam.name}: ${parseParam.type.name}`;
+              });
+              const returns = get(
+                parseTypes(get(returnsCustomCallback, 'returns[0].type')),
+                'name'
+              );
+              const exceptions = get(
+                parseTypes(get(returnsCustomCallback, 'exceptions[0].type')),
+                'name'
+              );
+
+              acc[item.name] = {
+                ...parseJSONSchemaProps(item),
+                type: {
+                  name: `(${params.join(',')}) => ${
+                    exceptions ? `{ throw ${exceptions} }` : `${returns}`
+                  }`
+                }
+              };
+            } else {
+              acc[item.name] = parseJSONSchemaProps(item);
+            }
+          } else {
+            acc[item.name] = parseJSONSchemaProps(item);
+          }
           return acc;
         }, {}),
         returns: get(jsdocSchema, '[0].returns', []).reduce((acc, item) => {
@@ -64,12 +100,20 @@ const generateFunctionDocs = async () => {
 
           if (returnsCustomType) {
             // Parse custom types
+            const customType = get(returnsCustomType, 'type.names', [])[0];
             return {
-              result: { ...parseJSONSchemaProps(item, false), type: { name: 'Object' } },
-              ...returnsCustomType.properties.reduce((acc, item) => {
-                acc[`result.${item.name}`] = parseJSONSchemaProps(item, false);
-                return acc;
-              }, {})
+              // Parse array of custom types
+              ...(customType === 'Array' &&
+                returnsCustomType.properties.reduce((acc, item) => {
+                  acc[`result[${item.name}]`] = parseJSONSchemaProps(item, false);
+                  return acc;
+                }, {})),
+              // Parse object of custom types
+              ...(customType === 'Object' &&
+                returnsCustomType.properties.reduce((acc, item) => {
+                  acc[`result.${item.name}`] = parseJSONSchemaProps(item, false);
+                  return acc;
+                }, {}))
             };
           }
           acc[item.name] = parseJSONSchemaProps(item, false);
@@ -96,7 +140,7 @@ const generateFunctionDocs = async () => {
       writeFile(documentationMDXPath, rendererMDX.render(componentPath, parsedSchema));
     });
   } catch (error) {
-    console.error('There was an error generating the documentation for', componentPath, error);
+    console.log(clc.red('There was an error generating the documentation for', error));
   }
 };
 
@@ -104,16 +148,14 @@ const generateIntroductionDocs = async () => {
   try {
     console.log('Generating introduction documentation...');
 
-    const introductionMDXPath = 'packages/hooks/src/introduction.stories.mdx';
+    const introductionMDXPath = 'packages/hooks/src/About.stories.mdx';
     const files = await glob(introductionMDXPath);
     const data = fs.readFileSync(files[0], { encoding: 'utf8' });
     const introductionItemsTemplate = introductionMDXTemplate(introComponentsProps);
 
     writeIntroduction(introductionMDXPath, data, introductionItemsTemplate);
   } catch (error) {
-    console.log(
-      clc.red('There was an error generating the introduction for', componentPath, error)
-    );
+    console.log(clc.red('There was an error generating the introduction for', error));
   }
 };
 

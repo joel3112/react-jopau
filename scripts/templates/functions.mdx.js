@@ -35,7 +35,7 @@ const templateObject = templateCreator`import { SBArgsTable, SBDescription, SBSu
 
 <SBDescription>${prop('description')}</SBDescription>
 
-\`\`\`jsx dark
+\`\`\`tsx dark
 ${prop('import')}
 \`\`\`
 
@@ -43,7 +43,7 @@ ${({ context }) => {
   let examples = '';
   if (context.examples.length > 0) {
     context.examples.forEach((example) => {
-      examples += `${os.EOL}${os.EOL}\`\`\`jsx dark${os.EOL}${example}${os.EOL}\`\`\``;
+      examples += `${os.EOL}${os.EOL}\`\`\`tsx dark${os.EOL}${example}${os.EOL}\`\`\``;
     });
   }
   examples += os.EOL;

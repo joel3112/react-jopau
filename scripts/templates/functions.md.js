@@ -58,7 +58,7 @@ ${({ context }) => {
   let module = '';
   if (context.import) {
     module = '#### Import';
-    module += `${os.EOL}${os.EOL}\`\`\`jsx${os.EOL}${context.import}${os.EOL}\`\`\``;
+    module += `${os.EOL}${os.EOL}\`\`\`tsx${os.EOL}${context.import}${os.EOL}\`\`\``;
   }
   module += os.EOL;
 
@@ -69,7 +69,7 @@ ${({ context }) => {
   if (context.examples.length > 0) {
     examples = '#### Examples';
     context.examples.forEach((example) => {
-      examples += `${os.EOL}${os.EOL}\`\`\`jsx${os.EOL}${example}${os.EOL}\`\`\``;
+      examples += `${os.EOL}${os.EOL}\`\`\`tsx${os.EOL}${example}${os.EOL}\`\`\``;
     });
   }
   examples += os.EOL;

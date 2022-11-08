@@ -2,38 +2,50 @@ import useSWR, { Fetcher } from 'swr';
 import axios from 'axios';
 import { getPropValue } from '@react-jopau/utils/object';
 
-type useFetchData<T> = Array<T> | T | null;
-type useFetchError<U> = U | null;
-
+/**
+ * @template T Type of the data returned by the fetch
+ * @template U Type of the error returned by the fetch
+ */
 /**
  * @typedef  {Object} UseFetch
- * @property {Object} data - Data returned by the fetch
  * @property {boolean} loading - Flag to indicate if the fetch is loading
- * @property {Object} error - Error returned by the fetch
+ * @property {(T | null)} data - Data returned by the fetch
+ * @property {(U | null)} error - Error returned by the fetch
+ */
+/**
+ * @callback SuccessCallback
+ * @param   {Object} data
+ * @returns {(T | null)}
+ */
+/**
+ * @callback ErrorCallback
+ * @param  {Object} data
+ * @throws {(U | null)}
  */
 /**
  * Fetch data from an API endpoint, with optional success and error handlers.
- *
- * @template T Type of the data returned by the fetch
- * @template U Type of the error returned by the fetch
+
  * @param   {string} path - API endpoint
  * @param   {Object} [options] - Fetch options and handlers
  * @param   {("GET"|"POST"|"PUT"|"PATCH"|"DELETE")} [options.method=GET] - HTTP method
  * @param   {Object} [options.params] - Query params
  * @param   {Object} [options.headers] - Request headers
  * @param   {Object} [options.body] - Request body
- * @param   {Function} [options.onSuccess=(res) => res.data] - Success handler
- * @param   {Function} [options.onError=(error) => { throw error }] - Error handler
+ * @param   {SuccessCallback} [options.onSuccess=(res) => res.data] - Success handler
+ * @param   {ErrorCallback} [options.onError=(error) => { throw error }] - Error handler
  * @returns {UseFetch}
  *
  * @import import { useFetch } from '@react-jopau/hooks';
  * @example
  * // Without options
- * const { data, loading, error } = useFetch('https://jsonplaceholder.typicode.com/todos/1');
+ * type Data = { id: number; title: string };
+ * type Error = { message: string };
  *
- * console.log(data); // { userId: 1, id: 1, title: 'delectus aut autem', completed: false }
+ * const { data, loading, error } = useFetch<Data, Error>('https://jsonplaceholder.typicode.com/todos/1');
+ *
  * console.log(loading); // true | false
- * console.log(error); // null
+ * console.log(data); // { id: 1, title: 'delectus aut autem' }
+ * console.log(error); // null | { message: '...' }
  * @example
  * // With options
  * const { data } = useFetch('https://jsonplaceholder.typicode.com/todos', {
@@ -44,25 +56,25 @@ type useFetchError<U> = U | null;
  * });
  * @example
  * // With success and error handlers
- * const { data, error } = useFetch('https://jsonplaceholder.typicode.com/todos/1', {
+ * const { data, error } = useFetch<{}, Error>('https://jsonplaceholder.typicode.com/todos/1', {
  *  onSuccess: (res) => res.data,
- *  onError: (error) => throw { message: error.message }
+ *  onError: (error) => { throw { message: error.message } }
  * });
  */
 export const useFetch = <T, U = {}>(
   path: string,
   options?: {
     method?: string;
-    params?: Record<string, string>;
+    params?: Record<string, unknown>;
     headers?: Record<string, string>;
-    body?: Record<string, string>;
-    onSuccess?: (data: unknown) => useFetchData<T>;
-    onError?: (error: unknown) => useFetchError<U>;
+    body?: Record<string, unknown>;
+    onSuccess?: (data: unknown) => T | null;
+    onError?: (error: unknown) => U | null;
   }
 ): {
-  data: useFetchData<T>;
+  data: T | null;
   loading: boolean;
-  error: useFetchError<U>;
+  error: U | null;
 } => {
   const fetcher = () => {
     return axios
