@@ -101,9 +101,7 @@ const generateComponentDocs = async () => {
       );
     });
   } catch (error) {
-    console.log(
-      clc.red('There was an error generating the documentation for', componentPath, error)
-    );
+    console.log(clc.red('There was an error generating the documentation for', error));
   }
 };
 
@@ -111,16 +109,14 @@ const generateIntroductionDocs = async () => {
   try {
     console.log('Generating introduction documentation...');
 
-    const introductionMDXPath = 'packages/components/src/introduction.stories.mdx';
+    const introductionMDXPath = 'packages/components/src/About.stories.mdx';
     const files = await glob(introductionMDXPath);
     const data = fs.readFileSync(files[0], { encoding: 'utf8' });
     const introductionItemsTemplate = introductionMDXTemplate(introComponentsProps);
 
     writeIntroduction(introductionMDXPath, data, introductionItemsTemplate);
   } catch (error) {
-    console.log(
-      clc.red('There was an error generating the introduction for', componentPath, error)
-    );
+    console.log(clc.red('There was an error generating the introduction for', error));
   }
 };
 

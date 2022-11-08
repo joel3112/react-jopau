@@ -30,7 +30,7 @@ export const parameters = {
   options: {
     storySort: {
       method: 'alphabetical',
-      order: ['Introduction', 'Components', ['Introduction', '*'], 'Hooks', ['Introduction', '*']]
+      order: ['Introduction', 'Components', ['About', '*'], 'Hooks', ['About', '*']]
     }
   }
 };

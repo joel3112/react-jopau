@@ -50,7 +50,7 @@ export const SBCard = ({
 }) => {
   return (
     <LinkTo kind={kind} story="default">
-      <div className="h-[150px] group relative p-4 flex flex-col gap-3 bg-background hover:bg-[#eee] border border-secondary border-solid rounded-md shadow-md cursor-pointer">
+      <div className="h-[150px] group relative p-4 flex flex-col gap-3 bg-background hover:bg-[#eee] border border-primary border-solid shadow-md cursor-pointer">
         <div className="text-secondary font-semibold text-[18px]">{title}</div>
         <span className="text-text text-[15px] line-clamp-2">{children}</span>
 

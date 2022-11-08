@@ -33,6 +33,14 @@ const parseComponentName = (componentName) =>
     .map((t) => capitalize(t))
     .join(' ');
 
+const parseTypes = (type) => {
+  return type
+    ? {
+        name: get(type, 'names', []).join(' \\| ')
+      }
+    : null;
+};
+
 const parseJSONSchemaProps = (prop, requiredProp = true) => {
   const { name, type, description, defaultvalue, optional } = prop;
   return {
@@ -40,11 +48,7 @@ const parseJSONSchemaProps = (prop, requiredProp = true) => {
     description: parseDescription(description),
     name,
     required: requiredProp && !optional,
-    type: type
-      ? {
-          name: get(type, 'names', []).join(' \\| ')
-        }
-      : null
+    type: parseTypes(type)
   };
 };
 
@@ -89,6 +93,7 @@ module.exports = {
   getCustomTag,
   getStories,
   parseDescription,
+  parseTypes,
   parseComponentName,
   parseJSONSchemaProps,
   parseComponentCardProps,
