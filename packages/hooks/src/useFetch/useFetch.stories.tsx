@@ -1,6 +1,12 @@
 import { useState } from 'react';
 import { Space } from '@react-jopau/components/space';
-import { TWContainer, TWInput, TWItem, TWJSONPreview } from '@react-jopau/styles/components';
+import {
+  TWButton,
+  TWContainer,
+  TWInput,
+  TWItem,
+  TWJSONPreview
+} from '@react-jopau/styles/components';
 import { useFetch } from './useFetch';
 import docs from './readme.mdx';
 
@@ -14,7 +20,10 @@ export default {
 };
 
 const Template = () => {
-  const [path, setPath] = useState('https://jsonplaceholder.typicode.com/todos/1');
+  const [inputValue, setInputValue] = useState<string>(
+    'https://jsonplaceholder.typicode.com/todos/1'
+  );
+  const [path, setPath] = useState(inputValue);
   const { data, loading, error } = useFetch(path, {
     method: 'GET',
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -33,7 +42,12 @@ const Template = () => {
 
   return (
     <TWContainer>
-      <TWInput value={path} label="Path" onChange={setPath} />
+      <Space direction="column" gap={5}>
+        <TWInput value={inputValue} label="Path" onInput={setInputValue} />
+        <TWButton disabled={!inputValue} onClick={() => setPath(inputValue)}>
+          Load
+        </TWButton>
+      </Space>
 
       <Space direction="column" gap={10}>
         <TWItem label="loading">{loading ? 'true' : 'false'}</TWItem>

@@ -74,11 +74,11 @@ export const TWText = ({
 export const TWInput = ({
   label,
   value,
-  onChange
+  onInput
 }: {
   label: string;
   value: string;
-  onChange: (value: string) => void;
+  onInput: (value: string) => void;
 }) => {
   return (
     <label className="flex flex-col gap-1">
@@ -86,9 +86,32 @@ export const TWInput = ({
       <input
         className="w-[400px] p-2 border border-border border-solid font-light bg-background text-text focus:border-gray-dark outline-none"
         value={value}
-        onChange={(e) => onChange(e.target.value)}
+        onInput={(e) => onInput(e.currentTarget.value)}
       />
     </label>
+  );
+};
+
+/* ----------------------------------------------------------- */
+
+export const TWButton = ({
+  children,
+  disabled,
+  onClick
+}: {
+  children: ReactNode;
+  disabled?: boolean;
+  onClick: () => void;
+}) => {
+  return (
+    <button
+      className="text-white bg-secondary hover:opacity-80 py-3 px-4 w-fit text-md disabled:bg-border"
+      disabled={disabled}
+      onClick={() => {
+        onClick();
+      }}>
+      {children}
+    </button>
   );
 };
 

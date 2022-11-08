@@ -1,0 +1,56 @@
+import { SBArgsTable, SBDescription, SBSubTitle, SBTitle } from '@react-jopau/styles/components';
+
+<SBTitle>useLocalStorage</SBTitle>
+
+<SBDescription>Persist a value in local storage and keep it in sync with the state.</SBDescription>
+
+```tsx dark
+import { useLocalStorage } from '@react-jopau/hooks';
+```
+
+```tsx dark
+const [darkMode, setDarkMode] = useLocalStorage<boolean>('key', true);
+
+const handleClick = () => setDarkMode((prev) => !prev);
+
+return <button onClick={handleClick}>{darkMode ? 'Dark mode' : 'Light mode'}</button>;
+```
+
+<SBSubTitle>Params</SBSubTitle>
+
+<SBArgsTable
+  rows={{
+    initialValue: {
+      name: 'initialValue',
+      description: 'The initial value to use if there is no value in local storage.',
+      required: true,
+      type: 'T'
+    },
+    key: {
+      name: 'key',
+      description: 'The key to use in local storage.',
+      required: true,
+      type: 'string'
+    }
+  }}
+/>
+
+<SBSubTitle>Returns</SBSubTitle>
+
+<SBArgsTable
+  noDefaults
+  rows={{
+    'result[0]': {
+      name: 'result[0]',
+      description: 'The value of the local storage',
+      required: false,
+      type: 'T'
+    },
+    'result[1]': {
+      name: 'result[1]',
+      description: 'The setter of the local storage',
+      required: false,
+      type: 'Dispatch.<SetStateAction.<T>>'
+    }
+  }}
+/>
