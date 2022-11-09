@@ -9,12 +9,17 @@ module.exports = {
     {
       directory: '../packages/components',
       titlePrefix: 'Components',
-      files: 'src/**/*.stories.*'
+      files: 'src/ui/**/*.stories.*'
     },
     {
       directory: '../packages/hooks',
       titlePrefix: 'Hooks',
       files: 'src/**/*.stories.*'
+    },
+    {
+      directory: '../packages/components',
+      titlePrefix: 'Providers',
+      files: 'src/contexts/**/*.stories.*'
     }
   ],
   addons: [

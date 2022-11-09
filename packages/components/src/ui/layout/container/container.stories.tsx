@@ -3,7 +3,7 @@ import { Container } from './container';
 import docs from './readme.mdx';
 
 export default {
-  title: 'Container',
+  title: 'Layout/Container',
   component: Container,
   parameters: {
     docs: {

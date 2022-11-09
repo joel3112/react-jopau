@@ -24,7 +24,7 @@ type ThemeProviderProps = {
   /**
    * Defines configuration or the theme key.
    */
-  config: ThemeConfig | string;
+  config: ThemeConfig;
   /**
    * Flag to enable dark mode.
    */
@@ -54,7 +54,11 @@ const globalStyles = globalCss({
  * @param   {ThemeProviderProps} props - Props injected to the provider.
  * @returns {JSX.Element} Rendered provider.
  *
- * @imports import { Header } from '@react-jopau/components/header';
+ * @imports import { ThemeProvider } from '@react-jopau/components/contexts/theme';
+ * @example
+ * <ThemeProvider config={customConfig} darkMode={false}>
+ *    <div>Content</div>
+ * </ThemeProvider>
  */
 export const ThemeProvider = ({ children, config, darkMode }: ThemeProviderProps) => {
   const [dark, setDark] = useState<boolean>();

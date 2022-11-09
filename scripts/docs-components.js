@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const glob = require('glob-promise');
 const clc = require('cli-color');
-const { get } = require('lodash');
+const { get, last } = require('lodash');
 const {
   getStories,
   getCustomTag,
@@ -13,7 +13,7 @@ const {
 } = require('./utils');
 
 // Component templates
-const introComponentsProps = [];
+let introComponentsProps = [];
 const jsdoc2md = require('jsdoc-to-markdown');
 const docgen = require('react-docgen-typescript');
 const DocGenMarkdownRenderer = require('./templates/docgen-markdown-renderer.js');
@@ -38,9 +38,10 @@ const parseOptions = {
   }
 };
 
-const generateComponentDocs = async () => {
+const generateComponentDocs = async (type) => {
+  introComponentsProps = [];
   try {
-    const files = await glob('packages/components/src/**/*.{ts,tsx}', {
+    const files = await glob(`packages/components/src/${type}/**/*.{ts,tsx}`, {
       ignore: ['**/*.{test,stories,styled}.{ts,tsx}', '**/index.{ts,tsx}']
     });
 
@@ -50,13 +51,13 @@ const generateComponentDocs = async () => {
       /**
        * Generate JSON schema from JSDoc
        */
-      const jsdocSchema = jsdoc2md.getTemplateDataSync({
-        files: componentPath,
-        configure: './jsdoc2md.json'
-      });
-      introComponentsProps.push(
-        parseComponentCardProps('components', componentName, jsdocSchema[0])
+      const jsdocSchema = last(
+        jsdoc2md.getTemplateDataSync({
+          files: componentPath,
+          configure: './jsdoc2md.json'
+        })
       );
+      introComponentsProps.push(parseComponentCardProps('components', componentName, jsdocSchema));
 
       // Generate documentation from JSDoc comments
       const customParser = docgen.withCompilerOptions(
@@ -68,7 +69,7 @@ const generateComponentDocs = async () => {
           ...parseOptions
         }
       );
-      const componentDocs = customParser.parse(componentPath);
+      const componentDocs = last(customParser.parse(componentPath));
       const stories = getStories(componentPath, componentName);
 
       /**
@@ -81,8 +82,8 @@ const generateComponentDocs = async () => {
       writeFile(
         documentationMDXPath,
         rendererMDX.render(componentPath, {
-          ...componentDocs[0],
-          imports: getCustomTag(get(jsdocSchema, '[0].customTags', []), 'imports'),
+          ...componentDocs,
+          imports: getCustomTag(get(jsdocSchema, 'customTags', []), 'imports'),
           stories: stories || {}
         })
       );
@@ -97,9 +98,9 @@ const generateComponentDocs = async () => {
       writeFile(
         documentationMDPath,
         rendererMD.render(componentPath, {
-          ...componentDocs[0],
-          imports: getCustomTag(get(jsdocSchema, '[0].customTags', []), 'imports'),
-          examples: get(jsdocSchema, '[0].examples')
+          ...componentDocs,
+          imports: getCustomTag(get(jsdocSchema, 'customTags', []), 'imports'),
+          examples: get(jsdocSchema, 'examples')
         })
       );
 
@@ -115,9 +116,9 @@ const generateComponentDocs = async () => {
   }
 };
 
-const generateIntroductionDocs = async () => {
+const generateIntroductionDocs = async (type) => {
   try {
-    const introductionMDXPath = 'packages/components/src/About.stories.mdx';
+    const introductionMDXPath = `packages/components/src/${type}/About.stories.mdx`;
     const files = await glob(introductionMDXPath);
     const data = fs.readFileSync(files[0], { encoding: 'utf8' });
     const introductionItemsTemplate = introductionMDXTemplate(introComponentsProps);
@@ -131,8 +132,12 @@ const generateIntroductionDocs = async () => {
 };
 
 const generateAllDocs = async () => {
-  await generateComponentDocs();
-  await generateIntroductionDocs();
+  await generateComponentDocs('ui');
+  await generateIntroductionDocs('ui');
+
+  await generateComponentDocs('contexts');
+  await generateIntroductionDocs('contexts');
+
   console.log(preffix, clc.green('Documentation generated successfully!'));
 };
 

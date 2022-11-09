@@ -1,10 +1,9 @@
-import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Header } from './header';
 import docs from './readme.mdx';
 
 export default {
-  title: 'Header',
+  title: 'Layout/Header',
   component: Header,
   parameters: {
     docs: {

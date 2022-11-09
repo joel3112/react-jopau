@@ -140,9 +140,8 @@ class DocgenMarkdownRenderer {
   render(filePath, docs) {
     return this.options.template.instantiate(
       {
-        componentName: docs.displayName
-          ? docs.displayName
-          : path.basename(filePath, path.extname(filePath)),
+        componentName: docs.displayName,
+        componentPath: path.basename(filePath, path.extname(filePath)),
         description: docs.description,
         package: docs.package,
         imports: docs.imports,

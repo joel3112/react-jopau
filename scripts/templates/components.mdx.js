@@ -7,7 +7,8 @@ const prop =
   ({ context }) =>
     get(context, key);
 const componentName = prop('componentName');
-const componentPath = (args) => prop('componentName')(args).toLowerCase();
+const storyId = (args) => prop('componentName')(args).toLowerCase();
+const componentPath = prop('componentPath');
 
 const templateCreator = template({});
 
@@ -35,12 +36,12 @@ import { ${componentName} } from './${componentPath}';
 
 <SBDescription>${prop('description')}</SBDescription>
 
-\`\`\`tsx dark
+\`\`\`jsx dark
 ${prop('imports')}
 \`\`\`
 
 <Canvas withToolbar>
-  <Story id="components-${componentPath}--default" />
+  <Story id="components-${storyId}--default" />
 </Canvas>
 
 <SBSubTitle>Properties</SBSubTitle>

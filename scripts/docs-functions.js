@@ -163,6 +163,7 @@ const generateIntroductionDocs = async () => {
 const generateAllDocs = async () => {
   await generateFunctionDocs();
   await generateIntroductionDocs();
+
   console.log(preffix, clc.green('Documentation generated successfully!'));
 };
 
