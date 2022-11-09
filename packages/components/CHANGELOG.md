@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.11.0](https://github.com/joel3112/react-jopau/compare/v0.10.1...v0.11.0) (2022-11-09)
+
+### 📝 Documentation
+
+- sort required first props ([f82030e](https://github.com/joel3112/react-jopau/commit/f82030eaab69c1657d32b8e53a3973889264fbc5))
+- **styles:** update styles readme ([bec2e95](https://github.com/joel3112/react-jopau/commit/bec2e95d821c585c7a7617535e5ccbdccdfccdf7))
+- update mdx introduction packages ([663e039](https://github.com/joel3112/react-jopau/commit/663e0392c5f3afc2b88c564e0fb00fbb09d0758d))
+
+### 🏠 Internal
+
+- add About section storybook ([d872b8b](https://github.com/joel3112/react-jopau/commit/d872b8bbfb43d0072768e3ae953b17c5e3b38e1c))
+- darkMode storybook queryparam ([70a655f](https://github.com/joel3112/react-jopau/commit/70a655fc982eeb8e26181d3d26a21c19b7baef95))
+- theme/scheme stored ([a9e63ec](https://github.com/joel3112/react-jopau/commit/a9e63ec7fb09428654946b741a6314e65107becd))
+
+### 🐛 Bug Fixes
+
+- jsdoc lint components/hooks ([ab00a88](https://github.com/joel3112/react-jopau/commit/ab00a88c0752f0f6027004628690eb593f3fea80))
+
 ## [0.10.1](https://github.com/joel3112/react-jopau/compare/v0.10.0...v0.10.1) (2022-11-06)
 
 **Note:** Version bump only for package @react-jopau/components

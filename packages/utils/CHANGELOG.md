@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.11.0](https://github.com/joel3112/react-jopau/compare/v0.10.1...v0.11.0) (2022-11-09)
+
+### 📝 Documentation
+
+- update mdx introduction packages ([663e039](https://github.com/joel3112/react-jopau/commit/663e0392c5f3afc2b88c564e0fb00fbb09d0758d))
+
 ## [0.10.0](https://github.com/joel3112/react-jopau/compare/v0.9.3...v0.10.0) (2022-11-06)
 
 **Note:** Version bump only for package @react-jopau/utils

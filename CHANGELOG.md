@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.11.0](https://github.com/joel3112/react-jopau/compare/v0.10.1...v0.11.0) (2022-11-09)
+
+### 📝 Documentation
+
+- sort required first props ([f82030e](https://github.com/joel3112/react-jopau/commit/f82030eaab69c1657d32b8e53a3973889264fbc5))
+- **styles:** update styles readme ([bec2e95](https://github.com/joel3112/react-jopau/commit/bec2e95d821c585c7a7617535e5ccbdccdfccdf7))
+- update mdx introduction packages ([663e039](https://github.com/joel3112/react-jopau/commit/663e0392c5f3afc2b88c564e0fb00fbb09d0758d))
+
+### 🚀 New Features
+
+- **hooks:** add useLocalStorage hook ([c6e9d30](https://github.com/joel3112/react-jopau/commit/c6e9d3096b278e0096f5bbb69a1ad3621ed70df4))
+
+### 🏠 Internal
+
+- add About section storybook ([d872b8b](https://github.com/joel3112/react-jopau/commit/d872b8bbfb43d0072768e3ae953b17c5e3b38e1c))
+- add callbacks/throws to docs template ([8a90f8e](https://github.com/joel3112/react-jopau/commit/8a90f8ed446ef6c967e89770fb530ae47cd89b41))
+- add eslint jsdoc ([8835e21](https://github.com/joel3112/react-jopau/commit/8835e2127a21b0565649ba6707129005a996dd1f))
+- add scripts introduction docs ([31fec7c](https://github.com/joel3112/react-jopau/commit/31fec7cc5daa6625a311fe96827bd36e6758be5a))
+- add tailwind plugin ([a01bee3](https://github.com/joel3112/react-jopau/commit/a01bee39c68008d86aefe48e76336c93592322fc))
+- darkMode storybook queryparam ([70a655f](https://github.com/joel3112/react-jopau/commit/70a655fc982eeb8e26181d3d26a21c19b7baef95))
+- theme/scheme stored ([a9e63ec](https://github.com/joel3112/react-jopau/commit/a9e63ec7fb09428654946b741a6314e65107becd))
+
+### 🐛 Bug Fixes
+
+- jsdoc lint components/hooks ([ab00a88](https://github.com/joel3112/react-jopau/commit/ab00a88c0752f0f6027004628690eb593f3fea80))
+
 ## [0.10.1](https://github.com/joel3112/react-jopau/compare/v0.10.0...v0.10.1) (2022-11-06)
 
 ### 🐛 Bug Fixes
