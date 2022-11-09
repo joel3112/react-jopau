@@ -66,7 +66,7 @@ ${({ context }) => {
 }}
 ${({ context }) => {
   let examples = '';
-  if (context.examples.length > 0) {
+  if (context.examples && context.examples.length > 0) {
     examples = '#### Examples';
     context.examples.forEach((example) => {
       examples += `${os.EOL}${os.EOL}\`\`\`tsx${os.EOL}${example}${os.EOL}\`\`\``;

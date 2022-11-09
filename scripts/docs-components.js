@@ -40,12 +40,12 @@ const parseOptions = {
 
 const generateComponentDocs = async (type) => {
   introComponentsProps = [];
-  try {
-    const files = await glob(`packages/components/src/${type}/**/*.{ts,tsx}`, {
-      ignore: ['**/*.{test,stories,styled}.{ts,tsx}', '**/index.{ts,tsx}']
-    });
+  const files = await glob(`packages/components/src/${type}/**/*.{ts,tsx}`, {
+    ignore: ['**/*.{test,stories,styled}.{ts,tsx}', '**/index.{ts,tsx}']
+  });
 
-    files.forEach((componentPath) => {
+  files.forEach((componentPath) => {
+    try {
       const componentName = path.basename(componentPath, path.extname(componentPath));
 
       /**
@@ -57,7 +57,7 @@ const generateComponentDocs = async (type) => {
           configure: './jsdoc2md.json'
         })
       );
-      introComponentsProps.push(parseComponentCardProps('components', componentName, jsdocSchema));
+      introComponentsProps.push(parseComponentCardProps(componentPath, jsdocSchema));
 
       // Generate documentation from JSDoc comments
       const customParser = docgen.withCompilerOptions(
@@ -70,7 +70,7 @@ const generateComponentDocs = async (type) => {
         }
       );
       const componentDocs = last(customParser.parse(componentPath));
-      const stories = getStories(componentPath, componentName);
+      const stories = getStories(componentPath, jsdocSchema);
 
       /**
        * Generate file MDX
@@ -83,7 +83,7 @@ const generateComponentDocs = async (type) => {
         documentationMDXPath,
         rendererMDX.render(componentPath, {
           ...componentDocs,
-          imports: getCustomTag(get(jsdocSchema, 'customTags', []), 'imports'),
+          imports: getCustomTag(jsdocSchema, 'imports'),
           stories: stories || {}
         })
       );
@@ -99,7 +99,7 @@ const generateComponentDocs = async (type) => {
         documentationMDPath,
         rendererMD.render(componentPath, {
           ...componentDocs,
-          imports: getCustomTag(get(jsdocSchema, 'customTags', []), 'imports'),
+          imports: getCustomTag(jsdocSchema, 'imports'),
           examples: get(jsdocSchema, 'examples')
         })
       );
@@ -110,10 +110,14 @@ const generateComponentDocs = async (type) => {
         !stories ? `(No stories found)` : '',
         clc.green('✔')
       );
-    });
-  } catch (error) {
-    console.log(preffix, clc.red('There was an error generating the documentation for', error));
-  }
+    } catch (error) {
+      console.log(
+        preffix,
+        clc.red('There was an error generating the documentation for', componentPath)
+      );
+      throw error;
+    }
+  });
 };
 
 const generateIntroductionDocs = async (type) => {
@@ -132,9 +136,11 @@ const generateIntroductionDocs = async (type) => {
 };
 
 const generateAllDocs = async () => {
+  console.log(preffix, '[UI] Generating documentation...');
   await generateComponentDocs('ui');
   await generateIntroductionDocs('ui');
 
+  console.log(preffix, '[Contexts] Generating documentation...');
   await generateComponentDocs('contexts');
   await generateIntroductionDocs('contexts');
 

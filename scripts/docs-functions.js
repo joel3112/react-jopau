@@ -8,10 +8,10 @@ const {
   writeFile,
   parseJSONSchemaProps,
   getCustomTag,
-  parseDescription,
   parseComponentCardProps,
   writeIntroduction,
-  parseTypes
+  parseTypes,
+  getComponentParsed
 } = require('./utils');
 
 // Component templates
@@ -26,12 +26,12 @@ const preffix = clc.yellow('@react-jopau/hooks:');
 console.log(preffix, 'Generating hooks documentation...');
 
 const generateFunctionDocs = async () => {
-  try {
-    const files = await glob('packages/hooks/src/**/use*.ts', {
-      ignore: ['**/*.{test,stories}.{ts,tsx}']
-    });
+  const files = await glob('packages/hooks/src/**/use*.ts', {
+    ignore: ['**/*.{test,stories}.{ts,tsx}']
+  });
 
-    files.forEach((componentPath) => {
+  files.forEach((componentPath) => {
+    try {
       const componentName = path.basename(componentPath, path.extname(componentPath));
 
       /**
@@ -41,17 +41,17 @@ const generateFunctionDocs = async () => {
         files: componentPath,
         configure: './jsdoc2md.json'
       });
-      introComponentsProps.push(parseComponentCardProps('hooks', componentName, jsdocSchema[0]));
+      introComponentsProps.push(parseComponentCardProps(componentPath, jsdocSchema[0]));
 
       /**
        * Generate JSON schema to render
        */
+      const { description, displayName } = getComponentParsed(componentPath, jsdocSchema[0]);
       const parsedSchema = {
         path: componentPath,
-        package: componentPath.split(path.sep)[1],
-        description: parseDescription(get(jsdocSchema, '[0].description'), ''),
-        displayName: get(jsdocSchema, '[0].name'),
-        imports: getCustomTag(get(jsdocSchema, '[0].customTags', []), 'imports'),
+        description,
+        displayName,
+        imports: getCustomTag(jsdocSchema[0], 'imports'),
         examples: get(jsdocSchema, '[0].examples'),
         params: get(jsdocSchema, '[0].params', []).reduce((acc, item) => {
           // Check if param is callback
@@ -139,10 +139,14 @@ const generateFunctionDocs = async () => {
       writeFile(documentationMDXPath, rendererMDX.render(componentPath, parsedSchema));
 
       console.log(preffix, clc.blue(componentName, '=>', componentPath), clc.green('✔'));
-    });
-  } catch (error) {
-    console.log(preffix, clc.red('There was an error generating the documentation for', error));
-  }
+    } catch (error) {
+      console.log(
+        preffix,
+        clc.red('There was an error generating the documentation for', componentPath)
+      );
+      throw error;
+    }
+  });
 };
 
 const generateIntroductionDocs = async () => {

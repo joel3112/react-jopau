@@ -14,5 +14,5 @@
       "@react-jopau/styles/*": ["../styles/dist/*"]
     }
   },
-  "exclude": ["node_modules", "src/**/*.test.tsx", "src/**/*.stories.tsx"]
+  "exclude": ["node_modules", "src/**/*.test.tsx", "src/**/*.stories.tsx", "__mocks__"]
 }

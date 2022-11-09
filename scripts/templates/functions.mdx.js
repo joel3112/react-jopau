@@ -41,7 +41,7 @@ ${prop('imports')}
 
 ${({ context }) => {
   let examples = '';
-  if (context.examples.length > 0) {
+  if (context.examples && context.examples.length > 0) {
     context.examples.forEach((example) => {
       examples += `${os.EOL}${os.EOL}\`\`\`tsx dark${os.EOL}${example}${os.EOL}\`\`\``;
     });

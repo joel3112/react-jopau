@@ -1,4 +1,5 @@
-import { Container, Header, Space } from '../src/ui/layout';
+// TODO: remove this after add apps folder
+import { Container, Header, Space } from './ui/layout';
 
 export const AppExample = () => {
   return (
