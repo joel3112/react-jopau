@@ -3,7 +3,7 @@ import * as React from 'react';
 import { addons, types } from '@storybook/addons';
 import { IconButton, Separator, TooltipLinkList, WithTooltip } from '@storybook/components';
 import { useLocalStorage } from '/packages/hooks/src/useLocalStorage';
-import { THEME_SELECTOR_STORAGE_KEY } from '/packages/styles/src/ThemeProvider';
+import { THEME_SELECTOR_STORAGE_KEY } from '/packages/styles/src/ThemeBuilder';
 import { themes } from '/packages/styles/src/themes';
 import { getColors } from '/packages/styles/src/utils';
 import { createStorybookTheme } from '../theme';

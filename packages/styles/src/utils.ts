@@ -1,15 +1,18 @@
-import { THEME_SELECTOR_STORAGE_KEY } from './ThemeProvider';
-import { ThemeConfig, ThemeProps, ThemePropValue } from './themes/types';
-import { themes, ThemeSchemes } from './themes';
+import { ThemeConfig, ThemeProps, ThemePropValue, themes, ThemeSchemes } from './themes';
+import { THEME_SELECTOR_STORAGE_KEY } from './ThemeBuilder';
 
-export const getThemeStored = (): string => {
+export const getThemeStored = (): string | null => {
+  if (typeof window === 'undefined') {
+    return null;
+  }
+
   const storedTheme = window.localStorage.getItem(THEME_SELECTOR_STORAGE_KEY);
   return storedTheme ? JSON.parse(storedTheme) : 'default';
 };
 
 export const getThemeInstance = (config?: ThemeConfig | string) => {
   if (!config) {
-    return themes[getThemeStored()].value;
+    return themes[getThemeStored() || 'default'].value;
   }
   if (typeof config === 'string') {
     return themes[config].value;

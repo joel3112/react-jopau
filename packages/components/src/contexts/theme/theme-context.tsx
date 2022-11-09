@@ -1,12 +1,40 @@
-import { createContext, ReactNode, useContext, useEffect, useState } from 'react';
+import { createContext, ReactNode, useEffect, useState } from 'react';
 import { globalCss } from '@stitches/react';
-import { ThemeBuilder } from './ThemeBuilder';
-import { ThemeConfig } from './themes/types';
-import { ThemeScheme } from './themes';
-import { computeScheme } from './utils';
+import { ThemeBuilder } from '@react-jopau/styles/ThemeBuilder';
+import { ThemeConfig, ThemeScheme } from '@react-jopau/styles/themes';
+import { computeScheme } from '@react-jopau/styles/utils';
 
-export const THEME_SELECTOR_STORAGE_KEY = 'key-theme-selector';
-export const DARK_MODE_STORAGE_KEY = 'key-dark-mode';
+/* ================================================================================================= */
+
+/**
+ * Theme context to be used to access the theme values or to change the theme.
+ */
+export const ThemeContext = createContext<{
+  config?: ThemeConfig | string;
+  darkMode?: boolean;
+  onToggle?: () => void;
+}>({});
+
+/* ================================================================================================= */
+
+type ThemeProviderProps = {
+  /**
+   * Defines the children of the component.
+   */
+  children: ReactNode;
+  /**
+   * Defines configuration or the theme key.
+   */
+  config: ThemeConfig | string;
+  /**
+   * Flag to enable dark mode.
+   */
+  darkMode?: boolean;
+} & typeof defaultProps;
+
+const defaultProps = {
+  darkMode: false
+};
 
 const globalStyles = globalCss({
   body: {
@@ -21,25 +49,13 @@ const globalStyles = globalCss({
   }
 });
 
-export const ThemeContext = createContext<{
-  config?: ThemeConfig | string;
-  darkMode?: boolean;
-  onToggle?: () => void;
-}>({});
-
-export const useThemeContext = () => useContext(ThemeContext);
-
-type ThemeProviderProps = {
-  children: ReactNode;
-  config: ThemeConfig | string;
-  darkMode?: boolean;
-};
-
 /**
  * Theme provider component that allows to define the theme and the scheme to use.
  *
  * @param   {ThemeProviderProps} props - Props injected to the provider.
  * @returns {JSX.Element} Rendered provider.
+ *
+ * @imports import { Header } from '@react-jopau/components/header';
  */
 export const ThemeProvider = ({ children, config, darkMode }: ThemeProviderProps) => {
   const [dark, setDark] = useState<boolean>();
@@ -69,3 +85,5 @@ export const ThemeProvider = ({ children, config, darkMode }: ThemeProviderProps
     </ThemeContext.Provider>
   );
 };
+
+ThemeProvider.defaultProps = defaultProps;
