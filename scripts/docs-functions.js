@@ -28,7 +28,7 @@ console.log(preffix, 'Generating hooks documentation...');
 const generateFunctionDocs = async () => {
   try {
     const files = await glob('packages/hooks/src/**/use*.ts', {
-      ignore: ['**/*.{test,stories}.{ts,tsx}', '**/utils.ts']
+      ignore: ['**/*.{test,stories}.{ts,tsx}']
     });
 
     files.forEach((componentPath) => {

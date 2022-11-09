@@ -1,5 +1,5 @@
 import { create } from '@storybook/theming';
-import { getColors, getProps, getTheme, getThemeStored } from '/packages/styles/src/utils';
+import { getColors, getProps, getTheme, getThemeStored } from '/packages/styles/src/theme';
 
 export const createStorybookTheme = (themeKey = 'default') => {
   const currentTheme = getThemeStored() || themeKey;

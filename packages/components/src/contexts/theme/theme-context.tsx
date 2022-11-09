@@ -1,10 +1,9 @@
 import { createContext, ReactNode, useEffect, useState } from 'react';
 import { globalCss } from '@stitches/react';
 import { ThemeBuilder } from '@react-jopau/styles/ThemeBuilder';
-import { ThemeConfig, ThemeScheme } from '@react-jopau/styles/themes';
-import { computeScheme } from '@react-jopau/styles/utils';
+import { computeScheme, ThemeConfig, ThemeScheme } from '@react-jopau/styles/theme';
 
-/* ================================================================================================= */
+/* ==== context ================================================================ */
 
 /**
  * Theme context to be used to access the theme values or to change the theme.
@@ -15,7 +14,7 @@ export const ThemeContext = createContext<{
   onToggle?: () => void;
 }>({});
 
-/* ================================================================================================= */
+/* ==== provider =============================================================== */
 
 type ThemeProviderProps = {
   /**

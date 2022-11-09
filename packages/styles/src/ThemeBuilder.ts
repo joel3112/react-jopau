@@ -1,10 +1,16 @@
 import { createStitches, styled } from '@stitches/react';
-import { ThemeConfig, ThemeProps, ThemePropValue, ThemeScheme, ThemeStitches } from './themes';
-import { getBreakpoints, getColors, getTheme, getThemeInstance } from './utils';
 import { BreakpointsRules } from './breakpoint';
-
-export const THEME_SELECTOR_STORAGE_KEY = 'key-theme-selector';
-export const DARK_MODE_STORAGE_KEY = 'key-dark-mode';
+import {
+  getBreakpoints,
+  getColors,
+  getTheme,
+  getThemeInstance,
+  ThemeConfig,
+  ThemeProps,
+  ThemePropValue,
+  ThemeScheme,
+  ThemeStitches
+} from './theme';
 
 export class ThemeBuilder {
   styledTheme: ThemeStitches = styled;

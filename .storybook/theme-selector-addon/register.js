@@ -3,9 +3,8 @@ import * as React from 'react';
 import { addons, types } from '@storybook/addons';
 import { IconButton, Separator, TooltipLinkList, WithTooltip } from '@storybook/components';
 import { useLocalStorage } from '/packages/hooks/src/useLocalStorage';
-import { THEME_SELECTOR_STORAGE_KEY } from '/packages/styles/src/ThemeBuilder';
+import { getColors, THEME_SELECTOR_STORAGE_KEY } from '/packages/styles/src/theme';
 import { themes } from '/packages/styles/src/themes';
-import { getColors } from '/packages/styles/src/utils';
 import { createStorybookTheme } from '../theme';
 
 const renderPrimaryColorDot = (themeKey) => {
