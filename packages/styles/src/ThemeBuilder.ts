@@ -12,6 +12,8 @@ export class ThemeBuilder {
 
   /**
    * Creates a new theme by configuration or theme key.
+   *
+   * @param {(ThemeConfig | string)} [config] - Theme configuration or theme key
    */
   createTheme(config?: ThemeConfig | string) {
     const currentConfig = getThemeInstance(config);

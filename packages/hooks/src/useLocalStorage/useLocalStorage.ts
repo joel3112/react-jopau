@@ -4,6 +4,7 @@ import { Dispatch, SetStateAction, useState } from 'react';
  * @template T The type of the value to persist.
  */
 /**
+ * @template T
  * @typedef  {Array} UseLocalStorage
  * @property {T} 0 - The value of the local storage
  * @property {Dispatch<SetStateAction<T>>} 1 - The setter of the local storage
@@ -11,11 +12,12 @@ import { Dispatch, SetStateAction, useState } from 'react';
 /**
  * Persist a value in local storage and keep it in sync with the state.
  *
+ * @template T
  * @param   {string} key The key to use in local storage.
  * @param   {T} initialValue The initial value to use if there is no value in local storage.
  * @returns {UseLocalStorage} The value and a setter for the value.
  *
- * @import import { useLocalStorage } from '@react-jopau/hooks';
+ * @imports import { useLocalStorage } from '@react-jopau/hooks';
  * @example
  * const [darkMode, setDarkMode] = useLocalStorage<boolean>('key', true);
  *

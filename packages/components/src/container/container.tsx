@@ -49,7 +49,10 @@ const computeMaxWidth = (maxWidth?: number | 'xs' | 'sm' | 'md' | 'lg' | 'xl'): 
 /**
  * Containers are used to constrain a content's width to the current breakpoint.
  *
- * @import import { Container } from '@react-jopau/components/container';
+ * @param   {ContainerProps} props - Props injected to the component.
+ * @returns {JSX.Element} Rendered component.
+ *
+ * @imports import { Container } from '@react-jopau/components/container';
  * @example
  * <Container gap={10} maxWidth={1000} centered>
  *    <p>lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>

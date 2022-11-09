@@ -29,18 +29,19 @@ export const ThemeContext = createContext<{
 
 export const useThemeContext = () => useContext(ThemeContext);
 
-/**
- * Theme provider component that allows to define the theme and the scheme to use.
- */
-export const ThemeProvider = ({
-  children,
-  config,
-  darkMode
-}: {
+type ThemeProviderProps = {
   children: ReactNode;
   config: ThemeConfig | string;
   darkMode?: boolean;
-}) => {
+};
+
+/**
+ * Theme provider component that allows to define the theme and the scheme to use.
+ *
+ * @param   {ThemeProviderProps} props - Props injected to the provider.
+ * @returns {JSX.Element} Rendered provider.
+ */
+export const ThemeProvider = ({ children, config, darkMode }: ThemeProviderProps) => {
   const [dark, setDark] = useState<boolean>();
   const [schemes, setSchemes] = useState<{ lightTheme?: ThemeScheme; darkTheme?: ThemeScheme }>({});
 

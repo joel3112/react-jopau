@@ -21,7 +21,8 @@ const componentMDTemplate = require('./templates/components.md');
 const componentMDXTemplate = require('./templates/components.mdx');
 const introductionMDXTemplate = require('./templates/introduction.mdx');
 
-console.log('Generating components documentation...');
+const preffix = clc.yellow('@react-jopau/components:');
+console.log(preffix, 'Generating components documentation...');
 
 const parseOptions = {
   propFilter: (prop) => {
@@ -45,8 +46,6 @@ const generateComponentDocs = async () => {
 
     files.forEach((componentPath) => {
       const componentName = path.basename(componentPath, path.extname(componentPath));
-
-      console.log(clc.blue('-', componentName, '>>', componentPath));
 
       /**
        * Generate JSON schema from JSDoc
@@ -95,35 +94,37 @@ const generateComponentDocs = async () => {
         documentationMDPath,
         rendererMD.render(componentPath, {
           ...componentDocs[0],
-          import: getCustomTag(get(jsdocSchema, '[0].customTags', []), 'import'),
+          imports: getCustomTag(get(jsdocSchema, '[0].customTags', []), 'imports'),
           examples: get(jsdocSchema, '[0].examples')
         })
       );
+
+      console.log(preffix, clc.blue(componentName, '=>', componentPath), clc.green('✔'));
     });
   } catch (error) {
-    console.log(clc.red('There was an error generating the documentation for', error));
+    console.log(preffix, clc.red('There was an error generating the documentation for', error));
   }
 };
 
 const generateIntroductionDocs = async () => {
   try {
-    console.log('Generating introduction documentation...');
-
     const introductionMDXPath = 'packages/components/src/About.stories.mdx';
     const files = await glob(introductionMDXPath);
     const data = fs.readFileSync(files[0], { encoding: 'utf8' });
     const introductionItemsTemplate = introductionMDXTemplate(introComponentsProps);
 
     writeIntroduction(introductionMDXPath, data, introductionItemsTemplate);
+
+    console.log(preffix, clc.blue('Introduction'), clc.green('✔'));
   } catch (error) {
-    console.log(clc.red('There was an error generating the introduction for', error));
+    console.log(preffix, clc.red('There was an error generating the introduction for', error));
   }
 };
 
 const generateAllDocs = async () => {
   await generateComponentDocs();
   await generateIntroductionDocs();
-  console.log(clc.green('Documentation generated successfully!'));
+  console.log(preffix, clc.green('Documentation generated successfully!'));
 };
 
 generateAllDocs();

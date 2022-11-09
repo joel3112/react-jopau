@@ -7,24 +7,27 @@ import { getPropValue } from '@react-jopau/utils/object';
  * @template U Type of the error returned by the fetch
  */
 /**
+ * @template T, U
  * @typedef  {Object} UseFetch
  * @property {boolean} loading - Flag to indicate if the fetch is loading
  * @property {(T | null)} data - Data returned by the fetch
  * @property {(U | null)} error - Error returned by the fetch
  */
 /**
+ * @template T, U
  * @callback SuccessCallback
  * @param   {Object} data
  * @returns {(T | null)}
  */
 /**
+ * @template T, U
  * @callback ErrorCallback
  * @param  {Object} data
  * @throws {(U | null)}
  */
 /**
  * Fetch data from an API endpoint, with optional success and error handlers.
-
+ *
  * @param   {string} path - API endpoint
  * @param   {Object} [options] - Fetch options and handlers
  * @param   {("GET"|"POST"|"PUT"|"PATCH"|"DELETE")} [options.method=GET] - HTTP method
@@ -33,9 +36,9 @@ import { getPropValue } from '@react-jopau/utils/object';
  * @param   {Object} [options.body] - Request body
  * @param   {SuccessCallback} [options.onSuccess=(res) => res.data] - Success handler
  * @param   {ErrorCallback} [options.onError=(error) => { throw error }] - Error handler
- * @returns {UseFetch}
+ * @returns {UseFetch} The loading flag, the data and the error
  *
- * @import import { useFetch } from '@react-jopau/hooks';
+ * @imports import { useFetch } from '@react-jopau/hooks';
  * @example
  * // Without options
  * type Data = { id: number; title: string };

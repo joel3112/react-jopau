@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Space } from '@react-jopau/components/space';
-import { TWButton, TWContainer, TWInput, TWItem } from '@react-jopau/styles/components';
+import { TWButton, TWContainer, TWInput, TWItem, TWText } from '@react-jopau/styles/components';
 import { useLocalStorage } from './useLocalStorage';
 import docs from './readme.mdx';
 
@@ -30,7 +30,7 @@ export const Default = () => {
       </Space>
 
       <Space direction="column" gap={5}>
-        <span>LocalStorage</span>
+        <TWText>LocalStorage</TWText>
         <TWItem label={key}>{value}</TWItem>
       </Space>
     </TWContainer>

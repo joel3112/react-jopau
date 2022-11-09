@@ -29,7 +29,10 @@ const defaultProps = {};
 /**
  * Header component with logo, title and actions area.
  *
- * @import import { Header } from '@react-jopau/components/header';
+ * @param   {HeaderProps} props - Props injected to the component.
+ * @returns {JSX.Element} Rendered component.
+ *
+ * @imports import { Header } from '@react-jopau/components/header';
  * @example
  * <Header title="Title" renderLogo={() => <img src="./images/logo.png" alt="Logo" />}>
  *    <div>Action 1</div>

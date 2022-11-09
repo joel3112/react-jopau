@@ -54,9 +54,9 @@ const templateObject = templateCreator`### ${({ context }) => context.componentN
 }}
 ${({ context }) => {
   let module = '';
-  if (context.import) {
+  if (context.imports) {
     module = '#### Import';
-    module += `${os.EOL}${os.EOL}\`\`\`jsx${os.EOL}${context.import}${os.EOL}\`\`\``;
+    module += `${os.EOL}${os.EOL}\`\`\`jsx${os.EOL}${context.imports}${os.EOL}\`\`\``;
   }
   module += os.EOL;
 

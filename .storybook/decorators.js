@@ -13,7 +13,8 @@ const ThemeStoryProvider = ({ Story, context }) => {
   const [themeKey, setThemeKey] = useLocalStorage(THEME_SELECTOR_STORAGE_KEY, 'default');
   const [colorScheme, setColorScheme] = useLocalStorage(DARK_MODE_STORAGE_KEY, 'light');
   const storyRef = React.useRef(null);
-  const background = getColors(themeKey, colorScheme).background;
+  const backgroundColor = getColors(themeKey, colorScheme).background;
+  const textColor = getColors(themeKey, colorScheme).text;
 
   React.useEffect(() => {
     const channel = addons.getChannel();
@@ -30,9 +31,10 @@ const ThemeStoryProvider = ({ Story, context }) => {
   React.useLayoutEffect(() => {
     const storyEl = storyRef.current?.closest('.docs-story');
     if (storyEl) {
-      storyEl.style.backgroundColor = `${background}`;
+      storyEl.style.backgroundColor = `${backgroundColor}`;
+      storyEl.style.color = `${textColor}`;
     }
-    document.body.style.backgroundColor = `${background}`;
+    document.body.style.backgroundColor = `${backgroundColor}`;
   }, [storyRef.current, themeKey, colorScheme]);
 
   return (

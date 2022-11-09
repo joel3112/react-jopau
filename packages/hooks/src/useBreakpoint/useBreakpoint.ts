@@ -26,7 +26,7 @@ import {
  * @param   {number} [rules.xl] - Extra large breakpoint size
  * @returns {UseBreakpoint} Current breakpoint key and boolean values for each breakpoint
  *
- * @import import { useBreakpoint } from '@react-jopau/hooks';
+ * @imports import { useBreakpoint } from '@react-jopau/hooks';
  * @example
  * // Default breakpoint rules
  * // By default will use the default values: { xs: 650, sm: 960, md: 1280, lg: 1400, xl: 1920 }
@@ -65,9 +65,9 @@ export const useBreakpoint = (
   const [config, setConfig] = useState<BreakpointsHelper>(createBreakpoints({ rules }));
 
   useEffect(() => {
-    function handleResize() {
+    const handleResize = () => {
       setWindowWidth(window.innerWidth);
-    }
+    };
 
     window.addEventListener('resize', handleResize);
     handleResize();

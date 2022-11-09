@@ -50,7 +50,10 @@ const spacing = (gap?: number | Array<number>): string =>
 /**
  * Component flexbox-based spacing.
  *
- * @import import { Space } from '@react-jopau/components/space';
+ * @param   {SpaceProps} props - Props injected to the component.
+ * @returns {JSX.Element} Rendered component.
+ *
+ * @imports import { Space } from '@react-jopau/components/space';
  * @example
  * <Space direction="row" align="center" justify="center" gap={10}>
  *    <div>Item 1</div>

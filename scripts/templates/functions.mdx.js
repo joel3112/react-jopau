@@ -36,7 +36,7 @@ const templateObject = templateCreator`import { SBArgsTable, SBDescription, SBSu
 <SBDescription>${prop('description')}</SBDescription>
 
 \`\`\`tsx dark
-${prop('import')}
+${prop('imports')}
 \`\`\`
 
 ${({ context }) => {
