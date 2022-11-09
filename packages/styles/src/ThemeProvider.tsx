@@ -1,8 +1,12 @@
 import { createContext, ReactNode, useContext, useEffect, useState } from 'react';
 import { globalCss } from '@stitches/react';
 import { ThemeBuilder } from './ThemeBuilder';
-import { Theme, ThemeScheme } from './themes';
+import { ThemeConfig } from './themes/types';
+import { ThemeScheme } from './themes';
 import { computeScheme } from './utils';
+
+export const THEME_SELECTOR_STORAGE_KEY = 'key-theme-selector';
+export const DARK_MODE_STORAGE_KEY = 'key-dark-mode';
 
 const globalStyles = globalCss({
   body: {
@@ -18,25 +22,26 @@ const globalStyles = globalCss({
 });
 
 export const ThemeContext = createContext<{
-  config?: Theme | string;
+  config?: ThemeConfig | string;
   darkMode?: boolean;
   onToggle?: () => void;
 }>({});
 
 export const useThemeContext = () => useContext(ThemeContext);
 
+type ThemeProviderProps = {
+  children: ReactNode;
+  config: ThemeConfig | string;
+  darkMode?: boolean;
+};
+
 /**
  * Theme provider component that allows to define the theme and the scheme to use.
+ *
+ * @param   {ThemeProviderProps} props - Props injected to the provider.
+ * @returns {JSX.Element} Rendered provider.
  */
-export const ThemeProvider = ({
-  children,
-  config,
-  darkMode
-}: {
-  children: ReactNode;
-  config: Theme | string;
-  darkMode?: boolean;
-}) => {
+export const ThemeProvider = ({ children, config, darkMode }: ThemeProviderProps) => {
   const [dark, setDark] = useState<boolean>();
   const [schemes, setSchemes] = useState<{ lightTheme?: ThemeScheme; darkTheme?: ThemeScheme }>({});
 

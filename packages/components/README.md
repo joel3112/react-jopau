@@ -9,14 +9,19 @@
 
 ## Install
 
-```sh
+```shell
+# yarn
 yarn install @react-jopau/components
+
+# npm
+npm install @react-jopau/components
 ```
 
 ## Usage
 
 ```javascript
 import { Space } from '@react-jopau/components/space';
+import { Header } from '@react-jopau/components/header';
 ```
 
 ## Author

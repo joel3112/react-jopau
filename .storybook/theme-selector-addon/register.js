@@ -2,8 +2,10 @@
 import * as React from 'react';
 import { addons, types } from '@storybook/addons';
 import { IconButton, Separator, TooltipLinkList, WithTooltip } from '@storybook/components';
-import { getColors } from '/packages/styles/src/utils';
+import { useLocalStorage } from '/packages/hooks/src/useLocalStorage';
+import { THEME_SELECTOR_STORAGE_KEY } from '/packages/styles/src/ThemeProvider';
 import { themes } from '/packages/styles/src/themes';
+import { getColors } from '/packages/styles/src/utils';
 import { createStorybookTheme } from '../theme';
 
 const renderPrimaryColorDot = (themeKey) => {
@@ -23,8 +25,9 @@ const renderPrimaryColorDot = (themeKey) => {
 
 const ThemeSelectorAddon = ({ api }) => {
   const channel = addons.getChannel();
-  const [currentThemeKey, setCurrentThemeKey] = React.useState(
-    () => api.getQueryParam('theme') || 'default'
+  const [currentThemeKey, setCurrentThemeKey] = useLocalStorage(
+    THEME_SELECTOR_STORAGE_KEY,
+    'default'
   );
 
   React.useEffect(() => {
@@ -70,11 +73,6 @@ const ThemeSelectorAddon = ({ api }) => {
               onClick: () => {
                 setCurrentThemeKey(themeKey);
                 onHide();
-
-                const searchParams = new URLSearchParams(location.search);
-                searchParams.set('theme', themeKey);
-                // api.navigateUrl(`/?${decodeURIComponent(searchParams.toString())}`);
-                location.search = decodeURIComponent(searchParams.toString());
               }
             }))}
           />

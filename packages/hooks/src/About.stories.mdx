@@ -1,0 +1,45 @@
+import { Meta } from '@storybook/addon-docs';
+import { SBCard, SBDescription, SBSubTitle, SBTitle } from '@react-jopau/styles/components';
+import { ThemeProvider } from '@react-jopau/styles/ThemeProvider';
+import { getThemeStored } from '@react-jopau/styles/utils';
+
+<Meta title="About" />
+
+<SBTitle>@react-jopau/hooks 👋</SBTitle>
+<p>
+  <a href="https://www.npmjs.com/package/@react-jopau/hooks" target="_blank" rel="noreferrer">
+    <img alt="Version" src="https://img.shields.io/npm/v/@react-jopau/hooks.svg" />
+  </a>
+</p>
+
+<SBDescription>Common hooks for React projects</SBDescription>
+
+```shell dark
+# yarn
+yarn install @react-jopau/hooks
+
+# npm
+npm install @react-jopau/hooks
+```
+
+<SBSubTitle>List of hooks</SBSubTitle>
+
+<ThemeProvider config={getThemeStored()}>
+  <div className="!my-10 grid grid-cols-3 gap-5">
+
+[//]: # 'AUTO-GENERATED-CONTENT:START'
+
+<SBCard title="useBreakpoint" kind="hooks-usebreakpoint">
+  Get current breakpoint key and boolean values for each breakpoint.
+</SBCard>
+<SBCard title="useFetch" kind="hooks-usefetch">
+  Fetch data from an API endpoint, with optional success and error handlers.
+</SBCard>
+<SBCard title="useLocalStorage" kind="hooks-uselocalstorage">
+  Persist a value in local storage and keep it in sync with the state.
+</SBCard>
+
+[//]: # 'AUTO-GENERATED-CONTENT:END'
+
+  </div>
+</ThemeProvider>

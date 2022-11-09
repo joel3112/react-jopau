@@ -107,43 +107,45 @@ class DocgenMarkdownRenderer {
 
   /**
    * @typedef {Object} SchemaPropData
-   * @property {Object.<string, *>} [defaultValue]
-   * @property {string} description
-   * @property {string} name
-   * @property {Array.<Object.<string, *>>} [declarations]
-   * @property {boolean} [required]
-   * @property {Object.<string, string>} type
-   *
-   * @typedef {Object.<string, SchemaPropData>} SchemaProps
-   *
-   * @typedef {Object} SchemaDoc
-   * @property {Object} [tags]
-   * @property {string} [filePath]
-   * @property {string} description
-   * @property {string} displayName
-   * @property {string} package
-   * @property {string} import
-   * @property {Array.<*>} [methods]
-   * @property {string[]} [examples]
-   * @property {SchemaProps} [props]
-   * @property {SchemaProps} [stories]
-   * @property {SchemaProps} [params]
-   * @property {SchemaProps} [returns]
+   * @property {Object.<string, *>} [defaultValue] - The default value of the prop
+   * @property {string} description - The description of the prop
+   * @property {string} name - The name of the prop
+   * @property {Array.<Object.<string, *>>} [declarations] - The declarations of the prop
+   * @property {boolean} [required] - Whether the prop is required
+   * @property {Object.<string, string>} type - The types of the prop
    */
   /**
-   * @param{string}  file
-   * @param {SchemaDoc} docs
-   * @returns {Promise<WebAssembly.Instance> | Promise<WebAssembly.WebAssemblyInstantiatedSource>}
+   * @typedef {Object.<string, SchemaPropData>} SchemaProps
    */
-  render(file, docs) {
+  /**
+   * @typedef {Object} SchemaDoc
+   * @property {Object} [tags] - The tags of the component
+   * @property {string} [filePath] - The file path of the component
+   * @property {string} description - The description of the component
+   * @property {string} displayName - The display name of the component
+   * @property {string} package - The package of the component
+   * @property {string} imports - The imports of the component
+   * @property {Array.<*>} [methods] - The methods of the component
+   * @property {string[]} [examples] - The examples of the component
+   * @property {SchemaProps} [props] - The props of the component
+   * @property {SchemaProps} [stories] - The stories of the component
+   * @property {SchemaProps} [params] - The params of the component
+   * @property {SchemaProps} [returns] - The returns of the component
+   */
+  /**
+   * @param   {string} filePath - The file path of the component
+   * @param   {SchemaDoc} docs - The docs template data
+   * @returns {string} The rendered markdown
+   */
+  render(filePath, docs) {
     return this.options.template.instantiate(
       {
         componentName: docs.displayName
           ? docs.displayName
-          : path.basename(file, path.extname(file)),
+          : path.basename(filePath, path.extname(filePath)),
         description: docs.description,
         package: docs.package,
-        import: docs.import,
+        imports: docs.imports,
         examples: docs.examples,
         props: flattenProps(docs.props),
         params: flattenProps(docs.params),

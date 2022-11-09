@@ -1,0 +1,45 @@
+import { Meta } from '@storybook/addon-docs';
+import { SBCard, SBDescription, SBSubTitle, SBTitle } from '@react-jopau/styles/components';
+import { ThemeProvider } from '@react-jopau/styles/ThemeProvider';
+import { getThemeStored } from '@react-jopau/styles/utils';
+
+<Meta title="About" />
+
+<SBTitle>@react-jopau/components 👋</SBTitle>
+<p>
+  <a href="https://www.npmjs.com/package/@react-jopau/components" target="_blank" rel="noreferrer">
+    <img alt="Version" src="https://img.shields.io/npm/v/@react-jopau/components.svg" />
+  </a>
+</p>
+
+<SBDescription>Common components for React projects</SBDescription>
+
+```shell dark
+# yarn
+yarn install @react-jopau/components
+
+# npm
+npm install @react-jopau/components
+```
+
+<SBSubTitle>List of components</SBSubTitle>
+
+<ThemeProvider config={getThemeStored()}>
+  <div className="!my-10 grid grid-cols-3 gap-5">
+
+[//]: # 'AUTO-GENERATED-CONTENT:START'
+
+<SBCard title="Container" kind="components-container">
+  Containers are used to constrain a content's width to the current breakpoint.
+</SBCard>
+<SBCard title="Header" kind="components-header">
+  Header component with logo, title and actions area.
+</SBCard>
+<SBCard title="Space" kind="components-space">
+  Component flexbox-based spacing.
+</SBCard>
+
+[//]: # 'AUTO-GENERATED-CONTENT:END'
+
+  </div>
+</ThemeProvider>

@@ -12,7 +12,8 @@ export default {
     }
   },
   args: {
-    title: 'Title'
+    title: 'Title',
+    maxWidth: 'lg'
   }
 } as ComponentMeta<typeof Header>;
 
@@ -32,10 +33,10 @@ WithActions.args = {
   children: (
     <div className="flex gap-4">
       <a href="#" className="text-secondary">
-        + Action 1
+        Action 1
       </a>
       <a href="#" className="text-secondary">
-        - Action 2
+        Action 2
       </a>
     </div>
   )
@@ -47,7 +48,7 @@ MaxWidthNumber.args = {
   children: (
     <div className="flex gap-4">
       <a href="#" className="text-secondary">
-        + Action 1
+        Action 1
       </a>
     </div>
   )
@@ -59,7 +60,7 @@ MaxWidthBreakpoint.args = {
   children: (
     <div className="flex gap-4">
       <a href="#" className="text-secondary">
-        + Action 1
+        Action 1
       </a>
     </div>
   )

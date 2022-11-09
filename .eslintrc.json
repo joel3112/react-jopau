@@ -1,11 +1,24 @@
 {
-  "plugins": ["react", "@typescript-eslint", "testing-library"],
+  "plugins": ["react", "@typescript-eslint", "testing-library", "jsdoc"],
   "settings": {
     "react": {
       "version": "detect"
     },
-    "mdx/code-blocks": true,
-    "mdx/language-mapper": {}
+    "mdx/code-blocks": {
+      "no-unused-vars": "off"
+    },
+    "mdx/language-mapper": {},
+    "jsdoc": {
+      "mode": "typescript",
+      "preferredTypes": {
+        "object": "Object"
+      },
+      "structuredTags": {
+        "imports": {
+          "type": true
+        }
+      }
+    }
   },
   "extends": [
     "plugin:react/recommended",
@@ -14,10 +27,18 @@
     "plugin:prettier/recommended",
     "plugin:storybook/recommended",
     "plugin:markdown/recommended",
-    "plugin:mdx/recommended"
+    "plugin:mdx/recommended",
+    "plugin:jsdoc/recommended"
   ],
   "parser": "@typescript-eslint/parser",
   "overrides": [
+    {
+      "files": ["*.ts", "*.tsx"],
+      "rules": {
+        "jsdoc/tag-lines": 0,
+        "jsdoc/no-undefined-types": ["off", { "definedTypes": ["JSX.Element"] }]
+      }
+    },
     {
       "files": ["**/?(*.)+(spec|test).[jt]s?(x)"],
       "extends": ["plugin:testing-library/react"]

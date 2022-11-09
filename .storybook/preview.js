@@ -26,6 +26,12 @@ export const parameters = {
     viewports: {
       ...MINIMAL_VIEWPORTS
     }
+  },
+  options: {
+    storySort: {
+      method: 'alphabetical',
+      order: ['Introduction', 'Components', ['About', '*'], 'Hooks', ['About', '*']]
+    }
   }
 };
 

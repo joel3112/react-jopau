@@ -4,11 +4,11 @@ import { SBArgsTable, SBDescription, SBSubTitle, SBTitle } from '@react-jopau/st
 
 <SBDescription>Get current breakpoint key and boolean values for each breakpoint.</SBDescription>
 
-```jsx dark
+```tsx dark
 import { useBreakpoint } from '@react-jopau/hooks';
 ```
 
-```jsx dark
+```tsx dark
 // Default breakpoint rules
 // By default will use the default values: { xs: 650, sm: 960, md: 1280, lg: 1400, xl: 1920 }
 const { key, isMobile, isTablet, isSmallDesktop, isDesktop, isLargeDesktop } = useBreakpoint();
@@ -21,7 +21,7 @@ console.log(isDesktop); // true | false
 console.log(isLargeDesktop); // true | false
 ```
 
-```jsx dark
+```tsx dark
 // With custom breakpoint rules
 // This rules will be merged with the default rules
 const rules = { xs: 650, sm: 960 };
@@ -76,12 +76,6 @@ const { key } = useBreakpoint(rules);
 <SBArgsTable
   noDefaults
   rows={{
-    result: {
-      name: 'result',
-      description: 'Current breakpoint key and boolean values for each breakpoint',
-      required: false,
-      type: 'Object'
-    },
     'result.isDesktop': {
       name: 'result.isDesktop',
       description: 'true if the viewport is desktop',

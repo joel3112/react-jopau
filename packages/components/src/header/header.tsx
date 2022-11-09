@@ -19,36 +19,32 @@ type HeaderProps = ElementHTML & {
    */
   renderLogo?: () => ReactNode;
   /**
-   * Defines the logo href of the header.
-   */
-  href?: string;
-  /**
    * Maximum width of the container or breakpoint.
    */
   maxWidth?: number | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 } & typeof defaultProps;
 
-const defaultProps = {
-  href: '/'
-};
+const defaultProps = {};
 
 /**
  * Header component with logo, title and actions area.
  *
- * @import import { Header } from '@react-jopau/components/header';
+ * @param   {HeaderProps} props - Props injected to the component.
+ * @returns {JSX.Element} Rendered component.
+ *
+ * @imports import { Header } from '@react-jopau/components/header';
  * @example
  * <Header title="Title" renderLogo={() => <img src="./images/logo.png" alt="Logo" />}>
- *    <div>+ Action 1</div>
+ *    <div>Action 1</div>
  * </Header>
  */
 export const Header = ({
   className,
   style,
   children,
-  maxWidth,
   title,
-  renderLogo,
-  href
+  maxWidth,
+  renderLogo
 }: HeaderProps) => {
   return (
     <HeaderWrapper
@@ -57,10 +53,10 @@ export const Header = ({
         ...style
       }}>
       <Container maxWidth={maxWidth} centered className="container">
-        <a className="link" href={href}>
+        <div className="logo">
           {renderLogo && renderLogo()}
           {title && <h1 className="title">{title}</h1>}
-        </a>
+        </div>
 
         {children && (
           <Space className="actions" gap={10}>

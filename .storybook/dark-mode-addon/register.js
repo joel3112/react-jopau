@@ -3,6 +3,8 @@ import * as React from 'react';
 import { addons, types } from '@storybook/addons';
 import { IconButton, TooltipLinkList, WithTooltip } from '@storybook/components';
 import { FiMoon, FiSun } from 'react-icons/fi';
+import { useLocalStorage } from '/packages/hooks/src/useLocalStorage';
+import { DARK_MODE_STORAGE_KEY } from '/packages/styles/src/ThemeProvider';
 
 const COLOR_SCHEMES = [
   { id: 'light', title: 'Light' },
@@ -32,7 +34,7 @@ const renderIcon = (scheme) => {
 
 const DarkModeAddon = ({ api }) => {
   const channel = addons.getChannel();
-  const [colorScheme, setColorScheme] = React.useState('light');
+  const [colorScheme, setColorScheme] = useLocalStorage(DARK_MODE_STORAGE_KEY, 'light');
 
   React.useEffect(() => {
     const notifyColorScheme = () => {

@@ -1,10 +1,11 @@
 import { create } from '@storybook/theming';
-import { getColors, getProps, getTheme } from '/packages/styles/src/utils';
+import { getColors, getProps, getTheme, getThemeStored } from '/packages/styles/src/utils';
 
 export const createStorybookTheme = (themeKey = 'default') => {
-  const colors = getColors(themeKey);
-  const { fonts } = getTheme(themeKey);
-  const { brand } = getProps(themeKey);
+  const currentTheme = getThemeStored() || themeKey;
+  const colors = getColors(currentTheme);
+  const { fonts } = getTheme(currentTheme);
+  const { brand } = getProps(currentTheme);
 
   return create({
     base: 'light',

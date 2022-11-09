@@ -11,12 +11,22 @@ const generatePropsTable = (props) => {
   const entries = Object.entries(props);
   if (entries.length === 0) return 'This component does not have any props.';
 
+  const sortedEntries = entries.sort((a, b) => {
+    if (a[1].required && !b[1].required) {
+      return -1;
+    }
+    if (!a[1].required && b[1].required) {
+      return 1;
+    }
+    return 0;
+  });
+
   let propsTableHeader =
     `| Name | Type | Default value | Description |${os.EOL}` +
     `| ---- | ---- | ------------- | ----------- |${os.EOL}`;
   return (
     propsTableHeader +
-    entries
+    sortedEntries
       .map(
         ([propName, propValue]) =>
           `| ${propName}${propValue.required ? ' _(required)_' : ''} ` +
@@ -44,9 +54,9 @@ const templateObject = templateCreator`### ${({ context }) => context.componentN
 }}
 ${({ context }) => {
   let module = '';
-  if (context.import) {
+  if (context.imports) {
     module = '#### Import';
-    module += `${os.EOL}${os.EOL}\`\`\`jsx${os.EOL}${context.import}${os.EOL}\`\`\``;
+    module += `${os.EOL}${os.EOL}\`\`\`jsx${os.EOL}${context.imports}${os.EOL}\`\`\``;
   }
   module += os.EOL;
 
