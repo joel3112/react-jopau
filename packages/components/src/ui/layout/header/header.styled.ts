@@ -1,4 +1,4 @@
-import { styledTheme } from '../index';
+import { styledTheme } from '../../../index';
 
 export const HeaderWrapper = styledTheme('div', {
   boxShadow: '$boxShadow',

@@ -35,8 +35,8 @@ import { ${componentName} } from './${componentPath}';
 
 <SBDescription>${prop('description')}</SBDescription>
 
-\`\`\`jsx dark
-import { ${componentName} } from '@react-jopau/components/${componentPath}';
+\`\`\`tsx dark
+${prop('imports')}
 \`\`\`
 
 <Canvas withToolbar>

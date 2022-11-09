@@ -80,7 +80,11 @@ const generateComponentDocs = async () => {
       });
       writeFile(
         documentationMDXPath,
-        rendererMDX.render(componentPath, { ...componentDocs[0], stories })
+        rendererMDX.render(componentPath, {
+          ...componentDocs[0],
+          imports: getCustomTag(get(jsdocSchema, '[0].customTags', []), 'imports'),
+          stories: stories || {}
+        })
       );
 
       /**
@@ -99,7 +103,12 @@ const generateComponentDocs = async () => {
         })
       );
 
-      console.log(preffix, clc.blue(componentName, '=>', componentPath), clc.green('✔'));
+      console.log(
+        preffix,
+        clc.blue(componentName, '=>', componentPath),
+        !stories ? `(No stories found)` : '',
+        clc.green('✔')
+      );
     });
   } catch (error) {
     console.log(preffix, clc.red('There was an error generating the documentation for', error));

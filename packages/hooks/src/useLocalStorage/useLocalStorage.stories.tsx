@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Space } from '@react-jopau/components/space';
+import { Space } from '@react-jopau/components/ui/layout';
 import { TWButton, TWContainer, TWInput, TWItem, TWText } from '@react-jopau/styles/components';
 import { useLocalStorage } from './useLocalStorage';
 import docs from './readme.mdx';

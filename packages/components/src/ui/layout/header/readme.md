@@ -5,7 +5,7 @@ Header component with logo, title and actions area.
 #### Import
 
 ```jsx
-import { Header } from '@react-jopau/components/header';
+import { Header } from '@react-jopau/components/ui/layout';
 ```
 
 #### Examples

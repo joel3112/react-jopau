@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import classes from 'classnames';
-import { ElementHTML } from '../../types';
+import { ElementHTML } from '../../../../types';
 import { SpaceWrapper } from './space.styled';
 
 type BasicPosition = 'start' | 'center' | 'end';
@@ -53,7 +53,7 @@ const spacing = (gap?: number | Array<number>): string =>
  * @param   {SpaceProps} props - Props injected to the component.
  * @returns {JSX.Element} Rendered component.
  *
- * @imports import { Space } from '@react-jopau/components/space';
+ * @imports import { Space } from '@react-jopau/components/ui/layout';
  * @example
  * <Space direction="row" align="center" justify="center" gap={10}>
  *    <div>Item 1</div>

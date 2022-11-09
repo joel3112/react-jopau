@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import classes from 'classnames';
-import { ElementHTML } from '../../types';
-import { breakpoints } from '../index';
+import { ElementHTML } from '../../../../types';
+import { breakpoints } from '../../../index';
 import { ContainerWrapper } from './container.styled';
 
 type ContainerProps = ElementHTML & {
@@ -52,7 +52,7 @@ const computeMaxWidth = (maxWidth?: number | 'xs' | 'sm' | 'md' | 'lg' | 'xl'): 
  * @param   {ContainerProps} props - Props injected to the component.
  * @returns {JSX.Element} Rendered component.
  *
- * @imports import { Container } from '@react-jopau/components/container';
+ * @imports import { Container } from '@react-jopau/components/ui/layout';
  * @example
  * <Container gap={10} maxWidth={1000} centered>
  *    <p>lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>

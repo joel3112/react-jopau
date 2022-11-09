@@ -12,16 +12,21 @@ const getCustomTag = (customTags, tagName) => {
 const getStories = (componentPath, componentName) => {
   const storiesPath = path.join(componentPath, '../') + componentName + '.stories.tsx';
   const stories = {};
-  const component = fs.readFileSync(storiesPath).toString();
-  const storyRegex = /export const (.*) = Template.bind\({}\);/g;
-  let match;
-  while ((match = storyRegex.exec(component)) !== null) {
-    const storyName = match[1];
-    stories[storyName] = {
-      name: storyName
-    };
+
+  try {
+    const component = fs.readFileSync(storiesPath).toString();
+    const storyRegex = /export const (.*) = Template.bind\({}\);/g;
+    let match;
+    while ((match = storyRegex.exec(component)) !== null) {
+      const storyName = match[1];
+      stories[storyName] = {
+        name: storyName
+      };
+    }
+    return stories;
+  } catch (error) {
+    return null;
   }
-  return stories;
 };
 
 const parseDescription = (description) =>
