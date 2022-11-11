@@ -1,0 +1,39 @@
+import { Meta } from '@storybook/addon-docs';
+import { SBCard, SBDescription, SBSubTitle, SBTitle } from '@react-jopau/styles/components';
+import { ThemeProvider } from '@react-jopau/components/contexts/theme';
+import { getThemeStored } from '@react-jopau/styles/theme';
+
+<Meta title="About" />
+
+<SBTitle>@react-jopau/components 👋</SBTitle>
+<p>
+  <a href="https://www.npmjs.com/package/@react-jopau/components" target="_blank" rel="noreferrer">
+    <img alt="Version" src="https://img.shields.io/npm/v/@react-jopau/components.svg" />
+  </a>
+</p>
+
+<SBDescription>Common context providers for React projects</SBDescription>
+
+```shell dark
+# yarn
+yarn install @react-jopau/components
+
+# npm
+npm install @react-jopau/components
+```
+
+<SBSubTitle>List of context providers</SBSubTitle>
+
+<ThemeProvider config={getThemeStored()}>
+  <div className="!my-10 grid grid-cols-3 gap-5">
+
+[//]: # 'AUTO-GENERATED-CONTENT:START'
+
+<SBCard title="ThemeProvider" kind="providers-themeprovider">
+  Theme provider component that allows to define the theme and the scheme to use.
+</SBCard>
+
+[//]: # 'AUTO-GENERATED-CONTENT:END'
+
+  </div>
+</ThemeProvider>

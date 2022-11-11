@@ -1,28 +1,23 @@
 const os = require('os');
 const { template } = require('react-docgen-renderer-template');
-const { get, kebabCase, lowerCase, upperFirst } = require('lodash');
+const { get } = require('lodash');
 
 const prop =
   (key) =>
   ({ context }) =>
     get(context, key);
 const componentName = prop('componentName');
-const componentPath = (args) => prop('componentName')(args).toLowerCase();
+const storyDefaultId = (args) => get(prop('stories')(args), 'Default.id');
+const componentPath = prop('componentPath');
 
 const templateCreator = template({});
 
-const templateStory = (componentPath, { name }) => {
-  const id = kebabCase(name);
-  const label = lowerCase(name)
-    .split(' ')
-    .map((t) => upperFirst(t))
-    .join(' ');
-
+const templateStory = ({ label, id }) => {
   return `
 <span className="!text-lg font-medium">${label}</span>
 
 <Canvas>
-  <Story id="components-${componentPath}--${id}" />
+  <Story id="${id}" />
 </Canvas>
 `;
 };
@@ -36,11 +31,11 @@ import { ${componentName} } from './${componentPath}';
 <SBDescription>${prop('description')}</SBDescription>
 
 \`\`\`jsx dark
-import { ${componentName} } from '@react-jopau/components/${componentPath}';
+${prop('imports')}
 \`\`\`
 
 <Canvas withToolbar>
-  <Story id="components-${componentPath}--default" />
+  <Story id="${storyDefaultId}" />
 </Canvas>
 
 <SBSubTitle>Properties</SBSubTitle>
@@ -54,7 +49,7 @@ ${({ context }) => {
     stories += `${os.EOL}<br />${os.EOL}`;
 
     Object.keys(context.stories).forEach((key) => {
-      stories += os.EOL + templateStory(context.componentName.toLowerCase(), context.stories[key]);
+      stories += os.EOL + templateStory(context.stories[key]);
     });
   }
   stories += os.EOL;

@@ -1,0 +1,36 @@
+import { ArgsTable, Canvas, Story } from '@storybook/addon-docs';
+import { SBDescription, SBSubTitle, SBTitle } from '@react-jopau/styles/components';
+import { ThemeProvider } from './theme-context';
+
+<SBTitle>ThemeProvider</SBTitle>
+
+<SBDescription>
+  Theme provider component that allows to define the theme and the scheme to use.
+</SBDescription>
+
+```jsx dark
+import { ThemeProvider } from '@react-jopau/components/contexts/theme';
+```
+
+<Canvas withToolbar>
+  <Story id="providers-themeprovider--default" />
+</Canvas>
+
+<SBSubTitle>Properties</SBSubTitle>
+
+<ArgsTable of={ThemeProvider} />
+
+<SBSubTitle>Stories</SBSubTitle>
+<br />
+
+<span className="!text-lg font-medium">Default</span>
+
+<Canvas>
+  <Story id="providers-themeprovider--default" />
+</Canvas>
+
+<span className="!text-lg font-medium">Dark Mode</span>
+
+<Canvas>
+  <Story id="providers-themeprovider--dark-mode" />
+</Canvas>

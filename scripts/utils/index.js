@@ -2,27 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const os = require('os');
 const prettier = require('prettier');
-const { capitalize, get, lowerCase } = require('lodash');
-
-const getCustomTag = (customTags, tagName) => {
-  const tag = customTags.find((tag) => tag.tag === tagName);
-  return tag ? tag.value : null;
-};
-
-const getStories = (componentPath, componentName) => {
-  const storiesPath = path.join(componentPath, '../') + componentName + '.stories.tsx';
-  const stories = {};
-  const component = fs.readFileSync(storiesPath).toString();
-  const storyRegex = /export const (.*) = Template.bind\({}\);/g;
-  let match;
-  while ((match = storyRegex.exec(component)) !== null) {
-    const storyName = match[1];
-    stories[storyName] = {
-      name: storyName
-    };
-  }
-  return stories;
-};
+const { capitalize, get, lowerCase, kebabCase, upperFirst } = require('lodash');
 
 const parseDescription = (description) =>
   description ? description.replace(/(<([^>]+)>)/gi, '') : '';
@@ -41,8 +21,83 @@ const parseTypes = (type) => {
     : null;
 };
 
-const parseJSONSchemaProps = (prop, requiredProp = true) => {
-  const { name, type, description, defaultvalue, optional } = prop;
+const getCustomTag = (schemaProps, tagName) => {
+  const customTags = get(schemaProps, 'customTags', []);
+  const tag = customTags.find((tag) => tag.tag === tagName);
+
+  return tag ? tag.value : null;
+};
+
+const getPackageName = (componentPath) => {
+  return componentPath.replace(/packages\/(.*)\/src\/(.*)/g, '$1');
+};
+
+const getComponentParsed = (componentPath, schemaProps) => {
+  const packageName = getPackageName(componentPath);
+  const displayName = get(schemaProps, 'name');
+  const displayNameJoined = lowerCase(displayName).replace(/ /g, '');
+  const fileName = path.basename(componentPath);
+  const partialPath = `${path.basename(path.parse(componentPath).dir, fileName)}/${fileName}`;
+  const diffPath = componentPath.replace(partialPath, '');
+  const categories = diffPath.replace(new RegExp(`packages/${packageName}/src/(.*)/`), '$1');
+  const [categoryRoot, ...restCategories] = categories.split('/');
+  const restCategoriesJoined = restCategories.length ? `-${restCategories.join('-')}` : '';
+  const componentType = {
+    ui: 'components',
+    contexts: 'providers'
+  };
+
+  return {
+    componentPath,
+    partialPath,
+    storiesPath: componentPath.replace(
+      path.parse(componentPath).ext,
+      `.stories${path.parse(componentPath).ext}`
+    ),
+    displayName,
+    description: parseDescription(get(schemaProps, 'description')),
+    fileName,
+    packageName,
+    categories: categories !== diffPath ? restCategories : [],
+    storiesPrefixId:
+      categories !== diffPath
+        ? `${get(componentType, categoryRoot)}${restCategoriesJoined}-${displayNameJoined}`
+        : `${packageName}-${displayNameJoined}`
+  };
+};
+
+const getStories = (componentPath, schemaProps) => {
+  const { storiesPrefixId, storiesPath } = getComponentParsed(componentPath, schemaProps);
+  const stories = {};
+
+  try {
+    const component = fs.readFileSync(storiesPath).toString();
+    const storyRegex = /export const (.*) = Template.bind\({}\);/g;
+    let match;
+
+    while ((match = storyRegex.exec(component)) !== null) {
+      const storyName = match[1];
+      const id = kebabCase(storyName);
+      const label = lowerCase(storyName)
+        .split(' ')
+        .map((t) => upperFirst(t))
+        .join(' ');
+
+      stories[storyName] = {
+        name: storyName,
+        label,
+        id: `${storiesPrefixId}--${id}`
+      };
+    }
+    return stories;
+  } catch (error) {
+    throw error;
+  }
+};
+
+const parseJSONSchemaProps = (schemaProps, requiredProp = true) => {
+  const { name, type, description, defaultvalue, optional } = schemaProps;
+
   return {
     defaultValue: defaultvalue ? { value: defaultvalue } : null,
     description: parseDescription(description),
@@ -52,11 +107,16 @@ const parseJSONSchemaProps = (prop, requiredProp = true) => {
   };
 };
 
-const parseComponentCardProps = (packageName, componentName, props) => {
+const parseComponentCardProps = (componentPath, schemaProps) => {
+  const { displayName, description, storiesPrefixId } = getComponentParsed(
+    componentPath,
+    schemaProps
+  );
+
   return {
-    title: get(props, 'name'),
-    description: parseDescription(get(props, 'description')),
-    kind: `${packageName}-${componentName}`.toLowerCase()
+    title: displayName,
+    description,
+    kind: storiesPrefixId
   };
 };
 
@@ -90,6 +150,7 @@ const writeIntroduction = (introPath, content, template) => {
 };
 
 module.exports = {
+  getComponentParsed,
   getCustomTag,
   getStories,
   parseDescription,

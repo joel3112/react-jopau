@@ -1,13 +1,13 @@
 /* eslint-disable react/prop-types */
 import * as React from 'react';
 import { addons } from '@storybook/addons';
-import { getColors } from '/packages/styles/src/utils';
 import { useLocalStorage } from '/packages/hooks/src/useLocalStorage';
+import { ThemeProvider } from '/packages/components/src/contexts/theme';
 import {
   DARK_MODE_STORAGE_KEY,
-  THEME_SELECTOR_STORAGE_KEY,
-  ThemeProvider
-} from '/packages/styles/src/ThemeProvider';
+  getColors,
+  THEME_SELECTOR_STORAGE_KEY
+} from 'packages/styles/src/theme';
 
 const ThemeStoryProvider = ({ Story, context }) => {
   const [themeKey, setThemeKey] = useLocalStorage(THEME_SELECTOR_STORAGE_KEY, 'default');

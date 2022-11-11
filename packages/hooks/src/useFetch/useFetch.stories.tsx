@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Space } from '@react-jopau/components/space';
+import { Space } from '@react-jopau/components/ui/layout';
 import {
   TWButton,
   TWContainer,

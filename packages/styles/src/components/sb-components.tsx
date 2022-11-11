@@ -9,7 +9,7 @@ import classes from 'classnames';
  * Component story mdx
  */
 
-/* ----------------------------------------------------------- */
+/* ==== title ================================================================== */
 
 export const SBTitle = ({ children }: { children: string }) => {
   return <h1 className="text-2xl border-0 font-bold mb-5">{children}</h1>;
@@ -29,7 +29,7 @@ export const SBDescription = ({
   return <Tag className={classes('text-base font-light', className)}>{children}</Tag>;
 };
 
-/* ----------------------------------------------------------- */
+/* ==== subtitle =============================================================== */
 
 export const SBSubTitle = ({ children }: { children: string }) => {
   return (
@@ -37,7 +37,7 @@ export const SBSubTitle = ({ children }: { children: string }) => {
   );
 };
 
-/* ----------------------------------------------------------- */
+/* ==== card =================================================================== */
 
 export const SBCard = ({
   children,
@@ -60,13 +60,7 @@ export const SBCard = ({
   );
 };
 
-/* ----------------------------------------------------------- */
-
-export const SBDemo = ({ children }: { children: ReactNode }) => {
-  return <div className="text-text border rounded p-3 mb-4 bg-background">{children}</div>;
-};
-
-/* ----------------------------------------------------------- */
+/* ==== args-table ============================================================= */
 
 export const SBArgsTable = ({
   rows,

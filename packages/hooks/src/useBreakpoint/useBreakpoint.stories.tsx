@@ -1,5 +1,5 @@
 import { TWContainer, TWItem, TWText } from '@react-jopau/styles/components';
-import { Space } from '@react-jopau/components/space';
+import { Space } from '@react-jopau/components/ui/layout';
 import { useBreakpoint } from './useBreakpoint';
 import docs from './readme.mdx';
 

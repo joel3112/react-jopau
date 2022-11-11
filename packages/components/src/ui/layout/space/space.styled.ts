@@ -1,4 +1,4 @@
-import { styledTheme } from '../index';
+import { styledTheme } from '../../../index';
 
 const basicPositionStyles = (key: string) => ({
   start: { [key]: 'flex-start' },

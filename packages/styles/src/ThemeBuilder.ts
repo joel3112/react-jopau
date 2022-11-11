@@ -1,8 +1,16 @@
 import { createStitches, styled } from '@stitches/react';
-import { ThemeConfig, ThemeProps, ThemePropValue } from './themes/types';
-import { ThemeScheme, ThemeStitches } from './themes';
 import { BreakpointsRules } from './breakpoint';
-import { getBreakpoints, getColors, getTheme, getThemeInstance } from './utils';
+import {
+  getBreakpoints,
+  getColors,
+  getTheme,
+  getThemeInstance,
+  ThemeConfig,
+  ThemeProps,
+  ThemePropValue,
+  ThemeScheme,
+  ThemeStitches
+} from './theme';
 
 export class ThemeBuilder {
   styledTheme: ThemeStitches = styled;

@@ -6,7 +6,7 @@ import ReactJson from 'react-json-view';
  * Component custom tailwindcss classes
  */
 
-/* ----------------------------------------------------------- */
+/* ==== container ============================================================== */
 
 export const TWContainer = ({
   className,
@@ -22,7 +22,7 @@ export const TWContainer = ({
   );
 };
 
-/* ----------------------------------------------------------- */
+/* ==== item =================================================================== */
 
 export const TWItem = ({
   children,
@@ -41,7 +41,7 @@ export const TWItem = ({
   );
 };
 
-/* ----------------------------------------------------------- */
+/* ==== highlight ============================================================== */
 
 export const TWHighlight = ({ children }: { children: string }) => {
   return (
@@ -51,7 +51,7 @@ export const TWHighlight = ({ children }: { children: string }) => {
   );
 };
 
-/* ----------------------------------------------------------- */
+/* ==== text =================================================================== */
 
 export const TWText = ({
   children,
@@ -69,7 +69,7 @@ export const TWText = ({
   );
 };
 
-/* ----------------------------------------------------------- */
+/* ==== input ================================================================== */
 
 export const TWInput = ({
   label,
@@ -92,7 +92,7 @@ export const TWInput = ({
   );
 };
 
-/* ----------------------------------------------------------- */
+/* ==== button ================================================================= */
 
 export const TWButton = ({
   children,
@@ -115,7 +115,7 @@ export const TWButton = ({
   );
 };
 
-/* ----------------------------------------------------------- */
+/* ==== json-preview =========================================================== */
 
 export const TWJSONPreview = ({ code }: { code: unknown }) => {
   if (!code) return <span className="flex items-center font-code text-text">null</span>;

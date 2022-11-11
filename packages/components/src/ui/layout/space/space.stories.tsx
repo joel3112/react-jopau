@@ -19,7 +19,7 @@ const Items = (size: number, percentage30 = false) => {
 };
 
 export default {
-  title: 'Space',
+  title: 'Layout/Space',
   component: Space,
   parameters: {
     docs: {
@@ -41,11 +41,7 @@ const Template: ComponentStory<typeof Space> = (args) => {
   return <Space {...args} />;
 };
 
-export const Default = Template.bind({
-  direction: 'row',
-  gap: 0,
-  justify: 'flex-start'
-});
+export const Default = Template.bind({});
 
 export const DirectionRow = Template.bind({});
 DirectionRow.args = {

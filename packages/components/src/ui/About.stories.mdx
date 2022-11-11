@@ -1,7 +1,7 @@
 import { Meta } from '@storybook/addon-docs';
 import { SBCard, SBDescription, SBSubTitle, SBTitle } from '@react-jopau/styles/components';
-import { ThemeProvider } from '@react-jopau/styles/ThemeProvider';
-import { getThemeStored } from '@react-jopau/styles/utils';
+import { ThemeProvider } from '@react-jopau/components/contexts/theme';
+import { getThemeStored } from '@react-jopau/styles/theme';
 
 <Meta title="About" />
 
@@ -29,13 +29,13 @@ npm install @react-jopau/components
 
 [//]: # 'AUTO-GENERATED-CONTENT:START'
 
-<SBCard title="Container" kind="components-container">
+<SBCard title="Container" kind="components-layout-container">
   Containers are used to constrain a content's width to the current breakpoint.
 </SBCard>
-<SBCard title="Header" kind="components-header">
+<SBCard title="Header" kind="components-layout-header">
   Header component with logo, title and actions area.
 </SBCard>
-<SBCard title="Space" kind="components-space">
+<SBCard title="Space" kind="components-layout-space">
   Component flexbox-based spacing.
 </SBCard>
 

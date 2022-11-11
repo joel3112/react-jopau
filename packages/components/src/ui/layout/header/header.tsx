@@ -1,9 +1,8 @@
 import { ReactNode } from 'react';
 import classes from 'classnames';
-import { ElementHTML } from '../../types';
+import { ElementHTML } from '../../../../types';
+import { Container, Space } from '../../layout';
 import { HeaderWrapper } from './header.styled';
-import { Container } from '../container';
-import { Space } from '../space';
 
 type HeaderProps = ElementHTML & {
   /**
@@ -32,7 +31,7 @@ const defaultProps = {};
  * @param   {HeaderProps} props - Props injected to the component.
  * @returns {JSX.Element} Rendered component.
  *
- * @imports import { Header } from '@react-jopau/components/header';
+ * @imports import { Header } from '@react-jopau/components/ui/layout';
  * @example
  * <Header title="Title" renderLogo={() => <img src="./images/logo.png" alt="Logo" />}>
  *    <div>Action 1</div>

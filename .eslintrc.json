@@ -61,6 +61,7 @@
         "extensions": [".ts", ".tsx", ".js", ".jsx", ".mdx"]
       }
     ],
-    "@typescript-eslint/no-var-requires": 0
+    "@typescript-eslint/no-var-requires": 0,
+    "testing-library/no-node-access": ["error", { "allowContainerFirstChild": true }]
   }
 }

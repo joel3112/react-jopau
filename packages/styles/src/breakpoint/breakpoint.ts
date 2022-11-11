@@ -1,5 +1,7 @@
 import { getPropValue } from '@react-jopau/utils/object';
-import defaultTheme from './themes/default';
+import defaultTheme from '../themes/default';
+
+/* ==== types ================================================================== */
 
 export type Breakpoint = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
@@ -12,7 +14,11 @@ export interface BreakpointsConfig {
   targetWidth?: number;
 }
 
+/* ==== constants ============================================================== */
+
 export const DEFAULT_CONFIG: BreakpointsRules = defaultTheme.media;
+
+/* ==== helpers ================================================================ */
 
 export class BreakpointsHelper {
   rules: BreakpointsRules = {};
