@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.12.0](https://github.com/joel3112/react-jopau/compare/v0.11.0...v0.12.0) (2022-11-11)
+
+### ⚠ BREAKING CHANGES
+
+- **components:** move theme provider from styles to components
+
+### 🚀 New Features
+
+- **components:** theme provider to components contexts ([14ada4b](https://github.com/joel3112/react-jopau/commit/14ada4b7b00a015b092cd34d1ef93fcf39a7f989))
+
+### 🛠 Refactors
+
+- **components:** restructure folders ([63ab37d](https://github.com/joel3112/react-jopau/commit/63ab37d8667c1ffba3df3e82b6db1db2f968f7b9))
+- **components:** separate context providers ([276dc58](https://github.com/joel3112/react-jopau/commit/276dc58465df2766f923cf85c351846ca4359674))
+- **styles:** restructure folders ([63687a5](https://github.com/joel3112/react-jopau/commit/63687a5f5494f029a1d9d3d5af69f840cbf69394))
+
+### 🐛 Bug Fixes
+
+- storybook about cards link ([0c0759f](https://github.com/joel3112/react-jopau/commit/0c0759fe41965e0132a1654eda40cc043c3d79ec))
+
 ## [0.11.0](https://github.com/joel3112/react-jopau/compare/v0.10.1...v0.11.0) (2022-11-09)
 
 ### 📝 Documentation
