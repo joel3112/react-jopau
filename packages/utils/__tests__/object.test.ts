@@ -1,4 +1,4 @@
-import { TObject, getPropValue, mapValuesBy } from '../src/object';
+import { TObject, getPropValue, mapValuesBy, merge } from '../src/object';
 
 describe('Object helper methods', () => {
   const example: TObject<unknown> = {
@@ -43,6 +43,26 @@ describe('Object helper methods', () => {
         expect(mapValuesBy<TObject<{ name: string; value: number }>>(example, iteratee)).toEqual(
           result
         );
+      });
+    });
+  });
+
+  describe('merge', () => {
+    test('returns object with merged properties from source object', () => {
+      const current = {
+        a: [{ x: 2 }, { y: 4 }],
+        b: 1,
+        c: { a: 1, b: 2 }
+      };
+      const source = {
+        a: [{ x: 3 }],
+        c: { z: 3 }
+      };
+
+      expect(merge(current, source)).toEqual({
+        a: [{ x: 3 }, { y: 4 }],
+        b: 1,
+        c: { a: 1, b: 2, z: 3 }
       });
     });
   });
