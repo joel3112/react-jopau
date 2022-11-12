@@ -1,7 +1,8 @@
-import { ReactNode } from 'react';
+import { ReactNode, useContext } from 'react';
 import classes from 'classnames';
+import { BreakpointsRules } from '@react-jopau/styles/breakpoint';
+import { ThemeContext } from '../../../contexts/theme';
 import { ElementHTML } from '../../../../types';
-import { breakpoints } from '../../../index';
 import { ContainerWrapper } from './container.styled';
 
 type ContainerProps = ElementHTML & {
@@ -36,7 +37,10 @@ const spacing = (gap?: number | Array<number>): string => {
   return '0';
 };
 
-const computeMaxWidth = (maxWidth?: number | 'xs' | 'sm' | 'md' | 'lg' | 'xl'): number => {
+const computeMaxWidth = (
+  breakpoints: BreakpointsRules,
+  maxWidth?: number | 'xs' | 'sm' | 'md' | 'lg' | 'xl'
+): number => {
   if (typeof maxWidth === 'number') {
     return maxWidth;
   }
@@ -66,12 +70,14 @@ export const Container = ({
   maxWidth,
   centered
 }: ContainerProps) => {
+  const { config } = useContext(ThemeContext);
+
   return (
     <ContainerWrapper
       className={classes('container-wrapper', className)}
       css={{
         ...(gap && { padding: spacing(gap) }),
-        maxWidth: `${computeMaxWidth(maxWidth)}px !important`,
+        maxWidth: `${computeMaxWidth(config?.media, maxWidth)}px !important`,
         ...style
       }}
       centered={centered}>

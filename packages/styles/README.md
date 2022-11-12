@@ -47,23 +47,16 @@ console.log(config.between('sm', 'xl')); // true | false
 
 ### ThemeBuilder
 
-Class to create a theme builder from theme keys or configuration.
-
-1. Available keys:
-
-- [`default`](https://github.com/joel3112/react-jopau/blob/main/packages/styles/src/themes/default.ts)
-- [`purple`](https://github.com/joel3112/react-jopau/blob/main/packages/styles/src/themes/purple.ts)
+Class to create a theme with the [`default`](https://github.com/joel3112/react-jopau/blob/main/packages/styles/src/themes/default.ts) configuration.
 
 ```tsx
 import { ThemeBuilder } from '@react-jopau/styles/ThemeBuilder';
 
 const builder = new ThemeBuilder();
-builder.createTheme('default');
+builder.createTheme();
 ```
 
-2. Custom configuration:
-
-You can create a custom theme with the following [configuration](https://github.com/joel3112/react-jopau/blob/main/packages/styles/src/themes/types.d.ts).
+You can create a theme passing a custom configuration, it's will be merged with the `default` configuration.
 
 ```tsx
 import { ThemeBuilder } from '@react-jopau/styles/ThemeBuilder';
@@ -97,6 +90,8 @@ builder.createTheme({
 
 // Breakpoints rules
 console.log(builder.breakpoints);
+// Current theme config merged with the default
+console.log(builder.currentConfig);
 
 // Styled your components
 const ButtonStyled = builder.styledTheme('button', {

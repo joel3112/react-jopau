@@ -19,3 +19,7 @@ export const mapValuesBy = <T extends object = TObject>(
 ): { [P in keyof T]: TAny } | { [index: number]: TAny } => {
   return _.mapValues<T>(object, callback);
 };
+
+export const merge = <T = Object, U = Object>(object: T, source: U): T & U => {
+  return _.merge(object, source);
+};

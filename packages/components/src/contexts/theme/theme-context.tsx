@@ -9,10 +9,10 @@ import { computeScheme, ThemeConfig, ThemeScheme } from '@react-jopau/styles/the
  * Theme context to be used to access the theme values or to change the theme.
  */
 export const ThemeContext = createContext<{
-  config?: ThemeConfig | string;
+  config: ThemeConfig;
   darkMode?: boolean;
   onToggle?: () => void;
-}>({});
+}>({} as { config: ThemeConfig });
 
 /* ==== provider =============================================================== */
 
@@ -24,7 +24,7 @@ type ThemeProviderProps = {
   /**
    * Defines configuration or the theme key.
    */
-  config: ThemeConfig;
+  config?: ThemeConfig;
   /**
    * Flag to enable dark mode.
    */
@@ -62,6 +62,7 @@ const globalStyles = globalCss({
  */
 export const ThemeProvider = ({ children, config, darkMode }: ThemeProviderProps) => {
   const [dark, setDark] = useState<boolean>();
+  const [configTheme, setConfigTheme] = useState<ThemeConfig>(config || ({} as ThemeConfig));
   const [schemes, setSchemes] = useState<{ lightTheme?: ThemeScheme; darkTheme?: ThemeScheme }>({});
 
   useEffect(() => {
@@ -71,13 +72,14 @@ export const ThemeProvider = ({ children, config, darkMode }: ThemeProviderProps
   useEffect(() => {
     const builder = new ThemeBuilder();
     builder.createTheme(config);
+    setConfigTheme({ ...builder.currentConfig });
     setSchemes({ lightTheme: builder.lightTheme, darkTheme: builder.darkTheme });
   }, [config]);
 
   return (
     <ThemeContext.Provider
       value={{
-        config,
+        config: configTheme,
         darkMode: !!dark,
         onToggle: () => setDark((prev) => !prev)
       }}>

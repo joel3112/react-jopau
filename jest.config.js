@@ -36,8 +36,11 @@ module.exports = {
       ...commonConfig('components'),
       testMatch: ['<rootDir>/packages/components/**/*.test.tsx'],
       moduleNameMapper: {
+        '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
+        '@apps/example': '<rootDir>/apps/example/src/App.tsx',
         '@react-jopau/utils/(.*)$': '<rootDir>/packages/utils/src/$1',
-        '@react-jopau/styles/(.*)$': '<rootDir>/packages/styles/src/$1'
+        '@react-jopau/styles/(.*)$': '<rootDir>/packages/styles/src/$1',
+        '@react-jopau/components/(.*)$': '<rootDir>/packages/components/src/$1'
       }
     }
   ]

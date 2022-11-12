@@ -3,6 +3,7 @@ import * as React from 'react';
 import { addons } from '@storybook/addons';
 import { useLocalStorage } from '/packages/hooks/src/useLocalStorage';
 import { ThemeProvider } from '/packages/components/src/contexts/theme';
+import { themes } from '/packages/styles/src/themes';
 import {
   DARK_MODE_STORAGE_KEY,
   getColors,
@@ -39,7 +40,7 @@ const ThemeStoryProvider = ({ Story, context }) => {
 
   return (
     <div ref={storyRef}>
-      <ThemeProvider config={themeKey} darkMode={colorScheme === 'dark'}>
+      <ThemeProvider config={themes[themeKey].value} darkMode={colorScheme === 'dark'}>
         <Story {...context} />
       </ThemeProvider>
     </div>
