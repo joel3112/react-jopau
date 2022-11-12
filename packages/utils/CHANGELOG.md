@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.0](https://github.com/joel3112/react-jopau/compare/v0.12.0...v0.13.0) (2022-11-12)
+
+### 🚀 New Features
+
+- **utils:** add merge object ([3121cad](https://github.com/joel3112/react-jopau/commit/3121cadaa504eb2da566b94b3bac927d11d7cc1d))
+
 ## [0.12.0](https://github.com/joel3112/react-jopau/compare/v0.11.0...v0.12.0) (2022-11-11)
 
 **Note:** Version bump only for package @react-jopau/utils

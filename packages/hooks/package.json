@@ -1,6 +1,6 @@
 {
   "name": "@react-jopau/hooks",
-  "version": "0.12.0",
+  "version": "0.13.0",
   "description": "Common hooks for React projects",
   "repository": {
     "type": "git",
@@ -22,8 +22,8 @@
     "directory": "dist"
   },
   "dependencies": {
-    "@react-jopau/styles": "^0.12.0",
-    "@react-jopau/utils": "^0.12.0",
+    "@react-jopau/styles": "^0.13.0",
+    "@react-jopau/utils": "^0.13.0",
     "swr": "^1.3.0"
   },
   "peerDependencies": {
