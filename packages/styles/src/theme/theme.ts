@@ -1,8 +1,15 @@
 import Stitches from '@stitches/react/types/stitches';
-import { themes } from '../themes';
 import { BreakpointsRules } from '../breakpoint';
+import { themes } from '../themes';
+import defaultConfig from '../themes/default';
 
 /* ==== types ================================================================== */
+
+type DeepPartial<T> = T extends object
+  ? {
+      [P in keyof T]?: DeepPartial<T[P]>;
+    }
+  : T;
 
 export type ThemePropValue = { [token in number | string]: boolean | number | string };
 export type ThemeProps<T = {}> = {
@@ -42,6 +49,7 @@ export type ThemeConfig = {
     image: string;
   };
 };
+export type PartialThemeConfig = DeepPartial<ThemeConfig> | ThemeConfig;
 
 export type ThemeStitches = Stitches['styled'] | null;
 
@@ -59,6 +67,17 @@ export const DARK_MODE_STORAGE_KEY = 'key-dark-mode';
 
 /* ==== helpers ================================================================ */
 
+const mergeTheme = (theme1: ThemeConfig, theme2: PartialThemeConfig) => {
+  const a = { ...theme1 };
+  const b = { ...theme2 };
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  return Object.entries(b).reduce((o: any, [k, v]: [string, unknown]) => {
+    o[k] =
+      v && typeof v === 'object' ? mergeTheme((o[k] = o[k] || (Array.isArray(v) ? [] : {})), v) : v;
+    return o;
+  }, a);
+};
+
 export const getThemeStored = (): string | null => {
   if (typeof window === 'undefined') {
     return null;
@@ -70,13 +89,13 @@ export const getThemeStored = (): string | null => {
 
 export const getThemeInstance = (config?: ThemeConfig | string) => {
   if (!config) {
-    return themes[getThemeStored() || 'default'].value;
+    return defaultConfig;
   }
   if (typeof config === 'string') {
-    return themes[config].value;
+    return mergeTheme(defaultConfig, themes[config].value);
   }
 
-  return config;
+  return mergeTheme(defaultConfig, config);
 };
 
 export const getProps = (config: ThemeConfig | string): ThemeConfig => {

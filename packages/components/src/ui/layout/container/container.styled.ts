@@ -3,7 +3,7 @@ import { styledTheme } from '../../../index';
 export const ContainerWrapper = styledTheme('div', {
   display: 'block',
   boxSizing: 'border-box',
-  padding: '0 50px',
+  px: 50,
   variants: {
     centered: {
       true: {
@@ -14,6 +14,6 @@ export const ContainerWrapper = styledTheme('div', {
 
   // Breakpoints
   '@xs': {
-    padding: '0 20px'
+    px: 20
   }
 });

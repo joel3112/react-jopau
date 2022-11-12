@@ -3,7 +3,10 @@
   "useWorkspaces": true,
   "version": "0.12.0",
   "npmClient": "yarn",
-  "packages": ["packages/*"],
+  "packages": [
+    "apps/*",
+    "packages/*"
+  ],
   "command": {
     "version": {
       "allowBranch": "main",

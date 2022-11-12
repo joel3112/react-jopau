@@ -1,8 +1,9 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import defaultTheme from '@react-jopau/styles/themes/default';
+import { themes } from '@react-jopau/styles/themes';
+import { getThemeStored } from '@react-jopau/styles/theme';
+import AppExample from '@apps/example';
 import { ThemeProvider } from './theme-context';
 import docs from './readme.mdx';
-import { AppExample } from '../../app';
 
 export default {
   title: 'ThemeProvider',
@@ -15,7 +16,7 @@ export default {
   args: {
     children: <AppExample />,
     darkMode: false,
-    config: defaultTheme
+    config: themes[getThemeStored() || 'default'].value
   },
   argTypes: {
     children: {

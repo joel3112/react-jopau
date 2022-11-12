@@ -1,5 +1,6 @@
 import { createStitches, styled } from '@stitches/react';
 import { BreakpointsRules } from './breakpoint';
+import defaultConfig from './themes/default';
 import {
   getBreakpoints,
   getColors,
@@ -13,6 +14,7 @@ import {
 } from './theme';
 
 export class ThemeBuilder {
+  currentConfig: ThemeConfig = defaultConfig;
   styledTheme: ThemeStitches = styled;
   lightTheme: ThemeScheme = null;
   darkTheme: ThemeScheme = null;
@@ -21,13 +23,14 @@ export class ThemeBuilder {
   /**
    * Creates a new theme by configuration or theme key.
    *
-   * @param {(ThemeConfig | string)} [config] - Theme configuration or theme key
+   * @param {ThemeConfig} [config] - Theme configuration or theme key
    */
-  createTheme(config?: ThemeConfig | string) {
-    const currentConfig = getThemeInstance(config);
-    const currentTheme: ThemeProps = getTheme(currentConfig);
+  createTheme(config?: ThemeConfig) {
+    this.currentConfig = getThemeInstance(config);
+
+    const currentTheme: ThemeProps = getTheme(this.currentConfig);
     const { createTheme: createStitchesTheme, styled } = createStitches({
-      media: Object.entries(getBreakpoints(currentConfig)).reduce(
+      media: Object.entries(getBreakpoints(this.currentConfig)).reduce(
         (acc, [key, value]) => ({
           ...acc,
           [key]: `(max-width: ${value}px)`
@@ -108,19 +111,19 @@ export class ThemeBuilder {
     });
 
     this.styledTheme = styled;
-    this.breakpoints = getBreakpoints(currentConfig);
+    this.breakpoints = getBreakpoints(this.currentConfig);
 
     // Light theme
     this.lightTheme = createStitchesTheme('light-theme', {
       ...currentTheme,
-      colors: getColors(currentConfig, 'light'),
-      shadows: getTheme(currentConfig).shadows.light as ThemePropValue
+      colors: getColors(this.currentConfig, 'light'),
+      shadows: getTheme(this.currentConfig).shadows.light as ThemePropValue
     });
     // Dark theme
     this.darkTheme = createStitchesTheme('dark-theme', {
       ...currentTheme,
-      colors: getColors(currentConfig, 'dark'),
-      shadows: getTheme(currentConfig).shadows.dark as ThemePropValue
+      colors: getColors(this.currentConfig, 'dark'),
+      shadows: getTheme(this.currentConfig).shadows.dark as ThemePropValue
     });
   }
 }

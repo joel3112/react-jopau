@@ -32,37 +32,38 @@ const createLinkPackages = async () => {
   console.log(clc.green('Linking complete!'));
 };
 
-const installPackages = async (appName) => {
-  console.log(clc.yellow(`Installing packages to app "${appName}"...`));
-  const packages = await getPackageNames();
-  await execSync(`cd apps/${appName} && yarn add ${packages.join(' ')}`, {
-    stdio: 'inherit'
-  });
-  console.log(clc.green('Install complete!'));
-};
-
 const linkApp = async () => {
-  const appName = process.argv.slice(2)[0];
+  const args = process.argv.slice(2);
+  const appName = args[0];
+  const requireBuild = args[1] === '--build';
 
   separator();
-  await buildPackages();
-  separator();
-  await preparePackages();
-  separator();
-  await createLinkPackages();
-  separator();
+
+  if (requireBuild) {
+    await buildPackages();
+    separator();
+    await preparePackages();
+    separator();
+    await createLinkPackages();
+    separator();
+  }
 
   if (appName) {
-    await installPackages(appName);
-    separator();
-
     console.log(clc.yellow(`Linking package to app "${appName}"...`));
     const packages = await getPackageNames();
-    await execSync(`cd apps/${appName} && yarn link ${packages.join(' ')}`, {
-      stdio: 'inherit'
-    });
-    console.log(clc.green(`Following packages linked to app "${appName}":`));
-    console.log(packages);
+    const packagesNoApps = packages.filter((p) => !p.includes('@react-jopau/app'));
+
+    if (packages.includes(`@react-jopau/app-${appName}`)) {
+      packagesNoApps.forEach((packageName) => {
+        execSync(`lerna add ${packageName} --scope=@react-jopau/app-${appName}`, {
+          stdio: 'inherit'
+        });
+      });
+      console.log(clc.green(`Following packages linked to app "${appName}":`));
+      console.log(packagesNoApps);
+      return;
+    }
+    console.log(clc.red(`App "${appName}" not found!`));
   }
 };
 
