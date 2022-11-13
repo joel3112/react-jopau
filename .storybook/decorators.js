@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { addons } from '@storybook/addons';
 import { useLocalStorage } from '/packages/hooks/src/useLocalStorage';
-import { ThemeProvider } from '/packages/components/src/contexts/theme';
+import { ThemeProvider } from '/packages/components/src/contexts';
 import { themes } from '/packages/styles/src/themes';
 import {
   DARK_MODE_STORAGE_KEY,

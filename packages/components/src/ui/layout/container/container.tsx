@@ -1,7 +1,7 @@
 import { ReactNode, useContext } from 'react';
 import classes from 'classnames';
 import { BreakpointsRules } from '@react-jopau/styles/breakpoint';
-import { ThemeContext } from '../../../contexts/theme';
+import { ThemeContext } from '../../../contexts';
 import { ElementHTML } from '../../../../types';
 import { ContainerWrapper } from './container.styled';
 

@@ -54,7 +54,7 @@ const globalStyles = globalCss({
  * @param   {ThemeProviderProps} props - Props injected to the provider.
  * @returns {JSX.Element} Rendered provider.
  *
- * @imports import { ThemeProvider } from '@react-jopau/components/contexts/theme';
+ * @imports import { ThemeProvider } from '@react-jopau/components/contexts';
  * @example
  * <ThemeProvider config={customConfig} darkMode={false}>
  *    <div>Content</div>

@@ -10,7 +10,6 @@
     "baseUrl": "./",
     "jsx": "react-jsx",
     "paths": {
-      "@react-jopau/utils": ["../utils/dist"],
       "@react-jopau/utils/*": ["../utils/dist/*"],
       "@react-jopau/components/*": ["../components/dist/*"],
       "@react-jopau/styles/*": ["../styles/dist/*"]
