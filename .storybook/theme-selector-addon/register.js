@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { addons, types } from '@storybook/addons';
 import { IconButton, Separator, TooltipLinkList, WithTooltip } from '@storybook/components';
-import { useLocalStorage } from '/packages/hooks/src/useLocalStorage';
+import { useLocalStorage } from '/packages/hooks/src/use-local-storage';
 import { getColors, THEME_SELECTOR_STORAGE_KEY } from '/packages/styles/src/theme';
 import { themes } from '/packages/styles/src/themes';
 import { createStorybookTheme } from '../theme';

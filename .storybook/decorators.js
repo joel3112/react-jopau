@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import * as React from 'react';
 import { addons } from '@storybook/addons';
-import { useLocalStorage } from '/packages/hooks/src/useLocalStorage';
+import { useLocalStorage } from '/packages/hooks/src/use-local-storage';
 import { ThemeProvider } from '/packages/components/src/contexts';
 import { themes } from '/packages/styles/src/themes';
 import {

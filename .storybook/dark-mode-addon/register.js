@@ -3,7 +3,7 @@ import * as React from 'react';
 import { addons, types } from '@storybook/addons';
 import { IconButton, TooltipLinkList, WithTooltip } from '@storybook/components';
 import { FiMoon, FiSun } from 'react-icons/fi';
-import { useLocalStorage } from '/packages/hooks/src/useLocalStorage';
+import { useLocalStorage } from '/packages/hooks/src/use-local-storage';
 import { DARK_MODE_STORAGE_KEY } from '/packages/styles/src/theme';
 
 const COLOR_SCHEMES = [
