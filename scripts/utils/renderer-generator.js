@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any,@typescript-eslint/no-empty-function */
 const path = require('path');
 const os = require('os');
+const { capitalize } = require('lodash');
 
 let typeFlatteners = {};
 
@@ -93,7 +94,7 @@ const flattenProps = (props) => {
   return sortedProps;
 };
 
-class DocgenMarkdownRenderer {
+class RendererGenerator {
   options;
   extension;
 
@@ -136,7 +137,7 @@ class DocgenMarkdownRenderer {
    * @param   {SchemaDoc} docs - The docs template data
    * @returns {string} The rendered markdown
    */
-  render(filePath, docs) {
+  renderDoc(filePath, docs) {
     return this.options.template.instantiate(
       {
         componentName: docs.displayName,
@@ -152,6 +153,21 @@ class DocgenMarkdownRenderer {
       this.extension
     );
   }
+
+  renderComponent({ componentName, componentType }) {
+    return this.options.template.instantiate(
+      {
+        name: componentName,
+        pascalName: componentName
+          .replace(/( |-)+/g, '-')
+          .split('-')
+          .map(capitalize)
+          .join(''),
+        type: componentType
+      },
+      this.extension
+    );
+  }
 }
 
-module.exports = DocgenMarkdownRenderer;
+module.exports = RendererGenerator;

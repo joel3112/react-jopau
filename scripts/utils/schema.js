@@ -120,11 +120,11 @@ const parseComponentCardProps = (componentPath, schemaProps) => {
   };
 };
 
-const writeFile = (filePath, content) => {
+const writeFile = (filePath, content, parser) => {
   fs.writeFileSync(
     filePath,
     prettier.format(content, {
-      parser: 'mdx',
+      parser,
       semi: true,
       tabWidth: 2,
       printWidth: 100,
@@ -146,7 +146,7 @@ const writeIntroduction = (introPath, content, template) => {
     `$1${os.EOL}${heading}${os.EOL}${template}${os.EOL}${footer}$3`
   );
 
-  writeFile(introPath, intro);
+  writeFile(introPath, intro, 'mdx');
 };
 
 module.exports = {

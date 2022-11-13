@@ -5,7 +5,7 @@ Theme provider component that allows to define the theme and the scheme to use.
 #### Import
 
 ```jsx
-import { ThemeProvider } from '@react-jopau/components/contexts/theme';
+import { ThemeProvider } from '@react-jopau/components/contexts';
 ```
 
 #### Examples

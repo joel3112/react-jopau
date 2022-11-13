@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { MdOutlineDarkMode, MdOutlineLightMode } from 'react-icons/md';
 import { Container, Header, Space } from '@react-jopau/components/ui/layout';
-import { ThemeContext } from '@react-jopau/components/contexts/theme';
+import { ThemeContext } from '@react-jopau/components/contexts';
 import './App.css';
 
 const App = () => {

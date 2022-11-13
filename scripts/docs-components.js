@@ -10,16 +10,16 @@ const {
   writeFile,
   parseComponentCardProps,
   writeIntroduction
-} = require('./utils');
+} = require('./utils/schema');
 
 // Component templates
 let introComponentsProps = [];
 const jsdoc2md = require('jsdoc-to-markdown');
 const docgen = require('react-docgen-typescript');
-const DocGenMarkdownRenderer = require('./templates/docgen-markdown-renderer.js');
-const componentMDTemplate = require('./templates/components.md');
-const componentMDXTemplate = require('./templates/components.mdx');
-const introductionMDXTemplate = require('./templates/introduction.mdx');
+const RendererGenerator = require('./utils/renderer-generator.js');
+const componentMDTemplate = require('./templates/docs/component.md');
+const componentMDXTemplate = require('./templates/docs/component.mdx.js');
+const introductionMDXTemplate = require('./templates/docs/introduction.mdx.js');
 
 const preffix = clc.yellow('@react-jopau/components:');
 console.log(preffix, 'Generating components documentation...');
@@ -76,32 +76,34 @@ const generateComponentDocs = async (type) => {
        * Generate file MDX
        */
       const documentationMDXPath = path.join(componentPath, '../') + 'readme.mdx';
-      const rendererMDX = new DocGenMarkdownRenderer({
+      const rendererMDX = new RendererGenerator({
         template: componentMDXTemplate
       });
       writeFile(
         documentationMDXPath,
-        rendererMDX.render(componentPath, {
+        rendererMDX.renderDoc(componentPath, {
           ...componentDocs,
           imports: getCustomTag(jsdocSchema, 'imports'),
           stories: stories || {}
-        })
+        }),
+        'mdx'
       );
 
       /**
        * Generate file markdown
        */
       const documentationMDPath = path.join(componentPath, '../') + 'readme.md';
-      const rendererMD = new DocGenMarkdownRenderer({
+      const rendererMD = new RendererGenerator({
         template: componentMDTemplate
       });
       writeFile(
         documentationMDPath,
-        rendererMD.render(componentPath, {
+        rendererMD.renderDoc(componentPath, {
           ...componentDocs,
           imports: getCustomTag(jsdocSchema, 'imports'),
           examples: get(jsdocSchema, 'examples')
-        })
+        }),
+        'mdx'
       );
 
       console.log(

@@ -106,6 +106,13 @@ export class ThemeBuilder {
           display: 'flex',
           flexDirection: direction,
           justifyContent: 'center'
+        }),
+        lineClamp: (lines: number) => ({
+          overflow: 'hidden',
+          textOverflow: 'ellipsis',
+          display: '-webkit-box',
+          '-webkit-line-clamp': lines,
+          '-webkit-box-orient': 'vertical'
         })
       }
     });

@@ -12,20 +12,49 @@ const {
   writeIntroduction,
   parseTypes,
   getComponentParsed
-} = require('./utils');
+} = require('./utils/schema');
 
 // Component templates
 const introComponentsProps = [];
 const jsdoc2md = require('jsdoc-to-markdown');
-const DocGenMarkdownRenderer = require('./templates/docgen-markdown-renderer.js');
-const functionMDTemplate = require('./templates/functions.md');
-const functionMDXTemplate = require('./templates/functions.mdx');
-const introductionMDXTemplate = require('./templates/introduction.mdx');
+const RendererGenerator = require('./utils/renderer-generator.js');
+const hookMDTemplate = require('./templates/docs/hook.md');
+const hookMDXTemplate = require('./templates/docs/hook.mdx.js');
+const introductionMDXTemplate = require('./templates/docs/introduction.mdx.js');
 
 const preffix = clc.yellow('@react-jopau/hooks:');
 console.log(preffix, 'Generating hooks documentation...');
 
-const generateFunctionDocs = async () => {
+const checkIsCallback = (item, jsdocSchema, requiredProp) => {
+  const itemIsCallback = get(item, 'type.names', []).join().includes('Callback');
+  if (itemIsCallback) {
+    const returnsCustomCallback = (jsdocSchema || []).find(
+      ({ id }) => id === get(item.type, 'names', [])[0]
+    );
+
+    if (returnsCustomCallback) {
+      // Check if callback returns or throws
+      const params = get(returnsCustomCallback, 'params', []).map((param) => {
+        const parseParam = parseJSONSchemaProps(param, requiredProp);
+        return `${parseParam.name}: ${parseParam.type.name}`;
+      });
+      const returns = get(parseTypes(get(returnsCustomCallback, 'returns[0].type')), 'name');
+      const exceptions = get(parseTypes(get(returnsCustomCallback, 'exceptions[0].type')), 'name');
+
+      return {
+        ...parseJSONSchemaProps(item, requiredProp),
+        type: {
+          name: `(${params.join(',')}) => ${exceptions ? `{ throw ${exceptions} }` : `${returns}`}`
+        }
+      };
+    } else {
+      return parseJSONSchemaProps(item, requiredProp);
+    }
+  }
+  return parseJSONSchemaProps(item, requiredProp);
+};
+
+const generateHookDocs = async () => {
   const files = await glob('packages/hooks/src/**/use*.ts', {
     ignore: ['**/*.{test,stories}.{ts,tsx}']
   });
@@ -55,41 +84,7 @@ const generateFunctionDocs = async () => {
         examples: get(jsdocSchema, '[0].examples'),
         params: get(jsdocSchema, '[0].params', []).reduce((acc, item) => {
           // Check if param is callback
-          const itemIsCallback = get(item, 'type.names', []).join().includes('Callback');
-          if (itemIsCallback) {
-            const returnsCustomCallback = (jsdocSchema || []).find(
-              ({ id }) => id === get(item.type, 'names', [])[0]
-            );
-
-            if (returnsCustomCallback) {
-              // Check if callback returns or throws
-              const params = get(returnsCustomCallback, 'params', []).map((param) => {
-                const parseParam = parseJSONSchemaProps(param);
-                return `${parseParam.name}: ${parseParam.type.name}`;
-              });
-              const returns = get(
-                parseTypes(get(returnsCustomCallback, 'returns[0].type')),
-                'name'
-              );
-              const exceptions = get(
-                parseTypes(get(returnsCustomCallback, 'exceptions[0].type')),
-                'name'
-              );
-
-              acc[item.name] = {
-                ...parseJSONSchemaProps(item),
-                type: {
-                  name: `(${params.join(',')}) => ${
-                    exceptions ? `{ throw ${exceptions} }` : `${returns}`
-                  }`
-                }
-              };
-            } else {
-              acc[item.name] = parseJSONSchemaProps(item);
-            }
-          } else {
-            acc[item.name] = parseJSONSchemaProps(item);
-          }
+          acc[item.name] = checkIsCallback(item, jsdocSchema);
           return acc;
         }, {}),
         returns: get(jsdocSchema, '[0].returns', []).reduce((acc, item) => {
@@ -104,13 +99,13 @@ const generateFunctionDocs = async () => {
               // Parse array of custom types
               ...(customType === 'Array' &&
                 returnsCustomType.properties.reduce((acc, item) => {
-                  acc[`result[${item.name}]`] = parseJSONSchemaProps(item, false);
+                  acc[`result[${item.name}]`] = checkIsCallback(item, jsdocSchema, false);
                   return acc;
                 }, {})),
               // Parse object of custom types
               ...(customType === 'Object' &&
                 returnsCustomType.properties.reduce((acc, item) => {
-                  acc[`result.${item.name}`] = parseJSONSchemaProps(item, false);
+                  acc[`result.${item.name}`] = checkIsCallback(item, jsdocSchema, false);
                   return acc;
                 }, {}))
             };
@@ -124,19 +119,19 @@ const generateFunctionDocs = async () => {
        * Generate file markdown
        */
       const documentationMDPath = path.join(componentPath, '../') + 'readme.md';
-      const rendererMD = new DocGenMarkdownRenderer({
-        template: functionMDTemplate
+      const rendererMD = new RendererGenerator({
+        template: hookMDTemplate
       });
-      writeFile(documentationMDPath, rendererMD.render(componentPath, parsedSchema));
+      writeFile(documentationMDPath, rendererMD.renderDoc(componentPath, parsedSchema), 'mdx');
 
       /**
        * Generate file MDX
        */
       const documentationMDXPath = path.join(componentPath, '../') + 'readme.mdx';
-      const rendererMDX = new DocGenMarkdownRenderer({
-        template: functionMDXTemplate
+      const rendererMDX = new RendererGenerator({
+        template: hookMDXTemplate
       });
-      writeFile(documentationMDXPath, rendererMDX.render(componentPath, parsedSchema));
+      writeFile(documentationMDXPath, rendererMDX.renderDoc(componentPath, parsedSchema), 'mdx');
 
       console.log(preffix, clc.blue(componentName, '=>', componentPath), clc.green('✔'));
     } catch (error) {
@@ -165,7 +160,7 @@ const generateIntroductionDocs = async () => {
 };
 
 const generateAllDocs = async () => {
-  await generateFunctionDocs();
+  await generateHookDocs();
   await generateIntroductionDocs();
 
   console.log(preffix, clc.green('Documentation generated successfully!'));

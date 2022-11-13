@@ -7,7 +7,7 @@ import {
   TWItem,
   TWJSONPreview
 } from '@react-jopau/styles/components';
-import { useFetch } from './useFetch';
+import { useFetch } from './use-fetch';
 import docs from './readme.mdx';
 
 export default {
