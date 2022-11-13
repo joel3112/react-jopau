@@ -1,6 +1,6 @@
 import { renderHook, waitFor } from '@testing-library/react';
 import axios from 'axios';
-import { useFetch } from './useFetch';
+import { useFetch } from './use-fetch';
 
 const mockData = 'data';
 const mockError = 'error';

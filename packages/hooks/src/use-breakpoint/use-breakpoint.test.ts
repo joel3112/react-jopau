@@ -1,5 +1,5 @@
 import { act, renderHook } from '@testing-library/react';
-import { useBreakpoint } from './useBreakpoint';
+import { useBreakpoint } from './use-breakpoint';
 
 const rules = {
   xs: 650,
