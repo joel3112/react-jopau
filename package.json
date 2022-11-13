@@ -14,9 +14,9 @@
     "bootstrap": "lerna bootstrap",
     "build": "lerna run build --sort --concurrency 1",
     "clean": "lerna clean --yes && rimraf node_modules yarn.lock",
-    "docs": "yarn run docs:components && yarn run docs:functions",
+    "docs": "yarn run docs:components && yarn run docs:hooks",
     "docs:components": "node scripts/docs-components",
-    "docs:functions": "node scripts/docs-functions",
+    "docs:hooks": "node scripts/docs-hooks",
     "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,scss,md,mdx,json,yml}' --config ./.prettierrc.json",
     "lint": "eslint .",
     "publish": "lerna publish --yes",
@@ -24,7 +24,8 @@
     "type-check": "tsc --pretty --noEmit",
     "storybook": "yarn run docs && start-storybook -p 6006 --no-open",
     "build-storybook": "build-storybook -o ./dist/storybook -c .storybook",
-    "link:app": "node scripts/link-app"
+    "link:app": "node scripts/link-app",
+    "create": "node scripts/create"
   },
   "workspaces": [
     "apps/*",
@@ -69,6 +70,7 @@
     "cli-color": "^2.0.3",
     "copyfiles": "^2.4.1",
     "css-mediaquery": "^0.1.2",
+    "enquirer": "^2.3.6",
     "eslint": "^8.24.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-jsdoc": "^39.6.2",
