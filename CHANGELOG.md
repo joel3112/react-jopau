@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.1](https://github.com/joel3112/react-jopau/compare/v0.13.0...v0.13.1) (2022-11-13)
+
+### 🏠 Internal
+
+- **components:** change location contexts ([a6b0cac](https://github.com/joel3112/react-jopau/commit/a6b0cac126604b159ba562c981059af7e409ac9d))
+- create scripts components ([e7095aa](https://github.com/joel3112/react-jopau/commit/e7095aa188910eec54beb6877dc3ca78e3f4fa77))
+- **hooks:** create root barrel ([7291824](https://github.com/joel3112/react-jopau/commit/729182411102efdf8f321afc1c53da2b1f00a3ab))
+- **hooks:** rename kebab case ([3ffc83f](https://github.com/joel3112/react-jopau/commit/3ffc83f3820c0c447f7cca8a61fa83083fc263c0))
+- update script create context ([ceb322f](https://github.com/joel3112/react-jopau/commit/ceb322f9d5d0aaf9901a50f0ebae57ade4a5da0c))
+
 ## [0.13.0](https://github.com/joel3112/react-jopau/compare/v0.12.0...v0.13.0) (2022-11-12)
 
 ### 🏠 Internal
