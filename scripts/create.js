@@ -7,30 +7,31 @@ const RendererGenerator = require('./utils/renderer-generator.js');
 const { writeFile } = require('./utils/schema');
 
 const generateFiles = async (files, props) => {
-  for (const file of files) {
+  return new Promise(async (resolve, reject) => {
+    let currentFile = null;
     try {
-      fs.mkdirSync(path.parse(file.path).dir, { recursive: true });
-      const template = require(file.templatePath);
-      const renderer = new RendererGenerator({ template });
-      await writeFile(
-        file.path,
-        renderer.renderComponent(file.templatePath, {
-          ...props
-        }),
-        'typescript'
-      );
-      console.log(` * ${file.name} => ${file.path}`, clc.green('✔'));
+      for (const file of files) {
+        currentFile = file;
+        fs.mkdirSync(path.parse(file.path).dir, { recursive: true });
+        const template = require(file.templatePath);
+        const renderer = new RendererGenerator({ template });
+        await writeFile(file.path, renderer.renderComponent(props), 'typescript');
+        console.log(` * ${file.name} => ${file.path}`, clc.green('✔'));
+      }
+      resolve();
     } catch (error) {
-      console.log(clc.red(`There was an error creating the ${file.name}.`));
-      throw error;
+      console.log(
+        clc.red(`There was an error creating the ${currentFile.name} in ${currentFile.path}.`)
+      );
+      reject(error);
     }
-  }
+  });
 };
 
 const createComponent = async () => {
   console.log(clc.green('Creating component...'));
 
-  const name = await promptInput('Component name', 'example', kebabCase);
+  const name = kebabCase(await promptInput('Component name', 'example', kebabCase));
   const type = await promptSelect('Component category', [
     'display',
     'feedback',
@@ -63,15 +64,22 @@ const createComponent = async () => {
       templatePath: './templates/create/component.styled.ts.js'
     }
   ];
-  generateFiles(files, { componentName: name, componentType: type });
 
-  console.log(clc.green('Component created!'));
+  generateFiles(files, { componentName: name, componentType: type })
+    .then(() => {
+      console.log(clc.green('Component created!'));
+    })
+    .catch((error) => {
+      throw error;
+    });
 };
 
 const createContextProvider = async () => {
   console.log(clc.green('Creating context provider...'));
 
-  const name = await promptInput('Provider name (without provider word)', 'example', kebabCase);
+  const name = kebabCase(
+    await promptInput('Provider name (without "provider" word)', 'example', kebabCase)
+  );
 
   const files = [
     {
@@ -90,15 +98,20 @@ const createContextProvider = async () => {
       templatePath: './templates/create/context-provider.test.tsx.js'
     }
   ];
-  generateFiles(files, { componentName: name });
 
-  console.log(clc.green('Context provider created!'));
+  generateFiles(files, { componentName: name })
+    .then(() => {
+      console.log(clc.green('Context provider created!'));
+    })
+    .catch((error) => {
+      throw error;
+    });
 };
 
 const createHook = async () => {
   console.log(clc.green('Creating hook...'));
 
-  const name = await promptInput('Hook name (without use word)', 'example', kebabCase);
+  const name = kebabCase(await promptInput('Hook name (without "use" word)', 'example', kebabCase));
 
   const files = [
     {
@@ -117,9 +130,14 @@ const createHook = async () => {
       templatePath: './templates/create/hook.test.ts.js'
     }
   ];
-  generateFiles(files, { componentName: name });
 
-  console.log(clc.green('Hook created!'));
+  generateFiles(files, { componentName: name })
+    .then(() => {
+      console.log(clc.green('Hook created!'));
+    })
+    .catch((error) => {
+      throw error;
+    });
 };
 
 const create = async () => {

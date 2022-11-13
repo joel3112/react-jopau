@@ -154,11 +154,15 @@ class RendererGenerator {
     );
   }
 
-  renderComponent(filePath, { componentName, componentType }) {
+  renderComponent({ componentName, componentType }) {
     return this.options.template.instantiate(
       {
         name: componentName,
-        pascalName: componentName.split('-').map(capitalize).join(''),
+        pascalName: componentName
+          .replace(/( |-)+/g, '-')
+          .split('-')
+          .map(capitalize)
+          .join(''),
         type: componentType
       },
       this.extension

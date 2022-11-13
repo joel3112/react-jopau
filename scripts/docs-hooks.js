@@ -25,6 +25,35 @@ const introductionMDXTemplate = require('./templates/docs/introduction.mdx.js');
 const preffix = clc.yellow('@react-jopau/hooks:');
 console.log(preffix, 'Generating hooks documentation...');
 
+const checkIsCallback = (item, jsdocSchema, requiredProp) => {
+  const itemIsCallback = get(item, 'type.names', []).join().includes('Callback');
+  if (itemIsCallback) {
+    const returnsCustomCallback = (jsdocSchema || []).find(
+      ({ id }) => id === get(item.type, 'names', [])[0]
+    );
+
+    if (returnsCustomCallback) {
+      // Check if callback returns or throws
+      const params = get(returnsCustomCallback, 'params', []).map((param) => {
+        const parseParam = parseJSONSchemaProps(param, requiredProp);
+        return `${parseParam.name}: ${parseParam.type.name}`;
+      });
+      const returns = get(parseTypes(get(returnsCustomCallback, 'returns[0].type')), 'name');
+      const exceptions = get(parseTypes(get(returnsCustomCallback, 'exceptions[0].type')), 'name');
+
+      return {
+        ...parseJSONSchemaProps(item, requiredProp),
+        type: {
+          name: `(${params.join(',')}) => ${exceptions ? `{ throw ${exceptions} }` : `${returns}`}`
+        }
+      };
+    } else {
+      return parseJSONSchemaProps(item, requiredProp);
+    }
+  }
+  return parseJSONSchemaProps(item, requiredProp);
+};
+
 const generateHookDocs = async () => {
   const files = await glob('packages/hooks/src/**/use*.ts', {
     ignore: ['**/*.{test,stories}.{ts,tsx}']
@@ -55,41 +84,7 @@ const generateHookDocs = async () => {
         examples: get(jsdocSchema, '[0].examples'),
         params: get(jsdocSchema, '[0].params', []).reduce((acc, item) => {
           // Check if param is callback
-          const itemIsCallback = get(item, 'type.names', []).join().includes('Callback');
-          if (itemIsCallback) {
-            const returnsCustomCallback = (jsdocSchema || []).find(
-              ({ id }) => id === get(item.type, 'names', [])[0]
-            );
-
-            if (returnsCustomCallback) {
-              // Check if callback returns or throws
-              const params = get(returnsCustomCallback, 'params', []).map((param) => {
-                const parseParam = parseJSONSchemaProps(param);
-                return `${parseParam.name}: ${parseParam.type.name}`;
-              });
-              const returns = get(
-                parseTypes(get(returnsCustomCallback, 'returns[0].type')),
-                'name'
-              );
-              const exceptions = get(
-                parseTypes(get(returnsCustomCallback, 'exceptions[0].type')),
-                'name'
-              );
-
-              acc[item.name] = {
-                ...parseJSONSchemaProps(item),
-                type: {
-                  name: `(${params.join(',')}) => ${
-                    exceptions ? `{ throw ${exceptions} }` : `${returns}`
-                  }`
-                }
-              };
-            } else {
-              acc[item.name] = parseJSONSchemaProps(item);
-            }
-          } else {
-            acc[item.name] = parseJSONSchemaProps(item);
-          }
+          acc[item.name] = checkIsCallback(item, jsdocSchema);
           return acc;
         }, {}),
         returns: get(jsdocSchema, '[0].returns', []).reduce((acc, item) => {
@@ -104,13 +99,13 @@ const generateHookDocs = async () => {
               // Parse array of custom types
               ...(customType === 'Array' &&
                 returnsCustomType.properties.reduce((acc, item) => {
-                  acc[`result[${item.name}]`] = parseJSONSchemaProps(item, false);
+                  acc[`result[${item.name}]`] = checkIsCallback(item, jsdocSchema, false);
                   return acc;
                 }, {})),
               // Parse object of custom types
               ...(customType === 'Object' &&
                 returnsCustomType.properties.reduce((acc, item) => {
-                  acc[`result.${item.name}`] = parseJSONSchemaProps(item, false);
+                  acc[`result.${item.name}`] = checkIsCallback(item, jsdocSchema, false);
                   return acc;
                 }, {}))
             };

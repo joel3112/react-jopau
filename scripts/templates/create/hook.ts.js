@@ -6,7 +6,8 @@ import { useEffect, useState } from 'react';
 
 /**
  * @callback SetValueCallback
- * @param {number} value
+ * @param   {number} value
+ * @returns {void}
  */
 /**
  * @typedef  {Object} Use${context.pascalName}
@@ -21,11 +22,11 @@ import { useEffect, useState } from 'react';
  *
  * @imports import { use${context.pascalName} } from '@react-jopau/hooks';
  * @example
- * const { value, setValue } = use${context.pascalName}();
+ * const { value, setValue } = use${context.pascalName}(0);
  *
  * console.log(value);
  */
-export const use${context.pascalName} = (initialValue?: number): {
+export const use${context.pascalName} = (initialValue: number): {
   value: number;
   setValue: (value: number) => void;
 } => {
