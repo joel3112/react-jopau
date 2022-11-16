@@ -9,8 +9,10 @@ export default {
         black: '#000',
         gray: '#b9bdcf',
         grayDark: '#787878',
+        success: '#17c964',
+        warning: '#f5a524',
+        error: '#f31260',
         background: '#fcfcfc',
-        backgroundSecondary: '#e0f9fe',
         border: '#dedede'
       },
       dark: {
@@ -21,8 +23,10 @@ export default {
         black: '#000',
         gray: '#b9bdcf',
         grayDark: '#787878',
+        success: '#17c964',
+        warning: '#f5a524',
+        error: '#f31260',
         background: '#1d1f20',
-        backgroundSecondary: '#e0f9fe',
         border: '#333'
       }
     },

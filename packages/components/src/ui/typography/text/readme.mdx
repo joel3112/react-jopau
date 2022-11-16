@@ -1,0 +1,55 @@
+import { ArgsTable, Canvas, Story } from '@storybook/addon-docs';
+import { SBDescription, SBSubTitle, SBTitle } from '@react-jopau/styles/components';
+import { Text } from './text';
+
+<SBTitle>Text</SBTitle>
+
+<SBDescription>
+  Text component is the used to render text and paragraphs within an interface using well-defined
+  typographic styles.
+</SBDescription>
+
+```jsx dark
+import { Text } from '@react-jopau/components/ui/typography';
+```
+
+<Canvas withToolbar>
+  <Story id="components-typography-text--default" />
+</Canvas>
+
+<SBSubTitle>Properties</SBSubTitle>
+
+<ArgsTable of={Text} />
+
+<SBSubTitle>Stories</SBSubTitle>
+<br />
+
+<span className="!text-lg font-medium">Default</span>
+
+<Canvas>
+  <Story id="components-typography-text--default" />
+</Canvas>
+
+<span className="!text-lg font-medium">Variants</span>
+
+<Canvas>
+  <Story id="components-typography-text--variants" />
+</Canvas>
+
+<span className="!text-lg font-medium">Sizes</span>
+
+<Canvas>
+  <Story id="components-typography-text--sizes" />
+</Canvas>
+
+<span className="!text-lg font-medium">Span</span>
+
+<Canvas>
+  <Story id="components-typography-text--span" />
+</Canvas>
+
+<span className="!text-lg font-medium">Max Lines</span>
+
+<Canvas>
+  <Story id="components-typography-text--max-lines" />
+</Canvas>

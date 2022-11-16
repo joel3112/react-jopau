@@ -1,6 +1,7 @@
 import { createStitches, styled } from '@stitches/react';
 import { BreakpointsRules } from './breakpoint';
 import defaultConfig from './themes/default';
+import themeUtils from './themes/utils';
 import {
   getBreakpoints,
   getColors,
@@ -19,6 +20,7 @@ export class ThemeBuilder {
   lightTheme: ThemeScheme = null;
   darkTheme: ThemeScheme = null;
   breakpoints: BreakpointsRules = {};
+  utils = themeUtils;
 
   /**
    * Creates a new theme by configuration or theme key.
@@ -37,84 +39,7 @@ export class ThemeBuilder {
         }),
         {}
       ),
-      utils: {
-        size: (value: number) => ({
-          width: value,
-          height: value
-        }),
-        br: (value: number) => ({
-          borderRadius: value
-        }),
-        m: (value: number) => ({
-          margin: value
-        }),
-        mt: (value: number) => ({
-          marginTop: value
-        }),
-        mr: (value: number) => ({
-          marginRight: value
-        }),
-        mb: (value: number) => ({
-          marginBottom: value
-        }),
-        ml: (value: number) => ({
-          marginLeft: value
-        }),
-        mx: (value: number) => ({
-          marginLeft: value,
-          marginRight: value
-        }),
-        my: (value: number) => ({
-          marginTop: value,
-          marginBottom: value
-        }),
-        p: (value: number) => ({
-          padding: value
-        }),
-        pt: (value: number) => ({
-          paddingTop: value
-        }),
-        pr: (value: number) => ({
-          paddingRight: value
-        }),
-        pb: (value: number) => ({
-          paddingBottom: value
-        }),
-        pl: (value: number) => ({
-          paddingLeft: value
-        }),
-        px: (value: number) => ({
-          paddingLeft: value,
-          paddingRight: value
-        }),
-        py: (value: number) => ({
-          paddingTop: value,
-          paddingBottom: value
-        }),
-        alignBetween: (direction: 'row' | 'column') => ({
-          display: 'flex',
-          flexDirection: direction,
-          alignItems: 'center',
-          justifyContent: 'space-between'
-        }),
-        alignCenterX: (direction: 'row' | 'column') => ({
-          display: 'flex',
-          flexDirection: direction,
-          alignItems: 'center'
-        }),
-        alignCenterY: (direction: 'row' | 'column') => ({
-          display: 'flex',
-          flexDirection: direction,
-          justifyContent: 'center'
-        }),
-        lineClamp: (lines: number) => ({
-          overflow: 'hidden',
-          textOverflow: 'ellipsis',
-          display: '-webkit-box',
-          '-webkit-line-clamp': lines,
-          '-webkit-box-orient': 'vertical'
-        })
-      }
+      utils: themeUtils
     });
 
     this.styledTheme = styled;
