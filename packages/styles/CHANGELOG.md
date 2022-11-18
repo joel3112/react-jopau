@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.14.0](https://github.com/joel3112/react-jopau/compare/v0.13.1...v0.14.0) (2022-11-18)
+
+### ⚠ BREAKING CHANGES
+
+- change theme config structure
+
+### 🚀 New Features
+
+- **components:** add text component ([d619c63](https://github.com/joel3112/react-jopau/commit/d619c632c645555b00dd8066ba03d0f41ebccf81))
+
+### 🏠 Internal
+
+- storybook update global styles ([be920a0](https://github.com/joel3112/react-jopau/commit/be920a0d072814bffce8edb48c34023add4f256f))
+
 ## [0.13.1](https://github.com/joel3112/react-jopau/compare/v0.13.0...v0.13.1) (2022-11-13)
 
 ### 🏠 Internal
