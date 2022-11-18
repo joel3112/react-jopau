@@ -1,4 +1,5 @@
 import Stitches from '@stitches/react/types/stitches';
+import { ConfigType } from '@stitches/react/types/config';
 import { BreakpointsRules } from '../breakpoint';
 import { themes } from '../themes';
 import defaultConfig from '../themes/default';
@@ -11,28 +12,23 @@ type DeepPartial<T> = T extends object
     }
   : T;
 
-export type ThemePropValue = { [token in number | string]: boolean | number | string };
+export type ThemeProp = { [token in number | string]: boolean | number | string };
+export type ThemePropWithSchemes = Record<'@light' | '@dark', ThemeProp>;
 export type ThemeProps<T = {}> = {
-  borderStyles?: ThemePropValue;
-  borderWidths?: ThemePropValue;
-  colors: {
-    light: ThemePropValue;
-    dark: ThemePropValue;
-  };
-  fonts?: ThemePropValue;
-  fontSizes?: ThemePropValue;
-  fontWeights?: ThemePropValue;
-  letterSpacings?: ThemePropValue;
-  lineHeights?: ThemePropValue;
-  radii?: ThemePropValue;
-  shadows: {
-    light?: ThemePropValue;
-    dark?: ThemePropValue;
-  };
-  sizes?: ThemePropValue;
-  space?: ThemePropValue;
-  transitions?: ThemePropValue;
-  zIndices?: ThemePropValue;
+  borderStyles?: ThemeProp;
+  borderWidths?: ThemeProp;
+  colors: ThemeProp | ThemePropWithSchemes;
+  fonts?: ThemeProp;
+  fontSizes?: ThemeProp;
+  fontWeights?: ThemeProp;
+  letterSpacings?: ThemeProp;
+  lineHeights?: ThemeProp;
+  radii?: ThemeProp;
+  shadows: ThemeProp | ThemePropWithSchemes;
+  sizes?: ThemeProp;
+  space?: ThemeProp;
+  transitions?: ThemeProp;
+  zIndices?: ThemeProp;
 } & {
   [Scale in keyof T]: {
     [Token in keyof T[Scale]]: T[Scale][Token] extends boolean | number | string
@@ -67,7 +63,7 @@ export const DARK_MODE_STORAGE_KEY = 'key-dark-mode';
 
 /* ==== helpers ================================================================ */
 
-const mergeTheme = (theme1: ThemeConfig, theme2: PartialThemeConfig) => {
+const mergeTheme = (theme1: ThemeConfig, theme2: PartialThemeConfig): ThemeConfig => {
   const a = { ...theme1 };
   const b = { ...theme2 };
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -76,6 +72,33 @@ const mergeTheme = (theme1: ThemeConfig, theme2: PartialThemeConfig) => {
       v && typeof v === 'object' ? mergeTheme((o[k] = o[k] || (Array.isArray(v) ? [] : {})), v) : v;
     return o;
   }, a);
+};
+
+const getValuesByThemeProp = (
+  config: ThemeConfig | string,
+  prop: keyof ThemeProps,
+  scheme: 'light' | 'dark' = 'light'
+): ThemeProp => {
+  const values = getTheme(config)[prop];
+  return Object.keys({ ...values }).reduce((acc, key) => {
+    if (key.includes('@')) {
+      if (key === `@${scheme}`) {
+        return { ...acc, ...(values as ThemePropWithSchemes)[key as '@light' | '@dark'] };
+      } else {
+        return acc;
+      }
+    }
+    return { ...acc, [key]: (values as ThemeProp)[key] };
+  }, {} as ThemeProp);
+};
+
+export const getSchemeStore = (): string | null => {
+  if (typeof window === 'undefined') {
+    return null;
+  }
+
+  const storedScheme = window.localStorage.getItem(DARK_MODE_STORAGE_KEY);
+  return storedScheme ? JSON.parse(storedScheme) : 'light';
 };
 
 export const getThemeStored = (): string | null => {
@@ -87,7 +110,7 @@ export const getThemeStored = (): string | null => {
   return storedTheme ? JSON.parse(storedTheme) : 'default';
 };
 
-export const getThemeInstance = (config?: ThemeConfig | string) => {
+export const getThemeInstance = (config?: ThemeConfig | string): ThemeConfig => {
   if (!config) {
     return defaultConfig;
   }
@@ -106,14 +129,26 @@ export const getTheme = (config: ThemeConfig | string): ThemeProps => {
   return getProps(config).theme;
 };
 
+export const normalizeThemeByScheme = (
+  config: ThemeConfig | string,
+  scheme: 'light' | 'dark'
+): ConfigType.Theme => {
+  return Object.keys(getTheme(config)).reduce((acc, key) => {
+    return {
+      ...acc,
+      [key]: getValuesByThemeProp(config, key as keyof ThemeProps, scheme)
+    };
+  }, {}) as ConfigType.Theme;
+};
+
 export const getColors = (
   config: ThemeConfig | string,
   scheme: 'light' | 'dark' = 'light'
-): ThemePropValue => {
-  return getTheme(config).colors[scheme];
+): ThemeProp => {
+  return getValuesByThemeProp(config, 'colors', scheme);
 };
 
-export const getBreakpoints = (config: ThemeConfig | string) => {
+export const getBreakpoints = (config: ThemeConfig | string): BreakpointsRules => {
   return getProps(config).media;
 };
 

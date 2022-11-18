@@ -1,28 +1,74 @@
 export default {
   theme: {
     colors: {
-      light: {
-        primary: '#20232a',
-        secondary: '#04cffa',
+      primary: '#20232a',
+      secondary: '#04cffa',
+      white: '#fff',
+      black: '#000',
+
+      blue50: '#edf5ff',
+      blue100: '#e1efff',
+      blue200: '#cee4fe',
+      blue300: '#b7d5f8',
+      blue400: '#96c1f2',
+      blue500: '#5ea2ef',
+      blue600: '#0072f5',
+      blue700: '#005fcc',
+      blue800: '#004799',
+      blue900: '#00254d',
+
+      green50: '#f1fdf7',
+      green100: '#e8fcf1',
+      green200: '#dafbe8',
+      green300: '#c8f9dd',
+      green400: '#adf5cc',
+      green500: '#88f1b6',
+      green600: '#17c964',
+      green700: '#13a452',
+      green800: '#108944',
+      green900: '#06371b',
+
+      yellow50: '#fef9f0',
+      yellow100: '#fef5e7',
+      yellow200: '#fdefd8',
+      yellow300: '#fce7c5',
+      yellow400: '#fbdba7',
+      yellow500: '#f9cb80',
+      yellow600: '#f5a524',
+      yellow700: '#b97509',
+      yellow800: '#925d07',
+      yellow900: '#4e3104',
+
+      red50: '#fef0f5',
+      red100: '#fee7ef',
+      red200: '#fdd8e5',
+      red300: '#fcc5d8',
+      red400: '#faa8c5',
+      red500: '#f881ab',
+      red600: '#f31260',
+      red700: '#b80a47',
+      red800: '#910838',
+      red900: '#4e041e',
+
+      gray50: '#f1f3f5',
+      gray100: '#eceef0',
+      gray200: '#e6e8eb',
+      gray300: '#dfe3e6',
+      gray400: '#d7dbdf',
+      gray500: '#c1c8cd',
+      gray600: '#889096',
+      gray700: '#7e868c',
+      gray800: '#687076',
+      gray900: '#11181c',
+
+      '@light': {
         text: '#000',
-        white: '#fff',
-        black: '#000',
-        gray: '#b9bdcf',
-        grayDark: '#787878',
         background: '#fcfcfc',
-        backgroundSecondary: '#e0f9fe',
         border: '#dedede'
       },
-      dark: {
-        primary: '#20232a',
-        secondary: '#04cffa',
+      '@dark': {
         text: '#fff',
-        white: '#fff',
-        black: '#000',
-        gray: '#b9bdcf',
-        grayDark: '#787878',
         background: '#1d1f20',
-        backgroundSecondary: '#e0f9fe',
         border: '#333'
       }
     },
@@ -57,10 +103,10 @@ export default {
     borderStyles: {},
     radii: {},
     shadows: {
-      light: {
+      '@light': {
         boxShadow: 'rgb(231 235 250) 0 -1px 1px inset'
       },
-      dark: {
+      '@dark': {
         boxShadow: 'rgb(67 67 67) 0 -1px 1px inset'
       }
     },

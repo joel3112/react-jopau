@@ -1,9 +1,14 @@
 import { ReactNode } from 'react';
 import { styled } from '@stitches/react';
-import { ArgsTable as PureArgsTable } from '@storybook/components';
+import {
+  ArgsTable as PureArgsTable,
+  PreviewProps as PurePreviewProps
+} from '@storybook/components';
+import { Canvas, SourceState, Story } from '@storybook/addon-docs';
 import LinkTo from '@storybook/addon-links/react';
 import { BiLinkExternal } from 'react-icons/bi';
 import classes from 'classnames';
+import { getSchemeStore } from '../theme';
 
 /**
  * Component story mdx
@@ -59,6 +64,37 @@ export const SBCard = ({
     </LinkTo>
   );
 };
+
+/* ==== stories ================================================================== */
+
+const SBStory = ({
+  id,
+  label,
+  canvasProps
+}: {
+  id: string;
+  label?: string;
+  canvasProps?: PurePreviewProps & {
+    withSource?: SourceState;
+    mdxSource?: string;
+  };
+}) => {
+  return (
+    <div className={`${getSchemeStore()}-theme`}>
+      {label && <span className="!text-lg font-medium">{label}</span>}
+
+      <Canvas {...(canvasProps || {})}>
+        <Story id={id} />
+      </Canvas>
+    </div>
+  );
+};
+
+export const SBStories = ({ children }: { children: ReactNode }) => {
+  return <div className="flex flex-col mt-8">{children}</div>;
+};
+
+SBStories.Item = SBStory;
 
 /* ==== args-table ============================================================= */
 

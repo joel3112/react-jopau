@@ -14,16 +14,12 @@ const templateCreator = template({});
 
 const templateStory = ({ label, id }) => {
   return `
-<span className="!text-lg font-medium">${label}</span>
-
-<Canvas>
-  <Story id="${id}" />
-</Canvas>
+<SBStories.Item label="${label}" id="${id}" />
 `;
 };
 
-const templateObject = templateCreator`import { ArgsTable, Canvas, Story } from '@storybook/addon-docs';
-import { SBDescription, SBSubTitle, SBTitle } from '@react-jopau/styles/components';
+const templateObject = templateCreator`import { ArgsTable } from '@storybook/addon-docs';
+import { SBDescription, SBStories, SBSubTitle, SBTitle } from '@react-jopau/styles/components';
 import { ${componentName} } from './${componentPath}';
 
 <SBTitle>${componentName}</SBTitle>
@@ -34,9 +30,7 @@ import { ${componentName} } from './${componentPath}';
 ${prop('imports')}
 \`\`\`
 
-<Canvas withToolbar>
-  <Story id="${storyDefaultId}" />
-</Canvas>
+<SBStories.Item id="${storyDefaultId}" canvasProps={{ withToolbar: true }} />
 
 <SBSubTitle>Properties</SBSubTitle>
 
@@ -45,12 +39,14 @@ ${prop('imports')}
 ${({ context }) => {
   let stories = '';
   if (Object.keys(context.stories).length > 0) {
-    stories += `<SBSubTitle>Stories</SBSubTitle>`;
-    stories += `${os.EOL}<br />${os.EOL}`;
+    stories += `<SBSubTitle>Stories</SBSubTitle>${os.EOL}${os.EOL}`;
+    stories += `<SBStories>`;
 
     Object.keys(context.stories).forEach((key) => {
-      stories += os.EOL + templateStory(context.stories[key]);
+      stories += templateStory(context.stories[key]);
     });
+
+    stories += `</SBStories>${os.EOL}`;
   }
   stories += os.EOL;
 

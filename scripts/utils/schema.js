@@ -72,7 +72,7 @@ const getStories = (componentPath, schemaProps) => {
 
   try {
     const component = fs.readFileSync(storiesPath).toString();
-    const storyRegex = /export const (.*) = Template.bind\({}\);/g;
+    const storyRegex = /export const (.*) = /g;
     let match;
 
     while ((match = storyRegex.exec(component)) !== null) {
