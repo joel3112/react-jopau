@@ -16,15 +16,15 @@ describe('Tests Text component', () => {
   });
 
   test('renders tag correctly', () => {
-    const { container } = render(<Text tag="span">Content</Text>);
+    const { container } = render(<Text as="span">Content</Text>);
 
     expect(container.firstChild).toContainHTML('span');
   });
 
-  test('renders variant correctly', () => {
-    const { container } = render(<Text variant="primary">Content</Text>);
+  test('renders color correctly', () => {
+    const { container } = render(<Text color="primary">Content</Text>);
 
-    expect(container.firstChild).toContainHTML('variant-primary');
+    expect(container.firstChild).toContainHTML('color-primary');
   });
 
   test('renders size correctly', () => {

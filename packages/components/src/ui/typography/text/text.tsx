@@ -1,5 +1,5 @@
 import classes from 'classnames';
-import { ElementHTML } from '../../../../types';
+import { Color, ElementHTML } from '../../../../types';
 import { TextWrapper } from './text.styled';
 
 type TextProps = ElementHTML & {
@@ -10,19 +10,11 @@ type TextProps = ElementHTML & {
   /**
    * Defines the tag of the component.
    */
-  tag?: 'p' | 'span';
+  as?: 'p' | 'span';
   /**
-   * Defines the variant color of the component.
+   * Defines the color of the text.
    */
-  variant?:
-    | 'default'
-    | 'primary'
-    | 'secondary'
-    | 'disabled'
-    | 'info'
-    | 'error'
-    | 'success'
-    | 'warning';
+  color?: Color;
   /**
    * Defines the size of the component.
    */
@@ -34,8 +26,8 @@ type TextProps = ElementHTML & {
 } & typeof defaultProps;
 
 const defaultProps = {
-  variant: 'default',
-  tag: 'p',
+  as: 'p',
+  color: 'default',
   size: 'md'
 };
 
@@ -47,10 +39,10 @@ const defaultProps = {
  *
  * @imports import { Text } from '@react-jopau/components/ui/typography';
  * @example
- * <Text size="md" tag="span">Content</Text>
+ * <Text size="md" as="span">Content</Text>
  */
-export const Text = ({ className, style, children, variant, tag, size, maxLines }: TextProps) => {
-  const Wrapper = TextWrapper[tag];
+export const Text = ({ className, style, children, color, as, size, maxLines }: TextProps) => {
+  const Wrapper = TextWrapper[as];
 
   return (
     <Wrapper
@@ -59,7 +51,7 @@ export const Text = ({ className, style, children, variant, tag, size, maxLines 
         ...style,
         lineClamp: maxLines
       }}
-      variant={variant}
+      color={color}
       size={size}>
       {children}
     </Wrapper>

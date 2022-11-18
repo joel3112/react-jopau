@@ -1,5 +1,15 @@
 import { CSSProperties } from 'react';
 
+export type Color =
+  | 'default'
+  | 'primary'
+  | 'secondary'
+  | 'disabled'
+  | 'info'
+  | 'error'
+  | 'success'
+  | 'warning';
+
 export type ElementHTML = {
   /**
    * Classnames applied to root element

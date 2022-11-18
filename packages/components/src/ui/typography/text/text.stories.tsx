@@ -12,9 +12,9 @@ export default {
   },
   args: {
     children: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-    variant: 'default',
-    size: 'md',
-    tag: 'p'
+    as: 'p',
+    color: 'default',
+    size: 'md'
   }
 } as ComponentMeta<typeof Text>;
 
@@ -24,17 +24,17 @@ const Template: ComponentStory<typeof Text> = (args) => {
 
 export const Default = Template.bind({});
 
-export const Variants = () => {
+export const Colors = () => {
   return (
     <>
-      <Text variant="default">Default</Text>
-      <Text variant="primary">Primary</Text>
-      <Text variant="secondary">Secondary</Text>
-      <Text variant="disabled">Disabled</Text>
-      <Text variant="info">Info</Text>
-      <Text variant="error">Error</Text>
-      <Text variant="success">Success</Text>
-      <Text variant="warning">Warning</Text>
+      <Text color="default">Default</Text>
+      <Text color="primary">Primary</Text>
+      <Text color="secondary">Secondary</Text>
+      <Text color="disabled">Disabled</Text>
+      <Text color="info">Info</Text>
+      <Text color="error">Error</Text>
+      <Text color="success">Success</Text>
+      <Text color="warning">Warning</Text>
     </>
   );
 };
@@ -53,9 +53,13 @@ export const Sizes = () => {
   );
 };
 
-export const Span = Template.bind({});
-Span.args = {
-  tag: 'span'
+export const Tags = () => {
+  return (
+    <>
+      <Text as="p">p. Lorem ipsum dolor sit amet</Text>
+      <Text as="span">span. Lorem ipsum dolor sit amet</Text>
+    </>
+  );
 };
 
 export const MaxLines = Template.bind({});

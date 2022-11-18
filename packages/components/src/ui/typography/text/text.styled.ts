@@ -1,10 +1,9 @@
 import { styledTheme, utilsTheme } from '../../../index';
 
 const composers = {
-  boxSizing: 'border-box',
   display: 'block',
   variants: {
-    variant: {
+    color: {
       default: {
         color: '$text'
       },
