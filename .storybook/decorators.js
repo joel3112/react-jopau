@@ -35,7 +35,10 @@ const ThemeStoryProvider = ({ Story, context }) => {
       storyEl.style.backgroundColor = `${backgroundColor}`;
       storyEl.style.color = `${textColor}`;
     }
+    document.body.classList.toggle('dark-theme', colorScheme === 'dark');
+    document.body.classList.toggle('light-theme', colorScheme === 'light');
     document.body.style.backgroundColor = `${backgroundColor}`;
+    document.body.style.color = `initial`;
   }, [storyRef.current, themeKey, colorScheme]);
 
   return (

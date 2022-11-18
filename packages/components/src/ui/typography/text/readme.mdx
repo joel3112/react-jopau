@@ -1,5 +1,5 @@
-import { ArgsTable, Canvas, Story } from '@storybook/addon-docs';
-import { SBDescription, SBSubTitle, SBTitle } from '@react-jopau/styles/components';
+import { ArgsTable } from '@storybook/addon-docs';
+import { SBDescription, SBStories, SBSubTitle, SBTitle } from '@react-jopau/styles/components';
 import { Text } from './text';
 
 <SBTitle>Text</SBTitle>
@@ -13,43 +13,22 @@ import { Text } from './text';
 import { Text } from '@react-jopau/components/ui/typography';
 ```
 
-<Canvas withToolbar>
-  <Story id="components-typography-text--default" />
-</Canvas>
+<SBStories.Item id="components-typography-text--default" canvasProps={{ withToolbar: true }} />
 
 <SBSubTitle>Properties</SBSubTitle>
 
 <ArgsTable of={Text} />
 
 <SBSubTitle>Stories</SBSubTitle>
-<br />
 
-<span className="!text-lg font-medium">Default</span>
+<SBStories>
+<SBStories.Item label="Default" id="components-typography-text--default" />
 
-<Canvas>
-  <Story id="components-typography-text--default" />
-</Canvas>
+<SBStories.Item label="Variants" id="components-typography-text--variants" />
 
-<span className="!text-lg font-medium">Variants</span>
+<SBStories.Item label="Sizes" id="components-typography-text--sizes" />
 
-<Canvas>
-  <Story id="components-typography-text--variants" />
-</Canvas>
+<SBStories.Item label="Span" id="components-typography-text--span" />
 
-<span className="!text-lg font-medium">Sizes</span>
-
-<Canvas>
-  <Story id="components-typography-text--sizes" />
-</Canvas>
-
-<span className="!text-lg font-medium">Span</span>
-
-<Canvas>
-  <Story id="components-typography-text--span" />
-</Canvas>
-
-<span className="!text-lg font-medium">Max Lines</span>
-
-<Canvas>
-  <Story id="components-typography-text--max-lines" />
-</Canvas>
+<SBStories.Item label="Max Lines" id="components-typography-text--max-lines" />
+</SBStories>

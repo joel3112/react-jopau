@@ -84,7 +84,7 @@ export const TWInput = ({
     <label className="flex flex-col gap-1">
       <span className="text-text text-sm font-medium">{label}</span>
       <input
-        className="w-[400px] p-2 border border-border border-solid font-light bg-background text-text focus:border-gray-dark outline-none"
+        className="w-[400px] p-2 border border-border border-solid font-light bg-background text-text focus:border-gray-600 outline-none"
         value={value}
         onInput={(e) => onInput(e.currentTarget.value)}
       />

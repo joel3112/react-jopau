@@ -15,16 +15,19 @@ const composers = {
         color: '$secondary'
       },
       disabled: {
-        color: '$gray'
+        color: '$gray500'
+      },
+      info: {
+        color: '$blue500'
       },
       success: {
-        color: '$success'
+        color: '$green500'
       },
       warning: {
-        color: '$warning'
+        color: '$yellow500'
       },
       error: {
-        color: '$error'
+        color: '$red500'
       }
     },
     size: {

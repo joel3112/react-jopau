@@ -14,7 +14,15 @@ type TextProps = ElementHTML & {
   /**
    * Defines the variant color of the component.
    */
-  variant?: 'default' | 'primary' | 'secondary' | 'disabled' | 'error' | 'success' | 'warning';
+  variant?:
+    | 'default'
+    | 'primary'
+    | 'secondary'
+    | 'disabled'
+    | 'info'
+    | 'error'
+    | 'success'
+    | 'warning';
   /**
    * Defines the size of the component.
    */

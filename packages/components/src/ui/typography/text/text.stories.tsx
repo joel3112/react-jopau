@@ -31,6 +31,7 @@ export const Variants = () => {
       <Text variant="primary">Primary</Text>
       <Text variant="secondary">Secondary</Text>
       <Text variant="disabled">Disabled</Text>
+      <Text variant="info">Info</Text>
       <Text variant="error">Error</Text>
       <Text variant="success">Success</Text>
       <Text variant="warning">Warning</Text>

@@ -1,5 +1,5 @@
-import { ArgsTable, Canvas, Story } from '@storybook/addon-docs';
-import { SBDescription, SBSubTitle, SBTitle } from '@react-jopau/styles/components';
+import { ArgsTable } from '@storybook/addon-docs';
+import { SBDescription, SBStories, SBSubTitle, SBTitle } from '@react-jopau/styles/components';
 import { Space } from './space';
 
 <SBTitle>Space</SBTitle>
@@ -10,55 +10,26 @@ import { Space } from './space';
 import { Space } from '@react-jopau/components/ui/layout';
 ```
 
-<Canvas withToolbar>
-  <Story id="components-layout-space--default" />
-</Canvas>
+<SBStories.Item id="components-layout-space--default" canvasProps={{ withToolbar: true }} />
 
 <SBSubTitle>Properties</SBSubTitle>
 
 <ArgsTable of={Space} />
 
 <SBSubTitle>Stories</SBSubTitle>
-<br />
 
-<span className="!text-lg font-medium">Default</span>
+<SBStories>
+<SBStories.Item label="Default" id="components-layout-space--default" />
 
-<Canvas>
-  <Story id="components-layout-space--default" />
-</Canvas>
+<SBStories.Item label="Direction Row" id="components-layout-space--direction-row" />
 
-<span className="!text-lg font-medium">Direction Row</span>
+<SBStories.Item label="Direction Column" id="components-layout-space--direction-column" />
 
-<Canvas>
-  <Story id="components-layout-space--direction-row" />
-</Canvas>
+<SBStories.Item label="Wrap False" id="components-layout-space--wrap-false" />
 
-<span className="!text-lg font-medium">Direction Column</span>
+<SBStories.Item label="Wrap True" id="components-layout-space--wrap-true" />
 
-<Canvas>
-  <Story id="components-layout-space--direction-column" />
-</Canvas>
+<SBStories.Item label="Gap Unique" id="components-layout-space--gap-unique" />
 
-<span className="!text-lg font-medium">Wrap False</span>
-
-<Canvas>
-  <Story id="components-layout-space--wrap-false" />
-</Canvas>
-
-<span className="!text-lg font-medium">Wrap True</span>
-
-<Canvas>
-  <Story id="components-layout-space--wrap-true" />
-</Canvas>
-
-<span className="!text-lg font-medium">Gap Unique</span>
-
-<Canvas>
-  <Story id="components-layout-space--gap-unique" />
-</Canvas>
-
-<span className="!text-lg font-medium">Gap Multiple</span>
-
-<Canvas>
-  <Story id="components-layout-space--gap-multiple" />
-</Canvas>
+<SBStories.Item label="Gap Multiple" id="components-layout-space--gap-multiple" />
+</SBStories>

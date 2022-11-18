@@ -4,12 +4,9 @@ import defaultConfig from './themes/default';
 import themeUtils from './themes/utils';
 import {
   getBreakpoints,
-  getColors,
-  getTheme,
   getThemeInstance,
+  normalizeThemeByScheme,
   ThemeConfig,
-  ThemeProps,
-  ThemePropValue,
   ThemeScheme,
   ThemeStitches
 } from './theme';
@@ -30,7 +27,6 @@ export class ThemeBuilder {
   createTheme(config?: ThemeConfig) {
     this.currentConfig = getThemeInstance(config);
 
-    const currentTheme: ThemeProps = getTheme(this.currentConfig);
     const { createTheme: createStitchesTheme, styled } = createStitches({
       media: Object.entries(getBreakpoints(this.currentConfig)).reduce(
         (acc, [key, value]) => ({
@@ -47,15 +43,11 @@ export class ThemeBuilder {
 
     // Light theme
     this.lightTheme = createStitchesTheme('light-theme', {
-      ...currentTheme,
-      colors: getColors(this.currentConfig, 'light'),
-      shadows: getTheme(this.currentConfig).shadows.light as ThemePropValue
+      ...normalizeThemeByScheme(this.currentConfig, 'light')
     });
     // Dark theme
     this.darkTheme = createStitchesTheme('dark-theme', {
-      ...currentTheme,
-      colors: getColors(this.currentConfig, 'dark'),
-      shadows: getTheme(this.currentConfig).shadows.dark as ThemePropValue
+      ...normalizeThemeByScheme(this.currentConfig, 'dark')
     });
   }
 }

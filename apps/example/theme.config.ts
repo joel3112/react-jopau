@@ -1,28 +1,20 @@
 export default {
   theme: {
     colors: {
-      light: {
-        primary: '#0058a3',
-        secondary: '#fbd914',
+      primary: '#0058a3',
+      secondary: '#fbd914',
+      white: '#fff',
+      black: '#000',
+      gray: '#b9bdcf',
+      grayDark: '#787878',
+      '@light': {
         text: '#000',
-        white: '#fff',
-        black: '#000',
-        gray: '#b9bdcf',
-        grayDark: '#787878',
         background: '#fcfcfc',
-        backgroundSecondary: '#e0f9fe',
         border: '#dedede'
       },
-      dark: {
-        primary: '#fbd914',
-        secondary: '#0058a3',
+      '@dark': {
         text: '#fff',
-        white: '#fff',
-        black: '#000',
-        gray: '#b9bdcf',
-        grayDark: '#787878',
         background: '#1d1f20',
-        backgroundSecondary: '#e0f9fe',
         border: '#333'
       }
     },
@@ -57,10 +49,10 @@ export default {
     borderStyles: {},
     radii: {},
     shadows: {
-      light: {
+      '@light': {
         boxShadow: 'rgb(231 235 250) 0 -1px 1px inset'
       },
-      dark: {
+      '@dark': {
         boxShadow: 'rgb(67 67 67) 0 -1px 1px inset'
       }
     },

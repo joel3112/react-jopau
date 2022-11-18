@@ -1,14 +1,8 @@
 export default {
   theme: {
     colors: {
-      light: {
-        primary: '#20232a',
-        secondary: '#8316ea'
-      },
-      dark: {
-        primary: '#20232a',
-        secondary: '#8316ea'
-      }
+      primary: '#20232a',
+      secondary: '#8316ea'
     },
     fonts: {
       base: '"Apercu", -apple-system, ".SFNSText-Regular", "San Francisco", BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif',

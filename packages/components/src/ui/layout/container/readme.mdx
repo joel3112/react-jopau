@@ -1,5 +1,5 @@
-import { ArgsTable, Canvas, Story } from '@storybook/addon-docs';
-import { SBDescription, SBSubTitle, SBTitle } from '@react-jopau/styles/components';
+import { ArgsTable } from '@storybook/addon-docs';
+import { SBDescription, SBStories, SBSubTitle, SBTitle } from '@react-jopau/styles/components';
 import { Container } from './container';
 
 <SBTitle>Container</SBTitle>
@@ -12,49 +12,27 @@ import { Container } from './container';
 import { Container } from '@react-jopau/components/ui/layout';
 ```
 
-<Canvas withToolbar>
-  <Story id="components-layout-container--default" />
-</Canvas>
+<SBStories.Item id="components-layout-container--default" canvasProps={{ withToolbar: true }} />
 
 <SBSubTitle>Properties</SBSubTitle>
 
 <ArgsTable of={Container} />
 
 <SBSubTitle>Stories</SBSubTitle>
-<br />
 
-<span className="!text-lg font-medium">Default</span>
+<SBStories>
+<SBStories.Item label="Default" id="components-layout-container--default" />
 
-<Canvas>
-  <Story id="components-layout-container--default" />
-</Canvas>
+<SBStories.Item label="Gap Unique" id="components-layout-container--gap-unique" />
 
-<span className="!text-lg font-medium">Gap Unique</span>
+<SBStories.Item label="Gap Multiple" id="components-layout-container--gap-multiple" />
 
-<Canvas>
-  <Story id="components-layout-container--gap-unique" />
-</Canvas>
+<SBStories.Item label="Max Width Number" id="components-layout-container--max-width-number" />
 
-<span className="!text-lg font-medium">Gap Multiple</span>
+<SBStories.Item
+  label="Max Width Breakpoint"
+  id="components-layout-container--max-width-breakpoint"
+/>
 
-<Canvas>
-  <Story id="components-layout-container--gap-multiple" />
-</Canvas>
-
-<span className="!text-lg font-medium">Max Width Number</span>
-
-<Canvas>
-  <Story id="components-layout-container--max-width-number" />
-</Canvas>
-
-<span className="!text-lg font-medium">Max Width Breakpoint</span>
-
-<Canvas>
-  <Story id="components-layout-container--max-width-breakpoint" />
-</Canvas>
-
-<span className="!text-lg font-medium">Centered</span>
-
-<Canvas>
-  <Story id="components-layout-container--centered" />
-</Canvas>
+<SBStories.Item label="Centered" id="components-layout-container--centered" />
+</SBStories>
