@@ -145,7 +145,19 @@ export const getColors = (
   config: ThemeConfig | string,
   scheme: 'light' | 'dark' = 'light'
 ): ThemeProp => {
-  return getValuesByThemeProp(config, 'colors', scheme);
+  const colors = getValuesByThemeProp(config, 'colors', scheme);
+  return Object.keys(colors).reduce((acc, key) => {
+    if (key.endsWith('00')) {
+      if (key.endsWith('500')) {
+        return { ...acc, [key.replace('500', '')]: colors[key] };
+      }
+    }
+
+    return {
+      ...acc,
+      [key]: colors[key]
+    };
+  }, {}) as ThemeProp;
 };
 
 export const getBreakpoints = (config: ThemeConfig | string): BreakpointsRules => {

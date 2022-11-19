@@ -14,12 +14,12 @@ type HeadingProps = ElementHTML & {
   /**
    * Defines the color of the heading.
    */
-  color?: Color;
+  color?: 'inherit' | Color;
 } & typeof defaultProps;
 
 const defaultProps = {
   as: 'h1',
-  color: 'default'
+  color: 'inherit'
 };
 
 /**

@@ -1,30 +1,21 @@
 import { styledTheme } from '../../../index';
 
 export const HeaderWrapper = styledTheme('div', {
-  boxShadow: '$boxShadow',
-  height: 58,
+  boxShadow: '$shadows$boxShadow',
+  height: '$space$18',
+  color: '$colors$text',
+
   '.container': {
     alignBetween: 'row',
-    size: '100%',
+    size: '$space$full',
     maxWidth: 'inherit'
   },
   '.logo': {
-    width: 'fit-content',
-    height: '100%',
-    alignCenterX: 'row',
-    gap: 8
-  },
-  '.title': {
-    fontSize: 20,
-    fontWeight: 500,
-    color: '$text'
+    width: '$space$fit',
+    height: '$space$full'
   },
 
-  // Breakpoints
   '@xs': {
-    height: 50,
-    '.logo': {
-      height: 40
-    }
+    height: '$space$17'
   }
 });

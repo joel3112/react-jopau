@@ -14,6 +14,16 @@ export default {
     width: value,
     height: value
   }),
+  sizeMin: (value: number) => ({
+    minWidth: value,
+    minHeight: value,
+    width: value,
+    height: value
+  }),
+  sizeMax: (value: number) => ({
+    maxWidth: value,
+    maxHeight: value
+  }),
   rem: (value: number) => `${value / 16}rem`,
 
   /* ==== position ============================================================= */
@@ -94,10 +104,11 @@ export default {
     '-webkit-line-clamp': lines,
     '-webkit-box-orient': 'vertical'
   }),
-  ellipsis: () => ({
+  truncateText: (maxWidth: number) => ({
+    maxWidth: maxWidth,
+    whiteSpace: 'nowrap',
     overflow: 'hidden',
-    textOverflow: 'ellipsis',
-    whiteSpace: 'nowrap'
+    textOverflow: 'ellipsis'
   }),
 
   /* ==== border =============================================================== */
@@ -107,8 +118,26 @@ export default {
   }),
 
   /* ==== background =========================================================== */
-  backgroundImage: (url: string) => ({
+  linearGradient: (value: string) => ({
+    backgroundImage: value
+  }),
+  backgroundColorLighter: (opacity: number) => ({
+    backgroundImage: `linear-gradient(rgba(255, 255, 255, ${opacity}), rgba(255, 255, 255, ${opacity}))`
+  }),
+  backgroundColorDarker: (opacity: number) => ({
+    backgroundImage: `linear-gradient(rgba(0, 0, 0, ${opacity}), rgba(0, 0, 0, ${opacity}))`
+  }),
+  backgroundImageUrl: (url: string) => ({
     backgroundImage: `url(${url})`,
     backgroundRepeat: 'no-repeat'
+  }),
+  backgroundBlur: (value: string) => ({
+    backdropFilter: 'saturate(180%) blur(10px)',
+    background: value
+  }),
+
+  /* ==== transform ============================================================ */
+  scale: (value: number) => ({
+    transform: `scale(${value})`
   })
 };

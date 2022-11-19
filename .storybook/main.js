@@ -41,6 +41,7 @@ module.exports = {
         }
       }
     },
+    './expand-all-addon/register.js',
     './theme-selector-addon/register',
     './dark-mode-addon/register'
   ],

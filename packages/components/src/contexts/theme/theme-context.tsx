@@ -1,7 +1,7 @@
 import { createContext, ReactNode, useEffect, useState } from 'react';
 import { globalCss } from '@stitches/react';
 import { ThemeBuilder } from '@react-jopau/styles/ThemeBuilder';
-import { computeScheme, ThemeConfig, ThemeScheme } from '@react-jopau/styles/theme';
+import { computeScheme, ThemeConfig, ThemeSchemes } from '@react-jopau/styles/theme';
 
 /* ==== context ================================================================ */
 
@@ -62,8 +62,8 @@ const globalStyles = globalCss({
  */
 export const ThemeProvider = ({ children, config, darkMode }: ThemeProviderProps) => {
   const [dark, setDark] = useState<boolean>();
-  const [configTheme, setConfigTheme] = useState<ThemeConfig>(config || ({} as ThemeConfig));
-  const [schemes, setSchemes] = useState<{ lightTheme?: ThemeScheme; darkTheme?: ThemeScheme }>({});
+  const [configTheme, setConfigTheme] = useState<ThemeConfig | null>(null);
+  const [schemes, setSchemes] = useState<ThemeSchemes>({});
 
   useEffect(() => {
     setDark(darkMode);
@@ -75,6 +75,10 @@ export const ThemeProvider = ({ children, config, darkMode }: ThemeProviderProps
     setConfigTheme({ ...builder.currentConfig });
     setSchemes({ lightTheme: builder.lightTheme, darkTheme: builder.darkTheme });
   }, [config]);
+
+  if (!configTheme) {
+    return null;
+  }
 
   return (
     <ThemeContext.Provider

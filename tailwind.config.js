@@ -3,12 +3,46 @@ module.exports = {
   content: ['./packages/**/*.{js,jsx,ts,tsx,mdx}'],
   theme: {
     colors: {
-      primary: 'var(--colors-primary)',
-      secondary: 'var(--colors-secondary)',
       black: 'var(--colors-black)',
       white: 'var(--colors-white)',
+      primary: {
+        DEFAULT: 'var(--colors-primary500)',
+        100: 'var(--colors-primary100)',
+        200: 'var(--colors-primary200)',
+        300: 'var(--colors-primary300)',
+        400: 'var(--colors-primary400)',
+        500: 'var(--colors-primary500)',
+        600: 'var(--colors-primary600)',
+        700: 'var(--colors-primary700)',
+        800: 'var(--colors-primary800)',
+        900: 'var(--colors-primary900)'
+      },
+      secondary: {
+        DEFAULT: 'var(--colors-secondary500)',
+        100: 'var(--colors-secondary100)',
+        200: 'var(--colors-secondary200)',
+        300: 'var(--colors-secondary300)',
+        400: 'var(--colors-secondary400)',
+        500: 'var(--colors-secondary500)',
+        600: 'var(--colors-secondary600)',
+        700: 'var(--colors-secondary700)',
+        800: 'var(--colors-secondary800)',
+        900: 'var(--colors-secondary900)'
+      },
+      tertiary: {
+        DEFAULT: 'var(--colors-tertiary500)',
+        100: 'var(--colors-tertiary100)',
+        200: 'var(--colors-tertiary200)',
+        300: 'var(--colors-tertiary300)',
+        400: 'var(--colors-tertiary400)',
+        500: 'var(--colors-tertiary500)',
+        600: 'var(--colors-tertiary600)',
+        700: 'var(--colors-tertiary700)',
+        800: 'var(--colors-tertiary800)',
+        900: 'var(--colors-tertiary900)'
+      },
       blue: {
-        50: 'var(--colors-blue50)',
+        DEFAULT: 'var(--colors-blue500)',
         100: 'var(--colors-blue100)',
         200: 'var(--colors-blue200)',
         300: 'var(--colors-blue300)',
@@ -20,7 +54,7 @@ module.exports = {
         900: 'var(--colors-blue900)'
       },
       green: {
-        50: 'var(--colors-green50)',
+        DEFAULT: 'var(--colors-green500)',
         100: 'var(--colors-green100)',
         200: 'var(--colors-green200)',
         300: 'var(--colors-green300)',
@@ -32,7 +66,7 @@ module.exports = {
         900: 'var(--colors-green900)'
       },
       yellow: {
-        50: 'var(--colors-yellow50)',
+        DEFAULT: 'var(--colors-yellow500)',
         100: 'var(--colors-yellow100)',
         200: 'var(--colors-yellow200)',
         300: 'var(--colors-yellow300)',
@@ -44,7 +78,7 @@ module.exports = {
         900: 'var(--colors-yellow900)'
       },
       red: {
-        50: 'var(--colors-red50)',
+        DEFAULT: 'var(--colors-red500)',
         100: 'var(--colors-red100)',
         200: 'var(--colors-red200)',
         300: 'var(--colors-red300)',
@@ -56,7 +90,7 @@ module.exports = {
         900: 'var(--colors-red900)'
       },
       gray: {
-        50: 'var(--colors-gray50)',
+        DEFAULT: 'var(--colors-gray500)',
         100: 'var(--colors-gray100)',
         200: 'var(--colors-gray200)',
         300: 'var(--colors-gray300)',
@@ -73,11 +107,117 @@ module.exports = {
         DEFAULT: 'var(--colors-border)'
       }
     },
-    fontFamily: {
-      base: 'var(--fonts-base)',
-      code: 'var(--fonts-code)'
-    },
     extend: {
+      spacing: {
+        0: 'var(--space-0)',
+        xs: 'var(--space-xs)',
+        sm: 'var(--space-sm)',
+        md: 'var(--space-md)',
+        lg: 'var(--space-lg)',
+        xl: 'var(--space-xl)',
+        '2xl': 'var(--space-2xl)',
+        '3xl': 'var(--space-3xl)',
+        '4xl': 'var(--space-4xl)',
+        '5xl': 'var(--space-5xl)',
+        '6xl': 'var(--space-6xl)',
+        '7xl': 'var(--space-7xl)',
+        '8xl': 'var(--space-8xl)',
+        '9xl': 'var(--space-9xl)',
+        min: 'var(--space-min)',
+        max: 'var(--space-max)',
+        fit: 'var(--space-fit)',
+        screen: 'var(--space-screen)',
+        full: 'var(--space-full)',
+        px: 'var(--space-px)',
+        1: 'var(--space-1)',
+        2: 'var(--space-2)',
+        3: 'var(--space-3)',
+        4: 'var(--space-4)',
+        5: 'var(--space-5)',
+        6: 'var(--space-6)',
+        7: 'var(--space-7)',
+        8: 'var(--space-8)',
+        9: 'var(--space-9)',
+        10: 'var(--space-10)',
+        11: 'var(--space-11)',
+        12: 'var(--space-12)',
+        13: 'var(--space-13)',
+        14: 'var(--space-14)',
+        15: 'var(--space-15)',
+        16: 'var(--space-16)',
+        17: 'var(--space-17)',
+        18: 'var(--space-18)',
+        20: 'var(--space-20)',
+        24: 'var(--space-24)',
+        28: 'var(--space-28)',
+        32: 'var(--space-32)',
+        36: 'var(--space-36)',
+        40: 'var(--space-40)',
+        44: 'var(--space-44)',
+        48: 'var(--space-48)',
+        52: 'var(--space-52)',
+        56: 'var(--space-56)',
+        60: 'var(--space-60)',
+        64: 'var(--space-64)',
+        72: 'var(--space-72)',
+        80: 'var(--space-80)',
+        96: 'var(--space-96)'
+      },
+      fontSize: {
+        xs: 'var(--fontSizes-xs)',
+        sm: 'var(--fontSizes-sm)',
+        base: 'var(--fontSizes-base)',
+        md: 'var(--fontSizes-md)',
+        lg: 'var(--fontSizes-lg)',
+        xl: 'var(--fontSizes-xl)',
+        '2xl': 'var(--fontSizes-2xl)',
+        '3xl': 'var(--fontSizes-3xl)',
+        '4xl': 'var(--fontSizes-4xl)',
+        '5xl': 'var(--fontSizes-5xl)',
+        '6xl': 'var(--fontSizes-6xl)',
+        '7xl': 'var(--fontSizes-7xl)',
+        '8xl': 'var(--fontSizes-8xl)',
+        '9xl': 'var(--fontSizes-9xl)'
+      },
+      fontFamily: {
+        base: 'var(--fonts-base)',
+        code: 'var(--fonts-code)'
+      },
+      fontWeight: {
+        hairline: 'var(--fontWeights-hairline)',
+        thin: 'var(--fontWeights-thin)',
+        light: 'var(--fontWeights-light)',
+        normal: 'var(--fontWeights-normal)',
+        medium: 'var(--fontWeights-medium)',
+        semibold: 'var(--fontWeights-semibold)',
+        bold: 'var(--fontWeights-bold)',
+        extrabold: 'var(--fontWeights-extrabold)',
+        black: 'var(--fontWeights-black)'
+      },
+      lineHeight: {
+        xs: 'var(--lineHeights-xs)',
+        sm: 'var(--lineHeights-sm)',
+        base: 'var(--lineHeights-base)',
+        md: 'var(--lineHeights-md)',
+        lg: 'var(--lineHeights-lg)',
+        xl: 'var(--lineHeights-xl)',
+        '2xl': 'var(--lineHeights-2xl)',
+        '3xl': 'var(--lineHeights-3xl)',
+        '4xl': 'var(--lineHeights-4xl)',
+        '5xl': 'var(--lineHeights-5xl)',
+        '6xl': 'var(--lineHeights-6xl)',
+        '7xl': 'var(--lineHeights-7xl)',
+        '8xl': 'var(--lineHeights-8xl)',
+        '9xl': 'var(--lineHeights-9xl)'
+      },
+      letterSpacing: {
+        tighter: 'var(--letterSpacings-tighter)',
+        tight: 'var(--letterSpacings-tight)',
+        normal: 'var(--letterSpacings-normal)',
+        wide: 'var(--letterSpacings-wide)',
+        wider: 'var(--letterSpacings-wider)',
+        widest: 'var(--letterSpacings-widest)'
+      },
       opacity: {
         0: 'var(--opacity-0)',
         20: 'var(--opacity-20)',
@@ -86,8 +226,48 @@ module.exports = {
         80: 'var(--opacity-80)',
         100: 'var(--opacity-100)'
       },
+      borderWidth: {
+        light: 'var(--borderWidths-light)',
+        normal: 'var(--borderWidths-normal)',
+        bold: 'var(--borderWidths-bold)',
+        extrabold: 'var(--borderWidths-extraBold)',
+        black: 'var(--borderWidths-black)'
+      },
+      borderRadius: {
+        none: 'var(--radii-none)',
+        xs: 'var(--radii-xs)',
+        sm: 'var(--radii-sm)',
+        base: 'var(--radii-base)',
+        md: 'var(--radii-md)',
+        lg: 'var(--radii-lg)',
+        xl: 'var(--radii-xl)',
+        '2xl': 'var(--radii-2xl)',
+        '3xl': 'var(--radii-3xl)',
+        squared: 'var(--radii-squared)',
+        rounded: 'var(--radii-rounded)',
+        pill: 'var(--radii-pill)'
+      },
       boxShadow: {
         DEFAULT: 'var(--shadows-boxShadow)'
+      },
+      zIndex: {
+        hide: 'var(--zIndices-hide)',
+        auto: 'var(--zIndices-auto)',
+        base: 'var(--zIndices-base)',
+        docked: 'var(--zIndices-docked)',
+        dropdown: 'var(--zIndices-dropdown)',
+        sticky: 'var(--zIndices-sticky)',
+        banner: 'var(--zIndices-banner)',
+        overlay: 'var(--zIndices-overlay)',
+        modal: 'var(--zIndices-modal)',
+        popover: 'var(--zIndices-popover)',
+        skipLink: 'var(--zIndices-skipLink)',
+        toast: 'var(--zIndices-toast)',
+        tooltip: 'var(--zIndices-tooltip)'
+      },
+      animation: {
+        default: 'var(--transitions-default)',
+        button: 'var(--transitions-button)'
       }
     }
   },

@@ -1,68 +1,75 @@
-import { styledTheme, utilsTheme } from '../../../index';
+import { styledTheme } from '../../../index';
 
 const composers = {
   display: 'block',
+  fontWeight: '$fontWeights$normal',
+  letterSpacing: '$letterSpacings$normal',
+  color: 'inherit',
+
   variants: {
     color: {
-      default: {
-        color: '$text'
+      inherit: {
+        color: 'inherit'
       },
       primary: {
-        color: '$primary'
+        color: '$colors$primary500'
       },
       secondary: {
-        color: '$secondary'
+        color: '$colors$secondary500'
+      },
+      tertiary: {
+        color: '$colors$tertiary500'
       },
       disabled: {
-        color: '$gray500'
+        color: '$colors$gray500'
       },
       info: {
-        color: '$blue500'
+        color: '$colors$blue500'
       },
       success: {
-        color: '$green500'
+        color: '$colors$green500'
       },
       warning: {
-        color: '$yellow500'
+        color: '$colors$yellow500'
       },
       error: {
-        color: '$red500'
+        color: '$colors$red500'
       }
     },
     size: {
       xs: {
-        fontSize: utilsTheme.rem(12),
-        lineHeight: 1.5
+        fontSize: '$fontSizes$xs',
+        lineHeight: '$lineHeights$xs'
       },
       sm: {
-        fontSize: utilsTheme.rem(14),
-        lineHeight: 1.5
+        fontSize: '$fontSizes$sm',
+        lineHeight: '$lineHeights$sm'
       },
       md: {
-        fontSize: utilsTheme.rem(16),
-        lineHeight: 1.75
+        fontSize: '$fontSizes$md',
+        lineHeight: '$lineHeights$md'
       },
       lg: {
-        fontSize: utilsTheme.rem(18),
-        lineHeight: 1.75
+        fontSize: '$fontSizes$lg',
+        lineHeight: '$lineHeights$lg'
       },
       xl: {
-        fontSize: utilsTheme.rem(20),
-        lineHeight: 2
+        fontSize: '$fontSizes$xl',
+        lineHeight: '$lineHeights$xl'
       },
       '2xl': {
-        fontSize: utilsTheme.rem(24),
-        lineHeight: 2
+        fontSize: '$fontSizes$2xl',
+        lineHeight: '$lineHeights$2xl'
       },
       '3xl': {
-        fontSize: utilsTheme.rem(30),
-        lineHeight: 2
+        fontSize: '$fontSizes$3xl',
+        lineHeight: '$lineHeights$3xl'
       }
     }
   }
 };
 
 export const TextWrapper = {
-  span: styledTheme('span', { ...composers, width: 'max-content' }),
+  span: styledTheme('span', { ...composers, width: '$space$max' }),
   p: styledTheme('p', composers)
 };

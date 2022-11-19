@@ -7,7 +7,7 @@ import docs from './readme.mdx';
 const Items = (size: number, percentage30 = false) => {
   const classNames = classes({
     'text-text font-medium underline underline-offset-4': true,
-    'px-8 py-3 border border-secondary border-solid': true,
+    'px-10 py-6 border border-secondary border-solid': true,
     'flex-[0_0_30%]': percentage30
   });
 

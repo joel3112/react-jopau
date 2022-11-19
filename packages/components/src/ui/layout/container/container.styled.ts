@@ -3,7 +3,8 @@ import { styledTheme } from '../../../index';
 export const ContainerWrapper = styledTheme('div', {
   display: 'block',
   boxSizing: 'border-box',
-  px: 50,
+  px: '$space$2xl',
+
   variants: {
     centered: {
       true: {
@@ -12,8 +13,7 @@ export const ContainerWrapper = styledTheme('div', {
     }
   },
 
-  // Breakpoints
   '@xs': {
-    px: 20
+    px: '$space$lg'
   }
 });

@@ -13,7 +13,7 @@ export default {
   args: {
     children: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
     as: 'p',
-    color: 'default',
+    color: 'inherit',
     size: 'md'
   }
 } as ComponentMeta<typeof Text>;
@@ -27,9 +27,10 @@ export const Default = Template.bind({});
 export const Colors = () => {
   return (
     <>
-      <Text color="default">Default</Text>
+      <Text color="inherit">Inherit</Text>
       <Text color="primary">Primary</Text>
       <Text color="secondary">Secondary</Text>
+      <Text color="tertiary">Tertiary</Text>
       <Text color="disabled">Disabled</Text>
       <Text color="info">Info</Text>
       <Text color="error">Error</Text>

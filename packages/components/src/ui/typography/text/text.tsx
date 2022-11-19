@@ -14,7 +14,7 @@ type TextProps = ElementHTML & {
   /**
    * Defines the color of the text.
    */
-  color?: Color;
+  color?: 'inherit' | Color;
   /**
    * Defines the size of the component.
    */
@@ -27,7 +27,7 @@ type TextProps = ElementHTML & {
 
 const defaultProps = {
   as: 'p',
-  color: 'default',
+  color: 'inherit',
   size: 'md'
 };
 
@@ -49,7 +49,7 @@ export const Text = ({ className, style, children, color, as, size, maxLines }: 
       className={classes('text-wrapper', className)}
       css={{
         ...style,
-        lineClamp: maxLines
+        ...(maxLines && { lineClamp: maxLines })
       }}
       color={color}
       size={size}>

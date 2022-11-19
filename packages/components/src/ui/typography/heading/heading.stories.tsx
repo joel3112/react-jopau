@@ -13,7 +13,7 @@ export default {
   args: {
     children: 'Lorem Ipsum',
     as: 'h1',
-    color: 'default'
+    color: 'inherit'
   }
 } as ComponentMeta<typeof Heading>;
 
@@ -26,9 +26,10 @@ export const Default = Template.bind({});
 export const Colors = () => {
   return (
     <>
-      <Heading color="default">Default</Heading>
+      <Heading color="inherit">Inherit</Heading>
       <Heading color="primary">Primary</Heading>
       <Heading color="secondary">Secondary</Heading>
+      <Heading color="tertiary">Tertiary</Heading>
       <Heading color="disabled">Disabled</Heading>
       <Heading color="info">Info</Heading>
       <Heading color="error">Error</Heading>

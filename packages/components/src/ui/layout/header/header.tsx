@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 import classes from 'classnames';
 import { ElementHTML } from '../../../../types';
 import { Container, Space } from '../../layout';
+import { Heading } from '../../typography';
 import { HeaderWrapper } from './header.styled';
 
 type HeaderProps = ElementHTML & {
@@ -52,10 +53,10 @@ export const Header = ({
         ...style
       }}>
       <Container maxWidth={maxWidth} centered className="container">
-        <div className="logo">
+        <Space className="logo" align="center" gap={8}>
           {renderLogo && renderLogo()}
-          {title && <h1 className="title">{title}</h1>}
-        </div>
+          {title && <Heading as="h4">{title}</Heading>}
+        </Space>
 
         {children && (
           <Space className="actions" gap={10}>

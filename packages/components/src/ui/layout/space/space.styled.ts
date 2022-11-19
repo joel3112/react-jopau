@@ -8,6 +8,7 @@ const basicPositionStyles = (key: string) => ({
 
 export const SpaceWrapper = styledTheme('div', {
   display: 'flex',
+
   variants: {
     justify: {
       ...basicPositionStyles('justifyContent'),

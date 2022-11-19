@@ -10,7 +10,9 @@ import {
   THEME_SELECTOR_STORAGE_KEY
 } from 'packages/styles/src/theme';
 
-const ThemeStoryProvider = ({ Story, context }) => {
+const ThemeProviderMemo = React.memo(ThemeProvider);
+
+const ThemeStoryProvider = ({ children }) => {
   const [themeKey, setThemeKey] = useLocalStorage(THEME_SELECTOR_STORAGE_KEY, 'default');
   const [colorScheme, setColorScheme] = useLocalStorage(DARK_MODE_STORAGE_KEY, 'light');
   const storyRef = React.useRef(null);
@@ -43,13 +45,13 @@ const ThemeStoryProvider = ({ Story, context }) => {
 
   return (
     <div ref={storyRef}>
-      <ThemeProvider config={themes[themeKey].value} darkMode={colorScheme === 'dark'}>
-        <Story {...context} />
-      </ThemeProvider>
+      <ThemeProviderMemo config={themes[themeKey].value} darkMode={colorScheme === 'dark'}>
+        {children}
+      </ThemeProviderMemo>
     </div>
   );
 };
 
-const withTheme = (Story, context) => <ThemeStoryProvider Story={Story} context={context} />;
+const withTheme = (story) => <ThemeStoryProvider>{story()}</ThemeStoryProvider>;
 
 export const globalDecorators = [withTheme];

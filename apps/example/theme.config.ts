@@ -18,17 +18,8 @@ export default {
         border: '#333'
       }
     },
-    space: {
-      1: '5px',
-      2: '10px',
-      3: '15px'
-    },
-    fontSizes: {
-      1: '1rem',
-      2: '1.5rem',
-      3: '0.8rem',
-      4: '0.5rem'
-    },
+    space: {},
+    fontSizes: {},
     fonts: {
       base: '"Nunito Sans", -apple-system, ".SFNSText-Regular", "San Francisco", BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif',
       code: '"MonoLisa", -apple-system, sans-serif'
@@ -36,26 +27,12 @@ export default {
     fontWeights: {},
     lineHeights: {},
     letterSpacings: {},
-    opacity: {
-      0: '0',
-      20: '0.2',
-      40: '0.4',
-      60: '0.6',
-      80: '0.8',
-      100: '1'
-    },
+    opacity: {},
     sizes: {},
     borderWidths: {},
     borderStyles: {},
     radii: {},
-    shadows: {
-      '@light': {
-        boxShadow: 'rgb(231 235 250) 0 -1px 1px inset'
-      },
-      '@dark': {
-        boxShadow: 'rgb(67 67 67) 0 -1px 1px inset'
-      }
-    },
+    shadows: {},
     zIndices: {},
     transitions: {}
   },
