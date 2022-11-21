@@ -58,6 +58,7 @@
     "@typescript-eslint/no-explicit-any": "error",
     "@typescript-eslint/ban-types": "off",
     "react/react-in-jsx-scope": "off",
+    "react/no-unescaped-entities": "off",
     "react/jsx-filename-extension": [
       1,
       {

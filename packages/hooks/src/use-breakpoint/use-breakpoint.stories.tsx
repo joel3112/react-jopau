@@ -1,5 +1,6 @@
-import { TWContainer, TWItem, TWText } from '@react-jopau/styles/components';
+import { TWContainer, TWItem } from '@react-jopau/styles/components';
 import { Space } from '@react-jopau/components/ui/layout';
+import { Text } from '@react-jopau/components/ui/typography';
 import { useBreakpoint } from './use-breakpoint';
 import docs from './readme.mdx';
 
@@ -17,7 +18,7 @@ export const Default = () => {
 
   return (
     <TWContainer>
-      <TWText size="lg">Target width: {window.innerWidth}px</TWText>
+      <Text size="lg">{`Target width: ${window.innerWidth}px`}</Text>
 
       <Space direction="column" gap={10}>
         <TWItem label="key">{key}</TWItem>

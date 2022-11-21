@@ -15,8 +15,8 @@ describe('Tests Heading component', () => {
     expect(screen.getByText('Content')).toBeInTheDocument();
   });
 
-  test('renders tag correctly', () => {
-    const { container } = render(<Heading as="h5">Content</Heading>);
+  test('renders variant correctly', () => {
+    const { container } = render(<Heading variant="h5">Content</Heading>);
 
     expect(container.firstChild).toContainHTML('h5');
   });

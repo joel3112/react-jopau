@@ -7,9 +7,7 @@ export const ContainerWrapper = styledTheme('div', {
 
   variants: {
     centered: {
-      true: {
-        margin: '0 auto'
-      }
+      true: { margin: '0 auto' }
     }
   },
 

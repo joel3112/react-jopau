@@ -1,12 +1,7 @@
 import { useState } from 'react';
 import { Space } from '@react-jopau/components/ui/layout';
-import {
-  TWButton,
-  TWContainer,
-  TWInput,
-  TWItem,
-  TWJSONPreview
-} from '@react-jopau/styles/components';
+import { Button } from '@react-jopau/components/ui/forms';
+import { TWContainer, TWInput, TWItem, TWJSONPreview } from '@react-jopau/styles/components';
 import { useFetch } from './use-fetch';
 import docs from './readme.mdx';
 
@@ -44,9 +39,9 @@ const Template = () => {
     <TWContainer>
       <Space direction="column" gap={5}>
         <TWInput value={inputValue} label="Path" onInput={setInputValue} />
-        <TWButton disabled={!inputValue} onClick={() => setPath(inputValue)}>
+        <Button color="secondary" disabled={!inputValue} onClick={() => setPath(inputValue)}>
           Load
-        </TWButton>
+        </Button>
       </Space>
 
       <Space direction="column" gap={10}>

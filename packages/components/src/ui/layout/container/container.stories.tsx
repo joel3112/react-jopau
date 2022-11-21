@@ -13,7 +13,8 @@ export default {
   args: {
     children:
       'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet architecto asperiores autem, blanditiis ducimus excepturi fugiat inventore ipsum nam nesciunt nobis odit quae quas repellendus sequi, sit suscipit! Enim, ratione.',
-    maxWidth: 1500
+    maxWidth: 1500,
+    centered: false
   }
 } as ComponentMeta<typeof Container>;
 

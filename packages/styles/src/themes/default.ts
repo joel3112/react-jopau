@@ -13,6 +13,7 @@ export default {
       primary700: '#002244',
       primary800: '#001837',
       primary900: '#00112d',
+      primaryText: '#fff',
 
       secondary100: '#ccfef8',
       secondary200: '#9afef9',
@@ -23,6 +24,7 @@ export default {
       secondary700: '#0279b3',
       secondary800: '#015790',
       secondary900: '#003e77',
+      secondaryText: '#000',
 
       tertiary100: '#f9e9c7',
       tertiary200: '#f4cf92',
@@ -33,6 +35,7 @@ export default {
       tertiary700: '#6e2700',
       tertiary800: '#591a00',
       tertiary900: '#491200',
+      tertiaryText: '#fff',
 
       blue100: '#bee3f8',
       blue200: '#90cdf4',

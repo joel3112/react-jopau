@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Space } from '@react-jopau/components/ui/layout';
-import { TWButton, TWContainer, TWInput, TWItem, TWText } from '@react-jopau/styles/components';
+import { Button } from '@react-jopau/components/ui/forms';
+import { Text } from '@react-jopau/components/ui/typography';
+import { TWContainer, TWInput, TWItem } from '@react-jopau/styles/components';
 import { useLocalStorage } from './use-local-storage';
 import docs from './readme.mdx';
 
@@ -13,7 +15,7 @@ export default {
   }
 };
 
-export const Default = () => {
+const Template = () => {
   const key = 'useLocalStorage-test-key';
   const [value, setValue] = useLocalStorage<string>(key, 'initialValue');
   const [inputValue, setInputValue] = useState<string>(value);
@@ -24,15 +26,17 @@ export const Default = () => {
     <TWContainer>
       <Space direction="column" gap={5}>
         <TWInput label="Value to storage" value={inputValue} onInput={handleInputChange} />
-        <TWButton disabled={!inputValue} onClick={() => setValue(inputValue)}>
+        <Button color="secondary" disabled={!inputValue} onClick={() => setValue(inputValue)}>
           Set value
-        </TWButton>
+        </Button>
       </Space>
 
       <Space direction="column" gap={5}>
-        <TWText>LocalStorage</TWText>
+        <Text size="lg">LocalStorage</Text>
         <TWItem label={key}>{value}</TWItem>
       </Space>
     </TWContainer>
   );
 };
+
+export const Default = Template.bind({});

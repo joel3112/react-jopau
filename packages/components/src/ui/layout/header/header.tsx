@@ -1,9 +1,8 @@
 import { ReactNode } from 'react';
 import classes from 'classnames';
 import { ElementHTML } from '../../../../types';
-import { Container, Space } from '../../layout';
 import { Heading } from '../../typography';
-import { HeaderWrapper } from './header.styled';
+import { HeaderContainer, HeaderSpaceLogo, HeaderWrapper } from './header.styled';
 
 type HeaderProps = ElementHTML & {
   /**
@@ -17,7 +16,7 @@ type HeaderProps = ElementHTML & {
   /**
    * Defines the render of the logo.
    */
-  renderLogo?: () => ReactNode;
+  renderLogo?: () => JSX.Element;
   /**
    * Maximum width of the container or breakpoint.
    */
@@ -52,18 +51,14 @@ export const Header = ({
       css={{
         ...style
       }}>
-      <Container maxWidth={maxWidth} centered className="container">
-        <Space className="logo" align="center" gap={8}>
+      <HeaderContainer maxWidth={maxWidth} centered>
+        <HeaderSpaceLogo direction="row" align="center" gap={8}>
           {renderLogo && renderLogo()}
-          {title && <Heading as="h4">{title}</Heading>}
-        </Space>
+          {title && <Heading variant="h4">{title}</Heading>}
+        </HeaderSpaceLogo>
 
-        {children && (
-          <Space className="actions" gap={10}>
-            {children}
-          </Space>
-        )}
-      </Container>
+        {children}
+      </HeaderContainer>
     </HeaderWrapper>
   );
 };

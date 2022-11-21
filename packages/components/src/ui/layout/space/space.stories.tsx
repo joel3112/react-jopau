@@ -28,7 +28,8 @@ export default {
   },
   args: {
     direction: 'row',
-    children: Items(3)
+    children: Items(3),
+    wrap: false
   },
   argTypes: {
     children: {

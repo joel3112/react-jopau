@@ -3,7 +3,8 @@ const templateCreator = template({});
 
 const templateObject = templateCreator`${({ context }) => `
 import { Space } from '@react-jopau/components/ui/layout';
-import { TWButton, TWContainer } from '@react-jopau/styles/components';
+import { Button } from '@react-jopau/components/ui/forms';
+import { TWContainer } from '@react-jopau/styles/components';
 import { use${context.pascalName} } from './use-${context.name}';
 import docs from './readme.mdx';
 
@@ -24,8 +25,8 @@ const Template = () => {
       Current value: {value}
 
       <Space gap={5}>
-        <TWButton onClick={() => setValue(value - 1)}>Decrement</TWButton>
-        <TWButton onClick={() => setValue(value + 1)}>Increment</TWButton>
+        <Button color="secondary" onClick={() => setValue(value - 1)}>Decrement</Button>
+        <Button color="secondary" onClick={() => setValue(value + 1)}>Increment</Button>
       </Space>
     </TWContainer>
   );

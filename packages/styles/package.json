@@ -9,7 +9,6 @@
   "author": "Joel Paucarima Franco <joel.dev.3112@outlook.es>",
   "license": "MIT",
   "homepage": "https://github.com/joel3112/react-jopau/tree/main/packages/styles#readme",
-  "type": "module",
   "scripts": {
     "build": "rimraf dist && tsc",
     "test": "jest --config=../../jest.config.js --selectProjects=@react-jopau/styles",

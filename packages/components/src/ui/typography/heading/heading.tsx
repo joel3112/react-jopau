@@ -8,9 +8,9 @@ type HeadingProps = ElementHTML & {
    */
   children: string;
   /**
-   * Defines the tag of the component.
+   * Defines the variant of the component.
    */
-  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+  variant?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
   /**
    * Defines the color of the heading.
    */
@@ -18,7 +18,7 @@ type HeadingProps = ElementHTML & {
 } & typeof defaultProps;
 
 const defaultProps = {
-  as: 'h1',
+  variant: 'h1',
   color: 'inherit'
 };
 
@@ -30,20 +30,20 @@ const defaultProps = {
  *
  * @imports import { Heading } from '@react-jopau/components/ui/typography';
  * @example
- * <Heading as="h2">Title</Heading>
+ * <Heading variant="h2">Title</Heading>
  */
-export const Heading = ({ className, style, children, as, color }: HeadingProps) => {
-  const Wrapper = HeadingWrapper[as];
-
+export const Heading = ({ className, style, children, variant, color }: HeadingProps) => {
   return (
-    <Wrapper
+    <HeadingWrapper
+      as={variant}
       className={classes('heading-wrapper', className)}
       css={{
         ...style
       }}
+      variant={variant}
       color={color}>
       {children}
-    </Wrapper>
+    </HeadingWrapper>
   );
 };
 

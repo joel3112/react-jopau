@@ -15,7 +15,8 @@ module.exports = {
         600: 'var(--colors-primary600)',
         700: 'var(--colors-primary700)',
         800: 'var(--colors-primary800)',
-        900: 'var(--colors-primary900)'
+        900: 'var(--colors-primary900)',
+        text: 'var(--colors-primaryText)'
       },
       secondary: {
         DEFAULT: 'var(--colors-secondary500)',
@@ -27,7 +28,8 @@ module.exports = {
         600: 'var(--colors-secondary600)',
         700: 'var(--colors-secondary700)',
         800: 'var(--colors-secondary800)',
-        900: 'var(--colors-secondary900)'
+        900: 'var(--colors-secondary900)',
+        text: 'var(--colors-secondaryText)'
       },
       tertiary: {
         DEFAULT: 'var(--colors-tertiary500)',
@@ -39,7 +41,8 @@ module.exports = {
         600: 'var(--colors-tertiary600)',
         700: 'var(--colors-tertiary700)',
         800: 'var(--colors-tertiary800)',
-        900: 'var(--colors-tertiary900)'
+        900: 'var(--colors-tertiary900)',
+        text: 'var(--colors-tertiaryText)'
       },
       blue: {
         DEFAULT: 'var(--colors-blue500)',
@@ -271,5 +274,5 @@ module.exports = {
       }
     }
   },
-  plugins: [require('@tailwindcss/line-clamp')]
+  plugins: [require('@tailwindcss/line-clamp'), require('@tailwindcss/forms')]
 };

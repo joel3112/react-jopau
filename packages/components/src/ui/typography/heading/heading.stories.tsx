@@ -12,7 +12,7 @@ export default {
   },
   args: {
     children: 'Lorem Ipsum',
-    as: 'h1',
+    variant: 'h1',
     color: 'inherit'
   }
 } as ComponentMeta<typeof Heading>;
@@ -39,15 +39,15 @@ export const Colors = () => {
   );
 };
 
-export const Tags = () => {
+export const Variants = () => {
   return (
     <>
-      <Heading as="h1">h1. Heading 1</Heading>
-      <Heading as="h2">h2. Heading 2</Heading>
-      <Heading as="h3">h3. Heading 3</Heading>
-      <Heading as="h4">h4. Heading 4</Heading>
-      <Heading as="h5">h5. Heading 5</Heading>
-      <Heading as="h6">h6. Heading 6</Heading>
+      <Heading variant="h1">h1. Heading 1</Heading>
+      <Heading variant="h2">h2. Heading 2</Heading>
+      <Heading variant="h3">h3. Heading 3</Heading>
+      <Heading variant="h4">h4. Heading 4</Heading>
+      <Heading variant="h5">h5. Heading 5</Heading>
+      <Heading variant="h6">h6. Heading 6</Heading>
     </>
   );
 };

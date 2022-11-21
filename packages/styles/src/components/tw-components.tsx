@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { cloneElement, ReactElement, ReactNode, useState } from 'react';
 import classes from 'classnames';
 import ReactJson from 'react-json-view';
 
@@ -51,24 +51,6 @@ export const TWHighlight = ({ children }: { children: string }) => {
   );
 };
 
-/* ==== text =================================================================== */
-
-export const TWText = ({
-  children,
-  size = 'base',
-  font = 'base'
-}: {
-  children: ReactNode;
-  size?: 'sm' | 'base' | 'lg' | 'xl';
-  font?: 'base' | 'code';
-}) => {
-  return (
-    <span className={`w-fit flex items-center text-text text-${size} font-${font}`}>
-      {children}
-    </span>
-  );
-};
-
 /* ==== input ================================================================== */
 
 export const TWInput = ({
@@ -92,26 +74,41 @@ export const TWInput = ({
   );
 };
 
-/* ==== button ================================================================= */
+/* ==== selector-button ======================================================== */
 
-export const TWButton = ({
-  children,
-  disabled,
-  onClick
+export const TWSelectorContainer = ({
+  label,
+  items,
+  value,
+  children
 }: {
-  children: ReactNode;
-  disabled?: boolean;
-  onClick: () => void;
+  label: string;
+  items: { label: string; value: string }[];
+  value: string;
+  children: (value: never) => ReactNode;
 }) => {
+  const [selected, setSelected] = useState<string>(value);
+
   return (
-    <button
-      className="text-white bg-secondary hover:opacity-80 py-3 px-4 w-fit text-md disabled:bg-border"
-      disabled={disabled}
-      onClick={() => {
-        onClick();
-      }}>
-      {children}
-    </button>
+    <>
+      <div className="pl-10 absolute top-4 left-4 right-4 pr-[17px] border border-gray-700 flex items-center gap-10 h-[44px] bg-white font-bold text-[13px]">
+        <p className="text-black">{label}:</p>
+        <div className="h-full flex">
+          {items.map((item) => (
+            <button
+              key={item.value}
+              className={classes('px-6 text-center text-gray-700', {
+                '!border-t-2 !border-b-2 !border-t-gray-100 !border-b-secondary !text-secondary':
+                  selected === item.value
+              })}
+              onClick={() => setSelected(item.value as never)}>
+              {item.label}
+            </button>
+          ))}
+        </div>
+      </div>
+      <div className="mt-15">{children(selected as never)}</div>
+    </>
   );
 };
 

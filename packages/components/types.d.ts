@@ -1,6 +1,14 @@
 import { CSSProperties } from 'react';
 
-export type Color = 'primary' | 'secondary' | 'disabled' | 'info' | 'error' | 'success' | 'warning';
+export type Color =
+  | 'primary'
+  | 'secondary'
+  | 'tertiary'
+  | 'disabled'
+  | 'info'
+  | 'error'
+  | 'success'
+  | 'warning';
 
 export type ElementHTML = {
   /**

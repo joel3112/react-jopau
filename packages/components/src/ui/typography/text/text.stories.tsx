@@ -12,7 +12,7 @@ export default {
   },
   args: {
     children: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-    as: 'p',
+    variant: 'p',
     color: 'inherit',
     size: 'md'
   }
@@ -54,11 +54,11 @@ export const Sizes = () => {
   );
 };
 
-export const Tags = () => {
+export const Variants = () => {
   return (
     <>
-      <Text as="p">p. Lorem ipsum dolor sit amet</Text>
-      <Text as="span">span. Lorem ipsum dolor sit amet</Text>
+      <Text variant="p">p. Lorem ipsum dolor sit amet</Text>
+      <Text variant="span">span. Lorem ipsum dolor sit amet</Text>
     </>
   );
 };

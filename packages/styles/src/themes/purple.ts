@@ -10,6 +10,7 @@ export default {
       primary700: '#2d223b',
       primary800: '#20152f',
       primary900: '#160d27',
+      primaryText: '#fff',
 
       secondary100: '#f1cffd',
       secondary200: '#dea1fc',
@@ -20,6 +21,7 @@ export default {
       secondary700: '#4b0ba8',
       secondary800: '#350787',
       secondary900: '#250470',
+      secondaryText: '#fff',
 
       tertiary100: '#d7fbe9',
       tertiary200: '#b0f8db',
@@ -29,7 +31,8 @@ export default {
       tertiary600: '#26a39f',
       tertiary700: '#1a8288',
       tertiary800: '#105f6e',
-      tertiary900: '#0a475b'
+      tertiary900: '#0a475b',
+      tertiaryText: '#000'
     },
     fonts: {
       base: '"Apercu", -apple-system, ".SFNSText-Regular", "San Francisco", BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif',

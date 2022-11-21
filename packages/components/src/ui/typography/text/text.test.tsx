@@ -15,8 +15,8 @@ describe('Tests Text component', () => {
     expect(screen.getByText('Content')).toBeInTheDocument();
   });
 
-  test('renders tag correctly', () => {
-    const { container } = render(<Text as="span">Content</Text>);
+  test('renders variant correctly', () => {
+    const { container } = render(<Text variant="span">Content</Text>);
 
     expect(container.firstChild).toContainHTML('span');
   });
