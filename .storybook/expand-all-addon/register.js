@@ -26,12 +26,34 @@ const expandCategories = () => {
   });
 };
 
-addons.register('expand-all', () => {
+const navigateToDocs = ({ navigateUrl }) => {
+  const storiesSidebarItems = document.querySelectorAll(
+    'button.sidebar-item[data-nodetype="component"]'
+  );
+
+  storiesSidebarItems.forEach((item) => {
+    item.addEventListener('click', () => {
+      if (item.ariaExpanded === 'true') return;
+
+      const searchParams = new URLSearchParams(location.search);
+      searchParams.set('path', `/docs/${item.dataset.itemId}--docs`);
+      item.setAttribute('aria-expanded', 'true');
+      setTimeout(() => {
+        navigateUrl(`${location.pathname}?${decodeURIComponent(searchParams.toString())}`);
+      }, 100);
+    });
+  });
+};
+
+addons.register('expand-all', (event) => {
   const emitter = addons.getChannel();
+
   emitter.on(DOCS_RENDERED, () => {
     expandCategories();
+    navigateToDocs(event);
   });
   emitter.on(STORY_RENDERED, () => {
     expandCategories();
+    navigateToDocs(event);
   });
 });

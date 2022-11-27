@@ -5,13 +5,13 @@ export const prepareParameters = (docs: unknown) => ({
       language: 'tsx'
     }
   },
-  viewMode: 'docs',
   controls: {
     disable: true
   },
   actions: {
     disable: true
   },
+  viewMode: 'docs',
   options: {
     showPanel: true,
     selectedPanel: 'storybook/source-loader/panel'
@@ -25,3 +25,5 @@ export const prepareParameters = (docs: unknown) => ({
     }
   }
 });
+
+export const ComponentMockStory = ({}) => null;

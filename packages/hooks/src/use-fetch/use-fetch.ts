@@ -71,8 +71,8 @@ export const useFetch = <T, U = {}>(
     params?: Record<string, unknown>;
     headers?: Record<string, string>;
     body?: Record<string, unknown>;
-    onSuccess?: (data: unknown) => T | null;
-    onError?: (error: unknown) => U | null;
+    onSuccess?: (data: never) => T | Promise<T> | null;
+    onError?: (error: never) => void;
   }
 ): {
   data: T | null;

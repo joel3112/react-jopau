@@ -1,4 +1,12 @@
-import { SBArgsTable, SBDescription, SBSubTitle, SBTitle } from '@react-jopau/styles/components';
+import {
+  SBArgsTable,
+  SBDescription,
+  SBSubTitle,
+  SBThemeStories,
+  SBTitle
+} from '@react-jopau/styles/components';
+
+<SBThemeStories />
 
 <SBTitle>useLocalStorage</SBTitle>
 
@@ -7,6 +15,8 @@ import { SBArgsTable, SBDescription, SBSubTitle, SBTitle } from '@react-jopau/st
 ```tsx dark
 import { useLocalStorage } from '@react-jopau/hooks';
 ```
+
+<SBSubTitle>Examples</SBSubTitle>
 
 ```tsx dark
 const [darkMode, setDarkMode] = useLocalStorage<boolean>('key', true);

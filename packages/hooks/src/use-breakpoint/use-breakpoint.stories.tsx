@@ -1,17 +1,15 @@
 import { TWContainer, TWItem } from '@react-jopau/styles/components';
 import { Space } from '@react-jopau/components/ui/layout';
 import { Text } from '@react-jopau/components/ui/typography';
+import { prepareParameters } from '../story-helpers';
 import { useBreakpoint } from './use-breakpoint';
 import docs from './readme.mdx';
 
 export default {
   title: 'useBreakpoint',
-  parameters: {
-    docs: {
-      page: docs
-    }
-  }
+  parameters: prepareParameters(docs)
 };
+export const Docs = () => {};
 
 export const Default = () => {
   const { key, isMobile, isTablet, isDesktop, isSmallDesktop, isLargeDesktop } = useBreakpoint();
@@ -31,3 +29,5 @@ export const Default = () => {
     </TWContainer>
   );
 };
+Default.storyName = 'Playground';
+Default.parameters = { viewMode: 'story' };

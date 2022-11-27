@@ -3,19 +3,18 @@ import { Space } from '@react-jopau/components/ui/layout';
 import { Button } from '@react-jopau/components/ui/forms';
 import { Text } from '@react-jopau/components/ui/typography';
 import { TWContainer, TWInput, TWItem } from '@react-jopau/styles/components';
+import { prepareParameters } from '../story-helpers';
 import { useLocalStorage } from './use-local-storage';
 import docs from './readme.mdx';
 
 export default {
   title: 'useLocalStorage',
-  parameters: {
-    docs: {
-      page: docs
-    }
-  }
+  parameters: prepareParameters(docs)
 };
 
-const Template = () => {
+export const Docs = () => {};
+
+export const Default = () => {
   const key = 'useLocalStorage-test-key';
   const [value, setValue] = useLocalStorage<string>(key, 'initialValue');
   const [inputValue, setInputValue] = useState<string>(value);
@@ -38,5 +37,5 @@ const Template = () => {
     </TWContainer>
   );
 };
-
-export const Default = Template.bind({});
+Default.storyName = 'Playground';
+Default.parameters = { viewMode: 'story' };

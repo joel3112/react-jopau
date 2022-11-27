@@ -29,7 +29,9 @@ const generatePropsTable = (props, noDefaults) => {
 
 const templateCreator = template({});
 
-const templateObject = templateCreator`import { SBArgsTable, SBDescription, SBSubTitle, SBTitle } from '@react-jopau/styles/components';
+const templateObject = templateCreator`import { SBArgsTable, SBDescription, SBSubTitle, SBThemeStories, SBTitle } from '@react-jopau/styles/components';
+
+<SBThemeStories />
 
 <SBTitle>${componentName}</SBTitle>
 
@@ -42,6 +44,7 @@ ${prop('imports')}
 ${({ context }) => {
   let examples = '';
   if (context.examples && context.examples.length > 0) {
+    examples += `<SBSubTitle>Examples</SBSubTitle>`;
     context.examples.forEach((example) => {
       examples += `${os.EOL}${os.EOL}\`\`\`tsx dark${os.EOL}${example}${os.EOL}\`\`\``;
     });

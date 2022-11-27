@@ -2,32 +2,33 @@ import { useState } from 'react';
 import { Space } from '@react-jopau/components/ui/layout';
 import { Button } from '@react-jopau/components/ui/forms';
 import { TWContainer, TWInput, TWItem, TWJSONPreview } from '@react-jopau/styles/components';
+import { prepareParameters } from '../story-helpers';
 import { useFetch } from './use-fetch';
 import docs from './readme.mdx';
 
 export default {
   title: 'useFetch',
-  parameters: {
-    docs: {
-      page: docs
-    }
-  }
+  parameters: prepareParameters(docs)
 };
 
-const Template = () => {
+export const Docs = () => {};
+
+export const Default = () => {
+  type Data = { userId: number; id: number; title: string; body: string };
+  type Error = { message: string; code: number };
+
   const [inputValue, setInputValue] = useState<string>(
     'https://jsonplaceholder.typicode.com/todos/1'
   );
-  const [path, setPath] = useState(inputValue);
-  const { data, loading, error } = useFetch(path, {
+  const [path, setPath] = useState<string>(inputValue);
+
+  const { data, loading, error } = useFetch<Data, Error>(path, {
     method: 'GET',
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    onSuccess: async (res: any) => {
+    onSuccess: async (res: { data: Data }) => {
       await new Promise((resolve) => setTimeout(resolve, 500));
       return res.data;
     },
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    onError: (err: any) => {
+    onError: (err: Error) => {
       throw {
         message: err.message,
         code: err.code
@@ -56,5 +57,5 @@ const Template = () => {
     </TWContainer>
   );
 };
-
-export const Default = Template.bind({});
+Default.storyName = 'Playground';
+Default.parameters = { viewMode: 'story' };

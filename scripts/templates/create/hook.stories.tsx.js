@@ -5,19 +5,18 @@ const templateObject = templateCreator`${({ context }) => `
 import { Space } from '@react-jopau/components/ui/layout';
 import { Button } from '@react-jopau/components/ui/forms';
 import { TWContainer } from '@react-jopau/styles/components';
+import { prepareParameters } from '../story-helpers';
 import { use${context.pascalName} } from './use-${context.name}';
 import docs from './readme.mdx';
 
 export default {
   title: 'use${context.pascalName}',
-  parameters: {
-    docs: {
-      page: docs
-    }
-  }
+  parameters: prepareParameters(docs)
 };
 
-const Template = () => {
+export const Docs = () => {};
+
+export const Default = () => {
   const { value, setValue } = use${context.pascalName}(0);
 
   return (
@@ -31,8 +30,8 @@ const Template = () => {
     </TWContainer>
   );
 };
-
-export const Default = Template.bind({});
+Default.storyName = 'Playground';
+Default.parameters = { viewMode: 'story' };
 `}
 `;
 

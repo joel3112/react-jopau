@@ -1,4 +1,12 @@
-import { SBArgsTable, SBDescription, SBSubTitle, SBTitle } from '@react-jopau/styles/components';
+import {
+  SBArgsTable,
+  SBDescription,
+  SBSubTitle,
+  SBThemeStories,
+  SBTitle
+} from '@react-jopau/styles/components';
+
+<SBThemeStories />
 
 <SBTitle>useBreakpoint</SBTitle>
 
@@ -7,6 +15,8 @@ import { SBArgsTable, SBDescription, SBSubTitle, SBTitle } from '@react-jopau/st
 ```tsx dark
 import { useBreakpoint } from '@react-jopau/hooks';
 ```
+
+<SBSubTitle>Examples</SBSubTitle>
 
 ```tsx dark
 // Default breakpoint rules
@@ -34,7 +44,7 @@ const { key } = useBreakpoint(rules);
   rows={{
     rules: {
       name: 'rules',
-      description: 'Custom breakpoints rules',
+      description: 'Custom breakpoints rules. This rules will be merged with the default ones.',
       required: false,
       type: 'Object'
     },
