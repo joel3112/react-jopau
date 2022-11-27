@@ -26,7 +26,7 @@ module.exports = {
     '@storybook/addon-links',
     '@storybook/addon-viewport',
     '@storybook/addon-essentials',
-    '@storybook/addon-interactions',
+    '@storybook/addon-storysource',
     {
       name: '@storybook/addon-postcss',
       options: {
@@ -41,7 +41,7 @@ module.exports = {
         }
       }
     },
-    './expand-all-addon/register.js',
+    './expand-all-addon/register',
     './theme-selector-addon/register',
     './dark-mode-addon/register'
   ],

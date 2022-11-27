@@ -14,4 +14,12 @@
   .docblock-argstable tr td {
     background: #fff !important;
   }
+
+  .docblock-argstable tr[title^="Hide"] td {
+    background: #f8f8f8 !important;
+  }
+
+  a.sidebar-item[data-nodetype='story']:not([data-item-id$='playground']):not([data-item-id$='docs']):not([data-item-id$='default']) {
+    display: none;
+  }
 </style>

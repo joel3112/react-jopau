@@ -1,9 +1,15 @@
 import { Meta } from '@storybook/addon-docs';
-import { SBCard, SBDescription, SBSubTitle, SBTitle } from '@react-jopau/styles/components';
-import { ThemeProvider } from '@react-jopau/components/contexts';
-import { getThemeStored } from '@react-jopau/styles/theme';
+import {
+  SBCard,
+  SBDescription,
+  SBSubTitle,
+  SBThemeStories,
+  SBTitle
+} from '@react-jopau/styles/components';
 
 <Meta title="About" />
+
+<SBThemeStories>
 
 <SBTitle>@react-jopau/components 👋</SBTitle>
 <p>
@@ -24,8 +30,7 @@ npm install @react-jopau/components
 
 <SBSubTitle>List of context providers</SBSubTitle>
 
-<ThemeProvider config={getThemeStored()}>
-  <div className="!my-10 grid grid-cols-3 gap-5">
+<div className="!my-10 grid grid-cols-3 gap-5">
 
 [//]: # 'AUTO-GENERATED-CONTENT:START'
 
@@ -35,5 +40,6 @@ npm install @react-jopau/components
 
 [//]: # 'AUTO-GENERATED-CONTENT:END'
 
-  </div>
-</ThemeProvider>
+</div>
+
+</SBThemeStories>

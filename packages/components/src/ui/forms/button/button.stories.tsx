@@ -1,18 +1,16 @@
 import { useRef } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { MdAdd } from 'react-icons/md';
+import { TWSelectorContainer } from '@react-jopau/styles/components';
+import { prepareArgTypes, prepareParameters } from '../../../story-helpers';
 import { Space } from '../../layout';
-import { Button } from './button';
+import { Button, ButtonProps } from './button';
 import docs from './readme.mdx';
 
 export default {
   title: 'Forms/Button',
   component: Button,
-  parameters: {
-    docs: {
-      page: docs
-    }
-  },
+  parameters: prepareParameters(docs),
   args: {
     children: 'Button',
     color: 'primary',
@@ -21,14 +19,23 @@ export default {
     rounded: false,
     disabled: false,
     autoWidth: false
-  }
+  },
+  argTypes: prepareArgTypes(Button, {
+    children: {
+      control: { type: 'text' }
+    }
+  })
 } as ComponentMeta<typeof Button>;
 
 const Template: ComponentStory<typeof Button> = (args) => {
   return <Button {...args} />;
 };
 
+export const Docs = Template.bind({});
+
 export const Default = Template.bind({});
+Default.storyName = 'Playground';
+Default.parameters = { viewMode: 'story' };
 
 export const Sizes = () => {
   return (
@@ -81,38 +88,73 @@ export const Colors = ({
 
 export const Variants = () => {
   return (
-    <Space gap={10} direction="column">
-      <p>1. Solid</p>
-      <Colors variant="solid" />
-      <p>2. Outline</p>
-      <Colors variant="outline" />
-      <p>3. Flat</p>
-      <Colors variant="flat" />
-      <p>4. Ghost</p>
-      <Colors variant="ghost" />
-      <p>5. Link</p>
-      <Colors variant="link" />
-    </Space>
+    <TWSelectorContainer
+      label="Select color"
+      items={[
+        { label: 'Primary', value: 'primary' },
+        { label: 'Secondary', value: 'secondary' },
+        { label: 'Tertiary', value: 'tertiary' },
+        { label: 'Info', value: 'info' },
+        { label: 'Error', value: 'error' },
+        { label: 'Success', value: 'success' },
+        { label: 'Warning', value: 'warning' },
+        { label: 'Light', value: 'light' },
+        { label: 'Dark', value: 'dark' }
+      ]}
+      value="primary">
+      {(color: ButtonProps['color']) => (
+        <Space gap={10}>
+          <Button color={color} variant="solid">
+            Solid
+          </Button>
+          <Button color={color} variant="outline">
+            Outline
+          </Button>
+          <Button color={color} variant="flat">
+            Flat
+          </Button>
+          <Button color={color} variant="ghost">
+            Ghost
+          </Button>
+          <Button color={color} variant="link">
+            Link
+          </Button>
+        </Space>
+      )}
+    </TWSelectorContainer>
   );
 };
 
 export const IconOnly = () => (
-  <Space direction="column" gap={10}>
-    <p>1. Default</p>
-    <Space gap={10}>
-      <Button icon={<MdAdd />} />
-      <Button variant="outline" icon={<MdAdd />} />
-      <Button variant="flat" icon={<MdAdd />} />
-      <Button variant="ghost" icon={<MdAdd />} />
-    </Space>
-    <p>2. Rounded</p>
-    <Space gap={10}>
-      <Button icon={<MdAdd />} rounded />
-      <Button variant="outline" icon={<MdAdd />} rounded />
-      <Button variant="flat" icon={<MdAdd />} rounded />
-      <Button variant="ghost" icon={<MdAdd />} rounded />
-    </Space>
-  </Space>
+  <TWSelectorContainer
+    label="Select variant"
+    items={[
+      { label: 'Solid', value: 'solid' },
+      { label: 'Outline', value: 'outline' },
+      { label: 'Flat', value: 'flat' },
+      { label: 'Ghost', value: 'ghost' },
+      { label: 'Link', value: 'link' }
+    ]}
+    value="solid">
+    {(variant: ButtonProps['variant']) => (
+      <Space direction="column" gap={10}>
+        <p>1. Default</p>
+        <Space align="center" gap={10}>
+          <Button size="xs" variant={variant} icon={<MdAdd />} />
+          <Button size="sm" variant={variant} icon={<MdAdd />} />
+          <Button size="md" variant={variant} icon={<MdAdd />} />
+          <Button size="lg" variant={variant} icon={<MdAdd />} />
+        </Space>
+        <p>2. Rounded</p>
+        <Space align="center" gap={10}>
+          <Button size="xs" variant={variant} icon={<MdAdd />} rounded />
+          <Button size="sm" variant={variant} icon={<MdAdd />} rounded />
+          <Button size="md" variant={variant} icon={<MdAdd />} rounded />
+          <Button size="lg" variant={variant} icon={<MdAdd />} rounded />
+        </Space>
+      </Space>
+    )}
+  </TWSelectorContainer>
 );
 
 export const TextAndIcon = () => (
@@ -142,27 +184,61 @@ export const TextAndIcon = () => (
   </Space>
 );
 
-export const Disabled = Template.bind({});
-Disabled.args = {
-  disabled: true
-};
+export const Rounded = () => (
+  <TWSelectorContainer
+    label="Select variant"
+    items={[
+      { label: 'Solid', value: 'solid' },
+      { label: 'Outline', value: 'outline' },
+      { label: 'Flat', value: 'flat' },
+      { label: 'Ghost', value: 'ghost' }
+    ]}
+    value="solid">
+    {(variant: ButtonProps['variant']) => (
+      <Space gap={10}>
+        <Button variant={variant} rounded>
+          Button
+        </Button>
+        <Button variant={variant} icon={<MdAdd />} rounded>
+          Button
+        </Button>
+        <Button variant={variant} icon={<MdAdd />} rounded />
+      </Space>
+    )}
+  </TWSelectorContainer>
+);
 
-export const Rounded = Template.bind({});
-Rounded.args = {
-  rounded: true
-};
+export const Disabled = () => (
+  <Space gap={10}>
+    <Button disabled>Disabled</Button>
+    <Button disabled icon={<MdAdd />}>
+      Disabled
+    </Button>
+    <Button disabled rounded>
+      Disabled
+    </Button>
+    <Button disabled icon={<MdAdd />} rounded />
+  </Space>
+);
 
 export const AutoWidth = () => (
-  <Space gap={10}>
-    <Button autoWidth icon={<MdAdd />}>
-      Button
-    </Button>
-    <Button autoWidth icon={<MdAdd />}>
-      Button
-    </Button>
-    <Button autoWidth icon={<MdAdd />}>
-      Button
-    </Button>
+  <Space direction="column" gap={5}>
+    <Space gap={10}>
+      <Button autoWidth icon={<MdAdd />}>
+        Button
+      </Button>
+      <Button autoWidth icon={<MdAdd />}>
+        Button
+      </Button>
+      <Button autoWidth icon={<MdAdd />}>
+        Button
+      </Button>
+    </Space>
+    <Space gap={10}>
+      <Button autoWidth icon={<MdAdd />} rounded>
+        Button
+      </Button>
+    </Space>
   </Space>
 );
 

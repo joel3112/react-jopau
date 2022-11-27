@@ -1,4 +1,5 @@
 import { MINIMAL_VIEWPORTS } from '@storybook/addon-viewport';
+import anysort from 'anysort';
 import { globalDecorators } from './decorators';
 import { createStorybookTheme } from './theme';
 import '/packages/styles/src/styles.css';
@@ -13,6 +14,7 @@ export const parameters = {
     sort: 'requiredFirst',
     expanded: true
   },
+  viewMode: 'docs',
   docs: {
     theme: createStorybookTheme()
   },
@@ -28,17 +30,22 @@ export const parameters = {
     }
   },
   options: {
-    storySort: {
-      method: 'alphabetical',
-      order: [
+    storySort: (previous, next) => {
+      const previousMeta = previous[1];
+      const nextMeta = next[1];
+
+      return anysort(previousMeta.kind, nextMeta.kind, [
         'Introduction',
-        'Components',
-        ['About', '*'],
-        'Hooks',
-        ['About', '*'],
-        'Providers',
-        ['About', '*']
-      ]
+        'Components/About',
+        'Components/**/**/Docs',
+        'Components/**/**/Playground',
+        'Hooks/About',
+        'Hooks/**/**/Docs',
+        'Hooks/**/**/Playground',
+        'Providers/About',
+        'Providers/**/**/Docs',
+        'Providers/**/**/Playground'
+      ]);
     }
   }
 };

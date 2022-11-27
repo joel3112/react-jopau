@@ -1,26 +1,28 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { prepareArgTypes, prepareParameters } from '../../../story-helpers';
 import { Header } from './header';
 import docs from './readme.mdx';
 
 export default {
   title: 'Layout/Header',
   component: Header,
-  parameters: {
-    docs: {
-      page: docs
-    }
-  },
+  parameters: prepareParameters(docs),
   args: {
     title: 'Title',
     maxWidth: 'lg'
-  }
+  },
+  argTypes: prepareArgTypes(Header)
 } as ComponentMeta<typeof Header>;
 
 const Template: ComponentStory<typeof Header> = (args) => {
   return <Header {...args} />;
 };
 
+export const Docs = Template.bind({});
+
 export const Default = Template.bind({});
+Default.storyName = 'Playground';
+Default.parameters = { viewMode: 'story' };
 
 export const WithLogo = Template.bind({});
 WithLogo.args = {

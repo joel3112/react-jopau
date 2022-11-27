@@ -1,6 +1,7 @@
 import classes from 'classnames';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { multiply } from '@react-jopau/utils/array';
+import { prepareArgTypes, prepareParameters } from '../../../story-helpers';
 import { Space } from './space';
 import docs from './readme.mdx';
 
@@ -21,28 +22,24 @@ const Items = (size: number, percentage30 = false) => {
 export default {
   title: 'Layout/Space',
   component: Space,
-  parameters: {
-    docs: {
-      page: docs
-    }
-  },
+  parameters: prepareParameters(docs),
   args: {
     direction: 'row',
     children: Items(3),
     wrap: false
   },
-  argTypes: {
-    children: {
-      control: false
-    }
-  }
+  argTypes: prepareArgTypes(Space)
 } as ComponentMeta<typeof Space>;
 
 const Template: ComponentStory<typeof Space> = (args) => {
   return <Space {...args} />;
 };
 
+export const Docs = Template.bind({});
+
 export const Default = Template.bind({});
+Default.storyName = 'Playground';
+Default.parameters = { viewMode: 'story' };
 
 export const DirectionRow = Template.bind({});
 DirectionRow.args = {

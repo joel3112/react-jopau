@@ -1,5 +1,10 @@
-import { ArgsTable } from '@storybook/addon-docs';
-import { SBDescription, SBStories, SBSubTitle, SBTitle } from '@react-jopau/styles/components';
+import {
+  SBDescription,
+  SBDocsArgsTable,
+  SBStories,
+  SBSubTitle,
+  SBTitle
+} from '@react-jopau/styles/components';
 import { ThemeProvider } from './theme-context';
 
 <SBTitle>ThemeProvider</SBTitle>
@@ -16,12 +21,10 @@ import { ThemeProvider } from '@react-jopau/components/contexts';
 
 <SBSubTitle>Properties</SBSubTitle>
 
-<ArgsTable of={ThemeProvider} />
+<SBDocsArgsTable story="." noControls />
 
 <SBSubTitle>Stories</SBSubTitle>
 
 <SBStories>
-<SBStories.Item label="Default" id="providers-themeprovider--default" />
-
-<SBStories.Item label="Dark Mode" id="providers-themeprovider--dark-mode" />
+  <SBStories.Item label="Dark Mode" id="providers-themeprovider--dark-mode" />
 </SBStories>

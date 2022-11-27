@@ -15,6 +15,7 @@ const ThemeProviderMemo = React.memo(ThemeProvider);
 const ThemeStoryProvider = ({ children }) => {
   const [themeKey, setThemeKey] = useLocalStorage(THEME_SELECTOR_STORAGE_KEY, 'default');
   const [colorScheme, setColorScheme] = useLocalStorage(DARK_MODE_STORAGE_KEY, 'light');
+
   const storyRef = React.useRef(null);
   const backgroundColor = getColors(themeKey, colorScheme).background;
   const textColor = getColors(themeKey, colorScheme).text;
@@ -37,10 +38,14 @@ const ThemeStoryProvider = ({ children }) => {
       storyEl.style.backgroundColor = `${backgroundColor}`;
       storyEl.style.color = `${textColor}`;
     }
+    const docsEl = document.body.querySelector('.sbdocs-wrapper');
+    if (docsEl) {
+      docsEl.style.color = `initial`;
+    }
+
     document.body.classList.toggle('dark-theme', colorScheme === 'dark');
     document.body.classList.toggle('light-theme', colorScheme === 'light');
     document.body.style.backgroundColor = `${backgroundColor}`;
-    document.body.style.color = `initial`;
   }, [storyRef.current, themeKey, colorScheme]);
 
   return (

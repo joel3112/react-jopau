@@ -1,5 +1,10 @@
-import { ArgsTable } from '@storybook/addon-docs';
-import { SBDescription, SBStories, SBSubTitle, SBTitle } from '@react-jopau/styles/components';
+import {
+  SBDescription,
+  SBDocsArgsTable,
+  SBStories,
+  SBSubTitle,
+  SBTitle
+} from '@react-jopau/styles/components';
 import { Header } from './header';
 
 <SBTitle>Header</SBTitle>
@@ -14,13 +19,11 @@ import { Header } from '@react-jopau/components/ui/layout';
 
 <SBSubTitle>Properties</SBSubTitle>
 
-<ArgsTable of={Header} />
+<SBDocsArgsTable story="." noControls />
 
 <SBSubTitle>Stories</SBSubTitle>
 
 <SBStories>
-<SBStories.Item label="Default" id="components-layout-header--default" />
-
 <SBStories.Item label="With Logo" id="components-layout-header--with-logo" />
 
 <SBStories.Item label="With Actions" id="components-layout-header--with-actions" />

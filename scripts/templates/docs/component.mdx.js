@@ -18,8 +18,7 @@ const templateStory = ({ label, id }) => {
 `;
 };
 
-const templateObject = templateCreator`import { ArgsTable } from '@storybook/addon-docs';
-import { SBDescription, SBStories, SBSubTitle, SBTitle } from '@react-jopau/styles/components';
+const templateObject = templateCreator`import { SBDescription, SBDocsArgsTable, SBStories, SBSubTitle, SBTitle } from '@react-jopau/styles/components';
 import { ${componentName} } from './${componentPath}';
 
 <SBTitle>${componentName}</SBTitle>
@@ -34,7 +33,7 @@ ${prop('imports')}
 
 <SBSubTitle>Properties</SBSubTitle>
 
-<ArgsTable of={${componentName}} />
+<SBDocsArgsTable story="." noControls />
 
 ${({ context }) => {
   let stories = '';
@@ -43,6 +42,7 @@ ${({ context }) => {
     stories += `<SBStories>`;
 
     Object.keys(context.stories).forEach((key) => {
+      if (['Default', 'Docs', 'Playground'].includes(key)) return;
       stories += templateStory(context.stories[key]);
     });
 

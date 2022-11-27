@@ -4,11 +4,10 @@ import {
   ArgsTable as PureArgsTable,
   PreviewProps as PurePreviewProps
 } from '@storybook/components';
-import { Canvas, SourceState, Story } from '@storybook/addon-docs';
+import { ArgsTable as DocsArgsTable, Canvas, SourceState, Story } from '@storybook/addon-docs';
 import LinkTo from '@storybook/addon-links/react';
 import { BiLinkExternal } from 'react-icons/bi';
 import classes from 'classnames';
-import { getSchemeStore } from '../theme';
 
 /**
  * Component story mdx
@@ -37,9 +36,7 @@ export const SBDescription = ({
 /* ==== subtitle =============================================================== */
 
 export const SBSubTitle = ({ children }: { children: string }) => {
-  return (
-    <h4 className="text-xl font-semibold underline decoration-4 underline-offset-8">{children}</h4>
-  );
+  return <h4 className="w-full text-lg font-semibold border-b pb-2 border-gray-900">{children}</h4>;
 };
 
 /* ==== card =================================================================== */
@@ -65,7 +62,7 @@ export const SBCard = ({
   );
 };
 
-/* ==== stories ================================================================== */
+/* ==== stories ================================================================ */
 
 const SBStory = ({
   id,
@@ -80,7 +77,7 @@ const SBStory = ({
   };
 }) => {
   return (
-    <div className={`${getSchemeStore()}-theme`}>
+    <div className="flex gap-1 flex-col">
       {label && <span className="!text-lg font-medium">{label}</span>}
 
       <Canvas {...(canvasProps || {})}>
@@ -95,6 +92,17 @@ export const SBStories = ({ children }: { children: ReactNode }) => {
 };
 
 SBStories.Item = SBStory;
+
+export const SBThemeStories = ({ children }: { children: ReactNode }) => {
+  return (
+    <>
+      <div className="invisible h-0">
+        <Story id="providers-themeprovider--default" />
+      </div>
+      {children}
+    </>
+  );
+};
 
 /* ==== args-table ============================================================= */
 
@@ -155,5 +163,28 @@ export const SBArgsTable = ({
         }, {})}
       />
     </PureArgsTableStyled>
+  );
+};
+
+export const SBDocsArgsTable = ({ story, noControls }: { story: string; noControls?: boolean }) => {
+  const DocsArgsTableStyled = styled('div', {
+    variants: {
+      noControls: {
+        true: {
+          'th:nth-of-type(2), td:nth-of-type(2)': {
+            width: '60% !important'
+          },
+          'th:last-of-type, td:last-of-type': {
+            display: 'none'
+          }
+        }
+      }
+    }
+  });
+
+  return (
+    <DocsArgsTableStyled noControls={noControls}>
+      <DocsArgsTable story={story} />
+    </DocsArgsTableStyled>
   );
 };

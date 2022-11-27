@@ -1,5 +1,10 @@
-import { ArgsTable } from '@storybook/addon-docs';
-import { SBDescription, SBStories, SBSubTitle, SBTitle } from '@react-jopau/styles/components';
+import {
+  SBDescription,
+  SBDocsArgsTable,
+  SBStories,
+  SBSubTitle,
+  SBTitle
+} from '@react-jopau/styles/components';
 import { Button } from './button';
 
 <SBTitle>Button</SBTitle>
@@ -17,13 +22,11 @@ import { Button } from '@react-jopau/components/ui/forms';
 
 <SBSubTitle>Properties</SBSubTitle>
 
-<ArgsTable of={Button} />
+<SBDocsArgsTable story="." noControls />
 
 <SBSubTitle>Stories</SBSubTitle>
 
 <SBStories>
-<SBStories.Item label="Default" id="components-forms-button--default" />
-
 <SBStories.Item label="Sizes" id="components-forms-button--sizes" />
 
 <SBStories.Item label="Colors" id="components-forms-button--colors" />
@@ -34,9 +37,9 @@ import { Button } from '@react-jopau/components/ui/forms';
 
 <SBStories.Item label="Text And Icon" id="components-forms-button--text-and-icon" />
 
-<SBStories.Item label="Disabled" id="components-forms-button--disabled" />
-
 <SBStories.Item label="Rounded" id="components-forms-button--rounded" />
+
+<SBStories.Item label="Disabled" id="components-forms-button--disabled" />
 
 <SBStories.Item label="Auto Width" id="components-forms-button--auto-width" />
 

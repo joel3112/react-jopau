@@ -102,28 +102,6 @@ export const ButtonWrapper = styledTheme('button', {
   borderRadius: '$radii$xs',
 
   variants: {
-    iconOnly: {
-      true: {
-        aspectRatio: '1 / 1',
-        padding: '$space$4',
-
-        '& > *': { scale: 1.3 }
-      }
-    },
-    rounded: {
-      true: { borderRadius: '$radii$2xl' }
-    },
-    disabled: {
-      true: {
-        pointerEvents: 'none',
-        color: '$colors$gray700',
-        $$currentColor: '$colors$gray500',
-        $$borderColor: '$colors$gray500'
-      }
-    },
-    autoWidth: {
-      true: { width: '$space$full' }
-    },
     size: {
       xs: {
         $$currentHeight: '$space$12',
@@ -208,6 +186,28 @@ export const ButtonWrapper = styledTheme('button', {
           fontWeight: '$fontWeights$semibold'
         }
       }
+    },
+    iconOnly: {
+      true: {
+        aspectRatio: '1 / 1',
+        padding: '$space$4',
+
+        '& > *': { scale: 1.3 }
+      }
+    },
+    rounded: {
+      true: { borderRadius: '$radii$2xl' }
+    },
+    disabled: {
+      true: {
+        pointerEvents: 'none',
+        color: '$colors$gray700',
+        $$currentColor: '$colors$gray500',
+        $$borderColor: '$colors$gray500'
+      }
+    },
+    autoWidth: {
+      true: { width: '$space$full' }
     }
   },
 

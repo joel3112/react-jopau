@@ -1,28 +1,30 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { prepareArgTypes, prepareParameters } from '../../../story-helpers';
 import { Text } from './text';
 import docs from './readme.mdx';
 
 export default {
   title: 'Typography/Text',
   component: Text,
-  parameters: {
-    docs: {
-      page: docs
-    }
-  },
+  parameters: prepareParameters(docs),
   args: {
     children: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
     variant: 'p',
     color: 'inherit',
     size: 'md'
-  }
+  },
+  argTypes: prepareArgTypes(Text)
 } as ComponentMeta<typeof Text>;
 
 const Template: ComponentStory<typeof Text> = (args) => {
   return <Text {...args} />;
 };
 
+export const Docs = Template.bind({});
+
 export const Default = Template.bind({});
+Default.storyName = 'Playground';
+Default.parameters = { viewMode: 'story' };
 
 export const Colors = () => {
   return (

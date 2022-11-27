@@ -2,7 +2,7 @@ import { styledTheme } from '../../../index';
 
 export const HeadingWrapper = styledTheme('h1', {
   display: 'block',
-  fontWeight: '$fontWeights$bold',
+  fontWeight: '$fontWeights$semibold',
   letterSpacing: '$letterSpacings$normal',
   color: 'inherit',
 

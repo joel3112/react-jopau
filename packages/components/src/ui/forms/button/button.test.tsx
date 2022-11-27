@@ -45,7 +45,7 @@ describe('Tests Button component', () => {
   });
 
   test('renders icon correctly', () => {
-    render(<Button renderIcon={() => <span>Icon</span>}>Content</Button>);
+    render(<Button icon={<span>Icon</span>}>Content</Button>);
 
     expect(screen.getByText('Icon')).toBeInTheDocument();
   });

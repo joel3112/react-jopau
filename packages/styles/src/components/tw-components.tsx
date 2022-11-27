@@ -1,4 +1,4 @@
-import { cloneElement, ReactElement, ReactNode, useState } from 'react';
+import { ReactNode, useState } from 'react';
 import classes from 'classnames';
 import ReactJson from 'react-json-view';
 
@@ -45,7 +45,7 @@ export const TWItem = ({
 
 export const TWHighlight = ({ children }: { children: string }) => {
   return (
-    <div className="font-code text-black text-sm w-fit h-[22px] flex items-center px-1 rounded-md bg-[#ccc]">
+    <div className="font-code text-black text-sm w-fit h-[21px] flex items-center px-2 rounded-[5px] bg-[#ccc]">
       {children}
     </div>
   );

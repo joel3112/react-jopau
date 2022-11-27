@@ -1,27 +1,29 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { prepareArgTypes, prepareParameters } from '../../../story-helpers';
 import { Heading } from './heading';
 import docs from './readme.mdx';
 
 export default {
   title: 'Typography/Heading',
   component: Heading,
-  parameters: {
-    docs: {
-      page: docs
-    }
-  },
+  parameters: prepareParameters(docs),
   args: {
     children: 'Lorem Ipsum',
     variant: 'h1',
     color: 'inherit'
-  }
+  },
+  argTypes: prepareArgTypes(Heading)
 } as ComponentMeta<typeof Heading>;
 
 const Template: ComponentStory<typeof Heading> = (args) => {
   return <Heading {...args} />;
 };
 
+export const Docs = Template.bind({});
+
 export const Default = Template.bind({});
+Default.storyName = 'Playground';
+Default.parameters = { viewMode: 'story' };
 
 export const Colors = () => {
   return (

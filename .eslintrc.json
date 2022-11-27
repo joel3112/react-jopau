@@ -47,7 +47,8 @@
       "files": ["*.mdx", "*.md"],
       "extends": "plugin:mdx/recommended",
       "rules": {
-        "react/jsx-no-undef": "off"
+        "react/jsx-no-undef": "off",
+        "@typescript-eslint/no-unused-vars": "off"
       },
       "parserOptions": {
         "ecmaVersion": "latest"
@@ -57,6 +58,7 @@
   "rules": {
     "@typescript-eslint/no-explicit-any": "error",
     "@typescript-eslint/ban-types": "off",
+    "@typescript-eslint/no-empty-function": "off",
     "react/react-in-jsx-scope": "off",
     "react/no-unescaped-entities": "off",
     "react/jsx-filename-extension": [
