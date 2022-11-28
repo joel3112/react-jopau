@@ -87,16 +87,19 @@ export default {
       gray800: '#687076',
       gray900: '#11181c',
 
-      '@light': {
-        text: '#000',
-        background: '#fcfcfc',
-        border: '#dedede'
-      },
-      '@dark': {
-        text: '#fff',
-        background: '#1d1f20',
-        border: '#333'
-      }
+      dark100: '#2c2e2f',
+      dark200: '#282b2d',
+      dark300: '#23272a',
+      dark400: '#202528',
+      dark500: '#1d1f20',
+      dark600: '#15191b',
+      dark700: '#0e1317',
+      dark800: '#090d12',
+      dark900: '#05090f',
+
+      text: '#000',
+      background: '#fcfcfc',
+      border: '#dedede'
     },
     space: {
       0: '0rem',
@@ -240,12 +243,7 @@ export default {
       pill: '9999px'
     },
     shadows: {
-      '@light': {
-        boxShadow: 'rgb(231 235 250) 0 -1px 1px inset'
-      },
-      '@dark': {
-        boxShadow: 'rgb(67 67 67) 0 -1px 1px inset'
-      }
+      boxShadow: 'rgb(231 235 250) 0 -1px 1px inset'
     },
     zIndices: {
       hide: -1,
@@ -266,6 +264,16 @@ export default {
       default: 'all 250ms ease',
       button:
         'background 0.25s ease 0s, color 0.25s ease 0s, border-color 0.25s ease 0s, box-shadow 0.25s ease 0s, transform 0.25s ease 0s, opacity 0.25s ease 0s'
+    }
+  },
+  darkTheme: {
+    colors: {
+      text: '#fff',
+      background: '#1d1f20',
+      border: '#333'
+    },
+    shadows: {
+      boxShadow: 'rgb(67 67 67) 0 -1px 1px inset'
     }
   },
   media: {

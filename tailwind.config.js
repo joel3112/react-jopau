@@ -104,6 +104,18 @@ module.exports = {
         800: 'var(--colors-gray800)',
         900: 'var(--colors-gray900)'
       },
+      dark: {
+        DEFAULT: 'var(--colors-dark500)',
+        100: 'var(--colors-dark100)',
+        200: 'var(--colors-dark200)',
+        300: 'var(--colors-dark300)',
+        400: 'var(--colors-dark400)',
+        500: 'var(--colors-dark500)',
+        600: 'var(--colors-dark600)',
+        700: 'var(--colors-dark700)',
+        800: 'var(--colors-dark800)',
+        900: 'var(--colors-dark900)'
+      },
       text: 'var(--colors-text)',
       background: 'var(--colors-background)',
       border: {

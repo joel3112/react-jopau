@@ -8,12 +8,12 @@ import {
   normalizeThemeByScheme,
   ThemeConfig,
   ThemeScheme,
-  ThemeStitches
+  ThemeStyled
 } from './theme';
 
 export class ThemeBuilder {
   currentConfig: ThemeConfig = defaultConfig;
-  styledTheme: ThemeStitches = styled;
+  styledTheme: ThemeStyled = styled;
   lightTheme: ThemeScheme = null;
   darkTheme: ThemeScheme = null;
   breakpoints: BreakpointsRules = {};

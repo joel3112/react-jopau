@@ -1,7 +1,9 @@
 import { useContext } from 'react';
 import { MdOutlineDarkMode, MdOutlineLightMode } from 'react-icons/md';
-import { Container, Header, Space } from '@react-jopau/components/ui/layout';
 import { ThemeContext } from '@react-jopau/components/contexts';
+import { Container, Header, Space } from '@react-jopau/components/ui/layout';
+import { Button } from '@react-jopau/components/ui/forms';
+import { Heading, Text } from '@react-jopau/components/ui/typography';
 import './App.css';
 
 const App = () => {
@@ -11,27 +13,32 @@ const App = () => {
     <div className="app bg-background pb-10">
       <header>
         <Header title="Example app" maxWidth="lg">
-          <button
-            className="text-text p-2 w-fit flex gap-1 items-center font-medium"
+          <Button
+            className="text-text w-fit flex items-center font-medium"
+            size="sm"
+            variant="ghost"
+            color={!darkMode ? 'light' : 'dark'}
+            icon={darkMode ? <MdOutlineLightMode /> : <MdOutlineDarkMode />}
             onClick={onToggle}>
-            {darkMode ? <MdOutlineLightMode /> : <MdOutlineDarkMode />}
             {darkMode ? 'Light' : 'Dark'}
-          </button>
+          </Button>
         </Header>
       </header>
 
       <main>
         <Container maxWidth="lg" centered>
           <Space direction="column" gap={20} className="text-text" style={{ padding: '30px 0' }}>
-            <h1 className="text-primary text-lg font-medium">Content</h1>
+            <Heading variant="h4" color="primary">
+              Content
+            </Heading>
 
-            <p>
+            <Text>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. At culpa deleniti ea esse ex
               exercitationem molestias nulla quod ratione repellat, sequi veniam. Et fugit maiores
               odit sint voluptatem! Obcaecati, reiciendis.
-            </p>
+            </Text>
 
-            <button className="text-primary p-3 bg-secondary w-fit">Button</button>
+            <Button color="secondary">Button</Button>
           </Space>
         </Container>
       </main>

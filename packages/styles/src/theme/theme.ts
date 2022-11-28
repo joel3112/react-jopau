@@ -12,32 +12,9 @@ type DeepPartial<T> = T extends object
     }
   : T;
 
-export type ThemeProp = { [token in number | string]: boolean | number | string };
-export type ThemePropWithSchemes = Record<'@light' | '@dark', ThemeProp>;
-export type ThemeProps<T = {}> = {
-  borderStyles?: ThemeProp;
-  borderWidths?: ThemeProp;
-  colors: ThemeProp | ThemePropWithSchemes;
-  fonts?: ThemeProp;
-  fontSizes?: ThemeProp;
-  fontWeights?: ThemeProp;
-  letterSpacings?: ThemeProp;
-  lineHeights?: ThemeProp;
-  radii?: ThemeProp;
-  shadows: ThemeProp | ThemePropWithSchemes;
-  sizes?: ThemeProp;
-  space?: ThemeProp;
-  transitions?: ThemeProp;
-  zIndices?: ThemeProp;
-} & {
-  [Scale in keyof T]: {
-    [Token in keyof T[Scale]]: T[Scale][Token] extends boolean | number | string
-      ? T[Scale][Token]
-      : boolean | number | string;
-  };
-};
 export type ThemeConfig = {
-  theme: ThemeProps;
+  theme: ThemeTokens;
+  darkTheme?: ThemeTokens;
   media: BreakpointsRules;
   brand: {
     title: string;
@@ -46,14 +23,13 @@ export type ThemeConfig = {
   };
 };
 export type PartialThemeConfig = DeepPartial<ThemeConfig> | ThemeConfig;
-
-export type ThemeStitches = Stitches['styled'] | null;
-
+export type ThemeStyled = Stitches['styled'] | null;
+export type ThemeTokens = ConfigType.Theme | null;
 export type ThemeScheme = Stitches['theme'] | null;
 
 export type ThemeSchemes = {
-  lightTheme?: ThemeScheme;
   darkTheme?: ThemeScheme;
+  lightTheme?: ThemeScheme;
 };
 
 /* ==== constants ============================================================== */
@@ -63,33 +39,17 @@ export const DARK_MODE_STORAGE_KEY = 'key-dark-mode';
 
 /* ==== helpers ================================================================ */
 
-const mergeTheme = (theme1: ThemeConfig, theme2: PartialThemeConfig): ThemeConfig => {
+const mergeTheme = <T = {}>(theme1: T, theme2: T): T => {
   const a = { ...theme1 };
-  const b = { ...theme2 };
+  const b = { ...theme2 } as Object;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return Object.entries(b).reduce((o: any, [k, v]: [string, unknown]) => {
     o[k] =
-      v && typeof v === 'object' ? mergeTheme((o[k] = o[k] || (Array.isArray(v) ? [] : {})), v) : v;
+      v && typeof v === 'object'
+        ? mergeTheme<T>((o[k] = o[k] || (Array.isArray(v) ? [] : {})), v as T)
+        : v;
     return o;
   }, a);
-};
-
-const getValuesByThemeProp = (
-  config: ThemeConfig | string,
-  prop: keyof ThemeProps,
-  scheme: 'light' | 'dark' = 'light'
-): ThemeProp => {
-  const values = getTheme(config)[prop];
-  return Object.keys({ ...values }).reduce((acc, key) => {
-    if (key.includes('@')) {
-      if (key === `@${scheme}`) {
-        return { ...acc, ...(values as ThemePropWithSchemes)[key as '@light' | '@dark'] };
-      } else {
-        return acc;
-      }
-    }
-    return { ...acc, [key]: (values as ThemeProp)[key] };
-  }, {} as ThemeProp);
 };
 
 export const getSchemeStore = (): string | null => {
@@ -115,37 +75,38 @@ export const getThemeInstance = (config?: ThemeConfig | string): ThemeConfig => 
     return defaultConfig;
   }
   if (typeof config === 'string') {
-    return mergeTheme(defaultConfig, themes[config].value);
+    return mergeTheme<ThemeConfig>(defaultConfig, themes[config].value as ThemeConfig);
   }
 
-  return mergeTheme(defaultConfig, config);
+  return mergeTheme<ThemeConfig>(defaultConfig, config);
 };
 
 export const getProps = (config: ThemeConfig | string): ThemeConfig => {
   return getThemeInstance(config);
 };
 
-export const getTheme = (config: ThemeConfig | string): ThemeProps => {
+export const getTheme = (config: ThemeConfig | string): ThemeTokens => {
   return getProps(config).theme;
 };
 
 export const normalizeThemeByScheme = (
   config: ThemeConfig | string,
   scheme: 'light' | 'dark'
-): ConfigType.Theme => {
-  return Object.keys(getTheme(config)).reduce((acc, key) => {
-    return {
-      ...acc,
-      [key]: getValuesByThemeProp(config, key as keyof ThemeProps, scheme)
-    };
-  }, {}) as ConfigType.Theme;
+): ThemeTokens => {
+  const theme = getProps(config).theme;
+  const darkTheme = getProps(config).darkTheme;
+
+  if (scheme === 'dark' && darkTheme) {
+    return mergeTheme<ThemeTokens>(theme, darkTheme);
+  }
+  return theme;
 };
 
 export const getColors = (
   config: ThemeConfig | string,
   scheme: 'light' | 'dark' = 'light'
-): ThemeProp => {
-  const colors = getValuesByThemeProp(config, 'colors', scheme);
+): ConfigType.Theme['colors'] => {
+  const colors = (normalizeThemeByScheme(config, scheme) || {}).colors || {};
   return Object.keys(colors).reduce((acc, key) => {
     if (key.endsWith('00')) {
       if (key.endsWith('500')) {
@@ -157,7 +118,7 @@ export const getColors = (
       ...acc,
       [key]: colors[key]
     };
-  }, {}) as ThemeProp;
+  }, {});
 };
 
 export const getBreakpoints = (config: ThemeConfig | string): BreakpointsRules => {

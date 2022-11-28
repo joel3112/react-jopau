@@ -55,9 +55,9 @@ const colorTokens = (color: NonNullable<ButtonProps['color']>) => {
       text: '$colors$gray900'
     },
     dark: {
-      default: '$colors$gray900',
-      lighter: '$colors$gray800',
-      darker: '$colors$gray800'
+      default: '$colors$dark500',
+      lighter: '$colors$dark100',
+      darker: '$colors$dark800'
     }
   }[color];
 
@@ -163,7 +163,7 @@ export const ButtonWrapper = styledTheme('button', {
         borderColor: '$$currentColorLighter',
 
         '&:hover': {
-          filter: 'brightness(96.5%)'
+          filter: 'brightness(97.5%)'
         }
       },
       ghost: {

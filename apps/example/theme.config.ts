@@ -1,22 +1,25 @@
 export default {
   theme: {
     colors: {
-      primary: '#0058a3',
-      secondary: '#fbd914',
-      white: '#fff',
-      black: '#000',
-      gray: '#b9bdcf',
-      grayDark: '#787878',
-      '@light': {
-        text: '#000',
-        background: '#fcfcfc',
-        border: '#dedede'
-      },
-      '@dark': {
-        text: '#fff',
-        background: '#1d1f20',
-        border: '#333'
-      }
+      primary100: '#c8eefa',
+      primary200: '#93d8f5',
+      primary300: '#5ab3e3',
+      primary400: '#318ac7',
+      primary500: '#0058a3',
+      primary600: '#00448c',
+      primary700: '#003275',
+      primary800: '#00235e',
+      primary900: '#00194e',
+
+      secondary100: '#fefacf',
+      secondary200: '#fef5a0',
+      secondary300: '#fded71',
+      secondary400: '#fce54e',
+      secondary500: '#fbd914',
+      secondary600: '#d7b70e',
+      secondary700: '#b4960a',
+      secondary800: '#917606',
+      secondary900: '#786003'
     },
     space: {},
     fontSizes: {},
