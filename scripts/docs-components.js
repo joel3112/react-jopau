@@ -2,6 +2,7 @@
 const fs = require('fs');
 const path = require('path');
 const glob = require('glob-promise');
+const { program } = require('commander');
 const clc = require('cli-color');
 const { get, last } = require('lodash');
 const {
@@ -38,11 +39,21 @@ const parseOptions = {
   }
 };
 
-const generateComponentDocs = async (type) => {
+const generateComponentDocs = async (type, componentNameOne) => {
   introComponentsProps = [];
-  const files = await glob(`packages/components/src/${type}/**/*.{ts,tsx}`, {
+  let files = await glob(`packages/components/src/${type}/**/*.{ts,tsx}`, {
     ignore: ['**/*.{test,stories,styled}.{ts,tsx}', '**/index.{ts,tsx}']
   });
+
+  if (componentNameOne) {
+    const componentNameFound = files.find((file) => file.includes(`${componentNameOne}.tsx`));
+    if (componentNameFound) {
+      files = [componentNameFound];
+    } else {
+      console.log(preffix, clc.red('Component not found'));
+      return;
+    }
+  }
 
   files.forEach((componentPath) => {
     try {
@@ -138,6 +149,25 @@ const generateIntroductionDocs = async (type) => {
 };
 
 const generateAllDocs = async () => {
+  program.option('-t, --type <type>', 'component type');
+  program.option('-c, --component <component>', 'component name');
+  program.parse(process.argv);
+  const options = program.opts();
+
+  // Generate docs for custom component
+  if (options && Object.keys(options).length > 0) {
+    const type = get(options, 'type', '').replace('=', '');
+    const componentNameOne = get(options, 'component', '').replace('=', '');
+
+    console.log(preffix, '[UI] Generating documentation...');
+    if (['ui', 'contexts'].includes(type)) {
+      await generateComponentDocs('ui', componentNameOne);
+    } else {
+      console.log(preffix, clc.red('Invalid type'));
+    }
+    return;
+  }
+
   console.log(preffix, '[UI] Generating documentation...');
   await generateComponentDocs('ui');
   await generateIntroductionDocs('ui');

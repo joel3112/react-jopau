@@ -1,5 +1,5 @@
 import classes from 'classnames';
-import { Color, ElementHTML } from '../../../../types';
+import type { NormalColor, ElementHTML, NormalSize } from '../../../../types';
 import { TextWrapper } from './text.styled';
 
 export type TextProps = ElementHTML & {
@@ -14,16 +14,16 @@ export type TextProps = ElementHTML & {
   /**
    * Defines the color of the text.
    */
-  color?: 'inherit' | Color;
+  color?: NormalColor | 'inherit' | 'disabled';
   /**
    * Defines the size of the component.
    */
-  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl';
+  size?: NormalSize | 'xl' | '2xl' | '3xl';
   /**
    * Defines the line clamp of the component.
    */
   maxLines?: number;
-} & typeof defaultProps;
+} & Partial<typeof defaultProps>;
 
 const defaultProps = {
   variant: 'p',

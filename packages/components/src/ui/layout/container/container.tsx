@@ -2,7 +2,7 @@ import { ReactNode, useContext } from 'react';
 import classes from 'classnames';
 import { BreakpointsRules } from '@react-jopau/styles/breakpoint';
 import { ThemeContext } from '../../../contexts';
-import { ElementHTML } from '../../../../types';
+import type { ElementHTML } from '../../../../types';
 import { ContainerWrapper } from './container.styled';
 
 type ContainerProps = ElementHTML & {
@@ -22,7 +22,7 @@ type ContainerProps = ElementHTML & {
    * Centered horizontally the container.
    */
   centered?: boolean;
-} & typeof defaultProps;
+} & Partial<typeof defaultProps>;
 
 const defaultProps = {
   centered: false

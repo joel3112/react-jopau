@@ -29,7 +29,7 @@ type ThemeProviderProps = {
    * Flag to enable dark mode.
    */
   darkMode?: boolean;
-} & typeof defaultProps;
+} & Partial<typeof defaultProps>;
 
 const defaultProps = {
   darkMode: false

@@ -1,7 +1,7 @@
 import classes from 'classnames';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { multiply } from '@react-jopau/utils/array';
-import { prepareArgTypes, prepareParameters } from '../../../story-helpers';
+import { prepareArgTypes, prepareParameters } from '../../../utils/story-helpers';
 import { Space } from './space';
 import docs from './readme.mdx';
 

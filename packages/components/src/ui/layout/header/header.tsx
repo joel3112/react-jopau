@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import classes from 'classnames';
-import { ElementHTML } from '../../../../types';
+import type { ElementHTML } from '../../../../types';
 import { Heading } from '../../typography';
 import { HeaderContainer, HeaderSpaceLogo, HeaderWrapper } from './header.styled';
 
@@ -21,7 +21,7 @@ type HeaderProps = ElementHTML & {
    * Maximum width of the container or breakpoint.
    */
   maxWidth?: number | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-} & typeof defaultProps;
+} & Partial<typeof defaultProps>;
 
 const defaultProps = {};
 

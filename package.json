@@ -22,7 +22,7 @@
     "publish": "lerna publish --yes",
     "test": "lerna run test --stream --concurrency 1",
     "type-check": "tsc --pretty --noEmit",
-    "storybook": "yarn run docs && start-storybook -p 6006 --no-open",
+    "storybook": "start-storybook -p 6006 --no-open",
     "build-storybook": "build-storybook -o ./dist/storybook -c .storybook",
     "link:app": "node scripts/link-app",
     "create": "node scripts/create"
@@ -71,6 +71,7 @@
     "autoprefixer": "^10.4.12",
     "babel-loader": "^8.2.5",
     "cli-color": "^2.0.3",
+    "commander": "^9.4.1",
     "copyfiles": "^2.4.1",
     "css-mediaquery": "^0.1.2",
     "enquirer": "^2.3.6",

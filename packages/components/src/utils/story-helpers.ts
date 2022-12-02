@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { merge } from '@react-jopau/utils/object';
+import { merge } from '@react-jopau/utils/dist/object';
 
 const eventsActions = {
   onClick: 'clicked',
@@ -7,6 +7,7 @@ const eventsActions = {
   onFocus: 'focused',
   onBlur: 'blurred',
   onInput: 'inputted',
+  onClear: 'cleared',
   onKeyUp: 'keyUp',
   onKeyDown: 'keyDown',
   onKeyPress: 'keyPress'

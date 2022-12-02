@@ -1,6 +1,7 @@
-import { forwardRef, MouseEvent, ReactNode, Ref, useImperativeHandle, useRef } from 'react';
+import { MouseEvent, ReactNode, Ref, useImperativeHandle, useRef } from 'react';
 import classes from 'classnames';
-import { Color, ElementHTML } from '../../../../types';
+import { forwardRef } from '../../../utils/system';
+import type { NormalColor, ContentPosition, ElementHTML, NormalSize } from '../../../../types';
 import { ButtonIcon, ButtonText, ButtonWrapper } from './button.styled';
 
 export type ButtonProps = ElementHTML & {
@@ -11,11 +12,11 @@ export type ButtonProps = ElementHTML & {
   /**
    * Defines the color of button.
    */
-  color?: Exclude<Color, 'disabled'> | 'light' | 'dark';
+  color?: NormalColor | 'light' | 'dark';
   /**
    * Defines the size of the component.
    */
-  size?: 'xs' | 'sm' | 'md' | 'lg';
+  size?: NormalSize;
   /**
    * Defines the variant of the component.
    */
@@ -40,12 +41,12 @@ export type ButtonProps = ElementHTML & {
   /**
    * Defines the position of the icon in the component.
    */
-  iconPosition?: 'left' | 'right';
+  iconPosition?: ContentPosition;
   /**
    * Function to be called when the button is clicked.
    */
   onClick?: (e: MouseEvent<HTMLButtonElement>) => void;
-};
+} & Partial<typeof defaultProps>;
 
 const defaultProps = {
   color: 'primary',
@@ -66,7 +67,7 @@ const defaultProps = {
  *    Click me
  * </Button>
  */
-export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+export const Button = forwardRef<ButtonProps, 'button'>(
   (
     {
       className,
@@ -125,5 +126,4 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   }
 );
 
-Button.defaultProps = defaultProps as Partial<ButtonProps>;
-Button.displayName = 'Button';
+Button.defaultProps = defaultProps;

@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import classes from 'classnames';
-import { ElementHTML } from '../../../../types';
+import type { ElementHTML } from '../../../../types';
 import { SpaceWrapper } from './space.styled';
 
 type BasicPosition = 'start' | 'center' | 'end';
@@ -33,7 +33,7 @@ type SpaceProps = ElementHTML & {
    * Defines the align-items style property.
    */
   align?: AlignSpace;
-} & typeof defaultProps;
+} & Partial<typeof defaultProps>;
 
 const defaultProps = {
   direction: 'row'

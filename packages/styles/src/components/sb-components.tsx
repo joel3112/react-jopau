@@ -51,8 +51,8 @@ export const SBCard = ({
   kind: string;
 }) => {
   return (
-    <LinkTo kind={kind} story="default">
-      <div className="h-[150px] group relative p-4 flex flex-col gap-3 bg-background hover:bg-[#eee] border border-primary border-solid shadow-md cursor-pointer">
+    <LinkTo kind={kind} story="docs">
+      <div className="h-[150px] group relative p-8 flex flex-col gap-3 bg-background hover:bg-[#eee] border border-primary border-solid shadow-md cursor-pointer">
         <div className="text-secondary font-semibold text-[18px]">{title}</div>
         <span className="text-text text-[15px] line-clamp-2">{children}</span>
 

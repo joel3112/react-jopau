@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { MdAdd } from 'react-icons/md';
 import { TWSelectorContainer } from '@react-jopau/styles/components';
-import { prepareArgTypes, prepareParameters } from '../../../story-helpers';
+import { prepareArgTypes, prepareParameters } from '../../../utils/story-helpers';
 import { Space } from '../../layout';
 import { Button, ButtonProps } from './button';
 import docs from './readme.mdx';

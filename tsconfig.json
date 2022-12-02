@@ -14,7 +14,7 @@
     "noErrorTruncation": false,
     "allowJs": true,
     "skipLibCheck": true,
-    "typeRoots": ["node_modules/@types", "typings/**/*.d.ts"],
+    "typeRoots": ["node_modules/@types", "typings/**/*.d.ts", "packages/**/*.d.ts"],
     "paths": {
       "@apps/example": ["apps/example/src/App.tsx"],
       "@react-jopau/styles/*": ["packages/styles/src/*"],

@@ -2,8 +2,9 @@ const { template } = require('react-docgen-renderer-template');
 const templateCreator = template({});
 
 const templateObject = templateCreator`${({ context }) => `
-import { ReactNode } from 'react';
+import { ReactNode, Ref, useImperativeHandle, useRef } from 'react';
 import classes from 'classnames';
+import { forwardRef } from '../../../utils/system';
 import type { ElementHTML } from '../../../../types';
 import { ${context.pascalName}Wrapper } from './${context.name}.styled';
 
@@ -32,23 +33,37 @@ const defaultProps = {};
   *    <div>Content</div>
   * </${context.pascalName}>
   */
-export const ${context.pascalName} = ({
-  className,
-  style,
-  children,
-  title
-}: ${context.pascalName}Props) => {
-  return (
-    <${context.pascalName}Wrapper
-      className={classes('${context.name}-wrapper', className)}
-      css={{
-        ...style
-      }}>
-      <h2>{title}</h2>
-      {children}
-    </${context.pascalName}Wrapper>
-  );
-};
+export const ${context.pascalName} = forwardRef<${context.pascalName}Props, 'div'>(
+  (
+    {
+      className,
+      style,
+      children,
+      title
+    }: ${context.pascalName}Props,
+    ref: Ref<Partial<HTMLDivElement>>
+  ) => {
+    const elementRef = useRef<HTMLDivElement>(null);
+
+    useImperativeHandle(ref, () => ({
+      click: () => {
+        elementRef && elementRef.current?.click();
+      }
+    }));
+    
+    return (
+      <${context.pascalName}Wrapper
+        ref={elementRef}
+        className={classes('${context.name}-wrapper', className)}
+        css={{
+          ...style
+        }}>
+        <h2>{title}</h2>
+        {children}
+      </${context.pascalName}Wrapper>
+    );
+  }
+);
 
 ${context.pascalName}.defaultProps = defaultProps;
 `}

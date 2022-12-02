@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { prepareArgTypes, prepareParameters } from '../../../story-helpers';
+import { prepareArgTypes, prepareParameters } from '../../../utils/story-helpers';
 import { Header } from './header';
 import docs from './readme.mdx';
 
