@@ -7,7 +7,6 @@ const eventsActions = {
   onFocus: 'focused',
   onBlur: 'blurred',
   onInput: 'inputted',
-  onClear: 'cleared',
   onKeyUp: 'keyUp',
   onKeyDown: 'keyDown',
   onKeyPress: 'keyPress'
@@ -15,7 +14,7 @@ const eventsActions = {
 
 export const prepareArgTypes = (
   component: any,
-  argTypes?: Record<string, { control?: any; table?: boolean; if?: any }>
+  argTypes?: Record<string, { control?: any; table?: boolean; if?: any; action?: string }>
 ) => {
   const props = component?.__docgenInfo.props || {};
   const category = (name: string) => ({ table: { category: name } });

@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import { Button } from './button';
 
 describe('Tests Button component', () => {
@@ -15,10 +15,16 @@ describe('Tests Button component', () => {
     expect(screen.getByText('Content')).toBeInTheDocument();
   });
 
-  test('renders variant correctly', () => {
-    const { container } = render(<Button variant="outline">Content</Button>);
+  test('disables correctly', () => {
+    render(<Button disabled>Content</Button>);
 
-    expect(container.firstChild).toContainHTML('variant-outline');
+    expect(screen.getByRole('button')).toBeDisabled();
+  });
+
+  test('renders variant correctly', () => {
+    const { container } = render(<Button variant="bordered">Content</Button>);
+
+    expect(container.firstChild).toContainHTML('bordered-true');
   });
 
   test('renders color correctly', () => {
@@ -50,13 +56,15 @@ describe('Tests Button component', () => {
     expect(screen.getByText('Icon')).toBeInTheDocument();
   });
 
-  test('clicks button correctly', () => {
+  test('clicks button correctly', async () => {
     const onClick = jest.fn();
 
     render(<Button onClick={onClick}>Content</Button>);
 
-    const button = screen.getByText('Content');
-    button.click();
+    await waitFor(() => {
+      const button = screen.getByText('Content');
+      button.click();
+    });
 
     expect(onClick).toHaveBeenCalled();
   });

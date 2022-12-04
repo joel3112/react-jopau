@@ -1,5 +1,5 @@
 import classes from 'classnames';
-import type { NormalColor, ElementHTML } from '../../../../types';
+import type { ElementHTML, TextColor } from '../../../../types';
 import { HeadingWrapper } from './heading.styled';
 
 type HeadingProps = ElementHTML & {
@@ -14,7 +14,7 @@ type HeadingProps = ElementHTML & {
   /**
    * Defines the color of the heading.
    */
-  color?: NormalColor | 'inherit' | 'disabled';
+  color?: TextColor;
 } & Partial<typeof defaultProps>;
 
 const defaultProps = {

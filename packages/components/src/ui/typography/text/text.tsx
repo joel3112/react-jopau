@@ -1,5 +1,5 @@
 import classes from 'classnames';
-import type { NormalColor, ElementHTML, NormalSize } from '../../../../types';
+import type { ElementHTML, NormalSize, TextColor } from '../../../../types';
 import { TextWrapper } from './text.styled';
 
 export type TextProps = ElementHTML & {
@@ -14,7 +14,7 @@ export type TextProps = ElementHTML & {
   /**
    * Defines the color of the text.
    */
-  color?: NormalColor | 'inherit' | 'disabled';
+  color?: TextColor;
   /**
    * Defines the size of the component.
    */

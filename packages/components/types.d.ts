@@ -8,12 +8,15 @@ export type NormalColor =
   | 'error'
   | 'success'
   | 'warning';
+export type SimpleColor = NormalColor | 'default';
+export type TextColor = NormalColor | 'inherit' | 'disabled';
+export type ButtonColor = NormalColor | 'light' | 'dark';
 
 export type NormalSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
 export type ContentPosition = 'left' | 'right';
 
-export type FormControl = {
+export type FormControl<TValue = string | number | boolean> = {
   /**
    * Identifies the element that labels the current element.
    */
@@ -25,7 +28,7 @@ export type FormControl = {
   /**
    * Defines the value of the current element.
    */
-  value?: string | number | boolean;
+  value?: TValue;
   /**
    * Defines the label of the current element.
    */
@@ -41,7 +44,7 @@ export type FormControl = {
   /**
    * Defines the status of the element and determines the color of the border.
    */
-  status?: 'default' | 'error' | 'success';
+  status?: SimpleColor;
   /**
    * Defines if the element is read-only.
    */
@@ -50,6 +53,10 @@ export type FormControl = {
    * Defines if the element is disabled and not available for interaction.
    */
   disabled?: boolean;
+  /**
+   * Defines if the element is required.
+   */
+  required?: boolean;
 };
 
 export type ElementHTML = {

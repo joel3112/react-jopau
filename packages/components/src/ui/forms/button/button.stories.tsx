@@ -4,7 +4,7 @@ import { MdAdd } from 'react-icons/md';
 import { TWSelectorContainer } from '@react-jopau/styles/components';
 import { prepareArgTypes, prepareParameters } from '../../../utils/story-helpers';
 import { Space } from '../../layout';
-import { Button, ButtonProps } from './button';
+import { Button } from './button';
 import docs from './readme.mdx';
 
 export default {
@@ -13,9 +13,11 @@ export default {
   parameters: prepareParameters(docs),
   args: {
     children: 'Button',
+    type: 'button',
     color: 'primary',
     size: 'md',
     variant: 'solid',
+    iconPosition: 'left',
     rounded: false,
     disabled: false,
     autoWidth: false
@@ -103,7 +105,7 @@ export const Variants = () => {
         { label: 'Dark', value: 'dark' }
       ]}
       value="primary">
-      {(color: ButtonProps['color']) => (
+      {(color) => (
         <Space gap={10} wrap>
           <Button color={color} variant="solid">
             Solid
@@ -137,7 +139,7 @@ export const IconOnly = () => (
       { label: 'Clear', value: 'clear' }
     ]}
     value="solid">
-    {(variant: ButtonProps['variant']) => (
+    {(variant) => (
       <Space direction="column" gap={10}>
         <p>1. Default</p>
         <Space align="center" gap={10}>
@@ -200,7 +202,7 @@ export const Rounded = () => (
       { label: 'Ghost', value: 'ghost' }
     ]}
     value="solid">
-    {(variant: ButtonProps['variant']) => (
+    {(variant) => (
       <Space gap={10}>
         <Button variant={variant} rounded>
           Button

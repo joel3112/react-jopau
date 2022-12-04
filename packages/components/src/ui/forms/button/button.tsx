@@ -1,7 +1,7 @@
 import { MouseEvent, ReactNode, Ref, useImperativeHandle, useRef } from 'react';
 import { classes, forwardRef } from '../../../utils/system';
-import type { NormalColor, ContentPosition, ElementHTML, NormalSize } from '../../../../types';
-import { ButtonIcon, ButtonWrapper } from './button.styled';
+import type { ButtonColor, ContentPosition, ElementHTML, NormalSize } from '../../../../types';
+import { ButtonIconWrapper, ButtonWrapper } from './button.styled';
 
 export type ButtonProps = ElementHTML & {
   /**
@@ -9,9 +9,13 @@ export type ButtonProps = ElementHTML & {
    */
   children?: string;
   /**
+   * Defines the native type of the button element.
+   */
+  type?: 'button' | 'submit' | 'reset';
+  /**
    * Defines the color of button.
    */
-  color?: NormalColor | 'light' | 'dark';
+  color?: ButtonColor;
   /**
    * Defines the size of the component.
    */
@@ -42,10 +46,6 @@ export type ButtonProps = ElementHTML & {
    */
   iconPosition?: ContentPosition;
   /**
-   * Defines the native type of the button element.
-   */
-  type?: 'button' | 'submit' | 'reset';
-  /**
    * Function to be called when the button is clicked.
    */
   onClick?: (e: MouseEvent<HTMLButtonElement>) => void;
@@ -57,6 +57,10 @@ const defaultProps = {
   variant: 'solid',
   iconPosition: 'left',
   type: 'button'
+};
+
+const ButtonIcon = ({ children }: { children: ReactNode }) => {
+  return <ButtonIconWrapper>{children}</ButtonIconWrapper>;
 };
 
 /**
@@ -109,8 +113,8 @@ export const Button = forwardRef<ButtonProps, 'button'>(
     return (
       <ButtonWrapper
         ref={buttonRef}
-        disabled={disabled}
         type={type}
+        disabled={!!disabled}
         className={classes('button-wrapper', className)}
         css={{
           ...style
@@ -125,9 +129,11 @@ export const Button = forwardRef<ButtonProps, 'button'>(
         iconOnly={!!icon && !children}
         rounded={rounded}
         auto={!!autoWidth}
-        icon={!!icon && iconPosition === 'left' && <ButtonIcon>{icon}</ButtonIcon>}
-        iconRight={!!icon && iconPosition === 'right' && <ButtonIcon>{icon}</ButtonIcon>}
-        onClick={handleClick}>
+        {...(icon && {
+          icon: iconPosition === 'left' && <ButtonIcon>{icon}</ButtonIcon>,
+          iconRight: iconPosition === 'right' && <ButtonIcon>{icon}</ButtonIcon>
+        })}
+        onPress={handleClick}>
         {children}
       </ButtonWrapper>
     );

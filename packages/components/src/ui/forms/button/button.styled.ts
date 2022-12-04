@@ -1,6 +1,5 @@
 import { ComponentType } from 'react';
 import { Button as ButtonNextUI } from '@nextui-org/react';
-import { Text, TextProps } from '../../typography';
 import { ButtonProps } from './button';
 import { styledTheme } from '../../../index';
 
@@ -73,22 +72,25 @@ const colorTokens = (color: NonNullable<ButtonProps['color']>) => {
   };
 };
 
-export const ButtonText = styledTheme(Text as ComponentType<Partial<TextProps>>, {
-  pointerEvents: 'none'
-});
-
-export const ButtonIcon = styledTheme('div', {
+export const ButtonIconWrapper = styledTheme('div', {
   display: 'flex',
   scale: 1.5
 });
 
-export const ButtonWrapper = styledTheme(ButtonNextUI, {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const ButtonWrapper = styledTheme(ButtonNextUI as ComponentType<any>, {
   boxSizing: 'border-box',
   whiteSpace: 'nowrap',
   border: '1px solid',
   borderColor: '$$currentColor',
   borderRadius: '$radii$xs',
   color: '$$textColor',
+
+  '&[disabled]': {
+    color: '$colors$gray800',
+    $$currentColor: '$colors$gray400',
+    $$borderColor: '$colors$gray500'
+  },
 
   variants: {
     color: {
@@ -107,9 +109,7 @@ export const ButtonWrapper = styledTheme(ButtonNextUI, {
         color: '$$textColor',
         backgroundColor: '$$currentColor',
 
-        '&:hover': {
-          backgroundColor: '$$currentColorDarker'
-        }
+        '&:hover': { backgroundColor: '$$currentColorDarker' }
       }
     },
     bordered: {
@@ -117,10 +117,7 @@ export const ButtonWrapper = styledTheme(ButtonNextUI, {
         color: '$$outlineColor',
         backgroundColor: 'transparent',
 
-        '&:hover': {
-          color: '$$textColor',
-          backgroundColor: '$$currentColor'
-        }
+        '&:hover': { color: '$$textColor', backgroundColor: '$$currentColor' }
       }
     },
     flat: {
@@ -129,9 +126,7 @@ export const ButtonWrapper = styledTheme(ButtonNextUI, {
         backgroundColor: '$$currentColorLighter',
         borderColor: '$$currentColorLighter',
 
-        '&:hover': {
-          filter: 'brightness(97.5%)'
-        }
+        '&:hover': { filter: 'brightness(97.5%)' }
       }
     },
     ghost: {
@@ -140,10 +135,7 @@ export const ButtonWrapper = styledTheme(ButtonNextUI, {
         backgroundColor: 'transparent',
         borderColor: 'transparent !important',
 
-        '&:hover': {
-          color: '$$ghostColor',
-          backgroundColor: '$$currentColorLighter'
-        }
+        '&:hover': { color: '$$ghostColor', backgroundColor: '$$currentColorLighter' }
       }
     },
     light: {
@@ -152,10 +144,7 @@ export const ButtonWrapper = styledTheme(ButtonNextUI, {
         backgroundColor: 'transparent !important',
         borderColor: 'transparent !important',
 
-        '&:hover': {
-          color: '$$currentColorDarker',
-          fontWeight: '$fontWeights$semibold'
-        }
+        '&:hover': { color: '$$currentColorDarker', fontWeight: '$fontWeights$semibold' }
       }
     },
     iconOnly: {
@@ -167,14 +156,6 @@ export const ButtonWrapper = styledTheme(ButtonNextUI, {
     },
     rounded: {
       true: { borderRadius: '$radii$2xl' }
-    },
-    disabled: {
-      true: {
-        pointerEvents: 'none',
-        color: '$colors$gray700',
-        $$currentColor: '$colors$gray500',
-        $$borderColor: '$colors$gray500'
-      }
     },
     auto: {
       true: { width: '$space$full' },

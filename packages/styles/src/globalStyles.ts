@@ -214,9 +214,6 @@ export default {
     outline: 'none',
     listStyle: 'none'
   },
-  '::selection': {
-    backgroundColor: '$selection'
-  },
   blockquote: {
     padding: '$md $lg',
     color: '$accents7',
