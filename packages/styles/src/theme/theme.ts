@@ -95,30 +95,37 @@ export const normalizeThemeByScheme = (
 ): ThemeTokens => {
   const theme = getProps(config).theme;
   const darkTheme = getProps(config).darkTheme;
+  let mergedTheme = theme;
 
   if (scheme === 'dark' && darkTheme) {
-    return mergeTheme<ThemeTokens>(theme, darkTheme);
+    mergedTheme = mergeTheme<ThemeTokens>(theme, darkTheme);
   }
-  return theme;
+
+  const normalizedTheme = Object.entries(mergedTheme as Object).reduce((acc, [key, value]) => {
+    if (key === 'colors') {
+      const colors: ConfigType.Theme['colors'] = {};
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      Object.entries(value).forEach(([colorKey, colorValue]: any[]) => {
+        if (colorKey.endsWith('00')) {
+          if (colorKey.endsWith('500')) {
+            colors[colorKey.replace('500', '')] = colorValue;
+          }
+        }
+        colors[colorKey] = colorValue;
+      });
+      return { ...acc, colors };
+    }
+    return { ...acc, [key]: value };
+  }, {});
+
+  return normalizedTheme;
 };
 
 export const getColors = (
   config: ThemeConfig | string,
   scheme: 'light' | 'dark' = 'light'
 ): ConfigType.Theme['colors'] => {
-  const colors = (normalizeThemeByScheme(config, scheme) || {}).colors || {};
-  return Object.keys(colors).reduce((acc, key) => {
-    if (key.endsWith('00')) {
-      if (key.endsWith('500')) {
-        return { ...acc, [key.replace('500', '')]: colors[key] };
-      }
-    }
-
-    return {
-      ...acc,
-      [key]: colors[key]
-    };
-  }, {});
+  return (normalizeThemeByScheme(config, scheme) || {}).colors || {};
 };
 
 export const getBreakpoints = (config: ThemeConfig | string): BreakpointsRules => {

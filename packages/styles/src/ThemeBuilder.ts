@@ -35,7 +35,8 @@ export class ThemeBuilder {
         }),
         {}
       ),
-      utils: themeUtils
+      utils: themeUtils,
+      prefix: 'nextui'
     });
 
     this.styledTheme = styled;

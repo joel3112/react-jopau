@@ -1,8 +1,7 @@
 import { MouseEvent, ReactNode, Ref, useImperativeHandle, useRef } from 'react';
-import classes from 'classnames';
-import { forwardRef } from '../../../utils/system';
+import { classes, forwardRef } from '../../../utils/system';
 import type { NormalColor, ContentPosition, ElementHTML, NormalSize } from '../../../../types';
-import { ButtonIcon, ButtonText, ButtonWrapper } from './button.styled';
+import { ButtonIcon, ButtonWrapper } from './button.styled';
 
 export type ButtonProps = ElementHTML & {
   /**
@@ -20,7 +19,7 @@ export type ButtonProps = ElementHTML & {
   /**
    * Defines the variant of the component.
    */
-  variant?: 'solid' | 'outline' | 'ghost' | 'flat' | 'link';
+  variant?: 'solid' | 'bordered' | 'ghost' | 'flat' | 'clear';
   /**
    * Defines if the button is disabled and not clickable.
    */
@@ -43,6 +42,10 @@ export type ButtonProps = ElementHTML & {
    */
   iconPosition?: ContentPosition;
   /**
+   * Defines the native type of the button element.
+   */
+  type?: 'button' | 'submit' | 'reset';
+  /**
    * Function to be called when the button is clicked.
    */
   onClick?: (e: MouseEvent<HTMLButtonElement>) => void;
@@ -52,7 +55,8 @@ const defaultProps = {
   color: 'primary',
   size: 'md',
   variant: 'solid',
-  iconPosition: 'left'
+  iconPosition: 'left',
+  type: 'button'
 };
 
 /**
@@ -81,6 +85,7 @@ export const Button = forwardRef<ButtonProps, 'button'>(
       autoWidth,
       iconPosition,
       icon,
+      type,
       onClick
     }: ButtonProps,
     ref: Ref<Partial<HTMLButtonElement>>
@@ -105,22 +110,25 @@ export const Button = forwardRef<ButtonProps, 'button'>(
       <ButtonWrapper
         ref={buttonRef}
         disabled={disabled}
+        type={type}
         className={classes('button-wrapper', className)}
         css={{
           ...style
         }}
         color={color}
         size={size}
-        variant={variant}
+        solid={variant === 'solid'}
+        bordered={variant === 'bordered'}
+        ghost={variant === 'ghost'}
+        flat={variant === 'flat'}
+        light={variant === 'clear'}
         iconOnly={!!icon && !children}
         rounded={rounded}
-        autoWidth={autoWidth}
+        auto={!!autoWidth}
+        icon={!!icon && iconPosition === 'left' && <ButtonIcon>{icon}</ButtonIcon>}
+        iconRight={!!icon && iconPosition === 'right' && <ButtonIcon>{icon}</ButtonIcon>}
         onClick={handleClick}>
-        <>
-          {!!icon && iconPosition === 'left' && <ButtonIcon size={size}>{icon}</ButtonIcon>}
-          {children && <ButtonText size={size}>{children}</ButtonText>}
-          {!!icon && iconPosition === 'right' && <ButtonIcon size={size}>{icon}</ButtonIcon>}
-        </>
+        {children}
       </ButtonWrapper>
     );
   }

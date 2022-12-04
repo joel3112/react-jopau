@@ -91,14 +91,14 @@ export const TWSelectorContainer = ({
 
   return (
     <>
-      <div className="pl-10 absolute top-4 left-4 right-4 pr-[17px] border border-gray-700 flex items-center gap-10 h-[44px] bg-white font-bold text-[13px]">
+      <div className="pl-10 absolute top-4 left-4 right-4 pr-[17px] border border-gray-800 flex items-center gap-10 h-[44px] bg-white font-bold text-[13px]">
         <p className="text-black">{label}:</p>
         <div className="h-full flex">
           {items.map((item) => (
             <button
               key={item.value}
-              className={classes('px-6 text-center text-gray-700', {
-                '!border-t-2 !border-b-2 !border-t-gray-100 !border-b-secondary !text-secondary':
+              className={classes('px-8 font-bold text-center text-gray-700 border-0 border-solid', {
+                '!border-t-2 !border-b-2 !border-t-white !border-b-secondary !text-secondary':
                   selected === item.value
               })}
               onClick={() => setSelected(item.value as never)}>

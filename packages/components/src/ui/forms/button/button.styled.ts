@@ -1,4 +1,5 @@
 import { ComponentType } from 'react';
+import { Button as ButtonNextUI } from '@nextui-org/react';
 import { Text, TextProps } from '../../typography';
 import { ButtonProps } from './button';
 import { styledTheme } from '../../../index';
@@ -56,7 +57,7 @@ const colorTokens = (color: NonNullable<ButtonProps['color']>) => {
     },
     dark: {
       default: '$colors$dark500',
-      lighter: '$colors$dark100',
+      lighter: '$colors$gray800',
       darker: '$colors$dark800'
     }
   }[color];
@@ -77,57 +78,19 @@ export const ButtonText = styledTheme(Text as ComponentType<Partial<TextProps>>,
 });
 
 export const ButtonIcon = styledTheme('div', {
-  variants: {
-    size: {
-      xs: { fontSize: '$fontSizes$xl' },
-      sm: { fontSize: '$fontSizes$xl' },
-      md: { fontSize: '$fontSizes$2xl' },
-      lg: { fontSize: '$fontSizes$3xl' }
-    }
-  }
+  display: 'flex',
+  scale: 1.5
 });
 
-export const ButtonWrapper = styledTheme('button', {
+export const ButtonWrapper = styledTheme(ButtonNextUI, {
   boxSizing: 'border-box',
-  cursor: 'pointer',
   whiteSpace: 'nowrap',
   border: '1px solid',
-  transition:
-    'background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
-  alignCenterX: 'row',
-  justifyContent: 'center',
-  size: '$space$fit',
-  color: '$$currentColor',
   borderColor: '$$currentColor',
   borderRadius: '$radii$xs',
+  color: '$$textColor',
 
   variants: {
-    size: {
-      xs: {
-        $$currentHeight: '$space$12',
-        height: '$$currentHeight',
-        padding: '0 $space$6',
-        gap: '$space$2'
-      },
-      sm: {
-        $$currentHeight: '$space$14',
-        height: '$$currentHeight',
-        padding: '0 $space$8',
-        gap: '$space$3'
-      },
-      md: {
-        $$currentHeight: '$space$15',
-        height: '$$currentHeight',
-        padding: '0 $space$9',
-        gap: '$space$4'
-      },
-      lg: {
-        $$currentHeight: '$space$16',
-        height: '$$currentHeight',
-        padding: '0 $space$10',
-        gap: '$space$4'
-      }
-    },
     color: {
       primary: colorTokens('primary'),
       secondary: colorTokens('secondary'),
@@ -139,16 +102,18 @@ export const ButtonWrapper = styledTheme('button', {
       light: colorTokens('light'),
       dark: colorTokens('dark')
     },
-    variant: {
-      solid: {
+    solid: {
+      true: {
         color: '$$textColor',
         backgroundColor: '$$currentColor',
 
         '&:hover': {
           backgroundColor: '$$currentColorDarker'
         }
-      },
-      outline: {
+      }
+    },
+    bordered: {
+      true: {
         color: '$$outlineColor',
         backgroundColor: 'transparent',
 
@@ -156,8 +121,10 @@ export const ButtonWrapper = styledTheme('button', {
           color: '$$textColor',
           backgroundColor: '$$currentColor'
         }
-      },
-      flat: {
+      }
+    },
+    flat: {
+      true: {
         color: '$$ghostColor',
         backgroundColor: '$$currentColorLighter',
         borderColor: '$$currentColorLighter',
@@ -165,8 +132,10 @@ export const ButtonWrapper = styledTheme('button', {
         '&:hover': {
           filter: 'brightness(97.5%)'
         }
-      },
-      ghost: {
+      }
+    },
+    ghost: {
+      true: {
         color: '$$outlineColor',
         backgroundColor: 'transparent',
         borderColor: 'transparent !important',
@@ -175,14 +144,16 @@ export const ButtonWrapper = styledTheme('button', {
           color: '$$ghostColor',
           backgroundColor: '$$currentColorLighter'
         }
-      },
-      link: {
+      }
+    },
+    light: {
+      true: {
+        color: '$$outlineColor',
         backgroundColor: 'transparent !important',
         borderColor: 'transparent !important',
 
         '&:hover': {
           color: '$$currentColorDarker',
-          textDecorationLine: 'underline',
           fontWeight: '$fontWeights$semibold'
         }
       }
@@ -191,8 +162,7 @@ export const ButtonWrapper = styledTheme('button', {
       true: {
         aspectRatio: '1 / 1',
         padding: '$space$4',
-
-        '& > *': { scale: 1.3 }
+        minWidth: 'auto'
       }
     },
     rounded: {
@@ -206,8 +176,9 @@ export const ButtonWrapper = styledTheme('button', {
         $$borderColor: '$colors$gray500'
       }
     },
-    autoWidth: {
-      true: { width: '$space$full' }
+    auto: {
+      true: { width: '$space$full' },
+      false: { width: '$space$fit' }
     }
   },
 

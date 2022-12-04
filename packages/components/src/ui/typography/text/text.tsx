@@ -18,7 +18,7 @@ export type TextProps = ElementHTML & {
   /**
    * Defines the size of the component.
    */
-  size?: NormalSize | 'xl' | '2xl' | '3xl';
+  size?: NormalSize | '2xl' | '3xl';
   /**
    * Defines the line clamp of the component.
    */

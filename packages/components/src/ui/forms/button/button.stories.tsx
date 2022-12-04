@@ -39,11 +39,12 @@ Default.parameters = { viewMode: 'story' };
 
 export const Sizes = () => {
   return (
-    <Space align="center" gap={10}>
-      <Button size="xs">Extra Small</Button>
+    <Space direction="column" gap={10}>
+      <Button size="xs">Mini</Button>
       <Button size="sm">Small</Button>
       <Button size="md">Medium</Button>
       <Button size="lg">Large</Button>
+      <Button size="xl">XLarge</Button>
     </Space>
   );
 };
@@ -51,7 +52,7 @@ export const Sizes = () => {
 export const Colors = ({
   variant
 }: {
-  variant: 'solid' | 'outline' | 'ghost' | 'flat' | 'link';
+  variant: 'solid' | 'bordered' | 'ghost' | 'flat' | 'clear';
 }) => {
   return (
     <Space gap={10} wrap>
@@ -103,12 +104,12 @@ export const Variants = () => {
       ]}
       value="primary">
       {(color: ButtonProps['color']) => (
-        <Space gap={10}>
+        <Space gap={10} wrap>
           <Button color={color} variant="solid">
             Solid
           </Button>
-          <Button color={color} variant="outline">
-            Outline
+          <Button color={color} variant="bordered">
+            Bordered
           </Button>
           <Button color={color} variant="flat">
             Flat
@@ -116,8 +117,8 @@ export const Variants = () => {
           <Button color={color} variant="ghost">
             Ghost
           </Button>
-          <Button color={color} variant="link">
-            Link
+          <Button color={color} variant="clear">
+            Clear
           </Button>
         </Space>
       )}
@@ -130,10 +131,10 @@ export const IconOnly = () => (
     label="Select variant"
     items={[
       { label: 'Solid', value: 'solid' },
-      { label: 'Outline', value: 'outline' },
+      { label: 'Bordered', value: 'bordered' },
       { label: 'Flat', value: 'flat' },
       { label: 'Ghost', value: 'ghost' },
-      { label: 'Link', value: 'link' }
+      { label: 'Clear', value: 'clear' }
     ]}
     value="solid">
     {(variant: ButtonProps['variant']) => (
@@ -144,6 +145,7 @@ export const IconOnly = () => (
           <Button size="sm" variant={variant} icon={<MdAdd />} />
           <Button size="md" variant={variant} icon={<MdAdd />} />
           <Button size="lg" variant={variant} icon={<MdAdd />} />
+          <Button size="xl" variant={variant} icon={<MdAdd />} />
         </Space>
         <p>2. Rounded</p>
         <Space align="center" gap={10}>
@@ -151,6 +153,7 @@ export const IconOnly = () => (
           <Button size="sm" variant={variant} icon={<MdAdd />} rounded />
           <Button size="md" variant={variant} icon={<MdAdd />} rounded />
           <Button size="lg" variant={variant} icon={<MdAdd />} rounded />
+          <Button size="xl" variant={variant} icon={<MdAdd />} rounded />
         </Space>
       </Space>
     )}
@@ -167,9 +170,9 @@ export const TextAndIcon = () => (
       </Button>
     </Space>
     <p>2. Size</p>
-    <Space align="center" gap={10}>
+    <Space direction="column" gap={10}>
       <Button size="xs" icon={<MdAdd />}>
-        Extra Small
+        Mini
       </Button>
       <Button size="sm" icon={<MdAdd />}>
         Small
@@ -180,6 +183,9 @@ export const TextAndIcon = () => (
       <Button size="lg" icon={<MdAdd />}>
         Large
       </Button>
+      <Button size="xl" icon={<MdAdd />}>
+        XLarge
+      </Button>
     </Space>
   </Space>
 );
@@ -189,7 +195,7 @@ export const Rounded = () => (
     label="Select variant"
     items={[
       { label: 'Solid', value: 'solid' },
-      { label: 'Outline', value: 'outline' },
+      { label: 'Bordered', value: 'bordered' },
       { label: 'Flat', value: 'flat' },
       { label: 'Ghost', value: 'ghost' }
     ]}

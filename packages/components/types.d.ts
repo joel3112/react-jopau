@@ -9,7 +9,7 @@ export type NormalColor =
   | 'success'
   | 'warning';
 
-export type NormalSize = 'xs' | 'sm' | 'md' | 'lg';
+export type NormalSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
 export type ContentPosition = 'left' | 'right';
 

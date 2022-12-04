@@ -3,8 +3,7 @@ const templateCreator = template({});
 
 const templateObject = templateCreator`${({ context }) => `
 import { ReactNode, Ref, useImperativeHandle, useRef } from 'react';
-import classes from 'classnames';
-import { forwardRef } from '../../../utils/system';
+import { classes, forwardRef } from '../../../utils/system';
 import type { ElementHTML } from '../../../../types';
 import { ${context.pascalName}Wrapper } from './${context.name}.styled';
 

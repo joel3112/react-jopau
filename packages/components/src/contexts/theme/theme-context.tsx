@@ -2,6 +2,7 @@ import { createContext, ReactNode, useEffect, useState } from 'react';
 import { globalCss } from '@stitches/react';
 import { ThemeBuilder } from '@react-jopau/styles/ThemeBuilder';
 import { computeScheme, ThemeConfig, ThemeSchemes } from '@react-jopau/styles/theme';
+import globalCSS from '@react-jopau/styles/globalStyles';
 
 /* ==== context ================================================================ */
 
@@ -36,15 +37,16 @@ const defaultProps = {
 };
 
 const globalStyles = globalCss({
+  ...globalCSS,
   body: {
     backgroundColor: '$background',
     color: '$text'
   },
   '*, button, input': {
-    fontFamily: '$base'
+    fontFamily: 'var(--nextui-fonts-base)'
   },
   'pre *, code *': {
-    fontFamily: '$code !important'
+    fontFamily: 'var(--nextui-fonts-code) !important'
   }
 });
 

@@ -18,10 +18,20 @@
     font-style: normal;
   }
 
+  * {
+    font-family: 'fontFamily.sans', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+      'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
+      'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  }
+
+  pre.sbdocs-pre + .sbdocs-pre {
+      margin-top: -40px !important;
+  }
+
   pre *,
   code *,
   .react-json-view * {
-    font-family: var(--fonts-code) !important;
+    font-family: var(--nextui-fonts-code) !important;
   }
 
   .docblock-argstable tr td {
@@ -29,6 +39,6 @@
   }
 
   .docblock-argstable tr[title] td {
-      background: #f8f8f8 !important;
+    background: #f8f8f8 !important;
   }
 </style>
