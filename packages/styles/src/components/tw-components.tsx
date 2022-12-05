@@ -22,55 +22,39 @@ export const TWContainer = ({
   );
 };
 
-/* ==== item =================================================================== */
-
-export const TWItem = ({
-  children,
-  label,
-  column
-}: {
-  children: ReactNode;
-  label: string;
-  column?: boolean;
-}) => {
-  return (
-    <div className={classes('flex gap-2', column ? 'flex-col' : 'flex-row')}>
-      <TWHighlight>{`${label}:`}</TWHighlight>
-      <div className="font-code flex items-center text-text">{children}</div>
-    </div>
-  );
-};
-
 /* ==== highlight ============================================================== */
 
-export const TWHighlight = ({ children }: { children: string }) => {
+export const TWHighlight = ({ children }: { children: ReactNode }) => {
   return (
-    <div className="font-code text-black text-sm w-fit h-[21px] flex items-center px-2 rounded-[5px] bg-[#ccc]">
+    <div className="font-code text-black text-sm w-fit flex py-1 items-center px-2 rounded-[5px] bg-[#ccc]">
       {children}
     </div>
   );
 };
 
-/* ==== input ================================================================== */
+/* ==== card =================================================================== */
 
-export const TWInput = ({
-  label,
-  value,
-  onInput
+export const TWCard = ({
+  className,
+  children,
+  title,
+  secondary
 }: {
-  label: string;
-  value: string;
-  onInput: (value: string) => void;
+  className?: string;
+  children: ReactNode;
+  title?: ReactNode;
+  secondary?: boolean;
 }) => {
   return (
-    <label className="flex flex-col gap-1">
-      <span className="text-text text-sm font-medium">{label}</span>
-      <input
-        className="w-[400px] p-2 border border-border border-solid font-light bg-background text-text focus:border-gray-600 outline-none"
-        value={value}
-        onInput={(e) => onInput(e.currentTarget.value)}
-      />
-    </label>
+    <div
+      className={classes(
+        'shadow-md border-2 rounded flex flex-col gap-8 p-8',
+        secondary ? 'border-secondary' : 'border-gray-200',
+        className
+      )}>
+      {title && <h3 className="text-lg font-semibold">{title}</h3>}
+      {children}
+    </div>
   );
 };
 

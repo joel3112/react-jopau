@@ -1,8 +1,8 @@
-import { useState } from 'react';
-import { Space } from '@react-jopau/components/ui/layout';
-import { Button } from '@react-jopau/components/ui/forms';
-import { Text } from '@react-jopau/components/ui/typography';
-import { TWContainer, TWInput, TWItem } from '@react-jopau/styles/components';
+import { FormEvent } from 'react';
+import { TWHighlight } from '@react-jopau/styles/components';
+import { Container, Space } from '@react-jopau/components/ui/layout';
+import { Button, Input } from '@react-jopau/components/ui/forms';
+import { Heading, Text } from '@react-jopau/components/ui/typography';
 import { prepareParameters } from '../story-helpers';
 import { useLocalStorage } from './use-local-storage';
 import docs from './readme.mdx';
@@ -16,25 +16,33 @@ export const Docs = () => {};
 
 export const Default = () => {
   const key = 'useLocalStorage-test-key';
-  const [value, setValue] = useLocalStorage<string>(key, 'initialValue');
-  const [inputValue, setInputValue] = useState<string>(value);
+  const [value, setValue] = useLocalStorage<string>(key, '');
 
-  const handleInputChange = (e: string) => setInputValue(e);
+  const handleSubmit = (event: FormEvent) => {
+    event.preventDefault();
+    const form = new FormData(event.target as HTMLFormElement);
+    setValue(`${form.get('value')}`);
+  };
 
   return (
-    <TWContainer>
-      <Space direction="column" gap={5}>
-        <TWInput label="Value to storage" value={inputValue} onInput={handleInputChange} />
-        <Button color="secondary" disabled={!inputValue} onClick={() => setValue(inputValue)}>
+    <Container maxWidth={450}>
+      <form onSubmit={handleSubmit}>
+        <Input name="value" autoWidth label="Value to storage" value={value} />
+        <Button className="mt-4" color="secondary" type="submit">
           Set value
         </Button>
-      </Space>
+      </form>
 
-      <Space direction="column" gap={5}>
-        <Text size="lg">LocalStorage</Text>
-        <TWItem label={key}>{value}</TWItem>
+      <Space className="mt-10" direction="column" gap={10}>
+        <Heading variant="h6">LocalStorage:</Heading>
+        <Space align="center" gap={10} wrap>
+          <TWHighlight>{key}:</TWHighlight>
+          <code>
+            <Text>{value}</Text>
+          </code>
+        </Space>
       </Space>
-    </TWContainer>
+    </Container>
   );
 };
 Default.storyName = 'Playground';

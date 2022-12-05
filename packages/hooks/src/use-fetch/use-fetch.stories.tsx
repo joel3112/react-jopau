@@ -1,10 +1,11 @@
-import { useState } from 'react';
-import { Space } from '@react-jopau/components/ui/layout';
-import { Button } from '@react-jopau/components/ui/forms';
-import { TWContainer, TWInput, TWItem, TWJSONPreview } from '@react-jopau/styles/components';
+import { FormEvent, useState } from 'react';
+import { Container, Space } from '@react-jopau/components/ui/layout';
+import { Button, Input } from '@react-jopau/components/ui/forms';
+import { TWHighlight, TWJSONPreview } from '@react-jopau/styles/components';
 import { prepareParameters } from '../story-helpers';
 import { useFetch } from './use-fetch';
 import docs from './readme.mdx';
+import { Text } from '@react-jopau/components/ui/typography';
 
 export default {
   title: 'useFetch',
@@ -17,15 +18,12 @@ export const Default = () => {
   type Data = { userId: number; id: number; title: string; body: string };
   type Error = { message: string; code: number };
 
-  const [inputValue, setInputValue] = useState<string>(
-    'https://jsonplaceholder.typicode.com/todos/1'
-  );
-  const [path, setPath] = useState<string>(inputValue);
+  const [path, setPath] = useState<string>('https://jsonplaceholder.typicode.com/todos/1');
 
   const { data, loading, error } = useFetch<Data, Error>(path, {
     method: 'GET',
     onSuccess: async (res: { data: Data }) => {
-      await new Promise((resolve) => setTimeout(resolve, 500));
+      await new Promise((resolve) => setTimeout(resolve, 1000));
       return res.data;
     },
     onError: (err: Error) => {
@@ -36,25 +34,43 @@ export const Default = () => {
     }
   });
 
+  const handleSubmit = (event: FormEvent) => {
+    event.preventDefault();
+    const form = new FormData(event.target as HTMLFormElement);
+    setPath(`${form.get('path')}`);
+  };
+
   return (
-    <TWContainer>
-      <Space direction="column" gap={5}>
-        <TWInput value={inputValue} label="Path" onInput={setInputValue} />
-        <Button color="secondary" disabled={!inputValue} onClick={() => setPath(inputValue)}>
+    <Container maxWidth={450}>
+      <form onSubmit={handleSubmit}>
+        <Input
+          name="path"
+          autoWidth
+          label="Path"
+          value="https://jsonplaceholder.typicode.com/todos/1"
+        />
+        <Button className="mt-4" color="secondary" type="submit">
           Load
         </Button>
-      </Space>
+      </form>
 
-      <Space direction="column" gap={10}>
-        <TWItem label="loading">{loading ? 'true' : 'false'}</TWItem>
-        <TWItem label="data" column={!!data}>
+      <Space className="mt-10" direction="column" gap={10}>
+        <Space align="start" gap={10}>
+          <TWHighlight>loading:</TWHighlight>
+          <code>
+            <Text>{loading ? 'true' : 'false'}</Text>
+          </code>
+        </Space>
+        <Space align="start" gap={10} wrap>
+          <TWHighlight>data:</TWHighlight>
           <TWJSONPreview code={data} />
-        </TWItem>
-        <TWItem label="error" column={!!error}>
+        </Space>
+        <Space align="start" gap={10} wrap>
+          <TWHighlight>error:</TWHighlight>
           <TWJSONPreview code={error} />
-        </TWItem>
+        </Space>
       </Space>
-    </TWContainer>
+    </Container>
   );
 };
 Default.storyName = 'Playground';
