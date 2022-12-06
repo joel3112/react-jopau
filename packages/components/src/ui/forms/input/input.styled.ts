@@ -1,22 +1,166 @@
 import { ComponentType } from 'react';
 import { Input as InputNextUI } from '@nextui-org/react';
 import { styledTheme } from '../../../index';
+import { InputProps } from './input';
+
+const colorTokens = (color: NonNullable<InputProps['color']>) => {
+  return {
+    default: {
+      $$inputLabelColor: '$colors$text',
+      $$inputControlBorderColor: '$colors$border',
+      $$inputControlFocusBorderColor: '$colors$text'
+    },
+    primary: {
+      $$inputLabelColor: '$colors$primary500',
+      $$inputControlBorderColor: '$colors$border',
+      $$inputControlFocusBorderColor: '$colors$primary500'
+    },
+    secondary: {
+      $$inputLabelColor: '$colors$secondary500',
+      $$inputControlBorderColor: '$colors$border',
+      $$inputControlFocusBorderColor: '$colors$secondary500'
+    },
+    tertiary: {
+      $$inputLabelColor: '$colors$tertiary500',
+      $$inputControlBorderColor: '$colors$border',
+      $$inputControlFocusBorderColor: '$colors$tertiary500'
+    },
+    info: {
+      $$inputLabelColor: '$colors$blue500',
+      $$inputControlBorderColor: '$colors$border',
+      $$inputControlFocusBorderColor: '$colors$blue500'
+    },
+    error: {
+      $$inputLabelColor: '$colors$red500',
+      $$inputControlBorderColor: '$colors$border',
+      $$inputControlFocusBorderColor: '$colors$red500'
+    },
+    success: {
+      $$inputLabelColor: '$colors$green500',
+      $$inputControlBorderColor: '$colors$border',
+      $$inputControlFocusBorderColor: '$colors$green500'
+    },
+    warning: {
+      $$inputLabelColor: '$colors$yellow500',
+      $$inputControlBorderColor: '$colors$border',
+      $$inputControlFocusBorderColor: '$colors$yellow500'
+    }
+  }[color];
+};
+
+const statusTokens = (status: NonNullable<InputProps['status']>) => {
+  return {
+    default: {
+      $$inputLabelColor: '$colors$text',
+      $$inputControlColor: '$colors$black',
+      $$inputBorderedControlColor: '$colors$text',
+      $$inputControlBorderColor: '$colors$border',
+      $$inputControlFocusBorderColor: '$colors$text',
+      $$inputControlBackgroundColor: '$colors$input',
+      $$inputControlBackgroundColorOpacity: 0
+    },
+    primary: {
+      $$inputLabelColor: '$colors$primary500',
+      $$inputControlColor: '$colors$primary700',
+      $$inputBorderedControlColor: '$colors$primary700',
+      $$inputControlBorderColor: '$colors$border',
+      $$inputControlFocusBorderColor: '$colors$primary500',
+      $$inputControlBackgroundColor: '$colors$primary200',
+      $$inputControlBackgroundColorOpacity: 0.7
+    },
+    secondary: {
+      $$inputLabelColor: '$colors$secondary500',
+      $$inputControlColor: '$colors$secondary700',
+      $$inputBorderedControlColor: '$colors$secondary700',
+      $$inputControlBorderColor: '$colors$border',
+      $$inputControlFocusBorderColor: '$colors$secondary500',
+      $$inputControlBackgroundColor: '$colors$secondary200',
+      $$inputControlBackgroundColorOpacity: 0.7
+    },
+    tertiary: {
+      $$inputLabelColor: '$colors$tertiary500',
+      $$inputControlColor: '$colors$tertiary700',
+      $$inputBorderedControlColor: '$colors$tertiary700',
+      $$inputControlBorderColor: '$colors$border',
+      $$inputControlFocusBorderColor: '$colors$tertiary500',
+      $$inputControlBackgroundColor: '$colors$tertiary200',
+      $$inputControlBackgroundColorOpacity: 0.7
+    },
+    info: {
+      $$inputLabelColor: '$colors$blue500',
+      $$inputControlColor: '$colors$blue700',
+      $$inputBorderedControlColor: '$colors$blue700',
+      $$inputControlBorderColor: '$colors$border',
+      $$inputControlFocusBorderColor: '$colors$blue500',
+      $$inputControlBackgroundColor: '$colors$blue200',
+      $$inputControlBackgroundColorOpacity: 0.7
+    },
+    error: {
+      $$inputLabelColor: '$colors$red500',
+      $$inputControlColor: '$colors$red700',
+      $$inputBorderedControlColor: '$colors$red700',
+      $$inputControlBorderColor: '$colors$border',
+      $$inputControlFocusBorderColor: '$colors$red500',
+      $$inputControlBackgroundColor: '$colors$red200',
+      $$inputControlBackgroundColorOpacity: 0.7
+    },
+    success: {
+      $$inputLabelColor: '$colors$green500',
+      $$inputControlColor: '$colors$green700',
+      $$inputBorderedControlColor: '$colors$green700',
+      $$inputControlBorderColor: '$colors$border',
+      $$inputControlFocusBorderColor: '$colors$green500',
+      $$inputControlBackgroundColor: '$colors$green200',
+      $$inputControlBackgroundColorOpacity: 0.7
+    },
+    warning: {
+      $$inputLabelColor: '$colors$yellow500',
+      $$inputControlColor: '$colors$yellow700',
+      $$inputBorderedControlColor: '$colors$yellow700',
+      $$inputControlBorderColor: '$colors$border',
+      $$inputControlFocusBorderColor: '$colors$yellow500',
+      $$inputControlBackgroundColor: '$colors$yellow200',
+      $$inputControlBackgroundColorOpacity: 0.7
+    }
+  }[status];
+};
+
+enum NextUIEl {
+  LABEL = '.nextui-input-block-label',
+  LABEL_PLACEHOLDER = '.nextui-input-main-container > label',
+  LABEL_PLACEHOLDER_HOVER = '.nextui-input-main-container[class$="hover"] > label',
+  LABEL_PLACEHOLDER_WITH_VALUE = '.nextui-input-main-container[class$="with-value"] > label',
+  INPUT_CONTAINER = '.nextui-input-container',
+  INPUT_WRAPPER = '.nextui-input-wrapper',
+  INPUT = '.nextui-input',
+  HELPER_TEXT_CONTAINER = '.nextui-input-helper-text-container',
+  HELPER_TEXT = '.nextui-input-helper-text',
+  LABEL_LEFT = '.nextui-input-label--left',
+  LABEL_RIGHT = '.nextui-input-label--right'
+}
 
 export const InputContentWrapper = styledTheme('div', {
   display: 'flex',
-  scale: 1.35
+  scale: 1.35,
+
+  variants: {
+    variant: {
+      default: { color: '$$inputControlColor' },
+      bordered: { color: '$$inputLabelColor' },
+      underlined: { color: '$$inputLabelColor' }
+    }
+  }
 });
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const InputControl = styledTheme(InputNextUI as ComponentType<any>, {
   boxSizing: 'content-box',
-  transform: 'none !important',
   width: '$space$fit'
 });
 
 export const InputLabelGap = styledTheme('div', {
   width: '$space$full',
-  marginBottom: '$$labelGap',
+  marginBottom: '$$inputLabelGap',
   lineHeight: '$lineHeights$md',
   fontSize: '$$inputLabelFontSize'
 });
@@ -26,15 +170,13 @@ export const InputWrapper = styledTheme('div', {
   display: 'grid',
   width: '$space$fit',
 
-  '.nextui-input-wrapper': { borderRadius: '$radii$xs !important' },
-  input: { color: '$$inputCurrentColorDarker !important' },
-  '.nextui-input-helper-text-container': { mb: '$space$2', scale: 1.2 },
-  '.nextui-input-helper-text': {
-    transformOrigin: 'top left',
-    scale: 1,
-    color: '$$inputCurrentColor'
-  },
-  '.nextui-input-block-label': { color: '$$inputCurrentColor' },
+  [`${NextUIEl.INPUT_CONTAINER}--hover`]: { transform: 'none' },
+  [`${NextUIEl.INPUT_WRAPPER}`]: { borderRadius: '$radii$xs' },
+  [`${NextUIEl.INPUT}`]: { color: 'inherit' },
+  [`${NextUIEl.INPUT}::placeholder`]: { color: '$colors$placeholder' },
+  [`${NextUIEl.HELPER_TEXT_CONTAINER}`]: { mb: '$space$2', scale: 1.2 },
+  [`${NextUIEl.HELPER_TEXT}`]: { color: '$$inputLabelColor' },
+  [`${NextUIEl.LABEL_LEFT}, ${NextUIEl.LABEL_RIGHT}`]: { color: '$$inputControlColor' },
 
   variants: {
     size: {
@@ -61,82 +203,88 @@ export const InputWrapper = styledTheme('div', {
     },
     variant: {
       default: {
-        $$labelGap: '$space$3',
+        $$inputLabelGap: '$space$3',
 
-        '.nextui-input-wrapper': {
-          backgroundColor: '$$inputCurrentColorLighter',
-          backgroundColorLighter: 0.7
+        [`${NextUIEl.LABEL}`]: { color: '$$inputLabelColor' },
+        [`${NextUIEl.INPUT_WRAPPER}`]: {
+          color: '$$inputControlColor',
+          backgroundColor: '$$inputControlBackgroundColor',
+          backgroundColorLighter: '$$inputControlBackgroundColorOpacity'
         }
       },
       bordered: {
-        $$labelGap: '$space$3',
-        $$inputCurrentColorLighter: 'transparent'
+        $$inputLabelGap: '$space$3',
+
+        [`${NextUIEl.LABEL}`]: { color: '$$inputLabelColor' },
+        [`${NextUIEl.INPUT_WRAPPER}`]: {
+          color: '$$inputBorderedControlColor',
+          boxShadow: '0 0 0 1px $$inputControlBorderColor'
+        },
+        [`${NextUIEl.INPUT_WRAPPER}:hover, ${NextUIEl.INPUT_WRAPPER}--hover`]: {
+          boxShadow: '0 0 0 1px $$inputControlFocusBorderColor'
+        },
+        [`${NextUIEl.LABEL_LEFT}`]: {
+          backgroundColor: '$$inputControlBackgroundColor',
+          backgroundColorLighter: '$$inputControlBackgroundColorOpacity',
+          borderTopLeftRadius: '$radii$xs',
+          borderBottomLeftRadius: '$radii$xs'
+        },
+        [`${NextUIEl.LABEL_RIGHT}`]: {
+          backgroundColor: '$$inputControlBackgroundColor',
+          backgroundColorLighter: '$$inputControlBackgroundColorOpacity',
+          borderTopRightRadius: '$radii$xs',
+          borderBottomRightRadius: '$radii$xs'
+        }
       },
       underlined: {
-        $$labelGap: '$space$0',
-        $$inputCurrentColorLighter: 'transparent',
+        $$inputLabelGap: '$space$0',
 
-        '.nextui-input-block-label': { marginBottom: '$space$0' },
-        '.nextui-input-wrapper::before': { background: '$$inputCurrentColor' }
+        [`${NextUIEl.LABEL}`]: { color: '$$inputLabelColor', marginBottom: '$space$0' },
+        [`${NextUIEl.INPUT_WRAPPER}`]: { color: '$$inputBorderedControlColor' },
+        [`${NextUIEl.INPUT_WRAPPER}::before`]: { background: '$$inputLabelColor' },
+        [`${NextUIEl.INPUT_WRAPPER}::after`]: { background: '$colors$border' },
+        [`${NextUIEl.LABEL_LEFT}`]: {
+          color: '$$inputLabelColor',
+          borderRightColor: '$$inputLabelColor'
+        },
+        [`${NextUIEl.LABEL_RIGHT}`]: {
+          color: '$$inputLabelColor',
+          borderLeftColor: '$$inputLabelColor'
+        }
       }
     },
     color: {
-      default: {},
-      primary: { $$inputCurrentColor: '$colors$primary500' },
-      secondary: { $$inputCurrentColor: '$colors$secondary500' },
-      tertiary: { $$inputCurrentColor: '$colors$tertiary500' },
-      info: { $$inputCurrentColor: '$colors$blue500' },
-      error: { $$inputCurrentColor: '$colors$red500' },
-      success: { $$inputCurrentColor: '$colors$green500' },
-      warning: { $$inputCurrentColor: '$colors$yellow500' }
+      default: colorTokens('default'),
+      primary: colorTokens('primary'),
+      secondary: colorTokens('secondary'),
+      tertiary: colorTokens('tertiary'),
+      info: colorTokens('info'),
+      error: colorTokens('error'),
+      success: colorTokens('success'),
+      warning: colorTokens('warning')
     },
     status: {
-      default: {},
-      primary: {
-        $$inputCurrentColor: '$colors$primary500',
-        $$inputCurrentColorLighter: '$colors$primary200',
-        $$inputCurrentColorDarker: '$colors$primary700'
-      },
-      secondary: {
-        $$inputCurrentColor: '$colors$secondary500',
-        $$inputCurrentColorLighter: '$colors$secondary200',
-        $$inputCurrentColorDarker: '$colors$secondary700'
-      },
-      tertiary: {
-        $$inputCurrentColor: '$colors$tertiary500',
-        $$inputCurrentColorLighter: '$colors$tertiary200',
-        $$inputCurrentColorDarker: '$colors$tertiary700'
-      },
-      info: {
-        $$inputCurrentColor: '$colors$blue500',
-        $$inputCurrentColorLighter: '$colors$blue200',
-        $$inputCurrentColorDarker: '$colors$blue700'
-      },
-      error: {
-        $$inputCurrentColor: '$colors$red500',
-        $$inputCurrentColorLighter: '$colors$red200',
-        $$inputCurrentColorDarker: '$colors$red700'
-      },
-      success: {
-        $$inputCurrentColor: '$colors$green500',
-        $$inputCurrentColorLighter: '$colors$green200',
-        $$inputCurrentColorDarker: '$colors$green700'
-      },
-      warning: {
-        $$inputCurrentColor: '$colors$yellow500',
-        $$inputCurrentColorLighter: '$colors$yellow200',
-        $$inputCurrentColorDarker: '$colors$yellow700'
-      }
+      default: statusTokens('default'),
+      primary: statusTokens('primary'),
+      secondary: statusTokens('secondary'),
+      tertiary: statusTokens('tertiary'),
+      info: statusTokens('info'),
+      error: statusTokens('error'),
+      success: statusTokens('success'),
+      warning: statusTokens('warning')
     },
     labelPlaceholder: {
       true: {
-        '.nextui-input-main-container[class$="hover"] > label, .nextui-input-main-container[class$="with-value"] > label':
-          { mt: '$$inputLabelMarginTop' }
+        [`${NextUIEl.LABEL_PLACEHOLDER}`]: { color: '$colors$placeholder' },
+        [`${NextUIEl.LABEL_PLACEHOLDER_HOVER}, ${NextUIEl.LABEL_PLACEHOLDER_WITH_VALUE}`]: {
+          mt: '$$inputLabelMarginTop',
+          color: '$$inputLabelColor'
+        }
       }
     },
     hotKey: {
       true: {
-        '.nextui-input-label--right': {
+        [`${NextUIEl.LABEL_RIGHT}`]: {
           height: 'auto',
           border: '1px solid $colors$gray500',
           color: '$colors$gray800',
@@ -157,14 +305,14 @@ export const InputWrapper = styledTheme('div', {
     },
     rounded: {
       true: {
-        '.nextui-input-wrapper': { borderRadius: '$radii$2xl !important' }
+        [`${NextUIEl.INPUT_WRAPPER}`]: { borderRadius: '$radii$2xl' }
       }
     },
     fullWidth: {
       true: {
         width: '$space$full',
 
-        '.nextui-input-container': { width: '$space$full' }
+        [`${NextUIEl.INPUT_CONTAINER}`]: { width: '$space$full' }
       }
     }
   },
@@ -172,19 +320,11 @@ export const InputWrapper = styledTheme('div', {
   compoundVariants: [
     {
       variant: 'default',
-      status: 'default',
-      css: {
-        '.nextui-input-wrapper': { backgroundColor: '$$inputColor', backgroundColorLighter: 0 },
-        input: { color: '$$inputTextColor' }
-      }
-    },
-    {
-      variant: 'default',
       hotKey: true,
       css: {
-        '.nextui-input-label--right': {
-          borderColor: '$$inputCurrentColor',
-          color: '$$inputCurrentColor'
+        [`${NextUIEl.LABEL_RIGHT}`]: {
+          borderColor: '$$inputLabelColor',
+          color: '$$inputLabelColor'
         }
       }
     },
@@ -193,7 +333,7 @@ export const InputWrapper = styledTheme('div', {
       status: 'default',
       hotKey: true,
       css: {
-        '.nextui-input-label--right': {
+        [`${NextUIEl.LABEL_RIGHT}`]: {
           borderColor: '$colors$gray500',
           color: '$colors$gray800'
         }
@@ -203,8 +343,10 @@ export const InputWrapper = styledTheme('div', {
       variant: 'underlined',
       labelPlaceholder: true,
       css: {
-        '.nextui-input-main-container[class$="hover"] > label, .nextui-input-main-container[class$="with-value"] > label':
-          { mt: 'calc($$inputLabelMarginTop + $space$3)', pl: '$space$2' }
+        [`${NextUIEl.LABEL_PLACEHOLDER_HOVER}, ${NextUIEl.LABEL_PLACEHOLDER_WITH_VALUE}`]: {
+          mt: 'calc($$inputLabelMarginTop + $space$3)',
+          pl: '$space$2'
+        }
       }
     }
   ]

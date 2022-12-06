@@ -1,118 +1,64 @@
 import { ReactNode, useState } from 'react';
-import classes from 'classnames';
-import ReactJson from 'react-json-view';
+import { TbPalette } from 'react-icons/tb';
+import { IconButton, TooltipLinkList, WithTooltip } from '@storybook/components';
 
 /**
  * Component custom tailwindcss classes
  */
 
-/* ==== container ============================================================== */
+/* ==== selector-container ===================================================== */
 
-export const TWContainer = ({
-  className,
-  children
-}: {
-  className?: string;
-  children: ReactNode;
-}) => {
-  return (
-    <div className={classes('p-3 flex flex-col gap-6 w-3/5 bg-background', className)}>
-      {children}
-    </div>
-  );
-};
-
-/* ==== highlight ============================================================== */
-
-export const TWHighlight = ({ children }: { children: ReactNode }) => {
-  return (
-    <div className="font-code text-black text-sm w-fit flex py-1 items-center px-2 rounded-[5px] bg-[#ccc]">
-      {children}
-    </div>
-  );
-};
-
-/* ==== card =================================================================== */
-
-export const TWCard = ({
-  className,
-  children,
-  title,
-  secondary
-}: {
-  className?: string;
-  children: ReactNode;
-  title?: ReactNode;
-  secondary?: boolean;
-}) => {
-  return (
-    <div
-      className={classes(
-        'shadow-md border-2 rounded flex flex-col gap-8 p-8',
-        secondary ? 'border-secondary' : 'border-gray-200',
-        className
-      )}>
-      {title && <h3 className="text-lg font-semibold">{title}</h3>}
-      {children}
-    </div>
-  );
-};
-
-/* ==== selector-button ======================================================== */
-
+type SelectorItem = { label: string; value: string };
 export const TWSelectorContainer = ({
   label,
   items,
   value,
   children
 }: {
-  label: string;
-  items: { label: string; value: string }[];
-  value: string;
-  children: (value: never) => ReactNode;
+  label: string[];
+  items: SelectorItem[][];
+  value: string[];
+  children: (value: never[]) => ReactNode;
 }) => {
-  const [selected, setSelected] = useState<string>(value);
+  const [selected, setSelected] = useState<SelectorItem[]>(
+    items.map((item, index) => item.find((i) => i.value === value[index]) || item[0])
+  );
 
   return (
     <>
       <div className="pl-10 absolute top-4 left-4 right-4 pr-[17px] border border-gray-800 flex items-center gap-10 h-[44px] bg-white font-bold text-[13px]">
-        <p className="text-black">{label}:</p>
-        <div className="h-full flex">
-          {items.map((item) => (
-            <button
-              key={item.value}
-              className={classes('px-8 font-bold text-center text-gray-700 border-0 border-solid', {
-                '!border-t-2 !border-b-2 !border-t-white !border-b-secondary !text-secondary':
-                  selected === item.value
-              })}
-              onClick={() => setSelected(item.value as never)}>
-              {item.label}
-            </button>
-          ))}
-        </div>
+        {items.map((innerItems, index) => (
+          <WithTooltip
+            key={index}
+            placement="bottom"
+            trigger="click"
+            closeOnClick
+            tooltip={({ onHide }) => (
+              <TooltipLinkList
+                links={innerItems.map((item) => ({
+                  id: item.value,
+                  title: item.label,
+                  onClick: () => {
+                    setSelected((prev) => {
+                      const newSelected = [...prev];
+                      newSelected[index] = item;
+                      return newSelected;
+                    });
+                    onHide();
+                  }
+                }))}
+              />
+            )}>
+            <IconButton className="!mt-0 !text-gray-700 hover:!text-secondary hover:!bg-secondary-100 gap-2">
+              <TbPalette className="!w-auto text-lg" />
+              <span className="text-inherit">
+                {label[index]}: {selected[index].value}
+              </span>
+            </IconButton>
+          </WithTooltip>
+        ))}
       </div>
-      <div className="mt-15">{children(selected as never)}</div>
+      <div className="mt-15">{children(selected.map((item) => item.value as never))}</div>
     </>
-  );
-};
-
-/* ==== json-preview =========================================================== */
-
-export const TWJSONPreview = ({ code }: { code: unknown }) => {
-  if (!code) return <span className="flex items-center font-code text-text">null</span>;
-
-  return (
-    <div className="bg-[#272822] font-code p-5 mt-2 border border-border border-solid">
-      <ReactJson
-        style={{ backgroundColor: 'transparent', fontSize: '0.8rem' }}
-        name={false}
-        displayObjectSize={false}
-        displayDataTypes={false}
-        enableClipboard={false}
-        src={code}
-        theme="monokai"
-        iconStyle="square"
-      />
-    </div>
   );
 };

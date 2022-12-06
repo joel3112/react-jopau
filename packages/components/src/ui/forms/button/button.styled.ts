@@ -1,7 +1,7 @@
 import { ComponentType } from 'react';
 import { Button as ButtonNextUI } from '@nextui-org/react';
-import { ButtonProps } from './button';
 import { styledTheme } from '../../../index';
+import { ButtonProps } from './button';
 
 const colorTokens = (color: NonNullable<ButtonProps['color']>) => {
   const {
@@ -62,12 +62,12 @@ const colorTokens = (color: NonNullable<ButtonProps['color']>) => {
   }[color];
 
   return {
-    $$currentColor: defaultColor,
-    $$currentColorLighter: lighter,
-    $$currentColorDarker: darker,
-    $$textColor: text || '$colors$white',
-    $$outlineColor: color === 'light' ? '$colors$gray900' : defaultColor,
-    $$ghostColor:
+    $$buttonColor: text || '$colors$white',
+    $$buttonBackgroundColor: defaultColor,
+    $$buttonFlatBackgroundColor: lighter,
+    $$buttonHoverBackgroundColor: darker,
+    $$buttonBorderedColor: color === 'light' ? '$colors$gray900' : defaultColor,
+    $$buttonFlatColor:
       { light: '$colors$gray900', dark: '$colors$white' }[color as 'light' | 'dark'] || defaultColor
   };
 };
@@ -82,13 +82,13 @@ export const ButtonWrapper = styledTheme(ButtonNextUI as ComponentType<any>, {
   boxSizing: 'border-box',
   whiteSpace: 'nowrap',
   border: '1px solid',
-  borderColor: '$$currentColor',
+  borderColor: '$$buttonBackgroundColor',
   borderRadius: '$radii$xs',
-  color: '$$textColor',
+  color: '$$buttonColor',
 
   '&[disabled]': {
     color: '$colors$gray800',
-    $$currentColor: '$colors$gray400',
+    $$buttonBackgroundColor: '$colors$gray400',
     $$borderColor: '$colors$gray500'
   },
 
@@ -106,45 +106,45 @@ export const ButtonWrapper = styledTheme(ButtonNextUI as ComponentType<any>, {
     },
     solid: {
       true: {
-        color: '$$textColor',
-        backgroundColor: '$$currentColor',
+        color: '$$buttonColor',
+        backgroundColor: '$$buttonBackgroundColor',
 
-        '&:hover': { backgroundColor: '$$currentColorDarker' }
+        '&:hover': { backgroundColor: '$$buttonHoverBackgroundColor' }
       }
     },
     bordered: {
       true: {
-        color: '$$outlineColor',
+        color: '$$buttonBorderedColor',
         backgroundColor: 'transparent',
 
-        '&:hover': { color: '$$textColor', backgroundColor: '$$currentColor' }
+        '&:hover': { color: '$$buttonColor', backgroundColor: '$$buttonBackgroundColor' }
       }
     },
     flat: {
       true: {
-        color: '$$ghostColor',
-        backgroundColor: '$$currentColorLighter',
-        borderColor: '$$currentColorLighter',
+        color: '$$buttonFlatColor',
+        backgroundColor: '$$buttonFlatBackgroundColor',
+        borderColor: '$$buttonFlatBackgroundColor',
 
         '&:hover': { filter: 'brightness(97.5%)' }
       }
     },
     ghost: {
       true: {
-        color: '$$outlineColor',
+        color: '$$buttonBorderedColor',
         backgroundColor: 'transparent',
-        borderColor: 'transparent !important',
+        borderColor: 'transparent',
 
-        '&:hover': { color: '$$ghostColor', backgroundColor: '$$currentColorLighter' }
+        '&:hover': { color: '$$buttonFlatColor', backgroundColor: '$$buttonFlatBackgroundColor' }
       }
     },
     light: {
       true: {
-        color: '$$outlineColor',
-        backgroundColor: 'transparent !important',
-        borderColor: 'transparent !important',
+        color: '$$buttonBorderedColor',
+        backgroundColor: 'transparent',
+        borderColor: 'transparent',
 
-        '&:hover': { color: '$$currentColorDarker', fontWeight: '$fontWeights$semibold' }
+        '&:hover': { color: '$$buttonHoverBackgroundColor', fontWeight: '$fontWeights$semibold' }
       }
     },
     iconOnly: {
@@ -158,7 +158,7 @@ export const ButtonWrapper = styledTheme(ButtonNextUI as ComponentType<any>, {
       true: { borderRadius: '$radii$2xl' }
     },
     auto: {
-      true: { width: '$space$full' },
+      true: { width: '$space$full', minWidth: 'auto' },
       false: { width: '$space$fit' }
     }
   },
@@ -168,7 +168,7 @@ export const ButtonWrapper = styledTheme(ButtonNextUI as ComponentType<any>, {
       iconOnly: true,
       rounded: true,
       css: {
-        borderRadius: '$radii$rounded !important'
+        borderRadius: '$radii$rounded'
       }
     }
   ]

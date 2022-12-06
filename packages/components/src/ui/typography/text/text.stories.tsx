@@ -26,44 +26,38 @@ export const Default = Template.bind({});
 Default.storyName = 'Playground';
 Default.parameters = { viewMode: 'story' };
 
-export const Colors = () => {
-  return (
-    <>
-      <Text color="inherit">Inherit</Text>
-      <Text color="primary">Primary</Text>
-      <Text color="secondary">Secondary</Text>
-      <Text color="tertiary">Tertiary</Text>
-      <Text color="disabled">Disabled</Text>
-      <Text color="info">Info</Text>
-      <Text color="error">Error</Text>
-      <Text color="success">Success</Text>
-      <Text color="warning">Warning</Text>
-    </>
-  );
-};
+export const Sizes = () => (
+  <>
+    <Text size="xs">Text xs: Lorem ipsum dolor sit amet</Text>
+    <Text size="sm">Text sm: Lorem ipsum dolor sit amet</Text>
+    <Text size="md">Text md: Lorem ipsum dolor sit amet</Text>
+    <Text size="lg">Text lg: Lorem ipsum dolor sit amet</Text>
+    <Text size="xl">Text xl: Lorem ipsum dolor sit amet</Text>
+    <Text size="2xl">Text 2xl: Lorem ipsum dolor sit amet</Text>
+    <Text size="3xl">Text 3xl: Lorem ipsum dolor sit amet</Text>
+  </>
+);
 
-export const Sizes = () => {
-  return (
-    <>
-      <Text size="xs">Text xs: Lorem ipsum dolor sit amet</Text>
-      <Text size="sm">Text sm: Lorem ipsum dolor sit amet</Text>
-      <Text size="md">Text md: Lorem ipsum dolor sit amet</Text>
-      <Text size="lg">Text lg: Lorem ipsum dolor sit amet</Text>
-      <Text size="xl">Text xl: Lorem ipsum dolor sit amet</Text>
-      <Text size="2xl">Text 2xl: Lorem ipsum dolor sit amet</Text>
-      <Text size="3xl">Text 3xl: Lorem ipsum dolor sit amet</Text>
-    </>
-  );
-};
+export const Variants = () => (
+  <>
+    <Text variant="p">(p) Lorem ipsum dolor sit amet</Text>
+    <Text variant="span">(span) Lorem ipsum dolor sit amet</Text>
+  </>
+);
 
-export const Variants = () => {
-  return (
-    <>
-      <Text variant="p">p. Lorem ipsum dolor sit amet</Text>
-      <Text variant="span">span. Lorem ipsum dolor sit amet</Text>
-    </>
-  );
-};
+export const Colors = () => (
+  <>
+    <Text color="inherit">Inherit</Text>
+    <Text color="primary">Primary</Text>
+    <Text color="secondary">Secondary</Text>
+    <Text color="tertiary">Tertiary</Text>
+    <Text color="disabled">Disabled</Text>
+    <Text color="info">Info</Text>
+    <Text color="error">Error</Text>
+    <Text color="success">Success</Text>
+    <Text color="warning">Warning</Text>
+  </>
+);
 
 export const MaxLines = Template.bind({});
 MaxLines.args = {

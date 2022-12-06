@@ -27,15 +27,11 @@ type RightJoinProps<
 type MergeWithAs<
   ComponentProps extends object,
   AsProps extends object,
-  AdditionalProps extends object = {},
-  AsComponent extends As = As
-> = RightJoinProps<ComponentProps, AdditionalProps> &
-  RightJoinProps<AsProps, AdditionalProps> & {
-    // as?: AsComponent;
-  };
+  AdditionalProps extends object = {}
+> = RightJoinProps<ComponentProps, AdditionalProps> & RightJoinProps<AsProps, AdditionalProps>;
 type ComponentWithAs<Component extends As, Props extends object = {}> = {
   <AsComponent extends As = Component>(
-    props: MergeWithAs<ComponentProps<Component>, ComponentProps<AsComponent>, Props, AsComponent>
+    props: MergeWithAs<ComponentProps<Component>, ComponentProps<AsComponent>, Props>
   ): JSX.Element;
 
   displayName?: string;
@@ -47,25 +43,13 @@ type ComponentWithAs<Component extends As, Props extends object = {}> = {
 /**
  * Extract the props of a React element or component
  */
-type PropsOf<T extends As> = ComponentPropsWithoutRef<T> & {
-  // Define custom global props
-  // as?: As;
-};
+type PropsOf<T extends As> = ComponentPropsWithoutRef<T>;
 
-/**
- *
- * @param component
- */
-export function forwardRef<Props extends object, Component extends As>(
-  component: ForwardRefRenderFunction<
-    any,
-    RightJoinProps<PropsOf<Component>, Props> & {
-      // as?: As;
-    }
-  >
-) {
+export const forwardRef = <Props extends object, Component extends As>(
+  component: ForwardRefRenderFunction<any, RightJoinProps<PropsOf<Component>, Props>>
+) => {
   return baseForwardRef(component) as unknown as ComponentWithAs<Component, Props>;
-}
+};
 
 export const withDefaults = <P, DP>(component: ComponentType<P>, defaultProps: DP) => {
   type Props = Partial<DP> & Omit<P, keyof DP>;

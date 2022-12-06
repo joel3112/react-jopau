@@ -76,11 +76,9 @@ const ThemeSelectorAddon = ({ api }) => {
             }))}
           />
         )}>
-        <IconButton title="Change theme">
-          <div style={{ display: 'flex', alignItems: 'center' }}>
-            {renderPrimaryColorDot(currentThemeKey)}
-            <span style={{ marginLeft: 8 }}>{themes[currentThemeKey].label}</span>
-          </div>
+        <IconButton className="sb-toolbar-dropdown-box" title="Change theme">
+          {renderPrimaryColorDot(currentThemeKey)}
+          <span>{themes[currentThemeKey].label}</span>
         </IconButton>
       </WithTooltip>
     </>

@@ -1,4 +1,4 @@
-import { TWHighlight } from '@react-jopau/styles/components';
+import { SBCode } from '@react-jopau/styles/components';
 import { Container, Space } from '@react-jopau/components/ui/layout';
 import { Text } from '@react-jopau/components/ui/typography';
 import { prepareParameters } from '../story-helpers';
@@ -20,7 +20,7 @@ export const Default = () => {
 
       <Space className="mt-10" direction="column" gap={10}>
         <Space align="center" gap={10}>
-          <TWHighlight>key:</TWHighlight>
+          <SBCode>key:</SBCode>
           {key && (
             <code>
               <Text>{key}</Text>
@@ -28,23 +28,23 @@ export const Default = () => {
           )}
         </Space>
         <Space align="center" gap={10}>
-          <TWHighlight>isMobile:</TWHighlight>
+          <SBCode>isMobile:</SBCode>
           {isMobile ? '✅' : '❌'}
         </Space>
         <Space align="center" gap={10}>
-          <TWHighlight>isTablet:</TWHighlight>
+          <SBCode>isTablet:</SBCode>
           {isTablet ? '✅' : '❌'}
         </Space>
         <Space align="center" gap={10}>
-          <TWHighlight>isSmallDesktop:</TWHighlight>
+          <SBCode>isSmallDesktop:</SBCode>
           {isSmallDesktop ? '✅' : '❌'}
         </Space>
         <Space align="center" gap={10}>
-          <TWHighlight>isDesktop:</TWHighlight>
+          <SBCode>isDesktop:</SBCode>
           {isDesktop ? '✅' : '❌'}
         </Space>
         <Space align="center" gap={10}>
-          <TWHighlight>isLargeDesktop:</TWHighlight>
+          <SBCode>isLargeDesktop:</SBCode>
           {isLargeDesktop ? '✅' : '❌'}
         </Space>
       </Space>

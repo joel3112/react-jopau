@@ -16,7 +16,7 @@ describe('Tests Header component', () => {
   });
 
   test('renders logo correctly', () => {
-    render(<Header renderLogo={() => <img src="./images/logo.png" alt="Logo" />}></Header>);
+    render(<Header logo={<img src="./images/logo.png" alt="Logo" />}></Header>);
 
     expect(screen.getByAltText('Logo')).toBeInTheDocument();
   });

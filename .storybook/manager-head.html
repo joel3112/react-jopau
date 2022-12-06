@@ -4,7 +4,7 @@
 <style>
   .sidebar-subheading,
   .sidebar-subheading svg {
-    color: var(--colors-secondary, #999999) !important;
+    color: var(--rjopau-colors-secondary, #999999) !important;
   }
 
   .sidebar-header a {
@@ -19,7 +19,18 @@
     background: #f8f8f8 !important;
   }
 
-  a.sidebar-item[data-nodetype='story']:not([data-item-id$='playground']):not([data-item-id$='docs']):not([data-item-id$='default']) {
+  a.sidebar-item[data-nodetype='story']:not([data-item-id$='playground']):not(
+      [data-item-id$='docs']
+    ):not([data-item-id$='default']) {
     display: none;
+  }
+
+  .sb-toolbar-dropdown-box {
+    display: flex !important;
+    align-items: center !important;
+    gap: 5px;
+  }
+  .sb-toolbar-dropdown-box:hover * {
+    color: var(--rjopau-colors-secondary) !important;
   }
 </style>

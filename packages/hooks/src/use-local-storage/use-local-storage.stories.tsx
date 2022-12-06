@@ -1,5 +1,5 @@
 import { FormEvent } from 'react';
-import { TWHighlight } from '@react-jopau/styles/components';
+import { SBCode } from '@react-jopau/styles/components';
 import { Container, Space } from '@react-jopau/components/ui/layout';
 import { Button, Input } from '@react-jopau/components/ui/forms';
 import { Heading, Text } from '@react-jopau/components/ui/typography';
@@ -36,7 +36,7 @@ export const Default = () => {
       <Space className="mt-10" direction="column" gap={10}>
         <Heading variant="h6">LocalStorage:</Heading>
         <Space align="center" gap={10} wrap>
-          <TWHighlight>{key}:</TWHighlight>
+          <SBCode>{key}:</SBCode>
           <code>
             <Text>{value}</Text>
           </code>

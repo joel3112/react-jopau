@@ -40,6 +40,7 @@ module.exports = {
         '@apps/example': '<rootDir>/apps/example/src/App.tsx',
         '@react-jopau/utils/(.*)$': '<rootDir>/packages/utils/src/$1',
         '@react-jopau/styles/(.*)$': '<rootDir>/packages/styles/src/$1',
+        '@react-jopau/hooks': '<rootDir>/packages/hooks/src',
         '@react-jopau/components/(.*)$': '<rootDir>/packages/components/src/$1'
       }
     }

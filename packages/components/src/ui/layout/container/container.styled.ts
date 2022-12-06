@@ -4,6 +4,7 @@ export const ContainerWrapper = styledTheme('div', {
   display: 'block',
   boxSizing: 'border-box',
   px: '$space$2xl',
+  color: '$colors$text',
 
   variants: {
     centered: {

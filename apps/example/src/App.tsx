@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { MdOutlineDarkMode, MdOutlineLightMode } from 'react-icons/md';
 import { ThemeContext } from '@react-jopau/components/contexts';
 import { Container, Header, Space } from '@react-jopau/components/ui/layout';
-import { Button } from '@react-jopau/components/ui/forms';
+import { Button, Input } from '@react-jopau/components/ui/forms';
 import { Heading, Text } from '@react-jopau/components/ui/typography';
 import './App.css';
 
@@ -13,15 +13,20 @@ const App = () => {
     <div className="app bg-background pb-10">
       <header>
         <Header title="Example app" maxWidth="lg">
-          <Button
-            className="text-text w-fit flex items-center font-medium"
-            size="sm"
-            variant="ghost"
-            color={!darkMode ? 'light' : 'dark'}
-            icon={darkMode ? <MdOutlineLightMode /> : <MdOutlineDarkMode />}
-            onClick={onToggle}>
-            {darkMode ? 'Light' : 'Dark'}
-          </Button>
+          <Space align="center" gap={10}>
+            <Input variant="bordered" placeholder="Search" hotKey="meta+k" />
+            <div className="w-[90px]">
+              <Button
+                autoWidth
+                className="!pl-12"
+                variant="flat"
+                color={!darkMode ? 'light' : 'dark'}
+                icon={darkMode ? <MdOutlineLightMode /> : <MdOutlineDarkMode />}
+                onClick={onToggle}>
+                {darkMode ? 'Light' : 'Dark'}
+              </Button>
+            </div>
+          </Space>
         </Header>
       </header>
 

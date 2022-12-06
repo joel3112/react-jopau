@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { MdSearch } from 'react-icons/md';
-import { TWSelectorContainer } from '@react-jopau/styles/components';
+import { SBTextSeparator, TWSelectorContainer } from '@react-jopau/styles/components';
 import { prepareArgTypes, prepareParameters } from '../../../utils/story-helpers';
 import { Space } from '../../layout';
 import { Button } from '../../forms';
@@ -52,6 +52,12 @@ export const Default = Template.bind({});
 Default.storyName = 'Playground';
 Default.parameters = { viewMode: 'story' };
 
+const variantItems = [
+  { label: 'Default', value: 'default' },
+  { label: 'Bordered', value: 'bordered' },
+  { label: 'Underlined', value: 'underlined' }
+];
+
 export const Types = () => (
   <Space direction="column" gap={10}>
     <Input type="text" label="Text" />
@@ -65,11 +71,11 @@ export const Types = () => (
 
 export const LabelAndPlaceholder = () => (
   <Space direction="column" gap={10}>
-    <p>Same Label and placeholder</p>
+    <SBTextSeparator>Same Label and placeholder</SBTextSeparator>
     <Input labelPlaceholder="Name" />
-    <p>Label and placeholder are different</p>
+    <SBTextSeparator>Label and placeholder are different</SBTextSeparator>
     <Input label="Email" placeholder="example@mail.com" />
-    <p>Only placeholder</p>
+    <SBTextSeparator>Only placeholder</SBTextSeparator>
     <Input placeholder="Your name" />
   </Space>
 );
@@ -86,22 +92,15 @@ export const Sizes = () => (
 
 export const Variants = () => (
   <Space direction="column" gap={10}>
-    <Input variant="default" label="Default" />
-    <Input variant="bordered" label="Bordered" />
-    <Input variant="underlined" label="Underlined" />
+    <Input variant="default" label="Default" placeholder="placeholder" />
+    <Input variant="bordered" label="Bordered" placeholder="placeholder" />
+    <Input variant="underlined" label="Underlined" placeholder="placeholder" />
   </Space>
 );
 
 export const Color = () => (
-  <TWSelectorContainer
-    label="Select variant"
-    items={[
-      { label: 'Default', value: 'default' },
-      { label: 'Bordered', value: 'bordered' },
-      { label: 'Underlined', value: 'underlined' }
-    ]}
-    value="default">
-    {(variant) => (
+  <TWSelectorContainer label={['Select variant']} items={[variantItems]} value={['default']}>
+    {([variant]) => (
       <Space gap={10} wrap>
         <Input variant={variant} label="Default" />
         <Input variant={variant} color="primary" label="Primary" />
@@ -117,94 +116,112 @@ export const Color = () => (
 );
 
 export const Status = () => (
-  <TWSelectorContainer
-    label="Select variant"
-    items={[
-      { label: 'Default', value: 'default' },
-      { label: 'Bordered', value: 'bordered' },
-      { label: 'Underlined', value: 'underlined' }
-    ]}
-    value="default">
-    {(variant) => (
+  <TWSelectorContainer label={['Select variant']} items={[variantItems]} value={['default']}>
+    {([variant]) => (
       <Space gap={10} wrap>
-        <Input variant={variant} label="Default" />
-        <Input variant={variant} status="primary" label="Primary" />
-        <Input variant={variant} status="secondary" label="Secondary" />
-        <Input variant={variant} status="tertiary" label="Tertiary" />
-        <Input variant={variant} status="info" label="Info" />
-        <Input variant={variant} status="success" label="Success" />
-        <Input variant={variant} status="error" label="Error" />
-        <Input variant={variant} status="warning" label="Warning" />
+        <Input variant={variant} labelPlaceholder="Default" />
+        <Input variant={variant} status="primary" labelPlaceholder="Primary" />
+        <Input variant={variant} status="secondary" labelPlaceholder="Secondary" />
+        <Input variant={variant} status="tertiary" labelPlaceholder="Tertiary" />
+        <Input variant={variant} status="info" labelPlaceholder="Info" />
+        <Input variant={variant} status="success" labelPlaceholder="Success" />
+        <Input variant={variant} status="error" labelPlaceholder="Error" />
+        <Input variant={variant} status="warning" labelPlaceholder="Warning" />
       </Space>
     )}
   </TWSelectorContainer>
 );
 
 export const HelperText = () => (
-  <Space direction="column" gap={20}>
-    <p>1. Variants</p>
-    <Space gap={10}>
-      <Input helperText="Helper text" label="Name" />
-      <Input variant="underlined" helperText="Helper text" label="Name" />
+  <Space direction="column" gap={30}>
+    <Space direction="column" gap={0}>
+      <SBTextSeparator>With Variants</SBTextSeparator>
+      <Space gap={10}>
+        <Input helperText="Helper text" label="Name" />
+        <Input variant="underlined" helperText="Helper text" label="Name" />
+      </Space>
     </Space>
-    <p>2. Status</p>
-    <Space gap={10}>
-      <Input helperText="Helper text" status="success" label="Success" />
-      <Input helperText="Helper text" status="error" label="Error" />
+    <Space direction="column" gap={0}>
+      <SBTextSeparator>With Status</SBTextSeparator>
+      <Space gap={10}>
+        <Input helperText="Helper text" status="secondary" label="Secondary" />
+        <Input helperText="Helper text" status="success" label="Success" />
+        <Input helperText="Helper text" status="error" label="Error" />
+      </Space>
     </Space>
   </Space>
 );
 
 export const Content = () => (
-  <Space direction="column" gap={10}>
-    <p>1. Position</p>
-    <Input icon={<MdSearch />} placeholder="Search" />
-    <Input iconPosition="right" icon={<MdSearch />} placeholder="Search" />
-    <p>2. Size</p>
-    <Input size="xs" icon={<MdSearch />} placeholder="Search Mini" />
-    <Input size="sm" icon={<MdSearch />} placeholder="Search Small" />
-    <Input size="md" icon={<MdSearch />} placeholder="Search Medium" />
-    <Input size="lg" icon={<MdSearch />} placeholder="Search Large" />
-  </Space>
+  <TWSelectorContainer label={['Select variant']} items={[variantItems]} value={['default']}>
+    {([variant]) => (
+      <Space direction="column" gap={10}>
+        <SBTextSeparator>Position</SBTextSeparator>
+        <Space gap={10}>
+          <Input variant={variant} icon={<MdSearch />} label="Label" placeholder="Search" />
+          <Input
+            variant={variant}
+            iconPosition="right"
+            icon={<MdSearch />}
+            label="Label"
+            placeholder="Search"
+          />
+        </Space>
+        <SBTextSeparator>With Size</SBTextSeparator>
+        <Input variant={variant} size="xs" icon={<MdSearch />} placeholder="Search Mini" />
+        <Input variant={variant} size="sm" icon={<MdSearch />} placeholder="Search Small" />
+        <Input variant={variant} size="md" icon={<MdSearch />} placeholder="Search Medium" />
+        <Input variant={variant} size="lg" icon={<MdSearch />} placeholder="Search Large" />
+        <SBTextSeparator>With Status</SBTextSeparator>
+        <Space gap={10}>
+          <Input
+            variant={variant}
+            status="secondary"
+            icon={<MdSearch />}
+            placeholder="Search Secondary"
+          />
+          <Input
+            variant={variant}
+            status="success"
+            icon={<MdSearch />}
+            placeholder="Search Success"
+          />
+          <Input variant={variant} status="error" icon={<MdSearch />} placeholder="Search Error" />
+        </Space>
+      </Space>
+    )}
+  </TWSelectorContainer>
 );
 
 export const LabelLeftAndRight = () => (
-  <TWSelectorContainer
-    label="Select variant"
-    items={[
-      { label: 'Default', value: 'default' },
-      { label: 'Bordered', value: 'bordered' },
-      { label: 'Underlined', value: 'underlined' }
-    ]}
-    value="default">
-    {(variant) => (
+  <TWSelectorContainer label={['Select variant']} items={[variantItems]} value={['default']}>
+    {([variant]) => (
       <Space direction="column" gap={10}>
-        <p>1. Label left</p>
+        <SBTextSeparator>Label left</SBTextSeparator>
         <Input variant={variant} labelLeft="https://" placeholder="example" />
-        <p>2. Label right</p>
+        <SBTextSeparator>Label right</SBTextSeparator>
         <Input variant={variant} labelRight=".com" placeholder="example" />
-        <p>2. Label left and right</p>
+        <SBTextSeparator>Label left and right</SBTextSeparator>
         <Input variant={variant} labelLeft="https://" labelRight=".com" placeholder="example" />
+        <SBTextSeparator>With Status</SBTextSeparator>
+        <Space gap={10}>
+          <Input variant={variant} status="secondary" labelLeft="https://" placeholder="example" />
+          <Input variant={variant} status="success" labelLeft="https://" placeholder="example" />
+          <Input variant={variant} status="error" labelLeft="https://" placeholder="example" />
+        </Space>
       </Space>
     )}
   </TWSelectorContainer>
 );
 
 export const HotKey = () => (
-  <TWSelectorContainer
-    label="Select variant"
-    items={[
-      { label: 'Default', value: 'default' },
-      { label: 'Bordered', value: 'bordered' },
-      { label: 'Underlined', value: 'underlined' }
-    ]}
-    value="default">
-    {(variant) => (
+  <TWSelectorContainer label={['Select variant']} items={[variantItems]} value={['default']}>
+    {([variant]) => (
       <Space gap={10} wrap>
-        <Input variant={variant} hotKey="⌘⇧D" label="Default" status="default" />
-        <Input variant={variant} hotKey="⌘⇧P" label="Primary" status="primary" />
-        <Input variant={variant} hotKey="⌘⇧S" label="Success" status="success" />
-        <Input variant={variant} hotKey="⌘⇧E" label="Error" status="error" />
+        <Input variant={variant} hotKey="ctrl+k+1" label="Default" status="default" />
+        <Input variant={variant} hotKey="ctrl+k+2" label="Secondary" status="secondary" />
+        <Input variant={variant} hotKey="meta+j" label="Success" status="success" />
+        <Input variant={variant} hotKey="meta+k" label="Error" status="error" />
       </Space>
     )}
   </TWSelectorContainer>

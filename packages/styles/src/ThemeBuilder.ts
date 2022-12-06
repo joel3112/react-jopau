@@ -36,7 +36,7 @@ export class ThemeBuilder {
         {}
       ),
       utils: themeUtils,
-      prefix: 'nextui'
+      prefix: 'rjopau'
     });
 
     this.styledTheme = styled;

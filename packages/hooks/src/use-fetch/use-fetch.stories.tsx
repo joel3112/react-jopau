@@ -1,7 +1,7 @@
 import { FormEvent, useState } from 'react';
+import { SBCode, SBSONPreview } from '@react-jopau/styles/components';
 import { Container, Space } from '@react-jopau/components/ui/layout';
 import { Button, Input } from '@react-jopau/components/ui/forms';
-import { TWHighlight, TWJSONPreview } from '@react-jopau/styles/components';
 import { prepareParameters } from '../story-helpers';
 import { useFetch } from './use-fetch';
 import docs from './readme.mdx';
@@ -56,18 +56,18 @@ export const Default = () => {
 
       <Space className="mt-10" direction="column" gap={10}>
         <Space align="start" gap={10}>
-          <TWHighlight>loading:</TWHighlight>
+          <SBCode>loading:</SBCode>
           <code>
             <Text>{loading ? 'true' : 'false'}</Text>
           </code>
         </Space>
         <Space align="start" gap={10} wrap>
-          <TWHighlight>data:</TWHighlight>
-          <TWJSONPreview code={data} />
+          <SBCode>data:</SBCode>
+          <SBSONPreview code={data} />
         </Space>
         <Space align="start" gap={10} wrap>
-          <TWHighlight>error:</TWHighlight>
-          <TWJSONPreview code={error} />
+          <SBCode>error:</SBCode>
+          <SBSONPreview code={error} />
         </Space>
       </Space>
     </Container>

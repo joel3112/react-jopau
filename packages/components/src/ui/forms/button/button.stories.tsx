@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { MdAdd } from 'react-icons/md';
-import { TWSelectorContainer } from '@react-jopau/styles/components';
+import { SBTextSeparator, TWSelectorContainer } from '@react-jopau/styles/components';
 import { prepareArgTypes, prepareParameters } from '../../../utils/story-helpers';
 import { Space } from '../../layout';
 import { Button } from './button';
@@ -39,109 +39,89 @@ export const Default = Template.bind({});
 Default.storyName = 'Playground';
 Default.parameters = { viewMode: 'story' };
 
-export const Sizes = () => {
-  return (
-    <Space direction="column" gap={10}>
-      <Button size="xs">Mini</Button>
-      <Button size="sm">Small</Button>
-      <Button size="md">Medium</Button>
-      <Button size="lg">Large</Button>
-      <Button size="xl">XLarge</Button>
-    </Space>
-  );
-};
+export const Sizes = () => (
+  <Space direction="column" gap={10}>
+    <Button size="xs">Mini</Button>
+    <Button size="sm">Small</Button>
+    <Button size="md">Medium</Button>
+    <Button size="lg">Large</Button>
+    <Button size="xl">XLarge</Button>
+  </Space>
+);
 
-export const Colors = ({
-  variant
-}: {
-  variant: 'solid' | 'bordered' | 'ghost' | 'flat' | 'clear';
-}) => {
-  return (
-    <Space gap={10} wrap>
-      <Button color="primary" variant={variant}>
-        Primary
-      </Button>
-      <Button color="secondary" variant={variant}>
-        Secondary
-      </Button>
-      <Button color="tertiary" variant={variant}>
-        Tertiary
-      </Button>
-      <Button color="info" variant={variant}>
-        Info
-      </Button>
-      <Button color="error" variant={variant}>
-        Error
-      </Button>
-      <Button color="success" variant={variant}>
-        Success
-      </Button>
-      <Button color="warning" variant={variant}>
-        Warning
-      </Button>
-      <Button color="light" variant={variant}>
-        Light
-      </Button>
-      <Button color="dark" variant={variant}>
-        Dark
-      </Button>
-    </Space>
-  );
-};
+export const Variants = () => (
+  <Space gap={10} wrap>
+    <Button variant="solid">Solid</Button>
+    <Button variant="bordered">Bordered</Button>
+    <Button variant="flat">Flat</Button>
+    <Button variant="ghost">Ghost</Button>
+    <Button variant="clear">Clear</Button>
+  </Space>
+);
 
-export const Variants = () => {
-  return (
-    <TWSelectorContainer
-      label="Select color"
-      items={[
-        { label: 'Primary', value: 'primary' },
-        { label: 'Secondary', value: 'secondary' },
-        { label: 'Tertiary', value: 'tertiary' },
-        { label: 'Info', value: 'info' },
-        { label: 'Error', value: 'error' },
-        { label: 'Success', value: 'success' },
-        { label: 'Warning', value: 'warning' },
-        { label: 'Light', value: 'light' },
-        { label: 'Dark', value: 'dark' }
-      ]}
-      value="primary">
-      {(color) => (
-        <Space gap={10} wrap>
-          <Button color={color} variant="solid">
-            Solid
-          </Button>
-          <Button color={color} variant="bordered">
-            Bordered
-          </Button>
-          <Button color={color} variant="flat">
-            Flat
-          </Button>
-          <Button color={color} variant="ghost">
-            Ghost
-          </Button>
-          <Button color={color} variant="clear">
-            Clear
-          </Button>
-        </Space>
-      )}
-    </TWSelectorContainer>
-  );
-};
+export const Colors = () => (
+  <TWSelectorContainer
+    label={['Select variant']}
+    items={[
+      [
+        { label: 'Solid', value: 'solid' },
+        { label: 'Bordered', value: 'bordered' },
+        { label: 'Flat', value: 'flat' },
+        { label: 'Ghost', value: 'ghost' },
+        { label: 'Clear', value: 'clear' }
+      ]
+    ]}
+    value={['solid']}>
+    {([variant]) => (
+      <Space gap={10} wrap>
+        <Button color="primary" variant={variant}>
+          Primary
+        </Button>
+        <Button color="secondary" variant={variant}>
+          Secondary
+        </Button>
+        <Button color="tertiary" variant={variant}>
+          Tertiary
+        </Button>
+        <Button color="info" variant={variant}>
+          Info
+        </Button>
+        <Button color="error" variant={variant}>
+          Error
+        </Button>
+        <Button color="success" variant={variant}>
+          Success
+        </Button>
+        <Button color="warning" variant={variant}>
+          Warning
+        </Button>
+        <Button color="light" variant={variant}>
+          Light
+        </Button>
+        <Button color="dark" variant={variant}>
+          Dark
+        </Button>
+      </Space>
+    )}
+  </TWSelectorContainer>
+);
 
 export const IconOnly = () => (
   <TWSelectorContainer
-    label="Select variant"
+    label={['Select variant']}
     items={[
-      { label: 'Solid', value: 'solid' },
-      { label: 'Bordered', value: 'bordered' },
-      { label: 'Flat', value: 'flat' },
-      { label: 'Ghost', value: 'ghost' },
-      { label: 'Clear', value: 'clear' }
+      [
+        { label: 'Solid', value: 'solid' },
+        { label: 'Bordered', value: 'bordered' },
+        { label: 'Flat', value: 'flat' },
+        { label: 'Ghost', value: 'ghost' },
+        { label: 'Clear', value: 'clear' }
+      ]
     ]}
-    value="solid">
-    {(variant) => (
+    value={['solid']}>
+    {([variant]) => (
       <Space direction="column" gap={10}>
-        <p>1. Default</p>
+        <SBTextSeparator>Default</SBTextSeparator>
         <Space align="center" gap={10}>
           <Button size="xs" variant={variant} icon={<MdAdd />} />
           <Button size="sm" variant={variant} icon={<MdAdd />} />
@@ -149,7 +129,7 @@ export const IconOnly = () => (
           <Button size="lg" variant={variant} icon={<MdAdd />} />
           <Button size="xl" variant={variant} icon={<MdAdd />} />
         </Space>
-        <p>2. Rounded</p>
+        <SBTextSeparator>With Rounded</SBTextSeparator>
         <Space align="center" gap={10}>
           <Button size="xs" variant={variant} icon={<MdAdd />} rounded />
           <Button size="sm" variant={variant} icon={<MdAdd />} rounded />
@@ -164,14 +144,14 @@ export const IconOnly = () => (
 
 export const TextAndIcon = () => (
   <Space gap={10} direction="column">
-    <p>1. Position</p>
+    <SBTextSeparator>Position</SBTextSeparator>
     <Space gap={10}>
       <Button icon={<MdAdd />}>Icon Left</Button>
       <Button icon={<MdAdd />} iconPosition="right">
         Icon Right
       </Button>
     </Space>
-    <p>2. Size</p>
+    <SBTextSeparator>With Size</SBTextSeparator>
     <Space direction="column" gap={10}>
       <Button size="xs" icon={<MdAdd />}>
         Mini
@@ -194,15 +174,17 @@ export const TextAndIcon = () => (
 
 export const Rounded = () => (
   <TWSelectorContainer
-    label="Select variant"
+    label={['Select variant']}
     items={[
-      { label: 'Solid', value: 'solid' },
-      { label: 'Bordered', value: 'bordered' },
-      { label: 'Flat', value: 'flat' },
-      { label: 'Ghost', value: 'ghost' }
+      [
+        { label: 'Solid', value: 'solid' },
+        { label: 'Bordered', value: 'bordered' },
+        { label: 'Flat', value: 'flat' },
+        { label: 'Ghost', value: 'ghost' }
+      ]
     ]}
-    value="solid">
-    {(variant) => (
+    value={['solid']}>
+    {([variant]) => (
       <Space gap={10}>
         <Button variant={variant} rounded>
           Button

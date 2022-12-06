@@ -1,4 +1,7 @@
 import { ReactNode } from 'react';
+import classes from 'classnames';
+import ReactJson from 'react-json-view';
+import { BiLinkExternal } from 'react-icons/bi';
 import { styled } from '@stitches/react';
 import {
   ArgsTable as PureArgsTable,
@@ -6,12 +9,20 @@ import {
 } from '@storybook/components';
 import { ArgsTable as DocsArgsTable, Canvas, SourceState, Story } from '@storybook/addon-docs';
 import LinkTo from '@storybook/addon-links/react';
-import { BiLinkExternal } from 'react-icons/bi';
-import classes from 'classnames';
 
 /**
  * Component story mdx
  */
+
+/* ==== code =================================================================== */
+
+export const SBCode = ({ children }: { children: ReactNode }) => {
+  return (
+    <div className="font-code text-black text-sm w-fit flex py-1 items-center px-2 rounded-[5px] bg-[#ccc]">
+      {children}
+    </div>
+  );
+};
 
 /* ==== title ================================================================== */
 
@@ -39,22 +50,58 @@ export const SBSubTitle = ({ children }: { children: string }) => {
   return <h4 className="w-full text-lg font-semibold border-b pb-2 border-gray-900">{children}</h4>;
 };
 
+/* ==== text-separator ========================================================= */
+
+export const SBTextSeparator = ({ children }: { children: string }) => {
+  return (
+    <p className="border-t border-b py-3 my-3 border-text text-[13px] font-semibold text-text first:mt-0">
+      {children}
+    </p>
+  );
+};
+
 /* ==== card =================================================================== */
 
 export const SBCard = ({
+  className,
   children,
   title,
   kind
 }: {
-  children: ReactNode;
-  title: string;
-  kind: string;
+  className?: string;
+  children: string | ReactNode;
+  title: ReactNode;
+  kind?: string;
 }) => {
+  const childrenTmpl =
+    typeof children === 'string' ? (
+      <span className="text-text text-[15px] line-clamp-2">{children}</span>
+    ) : (
+      children
+    );
+
+  if (!kind) {
+    return (
+      <div
+        className={classes(
+          'h-[150px] group relative p-8 flex flex-col gap-3 bg-background border border-gray-700 border-solid shadow-md rounded-sm',
+          className
+        )}>
+        <div className="text-secondary font-semibold text-[18px]">{title}</div>
+        {childrenTmpl}
+      </div>
+    );
+  }
+
   return (
     <LinkTo kind={kind} story="docs">
-      <div className="h-[150px] group relative p-8 flex flex-col gap-3 bg-background hover:bg-[#eee] border border-primary border-solid shadow-md cursor-pointer">
+      <div
+        className={classes(
+          'h-[150px] group relative p-8 flex flex-col gap-3 bg-background hover:bg-[#eee] border border-gray-700 border-solid shadow-md rounded-sm cursor-pointer',
+          className
+        )}>
         <div className="text-secondary font-semibold text-[18px]">{title}</div>
-        <span className="text-text text-[15px] line-clamp-2">{children}</span>
+        {childrenTmpl}
 
         <BiLinkExternal className="text-secondary text-[20px] absolute top-[10px] right-[10px] hidden group-hover:flex" />
       </div>
@@ -186,5 +233,26 @@ export const SBDocsArgsTable = ({ story, noControls }: { story: string; noContro
     <DocsArgsTableStyled noControls={noControls}>
       <DocsArgsTable story={story} />
     </DocsArgsTableStyled>
+  );
+};
+
+/* ==== json-preview =========================================================== */
+
+export const SBSONPreview = ({ code }: { code: unknown }) => {
+  if (!code) return <span className="flex items-center font-code text-text">null</span>;
+
+  return (
+    <div className="bg-[#272822] font-code p-5 mt-2 border border-border border-solid">
+      <ReactJson
+        style={{ backgroundColor: 'transparent', fontSize: '0.8rem' }}
+        name={false}
+        displayObjectSize={false}
+        displayDataTypes={false}
+        enableClipboard={false}
+        src={code}
+        theme="monokai"
+        iconStyle="square"
+      />
+    </div>
   );
 };

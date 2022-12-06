@@ -1,8 +1,8 @@
 import { ReactNode } from 'react';
-import classes from 'classnames';
+import { classes } from '../../../utils/system';
 import type { ElementHTML } from '../../../../types';
 import { Heading } from '../../typography';
-import { HeaderContainer, HeaderSpaceLogo, HeaderWrapper } from './header.styled';
+import { HeaderContainer, HeaderLogo, HeaderWrapper } from './header.styled';
 
 type HeaderProps = ElementHTML & {
   /**
@@ -16,7 +16,7 @@ type HeaderProps = ElementHTML & {
   /**
    * Defines the render of the logo.
    */
-  renderLogo?: () => JSX.Element;
+  logo?: ReactNode;
   /**
    * Maximum width of the container or breakpoint.
    */
@@ -33,18 +33,11 @@ const defaultProps = {};
  *
  * @imports import { Header } from '@react-jopau/components/ui/layout';
  * @example
- * <Header title="Title" renderLogo={() => <img src="./images/logo.png" alt="Logo" />}>
+ * <Header title="Title" logo={() => <img src="./images/logo.png" alt="Logo" />}>
  *    <div>Action 1</div>
  * </Header>
  */
-export const Header = ({
-  className,
-  style,
-  children,
-  title,
-  maxWidth,
-  renderLogo
-}: HeaderProps) => {
+export const Header = ({ className, style, children, logo, title, maxWidth }: HeaderProps) => {
   return (
     <HeaderWrapper
       className={classes('header-wrapper', className)}
@@ -52,10 +45,10 @@ export const Header = ({
         ...style
       }}>
       <HeaderContainer maxWidth={maxWidth} centered>
-        <HeaderSpaceLogo direction="row" align="center" gap={8}>
-          {renderLogo && renderLogo()}
+        <HeaderLogo direction="row" align="center" gap={8}>
+          {logo}
           {title && <Heading variant="h4">{title}</Heading>}
-        </HeaderSpaceLogo>
+        </HeaderLogo>
 
         {children}
       </HeaderContainer>

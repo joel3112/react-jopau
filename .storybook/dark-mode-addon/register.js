@@ -67,13 +67,9 @@ const DarkModeAddon = ({ api }) => {
           }))}
         />
       )}>
-      <IconButton title="Change color scheme">
-        <div style={{ display: 'flex', alignItems: 'center' }}>
-          {renderIcon(colorScheme)}
-          <span style={{ marginLeft: 5 }}>
-            Color scheme: {COLOR_SCHEMES.find(({ id }) => id === colorScheme).title}
-          </span>
-        </div>
+      <IconButton className="sb-toolbar-dropdown-box" title="Change color scheme">
+        {renderIcon(colorScheme)}
+        <span>Color scheme: {COLOR_SCHEMES.find(({ id }) => id === colorScheme).title}</span>
       </IconButton>
     </WithTooltip>
   );

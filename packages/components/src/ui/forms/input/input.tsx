@@ -9,6 +9,7 @@ import {
   useRef,
   useState
 } from 'react';
+import { useHotKey } from '@react-jopau/hooks';
 import { classes, forwardRef } from '../../../utils/system';
 import type {
   ContentPosition,
@@ -110,8 +111,14 @@ const defaultProps = {
   iconPosition: 'left'
 };
 
-const InputContent = ({ children }: { children: ReactNode }) => {
-  return <InputContentWrapper>{children}</InputContentWrapper>;
+const InputContent = ({
+  children,
+  variant
+}: {
+  children: ReactNode;
+  variant: InputProps['variant'];
+}) => {
+  return <InputContentWrapper variant={variant}>{children}</InputContentWrapper>;
 };
 
 /**
@@ -165,6 +172,7 @@ export const Input = forwardRef<InputProps, 'input'>(
     const inputAriaLabel = label || placeholder || labelPlaceholder || `input-label-${useId()}`;
     const inputRef = useRef<HTMLInputElement>(null);
     const [inputValue, setInputValue] = useState<string | number>(value || '');
+    const { shortHotKey } = useHotKey(hotKey || '', () => inputRef.current?.focus());
 
     useImperativeHandle(ref, () => ({
       focus: () => {
@@ -217,10 +225,14 @@ export const Input = forwardRef<InputProps, 'input'>(
           rounded={rounded}
           clearable={clearable}
           {...(icon && {
-            contentLeft: iconPosition === 'left' && <InputContent>{icon}</InputContent>,
-            contentRight: iconPosition === 'right' && <InputContent>{icon}</InputContent>
+            contentLeft: iconPosition === 'left' && (
+              <InputContent variant={variant}>{icon}</InputContent>
+            ),
+            contentRight: iconPosition === 'right' && (
+              <InputContent variant={variant}>{icon}</InputContent>
+            )
           })}
-          {...(hotKey && { labelRight: hotKey })}
+          {...(hotKey && { labelRight: shortHotKey })}
           onInput={handleInput}
           onChange={onChange}
           onFocus={onFocus}

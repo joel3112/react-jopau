@@ -1,4 +1,4 @@
-import classes from 'classnames';
+import { classes } from '../../../utils/system';
 import type { ElementHTML, TextColor } from '../../../../types';
 import { HeadingWrapper } from './heading.styled';
 

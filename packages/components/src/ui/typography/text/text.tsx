@@ -1,4 +1,4 @@
-import classes from 'classnames';
+import { classes } from '../../../utils/system';
 import type { ElementHTML, NormalSize, TextColor } from '../../../../types';
 import { TextWrapper } from './text.styled';
 

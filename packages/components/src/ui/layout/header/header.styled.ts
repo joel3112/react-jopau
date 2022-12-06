@@ -1,14 +1,15 @@
-import { Container } from '../container/container';
-import { Space } from '../space/space';
+import { Container, Space } from '../../layout';
 import { styledTheme } from '../../../index';
 
 export const HeaderContainer = styledTheme(Container, {
-  alignBetween: 'row',
+  display: 'flex !important',
+  alignItems: 'center',
+  justifyContent: 'space-between',
   size: '$space$full',
   maxWidth: 'inherit'
 });
 
-export const HeaderSpaceLogo = styledTheme(Space, {
+export const HeaderLogo = styledTheme(Space, {
   width: '$space$fit',
   height: '$space$full'
 });

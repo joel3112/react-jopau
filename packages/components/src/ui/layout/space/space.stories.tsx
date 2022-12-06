@@ -1,6 +1,7 @@
-import classes from 'classnames';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { multiply } from '@react-jopau/utils/array';
+import { SBTextSeparator } from '@react-jopau/styles/components';
+import { classes } from '../../../utils/system';
 import { prepareArgTypes, prepareParameters } from '../../../utils/story-helpers';
 import { Space } from './space';
 import docs from './readme.mdx';
@@ -41,38 +42,81 @@ export const Default = Template.bind({});
 Default.storyName = 'Playground';
 Default.parameters = { viewMode: 'story' };
 
-export const DirectionRow = Template.bind({});
-DirectionRow.args = {
-  direction: 'row'
-};
+export const Direction = () => (
+  <div className="flex flex-col gap-8">
+    <SBTextSeparator>row</SBTextSeparator>
+    <Space direction="row">{Items(3)}</Space>
+    <SBTextSeparator>column</SBTextSeparator>
+    <Space direction="column">{Items(3)}</Space>
+    <SBTextSeparator>row-reverse</SBTextSeparator>
+    <Space direction="row-reverse">{Items(3)}</Space>
+    <SBTextSeparator>column-reverse</SBTextSeparator>
+    <Space direction="column-reverse">{Items(3)}</Space>
+  </div>
+);
 
-export const DirectionColumn = Template.bind({});
-DirectionColumn.args = {
-  direction: 'column'
-};
+export const Align = () => (
+  <div className="flex flex-col gap-8">
+    <SBTextSeparator>start</SBTextSeparator>
+    <Space direction="column" align="start">
+      {Items(3)}
+    </Space>
+    <SBTextSeparator>center</SBTextSeparator>
+    <Space direction="column" align="center">
+      {Items(3)}
+    </Space>
+    <SBTextSeparator>end</SBTextSeparator>
+    <Space direction="column" align="end">
+      {Items(3)}
+    </Space>
+    <SBTextSeparator>stretch</SBTextSeparator>
+    <Space direction="column" align="stretch">
+      {Items(3)}
+    </Space>
+    <SBTextSeparator>baseline</SBTextSeparator>
+    <Space direction="column" align="baseline">
+      {Items(3)}
+    </Space>
+  </div>
+);
 
-export const WrapFalse = Template.bind({});
-WrapFalse.args = {
-  wrap: false,
-  children: Items(5)
-};
+export const Justify = () => (
+  <div className="flex flex-col gap-8">
+    <SBTextSeparator>start</SBTextSeparator>
+    <Space justify="start">{Items(3)}</Space>
+    <SBTextSeparator>center</SBTextSeparator>
+    <Space justify="center">{Items(3)}</Space>
+    <SBTextSeparator>end</SBTextSeparator>
+    <Space justify="end">{Items(3)}</Space>
+    <SBTextSeparator>between</SBTextSeparator>
+    <Space justify="between">{Items(3)}</Space>
+    <SBTextSeparator>around</SBTextSeparator>
+    <Space justify="around">{Items(3)}</Space>
+  </div>
+);
 
-export const WrapTrue = Template.bind({});
-WrapTrue.args = {
-  wrap: true,
-  children: Items(5, true)
-};
+export const Gap = () => (
+  <div className="flex flex-col gap-8">
+    <SBTextSeparator>Unique</SBTextSeparator>
+    <Space wrap gap={20}>
+      {Items(6, true)}
+    </Space>
+    <SBTextSeparator>Multiple</SBTextSeparator>
+    <Space wrap gap={[60, 40]}>
+      {Items(6, true)}
+    </Space>
+  </div>
+);
 
-export const GapUnique = Template.bind({});
-GapUnique.args = {
-  gap: 10,
-  wrap: true,
-  children: Items(6, true)
-};
-
-export const GapMultiple = Template.bind({});
-GapMultiple.args = {
-  gap: [40, 10],
-  wrap: true,
-  children: Items(6, true)
-};
+export const Wrap = () => (
+  <div className="flex flex-col gap-8">
+    <SBTextSeparator>false</SBTextSeparator>
+    <Space direction="row" wrap={false}>
+      {Items(5, true)}
+    </Space>
+    <SBTextSeparator>true</SBTextSeparator>
+    <Space direction="row" wrap>
+      {Items(5, true)}
+    </Space>
+  </div>
+);

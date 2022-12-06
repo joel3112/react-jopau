@@ -1,6 +1,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  margin: 0;
+}
+
 .light-theme,
 .dark-theme {
   height: 100vh;

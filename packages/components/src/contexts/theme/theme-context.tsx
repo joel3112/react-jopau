@@ -43,10 +43,10 @@ const globalStyles = globalCss({
     color: '$text'
   },
   '*, button, input': {
-    fontFamily: 'var(--nextui-fonts-base)'
+    fontFamily: 'var(--rjopau-fonts-base)'
   },
   'pre *, code *': {
-    fontFamily: 'var(--nextui-fonts-code) !important'
+    fontFamily: 'var(--rjopau-fonts-code) !important'
   }
 });
 
