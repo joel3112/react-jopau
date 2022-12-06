@@ -1,7 +1,7 @@
 import { useEffect, useId, useState } from 'react';
 import { classes } from '../../../utils/system';
 import type { ElementHTML, FormControl, NormalColor, NormalSize } from '../../../../types';
-import { CheckboxWrapper } from './checkbox.styled';
+import { StyledCheckbox } from './checkbox.styled';
 
 type CheckboxProps = ElementHTML &
   FormControl<string> & {
@@ -90,7 +90,7 @@ export const Checkbox = ({
   };
 
   return (
-    <CheckboxWrapper
+    <StyledCheckbox
       id={checkboxId}
       name={name}
       aria-label={checkboxAriaLabel}
@@ -98,7 +98,7 @@ export const Checkbox = ({
       isReadOnly={readOnly}
       isDisabled={disabled}
       required={required}
-      className={classes('checkbox-wrapper', className)}
+      className={classes('checkbox', className)}
       css={{
         ...style
       }}
@@ -112,7 +112,7 @@ export const Checkbox = ({
       lineThrough={throughed}
       onChange={handleChange}>
       {children}
-    </CheckboxWrapper>
+    </StyledCheckbox>
   );
 };
 

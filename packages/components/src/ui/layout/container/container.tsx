@@ -3,7 +3,7 @@ import { BreakpointsRules } from '@react-jopau/styles/breakpoint';
 import { ThemeContext } from '../../../contexts';
 import { classes } from '../../../utils/system';
 import type { ElementHTML } from '../../../../types';
-import { ContainerWrapper } from './container.styled';
+import { StyledContainer } from './container.styled';
 
 type ContainerProps = ElementHTML & {
   /**
@@ -73,8 +73,8 @@ export const Container = ({
   const { config } = useContext(ThemeContext);
 
   return (
-    <ContainerWrapper
-      className={classes('container-wrapper', className)}
+    <StyledContainer
+      className={classes('container', className)}
       css={{
         ...(gap && { padding: spacing(gap) }),
         maxWidth: `${computeMaxWidth(config?.media, maxWidth)}px !important`,
@@ -82,7 +82,7 @@ export const Container = ({
       }}
       centered={centered}>
       {children}
-    </ContainerWrapper>
+    </StyledContainer>
   );
 };
 

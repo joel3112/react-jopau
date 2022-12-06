@@ -1,5 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { SBTextSeparator } from '@react-jopau/styles/components';
 import { prepareArgTypes, prepareParameters } from '../../../utils/story-helpers';
+import { Space } from '../../layout';
 import { Text } from './text';
 import docs from './readme.mdx';
 
@@ -9,7 +11,7 @@ export default {
   parameters: prepareParameters(docs),
   args: {
     children: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-    variant: 'p',
+    as: 'p',
     color: 'inherit',
     size: 'md'
   },
@@ -26,6 +28,19 @@ export const Default = Template.bind({});
 Default.storyName = 'Playground';
 Default.parameters = { viewMode: 'story' };
 
+export const As = () => (
+  <Space direction="column" gap={10}>
+    <SBTextSeparator>p</SBTextSeparator>
+    <Text as="p" className="bg-gray-100">
+      Lorem ipsum dolor sit amet
+    </Text>
+    <SBTextSeparator>span</SBTextSeparator>
+    <Text as="span" className="bg-gray-100">
+      Lorem ipsum dolor sit amet
+    </Text>
+  </Space>
+);
+
 export const Sizes = () => (
   <>
     <Text size="xs">Text xs: Lorem ipsum dolor sit amet</Text>
@@ -35,13 +50,6 @@ export const Sizes = () => (
     <Text size="xl">Text xl: Lorem ipsum dolor sit amet</Text>
     <Text size="2xl">Text 2xl: Lorem ipsum dolor sit amet</Text>
     <Text size="3xl">Text 3xl: Lorem ipsum dolor sit amet</Text>
-  </>
-);
-
-export const Variants = () => (
-  <>
-    <Text variant="p">(p) Lorem ipsum dolor sit amet</Text>
-    <Text variant="span">(span) Lorem ipsum dolor sit amet</Text>
   </>
 );
 

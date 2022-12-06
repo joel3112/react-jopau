@@ -42,6 +42,19 @@ export const Default = Template.bind({});
 Default.storyName = 'Playground';
 Default.parameters = { viewMode: 'story' };
 
+export const As = () => (
+  <div className="flex flex-col gap-8">
+    <SBTextSeparator>div</SBTextSeparator>
+    <Space as="div" direction="row">
+      {Items(3)}
+    </Space>
+    <SBTextSeparator>form</SBTextSeparator>
+    <Space as="form" direction="row">
+      {Items(3)}
+    </Space>
+  </div>
+);
+
 export const Direction = () => (
   <div className="flex flex-col gap-8">
     <SBTextSeparator>row</SBTextSeparator>

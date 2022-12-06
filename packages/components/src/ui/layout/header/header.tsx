@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 import { classes } from '../../../utils/system';
 import type { ElementHTML } from '../../../../types';
 import { Heading } from '../../typography';
-import { HeaderContainer, HeaderLogo, HeaderWrapper } from './header.styled';
+import { StyledHeaderContent, StyledHeaderLogo, StyledHeader } from './header.styled';
 
 type HeaderProps = ElementHTML & {
   /**
@@ -39,20 +39,20 @@ const defaultProps = {};
  */
 export const Header = ({ className, style, children, logo, title, maxWidth }: HeaderProps) => {
   return (
-    <HeaderWrapper
-      className={classes('header-wrapper', className)}
+    <StyledHeader
+      className={classes('header', className)}
       css={{
         ...style
       }}>
-      <HeaderContainer maxWidth={maxWidth} centered>
-        <HeaderLogo direction="row" align="center" gap={8}>
+      <StyledHeaderContent maxWidth={maxWidth} centered>
+        <StyledHeaderLogo direction="row" align="center" gap={8}>
           {logo}
-          {title && <Heading variant="h4">{title}</Heading>}
-        </HeaderLogo>
+          {title && <Heading as="h4">{title}</Heading>}
+        </StyledHeaderLogo>
 
         {children}
-      </HeaderContainer>
-    </HeaderWrapper>
+      </StyledHeaderContent>
+    </StyledHeader>
   );
 };
 

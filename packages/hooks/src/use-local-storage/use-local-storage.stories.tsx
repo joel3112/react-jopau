@@ -34,7 +34,7 @@ export const Default = () => {
       </form>
 
       <Space className="mt-10" direction="column" gap={10}>
-        <Heading variant="h6">LocalStorage:</Heading>
+        <Heading as="h6">LocalStorage:</Heading>
         <Space align="center" gap={10} wrap>
           <SBCode>{key}:</SBCode>
           <code>

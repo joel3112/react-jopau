@@ -1,13 +1,13 @@
 import { styledTheme } from '../../../index';
 
-export const TextWrapper = styledTheme('p', {
+export const StyledText = styledTheme('p', {
   display: 'block',
   fontWeight: '$fontWeights$normal',
   letterSpacing: '$letterSpacings$normal',
   color: 'inherit',
 
   variants: {
-    variant: {
+    as: {
       span: { width: '$space$max' },
       p: {}
     },

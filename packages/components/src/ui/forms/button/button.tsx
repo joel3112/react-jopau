@@ -1,7 +1,7 @@
 import { MouseEvent, ReactNode, Ref, useImperativeHandle, useRef } from 'react';
 import { classes, forwardRef } from '../../../utils/system';
 import type { ButtonColor, ContentPosition, ElementHTML, NormalSize } from '../../../../types';
-import { ButtonIconWrapper, ButtonWrapper } from './button.styled';
+import { StyledButtonIcon, StyledButton } from './button.styled';
 
 export type ButtonProps = ElementHTML & {
   /**
@@ -60,7 +60,7 @@ const defaultProps = {
 };
 
 const ButtonIcon = ({ children }: { children: ReactNode }) => {
-  return <ButtonIconWrapper>{children}</ButtonIconWrapper>;
+  return <StyledButtonIcon>{children}</StyledButtonIcon>;
 };
 
 /**
@@ -111,11 +111,11 @@ export const Button = forwardRef<ButtonProps, 'button'>(
     };
 
     return (
-      <ButtonWrapper
+      <StyledButton
         ref={buttonRef}
         type={type}
         disabled={!!disabled}
-        className={classes('button-wrapper', className)}
+        className={classes('button', className)}
         css={{
           ...style
         }}
@@ -135,7 +135,7 @@ export const Button = forwardRef<ButtonProps, 'button'>(
         })}
         onPress={handleClick}>
         {children}
-      </ButtonWrapper>
+      </StyledButton>
     );
   }
 );

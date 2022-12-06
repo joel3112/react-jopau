@@ -72,13 +72,13 @@ const colorTokens = (color: NonNullable<ButtonProps['color']>) => {
   };
 };
 
-export const ButtonIconWrapper = styledTheme('div', {
+export const StyledButtonIcon = styledTheme('div', {
   display: 'flex',
   scale: 1.5
 });
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const ButtonWrapper = styledTheme(ButtonNextUI as ComponentType<any>, {
+export const StyledButton = styledTheme(ButtonNextUI as ComponentType<any>, {
   boxSizing: 'border-box',
   whiteSpace: 'nowrap',
   border: '1px solid',

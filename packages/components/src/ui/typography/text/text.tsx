@@ -1,6 +1,6 @@
 import { classes } from '../../../utils/system';
 import type { ElementHTML, NormalSize, TextColor } from '../../../../types';
-import { TextWrapper } from './text.styled';
+import { StyledText } from './text.styled';
 
 export type TextProps = ElementHTML & {
   /**
@@ -8,9 +8,9 @@ export type TextProps = ElementHTML & {
    */
   children: string;
   /**
-   * Defines the variant of the component.
+   * Changes which tag component outputs
    */
-  variant?: 'p' | 'span';
+  as?: 'p' | 'span';
   /**
    * Defines the color of the text.
    */
@@ -26,7 +26,7 @@ export type TextProps = ElementHTML & {
 } & Partial<typeof defaultProps>;
 
 const defaultProps = {
-  variant: 'p',
+  as: 'p',
   color: 'inherit',
   size: 'md'
 };
@@ -39,22 +39,21 @@ const defaultProps = {
  *
  * @imports import { Text } from '@react-jopau/components/ui/typography';
  * @example
- * <Text size="md" variant="span">Content</Text>
+ * <Text size="md" as="span">Content</Text>
  */
-export const Text = ({ className, style, children, color, variant, size, maxLines }: TextProps) => {
+export const Text = ({ className, style, children, color, as, size, maxLines }: TextProps) => {
   return (
-    <TextWrapper
-      as={variant}
-      className={classes('text-wrapper', className)}
+    <StyledText
+      as={as}
+      className={classes('text', className)}
       css={{
         ...(maxLines && { lineClamp: maxLines }),
         ...style
       }}
-      variant={variant}
       color={color}
       size={size}>
       {children}
-    </TextWrapper>
+    </StyledText>
   );
 };
 

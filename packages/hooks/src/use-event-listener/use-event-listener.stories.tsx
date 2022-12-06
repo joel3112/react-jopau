@@ -40,14 +40,14 @@ export const Default = () => {
             ■ Scroll the page to see the scroll position change
           </Text>
           Current scroll position:
-          <Heading variant="h3">{scrollPosition.toString()}</Heading>
+          <Heading as="h3">{scrollPosition.toString()}</Heading>
         </SBCard>
         <SBCard title={<SBCode>[target: Document, event: 'mousemove']</SBCode>}>
           <Text size="sm" className="mb-5">
             ■ Move the mouse to see the cursor position change
           </Text>
           Current cursor position:
-          <Heading variant="h3">{`[x=${cursorPosition[0]}, y=${cursorPosition[1]}]`}</Heading>
+          <Heading as="h3">{`[x=${cursorPosition[0]}, y=${cursorPosition[1]}]`}</Heading>
         </SBCard>
       </Space>
     </Container>

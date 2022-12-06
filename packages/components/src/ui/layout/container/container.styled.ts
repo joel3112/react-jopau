@@ -1,6 +1,6 @@
 import { styledTheme } from '../../../index';
 
-export const ContainerWrapper = styledTheme('div', {
+export const StyledContainer = styledTheme('div', {
   display: 'block',
   boxSizing: 'border-box',
   px: '$space$2xl',

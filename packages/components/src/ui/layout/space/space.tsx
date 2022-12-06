@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { classes } from '../../../utils/system';
 import type { ElementHTML } from '../../../../types';
-import { SpaceWrapper } from './space.styled';
+import { StyledSpace } from './space.styled';
 
 type BasicPosition = 'start' | 'center' | 'end';
 export type DirectionSpace = 'row' | 'column' | 'row-reverse' | 'column-reverse';
@@ -13,6 +13,10 @@ type SpaceProps = ElementHTML & {
    * Defines the children of the component.
    */
   children: ReactNode;
+  /**
+   * Changes which tag component outputs
+   */
+  as?: keyof HTMLElementTagNameMap;
   /**
    * Defines the direction of the flex container.
    */
@@ -36,6 +40,7 @@ type SpaceProps = ElementHTML & {
 } & Partial<typeof defaultProps>;
 
 const defaultProps = {
+  as: 'div',
   direction: 'row'
 };
 
@@ -64,6 +69,7 @@ export const Space = ({
   className,
   style,
   children,
+  as,
   direction,
   wrap,
   gap,
@@ -71,8 +77,9 @@ export const Space = ({
   align
 }: SpaceProps) => {
   return (
-    <SpaceWrapper
-      className={classes('space-wrapper', className)}
+    <StyledSpace
+      as={as}
+      className={classes('space', className)}
       css={{
         flexDirection: direction,
         gap: spacing(gap),
@@ -82,7 +89,7 @@ export const Space = ({
       align={align}
       wrap={wrap}>
       {children}
-    </SpaceWrapper>
+    </StyledSpace>
   );
 };
 

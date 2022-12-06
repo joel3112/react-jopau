@@ -1,7 +1,7 @@
 import { Container, Space } from '../../layout';
 import { styledTheme } from '../../../index';
 
-export const HeaderContainer = styledTheme(Container, {
+export const StyledHeaderContent = styledTheme(Container, {
   display: 'flex !important',
   alignItems: 'center',
   justifyContent: 'space-between',
@@ -9,12 +9,12 @@ export const HeaderContainer = styledTheme(Container, {
   maxWidth: 'inherit'
 });
 
-export const HeaderLogo = styledTheme(Space, {
+export const StyledHeaderLogo = styledTheme(Space, {
   width: '$space$fit',
   height: '$space$full'
 });
 
-export const HeaderWrapper = styledTheme('div', {
+export const StyledHeader = styledTheme('div', {
   boxShadow: '$shadows$boxShadow',
   height: '$space$18',
   color: '$colors$text',

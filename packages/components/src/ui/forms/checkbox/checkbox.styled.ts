@@ -9,7 +9,7 @@ enum NextUIEl {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const CheckboxWrapper = styledTheme(CheckboxNextUI as ComponentType<any>, {
+export const StyledCheckbox = styledTheme(CheckboxNextUI as ComponentType<any>, {
   boxSizing: 'border-box',
   width: '$space$fit',
 

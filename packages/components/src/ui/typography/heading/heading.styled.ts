@@ -1,13 +1,13 @@
 import { styledTheme } from '../../../index';
 
-export const HeadingWrapper = styledTheme('h1', {
+export const StyledHeading = styledTheme('h1', {
   display: 'block',
   fontWeight: '$fontWeights$semibold',
   letterSpacing: '$letterSpacings$normal',
   color: 'inherit',
 
   variants: {
-    variant: {
+    as: {
       h1: { fontSize: '$fontSizes$4xl' },
       h2: { fontSize: '$fontSizes$3xl' },
       h3: { fontSize: '$fontSizes$2xl' },

@@ -1,6 +1,6 @@
 import { classes } from '../../../utils/system';
 import type { ElementHTML, TextColor } from '../../../../types';
-import { HeadingWrapper } from './heading.styled';
+import { StyledHeading } from './heading.styled';
 
 type HeadingProps = ElementHTML & {
   /**
@@ -8,9 +8,9 @@ type HeadingProps = ElementHTML & {
    */
   children: string;
   /**
-   * Defines the variant of the component.
+   * Changes which tag component outputs
    */
-  variant?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
   /**
    * Defines the color of the heading.
    */
@@ -18,7 +18,7 @@ type HeadingProps = ElementHTML & {
 } & Partial<typeof defaultProps>;
 
 const defaultProps = {
-  variant: 'h1',
+  as: 'h1',
   color: 'inherit'
 };
 
@@ -30,20 +30,19 @@ const defaultProps = {
  *
  * @imports import { Heading } from '@react-jopau/components/ui/typography';
  * @example
- * <Heading variant="h2">Title</Heading>
+ * <Heading as="h2">Title</Heading>
  */
-export const Heading = ({ className, style, children, variant, color }: HeadingProps) => {
+export const Heading = ({ className, style, children, as, color }: HeadingProps) => {
   return (
-    <HeadingWrapper
-      as={variant}
-      className={classes('heading-wrapper', className)}
+    <StyledHeading
+      as={as}
+      className={classes('heading', className)}
       css={{
         ...style
       }}
-      variant={variant}
       color={color}>
       {children}
-    </HeadingWrapper>
+    </StyledHeading>
   );
 };
 

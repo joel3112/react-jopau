@@ -139,7 +139,7 @@ enum NextUIEl {
   LABEL_RIGHT = '.nextui-input-label--right'
 }
 
-export const InputContentWrapper = styledTheme('div', {
+export const StyledContent = styledTheme('div', {
   display: 'flex',
   scale: 1.35,
 
@@ -153,19 +153,19 @@ export const InputContentWrapper = styledTheme('div', {
 });
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const InputControl = styledTheme(InputNextUI as ComponentType<any>, {
+export const StyledInput = styledTheme(InputNextUI as ComponentType<any>, {
   boxSizing: 'content-box',
   width: '$space$fit'
 });
 
-export const InputLabelGap = styledTheme('div', {
+export const StyledLabelGap = styledTheme('div', {
   width: '$space$full',
   marginBottom: '$$inputLabelGap',
   lineHeight: '$lineHeights$md',
   fontSize: '$$inputLabelFontSize'
 });
 
-export const InputWrapper = styledTheme('div', {
+export const StyledInputWrapper = styledTheme('div', {
   boxSizing: 'border-box',
   display: 'grid',
   width: '$space$fit',

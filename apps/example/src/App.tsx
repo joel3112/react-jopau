@@ -33,7 +33,7 @@ const App = () => {
       <main>
         <Container maxWidth="lg" centered>
           <Space direction="column" gap={20} className="text-text" style={{ padding: '30px 0' }}>
-            <Heading variant="h4" color="primary">
+            <Heading as="h4" color="primary">
               Content
             </Heading>
 

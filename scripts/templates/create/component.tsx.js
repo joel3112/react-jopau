@@ -5,7 +5,7 @@ const templateObject = templateCreator`${({ context }) => `
 import { ReactNode } from 'react';
 import { classes } from '../../../utils/system';
 import type { ElementHTML } from '../../../../types';
-import { ${context.pascalName}Wrapper } from './${context.name}.styled';
+import { Styled${context.pascalName} } from './${context.name}.styled';
 
 type ${context.pascalName}Props = ElementHTML & {
   /**
@@ -39,14 +39,14 @@ export const ${context.pascalName} = ({
   title
 }: ${context.pascalName}Props) => {
   return (
-    <${context.pascalName}Wrapper
-      className={classes('${context.name}-wrapper', className)}
+    <Styled${context.pascalName}
+      className={classes('${context.name}', className)}
       css={{
         ...style
       }}>
       <h2>{title}</h2>
       {children}
-    </${context.pascalName}Wrapper>
+    </Styled${context.pascalName}>
   );
 };
 

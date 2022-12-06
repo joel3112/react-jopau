@@ -19,7 +19,7 @@ import type {
   NormalSize,
   SimpleColor
 } from '../../../../types';
-import { InputContentWrapper, InputControl, InputLabelGap, InputWrapper } from './input.styled';
+import { StyledContent, StyledInput, StyledLabelGap, StyledInputWrapper } from './input.styled';
 
 export type InputProps = ElementHTML &
   FormControl<string> & {
@@ -127,7 +127,7 @@ const InputContent = ({
   children: ReactNode;
   variant: InputProps['variant'];
 }) => {
-  return <InputContentWrapper variant={variant}>{children}</InputContentWrapper>;
+  return <StyledContent variant={variant}>{children}</StyledContent>;
 };
 
 /**
@@ -196,7 +196,7 @@ export const Input = forwardRef<InputProps, 'input'>(
     const handleInput = (e: ChangeEvent<HTMLInputElement>) => setInputValue(e.target.value);
 
     return (
-      <InputWrapper
+      <StyledInputWrapper
         size={size}
         labelPlaceholder={!!labelPlaceholder}
         variant={variant}
@@ -205,8 +205,8 @@ export const Input = forwardRef<InputProps, 'input'>(
         rounded={!!rounded}
         hotKey={!!hotKey}
         fullWidth={!!autoWidth}>
-        {labelPlaceholder && <InputLabelGap>&nbsp;</InputLabelGap>}
-        <InputControl
+        {labelPlaceholder && <StyledLabelGap>&nbsp;</StyledLabelGap>}
+        <StyledInput
           ref={inputRef}
           id={inputId}
           name={name}
@@ -218,7 +218,7 @@ export const Input = forwardRef<InputProps, 'input'>(
           disabled={disabled}
           autoComplete={autoComplete}
           required={required}
-          className={classes('input-wrapper', className)}
+          className={classes('input', className)}
           css={{
             ...style
           }}
@@ -253,7 +253,7 @@ export const Input = forwardRef<InputProps, 'input'>(
           onClearClick={onClearClick}
           onContentClick={onContentClick}
         />
-      </InputWrapper>
+      </StyledInputWrapper>
     );
   }
 );
