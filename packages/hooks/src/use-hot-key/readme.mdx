@@ -1,0 +1,55 @@
+import {
+  SBArgsTable,
+  SBDescription,
+  SBSubTitle,
+  SBThemeStories,
+  SBTitle
+} from '@react-jopau/styles/components';
+
+<SBThemeStories />
+
+<SBTitle>useHotKey</SBTitle>
+
+<SBDescription>Listen to a hotkey and execute a callback.</SBDescription>
+
+```tsx dark
+import { useHotKey } from '@react-jopau/hooks';
+```
+
+<SBSubTitle>Examples</SBSubTitle>
+
+```tsx dark
+const hotKeyShort = useHotKey('ctrl+shift+e', () => console.log('ctrl+shift+e'));
+const hotKeyShort2 = useHotKey('meta+k', () => console.log('meta+k'));
+
+console.log(hotKeyShort); // Mac: ^⇧E | Windows: CtrlShiftE
+console.log(hotKeyShort2); // Mac: ⌘K | Windows: WinK
+```
+
+<SBSubTitle>Params</SBSubTitle>
+
+<SBArgsTable
+  rows={{
+    handler: {
+      name: 'handler',
+      description: 'Callback to call when the hot key is triggered',
+      required: true,
+      type: '() => void'
+    },
+    hotKey: { name: 'hotKey', description: 'Hot key to listen', required: true, type: 'string' }
+  }}
+/>
+
+<SBSubTitle>Returns</SBSubTitle>
+
+<SBArgsTable
+  noDefaults
+  rows={{
+    'result.shortHotKey': {
+      name: 'result.shortHotKey',
+      description: 'Short hotkey version. Example: ⌘K (Mac) or WinK (Windows)',
+      required: false,
+      type: 'string'
+    }
+  }}
+/>
