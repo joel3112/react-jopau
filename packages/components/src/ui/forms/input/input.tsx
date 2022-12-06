@@ -4,6 +4,7 @@ import {
   MouseEvent,
   ReactNode,
   Ref,
+  useEffect,
   useId,
   useImperativeHandle,
   useRef,
@@ -31,6 +32,10 @@ export type InputProps = ElementHTML &
      */
     labelPlaceholder?: string;
     /**
+     * Defines the placeholder of the input element.
+     */
+    placeholder?: string;
+    /**
      * Defines the size of the component.
      */
     size?: NormalSize;
@@ -42,6 +47,10 @@ export type InputProps = ElementHTML &
      * Defines the variant of the component.
      */
     variant?: 'default' | 'bordered' | 'underlined';
+    /**
+     * Defines the helper text of the input element.
+     */
+    helperText?: string;
     /**
      * Defines if the input element can be cleared by clicking the clear button.
      */
@@ -174,6 +183,10 @@ export const Input = forwardRef<InputProps, 'input'>(
     const [inputValue, setInputValue] = useState<string | number>(value || '');
     const { shortHotKey } = useHotKey(hotKey || '', () => inputRef.current?.focus());
 
+    useEffect(() => {
+      setInputValue(value || '');
+    }, [value]);
+
     useImperativeHandle(ref, () => ({
       focus: () => {
         inputRef.current?.focus();
@@ -198,7 +211,6 @@ export const Input = forwardRef<InputProps, 'input'>(
           id={inputId}
           name={name}
           type={type}
-          label={label}
           aria-label={inputAriaLabel}
           placeholder={placeholder}
           value={inputValue}
@@ -210,6 +222,7 @@ export const Input = forwardRef<InputProps, 'input'>(
           css={{
             ...style
           }}
+          label={label}
           shadow={false}
           borderWeight="light"
           size={size}

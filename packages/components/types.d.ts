@@ -16,7 +16,7 @@ export type NormalSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
 export type ContentPosition = 'left' | 'right';
 
-export type FormControl<TValue = string | number | boolean> = {
+export type FormControl<TValue = string | number | boolean, TStatus = SimpleColor> = {
   /**
    * Identifies the element that labels the current element.
    */
@@ -26,7 +26,7 @@ export type FormControl<TValue = string | number | boolean> = {
    */
   name?: string;
   /**
-   * Defines the value of the current element.
+   * Defines the value of the current element, used when submitting a form.
    */
   value?: TValue;
   /**
@@ -34,17 +34,9 @@ export type FormControl<TValue = string | number | boolean> = {
    */
   label?: string;
   /**
-   * Defines the placeholder of the current element.
-   */
-  placeholder?: string;
-  /**
-   * Defines the helper text of the current element.
-   */
-  helperText?: string;
-  /**
    * Defines the status of the element and determines the color of the border.
    */
-  status?: SimpleColor;
+  status?: TStatus;
   /**
    * Defines if the element is read-only.
    */
