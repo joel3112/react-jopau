@@ -1,9 +1,7 @@
 import * as _ from 'lodash';
 import { TAny, TBasic } from './index';
 
-export type TObject<T = TAny, U extends string | number | symbol = string> = {
-  [index in U]: T;
-};
+export type TObject<T = TAny, U extends string | number | symbol = string> = Record<U, T>;
 
 export const getPropValue = <T = TObject, U = TAny>(
   object: T,

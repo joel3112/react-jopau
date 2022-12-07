@@ -8,5 +8,5 @@
     "types": ["node", "jest"],
     "baseUrl": "."
   },
-  "include": ["src/**/*.ts"]
+  "include": ["src/**/*.ts", "types.d.ts"]
 }

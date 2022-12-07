@@ -1,4 +1,12 @@
-import { includes, isEmpty, size, some, sortBy, TCollection } from '../src/collection';
+import {
+  includes,
+  isEmpty,
+  size,
+  some,
+  sortBy,
+  sortByPriority,
+  TCollection
+} from '../src/collection';
 
 describe('Collection helper methods', () => {
   describe('isEmpty', () => {
@@ -11,7 +19,7 @@ describe('Collection helper methods', () => {
     });
 
     test('returns false in not empty object', () => {
-      expect(isEmpty<number>({ a: 1, b: 3 })).toBeFalsy();
+      expect(isEmpty<Record<string, number>>({ a: 1, b: 3 })).toBeFalsy();
     });
 
     test('returns true in array with empty values', () => {
@@ -25,7 +33,7 @@ describe('Collection helper methods', () => {
 
   describe('size', () => {
     test('returns size in array', () => {
-      expect(size([1, 2, 3])).toBe(3);
+      expect(size([{ a: 1 }, { b: 2 }, { c: 3 }])).toBe(3);
     });
 
     test('returns size in object', () => {
@@ -77,7 +85,7 @@ describe('Collection helper methods', () => {
         name: 'a'
       }
     ];
-    const collectionObject: TCollection<{ age: number }> = {
+    const collectionObject: TCollection<Record<string, { age: number }>> = {
       b: {
         age: 10
       },
@@ -138,7 +146,7 @@ describe('Collection helper methods', () => {
     });
 
     test('returns array object sorted descending from object', () => {
-      expect(sortBy(collectionObject, 'age', 'desc')).toStrictEqual([
+      expect(sortBy<Object>(collectionObject, 'age', 'desc')).toStrictEqual([
         {
           age: 15
         },
@@ -152,7 +160,7 @@ describe('Collection helper methods', () => {
     });
 
     test('returns array object sorted ascending from object', () => {
-      expect(sortBy(collectionObject, 'age', 'asc')).toStrictEqual([
+      expect(sortBy<Object>(collectionObject, 'age', 'asc')).toStrictEqual([
         {
           age: 1
         },
@@ -171,6 +179,113 @@ describe('Collection helper methods', () => {
         { id: 'b', detail: { age: 10 } },
         { id: 'c', detail: { age: 15 } }
       ]);
+    });
+  });
+
+  describe('sortByPriority', () => {
+    const orders = ['Events', 'Props', 'Common'];
+    const collectionArray: TCollection<Object> = [
+      {
+        id: 'id',
+        category: { name: 'Props' }
+      },
+      {
+        id: 'onClick',
+        category: { name: 'Events' }
+      },
+      {
+        id: 'value',
+        category: { name: 'Props' }
+      },
+      {
+        id: 'className',
+        category: { name: 'Common' }
+      }
+    ];
+    const collectionObject: TCollection<Object> = {
+      id: {
+        id: 'id',
+        category: { name: 'Props' }
+      },
+      onClick: {
+        id: 'onClick',
+        category: { name: 'Events' }
+      },
+      value: {
+        id: 'value',
+        category: { name: 'Props' }
+      },
+      className: {
+        id: 'className',
+        category: { name: 'Common' }
+      }
+    };
+
+    test('returns array sorted from array', () => {
+      expect(sortByPriority(collectionArray, 'category.name', orders)).toStrictEqual([
+        {
+          id: 'onClick',
+          category: { name: 'Events' }
+        },
+        {
+          id: 'id',
+          category: { name: 'Props' }
+        },
+        {
+          id: 'value',
+          category: { name: 'Props' }
+        },
+        {
+          id: 'className',
+          category: { name: 'Common' }
+        }
+      ]);
+    });
+
+    test('returns array sorted from object', () => {
+      expect(sortByPriority<Object>(collectionObject, 'category.name', orders)).toStrictEqual({
+        onClick: {
+          id: 'onClick',
+          category: { name: 'Events' }
+        },
+        id: {
+          id: 'id',
+          category: { name: 'Props' }
+        },
+        value: {
+          id: 'value',
+          category: { name: 'Props' }
+        },
+        className: {
+          id: 'className',
+          category: { name: 'Common' }
+        }
+      });
+    });
+
+    test('returns descending array sorted from object', () => {
+      expect(sortByPriority(collectionObject, 'category.name', orders, 'desc')).toStrictEqual({
+        className: {
+          id: 'className',
+          category: { name: 'Common' }
+        },
+        value: {
+          id: 'value',
+          category: { name: 'Props' }
+        },
+        id: {
+          id: 'id',
+          category: { name: 'Props' }
+        },
+        onClick: {
+          id: 'onClick',
+          category: { name: 'Events' }
+        }
+      });
+    });
+
+    test('returns same array without orders', () => {
+      expect(sortByPriority(collectionObject, 'category.name')).toStrictEqual(collectionObject);
     });
   });
 });
