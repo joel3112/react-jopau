@@ -1,10 +1,4 @@
-import {
-  SBDescription,
-  SBDocsArgsTable,
-  SBStories,
-  SBSubTitle,
-  SBTitle
-} from '@react-jopau/styles/components';
+import { SBArgsTable, SBStories, SBTitle, SBDescription } from '@react-jopau/styles/components';
 import { Text } from './text';
 
 <SBTitle>Text</SBTitle>
@@ -18,13 +12,9 @@ import { Text } from './text';
 import { Text } from '@react-jopau/components/ui/typography';
 ```
 
-<SBStories.Item id="components-typography-text--default" canvasProps={{ withToolbar: true }} />
+<SBStories.Default id="components-typography-text--default" />
 
-<SBSubTitle>Properties</SBSubTitle>
-
-<SBDocsArgsTable story="." noControls />
-
-<SBSubTitle>Stories</SBSubTitle>
+<SBArgsTable component={Text} />
 
 <SBStories>
 <SBStories.Item label="As" id="components-typography-text--as" />

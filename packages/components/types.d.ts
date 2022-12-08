@@ -1,4 +1,4 @@
-import { CSSProperties } from 'react';
+import { CSSProperties, ReactNode } from 'react';
 
 export type NormalColor =
   | 'primary'
@@ -15,6 +15,18 @@ export type ButtonColor = NormalColor | 'light' | 'dark';
 export type NormalSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
 export type ContentPosition = 'left' | 'right';
+
+export type WithIcon = {
+  /**
+   * Defines the render of the icon of the component.
+   * See <a href="https://react-icons.github.io/react-icons/" target="_blank">react-icons</a> for more details.
+   */
+  icon?: ReactNode;
+  /**
+   * Defines the position of the icon in the component.
+   */
+  iconPosition?: ContentPosition;
+};
 
 export type FormControl<TValue = string | number | boolean, TStatus = SimpleColor> = {
   /**

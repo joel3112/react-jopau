@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { MdAdd } from 'react-icons/md';
-import { SBTextSeparator, TWSelectorContainer } from '@react-jopau/styles/components';
+import { SBTextSeparator, SBSelectorContainer } from '@react-jopau/styles/components';
 import { prepareArgTypes, prepareParameters } from '../../../utils/story-helpers';
 import { Space } from '../../layout';
 import { Button } from './button';
@@ -60,7 +60,7 @@ export const Variants = () => (
 );
 
 export const Colors = () => (
-  <TWSelectorContainer
+  <SBSelectorContainer
     label={['Select variant']}
     items={[
       [
@@ -103,11 +103,11 @@ export const Colors = () => (
         </Button>
       </Space>
     )}
-  </TWSelectorContainer>
+  </SBSelectorContainer>
 );
 
 export const IconOnly = () => (
-  <TWSelectorContainer
+  <SBSelectorContainer
     label={['Select variant']}
     items={[
       [
@@ -139,7 +139,7 @@ export const IconOnly = () => (
         </Space>
       </Space>
     )}
-  </TWSelectorContainer>
+  </SBSelectorContainer>
 );
 
 export const TextAndIcon = () => (
@@ -173,7 +173,7 @@ export const TextAndIcon = () => (
 );
 
 export const Rounded = () => (
-  <TWSelectorContainer
+  <SBSelectorContainer
     label={['Select variant']}
     items={[
       [
@@ -195,7 +195,7 @@ export const Rounded = () => (
         <Button variant={variant} icon={<MdAdd />} rounded />
       </Space>
     )}
-  </TWSelectorContainer>
+  </SBSelectorContainer>
 );
 
 export const Disabled = () => (

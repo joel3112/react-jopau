@@ -1,5 +1,5 @@
 import {
-  SBArgsTable,
+  SBPureArgsTable,
   SBDescription,
   SBSubTitle,
   SBThemeStories,
@@ -38,9 +38,8 @@ const rules = { xs: 650, sm: 960 };
 const { key } = useBreakpoint(rules);
 ```
 
-<SBSubTitle>Params</SBSubTitle>
-
-<SBArgsTable
+<SBPureArgsTable
+  heading="Params"
   rows={{
     rules: {
       name: 'rules',
@@ -81,9 +80,8 @@ const { key } = useBreakpoint(rules);
   }}
 />
 
-<SBSubTitle>Returns</SBSubTitle>
-
-<SBArgsTable
+<SBPureArgsTable
+  heading="Returns"
   noDefaults
   rows={{
     'result.isDesktop': {

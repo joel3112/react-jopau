@@ -1,11 +1,11 @@
 import { FormEvent, useState } from 'react';
-import { SBCode, SBSONPreview } from '@react-jopau/styles/components';
+import { SBCode, SBJSONPreview } from '@react-jopau/styles/components';
 import { Container, Space } from '@react-jopau/components/ui/layout';
 import { Button, Input } from '@react-jopau/components/ui/forms';
+import { Text } from '@react-jopau/components/ui/typography';
 import { prepareParameters } from '../story-helpers';
 import { useFetch } from './use-fetch';
 import docs from './readme.mdx';
-import { Text } from '@react-jopau/components/ui/typography';
 
 export default {
   title: 'useFetch',
@@ -63,11 +63,11 @@ export const Default = () => {
         </Space>
         <Space align="start" gap={10} wrap>
           <SBCode>data:</SBCode>
-          <SBSONPreview code={data} />
+          <SBJSONPreview code={data} />
         </Space>
         <Space align="start" gap={10} wrap>
           <SBCode>error:</SBCode>
-          <SBSONPreview code={error} />
+          <SBJSONPreview code={error} />
         </Space>
       </Space>
     </Container>

@@ -1,5 +1,5 @@
 import {
-  SBArgsTable,
+  SBPureArgsTable,
   SBDescription,
   SBSubTitle,
   SBThemeStories,
@@ -36,9 +36,8 @@ useEventListener('click', onClick, buttonRef);
 return <button ref={buttonRef}>Click me</button>;
 ```
 
-<SBSubTitle>Params</SBSubTitle>
-
-<SBArgsTable
+<SBPureArgsTable
+  heading="Params"
   rows={{
     element: {
       name: 'element',

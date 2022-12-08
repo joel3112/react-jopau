@@ -2,14 +2,8 @@ import { ReactNode, useState } from 'react';
 import { TbPalette } from 'react-icons/tb';
 import { IconButton, TooltipLinkList, WithTooltip } from '@storybook/components';
 
-/**
- * Component custom tailwindcss classes
- */
-
-/* ==== selector-container ===================================================== */
-
 type SelectorItem = { label: string; value: string };
-export const TWSelectorContainer = ({
+export const SBSelectorContainer = ({
   label,
   items,
   value,

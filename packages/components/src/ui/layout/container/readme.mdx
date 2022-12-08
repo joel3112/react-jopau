@@ -1,10 +1,4 @@
-import {
-  SBDescription,
-  SBDocsArgsTable,
-  SBStories,
-  SBSubTitle,
-  SBTitle
-} from '@react-jopau/styles/components';
+import { SBArgsTable, SBStories, SBTitle, SBDescription } from '@react-jopau/styles/components';
 import { Container } from './container';
 
 <SBTitle>Container</SBTitle>
@@ -17,13 +11,9 @@ import { Container } from './container';
 import { Container } from '@react-jopau/components/ui/layout';
 ```
 
-<SBStories.Item id="components-layout-container--default" canvasProps={{ withToolbar: true }} />
+<SBStories.Default id="components-layout-container--default" />
 
-<SBSubTitle>Properties</SBSubTitle>
-
-<SBDocsArgsTable story="." noControls />
-
-<SBSubTitle>Stories</SBSubTitle>
+<SBArgsTable component={Container} />
 
 <SBStories>
 <SBStories.Item label="Gap" id="components-layout-container--gap" />

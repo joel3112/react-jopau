@@ -16,19 +16,23 @@ import {
 import classnames from 'classnames';
 
 type As<Props = any> = ElementType<Props>;
+
 type OmitCommonProps<Target, OmitAdditionalProps extends keyof any = never> = Omit<
   Target,
   OmitAdditionalProps
 >;
+
 type RightJoinProps<
   SourceProps extends object = {},
   OverrideProps extends object = {}
 > = OmitCommonProps<SourceProps, keyof OverrideProps> & OverrideProps;
+
 type MergeWithAs<
   ComponentProps extends object,
   AsProps extends object,
   AdditionalProps extends object = {}
 > = RightJoinProps<ComponentProps, AdditionalProps> & RightJoinProps<AsProps, AdditionalProps>;
+
 type ComponentWithAs<Component extends As, Props extends object = {}> = {
   <AsComponent extends As = Component>(
     props: MergeWithAs<ComponentProps<Component>, ComponentProps<AsComponent>, Props>
@@ -40,9 +44,7 @@ type ComponentWithAs<Component extends As, Props extends object = {}> = {
   defaultProps?: Partial<any>;
   id?: string;
 };
-/**
- * Extract the props of a React element or component
- */
+
 type PropsOf<T extends As> = ComponentPropsWithoutRef<T>;
 
 export const forwardRef = <Props extends object, Component extends As>(

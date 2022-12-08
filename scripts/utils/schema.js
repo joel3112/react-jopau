@@ -32,7 +32,7 @@ const getPackageName = (componentPath) => {
   return componentPath.replace(/packages\/(.*)\/src\/(.*)/g, '$1');
 };
 
-const getComponentParsed = (componentPath, schemaProps) => {
+const getComponentParsed = (componentPath, schemaProps, isSubComponent) => {
   const packageName = getPackageName(componentPath);
   const displayName = get(schemaProps, 'name');
   const displayNameJoined = lowerCase(displayName).replace(/ /g, '');
@@ -42,10 +42,11 @@ const getComponentParsed = (componentPath, schemaProps) => {
   const categories = diffPath.replace(new RegExp(`packages/${packageName}/src/(.*)/`), '$1');
   const [categoryRoot, ...restCategories] = categories.split('/');
   const restCategoriesJoined = restCategories.length ? `-${restCategories.join('-')}` : '';
-  const componentType = {
-    ui: 'components',
-    contexts: 'providers'
-  };
+  const componentType = { ui: 'components', contexts: 'providers' };
+  const storiesPrefixId =
+    categories !== diffPath
+      ? `${get(componentType, categoryRoot)}${restCategoriesJoined}-${displayNameJoined}`
+      : `${packageName}-${displayNameJoined}`;
 
   return {
     componentPath,
@@ -59,15 +60,18 @@ const getComponentParsed = (componentPath, schemaProps) => {
     fileName,
     packageName,
     categories: categories !== diffPath ? restCategories : [],
-    storiesPrefixId:
-      categories !== diffPath
-        ? `${get(componentType, categoryRoot)}${restCategoriesJoined}-${displayNameJoined}`
-        : `${packageName}-${displayNameJoined}`
+    storiesPrefixId: !isSubComponent
+      ? storiesPrefixId
+      : storiesPrefixId.replace(`-${displayNameJoined}`, '')
   };
 };
 
-const getStories = (componentPath, schemaProps) => {
-  const { storiesPrefixId, storiesPath } = getComponentParsed(componentPath, schemaProps);
+const getStories = (componentPath, schemaProps, componentPathParent) => {
+  const { storiesPrefixId, storiesPath } = getComponentParsed(
+    componentPath,
+    schemaProps,
+    !!componentPathParent
+  );
   const stories = {};
 
   try {

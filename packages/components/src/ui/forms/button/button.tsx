@@ -1,55 +1,47 @@
 import { MouseEvent, ReactNode, Ref, useImperativeHandle, useRef } from 'react';
 import { classes, forwardRef } from '../../../utils/system';
-import type { ButtonColor, ContentPosition, ElementHTML, NormalSize } from '../../../../types';
+import type { ButtonColor, ElementHTML, NormalSize, WithIcon } from '../../../../types';
 import { StyledButtonIcon, StyledButton } from './button.styled';
 
-export type ButtonProps = ElementHTML & {
-  /**
-   * Defines the children of the component.
-   */
-  children?: string;
-  /**
-   * Defines the native type of the button element.
-   */
-  type?: 'button' | 'submit' | 'reset';
-  /**
-   * Defines the color of button.
-   */
-  color?: ButtonColor;
-  /**
-   * Defines the size of the component.
-   */
-  size?: NormalSize;
-  /**
-   * Defines the variant of the component.
-   */
-  variant?: 'solid' | 'bordered' | 'ghost' | 'flat' | 'clear';
-  /**
-   * Defines if the button is disabled and not clickable.
-   */
-  disabled?: boolean;
-  /**
-   * Defines the round shape of the component.
-   */
-  rounded?: boolean;
-  /**
-   * Defines if the button takes the fit width of its parent.
-   */
-  autoWidth?: boolean;
-  /**
-   * Defines the render of the icon of the component.
-   * See <a href="https://react-icons.github.io/react-icons/" target="_blank">react-icons</a> for more details.
-   */
-  icon?: ReactNode;
-  /**
-   * Defines the position of the icon in the component.
-   */
-  iconPosition?: ContentPosition;
-  /**
-   * Function to be called when the button is clicked.
-   */
-  onClick?: (e: MouseEvent<HTMLButtonElement>) => void;
-} & Partial<typeof defaultProps>;
+export type ButtonProps = ElementHTML &
+  WithIcon & {
+    /**
+     * Defines the children of the component.
+     */
+    children?: string;
+    /**
+     * Defines the native type of the button element.
+     */
+    type?: 'button' | 'submit' | 'reset';
+    /**
+     * Defines the color of button.
+     */
+    color?: ButtonColor;
+    /**
+     * Defines the size of the component.
+     */
+    size?: NormalSize;
+    /**
+     * Defines the variant of the component.
+     */
+    variant?: 'solid' | 'bordered' | 'ghost' | 'flat' | 'clear';
+    /**
+     * Defines if the button is disabled and not clickable.
+     */
+    disabled?: boolean;
+    /**
+     * Defines the round shape of the component.
+     */
+    rounded?: boolean;
+    /**
+     * Defines if the button takes the fit width of its parent.
+     */
+    autoWidth?: boolean;
+    /**
+     * Function to be called when the button is clicked.
+     */
+    onClick?: (e: MouseEvent<HTMLButtonElement>) => void;
+  } & Partial<typeof defaultProps>;
 
 const defaultProps = {
   color: 'primary',
@@ -92,15 +84,11 @@ export const Button = forwardRef<ButtonProps, 'button'>(
       type,
       onClick
     }: ButtonProps,
-    ref: Ref<Partial<HTMLButtonElement>>
+    ref: Ref<HTMLButtonElement | null>
   ) => {
     const buttonRef = useRef<HTMLButtonElement>(null);
 
-    useImperativeHandle(ref, () => ({
-      click: () => {
-        buttonRef && buttonRef.current?.click();
-      }
-    }));
+    useImperativeHandle(ref, () => buttonRef.current);
 
     const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
       if (disabled) {

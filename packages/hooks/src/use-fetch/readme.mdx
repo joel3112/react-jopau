@@ -1,5 +1,5 @@
 import {
-  SBArgsTable,
+  SBPureArgsTable,
   SBDescription,
   SBSubTitle,
   SBThemeStories,
@@ -54,9 +54,8 @@ const { data, error } = useFetch<{}, Error>('https://jsonplaceholder.typicode.co
 });
 ```
 
-<SBSubTitle>Params</SBSubTitle>
-
-<SBArgsTable
+<SBPureArgsTable
+  heading="Params"
   rows={{
     options: {
       name: 'options',
@@ -107,9 +106,8 @@ const { data, error } = useFetch<{}, Error>('https://jsonplaceholder.typicode.co
   }}
 />
 
-<SBSubTitle>Returns</SBSubTitle>
-
-<SBArgsTable
+<SBPureArgsTable
+  heading="Returns"
   noDefaults
   rows={{
     'result.data': {

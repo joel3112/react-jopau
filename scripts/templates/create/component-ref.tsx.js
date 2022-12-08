@@ -40,15 +40,11 @@ export const ${context.pascalName} = forwardRef<${context.pascalName}Props, 'div
       children,
       title
     }: ${context.pascalName}Props,
-    ref: Ref<Partial<HTMLDivElement>>
+    ref: Ref<HTMLDivElement | null>
   ) => {
     const elementRef = useRef<HTMLDivElement>(null);
 
-    useImperativeHandle(ref, () => ({
-      click: () => {
-        elementRef && elementRef.current?.click();
-      }
-    }));
+    useImperativeHandle(ref, () => elementRef.current);
     
     return (
       <${context.pascalName}Wrapper

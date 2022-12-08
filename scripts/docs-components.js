@@ -4,7 +4,7 @@ const path = require('path');
 const glob = require('glob-promise');
 const { program } = require('commander');
 const clc = require('cli-color');
-const { get, last } = require('lodash');
+const { get, last, capitalize } = require('lodash');
 const {
   getStories,
   getCustomTag,
@@ -44,6 +44,7 @@ const generateComponentDocs = async (type, componentNameOne) => {
   let files = await glob(`packages/components/src/${type}/**/*.{ts,tsx}`, {
     ignore: ['**/*.{test,stories,styled}.{ts,tsx}', '**/index.{ts,tsx}']
   });
+  const componentNames = files.map((file) => path.parse(file).name);
 
   if (componentNameOne) {
     const componentNameFound = files.find((file) => file.includes(`${componentNameOne}.tsx`));
@@ -55,9 +56,14 @@ const generateComponentDocs = async (type, componentNameOne) => {
     }
   }
 
-  files.forEach((componentPath) => {
+  files.forEach((componentPath, index) => {
     try {
       const componentName = path.basename(componentPath, path.extname(componentPath));
+      const componentNamesFilteredByName = componentNames
+        .slice(0, index + 1)
+        .filter((name) => name.startsWith(componentName.split('-')[0]));
+      const isSubComponent = componentNamesFilteredByName.length > 1;
+      const componentNameParent = isSubComponent ? componentNamesFilteredByName[0] : null;
 
       /**
        * Generate JSON schema from JSDoc
@@ -68,7 +74,9 @@ const generateComponentDocs = async (type, componentNameOne) => {
           configure: './jsdoc2md.json'
         })
       );
-      introComponentsProps.push(parseComponentCardProps(componentPath, jsdocSchema));
+      if (!isSubComponent) {
+        introComponentsProps.push(parseComponentCardProps(componentPath, jsdocSchema));
+      }
 
       // Generate documentation from JSDoc comments
       const customParser = docgen.withCompilerOptions(
@@ -81,7 +89,13 @@ const generateComponentDocs = async (type, componentNameOne) => {
         }
       );
       const componentDocs = last(customParser.parse(componentPath));
-      const stories = getStories(componentPath, jsdocSchema);
+      const stories = getStories(componentPath, jsdocSchema, componentNameParent);
+      const displayName = !isSubComponent
+        ? componentDocs.displayName
+        : [componentNameParent, componentName.replace(`${componentNameParent}-`, '')]
+            .filter(Boolean)
+            .map(capitalize)
+            .join('.');
 
       /**
        * Generate file MDX
@@ -94,6 +108,10 @@ const generateComponentDocs = async (type, componentNameOne) => {
         documentationMDXPath,
         rendererMDX.renderDoc(componentPath, {
           ...componentDocs,
+          displayName,
+          parentPath: componentNameParent,
+          parentName:
+            componentNameParent && componentNameParent.split('-').map(capitalize).join(''),
           imports: getCustomTag(jsdocSchema, 'imports'),
           stories: stories || {}
         }),
@@ -111,18 +129,31 @@ const generateComponentDocs = async (type, componentNameOne) => {
         documentationMDPath,
         rendererMD.renderDoc(componentPath, {
           ...componentDocs,
+          displayName,
+          parentPath: componentNameParent,
+          parentName:
+            componentNameParent && componentNameParent.split('-').map(capitalize).join(''),
           imports: getCustomTag(jsdocSchema, 'imports'),
           examples: get(jsdocSchema, 'examples')
         }),
         'mdx'
       );
 
-      console.log(
-        preffix,
-        clc.blue(componentName, '=>', componentPath),
-        !stories ? `(No stories found)` : '',
-        clc.green('✔')
-      );
+      if (!isSubComponent) {
+        console.log(
+          preffix,
+          clc.blue(componentName, '=>', componentPath),
+          !stories ? `(No stories found)` : '',
+          clc.green('✔')
+        );
+      } else {
+        console.log(
+          preffix,
+          clc.blue(' ↳', componentName, '=>', componentPath),
+          !stories ? `(No stories found)` : '',
+          clc.green('✔')
+        );
+      }
     } catch (error) {
       console.log(
         preffix,

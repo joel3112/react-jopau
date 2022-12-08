@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { merge } from '@react-jopau/utils/dist/object';
+import { merge } from '@react-jopau/utils/object';
 
 const eventsActions = {
   onClick: 'clicked',
@@ -26,6 +26,9 @@ export const prepareArgTypes = (
     if (['className', 'style', 'id', 'ref'].includes(key)) {
       return { ...acc, [key]: category('Common') };
     }
+    if (key.toLowerCase().includes('icon')) {
+      return { ...acc, [key]: category('Icon') };
+    }
     if (new RegExp('^on[A-Z].*').test(key)) {
       return {
         ...acc,
@@ -40,10 +43,11 @@ export const prepareArgTypes = (
     return { ...acc, [key]: category('Props') };
   }, {});
 
-  return merge(categories, argTypes || {});
+  return merge(argTypes || {}, categories);
 };
 
 export const prepareParameters = (docs: unknown) => ({
+  controls: { sort: 'requiredFirst' },
   docs: {
     page: docs,
     source: {

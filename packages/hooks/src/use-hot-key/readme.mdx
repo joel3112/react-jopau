@@ -1,5 +1,5 @@
 import {
-  SBArgsTable,
+  SBPureArgsTable,
   SBDescription,
   SBSubTitle,
   SBThemeStories,
@@ -26,9 +26,8 @@ console.log(hotKeyShort); // Mac: ^⇧E | Windows: CtrlShiftE
 console.log(hotKeyShort2); // Mac: ⌘K | Windows: WinK
 ```
 
-<SBSubTitle>Params</SBSubTitle>
-
-<SBArgsTable
+<SBPureArgsTable
+  heading="Params"
   rows={{
     handler: {
       name: 'handler',
@@ -40,9 +39,8 @@ console.log(hotKeyShort2); // Mac: ⌘K | Windows: WinK
   }}
 />
 
-<SBSubTitle>Returns</SBSubTitle>
-
-<SBArgsTable
+<SBPureArgsTable
+  heading="Returns"
   noDefaults
   rows={{
     'result.shortHotKey': {

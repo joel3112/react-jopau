@@ -1,10 +1,4 @@
-import {
-  SBDescription,
-  SBDocsArgsTable,
-  SBStories,
-  SBSubTitle,
-  SBTitle
-} from '@react-jopau/styles/components';
+import { SBArgsTable, SBStories, SBTitle, SBDescription } from '@react-jopau/styles/components';
 import { Button } from './button';
 
 <SBTitle>Button</SBTitle>
@@ -18,13 +12,9 @@ import { Button } from './button';
 import { Button } from '@react-jopau/components/ui/forms';
 ```
 
-<SBStories.Item id="components-forms-button--default" canvasProps={{ withToolbar: true }} />
+<SBStories.Default id="components-forms-button--default" />
 
-<SBSubTitle>Properties</SBSubTitle>
-
-<SBDocsArgsTable story="." noControls />
-
-<SBSubTitle>Stories</SBSubTitle>
+<SBArgsTable component={Button} />
 
 <SBStories>
 <SBStories.Item label="Sizes" id="components-forms-button--sizes" />

@@ -28,8 +28,8 @@ export const Default = () => {
         </Space>
 
         {show && (
-          <SBCard className="mt-10 w-[200px] flex justify-center" title="Card shown/hidden">
-            Content
+          <SBCard className="mt-10 w-[200px]" title="Card shown/hidden">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat libero, similique.
           </SBCard>
         )}
       </Space>

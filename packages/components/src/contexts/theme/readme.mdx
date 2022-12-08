@@ -1,10 +1,4 @@
-import {
-  SBDescription,
-  SBDocsArgsTable,
-  SBStories,
-  SBSubTitle,
-  SBTitle
-} from '@react-jopau/styles/components';
+import { SBArgsTable, SBStories, SBTitle, SBDescription } from '@react-jopau/styles/components';
 import { ThemeProvider } from './theme-context';
 
 <SBTitle>ThemeProvider</SBTitle>
@@ -17,13 +11,9 @@ import { ThemeProvider } from './theme-context';
 import { ThemeProvider } from '@react-jopau/components/contexts';
 ```
 
-<SBStories.Item id="providers-themeprovider--default" canvasProps={{ withToolbar: true }} />
+<SBStories.Default id="providers-themeprovider--default" />
 
-<SBSubTitle>Properties</SBSubTitle>
-
-<SBDocsArgsTable story="." noControls />
-
-<SBSubTitle>Stories</SBSubTitle>
+<SBArgsTable component={ThemeProvider} />
 
 <SBStories>
   <SBStories.Item label="Dark Mode" id="providers-themeprovider--dark-mode" />
