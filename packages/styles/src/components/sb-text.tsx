@@ -3,7 +3,7 @@ import classes from 'classnames';
 
 export const SBCode = ({ children }: { children: ReactNode }) => {
   return (
-    <div className="font-code text-black text-sm w-fit flex py-1 items-center px-2 rounded-[5px] bg-[#ccc]">
+    <div className="inline-block font-code text-black text-sm w-fit py-1 px-2 rounded-[5px] bg-[#ccc]">
       {children}
     </div>
   );

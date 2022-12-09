@@ -1,10 +1,4 @@
-import {
-  SBDescription,
-  SBDocsArgsTable,
-  SBStories,
-  SBSubTitle,
-  SBTitle
-} from '@react-jopau/styles/components';
+import { SBArgsTable, SBStories, SBTitle, SBDescription } from '@react-jopau/styles/components';
 import { Input } from './input';
 
 <SBTitle>Input</SBTitle>
@@ -17,13 +11,9 @@ import { Input } from './input';
 import { Input } from '@react-jopau/components/ui/forms';
 ```
 
-<SBStories.Item id="components-forms-input--default" canvasProps={{ withToolbar: true }} />
+<SBStories.Default id="components-forms-input--default" />
 
-<SBSubTitle>Properties</SBSubTitle>
-
-<SBDocsArgsTable story="." noControls />
-
-<SBSubTitle>Stories</SBSubTitle>
+<SBArgsTable component={Input} />
 
 <SBStories>
 <SBStories.Item label="Types" id="components-forms-input--types" />
@@ -44,17 +34,17 @@ import { Input } from '@react-jopau/components/ui/forms';
 
 <SBStories.Item label="Label Left And Right" id="components-forms-input--label-left-and-right" />
 
+<SBStories.Item label="Shape" id="components-forms-input--shape" />
+
 <SBStories.Item label="Hot Key" id="components-forms-input--hot-key" />
 
 <SBStories.Item label="Disabled" id="components-forms-input--disabled" />
 
 <SBStories.Item label="Read Only" id="components-forms-input--read-only" />
 
-<SBStories.Item label="Rounded" id="components-forms-input--rounded" />
-
 <SBStories.Item label="Clearable" id="components-forms-input--clearable" />
 
 <SBStories.Item label="Auto Width" id="components-forms-input--auto-width" />
 
-<SBStories.Item label="Ref" id="components-forms-input--ref" />
+<SBStories.Item label="Uncontrolled Vs Controlled" id="components-forms-input--uncontrolled-vs-controlled" />
 </SBStories>

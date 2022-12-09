@@ -30,7 +30,7 @@ export type WithIcon = {
   iconPosition?: ContentPosition;
 };
 
-export type FormControl<TValue = string | number | boolean, TStatus = SimpleColor> = {
+export type FormControl = {
   /**
    * Identifies the element that labels the current element.
    */
@@ -40,17 +40,13 @@ export type FormControl<TValue = string | number | boolean, TStatus = SimpleColo
    */
   name?: string;
   /**
-   * Defines the value of the current element, used when submitting a form.
-   */
-  value?: TValue;
-  /**
    * Defines the label of the current element.
    */
   label?: string;
   /**
    * Defines the status of the element and determines the color of the border.
    */
-  status?: TStatus;
+  status?: SimpleColor;
   /**
    * Defines if the element is read-only.
    */

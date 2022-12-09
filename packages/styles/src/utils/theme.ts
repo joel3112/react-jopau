@@ -10,17 +10,16 @@ export const DARK_MODE_STORAGE_KEY = 'key-dark-mode';
 
 /* ==== helpers ================================================================ */
 
-const mergeTheme = <T = {}>(theme1: T, theme2: T): T => {
-  const a = { ...theme1 };
-  const b = { ...theme2 } as Object;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return Object.entries(b).reduce((o: any, [k, v]: [string, unknown]) => {
-    o[k] =
-      v && typeof v === 'object'
-        ? mergeTheme<T>((o[k] = o[k] || (Array.isArray(v) ? [] : {})), v as T)
-        : v;
-    return o;
-  }, a);
+const mergeTheme = <T = {}>(theme1: T, theme2: Partial<T>): T => {
+  const a = Object.assign({}, theme1);
+  const b = Object.assign({}, theme2);
+  return (Object.entries(b) as [keyof T, T[keyof T]][]).reduce(
+    (o: T, [k, v]: [keyof T, T[keyof T]]) => {
+      o[k] = v && typeof v === 'object' ? mergeTheme(o[k], v) : v;
+      return o;
+    },
+    a
+  );
 };
 
 export const getSchemeStore = (): string | null => {
@@ -72,24 +71,23 @@ export const normalizeThemeByScheme = (
     mergedTheme = mergeTheme<ThemeTokens>(theme, darkTheme);
   }
 
-  const normalizedTheme = Object.entries(mergedTheme as Object).reduce((acc, [key, value]) => {
+  return Object.entries(mergedTheme as Object).reduce((acc, [key, value]) => {
     if (key === 'colors') {
       const colors: ConfigType.Theme['colors'] = {};
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      Object.entries(value).forEach(([colorKey, colorValue]: any[]) => {
-        if (colorKey.endsWith('00')) {
-          if (colorKey.endsWith('500')) {
-            colors[colorKey.replace('500', '')] = colorValue;
+      (Object.entries(value) as [keyof ThemeTokens, ThemeTokens[keyof ThemeTokens]]).forEach(
+        ([colorKey, colorValue]: [string, string | number | boolean]) => {
+          if (colorKey.endsWith('00')) {
+            if (colorKey.endsWith('500')) {
+              colors[colorKey.replace('500', '')] = colorValue;
+            }
           }
+          colors[colorKey] = colorValue;
         }
-        colors[colorKey] = colorValue;
-      });
+      );
       return { ...acc, colors };
     }
     return { ...acc, [key]: value };
   }, {});
-
-  return normalizedTheme;
 };
 
 export const getColors = (

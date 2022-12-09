@@ -1,56 +1,7 @@
 import { MouseEvent, ReactNode, Ref, useImperativeHandle, useRef } from 'react';
 import { classes, forwardRef } from '../../../utils/system';
-import type { ButtonColor, ElementHTML, NormalSize, Shape, WithIcon } from '../../../../types';
+import { ButtonProps, defaultProps } from './button-props';
 import { StyledButtonIcon, StyledButton } from './button.styled';
-
-export type ButtonProps = ElementHTML &
-  WithIcon & {
-    /**
-     * Defines the children of the component.
-     */
-    children?: string;
-    /**
-     * Defines the native type of the button element.
-     */
-    type?: 'button' | 'submit' | 'reset';
-    /**
-     * Defines the color of button.
-     */
-    color?: ButtonColor;
-    /**
-     * Defines the size of the component.
-     */
-    size?: NormalSize;
-    /**
-     * Defines the variant of the component.
-     */
-    variant?: 'solid' | 'bordered' | 'ghost' | 'flat' | 'clear';
-    /**
-     * Defines if the button is disabled and not clickable.
-     */
-    disabled?: boolean;
-    /**
-     * Defines the shape of the component.
-     */
-    shape?: Shape;
-    /**
-     * Defines if the button takes the fit width of its parent.
-     */
-    autoWidth?: boolean;
-    /**
-     * Function to be called when the button is clicked.
-     */
-    onClick?: (e: MouseEvent<HTMLButtonElement>) => void;
-  } & Partial<typeof defaultProps>;
-
-const defaultProps = {
-  color: 'primary',
-  size: 'md',
-  variant: 'solid',
-  iconPosition: 'left',
-  type: 'button',
-  shape: 'default'
-};
 
 const ButtonIcon = ({ children }: { children: ReactNode }) => {
   return <StyledButtonIcon>{children}</StyledButtonIcon>;
@@ -122,7 +73,7 @@ export const Button = forwardRef<ButtonProps, 'button'>(
           icon: iconPosition === 'left' && <ButtonIcon>{icon}</ButtonIcon>,
           iconRight: iconPosition === 'right' && <ButtonIcon>{icon}</ButtonIcon>
         })}
-        onPress={handleClick}>
+        onClick={handleClick}>
         {children}
       </StyledButton>
     );

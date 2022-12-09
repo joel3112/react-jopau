@@ -2,23 +2,9 @@ const { template } = require('react-docgen-renderer-template');
 const templateCreator = template({});
 
 const templateObject = templateCreator`${({ context }) => `
-import { ReactNode } from 'react';
 import { classes } from '../../../utils/system';
-import type { ElementHTML } from '../../../../types';
+import { ${context.pascalName}Props, defaultProps } from './${context.name}-props';
 import { Styled${context.pascalName} } from './${context.name}.styled';
-
-type ${context.pascalName}Props = ElementHTML & {
-  /**
-  * Defines the children of the component.
-  */
-  children?: ReactNode;
-  /**
-  * Title of the component.
-  */
-  title?: string;
-} & Partial<typeof defaultProps>;
-
-const defaultProps = {};
 
 /**
   * Description component

@@ -1,26 +1,6 @@
 import { classes } from '../../../utils/system';
-import type { ElementHTML, TextColor } from '../../../../types';
+import { defaultProps, HeadingProps } from './heading-props';
 import { StyledHeading } from './heading.styled';
-
-type HeadingProps = ElementHTML & {
-  /**
-   * Defines the children of the component.
-   */
-  children: string;
-  /**
-   * Changes which tag component outputs
-   */
-  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
-  /**
-   * Defines the color of the heading.
-   */
-  color?: TextColor;
-} & Partial<typeof defaultProps>;
-
-const defaultProps = {
-  as: 'h1',
-  color: 'inherit'
-};
 
 /**
  * Heading component is the used to render headings within an interface using well-defined typographic styles.

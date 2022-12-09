@@ -20,14 +20,19 @@ export const Default = () => {
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
-    const form = new FormData(event.target as HTMLFormElement);
-    setValue(`${form.get('value')}`);
+    setValue((event.target as HTMLFormElement).text.value);
   };
 
   return (
     <Container maxWidth={450}>
       <form onSubmit={handleSubmit}>
-        <Input name="value" label="Value to storage" variant="bordered" autoWidth value={value} />
+        <Input
+          name="text"
+          label="Value to storage"
+          variant="bordered"
+          autoWidth
+          defaultValue={value}
+        />
         <Button className="mt-4" color="secondary" type="submit">
           Set value
         </Button>

@@ -1,29 +1,7 @@
-import { ReactNode } from 'react';
 import { classes } from '../../../utils/system';
-import type { ElementHTML } from '../../../../types';
 import { Heading } from '../../typography';
+import { defaultProps, HeaderProps } from './header-props';
 import { StyledHeaderContent, StyledHeaderLogo, StyledHeader } from './header.styled';
-
-type HeaderProps = ElementHTML & {
-  /**
-   * Defines the children of the component.
-   */
-  children?: ReactNode;
-  /**
-   * Title of the header.
-   */
-  title?: string;
-  /**
-   * Defines the render of the logo.
-   */
-  logo?: ReactNode;
-  /**
-   * Maximum width of the container or breakpoint.
-   */
-  maxWidth?: number | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-} & Partial<typeof defaultProps>;
-
-const defaultProps = {};
 
 /**
  * Header component with logo, title and actions area.

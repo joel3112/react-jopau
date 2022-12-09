@@ -1,9 +1,10 @@
-import { createContext, ReactNode, useEffect, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import { globalCss } from '@stitches/react';
 import type { ThemeConfig, ThemeSchemes } from '@react-jopau/styles/types';
 import { ThemeBuilder } from '@react-jopau/styles/ThemeBuilder';
 import { computeScheme } from '@react-jopau/styles/utils';
 import globalCSS from '@react-jopau/styles/globalStyles';
+import { defaultProps, ThemeProviderProps } from './theme-context-props';
 
 /* ==== context ================================================================ */
 
@@ -17,25 +18,6 @@ export const ThemeContext = createContext<{
 }>({} as { config: ThemeConfig });
 
 /* ==== provider =============================================================== */
-
-type ThemeProviderProps = {
-  /**
-   * Defines the children of the component.
-   */
-  children: ReactNode;
-  /**
-   * Defines configuration or the theme key.
-   */
-  config?: ThemeConfig;
-  /**
-   * Flag to enable dark mode.
-   */
-  darkMode?: boolean;
-} & Partial<typeof defaultProps>;
-
-const defaultProps = {
-  darkMode: false
-};
 
 const globalStyles = globalCss({
   ...globalCSS,

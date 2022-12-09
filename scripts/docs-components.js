@@ -41,10 +41,18 @@ const parseOptions = {
 
 const generateComponentDocs = async (type, componentNameOne) => {
   introComponentsProps = [];
-  let files = await glob(`packages/components/src/${type}/**/*.{ts,tsx}`, {
-    ignore: ['**/*.{test,stories,styled}.{ts,tsx}', '**/index.{ts,tsx}']
+  let files = await glob(`packages/components/src/${type}/**/*.tsx`, {
+    ignore: ['**/*.{test,stories,styled}.{ts,tsx}', '**/index.{ts,tsx}', '**/*-props.{ts,tsx}']
   });
-  const componentNames = files.map((file) => path.parse(file).name);
+
+  files.sort((a, b) => {
+    const parseA = path.parse(a).dir;
+    const parseB = path.parse(b).dir;
+
+    if (parseA === parseB) return 0;
+    if (parseA < parseB) return -1;
+    return 1;
+  });
 
   if (componentNameOne) {
     const componentNameFound = files.find((file) => file.includes(`${componentNameOne}.tsx`));
@@ -59,11 +67,6 @@ const generateComponentDocs = async (type, componentNameOne) => {
   files.forEach((componentPath, index) => {
     try {
       const componentName = path.basename(componentPath, path.extname(componentPath));
-      const componentNamesFilteredByName = componentNames
-        .slice(0, index + 1)
-        .filter((name) => name.startsWith(componentName.split('-')[0]));
-      const isSubComponent = componentNamesFilteredByName.length > 1;
-      const componentNameParent = isSubComponent ? componentNamesFilteredByName[0] : null;
 
       /**
        * Generate JSON schema from JSDoc
@@ -74,6 +77,19 @@ const generateComponentDocs = async (type, componentNameOne) => {
           configure: './jsdoc2md.json'
         })
       );
+
+      // Detect if is a component to generate docs
+      if (!jsdocSchema) {
+        return;
+      }
+
+      // Check if is subcomponent
+      const previousPath = path.join(componentPath, '../..');
+      const previousName = path.basename(previousPath);
+      const previousFullPath = `${previousPath}/${previousName}.tsx`;
+      const isSubComponent = files.includes(previousFullPath);
+      const componentNameParent = isSubComponent ? previousName : null;
+
       if (!isSubComponent) {
         introComponentsProps.push(parseComponentCardProps(componentPath, jsdocSchema));
       }
@@ -89,6 +105,7 @@ const generateComponentDocs = async (type, componentNameOne) => {
         }
       );
       const componentDocs = last(customParser.parse(componentPath));
+
       const displayName = !isSubComponent
         ? componentDocs.displayName
         : [componentNameParent, componentName.replace(`${componentNameParent}-`, '')]

@@ -1,32 +1,9 @@
-import { ReactNode, useContext } from 'react';
+import { useContext } from 'react';
 import type { BreakpointsRules } from '@react-jopau/styles/types';
 import { classes } from '../../../utils/system';
-import type { ElementHTML } from '../../../../types';
 import { ThemeContext } from '../../../contexts';
+import { ContainerProps, defaultProps } from './container-props';
 import { StyledContainer } from './container.styled';
-
-type ContainerProps = ElementHTML & {
-  /**
-   * Defines the children of the component.
-   */
-  children: ReactNode;
-  /**
-   * Maximum width of the container or breakpoint.
-   */
-  maxWidth?: number | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-  /**
-   * Defines the gap horizontally and vertically in the container.
-   */
-  gap?: number | Array<number>;
-  /**
-   * Centered horizontally the container.
-   */
-  centered?: boolean;
-} & Partial<typeof defaultProps>;
-
-const defaultProps = {
-  centered: false
-};
 
 const spacing = (gap?: number | Array<number>): string => {
   if (Array.isArray(gap) && gap.length === 2) {

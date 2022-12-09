@@ -1,7 +1,7 @@
-import { ComponentType } from 'react';
-import { Input as InputNextUI } from '@nextui-org/react';
+import { ComponentType, Ref } from 'react';
+import { Input as InputNextUI, InputProps as InputPropsNextUI } from '@nextui-org/react';
+import { InputProps } from './input-props';
 import { styledTheme } from '../../../index';
-import { InputProps } from './input';
 
 const colorTokens = (color: NonNullable<InputProps['color']>) => {
   return {
@@ -133,6 +133,7 @@ enum NextUIEl {
   INPUT_CONTAINER = '.nextui-input-container',
   INPUT_WRAPPER = '.nextui-input-wrapper',
   INPUT = '.nextui-input',
+  INPUT_CONTENT = '.nextui-input-content',
   HELPER_TEXT_CONTAINER = '.nextui-input-helper-text-container',
   HELPER_TEXT = '.nextui-input-helper-text',
   LABEL_LEFT = '.nextui-input-label--left',
@@ -152,11 +153,17 @@ export const StyledContent = styledTheme('div', {
   }
 });
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const StyledInput = styledTheme(InputNextUI as ComponentType<any>, {
-  boxSizing: 'content-box',
-  width: '$space$fit'
-});
+export const StyledInput = styledTheme(
+  InputNextUI as ComponentType<
+    Partial<
+      Omit<InputPropsNextUI, keyof InputProps | 'ref'> & InputProps & { ref: Ref<HTMLInputElement> }
+    >
+  >,
+  {
+    boxSizing: 'content-box',
+    width: '$space$fit'
+  }
+);
 
 export const StyledLabelGap = styledTheme('div', {
   width: '$space$full',
@@ -171,12 +178,22 @@ export const StyledInputWrapper = styledTheme('div', {
   width: '$space$fit',
 
   [`${NextUIEl.INPUT_CONTAINER}--hover`]: { transform: 'none' },
-  [`${NextUIEl.INPUT_WRAPPER}`]: { borderRadius: '$radii$xs' },
+  [`${NextUIEl.INPUT_WRAPPER}`]: { borderRadius: '$$inputControlBorderRadius' },
   [`${NextUIEl.INPUT}`]: { color: 'inherit' },
   [`${NextUIEl.INPUT}::placeholder`]: { color: '$colors$placeholder' },
   [`${NextUIEl.HELPER_TEXT_CONTAINER}`]: { mb: '$space$2', scale: 1.2 },
   [`${NextUIEl.HELPER_TEXT}`]: { color: '$$inputLabelColor' },
-  [`${NextUIEl.LABEL_LEFT}, ${NextUIEl.LABEL_RIGHT}`]: { color: '$$inputControlColor' },
+  [`${NextUIEl.INPUT_CONTENT}`]: { pointerEvents: 'auto', cursor: 'pointer' },
+  [`${NextUIEl.LABEL_LEFT}`]: {
+    color: '$$inputControlColor',
+    borderTopLeftRadius: '$$inputControlBorderRadius',
+    borderBottomLeftRadius: '$$inputControlBorderRadius'
+  },
+  [`${NextUIEl.LABEL_RIGHT}`]: {
+    color: '$$inputControlColor',
+    borderTopRightRadius: '$$inputControlBorderRadius',
+    borderBottomRightRadius: '$$inputControlBorderRadius'
+  },
 
   variants: {
     size: {
@@ -199,6 +216,20 @@ export const StyledInputWrapper = styledTheme('div', {
       xl: {
         $$inputLabelFontSize: '$fontSizes$lg',
         $$inputLabelMarginTop: '$space$3'
+      }
+    },
+    shape: {
+      default: {
+        $$inputControlBorderRadius: '$radii$xs'
+        // [`${NextUIEl.INPUT_WRAPPER}`]: { borderRadius: '$radii$xs' }
+      },
+      round: {
+        $$inputControlBorderRadius: '$radii$2xl'
+        // [`${NextUIEl.INPUT_WRAPPER}`]: { borderRadius: '$radii$2xl' }
+      },
+      square: {
+        $$inputControlBorderRadius: 0
+        // [`${NextUIEl.INPUT_WRAPPER}`]: { borderRadius: 0 }
       }
     },
     variant: {
@@ -225,15 +256,11 @@ export const StyledInputWrapper = styledTheme('div', {
         },
         [`${NextUIEl.LABEL_LEFT}`]: {
           backgroundColor: '$$inputControlBackgroundColor',
-          backgroundColorLighter: '$$inputControlBackgroundColorOpacity',
-          borderTopLeftRadius: '$radii$xs',
-          borderBottomLeftRadius: '$radii$xs'
+          backgroundColorLighter: '$$inputControlBackgroundColorOpacity'
         },
         [`${NextUIEl.LABEL_RIGHT}`]: {
           backgroundColor: '$$inputControlBackgroundColor',
-          backgroundColorLighter: '$$inputControlBackgroundColorOpacity',
-          borderTopRightRadius: '$radii$xs',
-          borderBottomRightRadius: '$radii$xs'
+          backgroundColorLighter: '$$inputControlBackgroundColorOpacity'
         }
       },
       underlined: {
@@ -303,9 +330,9 @@ export const StyledInputWrapper = styledTheme('div', {
         }
       }
     },
-    rounded: {
+    disabled: {
       true: {
-        [`${NextUIEl.INPUT_WRAPPER}`]: { borderRadius: '$radii$2xl' }
+        $$inputControlColor: '$colors$gray400'
       }
     },
     fullWidth: {

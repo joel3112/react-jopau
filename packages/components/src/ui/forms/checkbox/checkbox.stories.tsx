@@ -1,4 +1,6 @@
+import { useRef, useState } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { SBCode, SBTextSeparator } from '@react-jopau/styles/components';
 import { prepareArgTypes, prepareParameters } from '@react-jopau/styles/utils';
 import { Space } from '../../layout';
 import { Checkbox } from './checkbox';
@@ -16,7 +18,8 @@ export default {
     size: 'md',
     color: 'primary',
     status: 'default',
-    selected: true,
+    defaultChecked: true,
+    checked: true,
     disabled: false,
     required: false,
     rounded: false,
@@ -39,19 +42,19 @@ Default.parameters = { viewMode: 'story' };
 
 export const Sizes = () => (
   <Space direction="column" gap={10}>
-    <Checkbox selected size="xs">
+    <Checkbox defaultChecked size="xs">
       Mini
     </Checkbox>
-    <Checkbox selected size="sm">
+    <Checkbox defaultChecked size="sm">
       Small
     </Checkbox>
-    <Checkbox selected size="md">
+    <Checkbox defaultChecked size="md">
       Medium
     </Checkbox>
-    <Checkbox selected size="lg">
+    <Checkbox defaultChecked size="lg">
       Large
     </Checkbox>
-    <Checkbox selected size="xl">
+    <Checkbox defaultChecked size="xl">
       XLarge
     </Checkbox>
   </Space>
@@ -59,25 +62,25 @@ export const Sizes = () => (
 
 export const Color = () => (
   <Space direction="column" gap={10}>
-    <Checkbox selected color="primary">
+    <Checkbox defaultChecked color="primary">
       Primary
     </Checkbox>
-    <Checkbox selected color="secondary">
+    <Checkbox defaultChecked color="secondary">
       Secondary
     </Checkbox>
-    <Checkbox selected color="tertiary">
+    <Checkbox defaultChecked color="tertiary">
       Tertiary
     </Checkbox>
-    <Checkbox selected color="info">
+    <Checkbox defaultChecked color="info">
       Info
     </Checkbox>
-    <Checkbox selected color="success">
+    <Checkbox defaultChecked color="success">
       Success
     </Checkbox>
-    <Checkbox selected color="error">
+    <Checkbox defaultChecked color="error">
       Error
     </Checkbox>
-    <Checkbox selected color="warning">
+    <Checkbox defaultChecked color="warning">
       Warning
     </Checkbox>
   </Space>
@@ -85,28 +88,28 @@ export const Color = () => (
 
 export const Status = () => (
   <Space direction="column" gap={10}>
-    <Checkbox selected status="default">
+    <Checkbox defaultChecked status="default">
       Default
     </Checkbox>
-    <Checkbox selected status="primary">
+    <Checkbox defaultChecked status="primary">
       Primary
     </Checkbox>
-    <Checkbox selected status="secondary">
+    <Checkbox defaultChecked status="secondary">
       Secondary
     </Checkbox>
-    <Checkbox selected status="tertiary">
+    <Checkbox defaultChecked status="tertiary">
       Tertiary
     </Checkbox>
-    <Checkbox selected status="info">
+    <Checkbox defaultChecked status="info">
       Info
     </Checkbox>
-    <Checkbox selected status="success">
+    <Checkbox defaultChecked status="success">
       Success
     </Checkbox>
-    <Checkbox selected status="error">
+    <Checkbox defaultChecked status="error">
       Error
     </Checkbox>
-    <Checkbox selected status="warning">
+    <Checkbox defaultChecked status="warning">
       Warning
     </Checkbox>
   </Space>
@@ -134,6 +137,27 @@ Rounded.args = {
 
 export const Throughed = Template.bind({});
 Throughed.args = {
-  throughed: true,
-  onChange: (e: boolean) => console.log(e)
+  throughed: true
+};
+
+export const UncontrolledVSControlled = () => {
+  const refUncontrolled = useRef<HTMLInputElement>(null);
+  const [checkedControlled, setCheckedControlled] = useState(true);
+
+  return (
+    <Space direction="column" gap={10}>
+      <SBTextSeparator>Uncontrolled</SBTextSeparator>
+      <Checkbox defaultChecked ref={refUncontrolled}>
+        Uncontrolled
+      </Checkbox>
+
+      <SBTextSeparator>Controlled</SBTextSeparator>
+      <Checkbox checked={checkedControlled} onChange={setCheckedControlled}>
+        Controlled
+      </Checkbox>
+      <span>
+        Checked: <SBCode>{JSON.stringify(checkedControlled)}</SBCode>
+      </span>
+    </Space>
+  );
 };

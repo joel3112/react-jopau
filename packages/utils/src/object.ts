@@ -1,5 +1,5 @@
 import * as _ from 'lodash';
-import type { TAny, TBasic } from './index';
+import type { TAny, TArray, TBasic } from './index';
 
 export type TObject<T = TAny, U extends string | number | symbol = string> = Record<U, T>;
 
@@ -18,6 +18,6 @@ export const mapValuesBy = <T extends object = TObject>(
   return _.mapValues<T>(object, callback);
 };
 
-export const merge = <T = Object, U = Object>(object: T, source: U): T & U => {
-  return _.merge(object, source);
+export const merge = <T = Object, U = Object>(object: T, ...sources: TArray<U>): T & U => {
+  return _.merge({}, object, ...sources);
 };

@@ -45,7 +45,6 @@ module.exports = {
     './theme-selector-addon/register',
     './dark-mode-addon/register'
   ],
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   webpackFinal: async (config) => {
     config.resolve.plugins = [
       ...(config.resolve.plugins || []),

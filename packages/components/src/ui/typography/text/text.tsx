@@ -1,35 +1,6 @@
 import { classes } from '../../../utils/system';
-import type { ElementHTML, NormalSize, TextColor } from '../../../../types';
+import { defaultProps, TextProps } from './text-props';
 import { StyledText } from './text.styled';
-
-export type TextProps = ElementHTML & {
-  /**
-   * Defines the children of the component.
-   */
-  children: string;
-  /**
-   * Changes which tag component outputs
-   */
-  as?: 'p' | 'span';
-  /**
-   * Defines the color of the text.
-   */
-  color?: TextColor;
-  /**
-   * Defines the size of the component.
-   */
-  size?: NormalSize | '2xl' | '3xl';
-  /**
-   * Defines the line clamp of the component.
-   */
-  maxLines?: number;
-} & Partial<typeof defaultProps>;
-
-const defaultProps = {
-  as: 'p',
-  color: 'inherit',
-  size: 'md'
-};
 
 /**
  * Text component is the used to render text and paragraphs within an interface using well-defined typographic styles.

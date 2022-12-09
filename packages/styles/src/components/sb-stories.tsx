@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ComponentType, ReactNode } from 'react';
 import classes from 'classnames';
 import { Canvas, Story } from '@storybook/addon-docs';
 import { SBCollapsable } from './sb-collapsable';
@@ -28,17 +28,15 @@ const SBStory = ({ id, label, isDefault }: { id: string; label?: string; isDefau
   );
 };
 
-export const SBStories = ({
-  children
-}: { children: ReactNode } & {
-  Item: typeof Story;
-  Default: typeof Story;
-}) => {
+export const SBStories = (({ children }: { children: ReactNode }) => {
   return (
     <SBCollapsable title="Stories" className="pt-10" opened>
       {children}
     </SBCollapsable>
   );
+}) as ComponentType & {
+  Item: typeof SBStory;
+  Default: typeof SBStory;
 };
 
 SBStories.Item = SBStory;

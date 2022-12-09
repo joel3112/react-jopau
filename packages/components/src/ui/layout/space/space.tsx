@@ -1,48 +1,6 @@
-import { ReactNode } from 'react';
 import { classes } from '../../../utils/system';
-import type { ElementHTML } from '../../../../types';
+import { defaultProps, SpaceProps } from './space-props';
 import { StyledSpace } from './space.styled';
-
-type BasicPosition = 'start' | 'center' | 'end';
-export type DirectionSpace = 'row' | 'column' | 'row-reverse' | 'column-reverse';
-export type JustifySpace = BasicPosition | 'between' | 'around';
-export type AlignSpace = BasicPosition | 'baseline' | 'stretch';
-
-type SpaceProps = ElementHTML & {
-  /**
-   * Defines the children of the component.
-   */
-  children: ReactNode;
-  /**
-   * Changes which tag component outputs
-   */
-  as?: keyof HTMLElementTagNameMap;
-  /**
-   * Defines the direction of the flex container.
-   */
-  direction?: Required<DirectionSpace>;
-  /**
-   * Defines if the flex container is wrapped or not.
-   */
-  wrap?: boolean;
-  /**
-   * Defines the gap between the flex container's children.
-   */
-  gap?: number | Array<number>;
-  /**
-   * Defines the justify-content style property.
-   */
-  justify?: JustifySpace;
-  /**
-   * Defines the align-items style property.
-   */
-  align?: AlignSpace;
-} & Partial<typeof defaultProps>;
-
-const defaultProps = {
-  as: 'div',
-  direction: 'row'
-};
 
 const spacing = (gap?: number | Array<number>): string =>
   gap

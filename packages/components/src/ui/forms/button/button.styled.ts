@@ -1,7 +1,7 @@
-import { ComponentType } from 'react';
-import { Button as ButtonNextUI } from '@nextui-org/react';
+import { ComponentType, Ref } from 'react';
+import { Button as ButtonNextUI, ButtonProps as ButtonPropsNextUI } from '@nextui-org/react';
+import { ButtonProps } from './button-props';
 import { styledTheme } from '../../../index';
-import { ButtonProps } from './button';
 
 const colorTokens = (color: NonNullable<ButtonProps['color']>) => {
   const {
@@ -77,101 +77,105 @@ export const StyledButtonIcon = styledTheme('div', {
   scale: 1.5
 });
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const StyledButton = styledTheme(ButtonNextUI as ComponentType<any>, {
-  boxSizing: 'border-box',
-  whiteSpace: 'nowrap',
-  border: '1px solid',
-  borderColor: '$$buttonBackgroundColor',
-  color: '$$buttonColor',
-  borderRadius: '$$buttonBorderRadius',
+export const StyledButton = styledTheme(
+  ButtonNextUI as ComponentType<
+    Omit<ButtonPropsNextUI, keyof ButtonProps> & ButtonProps & { ref: Ref<HTMLButtonElement> }
+  >,
+  {
+    boxSizing: 'border-box',
+    whiteSpace: 'nowrap',
+    border: '1px solid',
+    borderColor: '$$buttonBackgroundColor',
+    color: '$$buttonColor',
+    borderRadius: '$$buttonBorderRadius',
 
-  '&[disabled]': {
-    color: '$colors$gray800',
-    $$buttonBackgroundColor: '$colors$gray400',
-    $$borderColor: '$colors$gray500'
-  },
-
-  variants: {
-    color: {
-      primary: colorTokens('primary'),
-      secondary: colorTokens('secondary'),
-      tertiary: colorTokens('tertiary'),
-      info: colorTokens('info'),
-      error: colorTokens('error'),
-      success: colorTokens('success'),
-      warning: colorTokens('warning'),
-      light: colorTokens('light'),
-      dark: colorTokens('dark')
+    '&[disabled]': {
+      color: '$colors$gray800',
+      $$buttonBackgroundColor: '$colors$gray400',
+      $$borderColor: '$colors$gray500'
     },
-    shape: {
-      default: { $$buttonBorderRadius: '$radii$xs' },
-      round: { $$buttonBorderRadius: '$radii$2xl' },
-      square: { $$buttonBorderRadius: 0 }
-    },
-    solid: {
-      true: {
-        color: '$$buttonColor',
-        backgroundColor: '$$buttonBackgroundColor',
 
-        '&:hover': { backgroundColor: '$$buttonHoverBackgroundColor' }
+    variants: {
+      color: {
+        primary: colorTokens('primary'),
+        secondary: colorTokens('secondary'),
+        tertiary: colorTokens('tertiary'),
+        info: colorTokens('info'),
+        error: colorTokens('error'),
+        success: colorTokens('success'),
+        warning: colorTokens('warning'),
+        light: colorTokens('light'),
+        dark: colorTokens('dark')
+      },
+      shape: {
+        default: { $$buttonBorderRadius: '$radii$xs' },
+        round: { $$buttonBorderRadius: '$radii$2xl' },
+        square: { $$buttonBorderRadius: 0 }
+      },
+      solid: {
+        true: {
+          color: '$$buttonColor',
+          backgroundColor: '$$buttonBackgroundColor',
+
+          '&:hover': { backgroundColor: '$$buttonHoverBackgroundColor' }
+        }
+      },
+      bordered: {
+        true: {
+          color: '$$buttonBorderedColor',
+          backgroundColor: 'transparent',
+
+          '&:hover': { color: '$$buttonColor', backgroundColor: '$$buttonBackgroundColor' }
+        }
+      },
+      flat: {
+        true: {
+          color: '$$buttonFlatColor',
+          backgroundColor: '$$buttonFlatBackgroundColor',
+          borderColor: '$$buttonFlatBackgroundColor',
+
+          '&:hover': { filter: 'brightness(97.5%)' }
+        }
+      },
+      ghost: {
+        true: {
+          color: '$$buttonBorderedColor',
+          backgroundColor: 'transparent',
+          borderColor: 'transparent',
+
+          '&:hover': { color: '$$buttonFlatColor', backgroundColor: '$$buttonFlatBackgroundColor' }
+        }
+      },
+      light: {
+        true: {
+          color: '$$buttonBorderedColor',
+          backgroundColor: 'transparent',
+          borderColor: 'transparent',
+
+          '&:hover': { color: '$$buttonHoverBackgroundColor', fontWeight: '$fontWeights$semibold' }
+        }
+      },
+      iconOnly: {
+        true: {
+          aspectRatio: '1 / 1',
+          padding: '$space$4',
+          minWidth: 'auto'
+        }
+      },
+      auto: {
+        true: { width: '$space$full', minWidth: 'auto' },
+        false: { width: '$space$fit' }
       }
     },
-    bordered: {
-      true: {
-        color: '$$buttonBorderedColor',
-        backgroundColor: 'transparent',
 
-        '&:hover': { color: '$$buttonColor', backgroundColor: '$$buttonBackgroundColor' }
+    compoundVariants: [
+      {
+        iconOnly: true,
+        shape: 'round',
+        css: {
+          borderRadius: '$radii$rounded'
+        }
       }
-    },
-    flat: {
-      true: {
-        color: '$$buttonFlatColor',
-        backgroundColor: '$$buttonFlatBackgroundColor',
-        borderColor: '$$buttonFlatBackgroundColor',
-
-        '&:hover': { filter: 'brightness(97.5%)' }
-      }
-    },
-    ghost: {
-      true: {
-        color: '$$buttonBorderedColor',
-        backgroundColor: 'transparent',
-        borderColor: 'transparent',
-
-        '&:hover': { color: '$$buttonFlatColor', backgroundColor: '$$buttonFlatBackgroundColor' }
-      }
-    },
-    light: {
-      true: {
-        color: '$$buttonBorderedColor',
-        backgroundColor: 'transparent',
-        borderColor: 'transparent',
-
-        '&:hover': { color: '$$buttonHoverBackgroundColor', fontWeight: '$fontWeights$semibold' }
-      }
-    },
-    iconOnly: {
-      true: {
-        aspectRatio: '1 / 1',
-        padding: '$space$4',
-        minWidth: 'auto'
-      }
-    },
-    auto: {
-      true: { width: '$space$full', minWidth: 'auto' },
-      false: { width: '$space$fit' }
-    }
-  },
-
-  compoundVariants: [
-    {
-      iconOnly: true,
-      shape: 'round',
-      css: {
-        borderRadius: '$radii$rounded'
-      }
-    }
-  ]
-});
+    ]
+  }
+);

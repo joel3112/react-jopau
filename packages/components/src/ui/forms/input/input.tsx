@@ -1,124 +1,10 @@
-import {
-  ChangeEvent,
-  FocusEvent,
-  MouseEvent,
-  ReactNode,
-  Ref,
-  useEffect,
-  useId,
-  useImperativeHandle,
-  useRef,
-  useState
-} from 'react';
+import { ForwardRefExoticComponent, ReactNode, Ref, RefAttributes } from 'react';
 import { useHotKey } from '@react-jopau/hooks';
 import { classes, forwardRef } from '../../../utils/system';
-import type {
-  ContentPosition,
-  ElementHTML,
-  FormControl,
-  NormalSize,
-  SimpleColor
-} from '../../../../types';
+import { useControlText } from '../../../utils/use-control-text';
+import { InputPassword } from './password/input-password';
+import { defaultProps, InputProps } from './input-props';
 import { StyledContent, StyledInput, StyledLabelGap, StyledInputWrapper } from './input.styled';
-
-export type InputProps = ElementHTML &
-  FormControl<string> & {
-    /**
-     * Defines the type of the input element.
-     */
-    type?: 'text' | 'password' | 'email' | 'number' | 'tel' | 'url';
-    /**
-     * Defines the placeholder, it becomes a label element when the input is focused.
-     */
-    labelPlaceholder?: string;
-    /**
-     * Defines the placeholder of the input element.
-     */
-    placeholder?: string;
-    /**
-     * Defines the size of the component.
-     */
-    size?: NormalSize;
-    /**
-     * Defines the color of input text, border and label.
-     */
-    color?: SimpleColor;
-    /**
-     * Defines the variant of the component.
-     */
-    variant?: 'default' | 'bordered' | 'underlined';
-    /**
-     * Defines the helper text of the input element.
-     */
-    helperText?: string;
-    /**
-     * Defines if the input element can be cleared by clicking the clear button.
-     */
-    clearable?: boolean;
-    /**
-     * Defines the round shape of the component.
-     */
-    rounded?: boolean;
-    /**
-     * Defines if the input has autocomplete enabled.
-     */
-    autoComplete?: 'on' | 'off';
-    /**
-     * Defines if the button takes the fit width of its parent.
-     */
-    autoWidth?: boolean;
-    /**
-     * Defines the hot keybinding to focus the input element.
-     */
-    hotKey?: string;
-    /**
-     * Defines the render of the content of the component: icon or another element.
-     * See <a href="https://react-icons.github.io/react-icons/" target="_blank">react-icons</a> for more details.
-     */
-    icon?: ReactNode;
-    /**
-     * Defines the position of the content in the component.
-     */
-    iconPosition?: ContentPosition;
-    /**
-     * Defines the text label at left of the input
-     */
-    labelLeft?: string;
-    /**
-     * Defines the text label at right of the input
-     */
-    labelRight?: string;
-    /**
-     * Function to be called when the element value is changed.
-     */
-    onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
-    /**
-     * Function to be called when the element is focused.
-     */
-    onFocus?: (e: FocusEvent<HTMLInputElement>) => void;
-    /**
-     * Function to be called when the element is blurred.
-     */
-    onBlur?: (e: FocusEvent<HTMLInputElement>) => void;
-    /**
-     * Function to be called when the content is clicked.
-     */
-    onContentClick?: (key: ContentPosition, e: MouseEvent) => void;
-    /**
-     * Function to be called when the clear button is clicked.
-     */
-    onClearClick?: (e: MouseEvent) => void;
-  } & Partial<typeof defaultProps>;
-
-const defaultProps = {
-  type: 'text',
-  size: 'md',
-  variant: 'default',
-  color: 'default',
-  status: 'default',
-  autoComplete: 'off',
-  iconPosition: 'left'
-};
 
 const InputContent = ({
   children,
@@ -141,14 +27,21 @@ const InputContent = ({
  * <Input color="primary" label="Label" placeholder="placeholder" value="text" />
  */
 export const Input = forwardRef<InputProps, 'input'>(
-  (
-    {
+  (props: InputProps, ref: Ref<Partial<HTMLInputElement> | null>) => {
+    const {
+      ref: inputRef,
       id,
+      ariaLabel,
+      defaultValue,
+      value,
+      onChange,
+      onClearClick
+    } = useControlText<HTMLInputElement>(props, ref);
+    const {
       className,
       style,
       name,
       type,
-      value,
       label,
       placeholder,
       helperText,
@@ -162,38 +55,21 @@ export const Input = forwardRef<InputProps, 'input'>(
       disabled,
       required,
       clearable,
-      rounded,
+      shape,
       autoWidth,
       hotKey,
       icon,
       iconPosition,
       labelLeft,
       labelRight,
-      onChange,
       onFocus,
       onBlur,
-      onContentClick,
-      onClearClick
-    }: InputProps,
-    ref: Ref<Partial<HTMLInputElement>>
-  ) => {
-    const inputId = id || `input-${useId()}`;
-    const inputAriaLabel = label || placeholder || labelPlaceholder || `input-label-${useId()}`;
-    const inputRef = useRef<HTMLInputElement>(null);
-    const [inputValue, setInputValue] = useState<string | number>(value || '');
-    const { shortHotKey } = useHotKey(hotKey || '', () => inputRef.current?.focus());
+      onIconClick
+    } = props;
 
-    useEffect(() => {
-      setInputValue(value || '');
-    }, [value]);
-
-    useImperativeHandle(ref, () => ({
-      focus: () => {
-        inputRef.current?.focus();
-      }
-    }));
-
-    const handleInput = (e: ChangeEvent<HTMLInputElement>) => setInputValue(e.target.value);
+    const { shortHotKey } = useHotKey(hotKey || '', () => {
+      inputRef.current?.focus();
+    });
 
     return (
       <StyledInputWrapper
@@ -202,18 +78,20 @@ export const Input = forwardRef<InputProps, 'input'>(
         variant={variant}
         color={color}
         status={status}
-        rounded={!!rounded}
+        shape={shape}
         hotKey={!!hotKey}
-        fullWidth={!!autoWidth}>
+        fullWidth={!!autoWidth}
+        disabled={!!disabled}>
         {labelPlaceholder && <StyledLabelGap>&nbsp;</StyledLabelGap>}
         <StyledInput
           ref={inputRef}
-          id={inputId}
+          id={id}
           name={name}
           type={type}
-          aria-label={inputAriaLabel}
+          aria-label={ariaLabel}
           placeholder={placeholder}
-          value={inputValue}
+          initialValue={defaultValue}
+          value={value}
           readOnly={readOnly}
           disabled={disabled}
           autoComplete={autoComplete}
@@ -235,7 +113,6 @@ export const Input = forwardRef<InputProps, 'input'>(
           bordered={variant === 'bordered'}
           underlined={variant === 'underlined'}
           fullWidth={!!autoWidth}
-          rounded={rounded}
           clearable={clearable}
           {...(icon && {
             contentLeft: iconPosition === 'left' && (
@@ -246,16 +123,20 @@ export const Input = forwardRef<InputProps, 'input'>(
             )
           })}
           {...(hotKey && { labelRight: shortHotKey })}
-          onInput={handleInput}
           onChange={onChange}
           onFocus={onFocus}
           onBlur={onBlur}
           onClearClick={onClearClick}
-          onContentClick={onContentClick}
+          onContentClick={onIconClick}
         />
       </StyledInputWrapper>
     );
   }
-);
+) as ForwardRefExoticComponent<
+  InputProps & Partial<typeof defaultProps> & RefAttributes<HTMLInputElement>
+> & {
+  Password: typeof InputPassword;
+};
 
-Input.defaultProps = defaultProps;
+Input.defaultProps = defaultProps as Partial<InputProps>;
+Input.Password = InputPassword;

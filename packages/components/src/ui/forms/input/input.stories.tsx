@@ -1,10 +1,9 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { MdSearch } from 'react-icons/md';
-import { SBTextSeparator, TWSelectorContainer } from '@react-jopau/styles/components';
-import { prepareArgTypes, prepareParameters } from '../../../utils/story-helpers';
+import { SBTextSeparator, SBSelectorContainer, SBCode } from '@react-jopau/styles/components';
+import { prepareArgTypes, prepareParameters } from '@react-jopau/styles/utils';
 import { Space } from '../../layout';
-import { Button } from '../../forms';
 import { Input } from './input';
 import docs from './readme.mdx';
 
@@ -15,6 +14,7 @@ export default {
   args: {
     type: 'text',
     value: '',
+    defaultValue: '',
     name: 'input-name',
     label: 'Label',
     placeholder: 'placeholder',
@@ -26,10 +26,10 @@ export default {
     variant: 'default',
     status: 'default',
     color: 'default',
+    shape: 'default',
     iconPosition: 'left',
     autoComplete: 'off',
     hotKey: '',
-    rounded: false,
     autoWidth: false,
     clearable: false,
     readOnly: false,
@@ -38,7 +38,7 @@ export default {
   },
   argTypes: prepareArgTypes(Input, {
     onClearClick: { action: 'cleared' },
-    onContentClick: { action: 'content clicked' }
+    onIconClick: { action: 'icon clicked' }
   })
 } as ComponentMeta<typeof Input>;
 
@@ -99,7 +99,7 @@ export const Variants = () => (
 );
 
 export const Color = () => (
-  <TWSelectorContainer label={['Select variant']} items={[variantItems]} value={['default']}>
+  <SBSelectorContainer label={['Select variant']} items={[variantItems]} value={['default']}>
     {([variant]) => (
       <Space gap={10} wrap>
         <Input variant={variant} label="Default" />
@@ -112,11 +112,11 @@ export const Color = () => (
         <Input variant={variant} color="warning" label="Warning" />
       </Space>
     )}
-  </TWSelectorContainer>
+  </SBSelectorContainer>
 );
 
 export const Status = () => (
-  <TWSelectorContainer label={['Select variant']} items={[variantItems]} value={['default']}>
+  <SBSelectorContainer label={['Select variant']} items={[variantItems]} value={['default']}>
     {([variant]) => (
       <Space gap={10} wrap>
         <Input variant={variant} labelPlaceholder="Default" />
@@ -129,7 +129,7 @@ export const Status = () => (
         <Input variant={variant} status="warning" labelPlaceholder="Warning" />
       </Space>
     )}
-  </TWSelectorContainer>
+  </SBSelectorContainer>
 );
 
 export const HelperText = () => (
@@ -153,7 +153,7 @@ export const HelperText = () => (
 );
 
 export const Content = () => (
-  <TWSelectorContainer label={['Select variant']} items={[variantItems]} value={['default']}>
+  <SBSelectorContainer label={['Select variant']} items={[variantItems]} value={['default']}>
     {([variant]) => (
       <Space direction="column" gap={10}>
         <SBTextSeparator>Position</SBTextSeparator>
@@ -190,11 +190,11 @@ export const Content = () => (
         </Space>
       </Space>
     )}
-  </TWSelectorContainer>
+  </SBSelectorContainer>
 );
 
 export const LabelLeftAndRight = () => (
-  <TWSelectorContainer label={['Select variant']} items={[variantItems]} value={['default']}>
+  <SBSelectorContainer label={['Select variant']} items={[variantItems]} value={['default']}>
     {([variant]) => (
       <Space direction="column" gap={10}>
         <SBTextSeparator>Label left</SBTextSeparator>
@@ -211,11 +211,34 @@ export const LabelLeftAndRight = () => (
         </Space>
       </Space>
     )}
-  </TWSelectorContainer>
+  </SBSelectorContainer>
+);
+
+export const Shape = () => (
+  <Space direction="column" gap={10}>
+    <SBTextSeparator>Default</SBTextSeparator>
+    <Space gap={10}>
+      <Input variant="default" placeholder="Default" />
+      <Input variant="bordered" placeholder="Bordered" />
+      <Input labelLeft="https://" labelRight=".com" placeholder="example" />
+    </Space>
+    <SBTextSeparator>Round</SBTextSeparator>
+    <Space gap={10}>
+      <Input variant="default" shape="round" placeholder="Round" />
+      <Input variant="bordered" shape="round" placeholder="Bordered" />
+      <Input shape="round" labelLeft="https://" labelRight=".com" placeholder="example" />
+    </Space>
+    <SBTextSeparator>Square</SBTextSeparator>
+    <Space gap={10}>
+      <Input variant="default" shape="square" placeholder="Square" />
+      <Input variant="bordered" shape="square" placeholder="Bordered" />
+      <Input shape="square" labelLeft="https://" labelRight=".com" placeholder="example" />
+    </Space>
+  </Space>
 );
 
 export const HotKey = () => (
-  <TWSelectorContainer label={['Select variant']} items={[variantItems]} value={['default']}>
+  <SBSelectorContainer label={['Select variant']} items={[variantItems]} value={['default']}>
     {([variant]) => (
       <Space gap={10} wrap>
         <Input variant={variant} hotKey="ctrl+k+1" label="Default" status="default" />
@@ -224,7 +247,7 @@ export const HotKey = () => (
         <Input variant={variant} hotKey="meta+k" label="Error" status="error" />
       </Space>
     )}
-  </TWSelectorContainer>
+  </SBSelectorContainer>
 );
 
 export const Disabled = Template.bind({});
@@ -241,13 +264,6 @@ ReadOnly.args = {
   value: 'John Doe'
 };
 
-export const Rounded = () => (
-  <Space gap={10}>
-    <Input variant="default" rounded placeholder="Rounded default" />
-    <Input variant="bordered" rounded placeholder="Rounded bordered" />
-  </Space>
-);
-
 export const Clearable = Template.bind({});
 Clearable.args = {
   clearable: true
@@ -258,20 +274,24 @@ AutoWidth.args = {
   autoWidth: true
 };
 
-export const Ref = () => {
-  const ref = useRef<HTMLInputElement>(null);
-
-  const handleClick = () => {
-    ref.current?.focus();
-  };
+export const UncontrolledVSControlled = () => {
+  const refUncontrolled = useRef<HTMLInputElement>(null);
+  const [valueControlled, setValueControlled] = useState('John Doe');
 
   return (
     <Space direction="column" gap={10}>
-      <p>Click the "handler" button below to trigger focus event on the input</p>
-      <Space gap={10}>
-        <Button onClick={handleClick}>handler</Button>
-        <Input placeholder="Enter name" ref={ref} />
-      </Space>
+      <SBTextSeparator>Uncontrolled</SBTextSeparator>
+      <Input labelPlaceholder="Name" defaultValue="John Doe" ref={refUncontrolled} />
+
+      <SBTextSeparator>Controlled</SBTextSeparator>
+      <Input
+        labelPlaceholder="Name"
+        value={valueControlled}
+        onChange={(e) => setValueControlled(e.target.value)}
+      />
+      <span>
+        Value input: <SBCode>{valueControlled}</SBCode>
+      </span>
     </Space>
   );
 };

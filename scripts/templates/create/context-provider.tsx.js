@@ -2,7 +2,8 @@ const { template } = require('react-docgen-renderer-template');
 const templateCreator = template({});
 
 const templateObject = templateCreator`${({ context }) => `
-import { createContext, ReactNode, useState } from 'react';
+import { createContext, useState } from 'react';
+import { ${context.pascalName}ProviderProps, defaultProps } from './${context.name}-context-props';
 
 /* ==== context ================================================================ */
 
@@ -15,19 +16,6 @@ export const ${context.pascalName}Context = createContext<{
 }>({} as { value: number });
 
 /* ==== provider =============================================================== */
-
-type ${context.pascalName}ProviderProps = {
-  /**
-   * Defines the children of the component.
-   */
-  children: ReactNode;
-  /**
-   * Defines the initial value.
-   */
-  initialValue: number;
-} & typeof defaultProps;
-
-const defaultProps = {};
 
 /**
  * ${context.pascalName} provider component.

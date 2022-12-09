@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any,@typescript-eslint/no-empty-function */
 const path = require('path');
 const os = require('os');
 const { capitalize } = require('lodash');

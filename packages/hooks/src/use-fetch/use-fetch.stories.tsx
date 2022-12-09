@@ -18,7 +18,8 @@ export const Default = () => {
   type Data = { userId: number; id: number; title: string; body: string };
   type Error = { message: string; code: number };
 
-  const [path, setPath] = useState<string>('https://jsonplaceholder.typicode.com/todos/1');
+  const defaultPath = 'https://jsonplaceholder.typicode.com/posts/1';
+  const [path, setPath] = useState<string>(defaultPath);
 
   const { data, loading, error } = useFetch<Data, Error>(path, {
     method: 'GET',
@@ -36,20 +37,13 @@ export const Default = () => {
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
-    const form = new FormData(event.target as HTMLFormElement);
-    setPath(`${form.get('path')}`);
+    setPath((event.target as HTMLFormElement).path.value);
   };
 
   return (
     <Container maxWidth={450}>
       <form onSubmit={handleSubmit}>
-        <Input
-          name="path"
-          label="Path"
-          autoWidth
-          variant="bordered"
-          value="https://jsonplaceholder.typicode.com/todos/1"
-        />
+        <Input name="path" label="Path" autoWidth variant="bordered" defaultValue={defaultPath} />
         <Button className="mt-4" color="secondary" type="submit">
           Load
         </Button>
