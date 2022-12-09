@@ -1,7 +1,7 @@
 import { MINIMAL_VIEWPORTS } from '@storybook/addon-viewport';
-import anysort from 'anysort';
 import { globalDecorators } from './decorators';
 import { createStorybookTheme } from './theme';
+import { anysort } from '/packages/utils/src/function';
 import '/packages/styles/src/styles.css';
 
 export const parameters = {

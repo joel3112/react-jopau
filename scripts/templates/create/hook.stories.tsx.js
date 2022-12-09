@@ -2,16 +2,16 @@ const { template } = require('react-docgen-renderer-template');
 const templateCreator = template({});
 
 const templateObject = templateCreator`${({ context }) => `
-import { SBCode } from '@react-jopau/styles/components';
 import { Container, Space } from '@react-jopau/components/ui/layout';
 import { Button } from '@react-jopau/components/ui/forms';
-import { prepareParameters } from '../story-helpers';
+import { SBCode } from '@react-jopau/styles/components';
+import { prepareParameters } from '@react-jopau/styles/utils';
 import { use${context.pascalName} } from './use-${context.name}';
 import docs from './readme.mdx';
 
 export default {
   title: 'use${context.pascalName}',
-  parameters: prepareParameters(docs)
+  parameters: prepareParameters(docs, true)
 };
 
 export const Docs = () => {};

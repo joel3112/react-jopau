@@ -1,7 +1,8 @@
 import { createContext, ReactNode, useEffect, useState } from 'react';
 import { globalCss } from '@stitches/react';
+import type { ThemeConfig, ThemeSchemes } from '@react-jopau/styles/types';
 import { ThemeBuilder } from '@react-jopau/styles/ThemeBuilder';
-import { computeScheme, ThemeConfig, ThemeSchemes } from '@react-jopau/styles/theme';
+import { computeScheme } from '@react-jopau/styles/utils';
 import globalCSS from '@react-jopau/styles/globalStyles';
 
 /* ==== context ================================================================ */

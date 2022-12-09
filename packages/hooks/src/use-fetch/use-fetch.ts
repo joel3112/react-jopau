@@ -1,6 +1,6 @@
 import useSWR, { Fetcher } from 'swr';
 import axios from 'axios';
-import { getPropValue } from '@react-jopau/utils/object';
+import { getPropValue } from '@react-jopau/utils';
 
 /**
  * @template T Type of the data returned by the fetch

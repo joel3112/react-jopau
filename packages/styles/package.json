@@ -9,8 +9,11 @@
   "author": "Joel Paucarima Franco <joel.dev.3112@outlook.es>",
   "license": "MIT",
   "homepage": "https://github.com/joel3112/react-jopau/tree/main/packages/styles#readme",
+  "type": "module",
+  "main": "index.js",
+  "module": "index.js",
   "scripts": {
-    "build": "rimraf dist && tsc",
+    "build": "rimraf dist && tsc && copyfiles -f src/types/*.d.ts dist/types",
     "test": "jest --config=../../jest.config.js --selectProjects=@react-jopau/styles",
     "prepublishOnly": "copyfiles -f package.json README.md src/**/*.css dist"
   },

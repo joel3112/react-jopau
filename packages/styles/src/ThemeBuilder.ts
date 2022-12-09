@@ -1,15 +1,8 @@
 import { createStitches, styled } from '@stitches/react';
-import { BreakpointsRules } from './breakpoint';
+import type { BreakpointsRules, ThemeConfig, ThemeScheme, ThemeStyled } from './types';
+import { getBreakpoints, getThemeInstance, normalizeThemeByScheme } from './utils';
 import defaultConfig from './themes/default';
 import themeUtils from './themes/utils';
-import {
-  getBreakpoints,
-  getThemeInstance,
-  normalizeThemeByScheme,
-  ThemeConfig,
-  ThemeScheme,
-  ThemeStyled
-} from './theme';
 
 export class ThemeBuilder {
   currentConfig: ThemeConfig = defaultConfig;

@@ -3,8 +3,8 @@ const templateCreator = template({});
 
 const templateObject = templateCreator`${({ context }) => `
 import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { prepareArgTypes, prepareParameters } from '@react-jopau/styles/utils';
 import AppExample from '@apps/example';
-import { prepareArgTypes, prepareParameters } from '../../utils/story-helpers';
 import { ${context.pascalName}Provider } from './${context.name}-context';
 import docs from './readme.mdx';
 

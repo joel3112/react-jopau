@@ -1,15 +1,15 @@
 import { FormEvent, useState } from 'react';
-import { SBCode, SBJSONPreview } from '@react-jopau/styles/components';
 import { Container, Space } from '@react-jopau/components/ui/layout';
 import { Button, Input } from '@react-jopau/components/ui/forms';
 import { Text } from '@react-jopau/components/ui/typography';
-import { prepareParameters } from '../story-helpers';
+import { SBCode, SBJSONPreview } from '@react-jopau/styles/components';
+import { prepareParameters } from '@react-jopau/styles/utils';
 import { useFetch } from './use-fetch';
 import docs from './readme.mdx';
 
 export default {
   title: 'useFetch',
-  parameters: prepareParameters(docs)
+  parameters: prepareParameters(docs, true)
 };
 
 export const Docs = () => {};
@@ -45,8 +45,9 @@ export const Default = () => {
       <form onSubmit={handleSubmit}>
         <Input
           name="path"
-          autoWidth
           label="Path"
+          autoWidth
+          variant="bordered"
           value="https://jsonplaceholder.typicode.com/todos/1"
         />
         <Button className="mt-4" color="secondary" type="submit">

@@ -1,14 +1,14 @@
 import { UIEvent, useRef, useState } from 'react';
-import { SBCard, SBCode } from '@react-jopau/styles/components';
 import { Container, Space } from '@react-jopau/components/ui/layout';
 import { Heading, Text } from '@react-jopau/components/ui/typography';
-import { prepareParameters } from '../story-helpers';
+import { SBCard, SBCode } from '@react-jopau/styles/components';
+import { prepareParameters } from '@react-jopau/styles/utils';
 import { useEventListener } from './use-event-listener';
 import docs from './readme.mdx';
 
 export default {
   title: 'useEventListener',
-  parameters: prepareParameters(docs)
+  parameters: prepareParameters(docs, true)
 };
 
 export const Docs = () => {};

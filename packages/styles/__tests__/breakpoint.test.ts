@@ -1,10 +1,5 @@
-import {
-  Breakpoint,
-  BreakpointsHelper,
-  BreakpointsRules,
-  createBreakpoints,
-  DEFAULT_CONFIG
-} from '../src/breakpoint';
+import type { Breakpoint, BreakpointsRules } from '../src/types';
+import { BreakpointsHelper, createBreakpoints, DEFAULT_CONFIG } from '../src/utils';
 
 describe('Breakpoint helper methods', () => {
   describe('createBreakpoints', () => {

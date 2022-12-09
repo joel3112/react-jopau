@@ -20,8 +20,8 @@ npm install @react-jopau/utils
 ## Usage
 
 ```javascript
-import { yearsFromNow, TDate } from '@react-jopau/utils/date';
-import { debounce } from '@react-jopau/utils/function';
+import { yearsFromNow, TDate } from '@react-jopau/utils';
+import { debounce } from '@react-jopau/utils';
 ```
 
 ## Author

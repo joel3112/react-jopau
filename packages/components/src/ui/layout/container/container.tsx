@@ -1,8 +1,8 @@
 import { ReactNode, useContext } from 'react';
-import { BreakpointsRules } from '@react-jopau/styles/breakpoint';
-import { ThemeContext } from '../../../contexts';
+import type { BreakpointsRules } from '@react-jopau/styles/types';
 import { classes } from '../../../utils/system';
 import type { ElementHTML } from '../../../../types';
+import { ThemeContext } from '../../../contexts';
 import { StyledContainer } from './container.styled';
 
 type ContainerProps = ElementHTML & {

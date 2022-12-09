@@ -1,5 +1,5 @@
 import * as _ from 'lodash';
-import { TAny, TBasic } from './index';
+import type { TAny, TBasic } from './index';
 
 export type TObject<T = TAny, U extends string | number | symbol = string> = Record<U, T>;
 

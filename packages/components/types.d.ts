@@ -14,6 +14,8 @@ export type ButtonColor = NormalColor | 'light' | 'dark';
 
 export type NormalSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
+export type Shape = 'default' | 'round' | 'square';
+
 export type ContentPosition = 'left' | 'right';
 
 export type WithIcon = {

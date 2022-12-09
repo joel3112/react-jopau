@@ -83,8 +83,8 @@ export const StyledButton = styledTheme(ButtonNextUI as ComponentType<any>, {
   whiteSpace: 'nowrap',
   border: '1px solid',
   borderColor: '$$buttonBackgroundColor',
-  borderRadius: '$radii$xs',
   color: '$$buttonColor',
+  borderRadius: '$$buttonBorderRadius',
 
   '&[disabled]': {
     color: '$colors$gray800',
@@ -103,6 +103,11 @@ export const StyledButton = styledTheme(ButtonNextUI as ComponentType<any>, {
       warning: colorTokens('warning'),
       light: colorTokens('light'),
       dark: colorTokens('dark')
+    },
+    shape: {
+      default: { $$buttonBorderRadius: '$radii$xs' },
+      round: { $$buttonBorderRadius: '$radii$2xl' },
+      square: { $$buttonBorderRadius: 0 }
     },
     solid: {
       true: {
@@ -154,9 +159,6 @@ export const StyledButton = styledTheme(ButtonNextUI as ComponentType<any>, {
         minWidth: 'auto'
       }
     },
-    rounded: {
-      true: { borderRadius: '$radii$2xl' }
-    },
     auto: {
       true: { width: '$space$full', minWidth: 'auto' },
       false: { width: '$space$fit' }
@@ -166,7 +168,7 @@ export const StyledButton = styledTheme(ButtonNextUI as ComponentType<any>, {
   compoundVariants: [
     {
       iconOnly: true,
-      rounded: true,
+      shape: 'round',
       css: {
         borderRadius: '$radii$rounded'
       }

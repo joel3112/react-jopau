@@ -1,4 +1,4 @@
-import { PartialThemeConfig } from '../theme';
+import type { PartialThemeConfig } from '../types';
 import defaultTheme from './default';
 import purpleTheme from './purple';
 

@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { prepareArgTypes, prepareParameters } from '../../../utils/story-helpers';
+import { prepareArgTypes, prepareParameters } from '@react-jopau/styles/utils';
 import { Space } from '../../layout';
 import { Checkbox } from './checkbox';
 import docs from './readme.mdx';

@@ -89,13 +89,17 @@ const generateComponentDocs = async (type, componentNameOne) => {
         }
       );
       const componentDocs = last(customParser.parse(componentPath));
-      const stories = getStories(componentPath, jsdocSchema, componentNameParent);
       const displayName = !isSubComponent
         ? componentDocs.displayName
         : [componentNameParent, componentName.replace(`${componentNameParent}-`, '')]
             .filter(Boolean)
             .map(capitalize)
             .join('.');
+      const parentPath = isSubComponent ? componentNameParent : '';
+      const parentName = isSubComponent
+        ? componentNameParent.split('-').map(capitalize).join('')
+        : '';
+      const stories = getStories(componentPath, jsdocSchema, parentName);
 
       /**
        * Generate file MDX
@@ -109,9 +113,8 @@ const generateComponentDocs = async (type, componentNameOne) => {
         rendererMDX.renderDoc(componentPath, {
           ...componentDocs,
           displayName,
-          parentPath: componentNameParent,
-          parentName:
-            componentNameParent && componentNameParent.split('-').map(capitalize).join(''),
+          parentPath,
+          parentName,
           imports: getCustomTag(jsdocSchema, 'imports'),
           stories: stories || {}
         }),
@@ -130,9 +133,8 @@ const generateComponentDocs = async (type, componentNameOne) => {
         rendererMD.renderDoc(componentPath, {
           ...componentDocs,
           displayName,
-          parentPath: componentNameParent,
-          parentName:
-            componentNameParent && componentNameParent.split('-').map(capitalize).join(''),
+          parentPath,
+          parentName,
           imports: getCustomTag(jsdocSchema, 'imports'),
           examples: get(jsdocSchema, 'examples')
         }),

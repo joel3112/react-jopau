@@ -1,13 +1,13 @@
 import { useState } from 'react';
-import { SBCard, SBCode } from '@react-jopau/styles/components';
 import { Container, Space } from '@react-jopau/components/ui/layout';
-import { prepareParameters } from '../story-helpers';
+import { SBCard, SBCode } from '@react-jopau/styles/components';
+import { prepareParameters } from '@react-jopau/styles/utils';
 import { useHotKey } from './use-hot-key';
 import docs from './readme.mdx';
 
 export default {
   title: 'useHotKey',
-  parameters: prepareParameters(docs)
+  parameters: prepareParameters(docs, true)
 };
 
 export const Docs = () => {};
@@ -28,7 +28,7 @@ export const Default = () => {
         </Space>
 
         {show && (
-          <SBCard className="mt-10 w-[200px]" title="Card shown/hidden">
+          <SBCard className="mt-10 w-[250px]" title="Card shown/hidden">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat libero, similique.
           </SBCard>
         )}

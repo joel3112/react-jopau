@@ -8,7 +8,7 @@ import {
   DARK_MODE_STORAGE_KEY,
   getColors,
   THEME_SELECTOR_STORAGE_KEY
-} from 'packages/styles/src/theme';
+} from '/packages/styles/src/utils/theme';
 
 const ThemeProviderMemo = React.memo(ThemeProvider);
 

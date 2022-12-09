@@ -13,7 +13,7 @@
   "main": "index.js",
   "module": "index.js",
   "scripts": {
-    "build": "rimraf dist && tsc -p tsconfig.build.json",
+    "build": "rimraf dist && tsc",
     "test": "jest --config=../../jest.config.js --selectProjects=@react-jopau/utils",
     "prepublishOnly": "copyfiles package.json README.md dist"
   },
@@ -22,11 +22,12 @@
     "directory": "dist"
   },
   "dependencies": {
-    "anysort": "^2.0.0",
+    "anymatch": "^3.1.3",
     "lodash": "4.17.21",
     "luxon": "^3.0.3"
   },
   "devDependencies": {
+    "@types/anymatch": "^3.0.0",
     "@types/luxon": "^3.0.1",
     "typescript": "^4.8.4"
   }

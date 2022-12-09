@@ -1,10 +1,6 @@
 import { useEffect, useState } from 'react';
-import {
-  Breakpoint,
-  BreakpointsHelper,
-  BreakpointsRules,
-  createBreakpoints
-} from '@react-jopau/styles/breakpoint';
+import type { Breakpoint, BreakpointsRules } from '@react-jopau/styles/types';
+import { BreakpointsHelper, createBreakpoints } from '@react-jopau/styles/utils';
 
 /**
  * @typedef  {Object} UseBreakpoint

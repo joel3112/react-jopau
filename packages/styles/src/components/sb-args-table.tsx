@@ -1,10 +1,8 @@
-import { ComponentType, ElementType, ReactNode, useContext } from 'react';
+import { ComponentType, ElementType, ReactNode } from 'react';
 import { styled } from '@stitches/react';
 import { ArgTypes } from '@storybook/addons';
 import { ArgsTable as PureArgsTable, TabsState } from '@storybook/components';
-import { DocsContext, extractComponentArgTypes } from '@storybook/addon-docs';
-import { sortByPriority } from '@react-jopau/utils/collection';
-import { merge } from '@react-jopau/utils/object';
+import { prepareArgTypesWithContext, sortedArgTypes } from '../utils';
 import { SBCollapsable } from './sb-collapsable';
 
 const ArgsTableStyled = styled('div', {
@@ -77,34 +75,8 @@ export const SBPureArgsTable = ({
   );
 };
 
-const sortedArgTypes = (argTypes: ArgTypes): ArgTypes => {
-  const priority = ['Props', 'Icon', 'Common', 'Events'];
-  return sortByPriority<ArgTypes>(argTypes, 'table.category', priority);
-};
-
-export const prepareArgTypes = (component: ComponentType, extraArgTypes: ArgTypes = {}) => {
-  const context = useContext(DocsContext);
-  const argTypes = extractComponentArgTypes(component, context);
-  const category = (name: string) => ({ table: { category: name } });
-
-  const categoriesArgTypes = Object.keys(argTypes).reduce((acc, key) => {
-    if (['className', 'style', 'id', 'ref'].includes(key)) {
-      return { ...acc, [key]: category('Common') };
-    }
-    if (key.toLowerCase().includes('icon')) {
-      return { ...acc, [key]: category('Icon') };
-    }
-    if (new RegExp('^on[A-Z].*').test(key)) {
-      return { ...acc, ...{ [key]: { ...category('Events') } } };
-    }
-    return { ...acc, [key]: category('Props') };
-  }, {});
-
-  return merge(merge(argTypes, categoriesArgTypes), extraArgTypes);
-};
-
 const getTabComponentItem = (label: ComponentType['displayName'], component: ComponentType) => {
-  return { label, component, argTypes: sortedArgTypes(prepareArgTypes(component)) };
+  return { label, component, argTypes: sortedArgTypes(prepareArgTypesWithContext(component)) };
 };
 
 export const SBArgsTable = ({

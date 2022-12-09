@@ -25,7 +25,7 @@ export const SBCard = ({
     return (
       <div
         className={classes(
-          'h-[150px] group relative p-8 flex flex-col gap-3 bg-background border border-gray-700 border-solid shadow-md rounded-sm',
+          'min-h-[150px] group relative p-8 flex flex-col gap-6 bg-background border border-gray-700 border-solid shadow-md rounded-sm',
           className
         )}>
         <div className="text-secondary font-semibold text-[18px]">{title}</div>
@@ -38,7 +38,7 @@ export const SBCard = ({
     <LinkTo kind={kind} story="docs">
       <div
         className={classes(
-          'h-[150px] group relative p-8 flex flex-col gap-3 bg-background hover:bg-[#eee] border border-gray-700 border-solid shadow-md rounded-sm cursor-pointer',
+          'h-[150px] group relative p-8 flex flex-col gap-4 bg-background hover:bg-[#eee] border border-gray-700 border-solid shadow-md rounded-sm cursor-pointer',
           className
         )}>
         <div className="text-secondary font-semibold text-[18px]">{title}</div>

@@ -24,7 +24,7 @@ npm install @react-jopau/styles
 Function to create a breakpoints helper from rules.
 
 ```tsx
-import { createBreakpoints } from '@react-jopau/styles/breakpoint';
+import { createBreakpoints } from '@react-jopau/styles/utils';
 
 const rules = {
   xs: 0,

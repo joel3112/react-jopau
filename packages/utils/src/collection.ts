@@ -1,7 +1,5 @@
 import * as _ from 'lodash';
-import * as anysort from 'anysort';
-import { TAny, TArray, TBasic } from './index';
-import { getPropValue } from './object';
+import type { TAny, TArray, TBasic } from './index';
 import { compact } from './array';
 
 export type TCollection<T = TAny> = TArray<T> | T;
@@ -42,30 +40,4 @@ export const sortBy = <T>(
   orders: Array<TCollectionSortOrder> | TCollectionSortOrder = 'asc'
 ): TArray<T> | TArray<T[keyof T]> => {
   return _.orderBy<T>(collection as TArray<T>, key, orders);
-};
-
-export const sortByPriority = <T>(
-  collection: T,
-  key: string,
-  priority: TArray<string> = [],
-  order: TCollectionSortOrder = 'asc'
-): T => {
-  if (Array.isArray(collection)) {
-    const result = collection.sort((a, b) => {
-      return anysort(getPropValue(a, key), getPropValue(b, key), priority);
-    });
-    return (order === 'desc' ? result.reverse() : result) as T;
-  }
-
-  const arrayCollection = (
-    Object.entries(collection as Object) as TArray<[keyof T, T[keyof T]]>
-  ).sort((a, b) => {
-    return anysort(getPropValue(a[1], key), getPropValue(b[1], key), priority);
-  });
-
-  return (
-    order === 'desc'
-      ? Object.fromEntries(arrayCollection.reverse())
-      : Object.fromEntries(arrayCollection)
-  ) as T;
 };

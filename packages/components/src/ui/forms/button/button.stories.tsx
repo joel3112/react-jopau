@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { MdAdd } from 'react-icons/md';
 import { SBTextSeparator, SBSelectorContainer } from '@react-jopau/styles/components';
-import { prepareArgTypes, prepareParameters } from '../../../utils/story-helpers';
+import { prepareArgTypes, prepareParameters } from '@react-jopau/styles/utils';
 import { Space } from '../../layout';
 import { Button } from './button';
 import docs from './readme.mdx';
@@ -18,7 +18,7 @@ export default {
     size: 'md',
     variant: 'solid',
     iconPosition: 'left',
-    rounded: false,
+    shape: 'default',
     disabled: false,
     autoWidth: false
   },
@@ -120,23 +120,12 @@ export const IconOnly = () => (
     ]}
     value={['solid']}>
     {([variant]) => (
-      <Space direction="column" gap={10}>
-        <SBTextSeparator>Default</SBTextSeparator>
-        <Space align="center" gap={10}>
-          <Button size="xs" variant={variant} icon={<MdAdd />} />
-          <Button size="sm" variant={variant} icon={<MdAdd />} />
-          <Button size="md" variant={variant} icon={<MdAdd />} />
-          <Button size="lg" variant={variant} icon={<MdAdd />} />
-          <Button size="xl" variant={variant} icon={<MdAdd />} />
-        </Space>
-        <SBTextSeparator>With Rounded</SBTextSeparator>
-        <Space align="center" gap={10}>
-          <Button size="xs" variant={variant} icon={<MdAdd />} rounded />
-          <Button size="sm" variant={variant} icon={<MdAdd />} rounded />
-          <Button size="md" variant={variant} icon={<MdAdd />} rounded />
-          <Button size="lg" variant={variant} icon={<MdAdd />} rounded />
-          <Button size="xl" variant={variant} icon={<MdAdd />} rounded />
-        </Space>
+      <Space align="center" gap={10}>
+        <Button size="xs" variant={variant} icon={<MdAdd />} />
+        <Button size="sm" variant={variant} icon={<MdAdd />} />
+        <Button size="md" variant={variant} icon={<MdAdd />} />
+        <Button size="lg" variant={variant} icon={<MdAdd />} />
+        <Button size="xl" variant={variant} icon={<MdAdd />} />
       </Space>
     )}
   </SBSelectorContainer>
@@ -172,7 +161,7 @@ export const TextAndIcon = () => (
   </Space>
 );
 
-export const Rounded = () => (
+export const Shape = () => (
   <SBSelectorContainer
     label={['Select variant']}
     items={[
@@ -185,14 +174,35 @@ export const Rounded = () => (
     ]}
     value={['solid']}>
     {([variant]) => (
-      <Space gap={10}>
-        <Button variant={variant} rounded>
-          Button
-        </Button>
-        <Button variant={variant} icon={<MdAdd />} rounded>
-          Button
-        </Button>
-        <Button variant={variant} icon={<MdAdd />} rounded />
+      <Space direction="column" gap={10}>
+        <SBTextSeparator>Default</SBTextSeparator>
+        <Space gap={10}>
+          <Button variant={variant}>Button</Button>
+          <Button variant={variant} icon={<MdAdd />}>
+            Button
+          </Button>
+          <Button variant={variant} icon={<MdAdd />} />
+        </Space>
+        <SBTextSeparator>Round</SBTextSeparator>
+        <Space gap={10}>
+          <Button variant={variant} shape="round">
+            Button
+          </Button>
+          <Button variant={variant} shape="round" icon={<MdAdd />}>
+            Button
+          </Button>
+          <Button variant={variant} shape="round" icon={<MdAdd />} />
+        </Space>
+        <SBTextSeparator>Square</SBTextSeparator>
+        <Space gap={10}>
+          <Button variant={variant} shape="square">
+            Button
+          </Button>
+          <Button variant={variant} shape="square" icon={<MdAdd />}>
+            Button
+          </Button>
+          <Button variant={variant} shape="square" icon={<MdAdd />} />
+        </Space>
       </Space>
     )}
   </SBSelectorContainer>
@@ -204,10 +214,10 @@ export const Disabled = () => (
     <Button disabled icon={<MdAdd />}>
       Disabled
     </Button>
-    <Button disabled rounded>
+    <Button disabled shape="round">
       Disabled
     </Button>
-    <Button disabled icon={<MdAdd />} rounded />
+    <Button disabled icon={<MdAdd />} shape="round" />
   </Space>
 );
 
@@ -225,7 +235,7 @@ export const AutoWidth = () => (
       </Button>
     </Space>
     <Space gap={10}>
-      <Button autoWidth icon={<MdAdd />} rounded>
+      <Button autoWidth icon={<MdAdd />} shape="round">
         Button
       </Button>
     </Space>

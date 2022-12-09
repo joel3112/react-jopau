@@ -9,6 +9,7 @@
   "author": "Joel Paucarima Franco <joel.dev.3112@outlook.es>",
   "license": "MIT",
   "homepage": "https://github.com/joel3112/react-jopau/tree/main/packages/hooks#readme",
+  "type": "module",
   "main": "index.js",
   "module": "index.js",
   "scripts": {

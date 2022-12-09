@@ -4,7 +4,7 @@ import { addons, types } from '@storybook/addons';
 import { IconButton, TooltipLinkList, WithTooltip } from '@storybook/components';
 import { FiMoon, FiSun } from 'react-icons/fi';
 import { useLocalStorage } from '/packages/hooks/src/use-local-storage/use-local-storage';
-import { DARK_MODE_STORAGE_KEY } from '/packages/styles/src/theme';
+import { DARK_MODE_STORAGE_KEY } from '/packages/styles/src/utils/theme';
 
 const COLOR_SCHEMES = [
   { id: 'light', title: 'Light' },

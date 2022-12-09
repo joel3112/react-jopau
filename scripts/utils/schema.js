@@ -32,7 +32,8 @@ const getPackageName = (componentPath) => {
   return componentPath.replace(/packages\/(.*)\/src\/(.*)/g, '$1');
 };
 
-const getComponentParsed = (componentPath, schemaProps, isSubComponent) => {
+const getComponentParsed = (componentPath, schemaProps, parentName) => {
+  const isSubComponent = !!parentName;
   const packageName = getPackageName(componentPath);
   const displayName = get(schemaProps, 'name');
   const displayNameJoined = lowerCase(displayName).replace(/ /g, '');
@@ -55,7 +56,10 @@ const getComponentParsed = (componentPath, schemaProps, isSubComponent) => {
       path.parse(componentPath).ext,
       `.stories${path.parse(componentPath).ext}`
     ),
-    displayName,
+    parentName,
+    displayName: !isSubComponent
+      ? displayName
+      : `${parentName}.${displayName.replace(parentName, '')}`,
     description: parseDescription(get(schemaProps, 'description')),
     fileName,
     packageName,
@@ -66,11 +70,11 @@ const getComponentParsed = (componentPath, schemaProps, isSubComponent) => {
   };
 };
 
-const getStories = (componentPath, schemaProps, componentPathParent) => {
-  const { storiesPrefixId, storiesPath } = getComponentParsed(
+const getStories = (componentPath, schemaProps, parentName) => {
+  const { displayName, storiesPrefixId, storiesPath } = getComponentParsed(
     componentPath,
     schemaProps,
-    !!componentPathParent
+    parentName
   );
   const stories = {};
 
@@ -86,10 +90,13 @@ const getStories = (componentPath, schemaProps, componentPathParent) => {
         .split(' ')
         .map((t) => upperFirst(t))
         .join(' ');
+      const subcomponentPartialName = !parentName ? '' : displayName.replace(`${parentName}.`, '');
 
       stories[storyName] = {
         name: storyName,
-        label,
+        label: !subcomponentPartialName
+          ? label
+          : `[${subcomponentPartialName}] ${label.replace(subcomponentPartialName, '').trim()}`,
         id: `${storiesPrefixId}--${id}`
       };
     }

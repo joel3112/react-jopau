@@ -14,12 +14,12 @@
     "noErrorTruncation": false,
     "allowJs": true,
     "skipLibCheck": true,
-    "typeRoots": ["node_modules/@types", "typings/**/*.d.ts", "packages/**/*.d.ts"],
+    "typeRoots": ["node_modules/@types", "typings/*.d.ts", "packages/**/*.d.ts"],
     "paths": {
       "@apps/example": ["apps/example/src/App.tsx"],
+      "@react-jopau/utils": ["packages/utils/src"],
       "@react-jopau/styles/*": ["packages/styles/src/*"],
-      "@react-jopau/utils/*": ["packages/utils/src/*"],
-      "@react-jopau/hooks": ["packages/hooks/src/"],
+      "@react-jopau/hooks": ["packages/hooks/src"],
       "@react-jopau/components/*": ["packages/components/src/*"]
     },
     "types": ["node", "react", "jest", "mdx"]

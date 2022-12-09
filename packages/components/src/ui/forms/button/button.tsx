@@ -1,6 +1,6 @@
 import { MouseEvent, ReactNode, Ref, useImperativeHandle, useRef } from 'react';
 import { classes, forwardRef } from '../../../utils/system';
-import type { ButtonColor, ElementHTML, NormalSize, WithIcon } from '../../../../types';
+import type { ButtonColor, ElementHTML, NormalSize, Shape, WithIcon } from '../../../../types';
 import { StyledButtonIcon, StyledButton } from './button.styled';
 
 export type ButtonProps = ElementHTML &
@@ -30,9 +30,9 @@ export type ButtonProps = ElementHTML &
      */
     disabled?: boolean;
     /**
-     * Defines the round shape of the component.
+     * Defines the shape of the component.
      */
-    rounded?: boolean;
+    shape?: Shape;
     /**
      * Defines if the button takes the fit width of its parent.
      */
@@ -48,7 +48,8 @@ const defaultProps = {
   size: 'md',
   variant: 'solid',
   iconPosition: 'left',
-  type: 'button'
+  type: 'button',
+  shape: 'default'
 };
 
 const ButtonIcon = ({ children }: { children: ReactNode }) => {
@@ -77,7 +78,7 @@ export const Button = forwardRef<ButtonProps, 'button'>(
       size,
       variant,
       disabled,
-      rounded,
+      shape,
       autoWidth,
       iconPosition,
       icon,
@@ -115,7 +116,7 @@ export const Button = forwardRef<ButtonProps, 'button'>(
         flat={variant === 'flat'}
         light={variant === 'clear'}
         iconOnly={!!icon && !children}
-        rounded={rounded}
+        shape={shape}
         auto={!!autoWidth}
         {...(icon && {
           icon: iconPosition === 'left' && <ButtonIcon>{icon}</ButtonIcon>,

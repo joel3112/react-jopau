@@ -1,15 +1,15 @@
 import { FormEvent } from 'react';
-import { SBCode } from '@react-jopau/styles/components';
 import { Container, Space } from '@react-jopau/components/ui/layout';
 import { Button, Input } from '@react-jopau/components/ui/forms';
 import { Heading, Text } from '@react-jopau/components/ui/typography';
-import { prepareParameters } from '../story-helpers';
+import { SBCode } from '@react-jopau/styles/components';
+import { prepareParameters } from '@react-jopau/styles/utils';
 import { useLocalStorage } from './use-local-storage';
 import docs from './readme.mdx';
 
 export default {
   title: 'useLocalStorage',
-  parameters: prepareParameters(docs)
+  parameters: prepareParameters(docs, true)
 };
 
 export const Docs = () => {};
@@ -27,7 +27,7 @@ export const Default = () => {
   return (
     <Container maxWidth={450}>
       <form onSubmit={handleSubmit}>
-        <Input name="value" autoWidth label="Value to storage" value={value} />
+        <Input name="value" label="Value to storage" variant="bordered" autoWidth value={value} />
         <Button className="mt-4" color="secondary" type="submit">
           Set value
         </Button>
