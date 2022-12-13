@@ -1,0 +1,39 @@
+### Radio.Group
+
+Radios group allows users to select a single option from a list of mutually exclusive options.
+
+#### Import
+
+```jsx
+import { Radio } from '@react-jopau/components/ui/forms';
+```
+
+#### Examples
+
+```jsx
+<Radio.Group defaultValue="A">
+  <Radio value="A">Option A</Radio>
+  <Radio value="B">Option B</Radio>
+</Radio.Group>
+```
+
+#### Props
+
+| Name                  | Type                                                                                                               | Default value | Description                                                                                   |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------ | ------------- | --------------------------------------------------------------------------------------------- |
+| children _(required)_ | `ReactNode`                                                                                                        |               | Defines the children of the component.                                                        |
+| className             | `string`                                                                                                           |               | Classnames applied to root element                                                            |
+| color                 | `"primary"` \| `"secondary"` \| `"tertiary"` \| `"info"` \| `"error"` \| `"success"` \| `"warning"`                |               | Defines the color of input text, border and label.                                            |
+| defaultValue          | `string`                                                                                                           |               | Defines the default value (uncontrolled) of the current element, used when submitting a form. |
+| disabled              | `boolean`                                                                                                          |               | Defines if the element is disabled and not available for interaction.                         |
+| id                    | `string`                                                                                                           |               | Identifies the element that labels the current element.                                       |
+| label                 | `string`                                                                                                           |               | Defines the label of the current element.                                                     |
+| name                  | `string`                                                                                                           |               | Define the name for the current element (used for form submission).                           |
+| onChange              | `(e: string) => void`                                                                                              |               | Function to be called when the element value is changed.                                      |
+| orientation           | `"vertical"` \| `"horizontal"`                                                                                     |               | Defines the axis radio group is aligned.                                                      |
+| readOnly              | `boolean`                                                                                                          |               | Defines if the element is read-only.                                                          |
+| required              | `boolean`                                                                                                          |               | Defines if the element is required.                                                           |
+| size                  | `"md"` \| `"xs"` \| `"sm"` \| `"lg"` \| `"xl"`                                                                     |               | Defines the size of the component.                                                            |
+| status                | `"primary"` \| `"default"` \| `"secondary"` \| `"tertiary"` \| `"info"` \| `"error"` \| `"success"` \| `"warning"` |               | Defines the status of the element and determines the color of the border.                     |
+| style                 | `CSSProperties`                                                                                                    |               | Styles applied to root element                                                                |
+| value                 | `string`                                                                                                           |               | Defines the value (controlled) of the current element, used when submitting a form.           |
