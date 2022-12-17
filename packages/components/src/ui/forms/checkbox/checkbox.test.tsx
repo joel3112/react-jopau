@@ -33,7 +33,7 @@ describe('Tests Checkbox component', () => {
     expect(container.firstChild).toContainHTML('size-md');
   });
 
-  test('changes value correctly', async () => {
+  test('changes checked correctly', async () => {
     const onChange = jest.fn();
 
     render(
@@ -43,8 +43,8 @@ describe('Tests Checkbox component', () => {
     );
 
     await waitFor(() => {
-      const checkbox = screen.getByLabelText('Label');
-      checkbox.click();
+      const _checkbox = screen.getByLabelText('Label');
+      _checkbox.click();
     });
 
     expect(onChange).toHaveBeenCalled();

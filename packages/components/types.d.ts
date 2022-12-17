@@ -21,7 +21,6 @@ export type ContentPosition = 'left' | 'right';
 export type WithIcon = {
   /**
    * Defines the render of the icon of the component.
-   * See <a href="https://react-icons.github.io/react-icons/" target="_blank">react-icons</a> for more details.
    */
   icon?: ReactNode;
   /**

@@ -1,9 +1,8 @@
 import { ComponentType, Ref } from 'react';
-import {
-  Checkbox as CheckboxNextUI,
-  CheckboxProps as CheckboxPropsNextUI
-} from '@nextui-org/react';
+import { Checkbox as CheckboxNextUI } from '@nextui-org/react';
+import { CheckboxProps as CheckboxPropsNextUI } from '@nextui-org/react/types/checkbox/checkbox';
 import { CheckboxProps } from './checkbox-props';
+import { CheckboxGroupProps } from './group/checkbox-group-props';
 import { styledTheme } from '../../../index';
 
 enum NextUIEl {
@@ -11,6 +10,23 @@ enum NextUIEl {
   CHECKBOX_MASK = '.nextui-checkbox-mask',
   CHECKBOX_TEXT = '.nextui-checkbox-text'
 }
+
+export const StyledCheckboxGroup = styledTheme(
+  CheckboxNextUI.Group as ComponentType<
+    Partial<
+      Omit<unknown, keyof CheckboxGroupProps | 'ref'> &
+        CheckboxGroupProps & {
+          ref: Ref<HTMLDivElement>;
+          isDisabled?: boolean;
+          isReadOnly?: boolean;
+        }
+    >
+  >,
+  {
+    display: 'inline-block',
+    width: '$space$fit'
+  }
+);
 
 export const StyledCheckbox = styledTheme(
   CheckboxNextUI as ComponentType<

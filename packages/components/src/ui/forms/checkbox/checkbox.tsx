@@ -1,6 +1,8 @@
-import { Ref } from 'react';
-import { classes, forwardRef } from '../../../utils/system';
+import { ForwardRefExoticComponent, Ref, RefAttributes, useContext } from 'react';
+import { classes, cleanedProps, forwardRef } from '../../../utils/system';
 import { useControlChecked } from '../../../utils/use-control-checked';
+import { CheckboxContext } from './checkbox-context';
+import { CheckboxGroup } from './group/checkbox-group';
 import { CheckboxProps, defaultProps } from './checkbox-props';
 import { StyledCheckbox } from './checkbox.styled';
 
@@ -17,30 +19,28 @@ import { StyledCheckbox } from './checkbox.styled';
 export const Checkbox = forwardRef<CheckboxProps, 'input'>(
   (props: CheckboxProps, ref: Ref<Partial<HTMLInputElement> | null>) => {
     const {
+      className,
+      style,
+      children,
+      name,
+      value,
+      label,
+      required,
+      indeterminate,
+      rounded,
+      throughed
+    } = props;
+    const contextProps = useContext(CheckboxContext);
+
+    const {
       ref: checkboxRef,
       id,
       ariaLabel,
       defaultChecked,
       checked,
       onChange
-    } = useControlChecked(props, ref);
-    const {
-      className,
-      style,
-      children,
-      name,
-      value,
-      size,
-      label,
-      color,
-      status,
-      readOnly,
-      disabled,
-      required,
-      indeterminate,
-      rounded,
-      throughed
-    } = props;
+    } = useControlChecked(props, contextProps, ref);
+    const { size, color, status, readOnly, disabled } = { ...props, ...cleanedProps(contextProps) };
 
     return (
       <StyledCheckbox
@@ -49,8 +49,8 @@ export const Checkbox = forwardRef<CheckboxProps, 'input'>(
         name={name}
         aria-label={ariaLabel}
         value={value}
-        isSelected={checked}
-        defaultSelected={defaultChecked}
+        {...(checked !== undefined && { isSelected: checked })}
+        {...(defaultChecked !== undefined && { defaultSelected: defaultChecked })}
         isReadOnly={readOnly}
         isDisabled={disabled}
         isRequired={required}
@@ -70,6 +70,11 @@ export const Checkbox = forwardRef<CheckboxProps, 'input'>(
       </StyledCheckbox>
     );
   }
-);
+) as ForwardRefExoticComponent<
+  CheckboxProps & Partial<typeof defaultProps> & RefAttributes<HTMLInputElement>
+> & {
+  Group: typeof CheckboxGroup;
+};
 
-Checkbox.defaultProps = defaultProps;
+Checkbox.defaultProps = defaultProps as Partial<CheckboxProps>;
+Checkbox.Group = CheckboxGroup;

@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 import { ElementHTML, FormControl, NormalColor, NormalSize } from '../../../../types';
 
 export type RadioProps = ElementHTML &
-  Exclude<FormControl, 'name' | 'readOnly' | 'required'> & {
+  Omit<FormControl, 'name' | 'label' | 'readOnly' | 'required'> & {
     /**
      * Defines the children of the component.
      */

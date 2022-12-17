@@ -1,6 +1,7 @@
-import { ForwardRefExoticComponent, Ref, RefAttributes } from 'react';
-import { classes, forwardRef } from '../../../utils/system';
+import { ForwardRefExoticComponent, Ref, RefAttributes, useContext } from 'react';
+import { classes, cleanedProps, forwardRef } from '../../../utils/system';
 import { useControlChecked } from '../../../utils/use-control-checked';
+import { RadioContext } from './radio-context';
 import { RadioGroup } from './group/radio-group';
 import { defaultProps, RadioProps } from './radio-props';
 import { StyledRadio } from './radio.styled';
@@ -17,19 +18,11 @@ import { StyledRadio } from './radio.styled';
  */
 export const Radio = forwardRef<RadioProps, 'input'>(
   (props: RadioProps, ref: Ref<Partial<HTMLInputElement> | null>) => {
-    const { ref: radioRef, id, ariaLabel } = useControlChecked(props, ref);
-    const {
-      className,
-      style,
-      children,
-      value,
-      size,
-      description,
-      color,
-      status,
-      disabled,
-      squared
-    } = props;
+    const { className, style, children, value, description, squared } = props;
+    const contextProps = useContext(RadioContext);
+
+    const { ref: radioRef, id, ariaLabel } = useControlChecked(props, contextProps, ref);
+    const { size, color, status, disabled } = { ...props, ...cleanedProps(contextProps) };
 
     return (
       <StyledRadio
@@ -37,6 +30,7 @@ export const Radio = forwardRef<RadioProps, 'input'>(
         id={id}
         value={value || id}
         aria-label={ariaLabel}
+        isDisabled={disabled}
         className={classes('radio', className)}
         css={{
           ...style
@@ -45,8 +39,7 @@ export const Radio = forwardRef<RadioProps, 'input'>(
         color={color}
         status={status}
         description={description}
-        isSquared={squared}
-        isDisabled={disabled}>
+        isSquared={squared}>
         {children}
       </StyledRadio>
     );

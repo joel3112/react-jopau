@@ -60,4 +60,14 @@ export const withDefaults = <P, DP>(component: ComponentType<P>, defaultProps: D
   return component as ComponentType<Props>;
 };
 
+export const cleanedProps = <P extends object>(props: P) => {
+  const newProps = { ...props };
+  (Object.keys(props) as Array<keyof P>).forEach((key) => {
+    if (newProps[key] === undefined) {
+      delete newProps[key];
+    }
+  });
+  return newProps as P;
+};
+
 export const classes = classnames;

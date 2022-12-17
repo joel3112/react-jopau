@@ -8,7 +8,7 @@ export const StyledText = styledTheme('p', {
 
   variants: {
     as: {
-      span: { width: '$space$max' },
+      span: { display: 'inline-block', width: '$space$max' },
       p: {}
     },
     color: {

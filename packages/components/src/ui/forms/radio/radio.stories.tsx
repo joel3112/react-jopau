@@ -11,8 +11,6 @@ export default {
     children: 'Option',
     description: '',
     value: 'option',
-    name: 'radio-name',
-    label: 'Label',
     size: 'md',
     color: 'primary',
     status: 'default',
@@ -134,11 +132,6 @@ export const Description = () => (
 export const Disabled = Template.bind({});
 Disabled.args = {
   disabled: true
-};
-
-export const ReadOnly = Template.bind({});
-ReadOnly.args = {
-  readOnly: true
 };
 
 export const Squared = Template.bind({});

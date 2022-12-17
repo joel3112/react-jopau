@@ -1,4 +1,4 @@
-import { Ref, RefObject, useId } from 'react';
+import { ChangeEvent, Ref, RefObject, useId } from 'react';
 import { FormControl } from '../../types';
 import { useControlled } from './use-controlled';
 
@@ -11,27 +11,30 @@ type ControlProps = FormControl & ChangeChecked;
 
 export const useControlChecked = (
   props: ControlProps,
-  ref: Ref<Partial<HTMLInputElement> | null>
+  contextProps: Object = {},
+  ref: Ref<Partial<HTMLInputElement> | null> = null
 ): {
   ref: RefObject<HTMLInputElement>;
   id: string;
   ariaLabel: string;
 } & ChangeChecked => {
   const { id, checked, defaultChecked, label, disabled, readOnly, onChange } = props;
+  const hasContext = Object.keys(contextProps).length > 0;
 
   const inputId = id || `input-${useId()}`;
   const inputAriaLabel = label || `${inputId}-label`;
 
   const [inputRef, controlledChecked, setChecked] = useControlled<HTMLInputElement, boolean>(
     ref,
-    checked,
-    defaultChecked
+    hasContext ? undefined : checked,
+    hasContext ? undefined : defaultChecked
   );
 
-  const changeHandler = (event: boolean) => {
+  const changeHandler = (event: boolean | ChangeEvent<HTMLInputElement>) => {
     if (disabled || readOnly) return;
-    setChecked(event);
-    onChange && onChange(event);
+    const _checked = typeof event === 'boolean' ? event : event.target.checked;
+    setChecked(_checked);
+    onChange && onChange(_checked);
   };
 
   return {

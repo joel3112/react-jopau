@@ -1,6 +1,6 @@
 import { ComponentType, Ref } from 'react';
 import { Radio as RadioNextUI } from '@nextui-org/react';
-import type { RadioProps as RadioPropsNextUI } from '@nextui-org/react/types/radio/radio';
+import { RadioProps as RadioPropsNextUI } from '@nextui-org/react/types/radio/radio';
 import { RadioGroupProps as RadioGroupPropsNextUI } from '@nextui-org/react/types/radio/radio-group';
 import { RadioProps } from './radio-props';
 import { RadioGroupProps } from './group/radio-group-props';
@@ -20,41 +20,8 @@ export const StyledRadioGroup = styledTheme(
     >
   >,
   {
-    display: 'block',
-    width: '$space$fit',
-
-    variants: {
-      color: {
-        primary: {
-          $$radioControlColor: '$colors$primary500',
-          $$radioHoverControlColor: '$colors$primary700'
-        },
-        secondary: {
-          $$radioControlColor: '$colors$secondary500',
-          $$radioHoverControlColor: '$colors$secondary700'
-        },
-        tertiary: {
-          $$radioControlColor: '$colors$tertiary500',
-          $$radioHoverControlColor: '$colors$tertiary700'
-        },
-        info: {
-          $$radioControlColor: '$colors$blue500',
-          $$radioHoverControlColor: '$colors$blue700'
-        },
-        success: {
-          $$radioControlColor: '$colors$green500',
-          $$radioHoverControlColor: '$colors$green700'
-        },
-        error: {
-          $$radioControlColor: '$colors$red500',
-          $$radioHoverControlColor: '$colors$red700'
-        },
-        warning: {
-          $$radioControlColor: '$colors$yellow500',
-          $$radioHoverControlColor: '$colors$yellow700'
-        }
-      }
-    }
+    display: 'inline-block',
+    width: '$space$fit'
   }
 );
 
@@ -66,7 +33,7 @@ export const StyledRadio = styledTheme(
   >,
   {
     boxSizing: 'border-box',
-    display: 'block',
+    display: 'inline-block',
 
     [`&${NextUIEl.RADIO}--checked ${NextUIEl.RADIO_POINT}::after`]: {
       borderColor: '$$radioControlColor'
@@ -81,72 +48,72 @@ export const StyledRadio = styledTheme(
       color: {
         primary: {
           $$radioControlColor: '$colors$primary500',
-          $$radioHoverControlColor: '$colors$primary700'
+          $$radioHoverControlColor: '$colors$primary600'
         },
         secondary: {
           $$radioControlColor: '$colors$secondary500',
-          $$radioHoverControlColor: '$colors$secondary700'
+          $$radioHoverControlColor: '$colors$secondary600'
         },
         tertiary: {
           $$radioControlColor: '$colors$tertiary500',
-          $$radioHoverControlColor: '$colors$tertiary700'
+          $$radioHoverControlColor: '$colors$tertiary600'
         },
         info: {
           $$radioControlColor: '$colors$blue500',
-          $$radioHoverControlColor: '$colors$blue700'
+          $$radioHoverControlColor: '$colors$blue600'
         },
         success: {
           $$radioControlColor: '$colors$green500',
-          $$radioHoverControlColor: '$colors$green700'
+          $$radioHoverControlColor: '$colors$green600'
         },
         error: {
           $$radioControlColor: '$colors$red500',
-          $$radioHoverControlColor: '$colors$red700'
+          $$radioHoverControlColor: '$colors$red600'
         },
         warning: {
           $$radioControlColor: '$colors$yellow500',
-          $$radioHoverControlColor: '$colors$yellow700'
+          $$radioHoverControlColor: '$colors$yellow600'
         }
       },
       status: {
         default: {
           $$radioControlColor: '$colors$primary500',
-          $$radioHoverControlColor: '$colors$primary700',
+          $$radioHoverControlColor: '$colors$primary600',
           $$radioLabelColor: '$colors$text'
         },
         primary: {
           $$radioControlColor: '$colors$primary500',
-          $$radioHoverControlColor: '$colors$primary700',
+          $$radioHoverControlColor: '$colors$primary600',
           $$radioLabelColor: '$colors$primary500'
         },
         secondary: {
           $$radioControlColor: '$colors$secondary500',
-          $$radioHoverControlColor: '$colors$secondary700',
+          $$radioHoverControlColor: '$colors$secondary600',
           $$radioLabelColor: '$colors$secondary500'
         },
         tertiary: {
           $$radioControlColor: '$colors$tertiary500',
-          $$radioHoverControlColor: '$colors$tertiary700',
+          $$radioHoverControlColor: '$colors$tertiary600',
           $$radioLabelColor: '$colors$tertiary500'
         },
         info: {
           $$radioControlColor: '$colors$blue500',
-          $$radioHoverControlColor: '$colors$blue700',
+          $$radioHoverControlColor: '$colors$blue600',
           $$radioLabelColor: '$colors$blue500'
         },
         success: {
           $$radioControlColor: '$colors$green500',
-          $$radioHoverControlColor: '$colors$green700',
+          $$radioHoverControlColor: '$colors$green600',
           $$radioLabelColor: '$colors$green500'
         },
         error: {
           $$radioControlColor: '$colors$red500',
-          $$radioHoverControlColor: '$colors$red700',
+          $$radioHoverControlColor: '$colors$red600',
           $$radioLabelColor: '$colors$red500'
         },
         warning: {
           $$radioControlColor: '$colors$yellow500',
-          $$radioHoverControlColor: '$colors$yellow700',
+          $$radioHoverControlColor: '$colors$yellow600',
           $$radioLabelColor: '$colors$yellow500'
         }
       }

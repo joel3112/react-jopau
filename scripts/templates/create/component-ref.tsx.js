@@ -5,7 +5,7 @@ const templateObject = templateCreator`${({ context }) => `
 import { Ref, useImperativeHandle, useRef } from 'react';
 import { classes, forwardRef } from '../../../utils/system';
 import { ${context.pascalName}Props, defaultProps } from './${context.name}-props';
-import { ${context.pascalName}Wrapper } from './${context.name}.styled';
+import { Styled${context.pascalName} } from './${context.name}.styled';
 
 /**
   * Description component
@@ -34,7 +34,7 @@ export const ${context.pascalName} = forwardRef<${context.pascalName}Props, 'div
     useImperativeHandle(ref, () => elementRef.current);
     
     return (
-      <${context.pascalName}Wrapper
+      <Styled${context.pascalName}
         ref={elementRef}
         className={classes('${context.name}-wrapper', className)}
         css={{
@@ -42,7 +42,7 @@ export const ${context.pascalName} = forwardRef<${context.pascalName}Props, 'div
         }}>
         <h2>{title}</h2>
         {children}
-      </${context.pascalName}Wrapper>
+      </Styled${context.pascalName}>
     );
   }
 );

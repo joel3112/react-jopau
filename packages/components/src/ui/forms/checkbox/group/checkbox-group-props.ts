@@ -1,21 +1,21 @@
 import { ReactElement } from 'react';
 import { ElementHTML, FormControl, NormalColor, NormalSize } from '../../../../../types';
-import { RadioProps } from '../radio-props';
+import { CheckboxProps } from '../checkbox-props';
 
-export type RadioGroupProps = ElementHTML &
+export type CheckboxGroupProps = ElementHTML &
   FormControl & {
     /**
      * Defines the children of the component.
      */
-    children: ReactElement<RadioProps> | ReactElement<RadioProps>[];
+    children: ReactElement<CheckboxProps> | ReactElement<CheckboxProps>[];
     /**
      * Defines the value (controlled) of the current element, used when submitting a form.
      */
-    value?: string;
+    value?: string[];
     /**
      * Defines the default value (uncontrolled) of the current element, used when submitting a form.
      */
-    defaultValue?: string;
+    defaultValue?: string[];
     /**
      * Defines the size of the component.
      */
@@ -31,10 +31,10 @@ export type RadioGroupProps = ElementHTML &
     /**
      * Function to be called when the element value is changed.
      */
-    onChange?: (e: string) => void;
+    onChange?: (e: string[]) => void;
   } & Partial<typeof defaultProps>;
 
 export const defaultProps = {
-  defaultValue: '',
+  defaultValue: [] as string[],
   orientation: 'vertical'
 };

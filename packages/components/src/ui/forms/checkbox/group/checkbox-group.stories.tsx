@@ -3,18 +3,18 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { SBCode, SBTextSeparator } from '@react-jopau/styles/components';
 import { prepareArgTypes, prepareParameters } from '@react-jopau/styles/utils';
 import { Space } from '../../../layout';
-import { Radio } from '../radio';
+import { Checkbox } from '../checkbox';
 import docs from './readme.mdx';
 
 export default {
-  title: 'Forms/Radio',
-  component: Radio.Group,
+  title: 'Forms/Checkbox',
+  component: Checkbox.Group,
   parameters: prepareParameters(docs),
   args: {
     children: [],
-    value: '2',
-    defaultValue: '2',
-    name: 'radio-name',
+    value: ['1', '2'],
+    defaultValue: ['1', '2'],
+    name: 'checkbox-name',
     label: 'Options',
     size: 'md',
     color: 'primary',
@@ -24,27 +24,27 @@ export default {
     readOnly: false,
     required: false
   },
-  argTypes: prepareArgTypes(Radio.Group, {
+  argTypes: prepareArgTypes(Checkbox.Group, {
     children: {
       control: false
     }
   })
-} as ComponentMeta<typeof Radio.Group>;
+} as ComponentMeta<typeof Checkbox.Group>;
 
 const Options = [
-  <Radio key="1" value="1">
+  <Checkbox key="1" value="1">
     Option 1
-  </Radio>,
-  <Radio key="2" value="2">
+  </Checkbox>,
+  <Checkbox key="2" value="2">
     Option 2
-  </Radio>,
-  <Radio key="3" value="3">
+  </Checkbox>,
+  <Checkbox key="3" value="3">
     Option 3
-  </Radio>
+  </Checkbox>
 ];
 
-const Template: ComponentStory<typeof Radio.Group> = (args) => {
-  return <Radio.Group {...args}>{Options}</Radio.Group>;
+const Template: ComponentStory<typeof Checkbox.Group> = (args) => {
+  return <Checkbox.Group {...args}>{Options}</Checkbox.Group>;
 };
 
 export const GroupDocs = Template.bind({});
@@ -78,13 +78,13 @@ GroupStatus.args = {
 export const GroupOrientation = () => (
   <Space direction="column" gap={10}>
     <SBTextSeparator>Vertical</SBTextSeparator>
-    <Radio.Group orientation="vertical" value="2">
+    <Checkbox.Group orientation="vertical" value={['1', '3']}>
       {Options}
-    </Radio.Group>
+    </Checkbox.Group>
     <SBTextSeparator>Horizontal</SBTextSeparator>
-    <Radio.Group orientation="horizontal" value="2">
+    <Checkbox.Group orientation="horizontal" value={['1', '3']}>
       {Options}
-    </Radio.Group>
+    </Checkbox.Group>
   </Space>
 );
 
@@ -100,25 +100,25 @@ GroupReadOnly.args = {
 
 export const GroupUncontrolledVSControlled = () => {
   const refUncontrolled = useRef<HTMLInputElement>(null);
-  const [valueControlled, setValueControlled] = useState('C');
+  const [valueControlled, setValueControlled] = useState(['C']);
 
   return (
     <Space direction="column" gap={10}>
       <SBTextSeparator>Uncontrolled</SBTextSeparator>
-      <Radio.Group defaultValue="A" ref={refUncontrolled}>
-        <Radio value="A">Option A</Radio>
-        <Radio value="B">Option B</Radio>
-      </Radio.Group>
+      <Checkbox.Group defaultValue={['A']} ref={refUncontrolled}>
+        <Checkbox value="A">Option A</Checkbox>
+        <Checkbox value="B">Option B</Checkbox>
+      </Checkbox.Group>
 
       <SBTextSeparator>Controlled</SBTextSeparator>
-      <Radio.Group value={valueControlled} onChange={setValueControlled}>
-        <Radio value="A">Option A</Radio>
-        <Radio value="B">Option B</Radio>
-        <Radio value="C">Option C</Radio>
-        <Radio value="D">Option D</Radio>
-      </Radio.Group>
+      <Checkbox.Group value={valueControlled} onChange={setValueControlled}>
+        <Checkbox value="A">Option A</Checkbox>
+        <Checkbox value="B">Option B</Checkbox>
+        <Checkbox value="C">Option C</Checkbox>
+        <Checkbox value="D">Option D</Checkbox>
+      </Checkbox.Group>
       <span>
-        Selected: <SBCode>{valueControlled}</SBCode>
+        Selected: {valueControlled.length > 0 && <SBCode>{valueControlled.join(',')}</SBCode>}
       </span>
     </Space>
   );
