@@ -25,9 +25,7 @@ export default {
     required: false
   },
   argTypes: prepareArgTypes(Radio.Group, {
-    children: {
-      control: false
-    }
+    children: { control: false }
   })
 } as ComponentMeta<typeof Radio.Group>;
 

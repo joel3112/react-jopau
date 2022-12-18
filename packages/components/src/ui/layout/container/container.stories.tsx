@@ -16,9 +16,7 @@ export default {
     centered: false
   },
   argTypes: prepareArgTypes(Container, {
-    children: {
-      control: false
-    }
+    children: { control: false }
   })
 } as ComponentMeta<typeof Container>;
 

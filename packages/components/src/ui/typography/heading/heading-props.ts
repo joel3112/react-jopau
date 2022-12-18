@@ -1,10 +1,11 @@
+import { ReactNode } from 'react';
 import { ElementHTML, TextColor } from '../../../../types';
 
 export type HeadingProps = ElementHTML & {
   /**
    * Defines the children of the component.
    */
-  children: string;
+  children: ReactNode;
   /**
    * Changes which tag component outputs
    */

@@ -1,8 +1,7 @@
-import { createContext, useEffect, useState } from 'react';
+import { createContext, useEffect, useMemo, useState } from 'react';
 import { globalCss } from '@stitches/react';
-import type { ThemeConfig, ThemeSchemes } from '@react-jopau/styles/types';
+import type { BreakpointsRules, ThemeConfig, ThemeSchemes } from '@react-jopau/styles/types';
 import { ThemeBuilder } from '@react-jopau/styles/ThemeBuilder';
-import { computeScheme } from '@react-jopau/styles/utils';
 import globalCSS from '@react-jopau/styles/globalStyles';
 import { defaultProps, ThemeProviderProps } from './theme-context-props';
 
@@ -19,19 +18,27 @@ export const ThemeContext = createContext<{
 
 /* ==== provider =============================================================== */
 
-const globalStyles = globalCss({
-  ...globalCSS,
-  body: {
-    backgroundColor: '$background',
-    color: '$text'
-  },
-  '*, button, input': {
-    fontFamily: 'var(--rjopau-fonts-base)'
-  },
-  'pre *, code *': {
-    fontFamily: 'var(--rjopau-fonts-code) !important'
-  }
-});
+const globalStyles = ({ xs, sm, md, xl, lg }: BreakpointsRules) =>
+  globalCss({
+    ...globalCSS,
+    ':root': {
+      '--rjopau-breakpoint-xs': `${xs}px`,
+      '--rjopau-breakpoint-sm': `${sm}px`,
+      '--rjopau-breakpoint-md': `${md}px`,
+      '--rjopau-breakpoint-lg': `${lg}px`,
+      '--rjopau-breakpoint-xl': `${xl}px`
+    },
+    body: {
+      backgroundColor: '$background',
+      color: '$text'
+    },
+    '*, button, input': {
+      fontFamily: 'var(--rjopau-fonts-base)'
+    },
+    'pre *, code *': {
+      fontFamily: 'var(--rjopau-fonts-code) !important'
+    }
+  });
 
 /**
  * Theme provider component that allows to define the theme and the scheme to use.
@@ -41,7 +48,7 @@ const globalStyles = globalCss({
  *
  * @imports import { ThemeProvider } from '@react-jopau/components/contexts';
  * @example
- * <ThemeProvider config={customConfig} darkMode={false}>
+ * <ThemeProvider config={customConfig} darkMode>
  *    <div>Content</div>
  * </ThemeProvider>
  */
@@ -49,6 +56,7 @@ export const ThemeProvider = ({ children, config, darkMode }: ThemeProviderProps
   const [dark, setDark] = useState<boolean>();
   const [configTheme, setConfigTheme] = useState<ThemeConfig | null>(null);
   const [schemes, setSchemes] = useState<ThemeSchemes>({});
+  const [breakpoints, setBreakpoints] = useState<BreakpointsRules>({});
 
   useEffect(() => {
     setDark(darkMode);
@@ -59,7 +67,13 @@ export const ThemeProvider = ({ children, config, darkMode }: ThemeProviderProps
     builder.createTheme(config);
     setConfigTheme({ ...builder.currentConfig });
     setSchemes({ lightTheme: builder.lightTheme, darkTheme: builder.darkTheme });
+    setBreakpoints(builder.breakpoints);
   }, [config]);
+
+  const currentSchemeClass = useMemo(
+    () => `${dark ? schemes.darkTheme : schemes.lightTheme}`,
+    [dark, schemes]
+  );
 
   if (!configTheme) {
     return null;
@@ -72,8 +86,8 @@ export const ThemeProvider = ({ children, config, darkMode }: ThemeProviderProps
         darkMode: !!dark,
         onToggle: () => setDark((prev) => !prev)
       }}>
-      <div className={computeScheme(schemes, dark)}>
-        {globalStyles()}
+      <div className={currentSchemeClass}>
+        {globalStyles(breakpoints)()}
         {children}
       </div>
     </ThemeContext.Provider>

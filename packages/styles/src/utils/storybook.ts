@@ -12,6 +12,17 @@ export const sortedArgTypes = (argTypes: ArgTypes): ArgTypes => {
   return Object.fromEntries(argTypesSortedByCategory);
 };
 
+export const disableArgTypes = (argTypes: ArgTypes, exclude: string[]): ArgTypes => {
+  const argTypesDisabled = Object.keys(argTypes).reduce((acc, key) => {
+    if (exclude.includes(key)) {
+      return { ...acc, [key]: { table: { disable: true } } };
+    }
+    return { ...acc, [key]: argTypes[key] };
+  }, {} as ArgTypes);
+
+  return merge(argTypesDisabled, argTypes);
+};
+
 const eventsActions = {
   onClick: 'clicked',
   onChange: 'changed',

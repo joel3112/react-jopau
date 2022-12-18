@@ -11,7 +11,7 @@ import { ThemeProvider } from '@react-jopau/components/contexts';
 #### Examples
 
 ```jsx
-<ThemeProvider config={customConfig} darkMode={false}>
+<ThemeProvider config={customConfig} darkMode>
   <div>Content</div>
 </ThemeProvider>
 ```

@@ -35,12 +35,24 @@ export const StyledRadio = styledTheme(
     boxSizing: 'border-box',
     display: 'inline-block',
 
+    [`&${NextUIEl.RADIO}--is-hovered ${NextUIEl.RADIO_POINT}`]: {
+      backgroundColor: '$colors$input',
+      backgroundColorDarker: 0.2
+    },
+    [`&${NextUIEl.RADIO}--is-hovered ${NextUIEl.RADIO_POINT}::after`]: {
+      borderColor: '$colors$border'
+    },
+    [`${NextUIEl.RADIO_POINT}::after`]: { borderColor: '$colors$border' },
     [`&${NextUIEl.RADIO}--checked ${NextUIEl.RADIO_POINT}::after`]: {
       borderColor: '$$radioControlColor'
     },
     [`${NextUIEl.RADIO_LABEL}`]: { color: '$$radioLabelColor' },
+    [`&${NextUIEl.RADIO}--is-hovered[class*="isChecked-true"] ${NextUIEl.RADIO_POINT}`]: {
+      backgroundColor: 'transparent'
+    },
     [`&${NextUIEl.RADIO}--is-hovered[class*="isChecked-true"] ${NextUIEl.RADIO_POINT}::after`]: {
-      borderColor: '$$radioHoverControlColor'
+      borderColor: '$$radioHoverControlColor',
+      backgroundColor: 'transparent'
     },
     [`&[class*="isDisabled-true"] ${NextUIEl.RADIO_LABEL}`]: { opacity: '$opacity$40' },
 

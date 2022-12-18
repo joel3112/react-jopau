@@ -2,7 +2,7 @@ import { ComponentType, ElementType, ReactNode } from 'react';
 import { styled } from '@stitches/react';
 import { ArgTypes } from '@storybook/addons';
 import { ArgsTable as PureArgsTable, TabsState } from '@storybook/components';
-import { prepareArgTypesWithContext, sortedArgTypes } from '../utils';
+import { disableArgTypes, prepareArgTypesWithContext, sortedArgTypes } from '../utils';
 import { SBCollapsable } from './sb-collapsable';
 
 const ArgsTableStyled = styled('div', {
@@ -75,21 +75,31 @@ export const SBPureArgsTable = ({
   );
 };
 
-const getTabComponentItem = (label: ComponentType['displayName'], component: ComponentType) => {
-  return { label, component, argTypes: sortedArgTypes(prepareArgTypesWithContext(component)) };
+const getTabComponentItem = (
+  label: ComponentType['displayName'],
+  component: ComponentType,
+  exclude: string[]
+) => {
+  return {
+    label,
+    component,
+    argTypes: sortedArgTypes(disableArgTypes(prepareArgTypesWithContext(component), exclude))
+  };
 };
 
 export const SBArgsTable = ({
   component,
-  subcomponents
+  subcomponents,
+  exclude = []
 }: {
   component: ComponentType;
   subcomponents?: Record<string, ComponentType>;
+  exclude?: string[];
 }) => {
   const allComponents = [
-    getTabComponentItem(component.displayName, component),
+    getTabComponentItem(component.displayName, component, exclude),
     ...(Object.entries(subcomponents || {}).map(([label, component]) => {
-      return getTabComponentItem(label, component);
+      return getTabComponentItem(label, component, exclude);
     }) || [])
   ];
   const tabs = allComponents.reduce((acc, { label, argTypes: a }) => {

@@ -39,6 +39,11 @@ export const StyledCheckbox = styledTheme(
     boxSizing: 'border-box',
     width: '$space$fit',
 
+    [`${NextUIEl.CHECKBOX_MASK}`]: { color: '$colors$border' },
+    [`&${NextUIEl.CHECKBOX}--hovered ${NextUIEl.CHECKBOX_MASK}`]: {
+      background: '$colors$border',
+      opacity: 0.7
+    },
     [`&${NextUIEl.CHECKBOX}--checked ${NextUIEl.CHECKBOX_MASK}::after, ${NextUIEl.CHECKBOX_MASK}[class*="isIndeterminate-true"]::after`]:
       {
         backgroundColor: '$$checkboxControlColor'
@@ -49,6 +54,7 @@ export const StyledCheckbox = styledTheme(
       },
     [`${NextUIEl.CHECKBOX_TEXT}`]: { color: '$$checkboxTextColor' },
     [`&[class*="isDisabled-true"] ${NextUIEl.CHECKBOX_TEXT}`]: { opacity: '$opacity$40' },
+    [`${NextUIEl.CHECKBOX_TEXT}:before`]: { background: '$colors$text' },
 
     variants: {
       color: {

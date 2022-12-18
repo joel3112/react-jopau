@@ -85,7 +85,7 @@ export default {
       gray600: '#889096',
       gray700: '#7e868c',
       gray800: '#687076',
-      gray900: '#11181c',
+      gray900: '#414248',
 
       dark100: '#2c2e2f',
       dark200: '#282b2d',
@@ -272,8 +272,8 @@ export default {
     colors: {
       text: '#fff',
       background: '#1d1f20',
-      border: '#333',
-      input: '#f1f3f5'
+      border: '#555',
+      input: '#3b3b3b'
     },
     shadows: {
       boxShadow: 'rgb(67 67 67) 0 -1px 1px inset'

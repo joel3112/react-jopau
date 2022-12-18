@@ -37,6 +37,7 @@ export default {
     required: false
   },
   argTypes: prepareArgTypes(Input, {
+    as: { table: { disable: true } },
     onClearClick: { action: 'cleared' },
     onIconClick: { action: 'icon clicked' }
   })
@@ -240,11 +241,18 @@ export const Shape = () => (
 export const HotKey = () => (
   <SBSelectorContainer label={['Select variant']} items={[variantItems]} value={['default']}>
     {([variant]) => (
-      <Space gap={10} wrap>
-        <Input variant={variant} hotKey="ctrl+k+1" label="Default" status="default" />
-        <Input variant={variant} hotKey="ctrl+k+2" label="Secondary" status="secondary" />
-        <Input variant={variant} hotKey="meta+j" label="Success" status="success" />
-        <Input variant={variant} hotKey="meta+k" label="Error" status="error" />
+      <Space direction="column" gap={10} wrap>
+        <Space gap={10}>
+          <Input variant={variant} hotKey="ctrl+k+1" label="Size xs" size="xs" />
+          <Input variant={variant} hotKey="ctrl+k+2" label="Size sm" size="sm" />
+          <Input variant={variant} hotKey="ctrl+k+3" label="Size lg" size="lg" />
+        </Space>
+        <Space gap={10}>
+          <Input variant={variant} hotKey="ctrl+shift+1" label="Secondary" color="secondary" />
+          <Input variant={variant} hotKey="ctrl+shift+2" label="Info" color="info" />
+          <Input variant={variant} hotKey="meta+j" label="Success" status="success" />
+          <Input variant={variant} hotKey="meta+k" label="Error" status="error" />
+        </Space>
       </Space>
     )}
   </SBSelectorContainer>

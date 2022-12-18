@@ -20,7 +20,7 @@ import { Text } from '@react-jopau/components/ui/typography';
 
 | Name                  | Type                                                                                                                               | Default value | Description                              |
 | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ------------- | ---------------------------------------- |
-| children _(required)_ | `string`                                                                                                                           |               | Defines the children of the component.   |
+| children _(required)_ | `ReactNode`                                                                                                                        |               | Defines the children of the component.   |
 | as                    | `"p"` \| `"span"`                                                                                                                  |               | Changes which tag component outputs      |
 | className             | `string`                                                                                                                           |               | Classnames applied to root element       |
 | color                 | `"inherit"` \| `"primary"` \| `"secondary"` \| `"tertiary"` \| `"info"` \| `"error"` \| `"success"` \| `"warning"` \| `"disabled"` |               | Defines the color of the text.           |

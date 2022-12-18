@@ -1,20 +1,16 @@
-import { ForwardRefExoticComponent, ReactNode, Ref, RefAttributes } from 'react';
+import { ForwardRefExoticComponent, Ref, RefAttributes } from 'react';
 import { useHotKey } from '@react-jopau/hooks';
 import { classes, forwardRef } from '../../../utils/system';
 import { useControlText } from '../../../utils/use-control-text';
 import { InputPassword } from './password/input-password';
 import { defaultProps, InputProps } from './input-props';
-import { StyledContent, StyledInput, StyledLabelGap, StyledInputWrapper } from './input.styled';
-
-const InputContent = ({
-  children,
-  variant
-}: {
-  children: ReactNode;
-  variant: InputProps['variant'];
-}) => {
-  return <StyledContent variant={variant}>{children}</StyledContent>;
-};
+import {
+  StyledContent,
+  StyledInput,
+  StyledLabelGap,
+  StyledInputWrapper,
+  StyledHotKey
+} from './input.styled';
 
 /**
  * Input component is a component that is used to get user input in a text field.
@@ -116,13 +112,22 @@ export const Input = forwardRef<InputProps, 'input'>(
           clearable={clearable}
           {...(icon && {
             contentLeft: iconPosition === 'left' && (
-              <InputContent variant={variant}>{icon}</InputContent>
+              <StyledContent variant={variant}>{icon}</StyledContent>
             ),
             contentRight: iconPosition === 'right' && (
-              <InputContent variant={variant}>{icon}</InputContent>
+              <StyledContent variant={variant}>{icon}</StyledContent>
             )
           })}
-          {...(hotKey && { labelRight: shortHotKey })}
+          {...(hotKey && {
+            contentRight: (
+              <StyledHotKey
+                default={variant === 'default'}
+                onClick={() => inputRef.current?.focus()}>
+                <kbd>{shortHotKey}</kbd>
+              </StyledHotKey>
+            ),
+            contentRightStyling: false
+          })}
           onChange={onChange}
           onFocus={onFocus}
           onBlur={onBlur}

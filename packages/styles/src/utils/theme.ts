@@ -1,5 +1,5 @@
 import { ConfigType } from '@stitches/react/types/config';
-import type { BreakpointsRules, ThemeConfig, ThemeSchemes, ThemeTokens } from '../types';
+import type { BreakpointsRules, ThemeConfig, ThemeTokens } from '../types';
 import { themes } from '../themes';
 import defaultConfig from '../themes/default';
 
@@ -99,11 +99,4 @@ export const getColors = (
 
 export const getBreakpoints = (config: ThemeConfig | string): BreakpointsRules => {
   return getProps(config).media;
-};
-
-export const computeScheme = (schemes: ThemeSchemes, darkMode?: boolean) => {
-  if (schemes.lightTheme && schemes.darkTheme) {
-    return darkMode ? schemes.darkTheme : schemes.lightTheme;
-  }
-  return '';
 };

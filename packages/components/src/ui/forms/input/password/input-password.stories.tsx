@@ -20,11 +20,11 @@ export default {
     labelRight: '',
     size: 'md',
     variant: 'default',
+    shape: 'default',
     status: 'default',
     color: 'default',
     autoComplete: 'off',
     hotKey: '',
-    rounded: false,
     autoWidth: false,
     clearable: false,
     readOnly: false,
@@ -33,6 +33,7 @@ export default {
     hideToggle: false
   },
   argTypes: prepareArgTypes(Input.Password, {
+    as: { table: { disable: true } },
     onClearClick: { action: 'cleared' },
     onIconClick: { action: 'icon clicked' }
   })

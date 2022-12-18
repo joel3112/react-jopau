@@ -56,7 +56,7 @@ const colorTokens = (color: NonNullable<ButtonProps['color']>) => {
     },
     dark: {
       default: '$colors$dark500',
-      lighter: '$colors$gray800',
+      lighter: '$colors$gray900',
       darker: '$colors$dark800'
     }
   }[color];

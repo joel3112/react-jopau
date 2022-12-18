@@ -1,7 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { getThemeStored, prepareArgTypes, prepareParameters } from '@react-jopau/styles/utils';
 import { themes } from '@react-jopau/styles/themes';
-import AppExample from '@apps/example';
+import { MockApp } from '../../utils/app';
 import { ThemeProvider } from './theme-context';
 import docs from './readme.mdx';
 
@@ -10,7 +10,7 @@ export default {
   component: ThemeProvider,
   parameters: prepareParameters(docs),
   args: {
-    children: <AppExample />,
+    children: <MockApp />,
     darkMode: false,
     config: themes[getThemeStored() || 'default'].value
   },
