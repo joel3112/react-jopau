@@ -30,7 +30,6 @@ export const ${context.pascalName} = forwardRef<${context.pascalName}Props, 'div
     ref: Ref<HTMLDivElement | null>
   ) => {
     const elementRef = useRef<HTMLDivElement>(null);
-
     useImperativeHandle(ref, () => elementRef.current);
     
     return (

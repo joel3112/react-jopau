@@ -116,6 +116,22 @@ export default {
     outline: 'none',
     boxShadow: 'none'
   }),
+  borderRadiusTop: (value: number) => ({
+    borderTopLeftRadius: value,
+    borderTopRightRadius: value
+  }),
+  borderRadiusBottom: (value: number) => ({
+    borderBottomLeftRadius: value,
+    borderBottomRightRadius: value
+  }),
+  borderRadiusLeft: (value: number) => ({
+    borderTopLeftRadius: value,
+    borderBottomLeftRadius: value
+  }),
+  borderRadiusRight: (value: number) => ({
+    borderTopRightRadius: value,
+    borderBottomRightRadius: value
+  }),
 
   /* ==== background =========================================================== */
   linearGradient: (value: string) => ({

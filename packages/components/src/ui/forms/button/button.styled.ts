@@ -72,6 +72,59 @@ const colorTokens = (color: NonNullable<ButtonProps['color']>) => {
   };
 };
 
+export const StyledButtonGroup = styledTheme('div', {
+  display: 'inline-flex',
+  backgroundColor: 'transparent',
+  width: '$space$fit',
+  height: '$space$min',
+  margin: '$space$3',
+
+  button: { minWidth: '$space$min' },
+
+  variants: {
+    bordered: { true: {} },
+    vertical: {
+      false: {
+        'button:first-child': { borderRadiusRight: 0 },
+        'button:last-child': { borderRadiusLeft: 0 },
+        'button:not(:first-child):not(:last-child)': { borderRadius: 0 }
+      },
+      true: {
+        flexDirection: 'column',
+
+        button: { width: '$space$full' },
+        'button:first-child': { borderRadiusBottom: 0 },
+        'button:last-child': { borderRadiusTop: 0 },
+        'button:not(:first-child):not(:last-child)': { borderRadius: 0 }
+      }
+    },
+    autoWidth: {
+      true: {
+        width: '100%',
+
+        button: { width: '100%' }
+      }
+    }
+  },
+
+  compoundVariants: [
+    {
+      bordered: true,
+      vertical: false,
+      css: {
+        'button + button': { borderLeft: 'none' }
+      }
+    },
+    {
+      bordered: true,
+      vertical: true,
+      css: {
+        'button + button': { borderTop: 'none' }
+      }
+    }
+  ]
+});
+
 export const StyledButtonIcon = styledTheme('div', {
   display: 'flex',
   scale: 1.5

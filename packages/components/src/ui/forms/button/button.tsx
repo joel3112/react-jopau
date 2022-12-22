@@ -1,5 +1,16 @@
-import { MouseEvent, ReactNode, Ref, useImperativeHandle, useRef } from 'react';
-import { classes, forwardRef } from '../../../utils/system';
+import {
+  ForwardRefExoticComponent,
+  MouseEvent,
+  ReactNode,
+  Ref,
+  RefAttributes,
+  useContext,
+  useImperativeHandle,
+  useRef
+} from 'react';
+import { classes, cleanedProps, forwardRef } from '../../../utils/system';
+import { ButtonContext } from './button-context';
+import { ButtonGroup } from './group/button-group';
 import { ButtonProps, defaultProps } from './button-props';
 import { StyledButtonIcon, StyledButton } from './button.styled';
 
@@ -20,27 +31,14 @@ const ButtonIcon = ({ children }: { children: ReactNode }) => {
  * </Button>
  */
 export const Button = forwardRef<ButtonProps, 'button'>(
-  (
-    {
-      className,
-      style,
-      children,
-      color,
-      size,
-      variant,
-      disabled,
-      shape,
-      autoWidth,
-      iconPosition,
-      icon,
-      type,
-      onClick
-    }: ButtonProps,
-    ref: Ref<HTMLButtonElement | null>
-  ) => {
+  (props: ButtonProps, ref: Ref<HTMLButtonElement | null>) => {
     const buttonRef = useRef<HTMLButtonElement>(null);
-
     useImperativeHandle(ref, () => buttonRef.current);
+
+    const { className, style, children, autoWidth, iconPosition, icon, type, onClick } = props;
+    const contextProps = useContext(ButtonContext);
+
+    const { color, size, variant, disabled, shape } = { ...props, ...cleanedProps(contextProps) };
 
     const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
       if (disabled) {
@@ -78,6 +76,11 @@ export const Button = forwardRef<ButtonProps, 'button'>(
       </StyledButton>
     );
   }
-);
+) as ForwardRefExoticComponent<
+  ButtonProps & Partial<typeof defaultProps> & RefAttributes<HTMLButtonElement>
+> & {
+  Group: typeof ButtonGroup;
+};
 
-Button.defaultProps = defaultProps;
+Button.defaultProps = defaultProps as Partial<ButtonProps>;
+Button.Group = ButtonGroup;

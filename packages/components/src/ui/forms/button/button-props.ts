@@ -1,4 +1,4 @@
-import { MouseEvent } from 'react';
+import { MouseEvent, ReactNode } from 'react';
 import { ButtonColor, ElementHTML, NormalSize, Shape, WithIcon } from '../../../../types';
 
 export type ButtonProps = ElementHTML &
@@ -6,7 +6,7 @@ export type ButtonProps = ElementHTML &
     /**
      * Defines the children of the component.
      */
-    children?: string;
+    children?: ReactNode;
     /**
      * Defines the native type of the button element.
      */

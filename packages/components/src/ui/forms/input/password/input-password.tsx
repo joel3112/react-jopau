@@ -17,9 +17,8 @@ export const InputPassword = forwardRef<InputPasswordProps, 'input'>(
   (props: InputPasswordProps, ref: Ref<HTMLInputElement | null>) => {
     const { hideToggle, visibleIcon, hiddenIcon, ...inputProps } = props;
 
-    const inputRef = useRef<HTMLInputElement>(null);
     const [visible, setVisible] = useState<boolean>(false);
-
+    const inputRef = useRef<HTMLInputElement>(null);
     useImperativeHandle(ref, () => inputRef.current);
 
     const icon = useMemo(() => {
