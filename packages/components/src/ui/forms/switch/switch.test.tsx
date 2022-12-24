@@ -1,10 +1,11 @@
+/* eslint-disable testing-library/no-node-access,testing-library/no-container */
 import '@testing-library/jest-dom';
 import { render, waitFor } from '@testing-library/react';
 import { Switch } from './switch';
 
 describe('Tests Switch component', () => {
   test('renders component correctly', () => {
-    const { container } = render(<Switch>Content</Switch>);
+    const { container } = render(<Switch />);
 
     expect(container).toBeDefined();
   });
@@ -12,7 +13,6 @@ describe('Tests Switch component', () => {
   test('disables correctly', () => {
     const { container } = render(<Switch disabled />);
 
-    // eslint-disable-next-line testing-library/no-node-access,testing-library/no-container
     expect(container.querySelector('input')).toBeDisabled();
   });
 

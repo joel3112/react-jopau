@@ -15,7 +15,7 @@ describe('Tests useLocalStorage hook', () => {
     const newValue = 'new value';
     const { result } = renderHook(() => useLocalStorage<string>('key', 'test'));
 
-    act(() => {
+    await act(() => {
       result.current[1](newValue);
     });
 

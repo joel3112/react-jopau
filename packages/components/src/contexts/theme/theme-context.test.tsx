@@ -1,14 +1,14 @@
 import '@testing-library/jest-dom';
 import { render } from '@testing-library/react';
 import defaultTheme from '@react-jopau/styles/themes/default';
-import AppExample from '@apps/example';
+import { MockApp } from '../../utils/app';
 import { ThemeProvider } from './theme-context';
 
 describe('Tests ThemeProvider component', () => {
   test('renders component correctly', () => {
     const { container } = render(
       <ThemeProvider config={defaultTheme}>
-        <AppExample />
+        <MockApp />
       </ThemeProvider>
     );
 
@@ -18,7 +18,7 @@ describe('Tests ThemeProvider component', () => {
   test('renders light theme correctly', () => {
     const { container } = render(
       <ThemeProvider config={defaultTheme}>
-        <AppExample />
+        <MockApp />
       </ThemeProvider>
     );
 
@@ -28,7 +28,7 @@ describe('Tests ThemeProvider component', () => {
   test('renders dark theme correctly', () => {
     const { container } = render(
       <ThemeProvider config={defaultTheme} darkMode>
-        <AppExample />
+        <MockApp />
       </ThemeProvider>
     );
 

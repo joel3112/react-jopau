@@ -117,10 +117,14 @@ export const Select = forwardRef<SelectProps, 'select'>(
           value={value}
           required={required}
           disabled={disabled}
-          isFocusVisible={isFocusVisible && !disabled}
           variant={variant}
           shape={shape}
           size={size}
+          color={color}
+          status={status}
+          isFocusVisible={isFocusVisible && !disabled}
+          isPlaceholderVisible={!value && !defaultValue && !!placeholder && !boxRef.current?.value}
+          isHelperTextVisible={!!helperText}
           onChange={handleChange}
           {...mergeProps({ onFocus, onBlur }, focusProps)}>
           {placeholder && (

@@ -1,10 +1,11 @@
 import { ComponentType, Ref } from 'react';
 import { Input as InputNextUI, InputProps as InputPropsNextUI } from '@nextui-org/react';
+import { SimpleColor } from '../../../../types';
 import { NextUIOverrideCSS } from '../../../utils/override';
 import { InputProps } from './input-props';
 import { styledTheme } from '../../../index';
 
-const colorTokens = (color: NonNullable<InputProps['color']>) => {
+const colorTokens = (color: SimpleColor) => {
   return {
     default: {
       $$inputLabelColor: '$colors$text',
@@ -49,7 +50,7 @@ const colorTokens = (color: NonNullable<InputProps['color']>) => {
   }[color];
 };
 
-const statusTokens = (status: NonNullable<InputProps['status']>) => {
+const statusTokens = (status: SimpleColor) => {
   return {
     default: {
       $$inputLabelColor: '$colors$text',
@@ -231,8 +232,12 @@ export const StyledInputWrapper = styledTheme('div', {
   [`${NextUIEl.INPUT_WRAPPER}`]: { borderRadius: '$$inputControlBorderRadius' },
   [`${NextUIEl.INPUT}`]: { color: 'inherit' },
   [`${NextUIEl.INPUT}::placeholder`]: { color: '$colors$placeholder' },
-  [`${NextUIEl.HELPER_TEXT_CONTAINER}`]: { mb: '$space$2', scale: 1.2 },
-  [`${NextUIEl.HELPER_TEXT}`]: { color: '$$inputLabelColor' },
+  [`${NextUIEl.HELPER_TEXT_CONTAINER}`]: { mb: '$space$2' },
+  [`${NextUIEl.HELPER_TEXT}`]: {
+    fontSize: '$fontSizes$xs',
+    color: '$$inputLabelColor',
+    height: '$space$6'
+  },
   [`${NextUIEl.INPUT_CONTENT}`]: { pointerEvents: 'auto', cursor: 'pointer' },
   [`${NextUIEl.LABEL_LEFT}`]: {
     color: '$$inputContentLabelColor',

@@ -12,9 +12,9 @@ import { defaultProps, ThemeProviderProps } from './theme-context-props';
  */
 export const ThemeContext = createContext<{
   config: ThemeConfig;
-  darkMode?: boolean;
-  onToggle?: () => void;
-}>({} as { config: ThemeConfig });
+  darkMode: boolean;
+  onToggle: () => void;
+}>({ config: {} as ThemeConfig, darkMode: false, onToggle: () => {} });
 
 /* ==== provider =============================================================== */
 

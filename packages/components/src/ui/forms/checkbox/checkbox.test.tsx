@@ -1,10 +1,11 @@
+/* eslint-disable testing-library/no-node-access,testing-library/no-container */
 import '@testing-library/jest-dom';
 import { render, screen, waitFor } from '@testing-library/react';
 import { Checkbox } from './checkbox';
 
 describe('Tests Checkbox component', () => {
   test('renders component correctly', () => {
-    const { container } = render(<Checkbox>Option</Checkbox>);
+    const { container } = render(<Checkbox />);
 
     expect(container).toBeDefined();
   });
@@ -16,9 +17,13 @@ describe('Tests Checkbox component', () => {
   });
 
   test('disables correctly', () => {
-    render(<Checkbox label="Label" disabled />);
+    render(
+      <Checkbox label="Label" disabled>
+        Option
+      </Checkbox>
+    );
 
-    expect(screen.getByLabelText('Label')).toBeDisabled();
+    expect(screen.getByLabelText('Option')).toBeDisabled();
   });
 
   test('renders color correctly', () => {
@@ -43,7 +48,7 @@ describe('Tests Checkbox component', () => {
     );
 
     await waitFor(() => {
-      const _checkbox = screen.getByLabelText('Label');
+      const _checkbox = screen.getByLabelText('Option');
       _checkbox.click();
     });
 

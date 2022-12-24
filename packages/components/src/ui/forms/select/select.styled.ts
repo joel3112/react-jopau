@@ -1,5 +1,19 @@
+import { SimpleColor } from '../../../../types';
 import { Input } from '../input/input';
 import { styledTheme } from '../../../index';
+
+const colorTokens = (color: SimpleColor) => {
+  return {
+    default: { $$selectControlColor: '$colors$text' },
+    primary: { $$selectControlColor: '$colors$primary500' },
+    secondary: { $$selectControlColor: '$colors$secondary500' },
+    tertiary: { $$selectControlColor: '$colors$tertiary500' },
+    info: { $$selectControlColor: '$colors$blue500' },
+    error: { $$selectControlColor: '$colors$red500' },
+    success: { $$selectControlColor: '$colors$green500' },
+    warning: { $$selectControlColor: '$colors$yellow500' }
+  }[color];
+};
 
 export const StyledSelectWrapper = styledTheme('div', {
   display: 'block',
@@ -18,28 +32,79 @@ export const StyledSelect = styledTheme('select', {
   left: 0,
   zIndex: 1,
   background: 'transparent',
-  color: 'transparent',
+  webkitAppearance: 'none',
+  appearance: 'none',
   width: '$space$full',
   borderRadius: '$$selectControlBorderRadius',
+  fontSize: '$$selectControlFontSize',
 
   variants: {
+    color: {
+      default: colorTokens('default'),
+      primary: colorTokens('primary'),
+      secondary: colorTokens('secondary'),
+      tertiary: colorTokens('tertiary'),
+      info: colorTokens('info'),
+      error: colorTokens('error'),
+      success: colorTokens('success'),
+      warning: colorTokens('warning')
+    },
+    status: {
+      default: colorTokens('default'),
+      primary: colorTokens('primary'),
+      secondary: colorTokens('secondary'),
+      tertiary: colorTokens('tertiary'),
+      info: colorTokens('info'),
+      error: colorTokens('error'),
+      success: colorTokens('success'),
+      warning: colorTokens('warning')
+    },
     size: {
-      xs: { $$selectControlHeight: '24px' },
-      sm: { $$selectControlHeight: '32px' },
-      md: { $$selectControlHeight: '40px' },
-      lg: { $$selectControlHeight: '44px' },
-      xl: { $$selectControlHeight: '52px' }
+      xs: {
+        $$selectControlFontSize: '$fontSizes$xs',
+        $$selectControlHeight: '24px'
+      },
+      sm: {
+        $$selectControlFontSize: '$fontSizes$xs',
+        $$selectControlHeight: '32px'
+      },
+      md: {
+        $$selectControlFontSize: '$fontSizes$sm',
+        $$selectControlHeight: '40px'
+      },
+      lg: {
+        $$selectControlFontSize: '$fontSizes$md',
+        $$selectControlHeight: '44px'
+      },
+      xl: {
+        $$selectControlFontSize: '$fontSizes$lg',
+        $$selectControlHeight: '52px'
+      }
     },
     variant: {
-      default: { height: '$$selectControlHeight' },
-      bordered: { height: '$$selectControlHeight' },
-      underlined: { height: 'calc($$selectControlHeight - 4px)', $$selectControlBorderRadius: 0 }
+      default: { height: '$$selectControlHeight', padding: '$space$2 $space$5' },
+      bordered: { height: '$$selectControlHeight', padding: '0 calc($space$5 + $space$3)' },
+      underlined: {
+        height: '$$selectControlHeight',
+        padding: '$space$2 $space$3',
+        $$selectControlBorderRadius: 0
+      }
     },
     shape: {
       default: { $$selectControlBorderRadius: '$radii$xs' },
       round: { $$selectControlBorderRadius: '$radii$2xl' },
       square: { $$selectControlBorderRadius: 0 }
     },
+    disabled: {
+      true: {
+        color: '$colors$gray400'
+      }
+    },
+    isPlaceholderVisible: {
+      true: { color: '$colors$placeholder' },
+      false: { color: '$$selectControlColor' }
+    },
+    isHelperTextVisible: { true: {} },
     isFocusVisible: {
       true: {
         outline: 'transparent solid 2px',
@@ -47,7 +112,17 @@ export const StyledSelect = styledTheme('select', {
         boxShadow: '0 0 0 2px $colors$background, 0 0 0 4px $colors$accent'
       }
     }
-  }
+  },
+
+  compoundVariants: [
+    {
+      variant: 'underlined',
+      isHelperTextVisible: true,
+      css: {
+        bottom: '$space$3'
+      }
+    }
+  ]
 });
 
 export const StyledSelectArrow = styledTheme('div', {
@@ -62,4 +137,6 @@ export const StyledSelectArrow = styledTheme('div', {
   }
 });
 
-export const StyledSelectInput = styledTheme(Input, {});
+export const StyledSelectInput = styledTheme(Input, {
+  input: { color: 'transparent !important' }
+});

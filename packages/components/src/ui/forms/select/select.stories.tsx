@@ -235,12 +235,16 @@ export const Grouping = () => (
   <Select label="Grouping" placeholder="Select option">
     <Select.OptionGroup label="Group 1">
       <Select.Option value="1">Option 1</Select.Option>
-      <Select.Option value="2">Option 2</Select.Option>
+      <Select.Option value="2" disabled>
+        Option 2
+      </Select.Option>
       <Select.Option value="3">Option 3</Select.Option>
     </Select.OptionGroup>
     <Select.OptionGroup label="Group 2">
       <Select.Option value="4">Option 4</Select.Option>
-      <Select.Option value="5">Option 5</Select.Option>
+      <Select.Option value="5" disabled>
+        Option 5
+      </Select.Option>
       <Select.Option value="6">Option 6</Select.Option>
     </Select.OptionGroup>
   </Select>

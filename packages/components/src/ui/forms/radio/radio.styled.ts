@@ -8,6 +8,8 @@ import { RadioGroupProps } from './group/radio-group-props';
 import { styledTheme } from '../../../index';
 
 enum NextUIEl {
+  RADIO_GROUP = '.nextui-radio-group',
+  RADIO_GROUP_LABEL = '.nextui-radio-group-label',
   RADIO = '.nextui-radio',
   RADIO_POINT = '.nextui-radio-point',
   RADIO_LABEL = '.nextui-radio-label'
@@ -22,7 +24,23 @@ export const StyledRadioGroup = styledTheme(
   >,
   {
     display: 'inline-block',
-    width: '$space$fit'
+    width: '$space$fit',
+
+    [`${NextUIEl.RADIO_GROUP_LABEL}`]: { fontSize: 'calc($$radioLabelFontSize * 0.8)' },
+    [`&[aria-orientation="horizontal"] ${NextUIEl.RADIO_GROUP}-items`]: {
+      flexWrap: 'wrap',
+      gap: '$space$4 0'
+    },
+
+    variants: {
+      size: {
+        xs: { $$radioLabelFontSize: '$space$7' },
+        sm: { $$radioLabelFontSize: '$space$8' },
+        md: { $$radioLabelFontSize: '$space$9' },
+        lg: { $$radioLabelFontSize: '$space$10' },
+        xl: { $$radioLabelFontSize: '$space$11' }
+      }
+    }
   }
 );
 
@@ -36,7 +54,7 @@ export const StyledRadio = styledTheme(
     boxSizing: 'border-box',
     display: 'inline-block',
 
-    [`&${NextUIEl.RADIO}--is-hovered ${NextUIEl.RADIO_POINT}`]: {
+    [`&${NextUIEl.RADIO}--is-hovered:not([class*="isChecked-true"]) ${NextUIEl.RADIO_POINT}`]: {
       backgroundColor: '$colors$input',
       backgroundColorDarker: 0.2
     },

@@ -25,11 +25,12 @@ module.exports = {
     },
     {
       ...commonConfig('hooks'),
-      testMatch: ['<rootDir>/packages/hooks/**/*.test.ts'],
+      testMatch: ['<rootDir>/packages/hooks/**/*.test.ts(x)?'],
       setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
       moduleNameMapper: {
         '@react-jopau/utils': '<rootDir>/packages/utils/src',
-        '@react-jopau/styles/(.*)$': '<rootDir>/packages/styles/src/$1'
+        '@react-jopau/styles/(.*)$': '<rootDir>/packages/styles/src/$1',
+        '@react-jopau/components/(.*)$': '<rootDir>/packages/components/src/$1'
       }
     },
     {
@@ -39,9 +40,7 @@ module.exports = {
         '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
         '@apps/example': '<rootDir>/apps/example/src/App.tsx',
         '@react-jopau/utils': '<rootDir>/packages/utils/src',
-        '@react-jopau/styles/(.*)$': '<rootDir>/packages/styles/src/$1',
-        '@react-jopau/hooks': '<rootDir>/packages/hooks/src',
-        '@react-jopau/components/(.*)$': '<rootDir>/packages/components/src/$1'
+        '@react-jopau/styles/(.*)$': '<rootDir>/packages/styles/src/$1'
       }
     }
   ]

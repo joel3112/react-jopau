@@ -1,14 +1,12 @@
-import { useContext } from 'react';
 import { MdSearch, MdOutlineDarkMode, MdOutlineLightMode } from 'react-icons/md';
-import { useBreakpoint } from '@react-jopau/hooks';
-import { ThemeContext } from '@react-jopau/components/contexts';
+import { useBreakpoint, useTheme } from '@react-jopau/hooks';
 import { Container, Header, Space } from '@react-jopau/components/ui/layout';
 import { Button, Checkbox, Input, Radio, Switch, Textarea } from '@react-jopau/components/ui/forms';
 import { Heading, Text } from '@react-jopau/components/ui/typography';
 import './App.css';
 
 const App = () => {
-  const { darkMode, onToggle } = useContext(ThemeContext);
+  const { darkMode, onToggle } = useTheme();
   const { key } = useBreakpoint();
 
   return (
