@@ -5,6 +5,7 @@ module.exports = {
     colors: {
       black: 'var(--rjopau-colors-black)',
       white: 'var(--rjopau-colors-white)',
+      accent: 'var(--rjopau-colors-accent)',
       primary: {
         DEFAULT: 'var(--rjopau-colors-primary500)',
         100: 'var(--rjopau-colors-primary100)',

@@ -1,6 +1,6 @@
 import { Ref } from 'react';
 import { classes, forwardRef } from '../../../utils/system';
-import { useControlText } from '../../../utils/use-control-text';
+import { useControlValue } from '../../../utils/use-control-value';
 import { TextareaProps, defaultProps } from './textarea-props';
 import { StyledLabelGap } from '../input/input.styled';
 import { StyledTextarea, StyledTextareaWrapper } from './textarea.styled';
@@ -24,7 +24,7 @@ export const Textarea = forwardRef<TextareaProps, 'textarea'>(
       defaultValue,
       value,
       onChange
-    } = useControlText<HTMLTextAreaElement>({ ...props, as: 'textarea' }, ref);
+    } = useControlValue<HTMLTextAreaElement>({ ...props, as: 'textarea' }, ref);
     const {
       className,
       style,
@@ -40,6 +40,7 @@ export const Textarea = forwardRef<TextareaProps, 'textarea'>(
       readOnly,
       autoComplete,
       disabled,
+      autoFocus,
       required,
       shape,
       autoWidth,
@@ -74,6 +75,7 @@ export const Textarea = forwardRef<TextareaProps, 'textarea'>(
           disabled={disabled}
           autoComplete={autoComplete}
           required={required}
+          autoFocus={autoFocus}
           className={classes('textarea', className)}
           css={{
             ...style

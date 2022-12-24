@@ -15,6 +15,7 @@ export default {
     color: 'primary',
     status: 'default',
     disabled: false,
+    autoFocus: false,
     squared: false
   },
   argTypes: prepareArgTypes(Radio)

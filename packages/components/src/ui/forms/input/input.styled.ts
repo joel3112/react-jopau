@@ -1,5 +1,6 @@
 import { ComponentType, Ref } from 'react';
 import { Input as InputNextUI, InputProps as InputPropsNextUI } from '@nextui-org/react';
+import { NextUIOverrideCSS } from '../../../utils/override';
 import { InputProps } from './input-props';
 import { styledTheme } from '../../../index';
 
@@ -210,7 +211,8 @@ export const StyledInput = styledTheme(
   {
     boxSizing: 'content-box',
     width: '$space$fit'
-  }
+  },
+  NextUIOverrideCSS
 );
 
 export const StyledLabelGap = styledTheme('div', {

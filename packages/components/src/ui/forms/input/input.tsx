@@ -1,7 +1,7 @@
 import { ForwardRefExoticComponent, Ref, RefAttributes } from 'react';
 import { useHotKey } from '@react-jopau/hooks';
 import { classes, forwardRef } from '../../../utils/system';
-import { useControlText } from '../../../utils/use-control-text';
+import { useControlValue } from '../../../utils/use-control-value';
 import { InputPassword } from './password/input-password';
 import { defaultProps, InputProps } from './input-props';
 import {
@@ -32,12 +32,13 @@ export const Input = forwardRef<InputProps, 'input'>(
       value,
       onChange,
       onClearClick
-    } = useControlText<HTMLInputElement>(props, ref);
+    } = useControlValue<HTMLInputElement>(props, ref);
     const {
       className,
       style,
       name,
       type,
+      tabIndex,
       label,
       placeholder,
       helperText,
@@ -49,6 +50,7 @@ export const Input = forwardRef<InputProps, 'input'>(
       readOnly,
       autoComplete,
       disabled,
+      autoFocus,
       required,
       clearable,
       shape,
@@ -81,6 +83,7 @@ export const Input = forwardRef<InputProps, 'input'>(
         {labelPlaceholder && <StyledLabelGap>&nbsp;</StyledLabelGap>}
         <StyledInput
           ref={inputRef}
+          tabIndex={tabIndex}
           id={id}
           name={name}
           type={type}
@@ -92,6 +95,7 @@ export const Input = forwardRef<InputProps, 'input'>(
           disabled={disabled}
           autoComplete={autoComplete}
           required={required}
+          autoFocus={autoFocus}
           className={classes('input', className)}
           css={{
             ...style

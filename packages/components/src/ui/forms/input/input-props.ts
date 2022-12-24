@@ -17,6 +17,10 @@ export type InputProps = ElementHTML &
      */
     as?: 'input' | 'textarea';
     /**
+     * Defines the tab order of the element.
+     */
+    tabIndex?: number;
+    /**
      * Defines the value (controlled) of the current element, used when submitting a form.
      */
     value?: string;

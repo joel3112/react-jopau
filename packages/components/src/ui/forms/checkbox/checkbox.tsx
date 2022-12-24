@@ -26,6 +26,7 @@ export const Checkbox = forwardRef<CheckboxProps, 'input'>(
       value,
       label,
       required,
+      autoFocus,
       indeterminate,
       rounded,
       throughed
@@ -54,6 +55,7 @@ export const Checkbox = forwardRef<CheckboxProps, 'input'>(
         isReadOnly={readOnly}
         isDisabled={disabled}
         isRequired={required}
+        autoFocus={autoFocus}
         className={classes('checkbox', className)}
         css={{
           ...style

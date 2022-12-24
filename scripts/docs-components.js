@@ -121,22 +121,24 @@ const generateComponentDocs = async (type, componentNameOne) => {
       /**
        * Generate file MDX
        */
-      const documentationMDXPath = path.join(componentPath, '../') + 'readme.mdx';
-      const rendererMDX = new RendererGenerator({
-        template: componentMDXTemplate
-      });
-      writeFile(
-        documentationMDXPath,
-        rendererMDX.renderDoc(componentPath, {
-          ...componentDocs,
-          displayName,
-          parentPath,
-          parentName,
-          imports: getCustomTag(jsdocSchema, 'imports'),
-          stories: stories || {}
-        }),
-        'mdx'
-      );
+      if (stories) {
+        const documentationMDXPath = path.join(componentPath, '../') + 'readme.mdx';
+        const rendererMDX = new RendererGenerator({
+          template: componentMDXTemplate
+        });
+        writeFile(
+          documentationMDXPath,
+          rendererMDX.renderDoc(componentPath, {
+            ...componentDocs,
+            displayName,
+            parentPath,
+            parentName,
+            imports: getCustomTag(jsdocSchema, 'imports'),
+            stories: stories || {}
+          }),
+          'mdx'
+        );
+      }
 
       /**
        * Generate file markdown

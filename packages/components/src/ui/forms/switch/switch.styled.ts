@@ -1,10 +1,12 @@
 import { ComponentType } from 'react';
 import { Switch as SwitchNextUI, SwitchProps as SwitchPropsNextUI } from '@nextui-org/react';
+import { NextUIOverrideCSS } from '../../../utils/override';
 import { SwitchProps } from './switch-props';
 import { styledTheme } from '../../../index';
 
 enum NextUIEl {
-  SWITCH = '.nextui-switch'
+  SWITCH = '.nextui-switch',
+  SWITCH_CIRCLE = '.nextui-switch-circle'
 }
 
 export const StyledSwitch = styledTheme(
@@ -13,6 +15,10 @@ export const StyledSwitch = styledTheme(
     boxSizing: 'border-box',
     width: '$space$fit',
 
+    [`${NextUIEl.SWITCH}--unchecked`]: { background: '$colors$border', opacity: 0.7 },
+    [`${NextUIEl.SWITCH}--unchecked ${NextUIEl.SWITCH_CIRCLE}`]: {
+      background: '$colors$background'
+    },
     [`${NextUIEl.SWITCH}-checked`]: { background: '$$switchControlColor' },
     [`${NextUIEl.SWITCH}-checked:hover:not(${NextUIEl.SWITCH}-checked-true:active)`]: {
       background: '$$switchHoverControlColor'
@@ -54,5 +60,6 @@ export const StyledSwitch = styledTheme(
         }
       }
     }
-  }
+  },
+  NextUIOverrideCSS
 );

@@ -2,7 +2,7 @@ import { ChangeEvent, MouseEvent, Ref, RefObject, useId } from 'react';
 import { FormControl } from '../../types';
 import { useControlled } from './use-controlled';
 
-type FormElement = HTMLInputElement | HTMLTextAreaElement;
+type FormElement = HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement;
 type ChangeValue<T> = {
   value?: string;
   defaultValue?: string;
@@ -10,7 +10,7 @@ type ChangeValue<T> = {
 };
 type ControlProps<T> = FormControl &
   ChangeValue<T> & {
-    as?: 'input' | 'textarea';
+    as?: 'input' | 'textarea' | 'select';
     placeholder?: string;
     labelPlaceholder?: string;
     onClearClick?: (e: MouseEvent) => void;
@@ -24,7 +24,7 @@ const simulateChangeEvent = <T extends FormElement>(el: T, event: MouseEvent): C
   };
 };
 
-export const useControlText = <T extends FormElement>(
+export const useControlValue = <T extends FormElement>(
   props: ControlProps<T>,
   ref: Ref<Partial<T> | null>
 ): {

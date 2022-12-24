@@ -3,6 +3,7 @@ export default {
     colors: {
       white: '#fff',
       black: '#000',
+      accent: '#0070f3',
 
       primary100: '#c5f0f7',
       primary200: '#8fdcee',

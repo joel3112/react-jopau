@@ -76,31 +76,36 @@ const getStories = (componentPath, schemaProps, parentName) => {
     schemaProps,
     parentName
   );
-  const stories = {};
 
   try {
-    const component = fs.readFileSync(storiesPath).toString();
-    const storyRegex = /export const (.*) = /g;
-    let match;
+    if (fs.existsSync(storiesPath)) {
+      const stories = {};
+      const component = fs.readFileSync(storiesPath).toString();
+      const storyRegex = /export const (.*) = /g;
+      let match;
 
-    while ((match = storyRegex.exec(component)) !== null) {
-      const storyName = match[1];
-      const id = kebabCase(storyName);
-      const label = lowerCase(storyName)
-        .split(' ')
-        .map((t) => upperFirst(t))
-        .join(' ');
-      const subcomponentPartialName = !parentName ? '' : displayName.replace(`${parentName}.`, '');
+      while ((match = storyRegex.exec(component)) !== null) {
+        const storyName = match[1];
+        const id = kebabCase(storyName);
+        const label = lowerCase(storyName)
+          .split(' ')
+          .map((t) => upperFirst(t))
+          .join(' ');
+        const subcomponentPartialName = !parentName
+          ? ''
+          : displayName.replace(`${parentName}.`, '');
 
-      stories[storyName] = {
-        name: storyName,
-        label: !subcomponentPartialName
-          ? label
-          : `[${subcomponentPartialName}] ${label.replace(subcomponentPartialName, '').trim()}`,
-        id: `${storiesPrefixId}--${id}`
-      };
+        stories[storyName] = {
+          name: storyName,
+          label: !subcomponentPartialName
+            ? label
+            : `[${subcomponentPartialName}] ${label.replace(subcomponentPartialName, '').trim()}`,
+          id: `${storiesPrefixId}--${id}`
+        };
+      }
+      return stories;
     }
-    return stories;
+    return null;
   } catch (error) {
     throw error;
   }

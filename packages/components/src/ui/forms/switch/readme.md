@@ -19,6 +19,7 @@ import { Switch } from '@react-jopau/components/ui/forms';
 
 | Name           | Type                                                                                                | Default value | Description                                                           |
 | -------------- | --------------------------------------------------------------------------------------------------- | ------------- | --------------------------------------------------------------------- |
+| autoFocus      | `boolean`                                                                                           |               | Defines the element should receive focus on render.                   |
 | checked        | `boolean`                                                                                           |               | Defines if the input element is checked (controlled).                 |
 | className      | `string`                                                                                            |               | Classnames applied to root element                                    |
 | color          | `"primary"` \| `"secondary"` \| `"tertiary"` \| `"info"` \| `"error"` \| `"success"` \| `"warning"` |               | Defines the color of input text, border and label.                    |

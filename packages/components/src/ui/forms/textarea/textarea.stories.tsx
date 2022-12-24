@@ -28,6 +28,7 @@ export default {
     maxRows: 6,
     autoWidth: false,
     readOnly: false,
+    autoFocus: false,
     disabled: false,
     required: false
   },

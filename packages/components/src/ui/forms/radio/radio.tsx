@@ -18,7 +18,7 @@ import { StyledRadio } from './radio.styled';
  */
 export const Radio = forwardRef<RadioProps, 'input'>(
   (props: RadioProps, ref: Ref<Partial<HTMLInputElement> | null>) => {
-    const { className, style, children, value, description, squared } = props;
+    const { className, style, children, value, description, autoFocus, squared } = props;
     const contextProps = useContext(RadioContext);
 
     const { ref: radioRef, id, ariaLabel } = useControlChecked(props, contextProps, ref);
@@ -31,6 +31,7 @@ export const Radio = forwardRef<RadioProps, 'input'>(
         value={value || id}
         aria-label={ariaLabel}
         isDisabled={disabled}
+        autoFocus={autoFocus}
         className={classes('radio', className)}
         css={{
           ...style

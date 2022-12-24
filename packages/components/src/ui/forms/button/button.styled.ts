@@ -1,5 +1,6 @@
 import { ComponentType, Ref } from 'react';
 import { Button as ButtonNextUI, ButtonProps as ButtonPropsNextUI } from '@nextui-org/react';
+import { NextUIOverrideCSS } from '../../../utils/override';
 import { ButtonProps } from './button-props';
 import { styledTheme } from '../../../index';
 
@@ -230,5 +231,6 @@ export const StyledButton = styledTheme(
         }
       }
     ]
-  }
+  },
+  NextUIOverrideCSS
 );

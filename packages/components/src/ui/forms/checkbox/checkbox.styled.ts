@@ -1,6 +1,7 @@
 import { ComponentType, Ref } from 'react';
 import { Checkbox as CheckboxNextUI } from '@nextui-org/react';
 import { CheckboxProps as CheckboxPropsNextUI } from '@nextui-org/react/types/checkbox/checkbox';
+import { NextUIOverrideCSS } from '../../../utils/override';
 import { CheckboxProps } from './checkbox-props';
 import { CheckboxGroupProps } from './group/checkbox-group-props';
 import { styledTheme } from '../../../index';
@@ -130,5 +131,6 @@ export const StyledCheckbox = styledTheme(
         }
       }
     }
-  }
+  },
+  NextUIOverrideCSS
 );

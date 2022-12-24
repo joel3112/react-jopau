@@ -18,6 +18,7 @@ export default {
     defaultChecked: true,
     checked: true,
     disabled: false,
+    autoFocus: false,
     squared: false
   },
   argTypes: prepareArgTypes(Switch)

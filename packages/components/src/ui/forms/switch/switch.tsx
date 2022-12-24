@@ -15,8 +15,20 @@ import { StyledSwitch } from './switch.styled';
  * <Switch defaultChecked />
  */
 export const Switch = (props: SwitchProps) => {
-  const { className, style, name, disabled, variant, size, color, squared, icon, iconOn, iconOff } =
-    props;
+  const {
+    className,
+    style,
+    name,
+    disabled,
+    autoFocus,
+    variant,
+    size,
+    color,
+    squared,
+    icon,
+    iconOn,
+    iconOff
+  } = props;
 
   const { id, ariaLabel, defaultChecked, checked, onChange } = useControlChecked(props);
 
@@ -28,6 +40,7 @@ export const Switch = (props: SwitchProps) => {
       {...(checked !== undefined && { checked: checked })}
       {...(defaultChecked !== undefined && { initialChecked: defaultChecked })}
       disabled={disabled}
+      autoFocus={autoFocus}
       className={classes('switch', className)}
       css={{
         ...style

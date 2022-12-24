@@ -2,6 +2,7 @@ import { ComponentType, Ref } from 'react';
 import { Radio as RadioNextUI } from '@nextui-org/react';
 import { RadioProps as RadioPropsNextUI } from '@nextui-org/react/types/radio/radio';
 import { RadioGroupProps as RadioGroupPropsNextUI } from '@nextui-org/react/types/radio/radio-group';
+import { NextUIOverrideCSS } from '../../../utils/override';
 import { RadioProps } from './radio-props';
 import { RadioGroupProps } from './group/radio-group-props';
 import { styledTheme } from '../../../index';
@@ -130,5 +131,6 @@ export const StyledRadio = styledTheme(
         }
       }
     }
-  }
+  },
+  NextUIOverrideCSS
 );

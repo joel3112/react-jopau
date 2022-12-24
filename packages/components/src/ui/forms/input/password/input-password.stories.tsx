@@ -28,6 +28,7 @@ export default {
     autoWidth: false,
     clearable: false,
     readOnly: false,
+    autoFocus: false,
     disabled: false,
     required: false,
     hideToggle: false

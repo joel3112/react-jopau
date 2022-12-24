@@ -24,6 +24,7 @@ export default {
     required: false,
     rounded: false,
     readOnly: false,
+    autoFocus: false,
     indeterminate: false,
     throughed: false
   },

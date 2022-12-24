@@ -58,6 +58,10 @@ export type FormControl = {
    * Defines if the element is required.
    */
   required?: boolean;
+  /**
+   * Defines the element should receive focus on render.
+   */
+  autoFocus?: boolean;
 };
 
 export type ElementHTML = {

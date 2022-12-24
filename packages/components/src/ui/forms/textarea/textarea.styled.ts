@@ -1,6 +1,7 @@
 import { ComponentType, Ref } from 'react';
 import { Textarea as TextareaNextUI } from '@nextui-org/react';
 import { TextareaProps as TextareaPropsNextUI } from '@nextui-org/react/types/textarea';
+import { NextUIOverrideCSS } from '../../../utils/override';
 import { TextareaProps } from './textarea-props';
 import { StyledInputWrapper } from '../input/input.styled';
 import { styledTheme } from '../../../index';
@@ -15,7 +16,8 @@ export const StyledTextarea = styledTheme(
   {
     boxSizing: 'content-box',
     width: '$space$fit'
-  }
+  },
+  NextUIOverrideCSS
 );
 
 export const StyledTextareaWrapper = styledTheme(StyledInputWrapper, {});
