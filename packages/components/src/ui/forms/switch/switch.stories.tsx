@@ -15,6 +15,7 @@ export default {
     variant: 'default',
     size: 'md',
     color: 'primary',
+    label: '',
     defaultChecked: true,
     checked: true,
     disabled: false,
@@ -36,23 +37,35 @@ Default.parameters = { viewMode: 'story' };
 
 export const Sizes = () => (
   <Space direction="column" gap={10}>
-    <Switch defaultChecked size="xs" />
-    <Switch defaultChecked size="sm" />
-    <Switch defaultChecked size="md" />
-    <Switch defaultChecked size="lg" />
-    <Switch defaultChecked size="xl" />
+    <Switch defaultChecked size="xs" label="Label" />
+    <Switch defaultChecked size="sm" label="Label" />
+    <Switch defaultChecked size="md" label="Label" />
+    <Switch defaultChecked size="lg" label="Label" />
+    <Switch defaultChecked size="xl" label="Label" />
   </Space>
 );
 
 export const Color = () => (
   <Space direction="column" gap={10}>
-    <Switch defaultChecked color="primary" />
-    <Switch defaultChecked color="secondary" />
-    <Switch defaultChecked color="tertiary" />
-    <Switch defaultChecked color="info" />
-    <Switch defaultChecked color="success" />
-    <Switch defaultChecked color="error" />
-    <Switch defaultChecked color="warning" />
+    <Switch defaultChecked color="primary" label="Label" />
+    <Switch defaultChecked color="secondary" label="Label" />
+    <Switch defaultChecked color="tertiary" label="Label" />
+    <Switch defaultChecked color="info" label="Label" />
+    <Switch defaultChecked color="success" label="Label" />
+    <Switch defaultChecked color="error" label="Label" />
+    <Switch defaultChecked color="warning" label="Label" />
+  </Space>
+);
+
+export const Status = () => (
+  <Space direction="column" gap={10}>
+    <Switch defaultChecked status="primary" label="Label" />
+    <Switch defaultChecked status="secondary" label="Label" />
+    <Switch defaultChecked status="tertiary" label="Label" />
+    <Switch defaultChecked status="info" label="Label" />
+    <Switch defaultChecked status="success" label="Label" />
+    <Switch defaultChecked status="error" label="Label" />
+    <Switch defaultChecked status="warning" label="Label" />
   </Space>
 );
 

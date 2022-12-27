@@ -82,10 +82,7 @@ const App = () => {
                   placeholder="Your message"
                   autoWidth
                 />
-                <Space gap={10} align="center">
-                  <Switch size="xs" />
-                  <Text>Subscribe to newsletter</Text>
-                </Space>
+                <Switch size="xs" label="Subscribe to newsletter" />
               </Space>
               <Button type="submit" color="secondary">
                 Contact me
