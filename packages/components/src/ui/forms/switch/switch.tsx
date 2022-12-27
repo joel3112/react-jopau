@@ -1,5 +1,5 @@
 import { classes } from '../../../utils/system';
-import { useControlChecked } from '../../../utils/use-control-checked';
+import { useControlChecked } from '../../../shared/use-control-checked';
 import { SwitchProps, defaultProps } from './switch-props';
 import { StyledSwitch } from './switch.styled';
 

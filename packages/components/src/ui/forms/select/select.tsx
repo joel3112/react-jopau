@@ -12,7 +12,7 @@ import { mergeProps } from '@react-aria/utils';
 import { useFocusRing } from '@react-aria/focus';
 import { BiChevronDown } from 'react-icons/bi';
 import { classes, forwardRef } from '../../../utils/system';
-import { useControlValue } from '../../../utils/use-control-value';
+import { useControlValue } from '../../../shared/use-control-value';
 import { SelectOptionGroup } from './option-group/select-option-group';
 import { SelectOption } from './option/select-option';
 import { SelectOptionGroupProps } from './option-group/select-option-group-props';

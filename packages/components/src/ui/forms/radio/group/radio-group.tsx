@@ -1,6 +1,6 @@
 import { Ref } from 'react';
 import { classes, forwardRef } from '../../../../utils/system';
-import { useControlGroup } from '../../../../utils/use-control-group';
+import { useControlGroup } from '../../../../shared/use-control-group';
 import { RadioContext } from '../radio-context';
 import { defaultProps, RadioGroupProps } from './radio-group-props';
 import { StyledRadioGroup } from '../radio.styled';

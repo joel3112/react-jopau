@@ -1,6 +1,6 @@
 import { Ref } from 'react';
 import { classes, forwardRef } from '../../../utils/system';
-import { useControlValue } from '../../../utils/use-control-value';
+import { useControlValue } from '../../../shared/use-control-value';
 import { TextareaProps, defaultProps } from './textarea-props';
 import { StyledLabelGap } from '../input/input.styled';
 import { StyledTextarea, StyledTextareaWrapper } from './textarea.styled';

@@ -1,6 +1,6 @@
 import { ForwardRefExoticComponent, Ref, RefAttributes, useContext } from 'react';
 import { classes, cleanedProps, forwardRef } from '../../../utils/system';
-import { useControlChecked } from '../../../utils/use-control-checked';
+import { useControlChecked } from '../../../shared/use-control-checked';
 import { CheckboxContext } from './checkbox-context';
 import { CheckboxGroup } from './group/checkbox-group';
 import { CheckboxProps, defaultProps } from './checkbox-props';

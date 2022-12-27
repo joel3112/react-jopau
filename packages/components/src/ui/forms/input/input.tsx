@@ -1,7 +1,7 @@
 import { ForwardRefExoticComponent, Ref, RefAttributes } from 'react';
-import { useHotKey } from '@react-jopau/hooks';
 import { classes, forwardRef } from '../../../utils/system';
-import { useControlValue } from '../../../utils/use-control-value';
+import { useControlValue } from '../../../shared/use-control-value';
+import { useHotKey } from '../../../shared/use-hot-key';
 import { InputPassword } from './password/input-password';
 import { defaultProps, InputProps } from './input-props';
 import {

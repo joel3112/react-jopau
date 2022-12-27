@@ -1,7 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { getThemeStored, prepareArgTypes, prepareParameters } from '@react-jopau/styles/utils';
 import { themes } from '@react-jopau/styles/themes';
-import { MockApp } from '../../utils/app';
+import { MockApp } from '../mock-app';
 import { ThemeProvider } from './theme-context';
 import docs from './readme.mdx';
 
