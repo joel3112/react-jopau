@@ -10,7 +10,7 @@ import {
 import { KeyCode, useKeyboard } from '@nextui-org/react';
 import { classes, forwardRef } from '../../../utils/system';
 import { useControlChecked } from '../../../shared/use-control-checked';
-import { withFormControl } from '../with-form-control';
+import { withFormControl } from '../../../shared/with-form-control';
 import { SwitchProps, defaultProps } from './switch-props';
 import {
   StyledSwitch,

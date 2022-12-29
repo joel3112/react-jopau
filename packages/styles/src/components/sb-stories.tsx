@@ -3,17 +3,6 @@ import classes from 'classnames';
 import { Canvas, Story } from '@storybook/addon-docs';
 import { SBCollapsable } from './sb-collapsable';
 
-export const SBThemeStories = ({ children }: { children: ReactNode }) => {
-  return (
-    <>
-      <div className="invisible h-0">
-        <Story id="providers-themeprovider--default" />
-      </div>
-      {children}
-    </>
-  );
-};
-
 const SBStory = ({ id, label, isDefault }: { id: string; label?: string; isDefault?: boolean }) => {
   const canvasProps = isDefault ? { withToolbar: true } : {};
 

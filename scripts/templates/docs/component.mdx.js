@@ -21,7 +21,7 @@ const templateStory = ({ label, id }) => {
 `;
 };
 
-const templateObject = templateCreator`import { SBArgsTable, SBStories, SBTitle, SBDescription } from '@react-jopau/styles/components';
+const templateObject = templateCreator`import { SBArgsTable, SBDescription, SBStories, SBTitle } from '@react-jopau/styles/components';
 ${({ context }) => {
   if (context.parentSubComponentPath) {
     return `import { ${context.parentSubComponentName} } from '../${context.parentSubComponentPath}';`;

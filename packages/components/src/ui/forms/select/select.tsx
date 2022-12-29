@@ -13,7 +13,7 @@ import { useFocusRing } from '@react-aria/focus';
 import { BiChevronDown } from 'react-icons/bi';
 import { classes, forwardRef } from '../../../utils/system';
 import { useControlValue } from '../../../shared/use-control-value';
-import { withFormControl } from '../with-form-control';
+import { withFormControl } from '../../../shared/with-form-control';
 import { SelectOptionGroup } from './option-group/select-option-group';
 import { SelectOption } from './option/select-option';
 import { SelectOptionGroupProps } from './option-group/select-option-group-props';

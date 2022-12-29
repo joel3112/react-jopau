@@ -5,7 +5,7 @@ import { IconButton, Separator, TooltipLinkList, WithTooltip } from '@storybook/
 import { useLocalStorage } from '/packages/hooks/src/use-local-storage/use-local-storage';
 import { getColors, THEME_SELECTOR_STORAGE_KEY } from '/packages/styles/src/utils/theme';
 import { themes } from '/packages/styles/src/themes';
-import { createStorybookTheme } from '../theme';
+import { createStorybookTheme } from '../../theme';
 
 const renderPrimaryColorDot = (themeKey) => {
   const { primary, secondary } = getColors(themeKey);

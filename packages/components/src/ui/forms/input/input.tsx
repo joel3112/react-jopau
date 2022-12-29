@@ -2,7 +2,7 @@ import { ForwardRefExoticComponent, Ref, RefAttributes } from 'react';
 import { classes, forwardRef } from '../../../utils/system';
 import { useControlValue } from '../../../shared/use-control-value';
 import { useHotKey } from '../../../shared/use-hot-key';
-import { withFormControl } from '../with-form-control';
+import { withFormControl } from '../../../shared/with-form-control';
 import { InputPassword } from './password/input-password';
 import { defaultProps, InputProps } from './input-props';
 import {

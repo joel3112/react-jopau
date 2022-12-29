@@ -5,4 +5,5 @@ export * from './sb-args-table';
 export * from './sb-collapsable';
 export * from './sb-json-preview';
 export * from './sb-doc-tab-state';
+export * from './sb-breadcrumbs';
 export * from './sb-selector-container';

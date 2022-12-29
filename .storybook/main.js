@@ -41,9 +41,9 @@ module.exports = {
         }
       }
     },
-    './expand-all-addon/register',
-    './theme-selector-addon/register',
-    './dark-mode-addon/register'
+    './addons/expand-all-addon/register',
+    './addons/theme-selector-addon/register',
+    './addons/dark-mode-addon/register'
   ],
   webpackFinal: async (config) => {
     config.resolve.plugins = [
