@@ -44,7 +44,7 @@ describe('Tests Input component', () => {
     const width = 400;
     const { container } = render(
       <div style={{ width }}>
-        <Input autoWidth />
+        <Input fullWidth />
       </div>
     );
 

@@ -35,10 +35,13 @@ export const Button = forwardRef<ButtonProps, 'button'>(
     const buttonRef = useRef<HTMLButtonElement>(null);
     useImperativeHandle(ref, () => buttonRef.current);
 
-    const { className, style, children, autoWidth, iconPosition, icon, type, onClick } = props;
+    const { className, style, children, auto, iconPosition, icon, type, onClick } = props;
     const contextProps = useContext(ButtonContext);
 
-    const { color, size, variant, disabled, shape } = { ...props, ...cleanedProps(contextProps) };
+    const { color, size, variant, disabled, shape, fullWidth } = {
+      ...props,
+      ...cleanedProps(contextProps)
+    };
 
     const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
       if (disabled) {
@@ -66,7 +69,9 @@ export const Button = forwardRef<ButtonProps, 'button'>(
         light={variant === 'clear'}
         iconOnly={!!icon && !children}
         shape={shape}
-        auto={!!autoWidth}
+        auto={auto}
+        fullWidth={!!fullWidth}
+        borderWeight="light"
         {...(icon && {
           icon: iconPosition === 'left' && <ButtonIcon>{icon}</ButtonIcon>,
           iconRight: iconPosition === 'right' && <ButtonIcon>{icon}</ButtonIcon>

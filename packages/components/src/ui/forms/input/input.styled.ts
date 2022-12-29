@@ -161,7 +161,6 @@ enum NextUIEl {
 
 export const StyledContent = styledTheme('div', {
   display: 'flex',
-  scale: 1.35,
 
   variants: {
     variant: {
@@ -230,9 +229,10 @@ export const StyledInputWrapper = styledTheme('div', {
 
   [`${NextUIEl.INPUT_CONTAINER}--hover`]: { transform: 'none' },
   [`${NextUIEl.INPUT_WRAPPER}`]: { borderRadius: '$$inputControlBorderRadius' },
+  [`${NextUIEl.INPUT_WRAPPER}--disabled`]: { opacity: '$opacity$60' },
   [`${NextUIEl.INPUT}`]: { color: 'inherit' },
   [`${NextUIEl.INPUT}::placeholder`]: { color: '$colors$placeholder' },
-  [`${NextUIEl.HELPER_TEXT_CONTAINER}`]: { mb: '$space$2' },
+  [`${NextUIEl.HELPER_TEXT_CONTAINER}`]: { mb: '$$inputHelperMarginBottom' },
   [`${NextUIEl.HELPER_TEXT}`]: {
     fontSize: '$fontSizes$xs',
     color: '$$inputLabelColor',
@@ -257,23 +257,28 @@ export const StyledInputWrapper = styledTheme('div', {
     size: {
       xs: {
         $$inputLabelFontSize: '$fontSizes$xs',
-        $$inputLabelMarginTop: 'calc(-1 * $space$3)'
+        $$inputLabelMarginTop: 'calc(-1 * $space$3)',
+        $$inputHelperMarginBottom: '$space$0'
       },
       sm: {
         $$inputLabelFontSize: '$fontSizes$xs',
-        $$inputLabelMarginTop: 'calc(-1 * $space$px)'
+        $$inputLabelMarginTop: 'calc(-1 * $space$px)',
+        $$inputHelperMarginBottom: 'calc(0.5 * $space$1)'
       },
       md: {
         $$inputLabelFontSize: '$fontSizes$sm',
-        $$inputLabelMarginTop: '$space$1'
+        $$inputLabelMarginTop: '$space$1',
+        $$inputHelperMarginBottom: '$space$2'
       },
       lg: {
         $$inputLabelFontSize: '$fontSizes$md',
-        $$inputLabelMarginTop: '$space$px'
+        $$inputLabelMarginTop: '$space$px',
+        $$inputHelperMarginBottom: '$space$3'
       },
       xl: {
         $$inputLabelFontSize: '$fontSizes$lg',
-        $$inputLabelMarginTop: '$space$3'
+        $$inputLabelMarginTop: '$space$3',
+        $$inputHelperMarginBottom: '$space$4'
       }
     },
     shape: {
@@ -376,7 +381,7 @@ export const StyledInputWrapper = styledTheme('div', {
     },
     disabled: {
       true: {
-        $$inputControlColor: '$colors$gray400'
+        $$inputControlColor: '$colors$disabled'
       }
     },
     fullWidth: {

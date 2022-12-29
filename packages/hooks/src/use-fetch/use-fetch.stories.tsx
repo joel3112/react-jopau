@@ -43,8 +43,8 @@ export const Default = () => {
   return (
     <Container maxWidth={450}>
       <form onSubmit={handleSubmit}>
-        <Input name="path" label="Path" autoWidth variant="bordered" defaultValue={defaultPath} />
-        <Button className="mt-4" color="secondary" type="submit">
+        <Input name="path" label="Path" fullWidth variant="bordered" defaultValue={defaultPath} />
+        <Button className="mt-4" auto color="secondary" type="submit">
           Load
         </Button>
       </form>

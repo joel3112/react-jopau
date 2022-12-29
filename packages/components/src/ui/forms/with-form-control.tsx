@@ -1,48 +1,78 @@
 /* eslint-disable react/prop-types,react/display-name */
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { forwardRef, Ref, useId } from 'react';
-import { Control, Controller } from 'react-hook-form';
+import {
+  Control,
+  FieldErrors,
+  FieldValue,
+  FieldValues,
+  RegisterOptions,
+  useController
+} from 'react-hook-form';
 import { FormControl } from '../../../types';
 
-const rendersByControl = <T extends FormControl & { control?: Control }>(
-  Component: (props: T) => JSX.Element,
-  props: T,
-  controlType: string
-) => {
-  switch (controlType) {
-    case 'checkbox':
-    case 'switch': {
-      return ({ field }: any) => (
-        <Component
-          {...(props as T)}
-          {...field}
-          checked={field.value}
-          onChange={(e: boolean) => field.onChange(e)}
-        />
-      );
-    }
-    default:
-      return ({ field }: any) => <Component {...(props as T)} {...field} />;
-  }
+const defaultValuesByType: Record<string, FieldValue<FieldValues>> = {
+  input: '',
+  textarea: '',
+  select: '',
+  'checkbox-group': [],
+  'radio-group': '',
+  checkbox: false,
+  switch: false
 };
 
-export const withFormControl = <T extends FormControl & { control?: Control }, K = any>(
+const errorProps = (errors: FieldErrors, name: string) => {
+  const hasError = !!errors[name];
+
+  if (!hasError) return {};
+  return {
+    color: 'error',
+    helperText: errors[name]?.message
+  };
+};
+
+export const withFormControl = <
+  T extends FormControl & { control?: Control; rules?: RegisterOptions },
+  K extends HTMLElement
+>(
   Component: (props: T) => JSX.Element,
-  controlType: string
+  controlType: keyof typeof defaultValuesByType
 ) => {
   return forwardRef((controlProps: T, ref: Ref<Partial<K>>) => {
-    const { control, name, ...props } = controlProps;
+    const { control, rules, ...props } = controlProps;
 
     if (!control) {
       return <Component {...(props as T)} ref={ref} />;
     }
 
     const id = props.id || useId();
+    const name = props.name || `${controlType}-${id}`;
+
+    const {
+      field,
+      formState: { errors }
+    } = useController({ name, control, rules });
+
+    if (['switch', 'checkbox'].includes(controlType)) {
+      return (
+        <Component
+          {...(props as T)}
+          {...errorProps(errors, name)}
+          checked={field.value}
+          onChange={(e: boolean) => field.onChange(e)}
+          ref={ref}
+        />
+      );
+    }
+
     return (
-      <Controller
-        name={name || `${controlType}-${id}`}
-        control={control}
-        render={rendersByControl(Component, props as T, controlType)}
+      <Component
+        {...(props as T)}
+        {...errorProps(errors, name)}
+        {...{
+          ...field,
+          value: field.value === undefined ? defaultValuesByType[controlType] : field.value
+        }}
+        ref={ref}
       />
     );
   });

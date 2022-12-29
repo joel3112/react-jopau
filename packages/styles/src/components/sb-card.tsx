@@ -16,7 +16,7 @@ export const SBCard = ({
 }) => {
   const childrenTmpl =
     typeof children === 'string' ? (
-      <span className="text-text text-[15px] line-clamp-2">{children}</span>
+      <span className="text-text text-[14.5px] leading-md line-clamp-2">{children}</span>
     ) : (
       children
     );

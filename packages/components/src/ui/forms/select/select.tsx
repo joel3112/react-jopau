@@ -67,7 +67,7 @@ export const Select = withFormControl<SelectProps, HTMLSelectElement>(
         disabled,
         required,
         shape,
-        autoWidth,
+        fullWidth,
         onFocus,
         onBlur
       } = props;
@@ -109,7 +109,7 @@ export const Select = withFormControl<SelectProps, HTMLSelectElement>(
       };
 
       return (
-        <StyledSelectWrapper autoWidth={!!autoWidth}>
+        <StyledSelectWrapper fullWidth={!!fullWidth}>
           <StyledSelect
             ref={selectRef}
             id={id}
@@ -122,7 +122,6 @@ export const Select = withFormControl<SelectProps, HTMLSelectElement>(
             variant={variant}
             shape={shape}
             size={size}
-            color={color}
             status={status}
             isFocusVisible={isFocusVisible && !disabled}
             isPlaceholderVisible={
@@ -159,7 +158,7 @@ export const Select = withFormControl<SelectProps, HTMLSelectElement>(
             shape={shape}
             status={status}
             helperText={helperText}
-            autoWidth={!!autoWidth}
+            fullWidth={!!fullWidth}
             icon={
               <StyledSelectArrow size={size}>
                 <BiChevronDown />

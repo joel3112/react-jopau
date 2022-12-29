@@ -7,6 +7,7 @@ import { CheckboxGroupProps } from './group/checkbox-group-props';
 import { styledTheme } from '../../../index';
 
 enum NextUIEl {
+  CHECKBOX_GROUP = '.nextui-checkbox-group',
   CHECKBOX = '.nextui-checkbox',
   CHECKBOX_MASK = '.nextui-checkbox-mask',
   CHECKBOX_TEXT = '.nextui-checkbox-text'
@@ -25,7 +26,12 @@ export const StyledCheckboxGroup = styledTheme(
   >,
   {
     display: 'inline-block',
-    width: '$space$fit'
+    width: '$space$fit',
+
+    [`${NextUIEl.CHECKBOX_GROUP}-items[class*="isRow-true"]`]: {
+      flexWrap: 'wrap',
+      gap: '$space$4 0'
+    }
   }
 );
 

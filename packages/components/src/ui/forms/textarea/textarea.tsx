@@ -45,7 +45,7 @@ export const Textarea = withFormControl<TextareaProps, HTMLTextAreaElement>(
         autoFocus,
         required,
         shape,
-        autoWidth,
+        fullWidth,
         rows,
         minRows,
         maxRows,
@@ -62,7 +62,7 @@ export const Textarea = withFormControl<TextareaProps, HTMLTextAreaElement>(
           color={color}
           status={status}
           shape={shape}
-          fullWidth={!!autoWidth}
+          fullWidth={!!fullWidth}
           disabled={!!disabled}>
           {labelPlaceholder && <StyledLabelGap>&nbsp;</StyledLabelGap>}
           <StyledTextarea
@@ -92,7 +92,7 @@ export const Textarea = withFormControl<TextareaProps, HTMLTextAreaElement>(
             helperText={helperText}
             bordered={variant === 'bordered'}
             underlined={variant === 'underlined'}
-            fullWidth={!!autoWidth}
+            fullWidth={!!fullWidth}
             rows={rows}
             minRows={minRows}
             maxRows={maxRows}

@@ -102,7 +102,8 @@ export default {
       background: '#fcfcfc',
       border: '#dedede',
       input: '#f1f3f5',
-      placeholder: '#889096'
+      placeholder: '#889096',
+      disabled: '#a8afb2'
     },
     space: {
       0: '0rem',
@@ -274,7 +275,8 @@ export default {
       text: '#fff',
       background: '#1d1f20',
       border: '#555',
-      input: '#3b3b3b'
+      input: '#3b3b3b',
+      disabled: '#989696'
     },
     shadows: {
       boxShadow: 'rgb(67 67 67) 0 -1px 1px inset'

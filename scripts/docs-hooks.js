@@ -70,6 +70,8 @@ const generateHookDocs = async () => {
         files: componentPath,
         configure: './jsdoc2md.json'
       });
+
+      if (jsdocSchema.length === 0) return;
       introComponentsProps.push(parseComponentCardProps(componentPath, jsdocSchema[0]));
 
       /**

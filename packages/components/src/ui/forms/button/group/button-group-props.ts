@@ -28,9 +28,9 @@ export type ButtonGroupProps = ElementHTML & {
    */
   shape?: Shape;
   /**
-   * Defines if the button takes the fit width of its parent.
+   * Defines if the button takes the full width of its parent.
    */
-  autoWidth?: boolean;
+  fullWidth?: boolean;
   /**
    * Defines the axis radio group is aligned.
    */

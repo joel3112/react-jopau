@@ -50,10 +50,11 @@ export const Switch = withFormControl<SwitchProps, HTMLInputElement>(
         iconOn,
         iconOff,
         defaultChecked,
-        checked
+        checked,
+        onChange
       } = props;
 
-      const { ref: switchRef, id, ariaLabel, onChange } = useControlChecked(props, {}, ref);
+      const { ref: switchRef, id, ariaLabel } = useControlChecked(props, {}, ref);
 
       const preClass = 'nextui-switch';
       const [selfChecked, setSelfChecked] = useState(defaultChecked);

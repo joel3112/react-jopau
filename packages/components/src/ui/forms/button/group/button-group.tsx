@@ -27,11 +27,11 @@ export const ButtonGroup = (props: ButtonGroupProps) => {
     orientation,
     shape,
     disabled,
-    autoWidth
+    fullWidth
   } = props;
 
   return (
-    <ButtonContext.Provider value={{ variant, size, color, shape, disabled }}>
+    <ButtonContext.Provider value={{ variant, size, color, shape, disabled, fullWidth: true }}>
       <StyledButtonGroup
         className={classes('button-group', className)}
         css={{
@@ -40,7 +40,7 @@ export const ButtonGroup = (props: ButtonGroupProps) => {
         bordered={variant === 'bordered'}
         color={color}
         vertical={orientation === 'vertical'}
-        autoWidth={autoWidth}>
+        fullWidth={fullWidth}>
         {children}
       </StyledButtonGroup>
     </ButtonContext.Provider>

@@ -26,7 +26,7 @@ export default {
     autoComplete: 'off',
     minRows: 3,
     maxRows: 6,
-    autoWidth: false,
+    fullWidth: false,
     readOnly: false,
     autoFocus: false,
     disabled: false,
@@ -185,9 +185,9 @@ ReadOnly.args = {
   value: 'lore ipsum dolor sit amet consectetur adipiscing elit'
 };
 
-export const AutoWidth = Template.bind({});
-AutoWidth.args = {
-  autoWidth: true
+export const FullWidth = Template.bind({});
+FullWidth.args = {
+  fullWidth: true
 };
 
 export const UncontrolledVSControlled = () => {

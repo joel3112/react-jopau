@@ -21,15 +21,12 @@ const App = () => {
               hotKey="meta+k"
             />
             <Button className="sm:hidden" color="primary" variant="flat" icon={<MdSearch />} />
-            <div>
-              <Button
-                autoWidth
-                variant="flat"
-                color={!darkMode ? 'light' : 'dark'}
-                icon={darkMode ? <MdOutlineLightMode /> : <MdOutlineDarkMode />}
-                onClick={onToggle}
-              />
-            </div>
+            <Button
+              variant="flat"
+              color={!darkMode ? 'light' : 'dark'}
+              icon={darkMode ? <MdOutlineLightMode /> : <MdOutlineDarkMode />}
+              onClick={onToggle}
+            />
           </Space>
         </Header>
       </header>
@@ -58,8 +55,8 @@ const App = () => {
               Form
             </Heading>
             <form className="w-[700px] max-w-[100%] flex-col grid grid-cols-2 gap-10 max-sm:flex">
-              <Input label="Name" placeholder="John Doe" autoWidth />
-              <Input.Password label="Password" placeholder="********" autoWidth />
+              <Input label="Name" placeholder="John Doe" fullWidth />
+              <Input.Password label="Password" placeholder="********" fullWidth />
               <Checkbox.Group size="sm" orientation="horizontal" label="Preferences">
                 <Checkbox value="football">Football</Checkbox>
                 <Checkbox value="food">Food</Checkbox>
@@ -80,7 +77,7 @@ const App = () => {
                   minRows={10}
                   maxRows={15}
                   placeholder="Your message"
-                  autoWidth
+                  fullWidth
                 />
                 <Switch size="xs" label="Subscribe to newsletter" />
               </Space>

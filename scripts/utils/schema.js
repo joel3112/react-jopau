@@ -5,7 +5,7 @@ const prettier = require('prettier');
 const { capitalize, get, lowerCase, kebabCase, upperFirst } = require('lodash');
 
 const parseDescription = (description) =>
-  description ? description.replace(/(<([^>]+)>)/gi, '') : '';
+  description ? description.replace(/<p>|<\/p>/g, '') : '';
 
 const parseComponentName = (componentName) =>
   lowerCase(componentName)

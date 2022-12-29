@@ -56,7 +56,7 @@ export const Input = withFormControl<InputProps, HTMLInputElement>(
         required,
         clearable,
         shape,
-        autoWidth,
+        fullWidth,
         hotKey,
         icon,
         iconPosition,
@@ -80,7 +80,7 @@ export const Input = withFormControl<InputProps, HTMLInputElement>(
           status={status}
           shape={shape}
           hotKey={!!hotKey}
-          fullWidth={!!autoWidth}
+          fullWidth={!!fullWidth}
           disabled={!!disabled}>
           {labelPlaceholder && <StyledLabelGap>&nbsp;</StyledLabelGap>}
           <StyledInput
@@ -114,7 +114,7 @@ export const Input = withFormControl<InputProps, HTMLInputElement>(
             labelRight={labelRight}
             bordered={variant === 'bordered'}
             underlined={variant === 'underlined'}
-            fullWidth={!!autoWidth}
+            fullWidth={!!fullWidth}
             clearable={clearable}
             {...(icon && {
               contentLeft: iconPosition === 'left' && (

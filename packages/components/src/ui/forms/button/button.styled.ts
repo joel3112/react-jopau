@@ -99,7 +99,7 @@ export const StyledButtonGroup = styledTheme('div', {
         'button:not(:first-child):not(:last-child)': { borderRadius: 0 }
       }
     },
-    autoWidth: {
+    fullWidth: {
       true: {
         width: '100%',
 
@@ -138,15 +138,20 @@ export const StyledButton = styledTheme(
   {
     boxSizing: 'border-box',
     whiteSpace: 'nowrap',
-    border: '1px solid',
-    borderColor: '$$buttonBackgroundColor',
+    borderStyle: 'solid',
+    borderColor: '$$backgroundColor',
     color: '$$buttonColor',
     borderRadius: '$$buttonBorderRadius',
 
+    '&[type]': {
+      width: '$$buttonWidth',
+      backgroundColor: '$$backgroundColor'
+    },
     '&[disabled]': {
-      color: '$colors$gray800',
-      $$buttonBackgroundColor: '$colors$gray400',
-      $$borderColor: '$colors$gray500'
+      opacity: '$opacity$80',
+      color: '$colors$disabled',
+      $$buttonBackgroundColor: '$colors$input',
+      $$borderColor: '$colors$input'
     },
 
     variants: {
@@ -169,23 +174,24 @@ export const StyledButton = styledTheme(
       solid: {
         true: {
           color: '$$buttonColor',
-          backgroundColor: '$$buttonBackgroundColor',
+          $$backgroundColor: '$$buttonBackgroundColor',
 
-          '&:hover': { backgroundColor: '$$buttonHoverBackgroundColor' }
+          '&:hover': { $$backgroundColor: '$$buttonHoverBackgroundColor' }
         }
       },
       bordered: {
         true: {
           color: '$$buttonBorderedColor',
-          backgroundColor: 'transparent',
+          borderColor: '$$buttonBorderedColor',
+          $$backgroundColor: 'transparent',
 
-          '&:hover': { color: '$$buttonColor', backgroundColor: '$$buttonBackgroundColor' }
+          '&:hover': { color: '$$buttonColor', $$backgroundColor: '$$buttonBackgroundColor' }
         }
       },
       flat: {
         true: {
           color: '$$buttonFlatColor',
-          backgroundColor: '$$buttonFlatBackgroundColor',
+          $$backgroundColor: '$$buttonFlatBackgroundColor',
           borderColor: '$$buttonFlatBackgroundColor',
 
           '&:hover': { filter: 'brightness(97.5%)' }
@@ -194,16 +200,19 @@ export const StyledButton = styledTheme(
       ghost: {
         true: {
           color: '$$buttonBorderedColor',
-          backgroundColor: 'transparent',
+          $$backgroundColor: 'transparent',
           borderColor: 'transparent',
 
-          '&:hover': { color: '$$buttonFlatColor', backgroundColor: '$$buttonFlatBackgroundColor' }
+          '&:hover': {
+            color: '$$buttonFlatColor',
+            $$backgroundColor: '$$buttonFlatBackgroundColor'
+          }
         }
       },
       light: {
         true: {
           color: '$$buttonBorderedColor',
-          backgroundColor: 'transparent',
+          $$backgroundColor: 'transparent',
           borderColor: 'transparent',
 
           '&:hover': { color: '$$buttonHoverBackgroundColor', fontWeight: '$fontWeights$semibold' }
@@ -216,9 +225,9 @@ export const StyledButton = styledTheme(
           minWidth: 'auto'
         }
       },
-      auto: {
-        true: { width: '$space$full', minWidth: 'auto' },
-        false: { width: '$space$fit' }
+      fullWidth: {
+        true: { $$buttonWidth: '$space$full', minWidth: 'auto' },
+        false: { $$buttonWidth: '$space$fit' }
       }
     },
 

@@ -46,9 +46,9 @@ export type SelectProps = ElementHTML &
      */
     helperText?: string;
     /**
-     * Defines if the button takes the fit width of its parent.
+     * Defines if the button takes the full width of its parent.
      */
-    autoWidth?: boolean;
+    fullWidth?: boolean;
     /**
      * Function to be called when the element value is changed.
      */

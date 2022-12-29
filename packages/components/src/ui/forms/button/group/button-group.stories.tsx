@@ -16,7 +16,7 @@ export default {
     shape: 'default',
     orientation: 'horizontal',
     disabled: false,
-    autoWidth: false
+    fullWidth: false
   },
   argTypes: prepareArgTypes(Button.Group, {
     children: { control: false }
@@ -102,7 +102,7 @@ GroupDisabled.args = {
   disabled: true
 };
 
-export const GroupAutoWidth = Template.bind({});
-GroupAutoWidth.args = {
-  autoWidth: true
+export const GroupFullWidth = Template.bind({});
+GroupFullWidth.args = {
+  fullWidth: true
 };

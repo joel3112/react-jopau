@@ -22,7 +22,7 @@ export default {
     status: 'default',
     color: 'default',
     shape: 'default',
-    autoWidth: false,
+    fullWidth: false,
     disabled: false,
     autoFocus: false,
     required: false
@@ -257,9 +257,9 @@ Disabled.args = {
   value: '2'
 };
 
-export const AutoWidth = Template.bind({});
-AutoWidth.args = {
-  autoWidth: true,
-  label: 'Auto Width',
+export const FullWidth = Template.bind({});
+FullWidth.args = {
+  fullWidth: true,
+  label: 'Full Width',
   value: '1'
 };

@@ -30,10 +30,10 @@ export const Default = () => {
           name="text"
           label="Value to storage"
           variant="bordered"
-          autoWidth
+          fullWidth
           defaultValue={value}
         />
-        <Button className="mt-4" color="secondary" type="submit">
+        <Button className="mt-4" auto color="secondary" type="submit">
           Set value
         </Button>
       </form>

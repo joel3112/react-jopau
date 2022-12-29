@@ -23,6 +23,7 @@ export const StyledSwitchWrapper = styledTheme(
       maxWidth: 'initial',
       width: '$space$fit'
     },
+    [`${NextUIEl.SWITCH}`]: { minWidth: '$$switchControlWidth' },
     [`${NextUIEl.SWITCH}--unchecked`]: { background: '$colors$border', opacity: 0.7 },
     [`${NextUIEl.SWITCH}--unchecked ${NextUIEl.SWITCH_CIRCLE}`]: {
       background: '$colors$background'
@@ -38,7 +39,7 @@ export const StyledSwitchWrapper = styledTheme(
 
     '--nextui--switchWidth': '$$switchControlWidth',
     '--nextui--switchHeight': '$$switchControlHeight',
-    '--nextui--switchBorderW': '2px',
+    '--nextui--switchBorderW': '$borderWidths$normal',
 
     variants: {
       size: {
@@ -163,6 +164,7 @@ export const StyledSwitch = StyledSwitchNextUI;
 
 export const StyledSwitchLabel = styledTheme('label', {
   cursor: 'pointer',
+  whiteSpace: 'normal',
   fontSize: '$$switchLabelFontSize',
   pl: 'calc($$switchLabelFontSize * 0.57)',
   color: '$$switchLabelColor'

@@ -30,7 +30,7 @@ export default {
     iconPosition: 'left',
     autoComplete: 'off',
     hotKey: '',
-    autoWidth: false,
+    fullWidth: false,
     clearable: false,
     readOnly: false,
     autoFocus: false,
@@ -149,6 +149,16 @@ export const HelperText = () => (
         <Input helperText="Helper text" status="secondary" label="Secondary" />
         <Input helperText="Helper text" status="success" label="Success" />
         <Input helperText="Helper text" status="error" label="Error" />
+      </Space>
+    </Space>
+    <Space direction="column" gap={0}>
+      <SBTextSeparator>With Size</SBTextSeparator>
+      <Space gap={10} align="start">
+        <Input helperText="Helper text" size="xs" label="Size xs" />
+        <Input helperText="Helper text" size="sm" label="Size sm" />
+        <Input helperText="Helper text" size="md" label="Size md" />
+        <Input helperText="Helper text" size="lg" label="Size lg" />
+        <Input helperText="Helper text" size="xl" label="Size xl" />
       </Space>
     </Space>
   </Space>
@@ -278,9 +288,9 @@ Clearable.args = {
   clearable: true
 };
 
-export const AutoWidth = Template.bind({});
-AutoWidth.args = {
-  autoWidth: true
+export const FullWidth = Template.bind({});
+FullWidth.args = {
+  fullWidth: true
 };
 
 export const UncontrolledVSControlled = () => {

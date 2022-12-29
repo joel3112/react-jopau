@@ -1,0 +1,282 @@
+import {
+  SBPureArgsTable,
+  SBDescription,
+  SBSubTitle,
+  SBThemeStories,
+  SBTitle
+} from '@react-jopau/styles/components';
+
+<SBThemeStories />
+
+<SBTitle>useForm</SBTitle>
+
+<SBDescription>
+  Control form values, custom validation rules for each field and form submission or reset handlers.
+  <br />
+  This hook is a wrapper around 
+  <a href="https://react-hook-form.com/api#useForm" target="_blank" rel="noreferrer">
+    react-hook-form.
+  </a>
+</SBDescription>
+
+```tsx dark
+import { useForm } from '@react-jopau/hooks';
+```
+
+<SBSubTitle>Examples</SBSubTitle>
+
+```tsx dark
+const { register, values } = useForm<{ username: string; password: string }>();
+
+console.log(values); // { username: '', password: '' }
+
+return (
+  <form>
+    <input {...register('username')} />
+    <input {...register('password')} />
+  </form>
+);
+```
+
+```tsx dark
+// Control custom form components
+const { control, values } = useForm();
+
+return (
+  <form>
+    <MyInput {...control('username')} />
+    <MyInput {...control('password')} />
+  </form>
+);
+```
+
+```tsx dark
+// With handleSubmit and reset handlers
+const { register, handleSubmit, reset } = useForm();
+
+const onSubmit = (values) => alert(JSON.stringify(values));
+
+return (
+  <form onSubmit={handleSubmit(onSubmit)}>
+    <input {...register('username')} />
+    <input {...register('password')} />
+    <button type="submit">Submit</button>
+    <button type="button" onClick={() => reset()}>
+      Reset
+    </button>
+  </form>
+);
+```
+
+```tsx dark
+// With default values
+const { control, values } = useForm({
+  defaultValues: {
+    name: 'John Doe',
+    country: 'spain',
+    preferences: ['football'],
+    terms: true
+  }
+});
+
+// values = { name: 'John Doe', country: 'spain', preferences: ['football'], terms: true }
+console.log(values);
+
+return (
+  <form>
+    <Input {...control('username')} />
+    <Select {...control('country')}>
+      <Select.Option value="spain">Spain</Select.Option>
+      <Select.Option value="france">France</Select.Option>
+      <Select.Option value="germany">Germany</Select.Option>
+    </Select>
+    <Checkbox.Group {...control('preferences')}>
+      <Checkbox value="football">Football</Checkbox>
+      <Checkbox value="basketball">Basketball</Checkbox>
+      <Checkbox value="baseball">Baseball</Checkbox>
+    </Checkbox.Group>
+    <Switch {...control('terms')} />
+  </form>
+);
+```
+
+```tsx dark
+// With custom validation rules and mode validation strategy
+const { formState } = useForm({
+  validators: {
+    // Required and minimum length of 6 characters
+    username: { required: true, minLength: 6 },
+    // Validators with custom message
+    password: {
+      required: [true, 'Password is required'],
+      minLength: [6, 'Password must be at least 6 characters long']
+    },
+    // Custom validator function
+    country: { validate: [(value: string) => value === 'ES', 'You must select Spain'] }
+  },
+  mode: 'onBlur' // 'onBlur' | 'onChange' | 'onSubmit' | 'onTouched' | 'all'
+});
+
+console.log(formState.defaultValues); // { username: '', password: '', country: '' }
+console.log(formState.errors); // Errors object with the messages of the validation rules that failed
+console.log(formState.isValid); // false
+console.log(formState.isDirty); // false
+console.log(formState.isSubmitted); // false
+console.log(formState.isSubmitting); // false
+console.log(formState.isSubmitSuccessful); // false
+console.log(formState.isValidating); // false
+console.log(formState.touchFields); // {}
+console.log(formState.dirtyFields); // {}
+```
+
+```tsx dark
+// With set value handler
+const { register, setValue } = useForm();
+
+return (
+  <form>
+    <input {...register('username')} />
+    <button onClick={() => setValue('username', 'John Doe')}>Set username</button>
+  </form>
+);
+```
+
+<SBPureArgsTable
+  heading="Params"
+  rows={{
+    formConfig: {
+      name: 'formConfig',
+      description: 'Form configuration options',
+      required: false,
+      type: 'Object'
+    },
+    'formConfig.defaultValues': {
+      name: 'formConfig.defaultValues',
+      description: 'Default values for the controls',
+      required: false,
+      type: 'T'
+    },
+    'formConfig.mode': {
+      name: 'formConfig.mode',
+      description: 'Form mode validation strategy',
+      required: false,
+      type: '"onBlur" | "onChange" | "onSubmit" | "onTouched" | "all"',
+      defaultValue: '\x22onSubmit\x22'
+    },
+    'formConfig.validators': {
+      name: 'formConfig.validators',
+      description: 'Custom validation rules for each control',
+      required: false,
+      type: 'Object'
+    }
+  }}
+/>
+
+<SBPureArgsTable
+  heading="Returns"
+  noDefaults
+  rows={{
+    'result.control': {
+      name: 'result.control',
+      description: 'Callback to control a custom form component',
+      required: false,
+      type: '(name: string) => Object'
+    },
+    'result.formState': {
+      name: 'result.formState',
+      description: 'Form state object containing information about the form and validation',
+      required: false,
+      type: 'Object'
+    },
+    'result.formState.defaultValues': {
+      name: 'result.formState.defaultValues',
+      description: 'Default values of the form',
+      required: false,
+      type: 'T'
+    },
+    'result.formState.dirtyFields': {
+      name: 'result.formState.dirtyFields',
+      description: 'List of fields that have been modified',
+      required: false,
+      type: 'T'
+    },
+    'result.formState.errors': {
+      name: 'result.formState.errors',
+      description: 'Object containing the errors of the form',
+      required: false,
+      type: 'Object'
+    },
+    'result.formState.isDirty': {
+      name: 'result.formState.isDirty',
+      description: 'Flag to indicate if the form has been modified',
+      required: false,
+      type: 'boolean'
+    },
+    'result.formState.isSubmitSuccessful': {
+      name: 'result.formState.isSubmitSuccessful',
+      description: 'Flag to indicate if the form has been submitted successfully',
+      required: false,
+      type: 'boolean'
+    },
+    'result.formState.isSubmitted': {
+      name: 'result.formState.isSubmitted',
+      description: 'Flag to indicate if the form has been submitted',
+      required: false,
+      type: 'boolean'
+    },
+    'result.formState.isSubmitting': {
+      name: 'result.formState.isSubmitting',
+      description: 'Flag to indicate if the form is submitting',
+      required: false,
+      type: 'boolean'
+    },
+    'result.formState.isValid': {
+      name: 'result.formState.isValid',
+      description: 'Flag to indicate if the form is valid',
+      required: false,
+      type: 'boolean'
+    },
+    'result.formState.isValidating': {
+      name: 'result.formState.isValidating',
+      description: 'Flag to indicate if the form is being validated',
+      required: false,
+      type: 'boolean'
+    },
+    'result.formState.touchedFields': {
+      name: 'result.formState.touchedFields',
+      description: 'List of fields that have been touched',
+      required: false,
+      type: 'T'
+    },
+    'result.handleSubmit': {
+      name: 'result.handleSubmit',
+      description: 'Method to handle the form submission',
+      required: false,
+      type: '(onValid: function,onInvalid: function) => void'
+    },
+    'result.register': {
+      name: 'result.register',
+      description: 'Callback to register a control',
+      required: false,
+      type: '(name: string) => Object'
+    },
+    'result.reset': {
+      name: 'result.reset',
+      description: 'Method to reset the form to default values',
+      required: false,
+      type: '(values: T) => void'
+    },
+    'result.setValue': {
+      name: 'result.setValue',
+      description: 'Method to set the value of a control',
+      required: false,
+      type: '(name: string,value: *) => void'
+    },
+    'result.values': {
+      name: 'result.values',
+      description: 'Current values of the controls',
+      required: false,
+      type: 'T'
+    }
+  }}
+/>

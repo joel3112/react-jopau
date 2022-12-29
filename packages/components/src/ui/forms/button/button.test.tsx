@@ -43,7 +43,7 @@ describe('Tests Button component', () => {
     const width = 400;
     const { container } = render(
       <div style={{ width }}>
-        <Button autoWidth>Content</Button>
+        <Button fullWidth>Content</Button>
       </div>
     );
 

@@ -3,7 +3,7 @@ import classes from 'classnames';
 
 export const SBCode = ({ children }: { children: ReactNode }) => {
   return (
-    <div className="inline-block font-code text-black text-sm w-fit py-1 px-2 rounded-[5px] bg-[#ccc]">
+    <div className="inline-block font-code text-black text-sm w-fit py-1 px-2 rounded-[5px] bg-[#dedede]">
       {children}
     </div>
   );
@@ -20,13 +20,13 @@ export const SBDescription = ({
   className,
   tag
 }: {
-  children: string;
+  children: ReactNode;
   className?: string;
   tag?: 'span' | 'p';
 }) => {
   const Tag = tag || 'p';
 
-  return <Tag className={classes('text-base font-light', className)}>{children}</Tag>;
+  return <Tag className={classes('text-base font-light leading-md', className)}>{children}</Tag>;
 };
 
 export const SBSubTitle = ({ children }: { children: string }) => {

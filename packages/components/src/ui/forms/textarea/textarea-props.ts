@@ -16,7 +16,7 @@ export type TextareaProps = ElementHTML &
     | 'shape'
     | 'helperText'
     | 'autoComplete'
-    | 'autoWidth'
+    | 'fullWidth'
   > & {
     /**
      * Defines the number of rows of the textarea element.

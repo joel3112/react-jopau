@@ -20,7 +20,7 @@ export const StyledSelectWrapper = styledTheme('div', {
   position: 'relative',
 
   variants: {
-    autoWidth: {
+    fullWidth: {
       false: { width: '$space$fit' }
     }
   }
@@ -34,21 +34,18 @@ export const StyledSelect = styledTheme('select', {
   background: 'transparent',
   webkitAppearance: 'none',
   appearance: 'none',
+  border: 'none',
+  lineHeight: 'initial',
   width: '$space$full',
   borderRadius: '$$selectControlBorderRadius',
   fontSize: '$$selectControlFontSize',
 
+  '&[disabled]': {
+    opacity: '$opacity$60',
+    color: '$colors$disabled'
+  },
+
   variants: {
-    color: {
-      default: colorTokens('default'),
-      primary: colorTokens('primary'),
-      secondary: colorTokens('secondary'),
-      tertiary: colorTokens('tertiary'),
-      info: colorTokens('info'),
-      error: colorTokens('error'),
-      success: colorTokens('success'),
-      warning: colorTokens('warning')
-    },
     status: {
       default: colorTokens('default'),
       primary: colorTokens('primary'),
@@ -95,11 +92,6 @@ export const StyledSelect = styledTheme('select', {
       round: { $$selectControlBorderRadius: '$radii$2xl' },
       square: { $$selectControlBorderRadius: 0 }
     },
-    disabled: {
-      true: {
-        color: '$colors$gray400'
-      }
-    },
     isPlaceholderVisible: {
       true: { color: '$colors$placeholder' },
       false: { color: '$$selectControlColor' }
@@ -107,8 +99,8 @@ export const StyledSelect = styledTheme('select', {
     isHelperTextVisible: { true: {} },
     isFocusVisible: {
       true: {
-        outline: 'transparent solid 2px',
-        outlineOffset: '2px',
+        outline: 'transparent solid $borderWidths$normal',
+        outlineOffset: '$borderWidths$normal',
         boxShadow: '0 0 0 2px $colors$background, 0 0 0 4px $colors$accent'
       }
     }

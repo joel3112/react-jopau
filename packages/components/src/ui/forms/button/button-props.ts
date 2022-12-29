@@ -34,7 +34,11 @@ export type ButtonProps = ElementHTML &
     /**
      * Defines if the button takes the fit width of its parent.
      */
-    autoWidth?: boolean;
+    auto?: boolean;
+    /**
+     * Defines if the button takes the full width of its parent.
+     */
+    fullWidth?: boolean;
     /**
      * Function to be called when the button is clicked.
      */

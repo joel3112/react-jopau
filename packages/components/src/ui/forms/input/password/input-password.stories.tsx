@@ -25,7 +25,7 @@ export default {
     color: 'default',
     autoComplete: 'off',
     hotKey: '',
-    autoWidth: false,
+    fullWidth: false,
     clearable: false,
     readOnly: false,
     autoFocus: false,

@@ -44,7 +44,7 @@ describe('Tests Textarea component', () => {
     const width = 400;
     const { container } = render(
       <div style={{ width }}>
-        <Textarea autoWidth />
+        <Textarea fullWidth />
       </div>
     );
 

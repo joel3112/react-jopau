@@ -20,7 +20,7 @@ export default {
     iconPosition: 'left',
     shape: 'default',
     disabled: false,
-    autoWidth: false
+    fullWidth: false
   },
   argTypes: prepareArgTypes(Button, {
     children: {
@@ -46,6 +46,7 @@ export const Sizes = () => (
     <Button size="md">Medium</Button>
     <Button size="lg">Large</Button>
     <Button size="xl">XLarge</Button>
+    <Button auto>Auto</Button>
   </Space>
 );
 
@@ -157,6 +158,9 @@ export const TextAndIcon = () => (
       <Button size="xl" icon={<MdAdd />}>
         XLarge
       </Button>
+      <Button auto icon={<MdAdd />}>
+        Auto
+      </Button>
     </Space>
   </Space>
 );
@@ -221,21 +225,21 @@ export const Disabled = () => (
   </Space>
 );
 
-export const AutoWidth = () => (
+export const FullWidth = () => (
   <Space direction="column" gap={5}>
     <Space gap={10}>
-      <Button autoWidth icon={<MdAdd />}>
+      <Button fullWidth icon={<MdAdd />}>
         Button
       </Button>
-      <Button autoWidth icon={<MdAdd />}>
+      <Button fullWidth icon={<MdAdd />}>
         Button
       </Button>
-      <Button autoWidth icon={<MdAdd />}>
+      <Button fullWidth icon={<MdAdd />}>
         Button
       </Button>
     </Space>
     <Space gap={10}>
-      <Button autoWidth icon={<MdAdd />} shape="round">
+      <Button fullWidth icon={<MdAdd />} shape="round">
         Button
       </Button>
     </Space>
