@@ -46,7 +46,7 @@ export const Default = () => {
       country: 'FR',
       preferences: ['music', 'movies'],
       contact: 'email',
-      terms: true
+      terms: false
     },
     validators: {
       name: { required: [true, 'Name is required'] },
