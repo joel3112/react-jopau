@@ -1,7 +1,5 @@
 import { FormEvent, useState } from 'react';
-import { Container, Space } from '@react-jopau/components/ui/layout';
-import { Button, Input } from '@react-jopau/components/ui/forms';
-import { Text } from '@react-jopau/components/ui/typography';
+import { Button, Container, Input, Space, Text } from '@react-jopau/components/ui';
 import { SBCode, SBJSONPreview } from '@react-jopau/styles/components';
 import { prepareParameters } from '@react-jopau/styles/utils';
 import { useFetch } from './use-fetch';

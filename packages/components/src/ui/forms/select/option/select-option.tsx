@@ -6,7 +6,7 @@ import { SelectOptionProps, defaultProps } from './select-option-props';
  * @param   {SelectOptionProps} props - Props injected to the component.
  * @returns {JSX.Element} Rendered component.
  *
- * @imports import { Select } from '@react-jopau/components/ui/forms';
+ * @imports import { Select } from '@react-jopau/components/ui';
  * @example
  * <Select.Option value="A">A</Select.Option>
  */

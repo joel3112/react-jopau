@@ -1,5 +1,4 @@
-import { Container, Space } from '@react-jopau/components/ui/layout';
-import { Text } from '@react-jopau/components/ui/typography';
+import { Container, Space, Text } from '@react-jopau/components/ui';
 import { SBCode } from '@react-jopau/styles/components';
 import { prepareParameters } from '@react-jopau/styles/utils';
 import { useBreakpoint } from './use-breakpoint';

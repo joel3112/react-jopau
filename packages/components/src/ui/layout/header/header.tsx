@@ -9,7 +9,7 @@ import { StyledHeaderContent, StyledHeaderLogo, StyledHeader } from './header.st
  * @param   {HeaderProps} props - Props injected to the component.
  * @returns {JSX.Element} Rendered component.
  *
- * @imports import { Header } from '@react-jopau/components/ui/layout';
+ * @imports import { Header } from '@react-jopau/components/ui';
  * @example
  * <Header title="Title" logo={() => <img src="./images/logo.png" alt="Logo" />}>
  *    <div>Action 1</div>

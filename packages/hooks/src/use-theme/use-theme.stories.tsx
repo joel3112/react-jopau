@@ -1,8 +1,6 @@
 import { StoryFn } from '@storybook/react';
 import { ThemeProvider } from '@react-jopau/components/contexts';
-import { Container, Space } from '@react-jopau/components/ui/layout';
-import { Switch } from '@react-jopau/components/ui/forms';
-import { Heading, Text } from '@react-jopau/components/ui/typography';
+import { Container, Heading, Space, Switch, Text } from '@react-jopau/components/ui';
 import { SBCode, SBJSONPreview } from '@react-jopau/styles/components';
 import { prepareParameters } from '@react-jopau/styles/utils';
 import { useTheme } from './use-theme';

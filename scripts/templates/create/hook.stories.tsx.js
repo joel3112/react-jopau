@@ -2,8 +2,7 @@ const { template } = require('react-docgen-renderer-template');
 const templateCreator = template({});
 
 const templateObject = templateCreator`${({ context }) => `
-import { Container, Space } from '@react-jopau/components/ui/layout';
-import { Button } from '@react-jopau/components/ui/forms';
+import { Button, Container, Space } from '@react-jopau/components/ui';
 import { SBCode } from '@react-jopau/styles/components';
 import { prepareParameters } from '@react-jopau/styles/utils';
 import { use${context.pascalName} } from './use-${context.name}';

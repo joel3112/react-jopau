@@ -5,7 +5,7 @@ Radios allow users to select a single option from a list of mutually exclusive o
 #### Import
 
 ```jsx
-import { Radio } from '@react-jopau/components/ui/forms';
+import { Radio } from '@react-jopau/components/ui';
 ```
 
 #### Examples

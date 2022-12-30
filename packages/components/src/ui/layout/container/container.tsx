@@ -33,7 +33,7 @@ const computeMaxWidth = (
  * @param   {ContainerProps} props - Props injected to the component.
  * @returns {JSX.Element} Rendered component.
  *
- * @imports import { Container } from '@react-jopau/components/ui/layout';
+ * @imports import { Container } from '@react-jopau/components/ui';
  * @example
  * <Container gap={10} maxWidth={1000} centered>
  *    <p>lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>

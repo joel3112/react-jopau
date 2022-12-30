@@ -5,7 +5,7 @@ Checkbox group allows users to select a multiple option from a list options.
 #### Import
 
 ```jsx
-import { Checkbox } from '@react-jopau/components/ui/forms';
+import { Checkbox } from '@react-jopau/components/ui';
 ```
 
 #### Examples

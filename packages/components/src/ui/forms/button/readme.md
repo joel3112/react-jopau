@@ -5,7 +5,7 @@ Button component is a clickable element that is used to trigger an action or eve
 #### Import
 
 ```jsx
-import { Button } from '@react-jopau/components/ui/forms';
+import { Button } from '@react-jopau/components/ui';
 ```
 
 #### Examples

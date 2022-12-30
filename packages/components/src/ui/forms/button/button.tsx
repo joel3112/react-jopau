@@ -24,7 +24,7 @@ const ButtonIcon = ({ children }: { children: ReactNode }) => {
  * @param   {ButtonProps} props - Props injected to the component.
  * @returns {JSX.Element} Rendered component.
  *
- * @imports import { Button } from '@react-jopau/components/ui/forms';
+ * @imports import { Button } from '@react-jopau/components/ui';
  * @example
  * <Button color="primary" variant="outline">
  *    Click me

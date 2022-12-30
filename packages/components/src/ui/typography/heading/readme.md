@@ -5,7 +5,7 @@ Heading component is the used to render headings within an interface using well-
 #### Import
 
 ```jsx
-import { Heading } from '@react-jopau/components/ui/typography';
+import { Heading } from '@react-jopau/components/ui';
 ```
 
 #### Examples

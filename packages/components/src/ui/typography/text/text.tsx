@@ -8,7 +8,7 @@ import { StyledText } from './text.styled';
  * @param   {TextProps} props - Props injected to the component.
  * @returns {JSX.Element} Rendered component.
  *
- * @imports import { Text } from '@react-jopau/components/ui/typography';
+ * @imports import { Text } from '@react-jopau/components/ui';
  * @example
  * <Text size="md" as="span">Content</Text>
  */

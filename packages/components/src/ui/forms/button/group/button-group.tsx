@@ -9,7 +9,7 @@ import { StyledButtonGroup } from '../button.styled';
  * @param   {ButtonGroupProps} props - Props injected to the component.
  * @returns {JSX.Element} Rendered component.
  *
- * @imports import { Button } from '@react-jopau/components/ui/forms';
+ * @imports import { Button } from '@react-jopau/components/ui';
  * @example
  * <Button.Group>
  *  <Button>Button A</Button>

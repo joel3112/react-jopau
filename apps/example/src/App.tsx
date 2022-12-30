@@ -1,8 +1,18 @@
 import { MdSearch, MdOutlineDarkMode, MdOutlineLightMode } from 'react-icons/md';
 import { useBreakpoint, useTheme } from '@react-jopau/hooks';
-import { Container, Header, Space } from '@react-jopau/components/ui/layout';
-import { Button, Checkbox, Input, Radio, Switch, Textarea } from '@react-jopau/components/ui/forms';
-import { Heading, Text } from '@react-jopau/components/ui/typography';
+import {
+  Button,
+  Checkbox,
+  Container,
+  Header,
+  Heading,
+  Input,
+  Radio,
+  Space,
+  Switch,
+  Text,
+  Textarea
+} from '@react-jopau/components/ui';
 import './App.css';
 
 const App = () => {

@@ -20,8 +20,7 @@ npm install @react-jopau/components
 ## Usage
 
 ```javascript
-import { Space } from '@react-jopau/components/ui/layout';
-import { Header } from '@react-jopau/components/ui/layout';
+import { Button, Header, Space } from '@react-jopau/components/ui';
 ```
 
 ## Author

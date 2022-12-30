@@ -1,7 +1,5 @@
 import { FormEvent } from 'react';
-import { Container, Space } from '@react-jopau/components/ui/layout';
-import { Button, Input } from '@react-jopau/components/ui/forms';
-import { Heading, Text } from '@react-jopau/components/ui/typography';
+import { Button, Container, Heading, Input, Space, Text } from '@react-jopau/components/ui';
 import { SBCode } from '@react-jopau/styles/components';
 import { prepareParameters } from '@react-jopau/styles/utils';
 import { useLocalStorage } from './use-local-storage';

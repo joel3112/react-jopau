@@ -44,9 +44,9 @@ export const parameters = {
         'Components/About',
         'Components/**/**/Docs',
         'Components/**/**/Playground',
-        'Providers/About',
-        'Providers/**/**/Docs',
-        'Providers/**/**/Playground',
+        'Context Providers/About',
+        'Context Providers/**/**/Docs',
+        'Context Providers/**/**/Playground',
         'Hooks/About',
         'Hooks/**/**/Docs',
         'Hooks/**/**/Playground'

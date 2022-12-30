@@ -5,7 +5,7 @@ Checkbox allows users to select one or more options from a set.
 #### Import
 
 ```jsx
-import { Checkbox } from '@react-jopau/components/ui/forms';
+import { Checkbox } from '@react-jopau/components/ui';
 ```
 
 #### Examples

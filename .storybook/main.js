@@ -22,7 +22,7 @@ module.exports = {
     },
     {
       directory: '../packages/components',
-      titlePrefix: 'Providers',
+      titlePrefix: 'Context Providers',
       files: 'src/contexts/**/*.stories.*'
     }
   ],

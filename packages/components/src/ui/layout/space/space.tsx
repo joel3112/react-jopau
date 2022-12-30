@@ -16,7 +16,7 @@ const spacing = (gap?: number | Array<number>): string =>
  * @param   {SpaceProps} props - Props injected to the component.
  * @returns {JSX.Element} Rendered component.
  *
- * @imports import { Space } from '@react-jopau/components/ui/layout';
+ * @imports import { Space } from '@react-jopau/components/ui';
  * @example
  * <Space direction="row" align="center" justify="center" gap={10}>
  *    <div>Item 1</div>

@@ -12,7 +12,7 @@ import { StyledRadio } from './radio.styled';
  * @param   {RadioProps} props - Props injected to the component.
  * @returns {JSX.Element} Rendered component.
  *
- * @imports import { Radio } from '@react-jopau/components/ui/forms';
+ * @imports import { Radio } from '@react-jopau/components/ui';
  * @example
  * <Radio checked value="A">Option A</Radio>
  */

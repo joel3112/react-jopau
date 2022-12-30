@@ -1,6 +1,5 @@
 import { UIEvent, useRef, useState } from 'react';
-import { Container, Space } from '@react-jopau/components/ui/layout';
-import { Heading, Text } from '@react-jopau/components/ui/typography';
+import { Container, Heading, Space, Text } from '@react-jopau/components/ui';
 import { SBCard, SBCode } from '@react-jopau/styles/components';
 import { prepareParameters } from '@react-jopau/styles/utils';
 import { useEventListener } from './use-event-listener';

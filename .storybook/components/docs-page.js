@@ -12,7 +12,7 @@ export const DocsPage = ({ children }) => {
     <>
       {(type === 'Hooks' || last(paths) === 'About' || paths.length === 0) && (
         <div hidden>
-          <Story id="providers-themeprovider--default" />
+          <Story id="context-providers-themeprovider--default" />
         </div>
       )}
       {paths.length > 0 && last(paths) !== 'About' && (

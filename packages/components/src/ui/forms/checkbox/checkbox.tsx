@@ -13,7 +13,7 @@ import { StyledCheckbox } from './checkbox.styled';
  * @param   {CheckboxProps} props - Props injected to the component.
  * @returns {JSX.Element} Rendered component.
  *
- * @imports import { Checkbox } from '@react-jopau/components/ui/forms';
+ * @imports import { Checkbox } from '@react-jopau/components/ui';
  * @example
  * <Checkbox checked value="A">Option A</Checkbox>
  */

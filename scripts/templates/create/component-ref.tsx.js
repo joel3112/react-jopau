@@ -13,7 +13,7 @@ import { Styled${context.pascalName} } from './${context.name}.styled';
   * @param   {${context.pascalName}Props} props - Props injected to the component.
   * @returns {JSX.Element} Rendered component.
   *
-  * @imports import { ${context.pascalName} } from '@react-jopau/components/ui/${context.type}';
+  * @imports import { ${context.pascalName} } from '@react-jopau/components/ui';
   * @example
   * <${context.pascalName} title="Title">
   *    <div>Content</div>

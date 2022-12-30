@@ -6,7 +6,7 @@ import { SelectOptionGroupProps, defaultProps } from './select-option-group-prop
  * @param   {SelectOptionGroupProps} props - Props injected to the component.
  * @returns {JSX.Element} Rendered component.
  *
- * @imports import { Select } from '@react-jopau/components/ui/forms';
+ * @imports import { Select } from '@react-jopau/components/ui';
  * @example
  * <Select.OptGroup label="A">
  *   <Select.Option value="A">A</Select.Option>

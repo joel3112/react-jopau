@@ -43,7 +43,7 @@ const getComponentParsed = (componentPath, schemaProps, parentName) => {
   const categories = diffPath.replace(new RegExp(`packages/${packageName}/src/(.*)/`), '$1');
   const [categoryRoot, ...restCategories] = categories.split('/');
   const restCategoriesJoined = restCategories.length ? `-${restCategories.join('-')}` : '';
-  const componentType = { ui: 'components', contexts: 'providers' };
+  const componentType = { ui: 'components', contexts: 'context-providers' };
   const storiesPrefixId =
     categories !== diffPath
       ? `${get(componentType, categoryRoot)}${restCategoriesJoined}-${displayNameJoined}`

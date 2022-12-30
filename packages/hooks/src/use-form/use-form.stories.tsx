@@ -1,7 +1,15 @@
 import { useState } from 'react';
-import { Container, Space } from '@react-jopau/components/ui/layout';
-import { Button, Checkbox, Input, Radio, Select, Switch } from '@react-jopau/components/ui/forms';
-import { Heading } from '@react-jopau/components/ui/typography';
+import {
+  Button,
+  Checkbox,
+  Container,
+  Heading,
+  Input,
+  Radio,
+  Select,
+  Space,
+  Switch
+} from '@react-jopau/components/ui';
 import { SBJSONPreview } from '@react-jopau/styles/components';
 import { prepareParameters } from '@react-jopau/styles/utils';
 import { useForm } from './use-form';

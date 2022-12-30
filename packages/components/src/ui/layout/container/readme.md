@@ -5,7 +5,7 @@ Containers are used to constrain a content's width to the current breakpoint.
 #### Import
 
 ```jsx
-import { Container } from '@react-jopau/components/ui/layout';
+import { Container } from '@react-jopau/components/ui';
 ```
 
 #### Examples

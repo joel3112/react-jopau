@@ -1,6 +1,4 @@
-import { Container, Header, Space } from '../ui/layout';
-import { Button } from '../ui/forms';
-import { Heading, Text } from '../ui/typography';
+import { Button, Container, Header, Heading, Space, Text } from '../ui';
 
 export const MockApp = () => {
   return (
