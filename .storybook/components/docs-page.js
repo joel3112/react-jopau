@@ -10,15 +10,15 @@ export const DocsPage = ({ children }) => {
 
   return (
     <>
-      {type === 'Hooks' && (
+      {(type === 'Hooks' || last(paths) === 'About' || paths.length === 0) && (
         <div hidden>
           <Story id="providers-themeprovider--default" />
         </div>
       )}
-      {last(paths) !== 'About' && (
+      {paths.length > 0 && last(paths) !== 'About' && (
         <SbBreadcrumbs
           items={[
-            { label: 'Home', href: '' },
+            { label: 'Home', href: 'Introduction' },
             { label: type, href: `${type}/About` },
             { label: last(paths) }
           ]}

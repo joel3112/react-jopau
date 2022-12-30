@@ -7,6 +7,10 @@ module.exports = {
   },
   stories: [
     {
+      directory: '../.storybook',
+      files: '*.stories.mdx'
+    },
+    {
       directory: '../packages/components',
       titlePrefix: 'Components',
       files: 'src/ui/**/*.stories.*'

@@ -77,6 +77,10 @@ export type InputProps = ElementHTML &
      */
     hotKey?: string;
     /**
+     * Defines the input mask array pattern to be used.
+     */
+    mask?: Array<string | RegExp> | false;
+    /**
      * Defines the text label at left of the input
      */
     labelLeft?: string;

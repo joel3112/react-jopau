@@ -31,7 +31,8 @@
     "classnames": "^2.3.2",
     "react-hotkeys-hook": "^4.3.0",
     "react-icons": "^4.6.0",
-    "react-is": "^18.2.0"
+    "react-is": "^18.2.0",
+    "react-text-mask": "^5.5.0"
   },
   "peerDependencies": {
     "@types/react": "^17.0.0 || ^18.0.0",
@@ -41,6 +42,7 @@
   },
   "devDependencies": {
     "@types/react-is": "^17.0.3",
+    "@types/react-text-mask": "^5.4.11",
     "ts-jest": "^29.0.1",
     "typescript": "^4.8.4"
   }

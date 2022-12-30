@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { MdSearch } from 'react-icons/md';
+import { MdCalendarToday, MdCreditCard, MdPhone, MdSearch } from 'react-icons/md';
 import { SBTextSeparator, SBSelectorContainer, SBCode } from '@react-jopau/styles/components';
 import { prepareArgTypes, prepareParameters } from '@react-jopau/styles/utils';
 import { Space } from '../../layout';
@@ -30,6 +30,7 @@ export default {
     iconPosition: 'left',
     autoComplete: 'off',
     hotKey: '',
+    mask: false,
     fullWidth: false,
     clearable: false,
     readOnly: false,
@@ -292,6 +293,49 @@ export const FullWidth = Template.bind({});
 FullWidth.args = {
   fullWidth: true
 };
+
+export const Mask = () => (
+  <Space direction="column" gap={10}>
+    <Input
+      label="Date mask"
+      placeholder="dd/mm/yyyy"
+      mask={[/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/]}
+      icon={<MdCalendarToday />}
+    />
+    <Input
+      label="Credit card mask"
+      placeholder="0000 0000 0000 0000"
+      mask={[
+        /\d/,
+        /\d/,
+        /\d/,
+        /\d/,
+        ' ',
+        /\d/,
+        /\d/,
+        /\d/,
+        /\d/,
+        ' ',
+        /\d/,
+        /\d/,
+        /\d/,
+        /\d/,
+        ' ',
+        /\d/,
+        /\d/,
+        /\d/,
+        /\d/
+      ]}
+      icon={<MdCreditCard />}
+    />
+    <Input
+      label="Phone mask"
+      placeholder="+34 000 000 000"
+      mask={['+', '3', '4', ' ', /\d/, /\d/, /\d/, ' ', /\d/, /\d/, /\d/, ' ', /\d/, /\d/, /\d/]}
+      icon={<MdPhone />}
+    />
+  </Space>
+);
 
 export const UncontrolledVSControlled = () => {
   const refUncontrolled = useRef<HTMLInputElement>(null);

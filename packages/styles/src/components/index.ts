@@ -1,5 +1,6 @@
 export * from './sb-card';
 export * from './sb-text';
+export * from './sb-link';
 export * from './sb-stories';
 export * from './sb-args-table';
 export * from './sb-collapsable';

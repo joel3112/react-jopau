@@ -230,7 +230,7 @@ export const StyledInputWrapper = styledTheme('div', {
   [`${NextUIEl.INPUT_CONTAINER}--hover`]: { transform: 'none' },
   [`${NextUIEl.INPUT_WRAPPER}`]: { borderRadius: '$$inputControlBorderRadius' },
   [`${NextUIEl.INPUT_WRAPPER}--disabled`]: { opacity: '$opacity$60' },
-  [`${NextUIEl.INPUT}`]: { color: 'inherit' },
+  [`${NextUIEl.INPUT}`]: { color: 'inherit', borderColor: 'transparent', boxShadow: 'none' },
   [`${NextUIEl.INPUT}::placeholder`]: { color: '$colors$placeholder' },
   [`${NextUIEl.HELPER_TEXT_CONTAINER}`]: { mb: '$$inputHelperMarginBottom' },
   [`${NextUIEl.HELPER_TEXT}`]: {

@@ -1,7 +1,6 @@
 import { Fragment } from 'react';
-import LinkTo from '@storybook/addon-links/react';
-import classes from 'classnames';
 import { BiChevronRight } from 'react-icons/bi';
+import { SBLink } from './sb-link';
 
 export const SbBreadcrumbs = ({
   items
@@ -24,14 +23,7 @@ export const SbBreadcrumbs = ({
 
         return (
           <Fragment key={index}>
-            <LinkTo kind={href}>
-              <span
-                className={classes(
-                  'font-semibold text-secondary hover:underline hover:underline-offset-4'
-                )}>
-                {label}
-              </span>
-            </LinkTo>
+            <SBLink href={href || ''}>{label}</SBLink>
             {index < items.length - 1 && <BiChevronRight className="text-gray-900 text-lg" />}
           </Fragment>
         );

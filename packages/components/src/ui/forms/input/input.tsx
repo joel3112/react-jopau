@@ -1,8 +1,9 @@
-import { ForwardRefExoticComponent, Ref, RefAttributes } from 'react';
+import { ForwardRefExoticComponent, ReactElement, Ref, RefAttributes } from 'react';
 import { classes, forwardRef } from '../../../utils/system';
 import { useControlValue } from '../../../shared/use-control-value';
 import { useHotKey } from '../../../shared/use-hot-key';
 import { withFormControl } from '../../../shared/with-form-control';
+import { withInputMask } from '../../../shared/with-input-mask';
 import { InputPassword } from './password/input-password';
 import { defaultProps, InputProps } from './input-props';
 import {
@@ -24,126 +25,128 @@ import {
  * <Input color="primary" label="Label" placeholder="placeholder" value="text" />
  */
 export const Input = withFormControl<InputProps, HTMLInputElement>(
-  forwardRef<InputProps, 'input'>(
-    (props: InputProps, ref: Ref<Partial<HTMLInputElement> | null>) => {
-      const {
-        ref: inputRef,
-        id,
-        ariaLabel,
-        defaultValue,
-        value,
-        onChange,
-        onClearClick
-      } = useControlValue<HTMLInputElement>(props, ref);
-      const {
-        className,
-        style,
-        name,
-        type,
-        tabIndex,
-        label,
-        placeholder,
-        helperText,
-        labelPlaceholder,
-        size,
-        color,
-        variant,
-        status,
-        readOnly,
-        autoComplete,
-        disabled,
-        autoFocus,
-        required,
-        clearable,
-        shape,
-        fullWidth,
-        hotKey,
-        icon,
-        iconPosition,
-        labelLeft,
-        labelRight,
-        onFocus,
-        onBlur,
-        onIconClick
-      } = props;
+  withInputMask<InputProps>(
+    forwardRef<InputProps, 'input'>(
+      (props: InputProps, ref: Ref<Partial<HTMLInputElement> | null>) => {
+        const {
+          ref: inputRef,
+          id,
+          ariaLabel,
+          defaultValue,
+          value,
+          onChange,
+          onClearClick
+        } = useControlValue<HTMLInputElement>(props, ref);
+        const {
+          className,
+          style,
+          name,
+          type,
+          tabIndex,
+          label,
+          placeholder,
+          helperText,
+          labelPlaceholder,
+          size,
+          color,
+          variant,
+          status,
+          readOnly,
+          autoComplete,
+          disabled,
+          autoFocus,
+          required,
+          clearable,
+          shape,
+          fullWidth,
+          hotKey,
+          icon,
+          iconPosition,
+          labelLeft,
+          labelRight,
+          onFocus,
+          onBlur,
+          onIconClick
+        } = props;
 
-      const { shortHotKey } = useHotKey(hotKey || '', () => {
-        inputRef.current?.focus();
-      });
+        const { shortHotKey } = useHotKey(hotKey || '', () => {
+          inputRef.current?.focus();
+        });
 
-      return (
-        <StyledInputWrapper
-          size={size}
-          labelPlaceholder={!!labelPlaceholder}
-          variant={variant}
-          color={color}
-          status={status}
-          shape={shape}
-          hotKey={!!hotKey}
-          fullWidth={!!fullWidth}
-          disabled={!!disabled}>
-          {labelPlaceholder && <StyledLabelGap>&nbsp;</StyledLabelGap>}
-          <StyledInput
-            ref={inputRef}
-            tabIndex={tabIndex}
-            id={id}
-            name={name}
-            type={type}
-            aria-label={ariaLabel}
-            placeholder={placeholder}
-            initialValue={defaultValue}
-            value={value}
-            readOnly={readOnly}
-            disabled={disabled}
-            autoComplete={autoComplete}
-            required={required}
-            autoFocus={autoFocus}
-            className={classes('input', className)}
-            css={{
-              ...style
-            }}
-            label={label}
-            shadow={false}
-            borderWeight="light"
+        return (
+          <StyledInputWrapper
             size={size}
+            labelPlaceholder={!!labelPlaceholder}
+            variant={variant}
             color={color}
             status={status}
-            labelPlaceholder={labelPlaceholder}
-            helperText={helperText}
-            labelLeft={labelLeft}
-            labelRight={labelRight}
-            bordered={variant === 'bordered'}
-            underlined={variant === 'underlined'}
+            shape={shape}
+            hotKey={!!hotKey}
             fullWidth={!!fullWidth}
-            clearable={clearable}
-            {...(icon && {
-              contentLeft: iconPosition === 'left' && (
-                <StyledContent variant={variant}>{icon}</StyledContent>
-              ),
-              contentRight: iconPosition === 'right' && (
-                <StyledContent variant={variant}>{icon}</StyledContent>
-              )
-            })}
-            {...(hotKey && {
-              contentRight: (
-                <StyledHotKey
-                  default={variant === 'default'}
-                  onClick={() => inputRef.current?.focus()}>
-                  <kbd>{shortHotKey}</kbd>
-                </StyledHotKey>
-              ),
-              contentRightStyling: false
-            })}
-            onChange={onChange}
-            onFocus={onFocus}
-            onBlur={onBlur}
-            onClearClick={onClearClick}
-            onContentClick={onIconClick}
-          />
-        </StyledInputWrapper>
-      );
-    }
-  ),
+            disabled={!!disabled}>
+            {labelPlaceholder && <StyledLabelGap>&nbsp;</StyledLabelGap>}
+            <StyledInput
+              ref={inputRef}
+              tabIndex={tabIndex}
+              id={id}
+              name={name}
+              type={type}
+              aria-label={ariaLabel}
+              placeholder={placeholder}
+              initialValue={defaultValue}
+              value={value}
+              readOnly={readOnly}
+              disabled={disabled}
+              autoComplete={autoComplete}
+              required={required}
+              autoFocus={autoFocus}
+              className={classes('input', className)}
+              css={{
+                ...style
+              }}
+              label={label}
+              shadow={false}
+              borderWeight="light"
+              size={size}
+              color={color}
+              status={status}
+              labelPlaceholder={labelPlaceholder}
+              helperText={helperText}
+              labelLeft={labelLeft}
+              labelRight={labelRight}
+              bordered={variant === 'bordered'}
+              underlined={variant === 'underlined'}
+              fullWidth={!!fullWidth}
+              clearable={clearable}
+              {...(icon && {
+                contentLeft: iconPosition === 'left' && (
+                  <StyledContent variant={variant}>{icon}</StyledContent>
+                ),
+                contentRight: iconPosition === 'right' && (
+                  <StyledContent variant={variant}>{icon}</StyledContent>
+                )
+              })}
+              {...(hotKey && {
+                contentRight: (
+                  <StyledHotKey
+                    default={variant === 'default'}
+                    onClick={() => inputRef.current?.focus()}>
+                    <kbd>{shortHotKey}</kbd>
+                  </StyledHotKey>
+                ),
+                contentRightStyling: false
+              })}
+              onChange={onChange}
+              onFocus={onFocus}
+              onBlur={onBlur}
+              onClearClick={onClearClick}
+              onContentClick={onIconClick}
+            />
+          </StyledInputWrapper>
+        );
+      }
+    )
+  ) as (props: InputProps) => ReactElement,
   'input'
 ) as ForwardRefExoticComponent<
   InputProps & Partial<typeof defaultProps> & RefAttributes<HTMLInputElement>

@@ -16,7 +16,7 @@ export const SBCard = ({
 }) => {
   const childrenTmpl =
     typeof children === 'string' ? (
-      <span className="text-text text-[14.5px] leading-md line-clamp-2">{children}</span>
+      <span className="text-text text-[14px] leading-sm line-clamp-3">{children}</span>
     ) : (
       children
     );
@@ -38,7 +38,7 @@ export const SBCard = ({
     <LinkTo kind={kind} story="docs">
       <div
         className={classes(
-          'h-[150px] group relative p-8 flex flex-col gap-4 bg-background hover:bg-input border border-gray-700 border-solid shadow-md rounded-sm cursor-pointer',
+          'min-h-[150px] group relative p-8 flex flex-col gap-4 bg-background hover:bg-input border border-gray-700 border-solid shadow-md rounded-sm cursor-pointer',
           className
         )}>
         <div className="text-secondary font-semibold text-[18px]">{title}</div>

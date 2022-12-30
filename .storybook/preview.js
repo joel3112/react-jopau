@@ -44,12 +44,12 @@ export const parameters = {
         'Components/About',
         'Components/**/**/Docs',
         'Components/**/**/Playground',
-        'Hooks/About',
-        'Hooks/**/**/Docs',
-        'Hooks/**/**/Playground',
         'Providers/About',
         'Providers/**/**/Docs',
-        'Providers/**/**/Playground'
+        'Providers/**/**/Playground',
+        'Hooks/About',
+        'Hooks/**/**/Docs',
+        'Hooks/**/**/Playground'
       ]);
     }
   }
