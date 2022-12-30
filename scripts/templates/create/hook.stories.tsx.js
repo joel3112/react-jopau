@@ -2,36 +2,35 @@ const { template } = require('react-docgen-renderer-template');
 const templateCreator = template({});
 
 const templateObject = templateCreator`${({ context }) => `
-import { Space } from '@react-jopau/components/ui/layout';
-import { TWButton, TWContainer } from '@react-jopau/styles/components';
+import { Button, Container, Space } from '@react-jopau/components/ui';
+import { SBCode } from '@react-jopau/styles/components';
+import { prepareParameters } from '@react-jopau/styles/utils';
 import { use${context.pascalName} } from './use-${context.name}';
 import docs from './readme.mdx';
 
 export default {
   title: 'use${context.pascalName}',
-  parameters: {
-    docs: {
-      page: docs
-    }
-  }
+  parameters: prepareParameters(docs, true)
 };
 
-const Template = () => {
+export const Docs = () => {};
+
+export const Default = () => {
   const { value, setValue } = use${context.pascalName}(0);
 
   return (
-    <TWContainer>
-      Current value: {value}
+    <Container maxWidth={450}>
+      Current value: <SBCode>{value}</SBCode>
 
       <Space gap={5}>
-        <TWButton onClick={() => setValue(value - 1)}>Decrement</TWButton>
-        <TWButton onClick={() => setValue(value + 1)}>Increment</TWButton>
+        <Button color="secondary" onClick={() => setValue(value - 1)}>Decrement</Button>
+        <Button color="secondary" onClick={() => setValue(value + 1)}>Increment</Button>
       </Space>
-    </TWContainer>
+    </Container>
   );
 };
-
-export const Default = Template.bind({});
+Default.storyName = 'Playground';
+Default.parameters = { viewMode: 'story' };
 `}
 `;
 

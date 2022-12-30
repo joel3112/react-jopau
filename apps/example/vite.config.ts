@@ -8,9 +8,12 @@ export default defineConfig({
   resolve: {
     alias: {
       '@react-jopau/utils': path.resolve(__dirname, '../../packages/utils/src/'),
-      '@react-jopau/hooks': path.resolve(__dirname, '../../packages/hooks/src/'),
       '@react-jopau/styles': path.resolve(__dirname, '../../packages/styles/src/'),
+      '@react-jopau/hooks': path.resolve(__dirname, '../../packages/hooks/src/'),
       '@react-jopau/components': path.resolve(__dirname, '../../packages/components/src/')
     }
+  },
+  define: {
+    'process.env': {}
   }
 });

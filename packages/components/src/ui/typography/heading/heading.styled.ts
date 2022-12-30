@@ -1,43 +1,30 @@
 import { styledTheme } from '../../../index';
 
-const composers = {
+export const StyledHeading = styledTheme('h1', {
   display: 'block',
-  fontWeight: 500,
+  fontWeight: '$fontWeights$semibold',
+  letterSpacing: '$letterSpacings$normal',
+  color: 'inherit',
+
   variants: {
+    as: {
+      h1: { fontSize: '$fontSizes$4xl' },
+      h2: { fontSize: '$fontSizes$3xl' },
+      h3: { fontSize: '$fontSizes$2xl' },
+      h4: { fontSize: '$fontSizes$xl' },
+      h5: { fontSize: '$fontSizes$lg' },
+      h6: { fontSize: '$fontSizes$base' }
+    },
     color: {
-      default: {
-        color: '$text'
-      },
-      primary: {
-        color: '$primary'
-      },
-      secondary: {
-        color: '$secondary'
-      },
-      disabled: {
-        color: '$gray500'
-      },
-      info: {
-        color: '$blue500'
-      },
-      success: {
-        color: '$green500'
-      },
-      warning: {
-        color: '$yellow500'
-      },
-      error: {
-        color: '$red500'
-      }
+      inherit: { color: 'inherit' },
+      primary: { color: '$colors$primary500' },
+      secondary: { color: '$colors$secondary500' },
+      tertiary: { color: '$colors$tertiary500' },
+      disabled: { color: '$colors$gray500' },
+      info: { color: '$colors$blue500' },
+      success: { color: '$colors$green500' },
+      warning: { color: '$colors$yellow500' },
+      error: { color: '$colors$red500' }
     }
   }
-};
-
-export const HeadingWrapper = {
-  h1: styledTheme('h1', { ...composers, fontSize: '2rem' }),
-  h2: styledTheme('h2', { ...composers, fontSize: '1.5rem' }),
-  h3: styledTheme('h3', { ...composers, fontSize: '1.17rem' }),
-  h4: styledTheme('h4', { ...composers, fontSize: '1rem' }),
-  h5: styledTheme('h5', { ...composers, fontSize: '0.83rem' }),
-  h6: styledTheme('h6', { ...composers, fontSize: '0.67rem' })
-};
+});

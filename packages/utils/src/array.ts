@@ -1,5 +1,5 @@
 import * as _ from 'lodash';
-import { TBasic } from './index';
+import type { TBasic } from './index';
 
 export type TArray<T = TBasic> = Array<T>;
 export type TArrayDouble<T = TBasic> = [Array<T>, Array<T>];

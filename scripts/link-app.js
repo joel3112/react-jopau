@@ -1,5 +1,6 @@
 const { execSync } = require('child_process');
 const clc = require('cli-color');
+const { program } = require('commander');
 
 const separator = () => {
   console.log(
@@ -33,9 +34,13 @@ const createLinkPackages = async () => {
 };
 
 const linkApp = async () => {
-  const args = process.argv.slice(2);
+  program.argument('<appName>', 'application name');
+  program.option('-b, --build', 'require build');
+  program.parse(process.argv);
+  const options = program.opts();
+  const args = program.args;
   const appName = args[0];
-  const requireBuild = args[1] === '--build';
+  const requireBuild = options && options.build;
 
   separator();
 

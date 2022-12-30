@@ -4,7 +4,7 @@ const templateCreator = template({});
 const templateObject = templateCreator`${({ context }) => `
 import { styledTheme } from '../../../index';
 
-export const ${context.pascalName}Wrapper = styledTheme('div', {
+export const Styled${context.pascalName} = styledTheme('div', {
   boxSizing: 'border-box',
   display: 'block'
 });

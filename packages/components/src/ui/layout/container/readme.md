@@ -5,7 +5,7 @@ Containers are used to constrain a content's width to the current breakpoint.
 #### Import
 
 ```jsx
-import { Container } from '@react-jopau/components/ui/layout';
+import { Container } from '@react-jopau/components/ui';
 ```
 
 #### Examples
@@ -21,7 +21,7 @@ import { Container } from '@react-jopau/components/ui/layout';
 | Name                  | Type                                                       | Default value | Description                                                   |
 | --------------------- | ---------------------------------------------------------- | ------------- | ------------------------------------------------------------- |
 | children _(required)_ | `ReactNode`                                                |               | Defines the children of the component.                        |
-| centered              | `boolean`                                                  | `false`       | Centered horizontally the container.                          |
+| centered              | `boolean`                                                  |               | Centered horizontally the container.                          |
 | className             | `string`                                                   |               | Classnames applied to root element                            |
 | gap                   | `number` \| `number[]`                                     |               | Defines the gap horizontally and vertically in the container. |
 | maxWidth              | `number` \| `"xs"` \| `"sm"` \| `"md"` \| `"lg"` \| `"xl"` |               | Maximum width of the container or breakpoint.                 |

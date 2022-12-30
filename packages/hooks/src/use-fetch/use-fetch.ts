@@ -1,6 +1,6 @@
 import useSWR, { Fetcher } from 'swr';
 import axios from 'axios';
-import { getPropValue } from '@react-jopau/utils/object';
+import { getPropValue } from '@react-jopau/utils';
 
 /**
  * @template T Type of the data returned by the fetch
@@ -71,8 +71,8 @@ export const useFetch = <T, U = {}>(
     params?: Record<string, unknown>;
     headers?: Record<string, string>;
     body?: Record<string, unknown>;
-    onSuccess?: (data: unknown) => T | null;
-    onError?: (error: unknown) => U | null;
+    onSuccess?: (data: never) => T | Promise<T> | null;
+    onError?: (error: never) => void;
   }
 ): {
   data: T | null;

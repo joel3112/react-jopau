@@ -1,5 +1,4 @@
-import { ArgsTable } from '@storybook/addon-docs';
-import { SBDescription, SBStories, SBSubTitle, SBTitle } from '@react-jopau/styles/components';
+import { SBArgsTable, SBDescription, SBStories, SBTitle } from '@react-jopau/styles/components';
 import { Space } from './space';
 
 <SBTitle>Space</SBTitle>
@@ -7,29 +6,23 @@ import { Space } from './space';
 <SBDescription>Component flexbox-based spacing.</SBDescription>
 
 ```jsx dark
-import { Space } from '@react-jopau/components/ui/layout';
+import { Space } from '@react-jopau/components/ui';
 ```
 
-<SBStories.Item id="components-layout-space--default" canvasProps={{ withToolbar: true }} />
+<SBStories.Default id="components-layout-space--default" />
 
-<SBSubTitle>Properties</SBSubTitle>
-
-<ArgsTable of={Space} />
-
-<SBSubTitle>Stories</SBSubTitle>
+<SBArgsTable component={Space} />
 
 <SBStories>
-<SBStories.Item label="Default" id="components-layout-space--default" />
+<SBStories.Item label="As" id="components-layout-space--as" />
 
-<SBStories.Item label="Direction Row" id="components-layout-space--direction-row" />
+<SBStories.Item label="Direction" id="components-layout-space--direction" />
 
-<SBStories.Item label="Direction Column" id="components-layout-space--direction-column" />
+<SBStories.Item label="Align" id="components-layout-space--align" />
 
-<SBStories.Item label="Wrap False" id="components-layout-space--wrap-false" />
+<SBStories.Item label="Justify" id="components-layout-space--justify" />
 
-<SBStories.Item label="Wrap True" id="components-layout-space--wrap-true" />
+<SBStories.Item label="Gap" id="components-layout-space--gap" />
 
-<SBStories.Item label="Gap Unique" id="components-layout-space--gap-unique" />
-
-<SBStories.Item label="Gap Multiple" id="components-layout-space--gap-multiple" />
+<SBStories.Item label="Wrap" id="components-layout-space--wrap" />
 </SBStories>

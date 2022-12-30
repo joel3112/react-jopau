@@ -1,38 +1,52 @@
-import { useState } from 'react';
-import { Space } from '@react-jopau/components/ui/layout';
-import { TWButton, TWContainer, TWInput, TWItem, TWText } from '@react-jopau/styles/components';
+import { FormEvent } from 'react';
+import { Button, Container, Heading, Input, Space, Text } from '@react-jopau/components/ui';
+import { SBCode } from '@react-jopau/styles/components';
+import { prepareParameters } from '@react-jopau/styles/utils';
 import { useLocalStorage } from './use-local-storage';
 import docs from './readme.mdx';
 
 export default {
   title: 'useLocalStorage',
-  parameters: {
-    docs: {
-      page: docs
-    }
-  }
+  parameters: prepareParameters(docs, true)
 };
+
+export const Docs = () => {};
 
 export const Default = () => {
   const key = 'useLocalStorage-test-key';
-  const [value, setValue] = useLocalStorage<string>(key, 'initialValue');
-  const [inputValue, setInputValue] = useState<string>(value);
+  const [value, setValue] = useLocalStorage<string>(key, '');
 
-  const handleInputChange = (e: string) => setInputValue(e);
+  const handleSubmit = (event: FormEvent) => {
+    event.preventDefault();
+    setValue((event.target as HTMLFormElement).text.value);
+  };
 
   return (
-    <TWContainer>
-      <Space direction="column" gap={5}>
-        <TWInput label="Value to storage" value={inputValue} onInput={handleInputChange} />
-        <TWButton disabled={!inputValue} onClick={() => setValue(inputValue)}>
+    <Container maxWidth={450}>
+      <form onSubmit={handleSubmit}>
+        <Input
+          name="text"
+          label="Value to storage"
+          variant="bordered"
+          fullWidth
+          defaultValue={value}
+        />
+        <Button className="mt-4" auto color="secondary" type="submit">
           Set value
-        </TWButton>
-      </Space>
+        </Button>
+      </form>
 
-      <Space direction="column" gap={5}>
-        <TWText>LocalStorage</TWText>
-        <TWItem label={key}>{value}</TWItem>
+      <Space className="mt-10" direction="column" gap={10}>
+        <Heading as="h6">LocalStorage:</Heading>
+        <Space align="center" gap={10} wrap>
+          <SBCode>{key}:</SBCode>
+          <code>
+            <Text>{value}</Text>
+          </code>
+        </Space>
       </Space>
-    </TWContainer>
+    </Container>
   );
 };
+Default.storyName = 'Playground';
+Default.parameters = { viewMode: 'story' };

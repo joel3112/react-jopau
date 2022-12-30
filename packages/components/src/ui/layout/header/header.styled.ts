@@ -1,30 +1,25 @@
+import { Container, Space } from '../../layout';
 import { styledTheme } from '../../../index';
 
-export const HeaderWrapper = styledTheme('div', {
-  boxShadow: '$boxShadow',
-  height: 58,
-  '.container': {
-    alignBetween: 'row',
-    size: '100%',
-    maxWidth: 'inherit'
-  },
-  '.logo': {
-    width: 'fit-content',
-    height: '100%',
-    alignCenterX: 'row',
-    gap: 8
-  },
-  '.title': {
-    fontSize: 20,
-    fontWeight: 500,
-    color: '$text'
-  },
+export const StyledHeaderContent = styledTheme(Container, {
+  display: 'flex !important',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  size: '$space$full',
+  maxWidth: 'inherit'
+});
 
-  // Breakpoints
+export const StyledHeaderLogo = styledTheme(Space, {
+  width: '$space$fit',
+  height: '$space$full'
+});
+
+export const StyledHeader = styledTheme('div', {
+  boxShadow: '$shadows$boxShadow',
+  height: '$space$18',
+  color: '$colors$text',
+
   '@xs': {
-    height: 50,
-    '.logo': {
-      height: 40
-    }
+    height: '$space$17'
   }
 });

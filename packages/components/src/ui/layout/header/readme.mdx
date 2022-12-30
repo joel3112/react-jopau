@@ -1,5 +1,4 @@
-import { ArgsTable } from '@storybook/addon-docs';
-import { SBDescription, SBStories, SBSubTitle, SBTitle } from '@react-jopau/styles/components';
+import { SBArgsTable, SBDescription, SBStories, SBTitle } from '@react-jopau/styles/components';
 import { Header } from './header';
 
 <SBTitle>Header</SBTitle>
@@ -7,25 +6,17 @@ import { Header } from './header';
 <SBDescription>Header component with logo, title and actions area.</SBDescription>
 
 ```jsx dark
-import { Header } from '@react-jopau/components/ui/layout';
+import { Header } from '@react-jopau/components/ui';
 ```
 
-<SBStories.Item id="components-layout-header--default" canvasProps={{ withToolbar: true }} />
+<SBStories.Default id="components-layout-header--default" />
 
-<SBSubTitle>Properties</SBSubTitle>
-
-<ArgsTable of={Header} />
-
-<SBSubTitle>Stories</SBSubTitle>
+<SBArgsTable component={Header} />
 
 <SBStories>
-<SBStories.Item label="Default" id="components-layout-header--default" />
+<SBStories.Item label="Logo" id="components-layout-header--logo" />
 
-<SBStories.Item label="With Logo" id="components-layout-header--with-logo" />
+<SBStories.Item label="Max Width" id="components-layout-header--max-width" />
 
 <SBStories.Item label="With Actions" id="components-layout-header--with-actions" />
-
-<SBStories.Item label="Max Width Number" id="components-layout-header--max-width-number" />
-
-<SBStories.Item label="Max Width Breakpoint" id="components-layout-header--max-width-breakpoint" />
 </SBStories>

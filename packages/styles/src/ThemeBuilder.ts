@@ -1,19 +1,12 @@
 import { createStitches, styled } from '@stitches/react';
-import { BreakpointsRules } from './breakpoint';
+import type { BreakpointsRules, ThemeConfig, ThemeScheme, ThemeStyled } from './types';
+import { getBreakpoints, getThemeInstance, normalizeThemeByScheme } from './utils';
 import defaultConfig from './themes/default';
 import themeUtils from './themes/utils';
-import {
-  getBreakpoints,
-  getThemeInstance,
-  normalizeThemeByScheme,
-  ThemeConfig,
-  ThemeScheme,
-  ThemeStitches
-} from './theme';
 
 export class ThemeBuilder {
   currentConfig: ThemeConfig = defaultConfig;
-  styledTheme: ThemeStitches = styled;
+  styledTheme: ThemeStyled = styled;
   lightTheme: ThemeScheme = null;
   darkTheme: ThemeScheme = null;
   breakpoints: BreakpointsRules = {};
@@ -35,7 +28,8 @@ export class ThemeBuilder {
         }),
         {}
       ),
-      utils: themeUtils
+      utils: themeUtils,
+      prefix: 'rjopau'
     });
 
     this.styledTheme = styled;

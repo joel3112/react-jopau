@@ -1,38 +1,31 @@
-import { useState } from 'react';
-import { Space } from '@react-jopau/components/ui/layout';
-import {
-  TWButton,
-  TWContainer,
-  TWInput,
-  TWItem,
-  TWJSONPreview
-} from '@react-jopau/styles/components';
+import { FormEvent, useState } from 'react';
+import { Button, Container, Input, Space, Text } from '@react-jopau/components/ui';
+import { SBCode, SBJSONPreview } from '@react-jopau/styles/components';
+import { prepareParameters } from '@react-jopau/styles/utils';
 import { useFetch } from './use-fetch';
 import docs from './readme.mdx';
 
 export default {
   title: 'useFetch',
-  parameters: {
-    docs: {
-      page: docs
-    }
-  }
+  parameters: prepareParameters(docs, true)
 };
 
-const Template = () => {
-  const [inputValue, setInputValue] = useState<string>(
-    'https://jsonplaceholder.typicode.com/todos/1'
-  );
-  const [path, setPath] = useState(inputValue);
-  const { data, loading, error } = useFetch(path, {
+export const Docs = () => {};
+
+export const Default = () => {
+  type Data = { userId: number; id: number; title: string; body: string };
+  type Error = { message: string; code: number };
+
+  const defaultPath = 'https://jsonplaceholder.typicode.com/posts/1';
+  const [path, setPath] = useState<string>(defaultPath);
+
+  const { data, loading, error } = useFetch<Data, Error>(path, {
     method: 'GET',
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    onSuccess: async (res: any) => {
-      await new Promise((resolve) => setTimeout(resolve, 500));
+    onSuccess: async (res: { data: Data }) => {
+      await new Promise((resolve) => setTimeout(resolve, 1000));
       return res.data;
     },
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    onError: (err: any) => {
+    onError: (err: Error) => {
       throw {
         message: err.message,
         code: err.code
@@ -40,26 +33,38 @@ const Template = () => {
     }
   });
 
-  return (
-    <TWContainer>
-      <Space direction="column" gap={5}>
-        <TWInput value={inputValue} label="Path" onInput={setInputValue} />
-        <TWButton disabled={!inputValue} onClick={() => setPath(inputValue)}>
-          Load
-        </TWButton>
-      </Space>
+  const handleSubmit = (event: FormEvent) => {
+    event.preventDefault();
+    setPath((event.target as HTMLFormElement).path.value);
+  };
 
-      <Space direction="column" gap={10}>
-        <TWItem label="loading">{loading ? 'true' : 'false'}</TWItem>
-        <TWItem label="data" column={!!data}>
-          <TWJSONPreview code={data} />
-        </TWItem>
-        <TWItem label="error" column={!!error}>
-          <TWJSONPreview code={error} />
-        </TWItem>
+  return (
+    <Container maxWidth={450}>
+      <form onSubmit={handleSubmit}>
+        <Input name="path" label="Path" fullWidth variant="bordered" defaultValue={defaultPath} />
+        <Button className="mt-4" auto color="secondary" type="submit">
+          Load
+        </Button>
+      </form>
+
+      <Space className="mt-10" direction="column" gap={10}>
+        <Space align="start" gap={10}>
+          <SBCode>loading:</SBCode>
+          <code>
+            <Text>{loading ? 'true' : 'false'}</Text>
+          </code>
+        </Space>
+        <Space align="start" gap={10} wrap>
+          <SBCode>data:</SBCode>
+          <SBJSONPreview code={data} />
+        </Space>
+        <Space align="start" gap={10} wrap>
+          <SBCode>error:</SBCode>
+          <SBJSONPreview code={error} />
+        </Space>
       </Space>
-    </TWContainer>
+    </Container>
   );
 };
-
-export const Default = Template.bind({});
+Default.storyName = 'Playground';
+Default.parameters = { viewMode: 'story' };

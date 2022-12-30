@@ -7,6 +7,10 @@ module.exports = {
   },
   stories: [
     {
+      directory: '../.storybook',
+      files: '*.stories.mdx'
+    },
+    {
       directory: '../packages/components',
       titlePrefix: 'Components',
       files: 'src/ui/**/*.stories.*'
@@ -18,7 +22,7 @@ module.exports = {
     },
     {
       directory: '../packages/components',
-      titlePrefix: 'Providers',
+      titlePrefix: 'Context Providers',
       files: 'src/contexts/**/*.stories.*'
     }
   ],
@@ -26,7 +30,7 @@ module.exports = {
     '@storybook/addon-links',
     '@storybook/addon-viewport',
     '@storybook/addon-essentials',
-    '@storybook/addon-interactions',
+    '@storybook/addon-storysource',
     {
       name: '@storybook/addon-postcss',
       options: {
@@ -41,10 +45,10 @@ module.exports = {
         }
       }
     },
-    './theme-selector-addon/register',
-    './dark-mode-addon/register'
+    './addons/expand-all-addon/register',
+    './addons/theme-selector-addon/register',
+    './addons/dark-mode-addon/register'
   ],
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   webpackFinal: async (config) => {
     config.resolve.plugins = [
       ...(config.resolve.plugins || []),

@@ -1,32 +1,54 @@
-import { TWContainer, TWItem, TWText } from '@react-jopau/styles/components';
-import { Space } from '@react-jopau/components/ui/layout';
+import { Container, Space, Text } from '@react-jopau/components/ui';
+import { SBCode } from '@react-jopau/styles/components';
+import { prepareParameters } from '@react-jopau/styles/utils';
 import { useBreakpoint } from './use-breakpoint';
 import docs from './readme.mdx';
 
 export default {
   title: 'useBreakpoint',
-  parameters: {
-    docs: {
-      page: docs
-    }
-  }
+  parameters: prepareParameters(docs, true)
 };
+export const Docs = () => {};
 
 export const Default = () => {
   const { key, isMobile, isTablet, isDesktop, isSmallDesktop, isLargeDesktop } = useBreakpoint();
 
   return (
-    <TWContainer>
-      <TWText size="lg">Target width: {window.innerWidth}px</TWText>
+    <Container maxWidth={450}>
+      <Text size="lg">{`Target width: ${window.innerWidth}px`}</Text>
 
-      <Space direction="column" gap={10}>
-        <TWItem label="key">{key}</TWItem>
-        <TWItem label="isMobile">{isMobile ? '✅' : '❌'}</TWItem>
-        <TWItem label="isTablet">{isTablet ? '✅' : '❌'}</TWItem>
-        <TWItem label="isSmallDesktop">{isSmallDesktop ? '✅' : '❌'}</TWItem>
-        <TWItem label="isDesktop">{isDesktop ? '✅' : '❌'}</TWItem>
-        <TWItem label="isLargeDesktop">{isLargeDesktop ? '✅' : '❌'}</TWItem>
+      <Space className="mt-10" direction="column" gap={10}>
+        <Space align="center" gap={10}>
+          <SBCode>key:</SBCode>
+          {key && (
+            <code>
+              <Text>{key}</Text>
+            </code>
+          )}
+        </Space>
+        <Space align="center" gap={10}>
+          <SBCode>isMobile:</SBCode>
+          {isMobile ? '✅' : '❌'}
+        </Space>
+        <Space align="center" gap={10}>
+          <SBCode>isTablet:</SBCode>
+          {isTablet ? '✅' : '❌'}
+        </Space>
+        <Space align="center" gap={10}>
+          <SBCode>isSmallDesktop:</SBCode>
+          {isSmallDesktop ? '✅' : '❌'}
+        </Space>
+        <Space align="center" gap={10}>
+          <SBCode>isDesktop:</SBCode>
+          {isDesktop ? '✅' : '❌'}
+        </Space>
+        <Space align="center" gap={10}>
+          <SBCode>isLargeDesktop:</SBCode>
+          {isLargeDesktop ? '✅' : '❌'}
+        </Space>
       </Space>
-    </TWContainer>
+    </Container>
   );
 };
+Default.storyName = 'Playground';
+Default.parameters = { viewMode: 'story' };

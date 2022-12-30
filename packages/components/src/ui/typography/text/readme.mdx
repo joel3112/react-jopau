@@ -1,5 +1,4 @@
-import { ArgsTable } from '@storybook/addon-docs';
-import { SBDescription, SBStories, SBSubTitle, SBTitle } from '@react-jopau/styles/components';
+import { SBArgsTable, SBDescription, SBStories, SBTitle } from '@react-jopau/styles/components';
 import { Text } from './text';
 
 <SBTitle>Text</SBTitle>
@@ -10,25 +9,19 @@ import { Text } from './text';
 </SBDescription>
 
 ```jsx dark
-import { Text } from '@react-jopau/components/ui/typography';
+import { Text } from '@react-jopau/components/ui';
 ```
 
-<SBStories.Item id="components-typography-text--default" canvasProps={{ withToolbar: true }} />
+<SBStories.Default id="components-typography-text--default" />
 
-<SBSubTitle>Properties</SBSubTitle>
-
-<ArgsTable of={Text} />
-
-<SBSubTitle>Stories</SBSubTitle>
+<SBArgsTable component={Text} />
 
 <SBStories>
-<SBStories.Item label="Default" id="components-typography-text--default" />
-
-<SBStories.Item label="Colors" id="components-typography-text--colors" />
+<SBStories.Item label="As" id="components-typography-text--as" />
 
 <SBStories.Item label="Sizes" id="components-typography-text--sizes" />
 
-<SBStories.Item label="Tags" id="components-typography-text--tags" />
+<SBStories.Item label="Colors" id="components-typography-text--colors" />
 
 <SBStories.Item label="Max Lines" id="components-typography-text--max-lines" />
 </SBStories>

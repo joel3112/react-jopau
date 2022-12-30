@@ -8,11 +8,14 @@ import {
   DARK_MODE_STORAGE_KEY,
   getColors,
   THEME_SELECTOR_STORAGE_KEY
-} from 'packages/styles/src/theme';
+} from '/packages/styles/src/utils/theme';
 
-const ThemeStoryProvider = ({ Story, context }) => {
+const ThemeProviderMemo = React.memo(ThemeProvider);
+
+const ThemeStoryProvider = ({ children }) => {
   const [themeKey, setThemeKey] = useLocalStorage(THEME_SELECTOR_STORAGE_KEY, 'default');
   const [colorScheme, setColorScheme] = useLocalStorage(DARK_MODE_STORAGE_KEY, 'light');
+
   const storyRef = React.useRef(null);
   const backgroundColor = getColors(themeKey, colorScheme).background;
   const textColor = getColors(themeKey, colorScheme).text;
@@ -35,21 +38,25 @@ const ThemeStoryProvider = ({ Story, context }) => {
       storyEl.style.backgroundColor = `${backgroundColor}`;
       storyEl.style.color = `${textColor}`;
     }
+    const docsEl = document.body.querySelector('.sbdocs-wrapper');
+    if (docsEl) {
+      docsEl.style.color = `initial`;
+    }
+
     document.body.classList.toggle('dark-theme', colorScheme === 'dark');
     document.body.classList.toggle('light-theme', colorScheme === 'light');
     document.body.style.backgroundColor = `${backgroundColor}`;
-    document.body.style.color = `initial`;
   }, [storyRef.current, themeKey, colorScheme]);
 
   return (
     <div ref={storyRef}>
-      <ThemeProvider config={themes[themeKey].value} darkMode={colorScheme === 'dark'}>
-        <Story {...context} />
-      </ThemeProvider>
+      <ThemeProviderMemo config={themes[themeKey].value} darkMode={colorScheme === 'dark'}>
+        {children}
+      </ThemeProviderMemo>
     </div>
   );
 };
 
-const withTheme = (Story, context) => <ThemeStoryProvider Story={Story} context={context} />;
+const withTheme = (story) => <ThemeStoryProvider>{story()}</ThemeStoryProvider>;
 
 export const globalDecorators = [withTheme];

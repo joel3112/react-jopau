@@ -1,4 +1,9 @@
-import { SBArgsTable, SBDescription, SBSubTitle, SBTitle } from '@react-jopau/styles/components';
+import {
+  SBDescription,
+  SBPureArgsTable,
+  SBSubTitle,
+  SBTitle
+} from '@react-jopau/styles/components';
 
 <SBTitle>useFetch</SBTitle>
 
@@ -9,6 +14,8 @@ import { SBArgsTable, SBDescription, SBSubTitle, SBTitle } from '@react-jopau/st
 ```tsx dark
 import { useFetch } from '@react-jopau/hooks';
 ```
+
+<SBSubTitle>Examples</SBSubTitle>
 
 ```tsx dark
 // Without options
@@ -44,9 +51,8 @@ const { data, error } = useFetch<{}, Error>('https://jsonplaceholder.typicode.co
 });
 ```
 
-<SBSubTitle>Params</SBSubTitle>
-
-<SBArgsTable
+<SBPureArgsTable
+  heading="Params"
   rows={{
     options: {
       name: 'options',
@@ -97,9 +103,8 @@ const { data, error } = useFetch<{}, Error>('https://jsonplaceholder.typicode.co
   }}
 />
 
-<SBSubTitle>Returns</SBSubTitle>
-
-<SBArgsTable
+<SBPureArgsTable
+  heading="Returns"
   noDefaults
   rows={{
     'result.data': {

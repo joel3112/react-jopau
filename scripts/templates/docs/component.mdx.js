@@ -7,8 +7,11 @@ const prop =
   ({ context }) =>
     get(context, key);
 const componentName = prop('componentName');
-const storyDefaultId = (args) => get(prop('stories')(args), 'Default.id');
-const componentPath = prop('componentPath');
+const storyDefaultId = (args) =>
+  get(
+    Object.entries(prop('stories')(args)).find((s) => s[0].includes('Default')),
+    '[1].id'
+  );
 
 const templateCreator = template({});
 
@@ -18,9 +21,13 @@ const templateStory = ({ label, id }) => {
 `;
 };
 
-const templateObject = templateCreator`import { ArgsTable } from '@storybook/addon-docs';
-import { SBDescription, SBStories, SBSubTitle, SBTitle } from '@react-jopau/styles/components';
-import { ${componentName} } from './${componentPath}';
+const templateObject = templateCreator`import { SBArgsTable, SBDescription, SBStories, SBTitle } from '@react-jopau/styles/components';
+${({ context }) => {
+  if (context.parentSubComponentPath) {
+    return `import { ${context.parentSubComponentName} } from '../${context.parentSubComponentPath}';`;
+  }
+  return `import { ${context.componentName} } from './${context.componentPath}';`;
+}}
 
 <SBTitle>${componentName}</SBTitle>
 
@@ -30,19 +37,17 @@ import { ${componentName} } from './${componentPath}';
 ${prop('imports')}
 \`\`\`
 
-<SBStories.Item id="${storyDefaultId}" canvasProps={{ withToolbar: true }} />
+<SBStories.Default id="${storyDefaultId}" />
 
-<SBSubTitle>Properties</SBSubTitle>
-
-<ArgsTable of={${componentName}} />
+<SBArgsTable component={${componentName}} />
 
 ${({ context }) => {
   let stories = '';
   if (Object.keys(context.stories).length > 0) {
-    stories += `<SBSubTitle>Stories</SBSubTitle>${os.EOL}${os.EOL}`;
     stories += `<SBStories>`;
 
     Object.keys(context.stories).forEach((key) => {
+      if (['Default', 'Docs', 'Playground'].some((s) => key.includes(s))) return;
       stories += templateStory(context.stories[key]);
     });
 

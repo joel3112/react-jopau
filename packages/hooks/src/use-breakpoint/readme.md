@@ -32,14 +32,14 @@ const { key } = useBreakpoint(rules);
 
 #### Params
 
-| Name     | Type     | Default value | Description                 |
-| -------- | -------- | ------------- | --------------------------- |
-| rules    | `Object` |               | Custom breakpoints rules    |
-| rules.lg | `number` |               | Large breakpoint size       |
-| rules.md | `number` |               | Medium breakpoint size      |
-| rules.sm | `number` |               | Small breakpoint size       |
-| rules.xl | `number` |               | Extra large breakpoint size |
-| rules.xs | `number` |               | Extra small breakpoint      |
+| Name     | Type     | Default value | Description                                                                |
+| -------- | -------- | ------------- | -------------------------------------------------------------------------- |
+| rules    | `Object` |               | Custom breakpoints rules. This rules will be merged with the default ones. |
+| rules.lg | `number` |               | Large breakpoint size                                                      |
+| rules.md | `number` |               | Medium breakpoint size                                                     |
+| rules.sm | `number` |               | Small breakpoint size                                                      |
+| rules.xl | `number` |               | Extra large breakpoint size                                                |
+| rules.xs | `number` |               | Extra small breakpoint                                                     |
 
 #### Returns
 

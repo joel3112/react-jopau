@@ -5,7 +5,7 @@ const prettier = require('prettier');
 const { capitalize, get, lowerCase, kebabCase, upperFirst } = require('lodash');
 
 const parseDescription = (description) =>
-  description ? description.replace(/(<([^>]+)>)/gi, '') : '';
+  description ? description.replace(/<p>|<\/p>/g, '') : '';
 
 const parseComponentName = (componentName) =>
   lowerCase(componentName)
@@ -32,7 +32,8 @@ const getPackageName = (componentPath) => {
   return componentPath.replace(/packages\/(.*)\/src\/(.*)/g, '$1');
 };
 
-const getComponentParsed = (componentPath, schemaProps) => {
+const getComponentParsed = (componentPath, schemaProps, parentName) => {
+  const isSubComponent = !!parentName;
   const packageName = getPackageName(componentPath);
   const displayName = get(schemaProps, 'name');
   const displayNameJoined = lowerCase(displayName).replace(/ /g, '');
@@ -42,10 +43,11 @@ const getComponentParsed = (componentPath, schemaProps) => {
   const categories = diffPath.replace(new RegExp(`packages/${packageName}/src/(.*)/`), '$1');
   const [categoryRoot, ...restCategories] = categories.split('/');
   const restCategoriesJoined = restCategories.length ? `-${restCategories.join('-')}` : '';
-  const componentType = {
-    ui: 'components',
-    contexts: 'providers'
-  };
+  const componentType = { ui: 'components', contexts: 'context-providers' };
+  const storiesPrefixId =
+    categories !== diffPath
+      ? `${get(componentType, categoryRoot)}${restCategoriesJoined}-${displayNameJoined}`
+      : `${packageName}-${displayNameJoined}`;
 
   return {
     componentPath,
@@ -54,42 +56,56 @@ const getComponentParsed = (componentPath, schemaProps) => {
       path.parse(componentPath).ext,
       `.stories${path.parse(componentPath).ext}`
     ),
-    displayName,
+    parentName,
+    displayName: !isSubComponent
+      ? displayName
+      : `${parentName}.${displayName.replace(parentName, '')}`,
     description: parseDescription(get(schemaProps, 'description')),
     fileName,
     packageName,
     categories: categories !== diffPath ? restCategories : [],
-    storiesPrefixId:
-      categories !== diffPath
-        ? `${get(componentType, categoryRoot)}${restCategoriesJoined}-${displayNameJoined}`
-        : `${packageName}-${displayNameJoined}`
+    storiesPrefixId: !isSubComponent
+      ? storiesPrefixId
+      : storiesPrefixId.replace(`-${displayNameJoined}`, '')
   };
 };
 
-const getStories = (componentPath, schemaProps) => {
-  const { storiesPrefixId, storiesPath } = getComponentParsed(componentPath, schemaProps);
-  const stories = {};
+const getStories = (componentPath, schemaProps, parentName) => {
+  const { displayName, storiesPrefixId, storiesPath } = getComponentParsed(
+    componentPath,
+    schemaProps,
+    parentName
+  );
 
   try {
-    const component = fs.readFileSync(storiesPath).toString();
-    const storyRegex = /export const (.*) = /g;
-    let match;
+    if (fs.existsSync(storiesPath)) {
+      const stories = {};
+      const component = fs.readFileSync(storiesPath).toString();
+      const storyRegex = /export const (.*) = /g;
+      let match;
 
-    while ((match = storyRegex.exec(component)) !== null) {
-      const storyName = match[1];
-      const id = kebabCase(storyName);
-      const label = lowerCase(storyName)
-        .split(' ')
-        .map((t) => upperFirst(t))
-        .join(' ');
+      while ((match = storyRegex.exec(component)) !== null) {
+        const storyName = match[1];
+        const id = kebabCase(storyName);
+        const label = lowerCase(storyName)
+          .split(' ')
+          .map((t) => upperFirst(t))
+          .join(' ');
+        const subcomponentPartialName = !parentName
+          ? ''
+          : displayName.replace(`${parentName}.`, '');
 
-      stories[storyName] = {
-        name: storyName,
-        label,
-        id: `${storiesPrefixId}--${id}`
-      };
+        stories[storyName] = {
+          name: storyName,
+          label: !subcomponentPartialName
+            ? label
+            : `[${subcomponentPartialName}] ${label.replace(subcomponentPartialName, '').trim()}`,
+          id: `${storiesPrefixId}--${id}`
+        };
+      }
+      return stories;
     }
-    return stories;
+    return null;
   } catch (error) {
     throw error;
   }

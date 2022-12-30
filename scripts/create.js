@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const clc = require('cli-color');
 const { kebabCase } = require('lodash');
-const { promptInput, promptSelect } = require('./utils/prompt');
+const { promptInput, promptSelect, promptToggle } = require('./utils/prompt');
 const RendererGenerator = require('./utils/renderer-generator.js');
 const { writeFile } = require('./utils/schema');
 
@@ -41,12 +41,20 @@ const createComponent = async () => {
     'overlay',
     'typography'
   ]);
+  const ref = await promptToggle('Should the component be a ref?', false);
 
   const files = [
     {
       name: 'component',
       path: `packages/components/src/ui/${type}/${name}/${name}.tsx`,
-      templatePath: './templates/create/component.tsx.js'
+      templatePath: !ref
+        ? './templates/create/component.tsx.js'
+        : './templates/create/component-ref.tsx.js'
+    },
+    {
+      name: 'props',
+      path: `packages/components/src/ui/${type}/${name}/${name}-props.ts`,
+      templatePath: './templates/create/component-props.ts.js'
     },
     {
       name: 'stories',
@@ -86,6 +94,11 @@ const createContextProvider = async () => {
       name: 'provider',
       path: `packages/components/src/contexts/${name}/${name}-context.tsx`,
       templatePath: './templates/create/context-provider.tsx.js'
+    },
+    {
+      name: 'props',
+      path: `packages/components/src/contexts/${name}/${name}-context-props.ts`,
+      templatePath: './templates/create/context-provider-props.ts.js'
     },
     {
       name: 'stories',

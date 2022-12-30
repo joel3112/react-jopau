@@ -11,7 +11,7 @@ describe('Collection helper methods', () => {
     });
 
     test('returns false in not empty object', () => {
-      expect(isEmpty<number>({ a: 1, b: 3 })).toBeFalsy();
+      expect(isEmpty<Record<string, number>>({ a: 1, b: 3 })).toBeFalsy();
     });
 
     test('returns true in array with empty values', () => {
@@ -25,7 +25,7 @@ describe('Collection helper methods', () => {
 
   describe('size', () => {
     test('returns size in array', () => {
-      expect(size([1, 2, 3])).toBe(3);
+      expect(size([{ a: 1 }, { b: 2 }, { c: 3 }])).toBe(3);
     });
 
     test('returns size in object', () => {
@@ -77,7 +77,7 @@ describe('Collection helper methods', () => {
         name: 'a'
       }
     ];
-    const collectionObject: TCollection<{ age: number }> = {
+    const collectionObject: TCollection<Record<string, { age: number }>> = {
       b: {
         age: 10
       },
@@ -138,7 +138,7 @@ describe('Collection helper methods', () => {
     });
 
     test('returns array object sorted descending from object', () => {
-      expect(sortBy(collectionObject, 'age', 'desc')).toStrictEqual([
+      expect(sortBy<Object>(collectionObject, 'age', 'desc')).toStrictEqual([
         {
           age: 15
         },
@@ -152,7 +152,7 @@ describe('Collection helper methods', () => {
     });
 
     test('returns array object sorted ascending from object', () => {
-      expect(sortBy(collectionObject, 'age', 'asc')).toStrictEqual([
+      expect(sortBy<Object>(collectionObject, 'age', 'asc')).toStrictEqual([
         {
           age: 1
         },

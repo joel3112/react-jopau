@@ -1,6 +1,35 @@
+import anymatch from 'anymatch';
 export { debounce, delay, noop, random, range, throttle } from 'lodash';
-import { TAny } from './index';
+import type { TAny } from './index';
 
 export type TFunction = (...args: never[]) => TAny;
 export type TFunctionVoid = (...args: never[]) => void;
+export type TFunctionBoolean = (...args: never[]) => boolean;
 export type TFunctionPromiseVoid = (...args: never[]) => Promise<void>;
+
+export const anysort = (a: TAny, b: TAny, order: string[]): number => {
+  const generateAnysort = (criteria = () => false) => {
+    const matcher = anymatch(criteria);
+    return function sorter(a: never, b: never) {
+      const indexOfA = matcher(a, true);
+      const indexOfB = matcher(b, true);
+      const hasA = indexOfA !== -1;
+      const hasB = indexOfB !== -1;
+      if (hasA && !hasB) {
+        return -1;
+      } else if (!hasA && hasB) {
+        return 1;
+      } else if (indexOfA !== indexOfB) {
+        return indexOfA - indexOfB;
+      } else if (a < b) {
+        return -1;
+      } else if (a > b) {
+        return 1;
+      } else {
+        return 0;
+      }
+    };
+  };
+
+  return generateAnysort(order as never)(a as never, b as never);
+};

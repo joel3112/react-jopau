@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any,@typescript-eslint/no-empty-function */
 const path = require('path');
 const os = require('os');
 const { capitalize } = require('lodash');
@@ -124,6 +123,8 @@ class RendererGenerator {
    * @property {string} [filePath] - The file path of the component
    * @property {string} description - The description of the component
    * @property {string} displayName - The display name of the component
+   * @property {string} parentPath - The parent path of the subcomponent
+   * @property {string} parentName - The parent name of the subcomponent
    * @property {string} imports - The imports of the component
    * @property {Array.<*>} [methods] - The methods of the component
    * @property {string[]} [examples] - The examples of the component
@@ -141,6 +142,8 @@ class RendererGenerator {
     return this.options.template.instantiate(
       {
         componentName: docs.displayName,
+        parentSubComponentPath: docs.parentPath,
+        parentSubComponentName: docs.parentName,
         componentPath: path.basename(filePath, path.extname(filePath)),
         description: docs.description,
         imports: docs.imports,

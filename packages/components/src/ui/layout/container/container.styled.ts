@@ -1,19 +1,18 @@
 import { styledTheme } from '../../../index';
 
-export const ContainerWrapper = styledTheme('div', {
+export const StyledContainer = styledTheme('div', {
   display: 'block',
   boxSizing: 'border-box',
-  px: 50,
+  px: '$space$2xl',
+  color: '$colors$text',
+
   variants: {
     centered: {
-      true: {
-        margin: '0 auto'
-      }
+      true: { margin: '0 auto' }
     }
   },
 
-  // Breakpoints
   '@xs': {
-    px: 20
+    px: '$space$lg'
   }
 });

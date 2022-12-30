@@ -24,7 +24,7 @@ npm install @react-jopau/styles
 Function to create a breakpoints helper from rules.
 
 ```tsx
-import { createBreakpoints } from '@react-jopau/styles/breakpoint';
+import { createBreakpoints } from '@react-jopau/styles/utils';
 
 const rules = {
   xs: 0,
@@ -65,18 +65,24 @@ const builder = new ThemeBuilder();
 builder.createTheme({
   theme: {
     colors: {
-      light: {
-        primary: '#20232a',
-        secondary: '#04cffa',
-        text: '#000',
-        background: '#fcfcfc'
-      },
-      dark: {
-        primary: '#20232a',
-        secondary: '#04cffa',
-        text: '#fff',
-        background: '#1d1f20'
-      }
+      primary: '#20232a',
+      secondary: '#04cffa',
+      text: '#000',
+      background: '#fcfcfc'
+    },
+    shadows: {
+      button: '0 0 10px 0 rgba(0, 0, 0, 0.2)'
+    }
+  },
+  darkTheme: {
+    colors: {
+      primary: '#20232a',
+      secondary: '#04cffa',
+      text: '#fff',
+      background: '#1d1f20'
+    },
+    shadows: {
+      button: '0 0 10px 0 rgba(255, 255, 255, 0.2)'
     }
   },
   media: {

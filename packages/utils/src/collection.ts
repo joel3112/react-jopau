@@ -1,8 +1,8 @@
 import * as _ from 'lodash';
-import { TAny, TArray, TBasic, TObject } from './index';
+import type { TAny, TArray, TBasic } from './index';
 import { compact } from './array';
 
-export type TCollection<T = TBasic> = TArray<T> | TObject<T>;
+export type TCollection<T = TAny> = TArray<T> | T;
 export type TCollectionSortOrder = 'asc' | 'desc';
 
 export const isEmpty = <T>(collection: TCollection<T>): boolean => {
@@ -17,7 +17,7 @@ export const isEmpty = <T>(collection: TCollection<T>): boolean => {
 };
 
 export const size = (collection: TCollection): number => {
-  return _.size(collection);
+  return _.size(collection as Array<TCollection>);
 };
 
 export const some = <T>(
@@ -31,7 +31,7 @@ export const some = <T>(
 };
 
 export const includes = <T>(collection: TCollection<T>, value: TAny, fromIndex = 0): boolean => {
-  return _.includes(collection, value, fromIndex);
+  return _.includes(collection as unknown as TArray<T>, value, fromIndex);
 };
 
 export const sortBy = <T>(

@@ -2,8 +2,9 @@
 const fs = require('fs');
 const path = require('path');
 const glob = require('glob-promise');
+const { program } = require('commander');
 const clc = require('cli-color');
-const { get, last } = require('lodash');
+const { get, last, capitalize } = require('lodash');
 const {
   getStories,
   getCustomTag,
@@ -38,13 +39,32 @@ const parseOptions = {
   }
 };
 
-const generateComponentDocs = async (type) => {
+const generateComponentDocs = async (type, componentNameOne) => {
   introComponentsProps = [];
-  const files = await glob(`packages/components/src/${type}/**/*.{ts,tsx}`, {
-    ignore: ['**/*.{test,stories,styled}.{ts,tsx}', '**/index.{ts,tsx}']
+  let files = await glob(`packages/components/src/${type}/**/*.tsx`, {
+    ignore: ['**/*.{test,stories,styled}.{ts,tsx}', '**/index.{ts,tsx}', '**/*-props.{ts,tsx}']
   });
 
-  files.forEach((componentPath) => {
+  files.sort((a, b) => {
+    const parseA = path.parse(a).dir;
+    const parseB = path.parse(b).dir;
+
+    if (parseA === parseB) return 0;
+    if (parseA < parseB) return -1;
+    return 1;
+  });
+
+  if (componentNameOne) {
+    const componentNameFound = files.find((file) => file.includes(`${componentNameOne}.tsx`));
+    if (componentNameFound) {
+      files = [componentNameFound];
+    } else {
+      console.log(preffix, clc.red('Component not found'));
+      return;
+    }
+  }
+
+  files.forEach((componentPath, index) => {
     try {
       const componentName = path.basename(componentPath, path.extname(componentPath));
 
@@ -57,7 +77,22 @@ const generateComponentDocs = async (type) => {
           configure: './jsdoc2md.json'
         })
       );
-      introComponentsProps.push(parseComponentCardProps(componentPath, jsdocSchema));
+
+      // Detect if is a component to generate docs
+      if (!jsdocSchema) {
+        return;
+      }
+
+      // Check if is subcomponent
+      const previousPath = path.join(componentPath, '../..');
+      const previousName = path.basename(previousPath);
+      const previousFullPath = `${previousPath}/${previousName}.tsx`;
+      const isSubComponent = files.includes(previousFullPath);
+      const componentNameParent = isSubComponent ? previousName : null;
+
+      if (!isSubComponent) {
+        introComponentsProps.push(parseComponentCardProps(componentPath, jsdocSchema));
+      }
 
       // Generate documentation from JSDoc comments
       const customParser = docgen.withCompilerOptions(
@@ -70,24 +105,40 @@ const generateComponentDocs = async (type) => {
         }
       );
       const componentDocs = last(customParser.parse(componentPath));
-      const stories = getStories(componentPath, jsdocSchema);
+
+      const displayName = !isSubComponent
+        ? componentDocs.displayName
+        : [componentNameParent, componentName.replace(`${componentNameParent}-`, '')]
+            .filter(Boolean)
+            .map(capitalize)
+            .join('.');
+      const parentPath = isSubComponent ? componentNameParent : '';
+      const parentName = isSubComponent
+        ? componentNameParent.split('-').map(capitalize).join('')
+        : '';
+      const stories = getStories(componentPath, jsdocSchema, parentName);
 
       /**
        * Generate file MDX
        */
-      const documentationMDXPath = path.join(componentPath, '../') + 'readme.mdx';
-      const rendererMDX = new RendererGenerator({
-        template: componentMDXTemplate
-      });
-      writeFile(
-        documentationMDXPath,
-        rendererMDX.renderDoc(componentPath, {
-          ...componentDocs,
-          imports: getCustomTag(jsdocSchema, 'imports'),
-          stories: stories || {}
-        }),
-        'mdx'
-      );
+      if (stories) {
+        const documentationMDXPath = path.join(componentPath, '../') + 'readme.mdx';
+        const rendererMDX = new RendererGenerator({
+          template: componentMDXTemplate
+        });
+        writeFile(
+          documentationMDXPath,
+          rendererMDX.renderDoc(componentPath, {
+            ...componentDocs,
+            displayName,
+            parentPath,
+            parentName,
+            imports: getCustomTag(jsdocSchema, 'imports'),
+            stories: stories || {}
+          }),
+          'mdx'
+        );
+      }
 
       /**
        * Generate file markdown
@@ -100,18 +151,30 @@ const generateComponentDocs = async (type) => {
         documentationMDPath,
         rendererMD.renderDoc(componentPath, {
           ...componentDocs,
+          displayName,
+          parentPath,
+          parentName,
           imports: getCustomTag(jsdocSchema, 'imports'),
           examples: get(jsdocSchema, 'examples')
         }),
         'mdx'
       );
 
-      console.log(
-        preffix,
-        clc.blue(componentName, '=>', componentPath),
-        !stories ? `(No stories found)` : '',
-        clc.green('✔')
-      );
+      if (!isSubComponent) {
+        console.log(
+          preffix,
+          clc.blue(componentName, '=>', componentPath),
+          !stories ? `(No stories found)` : '',
+          clc.green('✔')
+        );
+      } else {
+        console.log(
+          preffix,
+          clc.blue(' ↳', componentName, '=>', componentPath),
+          !stories ? `(No stories found)` : '',
+          clc.green('✔')
+        );
+      }
     } catch (error) {
       console.log(
         preffix,
@@ -138,6 +201,25 @@ const generateIntroductionDocs = async (type) => {
 };
 
 const generateAllDocs = async () => {
+  program.option('-t, --type <type>', 'component type');
+  program.option('-c, --component <component>', 'component name');
+  program.parse(process.argv);
+  const options = program.opts();
+
+  // Generate docs for custom component
+  if (options && Object.keys(options).length > 0) {
+    const type = get(options, 'type', '').replace('=', '');
+    const componentNameOne = get(options, 'component', '').replace('=', '');
+
+    console.log(preffix, '[UI] Generating documentation...');
+    if (['ui', 'contexts'].includes(type)) {
+      await generateComponentDocs('ui', componentNameOne);
+    } else {
+      console.log(preffix, clc.red('Invalid type'));
+    }
+    return;
+  }
+
   console.log(preffix, '[UI] Generating documentation...');
   await generateComponentDocs('ui');
   await generateIntroductionDocs('ui');

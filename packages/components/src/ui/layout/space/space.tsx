@@ -1,43 +1,6 @@
-import { ReactNode } from 'react';
-import classes from 'classnames';
-import { ElementHTML } from '../../../../types';
-import { SpaceWrapper } from './space.styled';
-
-type BasicPosition = 'start' | 'center' | 'end';
-export type DirectionSpace = 'row' | 'column' | 'row-reverse' | 'column-reverse';
-export type JustifySpace = BasicPosition | 'between' | 'around';
-export type AlignSpace = BasicPosition | 'baseline' | 'stretch';
-
-type SpaceProps = ElementHTML & {
-  /**
-   * Defines the children of the component.
-   */
-  children: ReactNode;
-  /**
-   * Defines the direction of the flex container.
-   */
-  direction?: Required<DirectionSpace>;
-  /**
-   * Defines if the flex container is wrapped or not.
-   */
-  wrap?: boolean;
-  /**
-   * Defines the gap between the flex container's children.
-   */
-  gap?: number | Array<number>;
-  /**
-   * Defines the justify-content style property.
-   */
-  justify?: JustifySpace;
-  /**
-   * Defines the align-items style property.
-   */
-  align?: AlignSpace;
-} & typeof defaultProps;
-
-const defaultProps = {
-  direction: 'row'
-};
+import { classes } from '../../../utils/system';
+import { defaultProps, SpaceProps } from './space-props';
+import { StyledSpace } from './space.styled';
 
 const spacing = (gap?: number | Array<number>): string =>
   gap
@@ -53,7 +16,7 @@ const spacing = (gap?: number | Array<number>): string =>
  * @param   {SpaceProps} props - Props injected to the component.
  * @returns {JSX.Element} Rendered component.
  *
- * @imports import { Space } from '@react-jopau/components/ui/layout';
+ * @imports import { Space } from '@react-jopau/components/ui';
  * @example
  * <Space direction="row" align="center" justify="center" gap={10}>
  *    <div>Item 1</div>
@@ -64,6 +27,7 @@ export const Space = ({
   className,
   style,
   children,
+  as,
   direction,
   wrap,
   gap,
@@ -71,8 +35,9 @@ export const Space = ({
   align
 }: SpaceProps) => {
   return (
-    <SpaceWrapper
-      className={classes('space-wrapper', className)}
+    <StyledSpace
+      as={as}
+      className={classes('space', className)}
       css={{
         flexDirection: direction,
         gap: spacing(gap),
@@ -82,7 +47,7 @@ export const Space = ({
       align={align}
       wrap={wrap}>
       {children}
-    </SpaceWrapper>
+    </StyledSpace>
   );
 };
 

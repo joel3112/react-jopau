@@ -2,23 +2,9 @@ const { template } = require('react-docgen-renderer-template');
 const templateCreator = template({});
 
 const templateObject = templateCreator`${({ context }) => `
-import { ReactNode } from 'react';
-import classes from 'classnames';
-import { ElementHTML } from '../../../../types';
-import { ${context.pascalName}Wrapper } from './${context.name}.styled';
-
-type ${context.pascalName}Props = ElementHTML & {
-  /**
-  * Defines the children of the component.
-  */
-  children?: ReactNode;
-  /**
-  * Title of the component.
-  */
-  title?: string;
-} & typeof defaultProps;
-
-const defaultProps = {};
+import { classes } from '../../../utils/system';
+import { ${context.pascalName}Props, defaultProps } from './${context.name}-props';
+import { Styled${context.pascalName} } from './${context.name}.styled';
 
 /**
   * Description component
@@ -26,7 +12,7 @@ const defaultProps = {};
   * @param   {${context.pascalName}Props} props - Props injected to the component.
   * @returns {JSX.Element} Rendered component.
   *
-  * @imports import { ${context.pascalName} } from '@react-jopau/components/ui/${context.type}';
+  * @imports import { ${context.pascalName} } from '@react-jopau/components/ui';
   * @example
   * <${context.pascalName} title="Title">
   *    <div>Content</div>
@@ -39,14 +25,14 @@ export const ${context.pascalName} = ({
   title
 }: ${context.pascalName}Props) => {
   return (
-    <${context.pascalName}Wrapper
-      className={classes('${context.name}-wrapper', className)}
+    <Styled${context.pascalName}
+      className={classes('${context.name}', className)}
       css={{
         ...style
       }}>
       <h2>{title}</h2>
       {children}
-    </${context.pascalName}Wrapper>
+    </Styled${context.pascalName}>
   );
 };
 

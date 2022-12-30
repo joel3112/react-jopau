@@ -1,0 +1,59 @@
+import {
+  SBDescription,
+  SBPureArgsTable,
+  SBSubTitle,
+  SBTitle
+} from '@react-jopau/styles/components';
+
+<SBTitle>useEventListener</SBTitle>
+
+<SBDescription>
+  Listen to a window event on a specific element and execute a callback.
+</SBDescription>
+
+```tsx dark
+import { useEventListener } from '@react-jopau/hooks';
+```
+
+<SBSubTitle>Examples</SBSubTitle>
+
+```tsx dark
+const onScroll = (event) => console.log('scroll', event);
+
+useEventListener('scroll', onScroll);
+```
+
+```tsx dark
+// With ref element to listen to
+const buttonRef = useRef<HTMLButtonElement>(null);
+const onClick = (event) => console.log('click', event);
+
+useEventListener('click', onClick, buttonRef);
+
+return <button ref={buttonRef}>Click me</button>;
+```
+
+<SBPureArgsTable
+  heading="Params"
+  rows={{
+    element: {
+      name: 'element',
+      description: 'Element to listen to',
+      required: false,
+      type: 'React.RefObject',
+      defaultValue: 'window'
+    },
+    eventName: {
+      name: 'eventName',
+      description: 'Event name to listen to',
+      required: true,
+      type: 'string'
+    },
+    handler: {
+      name: 'handler',
+      description: 'Handler to call when the event is triggered',
+      required: true,
+      type: '(event: Event) => void'
+    }
+  }}
+/>

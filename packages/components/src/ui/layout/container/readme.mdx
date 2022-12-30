@@ -1,5 +1,4 @@
-import { ArgsTable } from '@storybook/addon-docs';
-import { SBDescription, SBStories, SBSubTitle, SBTitle } from '@react-jopau/styles/components';
+import { SBArgsTable, SBDescription, SBStories, SBTitle } from '@react-jopau/styles/components';
 import { Container } from './container';
 
 <SBTitle>Container</SBTitle>
@@ -9,30 +8,17 @@ import { Container } from './container';
 </SBDescription>
 
 ```jsx dark
-import { Container } from '@react-jopau/components/ui/layout';
+import { Container } from '@react-jopau/components/ui';
 ```
 
-<SBStories.Item id="components-layout-container--default" canvasProps={{ withToolbar: true }} />
+<SBStories.Default id="components-layout-container--default" />
 
-<SBSubTitle>Properties</SBSubTitle>
-
-<ArgsTable of={Container} />
-
-<SBSubTitle>Stories</SBSubTitle>
+<SBArgsTable component={Container} />
 
 <SBStories>
-<SBStories.Item label="Default" id="components-layout-container--default" />
+<SBStories.Item label="Gap" id="components-layout-container--gap" />
 
-<SBStories.Item label="Gap Unique" id="components-layout-container--gap-unique" />
-
-<SBStories.Item label="Gap Multiple" id="components-layout-container--gap-multiple" />
-
-<SBStories.Item label="Max Width Number" id="components-layout-container--max-width-number" />
-
-<SBStories.Item
-  label="Max Width Breakpoint"
-  id="components-layout-container--max-width-breakpoint"
-/>
+<SBStories.Item label="Max Width" id="components-layout-container--max-width" />
 
 <SBStories.Item label="Centered" id="components-layout-container--centered" />
 </SBStories>

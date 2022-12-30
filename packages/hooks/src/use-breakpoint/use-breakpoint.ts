@@ -1,10 +1,6 @@
 import { useEffect, useState } from 'react';
-import {
-  Breakpoint,
-  BreakpointsHelper,
-  BreakpointsRules,
-  createBreakpoints
-} from '@react-jopau/styles/breakpoint';
+import type { Breakpoint, BreakpointsRules } from '@react-jopau/styles/types';
+import { BreakpointsHelper, createBreakpoints } from '@react-jopau/styles/utils';
 
 /**
  * @typedef  {Object} UseBreakpoint
@@ -18,7 +14,7 @@ import {
 /**
  * Get current breakpoint key and boolean values for each breakpoint.
  *
- * @param   {Object} [rules] - Custom breakpoints rules
+ * @param   {Object} [rules] - Custom breakpoints rules. This rules will be merged with the default ones.
  * @param   {number} [rules.xs] - Extra small breakpoint
  * @param   {number} [rules.sm] - Small breakpoint size
  * @param   {number} [rules.md] - Medium breakpoint size

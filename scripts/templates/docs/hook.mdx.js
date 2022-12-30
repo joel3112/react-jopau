@@ -8,8 +8,9 @@ const prop =
     get(context, key);
 const componentName = prop('componentName');
 
-const generatePropsTable = (props, noDefaults) => {
-  return `<SBArgsTable 
+const generatePropsTable = (heading, props, noDefaults) => {
+  return `<SBPureArgsTable 
+      heading="${heading}"
       ${noDefaults ? 'noDefaults' : ''}
       rows={{
         ${Object.keys(props).map((key) => {
@@ -29,7 +30,7 @@ const generatePropsTable = (props, noDefaults) => {
 
 const templateCreator = template({});
 
-const templateObject = templateCreator`import { SBArgsTable, SBDescription, SBSubTitle, SBTitle } from '@react-jopau/styles/components';
+const templateObject = templateCreator`import { SBDescription, SBPureArgsTable, SBSubTitle, SBTitle } from '@react-jopau/styles/components';
 
 <SBTitle>${componentName}</SBTitle>
 
@@ -42,6 +43,7 @@ ${prop('imports')}
 ${({ context }) => {
   let examples = '';
   if (context.examples && context.examples.length > 0) {
+    examples += `<SBSubTitle>Examples</SBSubTitle>`;
     context.examples.forEach((example) => {
       examples += `${os.EOL}${os.EOL}\`\`\`tsx dark${os.EOL}${example}${os.EOL}\`\`\``;
     });
@@ -53,8 +55,7 @@ ${({ context }) => {
 ${({ context }) => {
   let params = '';
   if (context.params && Object.keys(context.params).length > 0) {
-    params += `<SBSubTitle>Params</SBSubTitle>`;
-    params += os.EOL + os.EOL + generatePropsTable(context.params);
+    params += os.EOL + os.EOL + generatePropsTable('Params', context.params);
   }
 
   return params;
@@ -63,8 +64,7 @@ ${({ context }) => {
 ${({ context }) => {
   let returns = '';
   if (context.returns && Object.keys(context.returns).length > 0) {
-    returns += `<SBSubTitle>Returns</SBSubTitle>`;
-    returns += os.EOL + os.EOL + generatePropsTable(context.returns, true);
+    returns += os.EOL + os.EOL + generatePropsTable('Returns', context.returns, true);
   }
 
   return returns;

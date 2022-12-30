@@ -1,66 +1,71 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { SBTextSeparator } from '@react-jopau/styles/components';
+import { prepareArgTypes, prepareParameters } from '@react-jopau/styles/utils';
+import { Space } from '../../layout';
 import { Text } from './text';
 import docs from './readme.mdx';
 
 export default {
   title: 'Typography/Text',
   component: Text,
-  parameters: {
-    docs: {
-      page: docs
-    }
-  },
+  parameters: prepareParameters(docs),
   args: {
     children: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
     as: 'p',
-    color: 'default',
+    color: 'inherit',
     size: 'md'
-  }
+  },
+  argTypes: prepareArgTypes(Text)
 } as ComponentMeta<typeof Text>;
 
 const Template: ComponentStory<typeof Text> = (args) => {
   return <Text {...args} />;
 };
 
+export const Docs = Template.bind({});
+
 export const Default = Template.bind({});
+Default.storyName = 'Playground';
+Default.parameters = { viewMode: 'story' };
 
-export const Colors = () => {
-  return (
-    <>
-      <Text color="default">Default</Text>
-      <Text color="primary">Primary</Text>
-      <Text color="secondary">Secondary</Text>
-      <Text color="disabled">Disabled</Text>
-      <Text color="info">Info</Text>
-      <Text color="error">Error</Text>
-      <Text color="success">Success</Text>
-      <Text color="warning">Warning</Text>
-    </>
-  );
-};
+export const As = () => (
+  <Space direction="column" gap={10}>
+    <SBTextSeparator>p</SBTextSeparator>
+    <Text as="p" className="bg-gray-100">
+      Lorem ipsum dolor sit amet
+    </Text>
+    <SBTextSeparator>span</SBTextSeparator>
+    <Text as="span" className="bg-gray-100">
+      Lorem ipsum dolor sit amet
+    </Text>
+  </Space>
+);
 
-export const Sizes = () => {
-  return (
-    <>
-      <Text size="xs">Text xs: Lorem ipsum dolor sit amet</Text>
-      <Text size="sm">Text sm: Lorem ipsum dolor sit amet</Text>
-      <Text size="md">Text md: Lorem ipsum dolor sit amet</Text>
-      <Text size="lg">Text lg: Lorem ipsum dolor sit amet</Text>
-      <Text size="xl">Text xl: Lorem ipsum dolor sit amet</Text>
-      <Text size="2xl">Text 2xl: Lorem ipsum dolor sit amet</Text>
-      <Text size="3xl">Text 3xl: Lorem ipsum dolor sit amet</Text>
-    </>
-  );
-};
+export const Sizes = () => (
+  <>
+    <Text size="xs">Text xs: Lorem ipsum dolor sit amet</Text>
+    <Text size="sm">Text sm: Lorem ipsum dolor sit amet</Text>
+    <Text size="md">Text md: Lorem ipsum dolor sit amet</Text>
+    <Text size="lg">Text lg: Lorem ipsum dolor sit amet</Text>
+    <Text size="xl">Text xl: Lorem ipsum dolor sit amet</Text>
+    <Text size="2xl">Text 2xl: Lorem ipsum dolor sit amet</Text>
+    <Text size="3xl">Text 3xl: Lorem ipsum dolor sit amet</Text>
+  </>
+);
 
-export const Tags = () => {
-  return (
-    <>
-      <Text as="p">p. Lorem ipsum dolor sit amet</Text>
-      <Text as="span">span. Lorem ipsum dolor sit amet</Text>
-    </>
-  );
-};
+export const Colors = () => (
+  <>
+    <Text color="inherit">Inherit</Text>
+    <Text color="primary">Primary</Text>
+    <Text color="secondary">Secondary</Text>
+    <Text color="tertiary">Tertiary</Text>
+    <Text color="disabled">Disabled</Text>
+    <Text color="info">Info</Text>
+    <Text color="error">Error</Text>
+    <Text color="success">Success</Text>
+    <Text color="warning">Warning</Text>
+  </>
+);
 
 export const MaxLines = Template.bind({});
 MaxLines.args = {

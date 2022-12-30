@@ -1,32 +1,9 @@
-import { ReactNode, useContext } from 'react';
-import classes from 'classnames';
-import { BreakpointsRules } from '@react-jopau/styles/breakpoint';
+import { useContext } from 'react';
+import type { BreakpointsRules } from '@react-jopau/styles/types';
+import { classes } from '../../../utils/system';
 import { ThemeContext } from '../../../contexts';
-import { ElementHTML } from '../../../../types';
-import { ContainerWrapper } from './container.styled';
-
-type ContainerProps = ElementHTML & {
-  /**
-   * Defines the children of the component.
-   */
-  children: ReactNode;
-  /**
-   * Maximum width of the container or breakpoint.
-   */
-  maxWidth?: number | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-  /**
-   * Defines the gap horizontally and vertically in the container.
-   */
-  gap?: number | Array<number>;
-  /**
-   * Centered horizontally the container.
-   */
-  centered?: boolean;
-} & typeof defaultProps;
-
-const defaultProps = {
-  centered: false
-};
+import { ContainerProps, defaultProps } from './container-props';
+import { StyledContainer } from './container.styled';
 
 const spacing = (gap?: number | Array<number>): string => {
   if (Array.isArray(gap) && gap.length === 2) {
@@ -56,7 +33,7 @@ const computeMaxWidth = (
  * @param   {ContainerProps} props - Props injected to the component.
  * @returns {JSX.Element} Rendered component.
  *
- * @imports import { Container } from '@react-jopau/components/ui/layout';
+ * @imports import { Container } from '@react-jopau/components/ui';
  * @example
  * <Container gap={10} maxWidth={1000} centered>
  *    <p>lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
@@ -73,8 +50,8 @@ export const Container = ({
   const { config } = useContext(ThemeContext);
 
   return (
-    <ContainerWrapper
-      className={classes('container-wrapper', className)}
+    <StyledContainer
+      className={classes('container', className)}
       css={{
         ...(gap && { padding: spacing(gap) }),
         maxWidth: `${computeMaxWidth(config?.media, maxWidth)}px !important`,
@@ -82,7 +59,7 @@ export const Container = ({
       }}
       centered={centered}>
       {children}
-    </ContainerWrapper>
+    </StyledContainer>
   );
 };
 

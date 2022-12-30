@@ -2,7 +2,6 @@
   "name": "@react-jopau/app-example",
   "private": true,
   "version": "0.14.0",
-  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -21,6 +20,7 @@
     "@types/react-dom": "^18.0.8",
     "@vitejs/plugin-react": "^2.2.0",
     "autoprefixer": "^10.4.13",
+    "path": "^0.12.7",
     "postcss": "^8.4.19",
     "tailwindcss": "^3.2.3",
     "typescript": "^4.6.4",

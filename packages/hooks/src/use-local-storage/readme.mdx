@@ -1,4 +1,9 @@
-import { SBArgsTable, SBDescription, SBSubTitle, SBTitle } from '@react-jopau/styles/components';
+import {
+  SBDescription,
+  SBPureArgsTable,
+  SBSubTitle,
+  SBTitle
+} from '@react-jopau/styles/components';
 
 <SBTitle>useLocalStorage</SBTitle>
 
@@ -8,6 +13,8 @@ import { SBArgsTable, SBDescription, SBSubTitle, SBTitle } from '@react-jopau/st
 import { useLocalStorage } from '@react-jopau/hooks';
 ```
 
+<SBSubTitle>Examples</SBSubTitle>
+
 ```tsx dark
 const [darkMode, setDarkMode] = useLocalStorage<boolean>('key', true);
 
@@ -16,9 +23,8 @@ const handleClick = () => setDarkMode((prev) => !prev);
 return <button onClick={handleClick}>{darkMode ? 'Dark mode' : 'Light mode'}</button>;
 ```
 
-<SBSubTitle>Params</SBSubTitle>
-
-<SBArgsTable
+<SBPureArgsTable
+  heading="Params"
   rows={{
     initialValue: {
       name: 'initialValue',
@@ -35,9 +41,8 @@ return <button onClick={handleClick}>{darkMode ? 'Dark mode' : 'Light mode'}</bu
   }}
 />
 
-<SBSubTitle>Returns</SBSubTitle>
-
-<SBArgsTable
+<SBPureArgsTable
+  heading="Returns"
   noDefaults
   rows={{
     'result[0]': {

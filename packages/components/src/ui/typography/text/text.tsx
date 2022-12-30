@@ -1,35 +1,6 @@
-import classes from 'classnames';
-import { Color, ElementHTML } from '../../../../types';
-import { TextWrapper } from './text.styled';
-
-type TextProps = ElementHTML & {
-  /**
-   * Defines the children of the component.
-   */
-  children: string;
-  /**
-   * Defines the tag of the component.
-   */
-  as?: 'p' | 'span';
-  /**
-   * Defines the color of the text.
-   */
-  color?: Color;
-  /**
-   * Defines the size of the component.
-   */
-  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl';
-  /**
-   * Defines the line clamp of the component.
-   */
-  maxLines?: number;
-} & typeof defaultProps;
-
-const defaultProps = {
-  as: 'p',
-  color: 'default',
-  size: 'md'
-};
+import { classes } from '../../../utils/system';
+import { defaultProps, TextProps } from './text-props';
+import { StyledText } from './text.styled';
 
 /**
  * Text component is the used to render text and paragraphs within an interface using well-defined typographic styles.
@@ -37,24 +8,23 @@ const defaultProps = {
  * @param   {TextProps} props - Props injected to the component.
  * @returns {JSX.Element} Rendered component.
  *
- * @imports import { Text } from '@react-jopau/components/ui/typography';
+ * @imports import { Text } from '@react-jopau/components/ui';
  * @example
  * <Text size="md" as="span">Content</Text>
  */
 export const Text = ({ className, style, children, color, as, size, maxLines }: TextProps) => {
-  const Wrapper = TextWrapper[as];
-
   return (
-    <Wrapper
-      className={classes('text-wrapper', className)}
+    <StyledText
+      as={as}
+      className={classes('text', className)}
       css={{
-        ...style,
-        lineClamp: maxLines
+        ...(maxLines && { lineClamp: maxLines }),
+        ...style
       }}
       color={color}
       size={size}>
       {children}
-    </Wrapper>
+    </StyledText>
   );
 };
 

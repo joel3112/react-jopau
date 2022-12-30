@@ -1,7 +1,5 @@
 import { Meta } from '@storybook/addon-docs';
 import { SBCard, SBDescription, SBSubTitle, SBTitle } from '@react-jopau/styles/components';
-import { ThemeProvider } from '@react-jopau/components/contexts';
-import { getThemeStored } from '@react-jopau/styles/theme';
 
 <Meta title="About" />
 
@@ -12,7 +10,13 @@ import { getThemeStored } from '@react-jopau/styles/theme';
   </a>
 </p>
 
-<SBDescription>Common components for React projects</SBDescription>
+<SBDescription>
+  Common components for React projects. The components are based on the&nbsp;
+  <a href="https://nextui.org/docs/guide/getting-started" target="_blank" rel="noreferrer">
+    NextUI
+  </a>
+  &nbsp;library.
+</SBDescription>
 
 ```shell dark
 # yarn
@@ -24,11 +28,33 @@ npm install @react-jopau/components
 
 <SBSubTitle>List of components</SBSubTitle>
 
-<ThemeProvider config={getThemeStored()}>
-  <div className="!my-10 grid grid-cols-3 gap-5">
+<div className="!my-10 grid grid-cols-3 gap-8">
 
 [//]: # 'AUTO-GENERATED-CONTENT:START'
 
+<SBCard title="Button" kind="components-forms-button">
+  Button component is a clickable element that is used to trigger an action or event, such as
+  submitting a form, opening a dialog, canceling an action, or performing a delete operation.
+</SBCard>
+<SBCard title="Checkbox" kind="components-forms-checkbox">
+  Checkbox allows users to select one or more options from a set.
+</SBCard>
+<SBCard title="Input" kind="components-forms-input">
+  Input component is a component that is used to get user input in a text field.
+</SBCard>
+<SBCard title="Radio" kind="components-forms-radio">
+  Radios allow users to select a single option from a list of mutually exclusive options.
+</SBCard>
+<SBCard title="Select" kind="components-forms-select">
+  Select component is a component that allows users pick a value from predefined options.
+</SBCard>
+<SBCard title="Switch" kind="components-forms-switch">
+  Switch component is used as an alternative for the Checkbox component. You can switch between
+  enabled or disabled states.
+</SBCard>
+<SBCard title="Textarea" kind="components-forms-textarea">
+  Textarea component is a multi-line Input which allows you to write large texts.
+</SBCard>
 <SBCard title="Container" kind="components-layout-container">
   Containers are used to constrain a content's width to the current breakpoint.
 </SBCard>
@@ -49,5 +75,4 @@ npm install @react-jopau/components
 
 [//]: # 'AUTO-GENERATED-CONTENT:END'
 
-  </div>
-</ThemeProvider>
+</div>

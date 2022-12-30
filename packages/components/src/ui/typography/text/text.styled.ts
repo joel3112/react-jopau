@@ -1,68 +1,35 @@
-import { styledTheme, utilsTheme } from '../../../index';
+import { styledTheme } from '../../../index';
 
-const composers = {
+export const StyledText = styledTheme('p', {
   display: 'block',
+  fontWeight: '$fontWeights$normal',
+  letterSpacing: '$letterSpacings$normal',
+  color: 'inherit',
+
   variants: {
+    as: {
+      span: { display: 'inline-block', width: '$space$max' },
+      p: {}
+    },
     color: {
-      default: {
-        color: '$text'
-      },
-      primary: {
-        color: '$primary'
-      },
-      secondary: {
-        color: '$secondary'
-      },
-      disabled: {
-        color: '$gray500'
-      },
-      info: {
-        color: '$blue500'
-      },
-      success: {
-        color: '$green500'
-      },
-      warning: {
-        color: '$yellow500'
-      },
-      error: {
-        color: '$red500'
-      }
+      inherit: { color: 'inherit' },
+      primary: { color: '$colors$primary500' },
+      secondary: { color: '$colors$secondary500' },
+      tertiary: { color: '$colors$tertiary500' },
+      disabled: { color: '$colors$gray500' },
+      info: { color: '$colors$blue500' },
+      success: { color: '$colors$green500' },
+      warning: { color: '$colors$yellow500' },
+      error: { color: '$colors$red500' }
     },
     size: {
-      xs: {
-        fontSize: utilsTheme.rem(12),
-        lineHeight: 1.5
-      },
-      sm: {
-        fontSize: utilsTheme.rem(14),
-        lineHeight: 1.5
-      },
-      md: {
-        fontSize: utilsTheme.rem(16),
-        lineHeight: 1.75
-      },
-      lg: {
-        fontSize: utilsTheme.rem(18),
-        lineHeight: 1.75
-      },
-      xl: {
-        fontSize: utilsTheme.rem(20),
-        lineHeight: 2
-      },
-      '2xl': {
-        fontSize: utilsTheme.rem(24),
-        lineHeight: 2
-      },
-      '3xl': {
-        fontSize: utilsTheme.rem(30),
-        lineHeight: 2
-      }
+      xs: { fontSize: '$fontSizes$xs', lineHeight: '$lineHeights$xs' },
+      sm: { fontSize: '$fontSizes$sm', lineHeight: '$lineHeights$sm' },
+      md: { fontSize: '$fontSizes$md', lineHeight: '$lineHeights$md' },
+      lg: { fontSize: '$fontSizes$lg', lineHeight: '$lineHeights$lg' },
+      xl: { fontSize: '$fontSizes$xl', lineHeight: '$lineHeights$xl' },
+      '2xl': { fontSize: '$fontSizes$2xl', lineHeight: '$lineHeights$2xl' },
+      '3xl': { fontSize: '$fontSizes$3xl', lineHeight: '$lineHeights$3xl' }
     }
   }
-};
-
-export const TextWrapper = {
-  span: styledTheme('span', { ...composers, width: 'max-content' }),
-  p: styledTheme('p', composers)
-};
+});

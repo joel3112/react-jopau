@@ -1,0 +1,52 @@
+import {
+  SBDescription,
+  SBPureArgsTable,
+  SBSubTitle,
+  SBTitle
+} from '@react-jopau/styles/components';
+
+<SBTitle>useTheme</SBTitle>
+
+<SBDescription>
+  Get the current theme config and dark mode. For correct functionality, it must be used inside a
+  ThemeProvider.
+</SBDescription>
+
+```tsx dark
+import { useTheme } from '@react-jopau/hooks';
+```
+
+<SBSubTitle>Examples</SBSubTitle>
+
+```tsx dark
+const { darkMode, onToggle } = useTheme();
+
+console.log(darkMode); // true | false
+
+return <button onClick={onToggle}>Toggle theme</button>;
+```
+
+<SBPureArgsTable
+  heading="Returns"
+  noDefaults
+  rows={{
+    'result.config': {
+      name: 'result.config',
+      description: 'The current theme config',
+      required: false,
+      type: 'Object'
+    },
+    'result.darkMode': {
+      name: 'result.darkMode',
+      description: 'If dark mode is enabled',
+      required: false,
+      type: 'boolean'
+    },
+    'result.onToggle': {
+      name: 'result.onToggle',
+      description: 'Toggle dark mode',
+      required: false,
+      type: '() => void'
+    }
+  }}
+/>
