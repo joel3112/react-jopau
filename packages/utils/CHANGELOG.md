@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.15.0](https://github.com/joel3112/react-jopau/compare/v0.14.0...v0.15.0) (2022-12-30)
+
+### ⚠ BREAKING CHANGES
+
+- **styles:** - Folder theme move to utils
+
+* Folder breakpoint move to utils
+* Add barrel
+
+### 🛠 Refactors
+
+- **styles:** add utils folder ([8f14262](https://github.com/joel3112/react-jopau/commit/8f142629519bfdb54415556b0755a04a7dc38261))
+
+### 🚀 New Features
+
+- **components:** add input password component ([2386282](https://github.com/joel3112/react-jopau/commit/2386282130dcd1e5820f5a7139ba86ede306a496))
+- **utils:** add sortByPriority collection util ([9229a13](https://github.com/joel3112/react-jopau/commit/9229a1370792c161c10871ff8d72c557b875e392))
+
 ## [0.14.0](https://github.com/joel3112/react-jopau/compare/v0.13.1...v0.14.0) (2022-11-18)
 
 **Note:** Version bump only for package @react-jopau/utils
