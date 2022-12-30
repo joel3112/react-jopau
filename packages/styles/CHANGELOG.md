@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.16.0](https://github.com/joel3112/react-jopau/compare/v0.15.0...v0.16.0) (2022-12-30)
+
+### 🐛 Bug Fixes
+
+- update dependencies ([3e24abc](https://github.com/joel3112/react-jopau/commit/3e24abc7324364c330051b2a328cc1002bf235d2))
+
 ## [0.15.0](https://github.com/joel3112/react-jopau/compare/v0.14.0...v0.15.0) (2022-12-30)
 
 ### ⚠ BREAKING CHANGES
