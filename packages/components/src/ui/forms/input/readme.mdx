@@ -1,4 +1,10 @@
-import { SBArgsTable, SBDescription, SBStories, SBTitle } from '@react-jopau/styles/components';
+import {
+  SBArgsTable,
+  SbSubComponents,
+  SBDescription,
+  SBStories,
+  SBTitle
+} from '@react-jopau/shared/stories';
 import { Input } from './input';
 
 <SBTitle>Input</SBTitle>
@@ -6,6 +12,10 @@ import { Input } from './input';
 <SBDescription>
   Input component is a component that is used to get user input in a text field.
 </SBDescription>
+
+<SbSubComponents>
+  <SbSubComponents.Item label="Input.Password" id="components-forms-input--password-docs" />
+</SbSubComponents>
 
 ```jsx dark
 import { Input } from '@react-jopau/components/ui';
@@ -37,6 +47,8 @@ import { Input } from '@react-jopau/components/ui';
 <SBStories.Item label="Shape" id="components-forms-input--shape" />
 
 <SBStories.Item label="Hot Key" id="components-forms-input--hot-key" />
+
+<SBStories.Item label="Required" id="components-forms-input--required" />
 
 <SBStories.Item label="Disabled" id="components-forms-input--disabled" />
 

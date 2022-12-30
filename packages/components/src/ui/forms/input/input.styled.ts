@@ -250,7 +250,7 @@ export const StyledInputWrapper = styledTheme('div', {
     borderBottomRightRadius: '$$inputControlBorderRadius'
   },
 
-  [`${NextUIEl.TEXTAREA}`]: { color: 'inherit' },
+  [`${NextUIEl.TEXTAREA}`]: { color: 'inherit', borderColor: 'transparent', boxShadow: 'none' },
   [`${NextUIEl.TEXTAREA}::placeholder`]: { color: '$colors$placeholder' },
 
   variants: {
@@ -389,6 +389,20 @@ export const StyledInputWrapper = styledTheme('div', {
         width: '$space$full',
 
         [`${NextUIEl.INPUT_CONTAINER}`]: { width: '$space$full' }
+      }
+    },
+    required: {
+      true: {
+        [`${NextUIEl.LABEL}::after`]: {
+          content: '*',
+          position: 'absolute',
+          top: 2,
+          transformOrigin: 'top left',
+          color: '$colors$red500',
+          marginLeft: '$space$1',
+          fontSize: 'calc($$inputLabelFontSize * 1.5)',
+          lineHeight: '$lineHeights$xs'
+        }
       }
     }
   },

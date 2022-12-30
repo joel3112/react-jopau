@@ -28,9 +28,37 @@ export const StyledCheckboxGroup = styledTheme(
     display: 'inline-block',
     width: '$space$fit',
 
+    [`${NextUIEl.CHECKBOX_GROUP}-label`]: {
+      fontSize: 'calc($$checkboxLabelFontSize * 0.8)',
+      position: 'relative'
+    },
     [`${NextUIEl.CHECKBOX_GROUP}-items[class*="isRow-true"]`]: {
       flexWrap: 'wrap',
       gap: '$space$4 0'
+    },
+
+    variants: {
+      size: {
+        xs: { $$checkboxLabelFontSize: '$space$7', $$checkboxAsterikFontSize: '$fontSizes$xs' },
+        sm: { $$checkboxLabelFontSize: '$space$8', $$checkboxAsterikFontSize: '$fontSizes$xs' },
+        md: { $$checkboxLabelFontSize: '$space$9', $$checkboxAsterikFontSize: '$fontSizes$sm' },
+        lg: { $$checkboxLabelFontSize: '$space$10', $$checkboxAsterikFontSize: '$fontSizes$md' },
+        xl: { $$checkboxLabelFontSize: '$space$11', $$checkboxAsterikFontSize: '$fontSizes$lg' }
+      },
+      required: {
+        true: {
+          [`${NextUIEl.CHECKBOX_GROUP}-label::after`]: {
+            content: '*',
+            position: 'absolute',
+            top: 3,
+            transformOrigin: 'top left',
+            color: '$colors$red500',
+            marginLeft: '$space$1',
+            fontSize: 'calc($$checkboxAsterikFontSize * 1.5)',
+            lineHeight: '$lineHeights$xs'
+          }
+        }
+      }
     }
   }
 );

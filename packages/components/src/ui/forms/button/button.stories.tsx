@@ -1,8 +1,12 @@
 import { useRef } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { MdAdd } from 'react-icons/md';
-import { SBTextSeparator, SBSelectorContainer } from '@react-jopau/styles/components';
-import { prepareArgTypes, prepareParameters } from '@react-jopau/styles/utils';
+import {
+  prepareArgTypes,
+  prepareParameters,
+  SBTextSeparator,
+  SBSelectorContainer
+} from '@react-jopau/shared/stories';
 import { Space } from '../../layout';
 import { Button } from './button';
 import docs from './readme.mdx';
@@ -20,6 +24,7 @@ export default {
     iconPosition: 'left',
     shape: 'default',
     disabled: false,
+    auto: false,
     fullWidth: false
   },
   argTypes: prepareArgTypes(Button, {

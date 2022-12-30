@@ -30,7 +30,7 @@ const generatePropsTable = (heading, props, noDefaults) => {
 
 const templateCreator = template({});
 
-const templateObject = templateCreator`import { SBDescription, SBPureArgsTable, SBSubTitle, SBTitle } from '@react-jopau/styles/components';
+const templateObject = templateCreator`import { SBDescription, SBPureArgsTable, SBSubTitle, SBTitle } from '@react-jopau/shared/stories';
 
 <SBTitle>${componentName}</SBTitle>
 

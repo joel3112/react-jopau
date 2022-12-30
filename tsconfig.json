@@ -18,6 +18,7 @@
     "paths": {
       "@apps/example": ["apps/example/src/App.tsx"],
       "@react-jopau/utils": ["packages/utils/src"],
+      "@react-jopau/shared/*": ["packages/shared/src/*"],
       "@react-jopau/styles/*": ["packages/styles/src/*"],
       "@react-jopau/hooks": ["packages/hooks/src"],
       "@react-jopau/components/*": ["packages/components/src/*"]

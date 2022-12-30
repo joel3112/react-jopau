@@ -1,7 +1,6 @@
 import { FormEvent, useState } from 'react';
 import { Button, Container, Input, Space, Text } from '@react-jopau/components/ui';
-import { SBCode, SBJSONPreview } from '@react-jopau/styles/components';
-import { prepareParameters } from '@react-jopau/styles/utils';
+import { prepareParameters, SBCode, SBJSONPreview } from '@react-jopau/shared/stories';
 import { useFetch } from './use-fetch';
 import docs from './readme.mdx';
 

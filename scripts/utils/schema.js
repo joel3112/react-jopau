@@ -32,6 +32,39 @@ const getPackageName = (componentPath) => {
   return componentPath.replace(/packages\/(.*)\/src\/(.*)/g, '$1');
 };
 
+const getSubComponents = (componentPath, filesWithSchema) => {
+  const { dir } = path.parse(componentPath);
+  const schemaProps = filesWithSchema.find((f) => f.componentPath === componentPath).jsdocSchema;
+  const ocurrences = filesWithSchema.filter((f) => f.componentPath.startsWith(dir));
+
+  if (
+    ocurrences.length > 1 &&
+    path.join(componentPath, '../../..') === 'packages/components/src/ui'
+  ) {
+    const [_, ...subs] = ocurrences;
+    return subs.map((f) => {
+      const { storiesPrefixId, parentName } = getComponentParsed(
+        f.componentPath,
+        f.jsdocSchema,
+        schemaProps.name
+      );
+      const displayName = getSubComponentName(f.jsdocSchema.name, schemaProps.name);
+
+      return {
+        path: f.componentPath,
+        displayName,
+        storyDoc: `${storiesPrefixId}--${kebabCase(displayName.replace(parentName, ''))}-docs`
+      };
+    });
+  }
+
+  return [];
+};
+
+const getSubComponentName = (displayName, parentName) => {
+  return `${parentName}.${displayName.replace(parentName, '')}`;
+};
+
 const getComponentParsed = (componentPath, schemaProps, parentName) => {
   const isSubComponent = !!parentName;
   const packageName = getPackageName(componentPath);
@@ -57,9 +90,7 @@ const getComponentParsed = (componentPath, schemaProps, parentName) => {
       `.stories${path.parse(componentPath).ext}`
     ),
     parentName,
-    displayName: !isSubComponent
-      ? displayName
-      : `${parentName}.${displayName.replace(parentName, '')}`,
+    displayName: !isSubComponent ? displayName : getSubComponentName(displayName, parentName),
     description: parseDescription(get(schemaProps, 'description')),
     fileName,
     packageName,
@@ -167,6 +198,7 @@ const writeIntroduction = (introPath, content, template) => {
 
 module.exports = {
   getComponentParsed,
+  getSubComponents,
   getCustomTag,
   getStories,
   parseDescription,

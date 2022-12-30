@@ -2,7 +2,7 @@ import { ReactElement } from 'react';
 import { FormControl } from '../../../../../types';
 import { SelectOptionProps } from '../option/select-option-props';
 
-export type SelectOptionGroupProps = Pick<FormControl, 'label' | 'disabled'> & {
+export type SelectGroupProps = Pick<FormControl, 'label' | 'disabled'> & {
   /**
    * Defines the children of the component.
    */

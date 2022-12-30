@@ -83,7 +83,8 @@ export const Input = withFormControl<InputProps, HTMLInputElement>(
             shape={shape}
             hotKey={!!hotKey}
             fullWidth={!!fullWidth}
-            disabled={!!disabled}>
+            disabled={!!disabled}
+            required={!!required}>
             {labelPlaceholder && <StyledLabelGap>&nbsp;</StyledLabelGap>}
             <StyledInput
               ref={inputRef}

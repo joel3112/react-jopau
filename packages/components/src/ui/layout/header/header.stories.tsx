@@ -1,6 +1,5 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { SBTextSeparator } from '@react-jopau/styles/components';
-import { prepareArgTypes, prepareParameters } from '@react-jopau/styles/utils';
+import { prepareArgTypes, prepareParameters, SBTextSeparator } from '@react-jopau/shared/stories';
 import { Space } from '../../layout';
 import { Header } from './header';
 import docs from './readme.mdx';

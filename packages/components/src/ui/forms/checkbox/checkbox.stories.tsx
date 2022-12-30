@@ -1,7 +1,11 @@
 import { useRef, useState } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { SBCode, SBTextSeparator } from '@react-jopau/styles/components';
-import { prepareArgTypes, prepareParameters } from '@react-jopau/styles/utils';
+import {
+  prepareArgTypes,
+  prepareParameters,
+  SBCode,
+  SBTextSeparator
+} from '@react-jopau/shared/stories';
 import { Space } from '../../layout';
 import { Checkbox } from './checkbox';
 import docs from './readme.mdx';

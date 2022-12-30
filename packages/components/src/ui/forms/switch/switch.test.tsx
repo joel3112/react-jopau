@@ -1,6 +1,6 @@
 /* eslint-disable testing-library/no-node-access,testing-library/no-container */
 import '@testing-library/jest-dom';
-import { render, waitFor } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import { Switch } from './switch';
 
 describe('Tests Switch component', () => {
@@ -8,6 +8,12 @@ describe('Tests Switch component', () => {
     const { container } = render(<Switch />);
 
     expect(container).toBeDefined();
+  });
+
+  test('renders children correctly', () => {
+    render(<Switch>Text</Switch>);
+
+    expect(screen.getByText('Text')).toBeInTheDocument();
   });
 
   test('disables correctly', () => {

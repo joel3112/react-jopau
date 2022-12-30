@@ -1,7 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { MdMic, MdOutlineDarkMode, MdOutlineLightMode } from 'react-icons/md';
-import { SBTextSeparator } from '@react-jopau/styles/components';
-import { prepareArgTypes, prepareParameters } from '@react-jopau/styles/utils';
+import { prepareArgTypes, prepareParameters, SBTextSeparator } from '@react-jopau/shared/stories';
 import { Space } from '../../layout';
 import { Switch } from './switch';
 import docs from './readme.mdx';
@@ -11,11 +10,11 @@ export default {
   component: Switch,
   parameters: prepareParameters(docs),
   args: {
+    children: '',
     name: 'switch-name',
     variant: 'default',
     size: 'md',
     color: 'primary',
-    label: '',
     defaultChecked: true,
     checked: true,
     disabled: false,
@@ -37,35 +36,73 @@ Default.parameters = { viewMode: 'story' };
 
 export const Sizes = () => (
   <Space direction="column" gap={10}>
-    <Switch defaultChecked size="xs" label="Label" />
-    <Switch defaultChecked size="sm" label="Label" />
-    <Switch defaultChecked size="md" label="Label" />
-    <Switch defaultChecked size="lg" label="Label" />
-    <Switch defaultChecked size="xl" label="Label" />
+    <Switch defaultChecked size="xs">
+      xs
+    </Switch>
+    <Switch defaultChecked size="sm">
+      sm
+    </Switch>
+    <Switch defaultChecked size="md">
+      md
+    </Switch>
+    <Switch defaultChecked size="lg">
+      lg
+    </Switch>
+    <Switch defaultChecked size="xl">
+      xl
+    </Switch>
   </Space>
 );
 
 export const Color = () => (
   <Space direction="column" gap={10}>
-    <Switch defaultChecked color="primary" label="Label" />
-    <Switch defaultChecked color="secondary" label="Label" />
-    <Switch defaultChecked color="tertiary" label="Label" />
-    <Switch defaultChecked color="info" label="Label" />
-    <Switch defaultChecked color="success" label="Label" />
-    <Switch defaultChecked color="error" label="Label" />
-    <Switch defaultChecked color="warning" label="Label" />
+    <Switch defaultChecked color="primary">
+      Primary
+    </Switch>
+    <Switch defaultChecked color="secondary">
+      Secondary
+    </Switch>
+    <Switch defaultChecked color="tertiary">
+      Tertiary
+    </Switch>
+    <Switch defaultChecked color="info">
+      Info
+    </Switch>
+    <Switch defaultChecked color="success">
+      Success
+    </Switch>
+    <Switch defaultChecked color="error">
+      Error
+    </Switch>
+    <Switch defaultChecked color="warning">
+      Warning
+    </Switch>
   </Space>
 );
 
 export const Status = () => (
   <Space direction="column" gap={10}>
-    <Switch defaultChecked status="primary" label="Label" />
-    <Switch defaultChecked status="secondary" label="Label" />
-    <Switch defaultChecked status="tertiary" label="Label" />
-    <Switch defaultChecked status="info" label="Label" />
-    <Switch defaultChecked status="success" label="Label" />
-    <Switch defaultChecked status="error" label="Label" />
-    <Switch defaultChecked status="warning" label="Label" />
+    <Switch defaultChecked status="primary">
+      Primary
+    </Switch>
+    <Switch defaultChecked status="secondary">
+      Secondary
+    </Switch>
+    <Switch defaultChecked status="tertiary">
+      Tertiary
+    </Switch>
+    <Switch defaultChecked status="info">
+      Info
+    </Switch>
+    <Switch defaultChecked status="success">
+      Success
+    </Switch>
+    <Switch defaultChecked status="error">
+      Error
+    </Switch>
+    <Switch defaultChecked status="warning">
+      Warning
+    </Switch>
   </Space>
 );
 

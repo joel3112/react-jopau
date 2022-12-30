@@ -1,4 +1,10 @@
-import { SBArgsTable, SBDescription, SBStories, SBTitle } from '@react-jopau/styles/components';
+import {
+  SBArgsTable,
+  SbSubComponents,
+  SBDescription,
+  SBStories,
+  SBTitle
+} from '@react-jopau/shared/stories';
 import { Radio } from './radio';
 
 <SBTitle>Radio</SBTitle>
@@ -6,6 +12,10 @@ import { Radio } from './radio';
 <SBDescription>
   Radios allow users to select a single option from a list of mutually exclusive options.
 </SBDescription>
+
+<SbSubComponents>
+  <SbSubComponents.Item label="Radio.Group" id="components-forms-radio--group-docs" />
+</SbSubComponents>
 
 ```jsx dark
 import { Radio } from '@react-jopau/components/ui';

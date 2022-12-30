@@ -11,6 +11,7 @@
     "jsx": "react-jsx",
     "paths": {
       "@react-jopau/utils": ["../utils/dist"],
+      "@react-jopau/shared/*": ["../shared/dist/*"],
       "@react-jopau/styles/*": ["../styles/dist/*"],
       "@react-jopau/components/*": ["../components/dist/*"]
     }

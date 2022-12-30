@@ -1,12 +1,15 @@
 import { useContext } from 'react';
 import { DocsContext, Story } from '@storybook/addon-docs';
-import { SbBreadcrumbs } from '/packages/styles/src/components';
-import { last } from '/packages/utils/src';
+import { SbBreadcrumbs } from '../../packages/shared/src/stories';
+import { last } from '../../packages/utils/src';
 
 // eslint-disable-next-line react/prop-types
 export const DocsPage = ({ children }) => {
-  const { kind } = useContext(DocsContext);
-  const [type, ...paths] = kind.split('/');
+  const { kind, name } = useContext(DocsContext);
+  const [type, ...paths] = kind ? kind.split('/') : [];
+
+  const subComponentName = name.replace(/\[(.*)\] (.*)/g, '$1');
+  const isSubComponent = subComponentName !== name;
 
   return (
     <>
@@ -20,7 +23,8 @@ export const DocsPage = ({ children }) => {
           items={[
             { label: 'Home', href: 'Introduction' },
             { label: type, href: `${type}/About` },
-            { label: last(paths) }
+            { label: last(paths), href: isSubComponent && `${type}/${paths.join('/')}` },
+            ...(isSubComponent ? [{ label: subComponentName }] : [])
           ]}
         />
       )}

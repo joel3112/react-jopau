@@ -10,8 +10,7 @@ import {
   Space,
   Switch
 } from '@react-jopau/components/ui';
-import { SBJSONPreview } from '@react-jopau/styles/components';
-import { prepareParameters } from '@react-jopau/styles/utils';
+import { prepareParameters, SBJSONPreview } from '@react-jopau/shared/stories';
 import { useForm } from './use-form';
 import docs from './readme.mdx';
 
@@ -132,7 +131,9 @@ export const Default = () => {
             <Radio value="phone">Phone</Radio>
             <Radio value="not">Don't contact me</Radio>
           </Radio.Group>
-          <Switch size="xs" label="I agree to the terms and conditions" {...control('terms')} />
+          <Switch size="xs" {...control('terms')}>
+            I agree to the terms and conditions
+          </Switch>
 
           <Space gap={10} className="mt-6">
             <Button auto variant="bordered" color="secondary" onClick={() => reset()}>

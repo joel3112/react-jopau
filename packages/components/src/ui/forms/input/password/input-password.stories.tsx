@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { VscEye, VscEyeClosed } from 'react-icons/vsc';
-import { prepareArgTypes, prepareParameters } from '@react-jopau/styles/utils';
+import { prepareArgTypes, prepareParameters } from '@react-jopau/shared/stories';
 import { Space } from '../../../layout';
 import { Input } from '../input';
 import docs from './readme.mdx';

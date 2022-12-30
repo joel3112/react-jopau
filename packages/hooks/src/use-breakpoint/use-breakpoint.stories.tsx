@@ -1,6 +1,5 @@
 import { Container, Space, Text } from '@react-jopau/components/ui';
-import { SBCode } from '@react-jopau/styles/components';
-import { prepareParameters } from '@react-jopau/styles/utils';
+import { prepareParameters, SBCode } from '@react-jopau/shared/stories';
 import { useBreakpoint } from './use-breakpoint';
 import docs from './readme.mdx';
 

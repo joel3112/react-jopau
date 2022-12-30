@@ -21,7 +21,12 @@ const templateStory = ({ label, id }) => {
 `;
 };
 
-const templateObject = templateCreator`import { SBArgsTable, SBDescription, SBStories, SBTitle } from '@react-jopau/styles/components';
+const templateObject = templateCreator`${({ context }) => {
+  if (context.subcomponents.length > 0) {
+    return `import { SBArgsTable, SbSubComponents, SBDescription, SBStories, SBTitle } from '@react-jopau/shared/stories';`;
+  }
+  return `import { SBArgsTable, SBDescription, SBStories, SBTitle } from '@react-jopau/shared/stories';`;
+}}
 ${({ context }) => {
   if (context.parentSubComponentPath) {
     return `import { ${context.parentSubComponentName} } from '../${context.parentSubComponentPath}';`;
@@ -32,6 +37,22 @@ ${({ context }) => {
 <SBTitle>${componentName}</SBTitle>
 
 <SBDescription>${prop('description')}</SBDescription>
+
+${({ context }) => {
+  let subcomponents = '';
+  if (context.subcomponents.length > 0) {
+    subcomponents += `<SbSubComponents>`;
+
+    context.subcomponents.forEach(({ displayName, storyDoc }) => {
+      subcomponents += `<SbSubComponents.Item label="${displayName}" id="${storyDoc}" />`;
+    });
+
+    subcomponents += `</SbSubComponents>${os.EOL}`;
+  }
+  subcomponents += os.EOL;
+
+  return subcomponents;
+}}
 
 \`\`\`jsx dark
 ${prop('imports')}

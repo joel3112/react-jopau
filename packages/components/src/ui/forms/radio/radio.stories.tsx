@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { prepareArgTypes, prepareParameters } from '@react-jopau/styles/utils';
+import { prepareArgTypes, prepareParameters } from '@react-jopau/shared/stories';
 import { Radio } from './radio';
 import docs from './readme.mdx';
 

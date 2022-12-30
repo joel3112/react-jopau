@@ -1,7 +1,6 @@
 import { UIEvent, useRef, useState } from 'react';
 import { Container, Heading, Space, Text } from '@react-jopau/components/ui';
-import { SBCard, SBCode } from '@react-jopau/styles/components';
-import { prepareParameters } from '@react-jopau/styles/utils';
+import { prepareParameters, SBCard, SBCode } from '@react-jopau/shared/stories';
 import { useEventListener } from './use-event-listener';
 import docs from './readme.mdx';
 

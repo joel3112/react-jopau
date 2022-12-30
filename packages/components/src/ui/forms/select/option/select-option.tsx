@@ -11,10 +11,10 @@ import { SelectOptionProps, defaultProps } from './select-option-props';
  * <Select.Option value="A">A</Select.Option>
  */
 export const SelectOption = (props: SelectOptionProps) => {
-  const { children, value, label, disabled, selected } = props;
+  const { children, value, label, disabled } = props;
 
   return (
-    <option value={value} selected={selected} disabled={disabled} label={label || children}>
+    <option value={value} disabled={disabled} label={label || children}>
       {children}
     </option>
   );

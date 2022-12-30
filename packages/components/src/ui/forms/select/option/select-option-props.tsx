@@ -9,10 +9,6 @@ export type SelectOptionProps = Pick<FormControl, 'label' | 'disabled'> & {
    * Value of the option.
    */
   value: string;
-  /**
-   * Defines if the option is selected.
-   */
-  selected?: boolean;
 };
 
 export const defaultProps = {};

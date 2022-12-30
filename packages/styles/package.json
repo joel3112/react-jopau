@@ -22,11 +22,9 @@
     "directory": "dist"
   },
   "dependencies": {
-    "@react-jopau/utils": "^0.16.0",
-    "@storybook/addon-docs": "^6.5.13"
+    "@react-jopau/utils": "^0.16.0"
   },
   "devDependencies": {
-    "react-json-view": "^1.21.3",
     "typescript": "^4.8.4"
   }
 }

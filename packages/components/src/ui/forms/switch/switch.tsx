@@ -37,10 +37,10 @@ export const Switch = withFormControl<SwitchProps, HTMLInputElement>(
       const {
         className,
         style,
+        children,
         name,
         disabled,
         autoFocus,
-        label,
         variant,
         size,
         color,
@@ -153,7 +153,7 @@ export const Switch = withFormControl<SwitchProps, HTMLInputElement>(
             {...bindings}>
             <StyledSwitchCircle className={`${preClass}-circle`}>{circleIcon}</StyledSwitchCircle>
           </StyledSwitch>
-          <StyledSwitchLabel htmlFor={id}>{label}</StyledSwitchLabel>
+          <StyledSwitchLabel htmlFor={id}>{children}</StyledSwitchLabel>
         </StyledSwitchWrapper>
       );
     }

@@ -39,9 +39,10 @@ export const withFormControl = <
 ) => {
   return forwardRef((controlProps: T, ref: Ref<Partial<K>>) => {
     const { control, rules, ...props } = controlProps;
+    const required = props.required || !!rules?.required;
 
     if (!control) {
-      return <Component {...(props as T)} ref={ref} />;
+      return <Component {...(props as T)} required={required} ref={ref} />;
     }
 
     const id = props.id || useId();
@@ -57,6 +58,7 @@ export const withFormControl = <
         <Component
           {...(props as T)}
           {...errorProps(errors, name)}
+          required={required}
           checked={field.value}
           onChange={(e: boolean) => field.onChange(e)}
           ref={ref}
@@ -72,6 +74,7 @@ export const withFormControl = <
           ...field,
           value: field.value === undefined ? defaultValuesByType[controlType] : field.value
         }}
+        required={required}
         ref={ref}
       />
     );

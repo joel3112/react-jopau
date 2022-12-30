@@ -5,13 +5,13 @@ const glob = require('glob-promise');
 const clc = require('cli-color');
 const { get } = require('lodash');
 const {
-  writeFile,
-  parseJSONSchemaProps,
+  getComponentParsed,
   getCustomTag,
   parseComponentCardProps,
-  writeIntroduction,
+  parseJSONSchemaProps,
   parseTypes,
-  getComponentParsed
+  writeIntroduction,
+  writeFile
 } = require('./utils/schema');
 
 // Component templates

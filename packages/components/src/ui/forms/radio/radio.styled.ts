@@ -34,11 +34,26 @@ export const StyledRadioGroup = styledTheme(
 
     variants: {
       size: {
-        xs: { $$radioLabelFontSize: '$space$7' },
-        sm: { $$radioLabelFontSize: '$space$8' },
-        md: { $$radioLabelFontSize: '$space$9' },
-        lg: { $$radioLabelFontSize: '$space$10' },
-        xl: { $$radioLabelFontSize: '$space$11' }
+        xs: { $$radioLabelFontSize: '$space$7', $$radioAsterikFontSize: '$fontSizes$xs' },
+        sm: { $$radioLabelFontSize: '$space$8', $$radioAsterikFontSize: '$fontSizes$xs' },
+        md: { $$radioLabelFontSize: '$space$9', $$radioAsterikFontSize: '$fontSizes$sm' },
+        lg: { $$radioLabelFontSize: '$space$10', $$radioAsterikFontSize: '$fontSizes$md' },
+        xl: { $$radioLabelFontSize: '$space$11', $$radioAsterikFontSize: '$fontSizes$lg' }
+      },
+      isRequired: {
+        true: {
+          [`${NextUIEl.RADIO_GROUP_LABEL}`]: { position: 'relative' },
+          [`${NextUIEl.RADIO_GROUP_LABEL}::after`]: {
+            content: '*',
+            position: 'absolute',
+            top: 3,
+            transformOrigin: 'top left',
+            color: '$colors$red500',
+            marginLeft: '$space$1',
+            fontSize: 'calc($$radioAsterikFontSize * 1.5)',
+            lineHeight: '$lineHeights$xs'
+          }
+        }
       }
     }
   }

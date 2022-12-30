@@ -2,7 +2,7 @@ import { ComponentType, ElementType, ReactNode } from 'react';
 import { styled } from '@stitches/react';
 import { ArgTypes } from '@storybook/addons';
 import { ArgsTable as PureArgsTable, TabsState } from '@storybook/components';
-import { disableArgTypes, prepareArgTypesWithContext, sortedArgTypes } from '../utils';
+import { disableArgTypes, prepareArgTypesWithContext, sortedArgTypes } from './utils';
 import { SBCollapsable } from './sb-collapsable';
 
 const ArgsTableStyled = styled('div', {

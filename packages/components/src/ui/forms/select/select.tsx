@@ -14,9 +14,9 @@ import { BiChevronDown } from 'react-icons/bi';
 import { classes, forwardRef } from '../../../utils/system';
 import { useControlValue } from '../../../shared/use-control-value';
 import { withFormControl } from '../../../shared/with-form-control';
-import { SelectOptionGroup } from './option-group/select-option-group';
+import { SelectGroup } from './group/select-group';
 import { SelectOption } from './option/select-option';
-import { SelectOptionGroupProps } from './option-group/select-option-group-props';
+import { SelectGroupProps } from './group/select-group-props';
 import { SelectOptionProps } from './option/select-option-props';
 import { SelectProps, defaultProps } from './select-props';
 import {
@@ -81,10 +81,10 @@ export const Select = withFormControl<SelectProps, HTMLSelectElement>(
           }
 
           const flattenChildren = Children.toArray(children).reduce((acc, child) => {
-            if ((child as ReactElement<SelectOptionGroupProps>).type === SelectOptionGroup) {
+            if ((child as ReactElement<SelectGroupProps>).type === SelectGroup) {
               return [
                 ...(acc as ReactElement<SelectOptionProps>[]),
-                ...Children.toArray((child as ReactElement<SelectOptionGroupProps>).props.children)
+                ...Children.toArray((child as ReactElement<SelectGroupProps>).props.children)
               ];
             }
 
@@ -175,9 +175,9 @@ export const Select = withFormControl<SelectProps, HTMLSelectElement>(
   SelectProps & Partial<typeof defaultProps> & RefAttributes<HTMLSelectElement>
 > & {
   Option: typeof SelectOption;
-  OptionGroup: typeof SelectOptionGroup;
+  Group: typeof SelectGroup;
 };
 
 Select.defaultProps = defaultProps as Partial<SelectProps>;
 Select.Option = SelectOption;
-Select.OptionGroup = SelectOptionGroup;
+Select.Group = SelectGroup;
