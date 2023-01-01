@@ -24,7 +24,7 @@ export const SbBreadcrumbs = ({
         return (
           <Fragment key={index}>
             <SBLink href={href || ''}>{label}</SBLink>
-            {index < items.length - 1 && <BiChevronRight className="text-gray-900 text-lg" />}
+            {index < items.length - 1 && <BiChevronRight className="text-lg text-text" />}
           </Fragment>
         );
       })}

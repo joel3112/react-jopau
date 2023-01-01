@@ -34,14 +34,14 @@ const ThemeStoryProvider = ({ children }) => {
 
   React.useLayoutEffect(() => {
     const storyEl = storyRef.current?.closest('.docs-story');
-    if (storyEl) {
-      storyEl.style.backgroundColor = `${backgroundColor}`;
-      storyEl.style.color = `${textColor}`;
-    }
     const docsEl = document.body.querySelector('.sbdocs-wrapper');
-    if (docsEl) {
-      docsEl.style.color = `initial`;
-    }
+
+    [storyEl, docsEl].forEach((el) => {
+      if (el) {
+        el.style.backgroundColor = backgroundColor;
+        el.style.color = textColor;
+      }
+    });
 
     document.body.classList.toggle('dark-theme', colorScheme === 'dark');
     document.body.classList.toggle('light-theme', colorScheme === 'light');

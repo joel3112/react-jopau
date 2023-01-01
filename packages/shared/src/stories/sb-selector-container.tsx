@@ -20,7 +20,7 @@ export const SBSelectorContainer = ({
 
   return (
     <>
-      <div className="pl-10 absolute top-4 left-4 right-4 pr-[17px] border border-gray-800 flex items-center gap-10 h-[44px] bg-white font-bold text-[13px]">
+      <div className="pl-10 absolute top-4 left-4 right-4 pr-[17px] border border-gray-800 flex items-center gap-10 h-[44px] bg-background-contrast font-bold text-[13px]">
         {items.map((innerItems, index) => (
           <WithTooltip
             key={index}

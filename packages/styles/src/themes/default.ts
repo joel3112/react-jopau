@@ -100,6 +100,7 @@ export default {
 
       text: '#000',
       background: '#fcfcfc',
+      backgroundContrast: '#fff',
       border: '#dedede',
       input: '#f1f3f5',
       placeholder: '#889096',
@@ -274,6 +275,7 @@ export default {
     colors: {
       text: '#fff',
       background: '#1d1f20',
+      backgroundContrast: '#111',
       border: '#555',
       input: '#3b3b3b',
       disabled: '#989696'
@@ -292,6 +294,7 @@ export default {
   brand: {
     title: 'react-jopau',
     url: 'https://github.com/joel3112/react-jopau/tree/main/packages/components',
-    image: './images/banner.png'
+    image: './images/banner.png',
+    darkImage: './images/banner-dark.png'
   }
 };

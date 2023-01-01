@@ -226,6 +226,7 @@ export const StyledInputWrapper = styledTheme('div', {
   boxSizing: 'border-box',
   display: 'grid',
   width: '$space$fit',
+  height: '$space$fit',
 
   [`${NextUIEl.INPUT_CONTAINER}--hover`]: { transform: 'none' },
   [`${NextUIEl.INPUT_WRAPPER}`]: { borderRadius: '$$inputControlBorderRadius' },

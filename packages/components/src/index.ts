@@ -1,5 +1,5 @@
 import { styled } from '@stitches/react';
-import { ThemeBuilder } from '@react-jopau/styles/ThemeBuilder';
+import { ThemeBuilder } from '@react-jopau/styles/theme-builder';
 
 const builder = new ThemeBuilder();
 builder.createTheme();

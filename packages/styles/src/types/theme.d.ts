@@ -16,6 +16,7 @@ export type ThemeConfig = {
     title: string;
     url: string;
     image: string;
+    darkImage?: string;
   };
 };
 

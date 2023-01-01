@@ -22,11 +22,8 @@ export default {
 export const Docs = () => {};
 
 interface IForm {
-  name: string;
-  lastname: string;
   username: string;
   password: string;
-  age: number;
   country: string;
   preferences: string[];
   contact: string;
@@ -37,23 +34,17 @@ export const Default = () => {
   const [mode, setMode] = useState('onSubmit');
   const { register, control, values, formState, setValue, reset, handleSubmit } = useForm<IForm>({
     defaultValues: {
-      name: '',
-      lastname: '',
       username: 'John',
       password: '12345',
-      age: 10,
       country: 'FR',
       preferences: ['music', 'movies'],
       contact: 'email',
-      terms: false
+      terms: true
     },
     validators: {
-      name: { required: [true, 'Name is required'] },
-      username: { required: [true, 'Username is required'] },
-      password: { required: true, minLength: [6, 'Password must be at least 6 characters'] },
-      age: { required: true, min: [18, 'You must be at least 18 years old'] },
-      country: { validate: [(value: string) => value === 'ES', 'You must select Spain'] },
-      terms: { required: true }
+      username: { required: true },
+      password: { required: true, minLength: [6, 'Min 6 characters'] },
+      country: { validate: [(value: string) => value === 'ES', 'You must select Spain'] }
     },
     mode
   });
@@ -99,34 +90,39 @@ export const Default = () => {
       <Space gap={10} justify="between" wrap>
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="basis-[45%] max-w-[100%] flex flex-col gap-10">
-          {/* Native controls */}
-          <input className="border border-border" placeholder="Name" {...register('name')} />
-          {formState.errors?.name && (
-            <span className="text-xs text-red -mt-8">Name is required</span>
-          )}
+          className="max-w-[100%] h-fit flex flex-col gap-10 min-[600px]:basis-[45%]">
+          {/*Native controls*/}
           <input
-            className="border border-border"
-            placeholder="Last Name"
-            {...register('lastname')}
+            className="border border-border h-fit text-black"
+            placeholder="Username"
+            {...register('username')}
           />
+          {formState.errors?.username && (
+            <span className="text-xs text-red -mt-8">Username is required</span>
+          )}
 
           {/* Custom controls components */}
-          <Input size="sm" label="Username" fullWidth {...control('username')} />
           <Input.Password size="sm" label="Password" fullWidth {...control('password')} />
-          <Input type="number" size="sm" label="Age" fullWidth {...control('age')} />
           <Select size="sm" label="Country" fullWidth {...control('country')}>
             <Select.Option value="FR">France</Select.Option>
             <Select.Option value="ES">Spain</Select.Option>
             <Select.Option value="IT">Italy</Select.Option>
           </Select>
-          <Checkbox.Group size="xs" label="Preferences" {...control('preferences')}>
+          <Checkbox.Group
+            orientation="horizontal"
+            size="xs"
+            label="Preferences"
+            {...control('preferences')}>
             <Checkbox value="music">Music</Checkbox>
             <Checkbox value="movies">Movies</Checkbox>
             <Checkbox value="football">Football</Checkbox>
             <Checkbox value="others">Others</Checkbox>
           </Checkbox.Group>
-          <Radio.Group size="xs" label="Contact me via" {...control('contact')}>
+          <Radio.Group
+            orientation="horizontal"
+            size="xs"
+            label="Contact me via"
+            {...control('contact')}>
             <Radio value="email">Email</Radio>
             <Radio value="phone">Phone</Radio>
             <Radio value="not">Don't contact me</Radio>
@@ -135,7 +131,7 @@ export const Default = () => {
             I agree to the terms and conditions
           </Switch>
 
-          <Space gap={10} className="mt-6">
+          <Space gap={10}>
             <Button auto variant="bordered" color="secondary" onClick={() => reset()}>
               Reset
             </Button>
@@ -145,8 +141,12 @@ export const Default = () => {
           </Space>
         </form>
 
-        <div className="basis-[45%]">
-          <SBJSONPreview className="scale-[90%] origin-top-left" code={{ values, formState }} />
+        <div className="min-[600px]:basis-[45%]">
+          <h6>Values:</h6>
+          <SBJSONPreview className="scale-[90%] origin-top-left" code={values} />
+
+          <h6>Errors:</h6>
+          <SBJSONPreview className="scale-[90%] origin-top-left" code={formState.errors} />
         </div>
       </Space>
     </Container>

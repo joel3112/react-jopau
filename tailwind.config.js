@@ -118,9 +118,13 @@ module.exports = {
         900: 'var(--rjopau-colors-dark900)'
       },
       text: 'var(--rjopau-colors-text)',
-      background: 'var(--rjopau-colors-background)',
+      background: {
+        DEFAULT: 'var(--rjopau-colors-background)',
+        contrast: 'var(--rjopau-colors-backgroundContrast)'
+      },
       input: 'var(--rjopau-colors-input)',
       placeholder: 'var(--rjopau-colors-placeholder)',
+      disabled: 'var(--rjopau-colors-disabled)',
       border: {
         DEFAULT: 'var(--rjopau-colors-border)'
       }

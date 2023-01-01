@@ -18,6 +18,7 @@ const colorTokens = (color: SimpleColor) => {
 export const StyledSelectWrapper = styledTheme('div', {
   display: 'block',
   position: 'relative',
+  height: '$space$fit',
 
   variants: {
     fullWidth: {
