@@ -20,7 +20,7 @@ export const SBSelectorContainer = ({
 
   return (
     <>
-      <div className="pl-10 absolute top-4 left-4 right-4 pr-[17px] border border-gray-800 flex items-center gap-10 h-[44px] bg-white font-bold text-[13px]">
+      <div className="pl-6 absolute top-4 left-4 right-4 pr-[17px] border border-border flex items-center gap-10 h-[44px] bg-background-contrast font-bold text-[13px]">
         {items.map((innerItems, index) => (
           <WithTooltip
             key={index}
@@ -43,7 +43,7 @@ export const SBSelectorContainer = ({
                 }))}
               />
             )}>
-            <IconButton className="!mt-0 !text-gray-700 hover:!text-secondary hover:!bg-secondary-100 gap-2">
+            <IconButton className="!mt-0 !text-gray-700 hover:!text-secondary gap-2">
               <TbPalette className="!w-auto text-lg" />
               <span className="text-inherit">
                 {label[index]}: {selected[index].value}

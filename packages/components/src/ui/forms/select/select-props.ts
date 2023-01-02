@@ -1,7 +1,7 @@
 import { ChangeEvent, FocusEvent, ReactElement } from 'react';
 import { ElementHTML, FormControl, NormalSize, Shape, SimpleColor } from '../../../../types';
 import { SelectOptionProps } from './option/select-option-props';
-import { SelectOptionGroupProps } from './option-group/select-option-group-props';
+import { SelectGroupProps } from './group/select-group-props';
 
 export type SelectProps = ElementHTML &
   Omit<FormControl, 'readOnly'> & {
@@ -10,9 +10,9 @@ export type SelectProps = ElementHTML &
      */
     children:
       | ReactElement<SelectOptionProps>
-      | ReactElement<SelectOptionGroupProps>
+      | ReactElement<SelectGroupProps>
       | ReactElement<SelectOptionProps>[]
-      | ReactElement<SelectOptionGroupProps>[];
+      | ReactElement<SelectGroupProps>[];
     /**
      * Defines the value (controlled) of the current element, used when submitting a form.
      */

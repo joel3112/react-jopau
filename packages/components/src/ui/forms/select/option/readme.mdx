@@ -1,0 +1,28 @@
+import {
+  SBArgsTable,
+  SBDescription,
+  SBLinks,
+  SBStories,
+  SBTitle
+} from '@react-jopau/shared/stories';
+import { Select } from '../select';
+
+<SBTitle>Select.Option</SBTitle>
+
+<SBLinks>
+  <SBLinks.Item href="components-forms-select--option-default">Playground</SBLinks.Item>
+</SBLinks>
+
+<SBDescription>Component that is used as an option in a Select component.</SBDescription>
+
+```jsx dark
+import { Select } from '@react-jopau/components/ui';
+```
+
+<SBStories.Default id="components-forms-select--option-default" />
+
+<SBArgsTable component={Select.Option} />
+
+<SBStories>
+  <SBStories.Item label="[Option] Disabled" id="components-forms-select--option-disabled" />
+</SBStories>

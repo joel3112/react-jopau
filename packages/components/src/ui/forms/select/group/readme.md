@@ -1,4 +1,4 @@
-### Select.Option-group
+### Select.Group
 
 Component that is used as an option group in a Select component.
 
@@ -11,10 +11,12 @@ import { Select } from '@react-jopau/components/ui';
 #### Examples
 
 ```jsx
-<Select.OptGroup label="A">
-  <Select.Option value="A">A</Select.Option>
-  <Select.Option value="B">B</Select.Option>
-</Select.OptGroup>
+<Select value="A">
+  <Select.Group label="Group 1">
+    <Select.Option value="A">A</Select.Option>
+    <Select.Option value="B">B</Select.Option>
+  </Select.Group>
+</Select>
 ```
 
 #### Props

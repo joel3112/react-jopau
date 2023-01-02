@@ -1,0 +1,26 @@
+{
+  "name": "@react-jopau/shared",
+  "version": "0.16.0",
+  "description": "Shared code for react-jopau",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joel3112/react-jopau.git"
+  },
+  "author": "Joel Paucarima Franco <joel.dev.3112@outlook.es>",
+  "license": "MIT",
+  "homepage": "https://github.com/joel3112/react-jopau/tree/main/packages/shared#readme",
+  "type": "module",
+  "main": "index.js",
+  "module": "index.js",
+  "private": true,
+  "scripts": {
+    "build": "rimraf dist && tsc"
+  },
+  "dependencies": {
+    "@react-jopau/utils": "^0.16.0"
+  },
+  "devDependencies": {
+    "react-json-view": "^1.21.3",
+    "typescript": "^4.8.4"
+  }
+}

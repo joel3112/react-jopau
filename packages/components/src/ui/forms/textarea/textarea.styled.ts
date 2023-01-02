@@ -6,6 +6,10 @@ import { TextareaProps } from './textarea-props';
 import { StyledInputWrapper } from '../input/input.styled';
 import { styledTheme } from '../../../index';
 
+enum NextUIEl {
+  LABEL = '.nextui-input-block-label'
+}
+
 export const StyledTextarea = styledTheme(
   TextareaNextUI as ComponentType<
     Partial<
@@ -20,4 +24,21 @@ export const StyledTextarea = styledTheme(
   NextUIOverrideCSS
 );
 
-export const StyledTextareaWrapper = styledTheme(StyledInputWrapper, {});
+export const StyledTextareaWrapper = styledTheme(StyledInputWrapper, {
+  variants: {
+    required: {
+      true: {
+        [`${NextUIEl.LABEL}::after`]: {
+          content: '*',
+          position: 'absolute',
+          top: 2,
+          transformOrigin: 'top left',
+          color: '$colors$red500',
+          marginLeft: '$space$1',
+          fontSize: 'calc($$inputLabelFontSize * 1.5)',
+          lineHeight: '$lineHeights$xs'
+        }
+      }
+    }
+  }
+});

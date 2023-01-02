@@ -100,7 +100,10 @@ export default {
 
       text: '#000',
       background: '#fcfcfc',
+      backgroundContrast: '#fff',
+      backgroundContent: '#f6f6f6',
       border: '#dedede',
+      borderContrast: 'rgba(0,0,0,.1)',
       input: '#f1f3f5',
       placeholder: '#889096',
       disabled: '#a8afb2'
@@ -247,7 +250,8 @@ export default {
       pill: '9999px'
     },
     shadows: {
-      boxShadow: 'rgb(231 235 250) 0 -1px 1px inset'
+      box: 'rgb(231 235 250) 0 -1px 1px inset',
+      table: 'rgb(0 0 0 / 10%) 0 1px 3px 0'
     },
     zIndices: {
       hide: -1,
@@ -274,12 +278,16 @@ export default {
     colors: {
       text: '#fff',
       background: '#1d1f20',
+      backgroundContrast: '#111',
+      backgroundContent: '#333',
       border: '#555',
+      borderContrast: 'rgba(255,255,255,.1)',
       input: '#3b3b3b',
       disabled: '#989696'
     },
     shadows: {
-      boxShadow: 'rgb(67 67 67) 0 -1px 1px inset'
+      box: 'rgb(67 67 67) 0 -1px 1px inset',
+      table: 'rgb(0 0 0 / 20%) 0 2px 5px 0'
     }
   },
   media: {
@@ -292,6 +300,7 @@ export default {
   brand: {
     title: 'react-jopau',
     url: 'https://github.com/joel3112/react-jopau/tree/main/packages/components',
-    image: './images/banner.png'
+    image: './images/banner.png',
+    darkImage: './images/banner-dark.png'
   }
 };

@@ -1,7 +1,19 @@
-import { SBArgsTable, SBDescription, SBStories, SBTitle } from '@react-jopau/styles/components';
+import {
+  SBArgsTable,
+  SBDescription,
+  SBLinks,
+  SBStories,
+  SBTitle
+} from '@react-jopau/shared/stories';
 import { Select } from './select';
 
 <SBTitle>Select</SBTitle>
+
+<SBLinks>
+  <SBLinks.Item href="components-forms-select--default">Playground</SBLinks.Item>
+  <SBLinks.Item href="components-forms-select--group-docs">Select.Group</SBLinks.Item>
+  <SBLinks.Item href="components-forms-select--option-docs">Select.Option</SBLinks.Item>
+</SBLinks>
 
 <SBDescription>
   Select component is a component that allows users pick a value from predefined options.
@@ -16,23 +28,17 @@ import { Select } from '@react-jopau/components/ui';
 <SBArgsTable component={Select} />
 
 <SBStories>
-<SBStories.Item label="Label And Placeholder" id="components-forms-select--label-and-placeholder" />
-
-<SBStories.Item label="Sizes" id="components-forms-select--sizes" />
-
-<SBStories.Item label="Variants" id="components-forms-select--variants" />
-
-<SBStories.Item label="Color" id="components-forms-select--color" />
-
-<SBStories.Item label="Status" id="components-forms-select--status" />
-
-<SBStories.Item label="Helper Text" id="components-forms-select--helper-text" />
-
-<SBStories.Item label="Shape" id="components-forms-select--shape" />
-
-<SBStories.Item label="Grouping" id="components-forms-select--grouping" />
-
-<SBStories.Item label="Disabled" id="components-forms-select--disabled" />
-
-<SBStories.Item label="Full Width" id="components-forms-select--full-width" />
+  <SBStories.Item
+    label="Label And Placeholder"
+    id="components-forms-select--label-and-placeholder"
+  />
+  <SBStories.Item label="Sizes" id="components-forms-select--sizes" />
+  <SBStories.Item label="Variants" id="components-forms-select--variants" />
+  <SBStories.Item label="Color" id="components-forms-select--color" />
+  <SBStories.Item label="Status" id="components-forms-select--status" />
+  <SBStories.Item label="Helper Text" id="components-forms-select--helper-text" />
+  <SBStories.Item label="Shape" id="components-forms-select--shape" />
+  <SBStories.Item label="Required" id="components-forms-select--required" />
+  <SBStories.Item label="Disabled" id="components-forms-select--disabled" />
+  <SBStories.Item label="Full Width" id="components-forms-select--full-width" />
 </SBStories>

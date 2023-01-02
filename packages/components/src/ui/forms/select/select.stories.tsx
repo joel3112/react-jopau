@@ -1,6 +1,10 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { SBSelectorContainer, SBTextSeparator } from '@react-jopau/styles/components';
-import { prepareArgTypes, prepareParameters } from '@react-jopau/styles/utils';
+import {
+  prepareArgTypes,
+  prepareParameters,
+  SBSelectorContainer,
+  SBTextSeparator
+} from '@react-jopau/shared/stories';
 import { Space } from '../../layout';
 import { Select } from './select';
 import docs from './readme.mdx';
@@ -231,24 +235,10 @@ export const Shape = () => (
   </Space>
 );
 
-export const Grouping = () => (
-  <Select label="Grouping" placeholder="Select option">
-    <Select.OptionGroup label="Group 1">
-      <Select.Option value="1">Option 1</Select.Option>
-      <Select.Option value="2" disabled>
-        Option 2
-      </Select.Option>
-      <Select.Option value="3">Option 3</Select.Option>
-    </Select.OptionGroup>
-    <Select.OptionGroup label="Group 2">
-      <Select.Option value="4">Option 4</Select.Option>
-      <Select.Option value="5" disabled>
-        Option 5
-      </Select.Option>
-      <Select.Option value="6">Option 6</Select.Option>
-    </Select.OptionGroup>
-  </Select>
-);
+export const Required = Template.bind({});
+Required.args = {
+  required: true
+};
 
 export const Disabled = Template.bind({});
 Disabled.args = {

@@ -52,14 +52,14 @@ describe('Tests Select component', () => {
   test('renders group correctly', async () => {
     render(
       <Select placeholder="Select an option">
-        <Select.OptionGroup label="Group 1">
+        <Select.Group label="Group 1">
           <Select.Option value="1">Option 1</Select.Option>
           <Select.Option value="2">Option 2</Select.Option>
-        </Select.OptionGroup>
-        <Select.OptionGroup label="Group 2">
+        </Select.Group>
+        <Select.Group label="Group 2">
           <Select.Option value="3">Option 3</Select.Option>
           <Select.Option value="4">Option 4</Select.Option>
-        </Select.OptionGroup>
+        </Select.Group>
       </Select>
     );
 

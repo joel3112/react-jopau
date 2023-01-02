@@ -50,7 +50,7 @@ console.log(config.between('sm', 'xl')); // true | false
 Class to create a theme with the [`default`](https://github.com/joel3112/react-jopau/blob/main/packages/styles/src/themes/default.ts) configuration.
 
 ```tsx
-import { ThemeBuilder } from '@react-jopau/styles/ThemeBuilder';
+import { ThemeBuilder } from '@react-jopau/styles/theme-builder';
 
 const builder = new ThemeBuilder();
 builder.createTheme();
@@ -59,7 +59,7 @@ builder.createTheme();
 You can create a theme passing a custom configuration, it's will be merged with the `default` configuration.
 
 ```tsx
-import { ThemeBuilder } from '@react-jopau/styles/ThemeBuilder';
+import { ThemeBuilder } from '@react-jopau/styles/theme-builder';
 
 const builder = new ThemeBuilder();
 builder.createTheme({

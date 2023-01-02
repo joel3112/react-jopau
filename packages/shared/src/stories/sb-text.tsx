@@ -11,7 +11,9 @@ export const SBCode = ({ children }: { children: ReactNode }) => {
 
 export const SBTitle = ({ children, className }: { children: string; className?: string }) => {
   return (
-    <h1 className={classes('text-2xl border-0 font-bold mb-10 -mt-4', className)}>{children}</h1>
+    <h1 className={classes('text-3xl border-0 font-semibold mb-10 -mt-4', className)}>
+      {children}
+    </h1>
   );
 };
 

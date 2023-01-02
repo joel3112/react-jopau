@@ -1,21 +1,21 @@
 import { create } from '@storybook/theming';
 import { getColors, getProps, getTheme, getThemeStored } from '/packages/styles/src/utils/theme';
 
-export const createStorybookTheme = (themeKey = 'default') => {
+export const createStorybookTheme = (themeKey = 'default', scheme = 'light') => {
   const currentTheme = getThemeStored() || themeKey;
-  const colors = getColors(currentTheme);
+  const colors = getColors(currentTheme, scheme);
   const { fonts } = getTheme(currentTheme);
   const { brand } = getProps(currentTheme);
 
   return create({
-    base: 'light',
+    base: scheme,
 
     colorPrimary: colors.secondary,
     colorSecondary: colors.secondary,
 
     // UI
-    appBg: colors.white,
-    appContentBg: '#f6f6f6',
+    appBg: colors.backgroundContrast,
+    appContentBg: colors.backgroundContrast,
     appBorderColor: colors.gray700,
     appBorderRadius: 4,
 
@@ -25,21 +25,21 @@ export const createStorybookTheme = (themeKey = 'default') => {
 
     // Text colors
     textColor: colors.text,
-    textInverseColor: colors.white,
+    textInverseColor: colors.backgroundContrast,
 
     // Toolbar default and active colors
     barTextColor: colors.gray700,
     barSelectedColor: colors.secondary,
-    barBg: colors.white,
+    barBg: colors.backgroundContrast,
 
     // Form colors
-    inputBg: colors.white,
+    inputBg: colors.backgroundContrast,
     inputBorder: colors.gray700,
-    inputTextColor: colors.black,
+    inputTextColor: colors.text,
     inputBorderRadius: 4,
 
     brandTitle: brand.title,
     brandUrl: brand.url,
-    brandImage: brand.image
+    brandImage: (scheme === 'dark' && brand.darkImage) || brand.image
   });
 };

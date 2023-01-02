@@ -1,7 +1,17 @@
-import { SBArgsTable, SBDescription, SBStories, SBTitle } from '@react-jopau/styles/components';
+import {
+  SBArgsTable,
+  SBDescription,
+  SBLinks,
+  SBStories,
+  SBTitle
+} from '@react-jopau/shared/stories';
 import { Header } from './header';
 
 <SBTitle>Header</SBTitle>
+
+<SBLinks>
+  <SBLinks.Item href="components-layout-header--default">Playground</SBLinks.Item>
+</SBLinks>
 
 <SBDescription>Header component with logo, title and actions area.</SBDescription>
 
@@ -14,9 +24,7 @@ import { Header } from '@react-jopau/components/ui';
 <SBArgsTable component={Header} />
 
 <SBStories>
-<SBStories.Item label="Logo" id="components-layout-header--logo" />
-
-<SBStories.Item label="Max Width" id="components-layout-header--max-width" />
-
-<SBStories.Item label="With Actions" id="components-layout-header--with-actions" />
+  <SBStories.Item label="Logo" id="components-layout-header--logo" />
+  <SBStories.Item label="Max Width" id="components-layout-header--max-width" />
+  <SBStories.Item label="With Actions" id="components-layout-header--with-actions" />
 </SBStories>

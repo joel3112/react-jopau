@@ -1,7 +1,6 @@
 import '/packages/styles/src/styles.css';
 import { MINIMAL_VIEWPORTS } from '@storybook/addon-viewport';
-import { DocsContainer } from '@storybook/addon-docs';
-import { DocsPage } from './components';
+import { DocsContainer, DocsPage } from './components';
 import { globalDecorators } from './decorators';
 import { createStorybookTheme } from './theme';
 import { anysort } from '/packages/utils/src/function';

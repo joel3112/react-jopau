@@ -1,0 +1,16 @@
+{
+  "extends": "../../tsconfig",
+  "compilerOptions": {
+    "target": "ESNext",
+    "declaration": true,
+    "noEmit": false,
+    "rootDir": "src",
+    "outDir": "dist",
+    "types": ["node"],
+    "baseUrl": "./",
+    "paths": {
+      "@react-jopau/utils": ["../utils/dist"]
+    }
+  },
+  "include": ["src/**/*.ts", "types.d.ts"]
+}

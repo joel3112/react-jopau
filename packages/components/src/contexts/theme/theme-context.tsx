@@ -1,8 +1,8 @@
 import { createContext, useEffect, useMemo, useState } from 'react';
 import { globalCss } from '@stitches/react';
 import type { BreakpointsRules, ThemeConfig, ThemeSchemes } from '@react-jopau/styles/types';
-import { ThemeBuilder } from '@react-jopau/styles/ThemeBuilder';
-import globalCSS from '@react-jopau/styles/globalStyles';
+import { ThemeBuilder } from '@react-jopau/styles/theme-builder';
+import globalCSS from '@react-jopau/styles/global-styles';
 import { defaultProps, ThemeProviderProps } from './theme-context-props';
 
 /* ==== context ================================================================ */
@@ -29,13 +29,13 @@ const globalStyles = ({ xs, sm, md, xl, lg }: BreakpointsRules) =>
       '--rjopau-breakpoint-xl': `${xl}px`
     },
     body: {
-      backgroundColor: '$background',
-      color: '$text'
+      background: 'var(--rjopau-colors-background)',
+      color: 'var(--rjopau-colors-text)'
     },
     '*, button, input': {
       fontFamily: 'var(--rjopau-fonts-base)'
     },
-    'pre *, code *': {
+    'pre *, code *, .react-json-view *': {
       fontFamily: 'var(--rjopau-fonts-code) !important'
     }
   });

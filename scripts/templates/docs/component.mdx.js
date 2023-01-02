@@ -7,21 +7,21 @@ const prop =
   ({ context }) =>
     get(context, key);
 const componentName = prop('componentName');
-const storyDefaultId = (args) =>
-  get(
-    Object.entries(prop('stories')(args)).find((s) => s[0].includes('Default')),
-    '[1].id'
-  );
+const storyDefaultId = (context) =>
+  context.stories
+    ? get(
+        Object.entries(context.stories).find((s) => s[0].includes('Default')),
+        '[1].id'
+      )
+    : '';
 
 const templateCreator = template({});
 
 const templateStory = ({ label, id }) => {
-  return `
-<SBStories.Item label="${label}" id="${id}" />
-`;
+  return `<SBStories.Item label="${label}" id="${id}" />`;
 };
 
-const templateObject = templateCreator`import { SBArgsTable, SBDescription, SBStories, SBTitle } from '@react-jopau/styles/components';
+const templateObject = templateCreator`import { SBArgsTable, SBDescription, SBLinks, SBStories, SBTitle } from '@react-jopau/shared/stories';
 ${({ context }) => {
   if (context.parentSubComponentPath) {
     return `import { ${context.parentSubComponentName} } from '../${context.parentSubComponentPath}';`;
@@ -31,13 +31,26 @@ ${({ context }) => {
 
 <SBTitle>${componentName}</SBTitle>
 
+<SBLinks>
+${({ context }) => {
+  let subcomponents = `<SBLinks.Item href="${storyDefaultId(context)}">Playground</SBLinks.Item>`;
+  if (context.subcomponents.length > 0) {
+    context.subcomponents.forEach(({ displayName, storyDoc }) => {
+      subcomponents += `<SBLinks.Item href="${storyDoc}">${displayName}</SBLinks.Item>`;
+    });
+  }
+
+  return subcomponents;
+}}
+</SBLinks>
+
 <SBDescription>${prop('description')}</SBDescription>
 
 \`\`\`jsx dark
 ${prop('imports')}
 \`\`\`
 
-<SBStories.Default id="${storyDefaultId}" />
+<SBStories.Default id="${(args) => storyDefaultId(args.context)}" />
 
 <SBArgsTable component={${componentName}} />
 

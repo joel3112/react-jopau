@@ -3,8 +3,7 @@ const templateCreator = template({});
 
 const templateObject = templateCreator`${({ context }) => `
 import { Button, Container, Space } from '@react-jopau/components/ui';
-import { SBCode } from '@react-jopau/styles/components';
-import { prepareParameters } from '@react-jopau/styles/utils';
+import { prepareParameters, SBCode } from '@react-jopau/shared/stories';
 import { use${context.pascalName} } from './use-${context.name}';
 import docs from './readme.mdx';
 

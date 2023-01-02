@@ -1,7 +1,17 @@
-import { SBArgsTable, SBDescription, SBStories, SBTitle } from '@react-jopau/styles/components';
+import {
+  SBArgsTable,
+  SBDescription,
+  SBLinks,
+  SBStories,
+  SBTitle
+} from '@react-jopau/shared/stories';
 import { Text } from './text';
 
 <SBTitle>Text</SBTitle>
+
+<SBLinks>
+  <SBLinks.Item href="components-typography-text--default">Playground</SBLinks.Item>
+</SBLinks>
 
 <SBDescription>
   Text component is the used to render text and paragraphs within an interface using well-defined
@@ -17,11 +27,8 @@ import { Text } from '@react-jopau/components/ui';
 <SBArgsTable component={Text} />
 
 <SBStories>
-<SBStories.Item label="As" id="components-typography-text--as" />
-
-<SBStories.Item label="Sizes" id="components-typography-text--sizes" />
-
-<SBStories.Item label="Colors" id="components-typography-text--colors" />
-
-<SBStories.Item label="Max Lines" id="components-typography-text--max-lines" />
+  <SBStories.Item label="As" id="components-typography-text--as" />
+  <SBStories.Item label="Sizes" id="components-typography-text--sizes" />
+  <SBStories.Item label="Colors" id="components-typography-text--colors" />
+  <SBStories.Item label="Max Lines" id="components-typography-text--max-lines" />
 </SBStories>

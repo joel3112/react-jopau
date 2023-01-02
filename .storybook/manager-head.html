@@ -6,19 +6,9 @@
   .sidebar-subheading svg {
     color: var(--rjopau-colors-secondary, #999999) !important;
   }
-
   .sidebar-header a {
     max-width: 150px;
   }
-
-  .docblock-argstable tr td {
-    background: #fff !important;
-  }
-
-  .docblock-argstable tr[title] td {
-    background: #f8f8f8 !important;
-  }
-
   a.sidebar-item[data-nodetype='story']:not([data-item-id*='playground']):not(
       [data-item-id*='docs']
     ):not([data-item-id*='default']) {
@@ -32,5 +22,12 @@
   }
   .sb-toolbar-dropdown-box:hover * {
     color: var(--rjopau-colors-secondary) !important;
+  }
+
+  .light-theme .sidebar-container {
+    border-right: 1px solid #f4f4f4;
+  }
+  .dark-theme .sidebar-container {
+      border-right: 1px solid #363636;
   }
 </style>

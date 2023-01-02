@@ -3,7 +3,11 @@ import * as React from 'react';
 import { addons, types } from '@storybook/addons';
 import { IconButton, Separator, TooltipLinkList, WithTooltip } from '@storybook/components';
 import { useLocalStorage } from '/packages/hooks/src/use-local-storage/use-local-storage';
-import { getColors, THEME_SELECTOR_STORAGE_KEY } from '/packages/styles/src/utils/theme';
+import {
+  getColors,
+  THEME_SELECTOR_STORAGE_KEY,
+  DARK_MODE_STORAGE_KEY
+} from '/packages/styles/src/utils/theme';
 import { themes } from '/packages/styles/src/themes';
 import { createStorybookTheme } from '../../theme';
 
@@ -28,6 +32,7 @@ const ThemeSelectorAddon = ({ api }) => {
     THEME_SELECTOR_STORAGE_KEY,
     'default'
   );
+  const [colorScheme, setColorScheme] = useLocalStorage(DARK_MODE_STORAGE_KEY, 'light');
 
   React.useEffect(() => {
     const notifyTheme = () => {
@@ -35,26 +40,28 @@ const ThemeSelectorAddon = ({ api }) => {
     };
 
     channel.on('story-mounted', notifyTheme);
+    channel.on('color-scheme-selected', setColorScheme);
 
     return () => {
       channel.off('story-mounted', notifyTheme);
+      channel.off('color-scheme-selected', setColorScheme);
     };
-  }, [channel, currentThemeKey]);
+  }, [channel, currentThemeKey, colorScheme]);
 
   React.useEffect(() => {
     channel.emit('theme-selected', currentThemeKey);
 
-    api.setOptions({ theme: createStorybookTheme(currentThemeKey) });
+    api.setOptions({ theme: createStorybookTheme(currentThemeKey, colorScheme) });
 
     // We need this timeout because there could be some race condition between addon mount and storybook manager initialization on page load
     const tid = setTimeout(() => {
-      api.setOptions({ theme: createStorybookTheme(currentThemeKey) });
+      api.setOptions({ theme: createStorybookTheme(currentThemeKey, colorScheme) });
     }, 100);
 
     return () => {
       clearTimeout(tid);
     };
-  }, [api, channel, currentThemeKey]);
+  }, [api, channel, currentThemeKey, colorScheme]);
 
   return (
     <>

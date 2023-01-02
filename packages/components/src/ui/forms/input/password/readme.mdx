@@ -1,7 +1,17 @@
-import { SBArgsTable, SBDescription, SBStories, SBTitle } from '@react-jopau/styles/components';
+import {
+  SBArgsTable,
+  SBDescription,
+  SBLinks,
+  SBStories,
+  SBTitle
+} from '@react-jopau/shared/stories';
 import { Input } from '../input';
 
 <SBTitle>Input.Password</SBTitle>
+
+<SBLinks>
+  <SBLinks.Item href="components-forms-input--password-default">Playground</SBLinks.Item>
+</SBLinks>
 
 <SBDescription>
   Input component is a component that is used to get user password input in a text field.
@@ -16,11 +26,14 @@ import { Input } from '@react-jopau/components';
 <SBArgsTable component={Input.Password} />
 
 <SBStories>
-<SBStories.Item label="[Password] Variants" id="components-forms-input--password-variants" />
-
-<SBStories.Item label="[Password] Status" id="components-forms-input--password-status" />
-
-<SBStories.Item label="[Password] Custom Icon" id="components-forms-input--password-custom-icon" />
-
-<SBStories.Item label="[Password] Hide Toggle" id="components-forms-input--password-hide-toggle" />
+  <SBStories.Item label="[Password] Variants" id="components-forms-input--password-variants" />
+  <SBStories.Item label="[Password] Status" id="components-forms-input--password-status" />
+  <SBStories.Item
+    label="[Password] Custom Icon"
+    id="components-forms-input--password-custom-icon"
+  />
+  <SBStories.Item
+    label="[Password] Hide Toggle"
+    id="components-forms-input--password-hide-toggle"
+  />
 </SBStories>

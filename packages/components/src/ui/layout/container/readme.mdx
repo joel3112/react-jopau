@@ -1,7 +1,17 @@
-import { SBArgsTable, SBDescription, SBStories, SBTitle } from '@react-jopau/styles/components';
+import {
+  SBArgsTable,
+  SBDescription,
+  SBLinks,
+  SBStories,
+  SBTitle
+} from '@react-jopau/shared/stories';
 import { Container } from './container';
 
 <SBTitle>Container</SBTitle>
+
+<SBLinks>
+  <SBLinks.Item href="components-layout-container--default">Playground</SBLinks.Item>
+</SBLinks>
 
 <SBDescription>
   Containers are used to constrain a content's width to the current breakpoint.
@@ -16,9 +26,7 @@ import { Container } from '@react-jopau/components/ui';
 <SBArgsTable component={Container} />
 
 <SBStories>
-<SBStories.Item label="Gap" id="components-layout-container--gap" />
-
-<SBStories.Item label="Max Width" id="components-layout-container--max-width" />
-
-<SBStories.Item label="Centered" id="components-layout-container--centered" />
+  <SBStories.Item label="Gap" id="components-layout-container--gap" />
+  <SBStories.Item label="Max Width" id="components-layout-container--max-width" />
+  <SBStories.Item label="Centered" id="components-layout-container--centered" />
 </SBStories>

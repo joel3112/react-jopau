@@ -63,7 +63,8 @@ export const Textarea = withFormControl<TextareaProps, HTMLTextAreaElement>(
           status={status}
           shape={shape}
           fullWidth={!!fullWidth}
-          disabled={!!disabled}>
+          disabled={!!disabled}
+          required={!!required}>
           {labelPlaceholder && <StyledLabelGap>&nbsp;</StyledLabelGap>}
           <StyledTextarea
             ref={textareaRef}

@@ -8,6 +8,8 @@ const prop =
     get(context, key);
 const componentName = prop('componentName');
 
+const storyDefaultId = (args) => `hooks-${args.context.componentName.toLowerCase()}--default`;
+
 const generatePropsTable = (heading, props, noDefaults) => {
   return `<SBPureArgsTable 
       heading="${heading}"
@@ -30,9 +32,13 @@ const generatePropsTable = (heading, props, noDefaults) => {
 
 const templateCreator = template({});
 
-const templateObject = templateCreator`import { SBDescription, SBPureArgsTable, SBSubTitle, SBTitle } from '@react-jopau/styles/components';
+const templateObject = templateCreator`import { SBDescription, SBLinks, SBPureArgsTable, SBSubTitle, SBTitle } from '@react-jopau/shared/stories';
 
 <SBTitle>${componentName}</SBTitle>
+
+<SBLinks>
+<SBLinks.Item href="${storyDefaultId}">Playground</SBLinks.Item>
+</SBLinks>
 
 <SBDescription>${prop('description')}</SBDescription>
 

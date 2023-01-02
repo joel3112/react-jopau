@@ -1,7 +1,17 @@
-import { SBArgsTable, SBDescription, SBStories, SBTitle } from '@react-jopau/styles/components';
+import {
+  SBArgsTable,
+  SBDescription,
+  SBLinks,
+  SBStories,
+  SBTitle
+} from '@react-jopau/shared/stories';
 import { Space } from './space';
 
 <SBTitle>Space</SBTitle>
+
+<SBLinks>
+  <SBLinks.Item href="components-layout-space--default">Playground</SBLinks.Item>
+</SBLinks>
 
 <SBDescription>Component flexbox-based spacing.</SBDescription>
 
@@ -14,15 +24,10 @@ import { Space } from '@react-jopau/components/ui';
 <SBArgsTable component={Space} />
 
 <SBStories>
-<SBStories.Item label="As" id="components-layout-space--as" />
-
-<SBStories.Item label="Direction" id="components-layout-space--direction" />
-
-<SBStories.Item label="Align" id="components-layout-space--align" />
-
-<SBStories.Item label="Justify" id="components-layout-space--justify" />
-
-<SBStories.Item label="Gap" id="components-layout-space--gap" />
-
-<SBStories.Item label="Wrap" id="components-layout-space--wrap" />
+  <SBStories.Item label="As" id="components-layout-space--as" />
+  <SBStories.Item label="Direction" id="components-layout-space--direction" />
+  <SBStories.Item label="Align" id="components-layout-space--align" />
+  <SBStories.Item label="Justify" id="components-layout-space--justify" />
+  <SBStories.Item label="Gap" id="components-layout-space--gap" />
+  <SBStories.Item label="Wrap" id="components-layout-space--wrap" />
 </SBStories>

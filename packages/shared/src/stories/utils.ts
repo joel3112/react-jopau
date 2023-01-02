@@ -94,7 +94,7 @@ export const prepareParameters = (docs: unknown, noControls?: boolean) => ({
       }),
   options: {
     showPanel: true,
-    selectedPanel: !noControls ? 'storybook/story/panel' : 'storybook/source-loader/panel'
+    selectedPanel: !noControls ? 'storybook/stories/panel' : 'storybook/source-loader/panel'
   },
   previewTabs: {
     'storybook/docs/panel': {

@@ -1,7 +1,12 @@
 import { useRef, useState } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { SBCode, SBSelectorContainer, SBTextSeparator } from '@react-jopau/styles/components';
-import { prepareArgTypes, prepareParameters } from '@react-jopau/styles/utils';
+import {
+  prepareArgTypes,
+  prepareParameters,
+  SBCode,
+  SBSelectorContainer,
+  SBTextSeparator
+} from '@react-jopau/shared/stories';
 import { Space } from '../../layout';
 import { Textarea } from './textarea';
 import docs from './readme.mdx';
@@ -171,6 +176,10 @@ export const Rows = () => (
   </Space>
 );
 
+export const Required = Template.bind({});
+Required.args = {
+  required: true
+};
 export const Disabled = Template.bind({});
 Disabled.args = {
   disabled: true,

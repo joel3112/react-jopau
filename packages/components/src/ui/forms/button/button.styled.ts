@@ -222,7 +222,7 @@ export const StyledButton = styledTheme(
         true: {
           aspectRatio: '1 / 1',
           padding: '$space$4',
-          minWidth: 'auto'
+          minWidth: '$$buttonWidth'
         }
       },
       fullWidth: {

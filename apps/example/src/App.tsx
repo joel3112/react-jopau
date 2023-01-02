@@ -89,7 +89,7 @@ const App = () => {
                   placeholder="Your message"
                   fullWidth
                 />
-                <Switch size="xs" label="Subscribe to newsletter" />
+                <Switch size="xs">Subscribe to newsletter</Switch>
               </Space>
               <Button type="submit" color="secondary">
                 Contact me

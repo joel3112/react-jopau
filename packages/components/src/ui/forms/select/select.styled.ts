@@ -18,6 +18,7 @@ const colorTokens = (color: SimpleColor) => {
 export const StyledSelectWrapper = styledTheme('div', {
   display: 'block',
   position: 'relative',
+  height: '$space$fit',
 
   variants: {
     fullWidth: {
@@ -40,6 +41,10 @@ export const StyledSelect = styledTheme('select', {
   borderRadius: '$$selectControlBorderRadius',
   fontSize: '$$selectControlFontSize',
 
+  '&:focus': {
+    outline: 'none',
+    boxShadow: 'none'
+  },
   '&[disabled]': {
     opacity: '$opacity$60',
     color: '$colors$disabled'
@@ -99,9 +104,9 @@ export const StyledSelect = styledTheme('select', {
     isHelperTextVisible: { true: {} },
     isFocusVisible: {
       true: {
-        outline: 'transparent solid $borderWidths$normal',
-        outlineOffset: '$borderWidths$normal',
-        boxShadow: '0 0 0 2px $colors$background, 0 0 0 4px $colors$accent'
+        outline: 'transparent solid $borderWidths$normal !important',
+        outlineOffset: '$borderWidths$normal !important',
+        boxShadow: '0 0 0 2px $colors$background, 0 0 0 4px $colors$accent !important'
       }
     }
   },

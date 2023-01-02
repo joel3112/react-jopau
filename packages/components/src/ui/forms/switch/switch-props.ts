@@ -3,7 +3,11 @@ import { FormControl, NormalColor, NormalSize } from '../../../../types';
 import { ReactNode } from 'react';
 
 export type SwitchProps = ElementHTML &
-  Omit<FormControl, 'readOnly' | 'required'> & {
+  Omit<FormControl, 'label' | 'readOnly' | 'required'> & {
+    /**
+     * Defines the children of the component.
+     */
+    children?: string;
     /**
      * Defines if the input element is checked (controlled).
      */

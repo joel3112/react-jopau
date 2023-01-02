@@ -4,7 +4,7 @@ import { addons, types } from '@storybook/addons';
 import { IconButton, TooltipLinkList, WithTooltip } from '@storybook/components';
 import { FiMoon, FiSun } from 'react-icons/fi';
 import { useLocalStorage } from '/packages/hooks/src/use-local-storage/use-local-storage';
-import { DARK_MODE_STORAGE_KEY } from '/packages/styles/src/utils/theme';
+import { DARK_MODE_STORAGE_KEY, getColors, getThemeStored } from '/packages/styles/src/utils/theme';
 
 const COLOR_SCHEMES = [
   { id: 'light', title: 'Light' },
@@ -17,14 +17,16 @@ const ICON_SCHEMES = {
 };
 
 const renderIcon = (scheme) => {
+  const { gray700 } = getColors(getThemeStored());
   const Icon = ICON_SCHEMES[scheme];
+
   return (
     <Icon
       style={{
         width: 15,
         height: 15,
         opacity: 1,
-        color: '#000',
+        color: gray700,
         display: 'flex',
         alignItems: 'center'
       }}

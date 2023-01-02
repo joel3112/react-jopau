@@ -118,11 +118,17 @@ module.exports = {
         900: 'var(--rjopau-colors-dark900)'
       },
       text: 'var(--rjopau-colors-text)',
-      background: 'var(--rjopau-colors-background)',
+      background: {
+        DEFAULT: 'var(--rjopau-colors-background)',
+        contrast: 'var(--rjopau-colors-backgroundContrast)',
+        content: 'var(--rjopau-colors-backgroundContent)'
+      },
       input: 'var(--rjopau-colors-input)',
       placeholder: 'var(--rjopau-colors-placeholder)',
+      disabled: 'var(--rjopau-colors-disabled)',
       border: {
-        DEFAULT: 'var(--rjopau-colors-border)'
+        DEFAULT: 'var(--rjopau-colors-border)',
+        contrast: 'var(--rjopau-colors-borderContrast)'
       }
     },
     extend: {
@@ -266,7 +272,8 @@ module.exports = {
         pill: 'var(--rjopau-radii-pill)'
       },
       boxShadow: {
-        DEFAULT: 'var(--rjopau-shadows-boxShadow)'
+        DEFAULT: 'var(--rjopau-shadows-box)',
+        table: 'var(--rjopau-shadows-table)'
       },
       zIndex: {
         hide: 'var(--rjopau-zIndices-hide)',

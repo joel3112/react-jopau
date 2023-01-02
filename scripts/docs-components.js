@@ -8,9 +8,10 @@ const { get, last, capitalize } = require('lodash');
 const {
   getStories,
   getCustomTag,
-  writeFile,
+  getSubComponents,
   parseComponentCardProps,
-  writeIntroduction
+  writeIntroduction,
+  writeFile
 } = require('./utils/schema');
 
 // Component templates
@@ -41,7 +42,7 @@ const parseOptions = {
 
 const generateComponentDocs = async (type, componentNameOne) => {
   introComponentsProps = [];
-  let files = await glob(`packages/components/src/${type}/**/*.tsx`, {
+  let files = await glob(`packages/components/src/${type}/**/${componentNameOne || ''}*.tsx`, {
     ignore: ['**/*.{test,stories,styled}.{ts,tsx}', '**/index.{ts,tsx}', '**/*-props.{ts,tsx}']
   });
 
@@ -55,33 +56,34 @@ const generateComponentDocs = async (type, componentNameOne) => {
   });
 
   if (componentNameOne) {
-    const componentNameFound = files.find((file) => file.includes(`${componentNameOne}.tsx`));
-    if (componentNameFound) {
-      files = [componentNameFound];
-    } else {
-      console.log(preffix, clc.red('Component not found'));
+    const componentNameFound = files.some((file) => file.includes(`/${componentNameOne}`));
+    if (!componentNameFound) {
+      console.log(preffix, clc.red(`Component ${type} not found`));
       return;
     }
   }
 
-  files.forEach((componentPath, index) => {
+  /**
+   * Generate JSON schema from JSDoc
+   */
+  const filesWithSchema = files
+    .map((file) => ({
+      componentPath: file,
+      jsdocSchema: last(
+        jsdoc2md.getTemplateDataSync({
+          files: file,
+          configure: './jsdoc2md.json'
+        })
+      )
+    }))
+    .filter(({ jsdocSchema }) => !!jsdocSchema);
+
+  filesWithSchema.forEach(({ componentPath, jsdocSchema }) => {
     try {
       const componentName = path.basename(componentPath, path.extname(componentPath));
 
-      /**
-       * Generate JSON schema from JSDoc
-       */
-      const jsdocSchema = last(
-        jsdoc2md.getTemplateDataSync({
-          files: componentPath,
-          configure: './jsdoc2md.json'
-        })
-      );
-
-      // Detect if is a component to generate docs
-      if (!jsdocSchema) {
-        return;
-      }
+      // Check if is parent component
+      const subcomponents = getSubComponents(componentPath, filesWithSchema);
 
       // Check if is subcomponent
       const previousPath = path.join(componentPath, '../..');
@@ -134,6 +136,7 @@ const generateComponentDocs = async (type, componentNameOne) => {
             parentPath,
             parentName,
             imports: getCustomTag(jsdocSchema, 'imports'),
+            subcomponents,
             stories: stories || {}
           }),
           'mdx'
@@ -213,7 +216,7 @@ const generateAllDocs = async () => {
 
     console.log(preffix, '[UI] Generating documentation...');
     if (['ui', 'contexts'].includes(type)) {
-      await generateComponentDocs('ui', componentNameOne);
+      await generateComponentDocs(type, componentNameOne);
     } else {
       console.log(preffix, clc.red('Invalid type'));
     }

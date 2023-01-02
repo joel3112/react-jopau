@@ -1,8 +1,13 @@
 import { useRef, useState } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { MdCalendarToday, MdCreditCard, MdPhone, MdSearch } from 'react-icons/md';
-import { SBTextSeparator, SBSelectorContainer, SBCode } from '@react-jopau/styles/components';
-import { prepareArgTypes, prepareParameters } from '@react-jopau/styles/utils';
+import {
+  prepareArgTypes,
+  prepareParameters,
+  SBTextSeparator,
+  SBSelectorContainer,
+  SBCode
+} from '@react-jopau/shared/stories';
 import { Space } from '../../layout';
 import { Input } from './input';
 import docs from './readme.mdx';
@@ -269,6 +274,11 @@ export const HotKey = () => (
     )}
   </SBSelectorContainer>
 );
+
+export const Required = Template.bind({});
+Required.args = {
+  required: true
+};
 
 export const Disabled = Template.bind({});
 Disabled.args = {
