@@ -12,7 +12,7 @@ import { classes, cleanedProps, forwardRef } from '../../../utils/system';
 import { ButtonContext } from './button-context';
 import { ButtonGroup } from './group/button-group';
 import { ButtonProps, defaultProps } from './button-props';
-import { StyledButtonIcon, StyledButton } from './button.styled';
+import { StyledButton, StyledButtonIcon } from './button.styled';
 
 const ButtonIcon = ({ children }: { children: ReactNode }) => {
   return <StyledButtonIcon>{children}</StyledButtonIcon>;
