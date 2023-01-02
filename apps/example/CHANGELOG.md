@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.17.0](https://github.com/joel3112/react-jopau/compare/v0.16.0...v0.17.0) (2023-01-02)
+
+### 🚀 New Features
+
+- **shared:** add story shared components ([faafa41](https://github.com/joel3112/react-jopau/commit/faafa41a9e40b0ce327ae470cce90b98178543a5))
+
 ## [0.16.0](https://github.com/joel3112/react-jopau/compare/v0.15.0...v0.16.0) (2022-12-30)
 
 **Note:** Version bump only for package @react-jopau/app-example
