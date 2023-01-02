@@ -107,6 +107,7 @@ export const Default = () => {
             <Select.Option value="FR">France</Select.Option>
             <Select.Option value="ES">Spain</Select.Option>
             <Select.Option value="IT">Italy</Select.Option>
+            <Select.Option value="DE">Germany</Select.Option>
           </Select>
           <Checkbox.Group
             orientation="horizontal"

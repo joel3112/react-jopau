@@ -26,7 +26,7 @@ const ButtonIcon = ({ children }: { children: ReactNode }) => {
  *
  * @imports import { Button } from '@react-jopau/components/ui';
  * @example
- * <Button color="primary">Click me</Button>
+ * <Button>Click me</Button>
  */
 export const Button = forwardRef<ButtonProps, 'button'>(
   (props: ButtonProps, ref: Ref<HTMLButtonElement | null>) => {

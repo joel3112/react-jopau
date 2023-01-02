@@ -25,7 +25,6 @@
     "@nextui-org/react": "1.0.0-beta.10",
     "@react-aria/focus": "^3.10.1",
     "@react-aria/utils": "^3.14.2",
-    "@react-jopau/shared": "^0.16.0",
     "@react-jopau/styles": "^0.16.0",
     "@react-jopau/utils": "^0.16.0",
     "@stitches/react": "^1.2.8",

@@ -48,7 +48,7 @@ export default {
   },
   brand: {
     title: 'react-jopau',
-    url: 'https://github.com/joel3112/react-jopau/tree/main/packages/components',
+    url: 'https://github.com/joel3112/react-jopau',
     image: './images/banner-purple.png',
     darkImage: './images/banner-purple-dark.png'
   }
