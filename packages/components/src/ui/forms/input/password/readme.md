@@ -11,7 +11,7 @@ import { Input } from '@react-jopau/components';
 #### Examples
 
 ```jsx
-<Input.Password placeholder="Your password" />
+<Input.Password label="Password" placeholder="Your password" />
 ```
 
 #### Props

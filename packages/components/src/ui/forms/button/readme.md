@@ -11,9 +11,7 @@ import { Button } from '@react-jopau/components/ui';
 #### Examples
 
 ```jsx
-<Button color="primary" variant="outline">
-  Click me
-</Button>
+<Button color="primary">Click me</Button>
 ```
 
 #### Props

@@ -11,9 +11,7 @@ import { Radio } from '@react-jopau/components/ui';
 #### Examples
 
 ```jsx
-<Radio checked value="A">
-  Option A
-</Radio>
+<Radio value="A">Option A</Radio>
 ```
 
 #### Props

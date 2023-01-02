@@ -11,7 +11,7 @@ import { Input } from '@react-jopau/components/ui';
 #### Examples
 
 ```jsx
-<Input color="primary" label="Label" placeholder="placeholder" value="text" />
+<Input label="Label" placeholder="placeholder" value="text" />
 ```
 
 #### Props

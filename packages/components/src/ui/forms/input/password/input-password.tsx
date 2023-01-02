@@ -11,7 +11,7 @@ import { defaultProps, InputPasswordProps } from './input-password-props';
  *
  * @imports import { Input } from '@react-jopau/components';
  * @example
- * <Input.Password placeholder="Your password" />
+ * <Input.Password label="Password" placeholder="Your password" />
  */
 export const InputPassword = forwardRef<InputPasswordProps, 'input'>(
   (props: InputPasswordProps, ref: Ref<HTMLInputElement | null>) => {
