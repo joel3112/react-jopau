@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "module": "esnext",
+    "module": "Node16",
     "target": "esnext",
     "lib": ["es2020", "dom"],
     "jsx": "react-jsx",
