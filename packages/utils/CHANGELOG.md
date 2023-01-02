@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.17.1](https://github.com/joel3112/react-jopau/compare/v0.17.0...v0.17.1) (2023-01-02)
+
+### 🐛 Bug Fixes
+
+- remove anymatch ([45f8719](https://github.com/joel3112/react-jopau/commit/45f8719b690649e206258ce89ef900a4c342a2f8))
+
 ## [0.17.0](https://github.com/joel3112/react-jopau/compare/v0.16.0...v0.17.0) (2023-01-02)
 
 **Note:** Version bump only for package @react-jopau/utils
