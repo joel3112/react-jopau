@@ -7,9 +7,10 @@ import { SBCollapsable } from './sb-collapsable';
 
 const ArgsTableStyled = styled('div', {
   margin: '25px 0 30px 0',
-  border: '1px solid #7e868c',
   borderRadius: '4px',
   overflow: 'hidden',
+  border: 'var(--rjopau-borderWidths-light) solid var(--rjopau-colors-borderContrast)',
+  boxShadow: 'var(--rjopau-shadows-table)',
 
   variants: {
     noDefaults: {

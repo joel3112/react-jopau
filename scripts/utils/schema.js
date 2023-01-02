@@ -41,6 +41,7 @@ const getSubComponents = (componentPath, filesWithSchema) => {
     ocurrences.length > 1 &&
     path.join(componentPath, '../../..') === 'packages/components/src/ui'
   ) {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [_, ...subs] = ocurrences;
     return subs.map((f) => {
       const { storiesPrefixId, parentName } = getComponentParsed(

@@ -15,7 +15,7 @@ export const StyledHeaderLogo = styledTheme(Space, {
 });
 
 export const StyledHeader = styledTheme('div', {
-  boxShadow: '$shadows$boxShadow',
+  boxShadow: '$shadows$box',
   height: '$space$18',
   color: '$colors$text',
 

@@ -29,13 +29,13 @@ const globalStyles = ({ xs, sm, md, xl, lg }: BreakpointsRules) =>
       '--rjopau-breakpoint-xl': `${xl}px`
     },
     body: {
-      backgroundColor: '$background',
-      color: '$text'
+      background: 'var(--rjopau-colors-background)',
+      color: 'var(--rjopau-colors-text)'
     },
     '*, button, input': {
       fontFamily: 'var(--rjopau-fonts-base)'
     },
-    'pre *, code *': {
+    'pre *, code *, .react-json-view *': {
       fontFamily: 'var(--rjopau-fonts-code) !important'
     }
   });

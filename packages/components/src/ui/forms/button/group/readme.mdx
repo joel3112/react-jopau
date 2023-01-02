@@ -1,7 +1,17 @@
-import { SBArgsTable, SBDescription, SBStories, SBTitle } from '@react-jopau/shared/stories';
+import {
+  SBArgsTable,
+  SBDescription,
+  SBLinks,
+  SBStories,
+  SBTitle
+} from '@react-jopau/shared/stories';
 import { Button } from '../button';
 
 <SBTitle>Button.Group</SBTitle>
+
+<SBLinks>
+  <SBLinks.Item href="components-forms-button--group-default">Playground</SBLinks.Item>
+</SBLinks>
 
 <SBDescription>
   If you need to make a group of buttons you can use the compound component Button.Group and inside
@@ -17,17 +27,11 @@ import { Button } from '@react-jopau/components/ui';
 <SBArgsTable component={Button.Group} />
 
 <SBStories>
-<SBStories.Item label="[Group] Sizes" id="components-forms-button--group-sizes" />
-
-<SBStories.Item label="[Group] Variants" id="components-forms-button--group-variants" />
-
-<SBStories.Item label="[Group] Colors" id="components-forms-button--group-colors" />
-
-<SBStories.Item label="[Group] Shape" id="components-forms-button--group-shape" />
-
-<SBStories.Item label="[Group] Orientation" id="components-forms-button--group-orientation" />
-
-<SBStories.Item label="[Group] Disabled" id="components-forms-button--group-disabled" />
-
-<SBStories.Item label="[Group] Full Width" id="components-forms-button--group-full-width" />
+  <SBStories.Item label="[Group] Sizes" id="components-forms-button--group-sizes" />
+  <SBStories.Item label="[Group] Variants" id="components-forms-button--group-variants" />
+  <SBStories.Item label="[Group] Colors" id="components-forms-button--group-colors" />
+  <SBStories.Item label="[Group] Shape" id="components-forms-button--group-shape" />
+  <SBStories.Item label="[Group] Orientation" id="components-forms-button--group-orientation" />
+  <SBStories.Item label="[Group] Disabled" id="components-forms-button--group-disabled" />
+  <SBStories.Item label="[Group] Full Width" id="components-forms-button--group-full-width" />
 </SBStories>

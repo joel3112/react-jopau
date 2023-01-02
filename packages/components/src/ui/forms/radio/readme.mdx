@@ -1,7 +1,7 @@
 import {
   SBArgsTable,
-  SbSubComponents,
   SBDescription,
+  SBLinks,
   SBStories,
   SBTitle
 } from '@react-jopau/shared/stories';
@@ -9,13 +9,14 @@ import { Radio } from './radio';
 
 <SBTitle>Radio</SBTitle>
 
+<SBLinks>
+  <SBLinks.Item href="components-forms-radio--default">Playground</SBLinks.Item>
+  <SBLinks.Item href="components-forms-radio--group-docs">Radio.Group</SBLinks.Item>
+</SBLinks>
+
 <SBDescription>
   Radios allow users to select a single option from a list of mutually exclusive options.
 </SBDescription>
-
-<SbSubComponents>
-  <SbSubComponents.Item label="Radio.Group" id="components-forms-radio--group-docs" />
-</SbSubComponents>
 
 ```jsx dark
 import { Radio } from '@react-jopau/components/ui';
@@ -26,15 +27,10 @@ import { Radio } from '@react-jopau/components/ui';
 <SBArgsTable component={Radio} />
 
 <SBStories>
-<SBStories.Item label="Sizes" id="components-forms-radio--sizes" />
-
-<SBStories.Item label="Color" id="components-forms-radio--color" />
-
-<SBStories.Item label="Status" id="components-forms-radio--status" />
-
-<SBStories.Item label="Description" id="components-forms-radio--description" />
-
-<SBStories.Item label="Disabled" id="components-forms-radio--disabled" />
-
-<SBStories.Item label="Squared" id="components-forms-radio--squared" />
+  <SBStories.Item label="Sizes" id="components-forms-radio--sizes" />
+  <SBStories.Item label="Color" id="components-forms-radio--color" />
+  <SBStories.Item label="Status" id="components-forms-radio--status" />
+  <SBStories.Item label="Description" id="components-forms-radio--description" />
+  <SBStories.Item label="Disabled" id="components-forms-radio--disabled" />
+  <SBStories.Item label="Squared" id="components-forms-radio--squared" />
 </SBStories>

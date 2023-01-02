@@ -6,7 +6,6 @@ import { ThemeProvider } from '/packages/components/src/contexts';
 import { themes } from '/packages/styles/src/themes';
 import {
   DARK_MODE_STORAGE_KEY,
-  getColors,
   THEME_SELECTOR_STORAGE_KEY
 } from '/packages/styles/src/utils/theme';
 
@@ -15,10 +14,6 @@ const ThemeProviderMemo = React.memo(ThemeProvider);
 const ThemeStoryProvider = ({ children }) => {
   const [themeKey, setThemeKey] = useLocalStorage(THEME_SELECTOR_STORAGE_KEY, 'default');
   const [colorScheme, setColorScheme] = useLocalStorage(DARK_MODE_STORAGE_KEY, 'light');
-
-  const storyRef = React.useRef(null);
-  const backgroundColor = getColors(themeKey, colorScheme).background;
-  const textColor = getColors(themeKey, colorScheme).text;
 
   React.useEffect(() => {
     const channel = addons.getChannel();
@@ -33,27 +28,16 @@ const ThemeStoryProvider = ({ children }) => {
   }, []);
 
   React.useLayoutEffect(() => {
-    const storyEl = storyRef.current?.closest('.docs-story');
-    const docsEl = document.body.querySelector('.sbdocs-wrapper');
-
-    [storyEl, docsEl].forEach((el) => {
-      if (el) {
-        el.style.backgroundColor = backgroundColor;
-        el.style.color = textColor;
-      }
+    [window.parent.document.body, document.body].forEach((el) => {
+      el.classList.toggle('dark-theme', colorScheme === 'dark');
+      el.classList.toggle('light-theme', colorScheme === 'light');
     });
-
-    document.body.classList.toggle('dark-theme', colorScheme === 'dark');
-    document.body.classList.toggle('light-theme', colorScheme === 'light');
-    document.body.style.backgroundColor = `${backgroundColor}`;
-  }, [storyRef.current, themeKey, colorScheme]);
+  }, [themeKey, colorScheme]);
 
   return (
-    <div ref={storyRef}>
-      <ThemeProviderMemo config={themes[themeKey].value} darkMode={colorScheme === 'dark'}>
-        {children}
-      </ThemeProviderMemo>
-    </div>
+    <ThemeProviderMemo config={themes[themeKey].value} darkMode={colorScheme === 'dark'}>
+      {children}
+    </ThemeProviderMemo>
   );
 };
 

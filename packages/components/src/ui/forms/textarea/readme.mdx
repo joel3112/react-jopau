@@ -1,7 +1,17 @@
-import { SBArgsTable, SBDescription, SBStories, SBTitle } from '@react-jopau/shared/stories';
+import {
+  SBArgsTable,
+  SBDescription,
+  SBLinks,
+  SBStories,
+  SBTitle
+} from '@react-jopau/shared/stories';
 import { Textarea } from './textarea';
 
 <SBTitle>Textarea</SBTitle>
+
+<SBLinks>
+  <SBLinks.Item href="components-forms-textarea--default">Playground</SBLinks.Item>
+</SBLinks>
 
 <SBDescription>
   Textarea component is a multi-line Input which allows you to write large texts.
@@ -16,29 +26,23 @@ import { Textarea } from '@react-jopau/components/ui';
 <SBArgsTable component={Textarea} />
 
 <SBStories>
-<SBStories.Item label="Label And Placeholder" id="components-forms-textarea--label-and-placeholder" />
-
-<SBStories.Item label="Sizes" id="components-forms-textarea--sizes" />
-
-<SBStories.Item label="Variants" id="components-forms-textarea--variants" />
-
-<SBStories.Item label="Color" id="components-forms-textarea--color" />
-
-<SBStories.Item label="Status" id="components-forms-textarea--status" />
-
-<SBStories.Item label="Helper Text" id="components-forms-textarea--helper-text" />
-
-<SBStories.Item label="Shape" id="components-forms-textarea--shape" />
-
-<SBStories.Item label="Rows" id="components-forms-textarea--rows" />
-
-<SBStories.Item label="Required" id="components-forms-textarea--required" />
-
-<SBStories.Item label="Disabled" id="components-forms-textarea--disabled" />
-
-<SBStories.Item label="Read Only" id="components-forms-textarea--read-only" />
-
-<SBStories.Item label="Full Width" id="components-forms-textarea--full-width" />
-
-<SBStories.Item label="Uncontrolled Vs Controlled" id="components-forms-textarea--uncontrolled-vs-controlled" />
+  <SBStories.Item
+    label="Label And Placeholder"
+    id="components-forms-textarea--label-and-placeholder"
+  />
+  <SBStories.Item label="Sizes" id="components-forms-textarea--sizes" />
+  <SBStories.Item label="Variants" id="components-forms-textarea--variants" />
+  <SBStories.Item label="Color" id="components-forms-textarea--color" />
+  <SBStories.Item label="Status" id="components-forms-textarea--status" />
+  <SBStories.Item label="Helper Text" id="components-forms-textarea--helper-text" />
+  <SBStories.Item label="Shape" id="components-forms-textarea--shape" />
+  <SBStories.Item label="Rows" id="components-forms-textarea--rows" />
+  <SBStories.Item label="Required" id="components-forms-textarea--required" />
+  <SBStories.Item label="Disabled" id="components-forms-textarea--disabled" />
+  <SBStories.Item label="Read Only" id="components-forms-textarea--read-only" />
+  <SBStories.Item label="Full Width" id="components-forms-textarea--full-width" />
+  <SBStories.Item
+    label="Uncontrolled Vs Controlled"
+    id="components-forms-textarea--uncontrolled-vs-controlled"
+  />
 </SBStories>

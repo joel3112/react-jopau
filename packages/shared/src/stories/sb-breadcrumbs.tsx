@@ -23,7 +23,9 @@ export const SbBreadcrumbs = ({
 
         return (
           <Fragment key={index}>
-            <SBLink href={href || ''}>{label}</SBLink>
+            <SBLink href={href || ''} hideIcon>
+              {label}
+            </SBLink>
             {index < items.length - 1 && <BiChevronRight className="text-lg text-text" />}
           </Fragment>
         );

@@ -1,7 +1,17 @@
-import { SBArgsTable, SBDescription, SBStories, SBTitle } from '@react-jopau/shared/stories';
+import {
+  SBArgsTable,
+  SBDescription,
+  SBLinks,
+  SBStories,
+  SBTitle
+} from '@react-jopau/shared/stories';
 import { Heading } from './heading';
 
 <SBTitle>Heading</SBTitle>
+
+<SBLinks>
+  <SBLinks.Item href="components-typography-heading--default">Playground</SBLinks.Item>
+</SBLinks>
 
 <SBDescription>
   Heading component is the used to render headings within an interface using well-defined
@@ -17,7 +27,6 @@ import { Heading } from '@react-jopau/components/ui';
 <SBArgsTable component={Heading} />
 
 <SBStories>
-<SBStories.Item label="As" id="components-typography-heading--as" />
-
-<SBStories.Item label="Colors" id="components-typography-heading--colors" />
+  <SBStories.Item label="As" id="components-typography-heading--as" />
+  <SBStories.Item label="Colors" id="components-typography-heading--colors" />
 </SBStories>
