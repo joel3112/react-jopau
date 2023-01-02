@@ -22,7 +22,7 @@ import {
  *
  * @imports import { Input } from '@react-jopau/components/ui';
  * @example
- * <Input color="primary" label="Label" placeholder="placeholder" value="text" />
+ * <Input label="Label" placeholder="placeholder" value="text" />
  */
 export const Input = withFormControl<InputProps, HTMLInputElement>(
   withInputMask<InputProps>(

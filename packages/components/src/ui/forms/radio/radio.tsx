@@ -14,7 +14,7 @@ import { StyledRadio } from './radio.styled';
  *
  * @imports import { Radio } from '@react-jopau/components/ui';
  * @example
- * <Radio checked value="A">Option A</Radio>
+ * <Radio value="A">Option A</Radio>
  */
 export const Radio = forwardRef<RadioProps, 'input'>(
   (props: RadioProps, ref: Ref<Partial<HTMLInputElement> | null>) => {
