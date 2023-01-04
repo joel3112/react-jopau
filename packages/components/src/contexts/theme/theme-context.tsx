@@ -1,8 +1,12 @@
 import { createContext, useEffect, useMemo, useState } from 'react';
 import { globalCss } from '@stitches/react';
-import type { BreakpointsRules, ThemeConfig, ThemeSchemes } from '@react-jopau/styles/types';
-import { ThemeBuilder } from '@react-jopau/styles/theme-builder';
-import globalCSS from '@react-jopau/styles/global-styles';
+import {
+  BreakpointsRules,
+  globalCSS,
+  ThemeBuilder,
+  ThemeConfig,
+  ThemeSchemes
+} from '@react-jopau/styles';
 import { defaultProps, ThemeProviderProps } from './theme-context-props';
 
 /* ==== context ================================================================ */

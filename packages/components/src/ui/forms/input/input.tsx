@@ -1,9 +1,12 @@
 import { ForwardRefExoticComponent, ReactElement, Ref, RefAttributes } from 'react';
-import { classes, forwardRef } from '../../../utils/system';
-import { useControlValue } from '../../../shared/use-control-value';
-import { useHotKey } from '../../../shared/use-hot-key';
-import { withFormControl } from '../../../shared/with-form-control';
-import { withInputMask } from '../../../shared/with-input-mask';
+import { classes } from '@react-jopau/shared/utils';
+import {
+  forwardRef,
+  useControlValue,
+  useHotKey,
+  withFormControl,
+  withInputMask
+} from '../../../shared';
 import { InputPassword } from './password/input-password';
 import { defaultProps, InputProps } from './input-props';
 import {

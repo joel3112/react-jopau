@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 import { ThemeContext } from '@react-jopau/components/contexts';
-import { ThemeConfig } from '@react-jopau/styles/types';
+import type { ThemeConfig } from '@react-jopau/styles';
 
 /**
  * @callback ToggleCallback

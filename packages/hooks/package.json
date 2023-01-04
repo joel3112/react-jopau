@@ -10,19 +10,30 @@
   "license": "MIT",
   "homepage": "https://github.com/joel3112/react-jopau/tree/main/packages/hooks#readme",
   "type": "module",
-  "main": "index.js",
-  "module": "index.js",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "package.json"
+  ],
   "scripts": {
-    "build": "rimraf dist && tsc",
-    "test": "jest --config=../../jest.config.js --selectProjects=@react-jopau/hooks",
-    "prepublishOnly": "copyfiles package.json README.md dist"
+    "build": "rimraf dist && rollup -c",
+    "test": "jest --config=../../jest.config.js --selectProjects=@react-jopau/hooks"
   },
   "publishConfig": {
-    "access": "public",
-    "directory": "dist"
+    "access": "public"
   },
   "dependencies": {
     "@react-jopau/components": "^0.17.1",
+    "@react-jopau/shared": "^0.17.1",
     "@react-jopau/styles": "^0.17.1",
     "@react-jopau/utils": "^0.17.1",
     "axios": "0.27.2",

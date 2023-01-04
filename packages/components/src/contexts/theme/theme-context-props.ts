@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { ThemeConfig } from '@react-jopau/styles/types';
+import type { ThemeConfig } from '@react-jopau/styles';
 
 export type ThemeProviderProps = {
   /**

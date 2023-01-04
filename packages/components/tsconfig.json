@@ -7,13 +7,14 @@
     "esModuleInterop": true,
     "rootDir": "src",
     "outDir": "dist",
+    "declarationDir": "dist",
     "baseUrl": "./",
     "jsx": "react-jsx",
     "paths": {
       "@react-jopau/utils": ["../utils/dist"],
       "@react-jopau/shared/*": ["../shared/dist/*"],
-      "@react-jopau/styles/*": ["../styles/dist/*"]
+      "@react-jopau/styles": ["../styles/dist"]
     }
   },
-  "exclude": ["node_modules", "src/**/*.test.tsx", "src/**/*.stories.tsx", "__mocks__"]
+  "exclude": ["node_modules", "src/**/*.test.ts", "src/**/*.stories.tsx"]
 }

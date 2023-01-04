@@ -10,21 +10,45 @@
   "license": "MIT",
   "homepage": "https://github.com/joel3112/react-jopau/tree/main/packages/components#readme",
   "type": "module",
-  "main": "index.js",
-  "module": "index.js",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "typesVersions": {
+    "*": {
+      "./ui": [
+        "./dist/ui.d.ts"
+      ],
+      "./contexts": [
+        "./dist/contexts.d.ts"
+      ]
+    }
+  },
+  "exports": {
+    "./ui": {
+      "import": "./dist/esm/ui/index.js",
+      "require": "./dist/cjs/ui/index.js"
+    },
+    "./contexts": {
+      "import": "./dist/esm/contexts/index.js",
+      "require": "./dist/cjs/contexts/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "package.json"
+  ],
   "scripts": {
-    "build": "rimraf dist && tsc",
-    "test": "jest --config=../../jest.config.js --selectProjects=@react-jopau/components",
-    "prepublishOnly": "copyfiles package.json README.md dist"
+    "build": "rimraf dist && rollup -c",
+    "test": "jest --config=../../jest.config.js --selectProjects=@react-jopau/components"
   },
   "publishConfig": {
-    "access": "public",
-    "directory": "dist"
+    "access": "public"
   },
   "dependencies": {
     "@nextui-org/react": "1.0.0-beta.10",
     "@react-aria/focus": "^3.10.1",
     "@react-aria/utils": "^3.14.2",
+    "@react-jopau/shared": "^0.17.1",
     "@react-jopau/styles": "^0.17.1",
     "@react-jopau/utils": "^0.17.1",
     "@stitches/react": "^1.2.8",

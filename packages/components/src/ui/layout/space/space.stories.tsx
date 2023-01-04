@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { prepareArgTypes, prepareParameters, SBTextSeparator } from '@react-jopau/shared/stories';
+import { classes } from '@react-jopau/shared/utils';
 import { multiply } from '@react-jopau/utils';
-import { classes } from '../../../utils/system';
 import { Space } from './space';
 import docs from './readme.mdx';
 

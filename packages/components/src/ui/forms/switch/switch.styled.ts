@@ -4,7 +4,7 @@ import {
   StyledSwitchContainer as StyledSwitchContainerNextUI,
   StyledSwitchInput as StyledSwitchInputNextUI
 } from '@nextui-org/react';
-import { NextUIOverrideCSS } from '../../../utils/override';
+import { NextUIOverrideCSS } from '../../../shared';
 import { styledTheme } from '../../../index';
 
 enum NextUIEl {
