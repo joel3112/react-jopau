@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.18.0](https://github.com/joel3112/react-jopau/compare/v0.17.1...v0.18.0) (2023-01-04)
+
+### ⚠ BREAKING CHANGES
+
+- - Exports esm and cjs
+
+* Change import modules
+
+### 🛠 Refactors
+
+- change modules and exports esm and cjs ([300fe94](https://github.com/joel3112/react-jopau/commit/300fe94c14871f66615f3473d4abbb084aff80ec))
+
 ## [0.17.1](https://github.com/joel3112/react-jopau/compare/v0.17.0...v0.17.1) (2023-01-02)
 
 **Note:** Version bump only for package @react-jopau/styles
