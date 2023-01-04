@@ -11,9 +11,8 @@ import {
 import { mergeProps } from '@react-aria/utils';
 import { useFocusRing } from '@react-aria/focus';
 import { BiChevronDown } from 'react-icons/bi';
-import { classes, forwardRef } from '../../../utils/system';
-import { useControlValue } from '../../../shared/use-control-value';
-import { withFormControl } from '../../../shared/with-form-control';
+import { classes } from '@react-jopau/shared/utils';
+import { forwardRef, useControlValue, withFormControl } from '../../../shared';
 import { SelectGroup } from './group/select-group';
 import { SelectOption } from './option/select-option';
 import { SelectGroupProps } from './group/select-group-props';

@@ -1,10 +1,17 @@
-export { debounce, delay, noop, random, range, throttle } from 'lodash';
+import * as _ from 'lodash';
 import type { TAny } from './index';
 
 export type TFunction = (...args: never[]) => TAny;
 export type TFunctionVoid = (...args: never[]) => void;
 export type TFunctionBoolean = (...args: never[]) => boolean;
 export type TFunctionPromiseVoid = (...args: never[]) => Promise<void>;
+
+export const debounce = _.debounce;
+export const delay = _.delay;
+export const noop = _.noop;
+export const random = _.random;
+export const range = _.range;
+export const throttle = _.throttle;
 
 export const anysort = (a: TAny, b: TAny, order: string[]): number => {
   const generateAnysort = (criteria = []) => {

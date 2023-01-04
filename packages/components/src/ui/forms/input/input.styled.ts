@@ -1,7 +1,7 @@
 import { ComponentType, Ref } from 'react';
 import { Input as InputNextUI, InputProps as InputPropsNextUI } from '@nextui-org/react';
 import { SimpleColor } from '../../../../types';
-import { NextUIOverrideCSS } from '../../../utils/override';
+import { NextUIOverrideCSS } from '../../../shared';
 import { InputProps } from './input-props';
 import { styledTheme } from '../../../index';
 

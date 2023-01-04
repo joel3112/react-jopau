@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import { render } from '@testing-library/react';
-import defaultTheme from '@react-jopau/styles/themes/default';
+import { defaultTheme } from '@react-jopau/styles';
 import { MockApp } from '../mock-app';
 import { ThemeProvider } from './theme-context';
 

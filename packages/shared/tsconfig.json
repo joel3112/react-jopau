@@ -2,6 +2,7 @@
   "extends": "../../tsconfig",
   "compilerOptions": {
     "target": "ESNext",
+    "module": "ESNext",
     "declaration": true,
     "noEmit": false,
     "rootDir": "src",

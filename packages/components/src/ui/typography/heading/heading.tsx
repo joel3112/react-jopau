@@ -1,4 +1,4 @@
-import { classes } from '../../../utils/system';
+import { classes } from '@react-jopau/shared/utils';
 import { defaultProps, HeadingProps } from './heading-props';
 import { StyledHeading } from './heading.styled';
 

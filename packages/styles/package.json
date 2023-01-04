@@ -10,16 +10,27 @@
   "license": "MIT",
   "homepage": "https://github.com/joel3112/react-jopau/tree/main/packages/styles#readme",
   "type": "module",
-  "main": "index.js",
-  "module": "index.js",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "package.json",
+    "styles.css"
+  ],
   "scripts": {
-    "build": "rimraf dist && tsc && copyfiles -f src/types/*.d.ts dist/types",
-    "test": "jest --config=../../jest.config.js --selectProjects=@react-jopau/styles",
-    "prepublishOnly": "copyfiles -f package.json README.md src/**/*.css dist"
+    "build": "rimraf dist && rollup -c",
+    "test": "jest --config=../../jest.config.js --selectProjects=@react-jopau/styles"
   },
   "publishConfig": {
-    "access": "public",
-    "directory": "dist"
+    "access": "public"
   },
   "dependencies": {
     "@react-jopau/utils": "^0.17.1"

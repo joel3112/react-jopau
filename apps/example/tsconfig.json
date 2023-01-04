@@ -16,10 +16,11 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "paths": {
-      "@react-jopau/utils": ["../../packages/utils/src"],
-      "@react-jopau/styles/*": ["../../packages/styles/src/*"],
-      "@react-jopau/hooks": ["../../packages/hooks/src"],
-      "@react-jopau/components/*": ["../../packages/components/src/*"]
+      "@react-jopau/utils": ["../../packages/utils/dist"],
+      "@react-jopau/shared/*": ["../../packages/shared/dist/*"],
+      "@react-jopau/styles": ["../../packages/styles/dist"],
+      "@react-jopau/hooks": ["../../packages/hooks/dist"],
+      "@react-jopau/components/*": ["../../packages/components/dist/*"]
     }
   },
   "include": ["src"],

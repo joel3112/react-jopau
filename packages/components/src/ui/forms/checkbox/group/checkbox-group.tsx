@@ -1,7 +1,6 @@
 import { ForwardRefExoticComponent, Ref, RefAttributes } from 'react';
-import { classes, forwardRef } from '../../../../utils/system';
-import { useControlGroup } from '../../../../shared/use-control-group';
-import { withFormControl } from '../../../../shared/with-form-control';
+import { classes } from '@react-jopau/shared/utils';
+import { forwardRef, useControlGroup, withFormControl } from '../../../../shared';
 import { CheckboxContext } from '../checkbox-context';
 import { CheckboxGroupProps, defaultProps } from './checkbox-group-props';
 import { StyledCheckboxGroup } from '../checkbox.styled';

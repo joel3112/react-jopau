@@ -14,7 +14,6 @@ import {
   WeakValidationMap
 } from 'react';
 import * as ReactIs from 'react-is';
-import classnames from 'classnames';
 
 type As<Props = any> = ElementType<Props>;
 
@@ -72,8 +71,3 @@ export const cleanedProps = <P extends object>(props: P) => {
 };
 
 export const isForwardRef = (Component: any) => Component.$$typeof === ReactIs.ForwardRef;
-
-export const isClient = typeof window !== 'undefined';
-export const isMacLike = isClient ? true : /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform);
-
-export const classes = classnames;

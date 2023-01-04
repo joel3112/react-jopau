@@ -10,14 +10,37 @@
   "license": "MIT",
   "homepage": "https://github.com/joel3112/react-jopau/tree/main/packages/shared#readme",
   "type": "module",
-  "main": "index.js",
-  "module": "index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/index.d.ts",
+        "./dist/*"
+      ]
+    }
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.js"
+    },
+    "./utils": {
+      "import": "./dist/utils/index.js",
+      "require": "./dist/utils/index.js"
+    },
+    "./stories": {
+      "import": "./dist/stories/index.js",
+      "require": "./dist/stories/index.js"
+    }
+  },
   "private": true,
   "scripts": {
     "build": "rimraf dist && tsc"
   },
   "dependencies": {
-    "@react-jopau/utils": "^0.17.1"
+    "@react-jopau/utils": "^0.17.1",
+    "react-icons": "^4.6.0"
   },
   "devDependencies": {
     "react-json-view": "^1.21.3",

@@ -1,5 +1,5 @@
-import { Ref, useImperativeHandle, useMemo, useRef, useState } from 'react';
-import { classes, forwardRef } from '../../../../utils/system';
+import { useMemo, useState } from 'react';
+import { classes } from '@react-jopau/shared/utils';
 import { Input } from '../input';
 import { defaultProps, InputPasswordProps } from './input-password-props';
 
@@ -13,32 +13,27 @@ import { defaultProps, InputPasswordProps } from './input-password-props';
  * @example
  * <Input.Password label="Password" placeholder="Your password" />
  */
-export const InputPassword = forwardRef<InputPasswordProps, 'input'>(
-  (props: InputPasswordProps, ref: Ref<HTMLInputElement | null>) => {
-    const { hideToggle, visibleIcon, hiddenIcon, ...inputProps } = props;
+export const InputPassword = (props: InputPasswordProps) => {
+  const { hideToggle, visibleIcon, hiddenIcon, ...inputProps } = props;
 
-    const [visible, setVisible] = useState<boolean>(false);
-    const inputRef = useRef<HTMLInputElement>(null);
-    useImperativeHandle(ref, () => inputRef.current);
+  const [visible, setVisible] = useState<boolean>(false);
 
-    const icon = useMemo(() => {
-      if (hideToggle) return null;
+  const icon = useMemo(() => {
+    if (hideToggle) return null;
 
-      return visible ? visibleIcon : hiddenIcon;
-    }, [hideToggle, visible, visibleIcon, hiddenIcon]);
+    return visible ? visibleIcon : hiddenIcon;
+  }, [hideToggle, visible, visibleIcon, hiddenIcon]);
 
-    return (
-      <Input
-        {...inputProps}
-        ref={inputRef}
-        className={classes('input-password', props.className)}
-        type={visible ? 'text' : 'password'}
-        icon={icon}
-        iconPosition="right"
-        onIconClick={() => setVisible((v) => !v)}
-      />
-    );
-  }
-);
+  return (
+    <Input
+      {...inputProps}
+      className={classes('input-password', props.className)}
+      type={visible ? 'text' : 'password'}
+      icon={icon}
+      iconPosition="right"
+      onIconClick={() => setVisible((v) => !v)}
+    />
+  );
+};
 
 InputPassword.defaultProps = defaultProps;
