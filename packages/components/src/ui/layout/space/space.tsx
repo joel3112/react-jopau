@@ -1,4 +1,4 @@
-import { classes } from '@react-jopau/shared/utils';
+import { classes } from '@react-jopau/utils';
 import { defaultProps, SpaceProps } from './space-props';
 import { StyledSpace } from './space.styled';
 

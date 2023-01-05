@@ -1,4 +1,4 @@
-import { classes } from '@react-jopau/shared/utils';
+import { classes } from '@react-jopau/utils';
 import { defaultProps, TextProps } from './text-props';
 import { StyledText } from './text.styled';
 

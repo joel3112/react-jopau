@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import type { BreakpointsRules } from '@react-jopau/styles';
-import { classes } from '@react-jopau/shared/utils';
+import { classes } from '@react-jopau/utils';
 import { ThemeContext } from '../../../contexts';
 import { ContainerProps, defaultProps } from './container-props';
 import { StyledContainer } from './container.styled';

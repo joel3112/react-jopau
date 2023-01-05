@@ -8,7 +8,7 @@ import {
   useImperativeHandle,
   useRef
 } from 'react';
-import { classes } from '@react-jopau/shared/utils';
+import { classes } from '@react-jopau/utils';
 import { cleanedProps, forwardRef } from '../../../shared';
 import { ButtonContext } from './button-context';
 import { ButtonGroup } from './group/button-group';

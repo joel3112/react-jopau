@@ -8,7 +8,7 @@ import {
   useState
 } from 'react';
 import { KeyCode, useKeyboard } from '@nextui-org/react';
-import { classes } from '@react-jopau/shared/utils';
+import { classes } from '@react-jopau/utils';
 import { forwardRef, useControlChecked, withFormControl } from '../../../shared';
 import { SwitchProps, defaultProps } from './switch-props';
 import {

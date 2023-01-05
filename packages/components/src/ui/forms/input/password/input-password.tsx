@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { classes } from '@react-jopau/shared/utils';
+import { classes } from '@react-jopau/utils';
 import { Input } from '../input';
 import { defaultProps, InputPasswordProps } from './input-password-props';
 

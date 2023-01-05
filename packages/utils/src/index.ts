@@ -19,3 +19,4 @@ export * from './date';
 export * from './function';
 export * from './object';
 export * from './string';
+export * from './system';

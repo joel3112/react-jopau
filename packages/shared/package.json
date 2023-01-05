@@ -25,10 +25,6 @@
       "import": "./dist/index.js",
       "require": "./dist/index.js"
     },
-    "./utils": {
-      "import": "./dist/utils/index.js",
-      "require": "./dist/utils/index.js"
-    },
     "./stories": {
       "import": "./dist/stories/index.js",
       "require": "./dist/stories/index.js"
