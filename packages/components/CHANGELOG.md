@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.18.1](https://github.com/joel3112/react-jopau/compare/v0.18.0...v0.18.1) (2023-01-05)
+
+### 🐛 Bug Fixes
+
+- move shared utils to utils package ([e764c22](https://github.com/joel3112/react-jopau/commit/e764c223dad1c759b4cbfc5c0ecb8770d913b1dd))
+
 ## [0.18.0](https://github.com/joel3112/react-jopau/compare/v0.17.1...v0.18.0) (2023-01-04)
 
 ### ⚠ BREAKING CHANGES

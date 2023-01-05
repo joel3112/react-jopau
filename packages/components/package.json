@@ -1,6 +1,6 @@
 {
   "name": "@react-jopau/components",
-  "version": "0.18.0",
+  "version": "0.18.1",
   "description": "Common components for React projects",
   "repository": {
     "type": "git",
@@ -48,8 +48,8 @@
     "@nextui-org/react": "1.0.0-beta.10",
     "@react-aria/focus": "^3.10.1",
     "@react-aria/utils": "^3.14.2",
-    "@react-jopau/styles": "^0.18.0",
-    "@react-jopau/utils": "^0.18.0",
+    "@react-jopau/styles": "^0.18.1",
+    "@react-jopau/utils": "^0.18.1",
     "@stitches/react": "^1.2.8",
     "classnames": "^2.3.2",
     "react-hotkeys-hook": "^4.3.0",
@@ -64,7 +64,7 @@
     "react-dom": "^17.0.0 || ^18.0.0"
   },
   "devDependencies": {
-    "@react-jopau/shared": "^0.18.0",
+    "@react-jopau/shared": "^0.18.1",
     "@types/react-is": "^17.0.3",
     "@types/react-text-mask": "^5.4.11",
     "ts-jest": "^29.0.1",

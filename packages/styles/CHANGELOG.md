@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.18.1](https://github.com/joel3112/react-jopau/compare/v0.18.0...v0.18.1) (2023-01-05)
+
+**Note:** Version bump only for package @react-jopau/styles
+
 ## [0.18.0](https://github.com/joel3112/react-jopau/compare/v0.17.1...v0.18.0) (2023-01-04)
 
 ### ⚠ BREAKING CHANGES
