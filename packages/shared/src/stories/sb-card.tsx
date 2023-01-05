@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import classes from 'classnames';
+import { classes } from '@react-jopau/utils';
 import { BiLinkExternal } from 'react-icons/bi';
 import LinkTo from '@storybook/addon-links/react';
 

@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import classes from 'classnames';
+import { classes } from '@react-jopau/utils';
 
 export const SBCode = ({ children }: { children: ReactNode }) => {
   return (
