@@ -8,6 +8,7 @@ import {
   useImperativeHandle,
   useRef
 } from 'react';
+import { PressEvent } from '@react-types/shared/src/events';
 import { classes } from '@react-jopau/utils';
 import { cleanedProps, forwardRef } from '../../../shared';
 import { ButtonContext } from './button-context';
@@ -75,7 +76,7 @@ export const Button = forwardRef<ButtonProps, 'button'>(
           icon: iconPosition === 'left' && <ButtonIcon>{icon}</ButtonIcon>,
           iconRight: iconPosition === 'right' && <ButtonIcon>{icon}</ButtonIcon>
         })}
-        onClick={handleClick}>
+        onPress={handleClick as unknown as (e: PressEvent) => void}>
         {children}
       </StyledButton>
     );

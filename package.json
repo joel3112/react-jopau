@@ -19,7 +19,7 @@
     "docs:hooks": "node scripts/docs-hooks",
     "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,scss,md,mdx,json,yml}' --config ./.prettierrc.json",
     "lint": "eslint .",
-    "publish": "lerna publish --yes",
+    "publish": "lerna publish --yes --conventional-commits",
     "test": "lerna run test --stream --concurrency 1",
     "type-check": "tsc --pretty --noEmit",
     "storybook": "start-storybook -p 6006 --no-open",
