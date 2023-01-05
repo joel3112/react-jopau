@@ -1,5 +1,5 @@
 import { useEffect, useLayoutEffect } from 'react';
-import { isClient } from '@react-jopau/shared/utils';
+import { isClient } from '@react-jopau/utils';
 
 export * from './use-breakpoint/use-breakpoint';
 export * from './use-event-listener/use-event-listener';

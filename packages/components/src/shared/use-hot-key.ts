@@ -1,6 +1,5 @@
 import { useHotkeys } from 'react-hotkeys-hook';
-import { toCapitalize } from '@react-jopau/utils';
-import { isMacLike } from '@react-jopau/shared/utils';
+import { isMacLike, toCapitalize } from '@react-jopau/utils';
 
 const MacModifierKey = {
   CONTROL: '^',

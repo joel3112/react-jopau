@@ -1,6 +1,6 @@
-import classnames from 'classnames';
+import classes from 'classnames';
 
-export const classes = classnames;
+export { classes };
 
 export const isClient = typeof window !== 'undefined';
 export const isMacLike = isClient

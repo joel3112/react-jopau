@@ -1,5 +1,5 @@
 import { RefObject, useEffect, useRef } from 'react';
-import { isClient } from '@react-jopau/shared/utils';
+import { isClient } from '@react-jopau/utils';
 import { useIsomorphicLayoutEffect } from '../index';
 
 /**

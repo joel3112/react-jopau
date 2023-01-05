@@ -32,7 +32,7 @@ export const Default = () => {
 
   return (
     <Container className="h-[3000px]">
-      <Space direction="column" gap={10} className="fixed top-12 left-12 w-[460px]">
+      <Space direction="column" gap={10} className="fixed top-12 left-12 w-[400px] max-w-[80%]">
         <SBCard title={<SBCode>[target: Window, event: 'scroll']</SBCode>}>
           <Text size="sm" className="mb-5">
             ■ Scroll the page to see the scroll position change

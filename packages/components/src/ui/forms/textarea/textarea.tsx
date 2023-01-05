@@ -1,5 +1,5 @@
 import { ForwardRefExoticComponent, Ref, RefAttributes } from 'react';
-import { classes } from '@react-jopau/shared/utils';
+import { classes } from '@react-jopau/utils';
 import { forwardRef, useControlValue, withFormControl } from '../../../shared';
 import { TextareaProps, defaultProps } from './textarea-props';
 import { StyledLabelGap } from '../input/input.styled';

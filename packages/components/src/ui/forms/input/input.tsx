@@ -1,5 +1,5 @@
 import { ForwardRefExoticComponent, ReactElement, Ref, RefAttributes } from 'react';
-import { classes } from '@react-jopau/shared/utils';
+import { classes } from '@react-jopau/utils';
 import {
   forwardRef,
   useControlValue,
