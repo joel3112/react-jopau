@@ -1,31 +1,7 @@
-import { useContext } from 'react';
-import type { BreakpointsRules } from '@react-jopau/styles';
 import { classes } from '@react-jopau/utils';
-import { ThemeContext } from '../../../contexts';
+import { useMaxWidth, useSpacing } from '@/components/shared';
 import { ContainerProps, defaultProps } from './container-props';
 import { StyledContainer } from './container.styled';
-
-const spacing = (gap?: number | Array<number>): string => {
-  if (Array.isArray(gap) && gap.length === 2) {
-    return gap.map((s: number) => `${s}px`).join(' ');
-  } else if (typeof gap === 'number') {
-    return [`${gap}px`, `${gap}px`].join(' ');
-  }
-  return '0';
-};
-
-const computeMaxWidth = (
-  breakpoints: BreakpointsRules,
-  maxWidth?: number | 'xs' | 'sm' | 'md' | 'lg' | 'xl'
-): number => {
-  if (typeof maxWidth === 'number') {
-    return maxWidth;
-  }
-  if (typeof maxWidth === 'string' && breakpoints[maxWidth]) {
-    return breakpoints[maxWidth] as number;
-  }
-  return 1500;
-};
 
 /**
  * Containers are used to constrain a content's width to the current breakpoint.
@@ -47,14 +23,15 @@ export const Container = ({
   maxWidth,
   centered
 }: ContainerProps) => {
-  const { config } = useContext(ThemeContext);
+  const breakpointMaxWidth = useMaxWidth(maxWidth);
+  const spacing = useSpacing(gap);
 
   return (
     <StyledContainer
       className={classes('container', className)}
       css={{
-        ...(gap && { padding: spacing(gap) }),
-        maxWidth: `${computeMaxWidth(config?.media, maxWidth)}px !important`,
+        ...(gap && { padding: spacing }),
+        maxWidth: `${breakpointMaxWidth}px !important`,
         ...style
       }}
       centered={centered}>

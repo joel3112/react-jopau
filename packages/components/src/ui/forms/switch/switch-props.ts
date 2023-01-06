@@ -1,6 +1,5 @@
-import type { ElementHTML } from '../../../../types';
-import { FormControl, NormalColor, NormalSize } from '../../../../types';
 import { ReactNode } from 'react';
+import type { ElementHTML, FormControl, NormalColor, NormalSize } from '@/components/shared';
 
 export type SwitchProps = ElementHTML &
   Omit<FormControl, 'label' | 'readOnly' | 'required'> & {

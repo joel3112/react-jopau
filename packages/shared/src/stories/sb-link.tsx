@@ -1,6 +1,6 @@
-import classes from 'classnames';
 import { BiLinkExternal } from 'react-icons/bi';
 import LinkTo from '@storybook/addon-links/react';
+import { classes } from '@react-jopau/utils';
 
 export const SBLink = ({
   children,

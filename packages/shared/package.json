@@ -24,10 +24,6 @@
     ".": {
       "import": "./dist/index.js",
       "require": "./dist/index.js"
-    },
-    "./stories": {
-      "import": "./dist/stories/index.js",
-      "require": "./dist/stories/index.js"
     }
   },
   "private": true,

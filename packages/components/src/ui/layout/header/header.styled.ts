@@ -1,5 +1,5 @@
+import { styledTheme } from '@/components/shared';
 import { Container, Space } from '../../layout';
-import { styledTheme } from '../../../index';
 
 export const StyledHeaderContent = styledTheme(Container, {
   display: 'flex !important',

@@ -10,15 +10,10 @@
   "license": "MIT",
   "homepage": "https://github.com/joel3112/react-jopau/tree/main/packages/components#readme",
   "type": "module",
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
   "typesVersions": {
     "*": {
-      "./ui": [
-        "./dist/ui.d.ts"
-      ],
-      "./contexts": [
-        "./dist/contexts.d.ts"
+      "*": [
+        "./dist/*"
       ]
     }
   },
@@ -51,7 +46,6 @@
     "@react-jopau/styles": "^0.18.1",
     "@react-jopau/utils": "^0.18.1",
     "@stitches/react": "^1.2.8",
-    "classnames": "^2.3.2",
     "react-hotkeys-hook": "^4.3.0",
     "react-icons": "^4.6.0",
     "react-is": "^18.2.0",
@@ -67,7 +61,6 @@
     "@react-jopau/shared": "^0.18.1",
     "@types/react-is": "^17.0.3",
     "@types/react-text-mask": "^5.4.11",
-    "ts-jest": "^29.0.1",
     "typescript": "^4.8.4"
   }
 }

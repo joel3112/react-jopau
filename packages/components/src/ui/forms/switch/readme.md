@@ -31,7 +31,7 @@ import { Switch } from '@react-jopau/components/ui';
 | iconOn         | `ReactNode`                                                                                         |               | Add icon for status on                                                    |
 | id             | `string`                                                                                            |               | Identifies the element that labels the current element.                   |
 | name           | `string`                                                                                            |               | Define the name for the current element (used for form submission).       |
-| onChange       | `(e: boolean) => void`                                                                              |               | Function to be called when the element value is changed.                  |
+| onChange       | `((e: boolean) => void)`                                                                            |               | Function to be called when the element value is changed.                  |
 | size           | `"md"` \| `"xs"` \| `"sm"` \| `"lg"` \| `"xl"`                                                      |               | Defines the size of the component.                                        |
 | squared        | `boolean`                                                                                           |               | Defines the square shape of the component.                                |
 | status         | `SimpleColor`                                                                                       |               | Defines the status of the element and determines the color of the border. |

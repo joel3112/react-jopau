@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { ElementHTML, TextColor } from '../../../../types';
+import type { ElementHTML, TextColor } from '@/components/shared';
 
 export type HeadingProps = ElementHTML & {
   /**

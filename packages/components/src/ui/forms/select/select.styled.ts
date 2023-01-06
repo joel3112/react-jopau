@@ -1,6 +1,5 @@
-import { SimpleColor } from '../../../../types';
+import { SimpleColor, styledTheme } from '@/components/shared';
 import { Input } from '../input/input';
-import { styledTheme } from '../../../index';
 
 const colorTokens = (color: SimpleColor) => {
   return {

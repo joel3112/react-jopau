@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { ElementHTML } from '../../../../types';
+import type { ElementHTML } from '@/components/shared';
 
 export type HeaderProps = ElementHTML & {
   /**

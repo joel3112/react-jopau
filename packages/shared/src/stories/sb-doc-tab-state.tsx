@@ -1,5 +1,5 @@
 import { Children, ReactElement, ReactNode, useState } from 'react';
-import classes from 'classnames';
+import { classes } from '@react-jopau/utils';
 import { SBDescription, SBTitle } from './sb-text';
 
 export const SBDocTabStateItem = ({

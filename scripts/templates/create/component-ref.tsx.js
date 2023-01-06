@@ -3,7 +3,8 @@ const templateCreator = template({});
 
 const templateObject = templateCreator`${({ context }) => `
 import { Ref, useImperativeHandle, useRef } from 'react';
-import { classes, forwardRef } from '../../../utils/system';
+import { classes } from '@react-jopau/utils';
+import { forwardRef } from '@/components/shared';
 import { ${context.pascalName}Props, defaultProps } from './${context.name}-props';
 import { Styled${context.pascalName} } from './${context.name}.styled';
 

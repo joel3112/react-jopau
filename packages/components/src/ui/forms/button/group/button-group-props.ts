@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { ButtonColor, ElementHTML, NormalSize, Shape } from '../../../../../types';
+import type { ButtonColor, ElementHTML, NormalSize, Shape } from '@/components/shared';
 import { ButtonProps } from '../button-props';
 
 export type ButtonGroupProps = ElementHTML & {

@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types,react/display-name */
 import { forwardRef, Ref } from 'react';
 import MaskedInput from 'react-text-mask';
-import { FormControl } from '../../types';
+import { FormControl } from './types';
 
 export const withInputMask = <T extends FormControl & { mask?: Array<string | RegExp> | false }>(
   Component: (props: T) => JSX.Element

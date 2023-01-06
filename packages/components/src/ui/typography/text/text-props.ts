@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { ElementHTML, NormalSize, TextColor } from '../../../../types';
+import type { ElementHTML, NormalSize, TextColor } from '@/components/shared';
 
 export type TextProps = ElementHTML & {
   /**

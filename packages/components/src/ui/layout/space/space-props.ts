@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { ElementHTML } from '../../../../types';
+import type { ElementHTML } from '@/components/shared';
 
 type BasicPosition = 'start' | 'center' | 'end';
 export type DirectionSpace = 'row' | 'column' | 'row-reverse' | 'column-reverse';

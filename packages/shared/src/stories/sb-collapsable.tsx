@@ -1,7 +1,7 @@
 import { ReactNode, useState } from 'react';
-import classes from 'classnames';
 import { BsChevronLeft } from 'react-icons/bs';
 import { styled } from '@stitches/react';
+import { classes } from '@react-jopau/utils';
 import { SBSubTitle } from './sb-text';
 
 const CollapsableChevronStyled = styled(BsChevronLeft, {

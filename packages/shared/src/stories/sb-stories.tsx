@@ -1,6 +1,6 @@
 import { ComponentType, ReactNode } from 'react';
-import classes from 'classnames';
 import { Canvas, Story } from '@storybook/addon-docs';
+import { classes } from '@react-jopau/utils';
 import { SBCollapsable } from './sb-collapsable';
 
 const SBStory = ({ id, label, isDefault }: { id: string; label?: string; isDefault?: boolean }) => {

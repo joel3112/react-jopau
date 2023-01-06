@@ -97,15 +97,11 @@ const generateComponentDocs = async (type, componentNameOne) => {
       }
 
       // Generate documentation from JSDoc comments
-      const customParser = docgen.withCompilerOptions(
-        {
-          esModuleInterop: true
-        },
-        {
-          savePropValueAsString: true,
-          ...parseOptions
-        }
-      );
+      const customParser = docgen.withCustomConfig('./tsconfig.json', {
+        ...parseOptions,
+        savePropValueAsString: true,
+        shouldRemoveUndefinedFromOptional: true
+      });
       const componentDocs = last(customParser.parse(componentPath));
 
       const displayName = !isSubComponent

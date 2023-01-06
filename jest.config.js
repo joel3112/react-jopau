@@ -42,7 +42,8 @@ module.exports = {
         '@apps/example': '<rootDir>/apps/example/src/App.tsx',
         '@react-jopau/utils': '<rootDir>/packages/utils/src',
         '@react-jopau/shared/(.*)$': '<rootDir>/packages/shared/src/$1',
-        '@react-jopau/styles': '<rootDir>/packages/styles/src'
+        '@react-jopau/styles': '<rootDir>/packages/styles/src',
+        '@/components/(.*)$': '<rootDir>/packages/components/src/$1'
       }
     }
   ]

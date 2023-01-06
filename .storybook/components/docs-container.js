@@ -15,7 +15,7 @@ const StyledDocsContainer = styled('div', {
     backgroundColor: 'var(--rjopau-colors-background)',
     color: 'var(--rjopau-colors-text)'
   },
-  '.docs-story div:nth-child(2)': { background: 'transparent' },
+  '.docs-story > div:nth-child(2)': { background: 'transparent' },
   '.docs-story .docblock-code-toggle': { background: 'var(--rjopau-colors-backgroundContrast)' },
 
   // Code

@@ -6,7 +6,7 @@ import {
   Shape,
   SimpleColor,
   WithIcon
-} from '../../../../types';
+} from '@/components/shared';
 import { ChangeEvent, FocusEvent, MouseEvent } from 'react';
 
 export type InputProps = ElementHTML &

@@ -1,5 +1,5 @@
 import { ChangeEvent, FocusEvent, ReactElement } from 'react';
-import { ElementHTML, FormControl, NormalSize, Shape, SimpleColor } from '../../../../types';
+import type { ElementHTML, FormControl, NormalSize, Shape, SimpleColor } from '@/components/shared';
 import { SelectOptionProps } from './option/select-option-props';
 import { SelectGroupProps } from './group/select-group-props';
 

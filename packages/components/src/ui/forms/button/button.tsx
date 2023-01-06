@@ -1,23 +1,19 @@
 import {
   ForwardRefExoticComponent,
   MouseEvent,
-  ReactNode,
   Ref,
   RefAttributes,
   useContext,
   useImperativeHandle,
   useRef
 } from 'react';
+import { PressEvent } from '@react-types/shared/src/events';
 import { classes } from '@react-jopau/utils';
-import { cleanedProps, forwardRef } from '../../../shared';
+import { cleanedProps, forwardRef } from '@/components/shared';
 import { ButtonContext } from './button-context';
 import { ButtonGroup } from './group/button-group';
 import { ButtonProps, defaultProps } from './button-props';
 import { StyledButton, StyledButtonIcon } from './button.styled';
-
-const ButtonIcon = ({ children }: { children: ReactNode }) => {
-  return <StyledButtonIcon>{children}</StyledButtonIcon>;
-};
 
 /**
  * Button component is a clickable element that is used to trigger an action or event, such as submitting a form, opening a dialog, canceling an action, or performing a delete operation.
@@ -72,10 +68,10 @@ export const Button = forwardRef<ButtonProps, 'button'>(
         fullWidth={!!fullWidth}
         borderWeight="light"
         {...(icon && {
-          icon: iconPosition === 'left' && <ButtonIcon>{icon}</ButtonIcon>,
-          iconRight: iconPosition === 'right' && <ButtonIcon>{icon}</ButtonIcon>
+          icon: iconPosition === 'left' && <StyledButtonIcon>{icon}</StyledButtonIcon>,
+          iconRight: iconPosition === 'right' && <StyledButtonIcon>{icon}</StyledButtonIcon>
         })}
-        onClick={handleClick}>
+        onPress={handleClick as unknown as (e: PressEvent) => void}>
         {children}
       </StyledButton>
     );
