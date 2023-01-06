@@ -66,7 +66,6 @@ export const useBreakpoint = (
   const [config, setConfig] = useState<BreakpointsHelper>(createBreakpoints({ rules }));
 
   useEffect(() => {
-    if (!isClient) return;
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
     };

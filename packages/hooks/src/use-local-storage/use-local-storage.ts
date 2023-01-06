@@ -1,4 +1,5 @@
 import { Dispatch, SetStateAction, useState } from 'react';
+import { isClient } from '@react-jopau/utils';
 
 /**
  * @template T The type of the value to persist.
@@ -34,7 +35,7 @@ export const useLocalStorage = <T>(
   initialValue: T
 ): [T, Dispatch<SetStateAction<T>>] => {
   const [storedValue, setStoredValue] = useState<T>(() => {
-    if (typeof window === 'undefined') {
+    if (!isClient) {
       return initialValue;
     }
 
@@ -51,7 +52,7 @@ export const useLocalStorage = <T>(
     try {
       const valueToStore = value instanceof Function ? value(storedValue) : value;
       setStoredValue(valueToStore);
-      if (typeof window !== 'undefined') {
+      if (isClient) {
         window.localStorage.setItem(key, JSON.stringify(valueToStore));
       }
     } catch (error) {
