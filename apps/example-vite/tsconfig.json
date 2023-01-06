@@ -14,14 +14,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx",
-    "paths": {
-      "@react-jopau/utils": ["../../packages/utils/dist"],
-      "@react-jopau/shared/*": ["../../packages/shared/dist/*"],
-      "@react-jopau/styles": ["../../packages/styles/dist"],
-      "@react-jopau/hooks": ["../../packages/hooks/dist"],
-      "@react-jopau/components/*": ["../../packages/components/dist/*"]
-    }
+    "jsx": "react-jsx"
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]

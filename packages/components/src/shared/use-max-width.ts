@@ -3,7 +3,7 @@ import type { BreakpointsRules } from '@react-jopau/styles';
 import { ThemeContext } from '../contexts';
 
 const computeMaxWidth = (
-  breakpoints: BreakpointsRules,
+  breakpoints: BreakpointsRules = {},
   maxWidth?: number | 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 ): number => {
   if (typeof maxWidth === 'number') {

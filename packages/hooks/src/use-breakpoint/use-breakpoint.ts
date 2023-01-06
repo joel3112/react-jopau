@@ -5,6 +5,7 @@ import {
   BreakpointsRules,
   createBreakpoints
 } from '@react-jopau/styles';
+import { isClient } from '@react-jopau/utils';
 
 /**
  * @typedef  {Object} UseBreakpoint
@@ -61,10 +62,11 @@ export const useBreakpoint = (
   isDesktop: boolean;
   isLargeDesktop: boolean;
 } => {
-  const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
+  const [windowWidth, setWindowWidth] = useState<number>(() => (isClient ? window.innerWidth : 0));
   const [config, setConfig] = useState<BreakpointsHelper>(createBreakpoints({ rules }));
 
   useEffect(() => {
+    if (!isClient) return;
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
     };
