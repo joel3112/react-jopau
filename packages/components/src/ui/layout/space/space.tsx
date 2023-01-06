@@ -1,14 +1,7 @@
 import { classes } from '@react-jopau/utils';
+import { useSpacing } from '../../../shared';
 import { defaultProps, SpaceProps } from './space-props';
 import { StyledSpace } from './space.styled';
-
-const spacing = (gap?: number | Array<number>): string =>
-  gap
-    ? [gap]
-        .flat()
-        .map((s: number) => `${s}px`)
-        .join(' ')
-    : '';
 
 /**
  * Component flexbox-based spacing.
@@ -34,13 +27,15 @@ export const Space = ({
   justify,
   align
 }: SpaceProps) => {
+  const spacing = useSpacing(gap);
+
   return (
     <StyledSpace
       as={as}
       className={classes('space', className)}
       css={{
         flexDirection: direction,
-        gap: spacing(gap),
+        gap: spacing,
         ...style
       }}
       justify={justify}

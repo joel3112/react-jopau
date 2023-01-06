@@ -6,9 +6,27 @@ const bundle = (config) => ({
   external: (id) => !/^[./]/.test(id)
 });
 
+const exportProps = () => {
+  return {
+    name: 'export-props',
+    renderChunk(code) {
+      const propsRegex = /(.*)type (.*)Props =(.*)/g;
+      const props = [];
+      let match;
+      while ((match = propsRegex.exec(code)) !== null) {
+        props.push(`${match[2]}Props`);
+      }
+      return `
+        ${code}
+export { ${props.join(', ')} };
+      `;
+    }
+  };
+};
+
 export default [
   {
-    plugins: [dts()],
+    plugins: [dts(), exportProps()],
     input: 'src/ui/index.ts',
     output: {
       format: 'es',
@@ -16,7 +34,7 @@ export default [
     }
   },
   {
-    plugins: [dts()],
+    plugins: [dts(), exportProps()],
     input: 'src/contexts/index.ts',
     output: {
       format: 'es',
