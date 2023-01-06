@@ -12,7 +12,7 @@
   "private": true,
   "scripts": {
     "bootstrap": "lerna bootstrap",
-    "build": "lerna run build --sort --concurrency 1",
+    "build": "rm -rf ./packages/**/dist && lerna run build --sort --concurrency 1",
     "clean": "lerna clean --yes && rimraf node_modules yarn.lock",
     "docs": "yarn run docs:components && yarn run docs:hooks",
     "docs:components": "node scripts/docs-components",
