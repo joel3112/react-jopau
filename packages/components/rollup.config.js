@@ -1,4 +1,6 @@
+import * as path from 'path';
 import esbuild from 'rollup-plugin-esbuild';
+import multi from '@rollup/plugin-multi-entry';
 import dts from 'rollup-plugin-dts';
 
 const bundle = (config) => ({
@@ -6,43 +8,50 @@ const bundle = (config) => ({
   external: (id) => !/^[./]/.test(id)
 });
 
-const exportProps = () => {
+const alias = (entries = {}) => {
   return {
-    name: 'export-props',
-    renderChunk(code) {
-      const propsRegex = /(.*)type (.*)Props =(.*)/g;
-      const props = [];
-      let match;
-      while ((match = propsRegex.exec(code)) !== null) {
-        props.push(`${match[2]}Props`);
-      }
-      return `
-        ${code}
-export { ${props.join(', ')} };
-      `;
+    name: 'alias',
+    transform(code, id) {
+      let resolveCode = code;
+      Object.entries(entries).forEach(([alias, relativePath]) => {
+        const regex = new RegExp(alias, 'gmu');
+        const absolutePath = path.join(process.cwd(), relativePath);
+        const resolvePath = path.relative(path.dirname(id), absolutePath);
+
+        if (regex.test(code)) {
+          resolveCode = code.replace(regex, resolvePath);
+        }
+      });
+
+      return resolveCode;
     }
   };
 };
 
 export default [
   {
-    plugins: [dts(), exportProps()],
-    input: 'src/ui/index.ts',
+    plugins: [dts(), multi()],
+    input: ['src/ui/**/*.ts'],
     output: {
       format: 'es',
       file: 'dist/ui.d.ts'
     }
   },
   {
-    plugins: [dts(), exportProps()],
-    input: 'src/contexts/index.ts',
+    plugins: [dts(), multi()],
+    input: ['src/contexts/**/*.ts'],
     output: {
       format: 'es',
       file: 'dist/contexts.d.ts'
     }
   },
   bundle({
-    plugins: [esbuild()],
+    plugins: [
+      alias({
+        '@/components/(.*)$': 'src/$1'
+      }),
+      esbuild()
+    ],
     input: 'src/ui/index.ts',
     output: [
       {

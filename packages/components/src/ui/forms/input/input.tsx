@@ -6,7 +6,7 @@ import {
   useHotKey,
   withFormControl,
   withInputMask
-} from '../../../shared';
+} from '@/components/shared';
 import { InputPassword } from './password/input-password';
 import { defaultProps, InputProps } from './input-props';
 import {

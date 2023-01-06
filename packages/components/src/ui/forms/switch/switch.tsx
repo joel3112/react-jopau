@@ -9,7 +9,7 @@ import {
 } from 'react';
 import { KeyCode, useKeyboard } from '@nextui-org/react';
 import { classes } from '@react-jopau/utils';
-import { forwardRef, useControlChecked, withFormControl } from '../../../shared';
+import { forwardRef, useControlChecked, withFormControl } from '@/components/shared';
 import { SwitchProps, defaultProps } from './switch-props';
 import {
   StyledSwitch,

@@ -1,5 +1,5 @@
 import { Ref, RefObject, useId } from 'react';
-import { FormControl } from '../../types';
+import { FormControl } from './types';
 import { useControlled } from './use-controlled';
 
 type ChangeValue<T> = {

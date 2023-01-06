@@ -35,6 +35,7 @@
     "@babel/core": "^7.19.3",
     "@commitlint/cli": "^17.1.2",
     "@commitlint/config-conventional": "^17.1.0",
+    "@rollup/plugin-multi-entry": "^6.0.0",
     "@rollup/plugin-replace": "^5.0.2",
     "@storybook/addon-actions": "^6.5.12",
     "@storybook/addon-docs": "^6.5.13",

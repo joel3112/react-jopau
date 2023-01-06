@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { ElementHTML, FormControl, NormalColor, NormalSize } from '../../../../types';
+import type { ElementHTML, FormControl, NormalColor, NormalSize } from '@/components/shared';
 
 export type RadioProps = ElementHTML &
   Omit<FormControl, 'name' | 'label' | 'readOnly' | 'required'> & {

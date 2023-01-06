@@ -1,4 +1,4 @@
-import { styledTheme } from '../../../index';
+import { styledTheme } from '@/components/shared';
 
 export const StyledText = styledTheme('p', {
   display: 'block',

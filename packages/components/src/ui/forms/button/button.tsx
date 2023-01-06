@@ -9,7 +9,7 @@ import {
 } from 'react';
 import { PressEvent } from '@react-types/shared/src/events';
 import { classes } from '@react-jopau/utils';
-import { cleanedProps, forwardRef } from '../../../shared';
+import { cleanedProps, forwardRef } from '@/components/shared';
 import { ButtonContext } from './button-context';
 import { ButtonGroup } from './group/button-group';
 import { ButtonProps, defaultProps } from './button-props';

@@ -1,4 +1,4 @@
-import { ElementHTML, FormControl, NormalColor, NormalSize } from '../../../../types';
+import type { ElementHTML, FormControl, NormalColor, NormalSize } from '@/components/shared';
 
 export type CheckboxProps = ElementHTML &
   FormControl & {

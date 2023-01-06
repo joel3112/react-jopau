@@ -13,7 +13,8 @@
     "paths": {
       "@react-jopau/utils": ["../utils/dist"],
       "@react-jopau/shared/*": ["../shared/dist/*"],
-      "@react-jopau/styles": ["../styles/dist"]
+      "@react-jopau/styles": ["../styles/dist"],
+      "@/components/*": ["src/*"]
     }
   },
   "exclude": ["node_modules", "src/**/*.test.ts", "src/**/*.stories.tsx"]

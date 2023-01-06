@@ -1,5 +1,5 @@
 import { MouseEvent, ReactNode } from 'react';
-import { ButtonColor, ElementHTML, NormalSize, Shape, WithIcon } from '../../../../types';
+import type { ButtonColor, ElementHTML, NormalSize, Shape, WithIcon } from '@/components/shared';
 
 export type ButtonProps = ElementHTML &
   WithIcon & {

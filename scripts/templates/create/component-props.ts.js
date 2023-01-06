@@ -3,7 +3,7 @@ const templateCreator = template({});
 
 const templateObject = templateCreator`${({ context }) => `
 import { ReactNode } from 'react';
-import type { ElementHTML } from '../../../../types';
+import type { ElementHTML } from '@/components/shared';
 
 export type ${context.pascalName}Props = ElementHTML & {
   /**

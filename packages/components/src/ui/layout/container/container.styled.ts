@@ -1,4 +1,4 @@
-import { styledTheme } from '../../../index';
+import { styledTheme } from '@/components/shared';
 
 export const StyledContainer = styledTheme('div', {
   display: 'block',

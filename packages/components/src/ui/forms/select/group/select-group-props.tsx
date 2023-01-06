@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { FormControl } from '../../../../../types';
+import type { FormControl } from '@/components/shared';
 import { SelectOptionProps } from '../option/select-option-props';
 
 export type SelectGroupProps = Pick<FormControl, 'label' | 'disabled'> & {

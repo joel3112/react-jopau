@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { ElementHTML, FormControl, NormalColor, NormalSize } from '../../../../../types';
+import type { ElementHTML, FormControl, NormalColor, NormalSize } from '@/components/shared';
 import { RadioProps } from '../radio-props';
 
 export type RadioGroupProps = ElementHTML &

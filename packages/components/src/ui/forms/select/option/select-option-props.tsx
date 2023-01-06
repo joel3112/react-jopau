@@ -1,4 +1,4 @@
-import { FormControl } from '../../../../../types';
+import type { FormControl } from '@/components/shared';
 
 export type SelectOptionProps = Pick<FormControl, 'label' | 'disabled'> & {
   /**

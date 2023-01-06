@@ -1,6 +1,6 @@
-import type { ElementHTML, FormControl } from '../../../../types';
-import { InputProps } from '../input/input-props';
 import { ChangeEvent, FocusEvent } from 'react';
+import type { ElementHTML, FormControl } from '@/components/shared';
+import { InputProps } from '../input/input-props';
 
 export type TextareaProps = ElementHTML &
   FormControl &

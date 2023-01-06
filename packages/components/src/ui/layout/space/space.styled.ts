@@ -1,4 +1,4 @@
-import { styledTheme } from '../../../index';
+import { styledTheme } from '@/components/shared';
 
 const basicPositionStyles = (key: string) => ({
   start: { [key]: 'flex-start' },

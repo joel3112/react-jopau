@@ -8,7 +8,7 @@ import {
   RegisterOptions,
   useController
 } from 'react-hook-form';
-import { FormControl } from '../../types';
+import { FormControl } from './types';
 
 const defaultValuesByType: Record<string, FieldValue<FieldValues>> = {
   input: '',

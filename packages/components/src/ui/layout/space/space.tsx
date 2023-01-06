@@ -1,5 +1,5 @@
 import { classes } from '@react-jopau/utils';
-import { useSpacing } from '../../../shared';
+import { useSpacing } from '@/components/shared';
 import { defaultProps, SpaceProps } from './space-props';
 import { StyledSpace } from './space.styled';
 

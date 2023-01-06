@@ -1,5 +1,5 @@
 import { classes } from '@react-jopau/utils';
-import { useMaxWidth, useSpacing } from '../../../shared';
+import { useMaxWidth, useSpacing } from '@/components/shared';
 import { ContainerProps, defaultProps } from './container-props';
 import { StyledContainer } from './container.styled';
 

@@ -2,7 +2,7 @@ const { template } = require('react-docgen-renderer-template');
 const templateCreator = template({});
 
 const templateObject = templateCreator`${({ context }) => `
-import { classes } from '../../../utils/system';
+import { classes } from '@react-jopau/utils';
 import { ${context.pascalName}Props, defaultProps } from './${context.name}-props';
 import { Styled${context.pascalName} } from './${context.name}.styled';
 

@@ -1,6 +1,6 @@
 import { ForwardRefExoticComponent, Ref, RefAttributes } from 'react';
 import { classes } from '@react-jopau/utils';
-import { forwardRef, useControlGroup, withFormControl } from '../../../../shared';
+import { forwardRef, useControlGroup, withFormControl } from '@/components/shared';
 import { RadioContext } from '../radio-context';
 import { defaultProps, RadioGroupProps } from './radio-group-props';
 import { StyledRadioGroup } from '../radio.styled';

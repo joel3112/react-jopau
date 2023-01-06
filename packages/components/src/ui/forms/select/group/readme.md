@@ -21,4 +21,8 @@ import { Select } from '@react-jopau/components/ui';
 
 #### Props
 
-This component does not have any props.
+| Name                  | Type                                                                                                                                                     | Default value | Description                                                           |
+| --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- | --------------------------------------------------------------------- |
+| children _(required)_ | `ReactElement<SelectOptionProps, string` \| `JSXElementConstructor<any>>` \| `ReactElement<SelectOptionProps, string` \| `JSXElementConstructor<...>>[]` |               | Defines the children of the component.                                |
+| disabled              | `boolean`                                                                                                                                                |               | Defines if the element is disabled and not available for interaction. |
+| label                 | `string`                                                                                                                                                 |               | Defines the label of the current element.                             |
