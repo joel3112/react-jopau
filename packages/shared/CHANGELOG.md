@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.19.0](https://github.com/joel3112/react-jopau/compare/v0.18.1...v0.19.0) (2023-01-06)
+
+### 🚀 New Features
+
+- resolve components module types ([32002a2](https://github.com/joel3112/react-jopau/commit/32002a2d5aaaf495f343b43c3ae862727bb092bb))
+
 ## [0.18.1](https://github.com/joel3112/react-jopau/compare/v0.18.0...v0.18.1) (2023-01-05)
 
 ### 🐛 Bug Fixes

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.19.0](https://github.com/joel3112/react-jopau/compare/v0.18.1...v0.19.0) (2023-01-06)
+
+### 🐛 Bug Fixes
+
+- **components:** resolve warning button onClick ([8e8fd73](https://github.com/joel3112/react-jopau/commit/8e8fd73c3c2a39a1786e5cfbaa5ba3cfba6ffda0))
+
+### 🚀 New Features
+
+- **components:** export props in bundle ([2d4323d](https://github.com/joel3112/react-jopau/commit/2d4323d1c8c661d568ffc721e2eac0a4ab2e1c49))
+- **components:** resolve path alias ([20f248a](https://github.com/joel3112/react-jopau/commit/20f248ac040b6727f328e14573ead0247317d781))
+- resolve components module types ([32002a2](https://github.com/joel3112/react-jopau/commit/32002a2d5aaaf495f343b43c3ae862727bb092bb))
+
 ## [0.18.1](https://github.com/joel3112/react-jopau/compare/v0.18.0...v0.18.1) (2023-01-05)
 
 ### 🐛 Bug Fixes
