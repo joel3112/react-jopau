@@ -5,7 +5,7 @@ import { addons } from '@storybook/addons';
 import { SbBreadcrumbs } from '../../packages/shared/src/stories';
 import { useLocalStorage } from '../../packages/hooks/src/use-local-storage/use-local-storage';
 import { DARK_MODE_STORAGE_KEY } from '../../packages/styles/src/utils';
-import { last } from '../../packages/utils/src';
+import { last } from '../../packages/utils/src/array';
 
 // eslint-disable-next-line react/prop-types
 export const DocsPage = ({ children }) => {

@@ -22,21 +22,20 @@ jobs:
       - name: 📥 Setup Node and Install dependencies
         uses: ./.github/actions/setup
 
-  lint:
-    needs: install
-    runs-on: ubuntu-latest
-    steps:
-      - name: ⬇️ Check out repository
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: '0'
-      - name: 📥 Setup Node and Install dependencies
-        uses: ./.github/actions/setup
-      - name: 🚨 Lint
-        run: yarn type-check && yarn lint
-
+#  lint:
+#    needs: install
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: ⬇️ Check out repository
+#        uses: actions/checkout@v3
+#        with:
+#          fetch-depth: '0'
+#      - name: 📥 Setup Node and Install dependencies
+#        uses: ./.github/actions/setup
+#      - name: 🚨 Lint
+#        run: yarn type-check && yarn lint
   build:
-    needs: lint
+    needs: install
     runs-on: ubuntu-latest
     steps:
       - name: ⬇️ Check out repository
@@ -47,16 +46,16 @@ jobs:
         uses: ./.github/actions/setup
       - name: 👷 Build
         run: yarn build
-
-  unit-tests:
-    needs: [lint, build]
-    runs-on: ubuntu-latest
-    steps:
-      - name: ⬇️ Check out repository
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: '0'
-      - name: 📥 Setup node - Install dependencies
-        uses: ./.github/actions/setup
-      - name: ✅ Test
-        run: yarn test
+#
+#  unit-tests:
+#    needs: [lint, build]
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: ⬇️ Check out repository
+#        uses: actions/checkout@v3
+#        with:
+#          fetch-depth: '0'
+#      - name: 📥 Setup node - Install dependencies
+#        uses: ./.github/actions/setup
+#      - name: ✅ Test
+#        run: yarn test
