@@ -1,6 +1,6 @@
 {
   "name": "app-example-next",
-  "version": "0.1.0",
+  "version": "0.20.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -14,10 +14,10 @@
     "@types/react": "18.0.26",
     "@types/react-dom": "18.0.10",
     "autoprefixer": "^10.4.13",
-    "path": "^0.12.7",
     "eslint": "8.31.0",
     "eslint-config-next": "13.1.1",
     "next": "13.1.1",
+    "path": "^0.12.7",
     "postcss": "^8.4.19",
     "react": "18.2.0",
     "react-dom": "18.2.0",

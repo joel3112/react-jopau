@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.20.0](https://github.com/joel3112/react-jopau/compare/v0.19.0...v0.20.0) (2023-01-07)
+
+### 🏠 Internal
+
+- update dependencies ([4955d00](https://github.com/joel3112/react-jopau/commit/4955d008588ad2a16a2fb27c202273dfc0f0ee55))
+
 ## [0.19.0](https://github.com/joel3112/react-jopau/compare/v0.18.1...v0.19.0) (2023-01-06)
 
 **Note:** Version bump only for package @react-jopau/styles

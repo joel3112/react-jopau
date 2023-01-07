@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.20.0](https://github.com/joel3112/react-jopau/compare/v0.19.0...v0.20.0) (2023-01-07)
+
+### 🏠 Internal
+
+- react dependency to 18 ([0eefee9](https://github.com/joel3112/react-jopau/commit/0eefee9e09fe344e92246687a26d5b553e31f996))
+
 ## [0.19.0](https://github.com/joel3112/react-jopau/compare/v0.18.1...v0.19.0) (2023-01-06)
 
 ### 🐛 Bug Fixes

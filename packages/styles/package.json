@@ -1,6 +1,6 @@
 {
   "name": "@react-jopau/styles",
-  "version": "0.19.0",
+  "version": "0.20.0",
   "description": "Common styles and themes for React projects",
   "repository": {
     "type": "git",
@@ -33,7 +33,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@react-jopau/utils": "^0.19.0",
+    "@react-jopau/utils": "^0.20.0",
     "@stitches/react": "^1.2.8"
   },
   "devDependencies": {
