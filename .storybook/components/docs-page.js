@@ -2,10 +2,10 @@ import * as React from 'react';
 import { convert, ThemeProvider as ThemeProviderStorybook, themes } from '@storybook/theming';
 import { DocsContext, Story } from '@storybook/addon-docs';
 import { addons } from '@storybook/addons';
-import { SbBreadcrumbs } from '../../packages/shared/src/stories';
-import { useLocalStorage } from '../../packages/hooks/src/use-local-storage/use-local-storage';
-import { DARK_MODE_STORAGE_KEY } from '../../packages/styles/src/utils';
-import { last } from '../../packages/utils/src';
+import { SbBreadcrumbs } from '@react-jopau/shared/stories';
+import { useLocalStorage } from '@react-jopau/hooks';
+import { DARK_MODE_STORAGE_KEY } from '@react-jopau/styles';
+import { last } from '@react-jopau/utils';
 
 // eslint-disable-next-line react/prop-types
 export const DocsPage = ({ children }) => {

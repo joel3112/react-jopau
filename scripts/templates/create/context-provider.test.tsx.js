@@ -4,14 +4,14 @@ const templateCreator = template({});
 const templateObject = templateCreator`${({ context }) => `
 import '@testing-library/jest-dom';
 import { render } from '@testing-library/react';
-import AppExample from '@apps/example';
+import { MockApp } from '../mock-app';
 import { ${context.pascalName}Provider } from './${context.name}-context';
 
 describe('Tests ${context.pascalName}Provider component', () => {
   test('renders component correctly', () => {
     const { container } = render(
       <${context.pascalName}Provider initialValue={1}>
-        <AppExample />
+        <MockApp />
       </${context.pascalName}Provider>
     );
 

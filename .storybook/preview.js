@@ -1,9 +1,9 @@
 import '/packages/styles/src/styles.css';
 import { MINIMAL_VIEWPORTS } from '@storybook/addon-viewport';
+import { anysort } from '@react-jopau/utils';
 import { DocsContainer, DocsPage } from './components';
 import { globalDecorators } from './decorators';
 import { createStorybookTheme } from './theme';
-import { anysort } from '/packages/utils/src/function';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },

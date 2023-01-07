@@ -2,13 +2,13 @@
 import * as React from 'react';
 import { addons, types } from '@storybook/addons';
 import { IconButton, Separator, TooltipLinkList, WithTooltip } from '@storybook/components';
-import { useLocalStorage } from '/packages/hooks/src/use-local-storage/use-local-storage';
+import { useLocalStorage } from '@react-jopau/hooks';
 import {
+  DARK_MODE_STORAGE_KEY,
   getColors,
   THEME_SELECTOR_STORAGE_KEY,
-  DARK_MODE_STORAGE_KEY
-} from '/packages/styles/src/utils/theme';
-import { themes } from '/packages/styles/src/themes';
+  themes
+} from '@react-jopau/styles';
 import { createStorybookTheme } from '../../theme';
 
 const renderPrimaryColorDot = (themeKey) => {

@@ -4,7 +4,7 @@ const templateCreator = template({});
 const templateObject = templateCreator`${({ context }) => `
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { prepareArgTypes, prepareParameters } from '@react-jopau/shared/stories';
-import AppExample from '@apps/example';
+import { MockApp } from '../mock-app';
 import { ${context.pascalName}Provider } from './${context.name}-context';
 import docs from './readme.mdx';
 
@@ -13,7 +13,7 @@ export default {
   component: ${context.pascalName}Provider,
   parameters: prepareParameters(docs),
   args: {
-    children: <AppExample />,
+    children: <MockApp />,
     initialValue: 1
   },
   argTypes: prepareArgTypes(Container, {

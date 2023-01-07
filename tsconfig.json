@@ -16,7 +16,6 @@
     "skipLibCheck": true,
     "typeRoots": ["node_modules/@types", "typings/*.d.ts", "packages/**/*.d.ts"],
     "paths": {
-      "@apps/example": ["apps/example/src/App.tsx"],
       "@react-jopau/utils": ["packages/utils/src"],
       "@react-jopau/shared/*": ["packages/shared/src/*"],
       "@react-jopau/styles": ["packages/styles/src"],

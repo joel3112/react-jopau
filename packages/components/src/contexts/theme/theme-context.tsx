@@ -1,5 +1,5 @@
 import { createContext, useEffect, useMemo, useState } from 'react';
-import { globalCss } from '@stitches/react';
+import { globalCss, styled } from '@stitches/react';
 import {
   BreakpointsRules,
   globalCSS,
@@ -43,6 +43,11 @@ const globalStyles = ({ xs, sm, md, xl, lg }: BreakpointsRules) =>
       fontFamily: 'var(--rjopau-fonts-code) !important'
     }
   });
+
+const StyledContent = styled('div', {
+  background: 'var(--rjopau-colors-background)',
+  color: 'var(--rjopau-colors-text)'
+});
 
 /**
  * Theme provider component that allows to define the theme and the scheme to use.
@@ -90,10 +95,10 @@ export const ThemeProvider = ({ children, config, darkMode }: ThemeProviderProps
         darkMode: !!dark,
         onToggle: () => setDark((prev) => !prev)
       }}>
-      <div className={currentSchemeClass}>
+      <StyledContent className={currentSchemeClass}>
         {globalStyles(breakpoints)()}
         {children}
-      </div>
+      </StyledContent>
     </ThemeContext.Provider>
   );
 };

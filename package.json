@@ -12,7 +12,7 @@
   "private": true,
   "scripts": {
     "bootstrap": "lerna bootstrap",
-    "build": "lerna run build --sort --concurrency 1",
+    "build": "lerna run build --sort --concurrency 1 --scope @react-jopau/*",
     "clean": "lerna clean --yes && rimraf node_modules yarn.lock",
     "docs": "yarn run docs:components && yarn run docs:hooks",
     "docs:components": "node scripts/docs-components",
@@ -65,8 +65,7 @@
     "@types/lodash": "4.14.185",
     "@types/mdx": "^2.0.2",
     "@types/node": "^18.7.18",
-    "@types/react": "^17.0.0 || ^18.0.0",
-    "@types/react-dom": "^17.0.0 || ^18.0.0",
+    "@types/react": "^18.0.0",
     "@typescript-eslint/eslint-plugin": "^5.37.0",
     "@typescript-eslint/parser": "^5.37.0",
     "autoprefixer": "^10.4.12",
@@ -113,8 +112,7 @@
   "dependencies": {
     "@stitches/react": "^1.2.8",
     "lodash": "^4.17.21",
-    "react": "^17.0.0 || ^18.0.0",
-    "react-dom": "^17.0.0 || ^18.0.0",
-    "react-icons": "^4.6.0"
+    "react": "^18.0.0",
+    "react-icons": "^4.7.1"
   }
 }

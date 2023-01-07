@@ -1,5 +1,5 @@
 import { create } from '@storybook/theming';
-import { getColors, getProps, getTheme, getThemeStored } from '/packages/styles/src/utils/theme';
+import { getColors, getProps, getTheme, getThemeStored } from '@react-jopau/styles';
 
 export const createStorybookTheme = (themeKey = 'default', scheme = 'light') => {
   const currentTheme = getThemeStored() || themeKey;
