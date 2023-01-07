@@ -1,13 +1,9 @@
 /* eslint-disable react/prop-types */
 import * as React from 'react';
 import { addons } from '@storybook/addons';
-import { useLocalStorage } from '/packages/hooks/src/use-local-storage/use-local-storage';
-import { ThemeProvider } from '/packages/components/src/contexts';
-import { themes } from '/packages/styles/src/themes';
-import {
-  DARK_MODE_STORAGE_KEY,
-  THEME_SELECTOR_STORAGE_KEY
-} from '/packages/styles/src/utils/theme';
+import { useLocalStorage } from '@react-jopau/hooks';
+import { ThemeProvider } from '@react-jopau/components/contexts';
+import { DARK_MODE_STORAGE_KEY, THEME_SELECTOR_STORAGE_KEY, themes } from '@react-jopau/styles';
 
 const ThemeProviderMemo = React.memo(ThemeProvider);
 

@@ -32,6 +32,7 @@ jobs:
       - name: 🚀 Deploy to Vercel (Preview)
         id: deploy-to-vercel
         run: |
+          yarn build
           yarn run build-storybook
           npm i -g vercel --no-save --no-fund --no-audit --no-scripts
           DEPLOYMENT_URL=$(vercel ./dist/storybook --token=$VERCEL_TOKEN --yes)

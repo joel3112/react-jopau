@@ -3,8 +3,8 @@ import * as React from 'react';
 import { addons, types } from '@storybook/addons';
 import { IconButton, TooltipLinkList, WithTooltip } from '@storybook/components';
 import { FiMoon, FiSun } from 'react-icons/fi';
-import { useLocalStorage } from '/packages/hooks/src/use-local-storage/use-local-storage';
-import { DARK_MODE_STORAGE_KEY, getColors, getThemeStored } from '/packages/styles/src/utils/theme';
+import { useLocalStorage } from '@react-jopau/hooks';
+import { DARK_MODE_STORAGE_KEY, getColors, getThemeStored } from '@react-jopau/styles';
 
 const COLOR_SCHEMES = [
   { id: 'light', title: 'Light' },
