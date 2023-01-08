@@ -55,7 +55,7 @@ const StyledContent = styled('div', {
  * @param   {ThemeProviderProps} props - Props injected to the provider.
  * @returns {JSX.Element} Rendered provider.
  *
- * @imports import { ThemeProvider } from '@react-jopau/components/contexts';
+ * @imports import { ThemeProvider } from '@react-jopau/components';
  * @example
  * <ThemeProvider config={customConfig} darkMode>
  *    <div>Content</div>

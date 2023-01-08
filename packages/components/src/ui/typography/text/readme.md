@@ -5,7 +5,7 @@ Text component is the used to render text and paragraphs within an interface usi
 #### Import
 
 ```jsx
-import { Text } from '@react-jopau/components/ui';
+import { Text } from '@react-jopau/components';
 ```
 
 #### Examples

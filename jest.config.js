@@ -36,7 +36,8 @@ module.exports = {
         '@react-jopau/utils': '<rootDir>/packages/utils/src',
         '@react-jopau/shared/(.*)$': '<rootDir>/packages/shared/src/$1',
         '@react-jopau/styles': '<rootDir>/packages/styles/src',
-        '@react-jopau/components/(.*)$': '<rootDir>/packages/components/src/$1'
+        '@react-jopau/components': '<rootDir>/packages/components/src',
+        '@/components/(.*)$': '<rootDir>/packages/components/src/$1'
       }
     },
     {

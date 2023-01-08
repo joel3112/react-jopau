@@ -8,7 +8,7 @@ import { StyledHeading } from './heading.styled';
  * @param   {HeadingProps} props - Props injected to the component.
  * @returns {JSX.Element} Rendered component.
  *
- * @imports import { Heading } from '@react-jopau/components/ui';
+ * @imports import { Heading } from '@react-jopau/components';
  * @example
  * <Heading as="h2">Title</Heading>
  */

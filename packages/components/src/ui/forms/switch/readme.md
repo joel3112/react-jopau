@@ -6,7 +6,7 @@ You can switch between enabled or disabled states.
 #### Import
 
 ```jsx
-import { Switch } from '@react-jopau/components/ui';
+import { Switch } from '@react-jopau/components';
 ```
 
 #### Examples

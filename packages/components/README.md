@@ -25,10 +25,10 @@ npm install @react-jopau/components
 
 ```javascript
 // Components
-import { Button, Header, Space } from '@react-jopau/components/ui';
+import { Button, Header, Space } from '@react-jopau/components';
 
 // Context Providers
-import { ThemeProvider } from '@react-jopau/components/contexts';
+import { ThemeProvider } from '@react-jopau/components';
 ```
 
 ## Author

@@ -31,7 +31,7 @@ import {
  * @param   {SelectProps} props - Props injected to the component.
  * @returns {JSX.Element} Rendered component.
  *
- * @imports import { Select } from '@react-jopau/components/ui';
+ * @imports import { Select } from '@react-jopau/components';
  * @example
  * <Select value="A">
  *  <Select.Option value="A">A</Select.Option>

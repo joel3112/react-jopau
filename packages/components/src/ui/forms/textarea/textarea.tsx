@@ -11,7 +11,7 @@ import { StyledTextarea, StyledTextareaWrapper } from './textarea.styled';
  * @param   {TextareaProps} props - Props injected to the component.
  * @returns {JSX.Element} Rendered component.
  *
- * @imports import { Textarea } from '@react-jopau/components/ui';
+ * @imports import { Textarea } from '@react-jopau/components';
  * @example
  * <Textarea color="primary" label="Label" placeholder="placeholder" value="text" />
  */

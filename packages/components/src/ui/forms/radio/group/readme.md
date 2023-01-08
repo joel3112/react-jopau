@@ -5,7 +5,7 @@ Radios group allows users to select a single option from a list of mutually excl
 #### Import
 
 ```jsx
-import { Radio } from '@react-jopau/components/ui';
+import { Radio } from '@react-jopau/components';
 ```
 
 #### Examples

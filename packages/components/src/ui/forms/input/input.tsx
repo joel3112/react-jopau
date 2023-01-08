@@ -23,7 +23,7 @@ import {
  * @param   {InputProps} props - Props injected to the component.
  * @returns {JSX.Element} Rendered component.
  *
- * @imports import { Input } from '@react-jopau/components/ui';
+ * @imports import { Input } from '@react-jopau/components';
  * @example
  * <Input label="Label" placeholder="placeholder" value="text" />
  */

@@ -5,7 +5,7 @@ Select component is a component that allows users pick a value from predefined o
 #### Import
 
 ```jsx
-import { Select } from '@react-jopau/components/ui';
+import { Select } from '@react-jopau/components';
 ```
 
 #### Examples

@@ -23,7 +23,7 @@ export const ${context.pascalName}Context = createContext<{
  * @param   {${context.pascalName}ProviderProps} props - Props injected to the provider.
  * @returns {JSX.Element} Rendered provider.
  *
- * @imports import { ${context.pascalName}Provider } from '@react-jopau/components/contexts';
+ * @imports import { ${context.pascalName}Provider } from '@react-jopau/components';
  * @example
  * <${context.pascalName}Provider initialValue={1}>
  *    <div>Content</div>

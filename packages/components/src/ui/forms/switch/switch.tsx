@@ -26,7 +26,7 @@ import {
  * @param   {SwitchProps} props - Props injected to the component.
  * @returns {JSX.Element} Rendered component.
  *
- * @imports import { Switch } from '@react-jopau/components/ui';
+ * @imports import { Switch } from '@react-jopau/components';
  * @example
  * <Switch defaultChecked />
  */

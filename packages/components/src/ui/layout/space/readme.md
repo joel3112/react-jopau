@@ -5,7 +5,7 @@ Component flexbox-based spacing.
 #### Import
 
 ```jsx
-import { Space } from '@react-jopau/components/ui';
+import { Space } from '@react-jopau/components';
 ```
 
 #### Examples
