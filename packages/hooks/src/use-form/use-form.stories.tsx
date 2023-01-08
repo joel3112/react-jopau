@@ -9,7 +9,7 @@ import {
   Select,
   Space,
   Switch
-} from '@react-jopau/components/ui';
+} from '@react-jopau/components';
 import { prepareParameters, SBJSONPreview } from '@react-jopau/shared/stories';
 import { useForm } from './use-form';
 import docs from './readme.mdx';

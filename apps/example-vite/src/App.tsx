@@ -12,7 +12,7 @@ import {
   Switch,
   Text,
   Textarea
-} from '@react-jopau/components/ui';
+} from '@react-jopau/components';
 import './App.css';
 
 const App = () => {

@@ -10,21 +10,13 @@
   "license": "MIT",
   "homepage": "https://github.com/joel3112/react-jopau/tree/main/packages/components#readme",
   "type": "module",
-  "typesVersions": {
-    "*": {
-      "*": [
-        "./dist/*"
-      ]
-    }
-  },
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/index.d.ts",
   "exports": {
-    "./ui": {
-      "import": "./dist/esm/ui/index.js",
-      "require": "./dist/cjs/ui/index.js"
-    },
-    "./contexts": {
-      "import": "./dist/esm/contexts/index.js",
-      "require": "./dist/cjs/contexts/index.js"
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js"
     }
   },
   "files": [

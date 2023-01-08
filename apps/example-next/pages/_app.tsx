@@ -1,6 +1,6 @@
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
-import { ThemeProvider } from '@react-jopau/components/contexts';
+import { ThemeProvider } from '@react-jopau/components';
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (

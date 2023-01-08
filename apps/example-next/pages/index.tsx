@@ -15,7 +15,7 @@ import {
   Space,
   Switch,
   Textarea
-} from '@react-jopau/components/ui';
+} from '@react-jopau/components';
 import { useBreakpoint, useTheme } from '@react-jopau/hooks';
 
 const inter = Inter({ subsets: ['latin'] });

@@ -31,18 +31,10 @@ const alias = (entries = {}) => {
 export default [
   {
     plugins: [dts(), multi()],
-    input: ['src/ui/**/*.ts'],
+    input: 'src/**/*.ts',
     output: {
       format: 'es',
-      file: 'dist/ui.d.ts'
-    }
-  },
-  {
-    plugins: [dts(), multi()],
-    input: ['src/contexts/**/*.ts'],
-    output: {
-      format: 'es',
-      file: 'dist/contexts.d.ts'
+      file: 'dist/index.d.ts'
     }
   },
   bundle({
@@ -52,29 +44,15 @@ export default [
       }),
       esbuild()
     ],
-    input: 'src/ui/index.ts',
+    input: 'src/index.ts',
     output: [
       {
         format: 'cjs',
-        file: 'dist/cjs/ui/index.js'
+        file: 'dist/cjs/index.js'
       },
       {
         format: 'es',
-        file: 'dist/esm/ui/index.js'
-      }
-    ]
-  }),
-  bundle({
-    plugins: [esbuild()],
-    input: 'src/contexts/index.ts',
-    output: [
-      {
-        format: 'cjs',
-        file: 'dist/cjs/contexts/index.js'
-      },
-      {
-        format: 'es',
-        file: 'dist/esm/contexts/index.js'
+        file: 'dist/esm/index.js'
       }
     ]
   })

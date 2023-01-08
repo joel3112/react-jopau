@@ -20,7 +20,7 @@
       "@react-jopau/shared/*": ["packages/shared/src/*"],
       "@react-jopau/styles": ["packages/styles/src"],
       "@react-jopau/hooks": ["packages/hooks/src"],
-      "@react-jopau/components/*": ["packages/components/src/*"],
+      "@react-jopau/components": ["packages/components/src"],
       "@/components/*": ["packages/components/src/*"]
     },
     "types": ["node", "react", "jest", "mdx"]

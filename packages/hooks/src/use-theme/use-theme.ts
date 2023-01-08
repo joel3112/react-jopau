@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { ThemeContext } from '@react-jopau/components/contexts';
+import { ThemeContext } from '@react-jopau/components';
 import type { ThemeConfig } from '@react-jopau/styles';
 
 /**
