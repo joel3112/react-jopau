@@ -1,19 +1,24 @@
-import * as _ from 'lodash';
+import {
+  truncate as _truncate,
+  camelCase as _camelCase,
+  kebabCase as _kebabCase,
+  capitalize as _capitalize
+} from 'lodash-es';
 
 export const truncate = (text: string, limit: number): string => {
-  return _.truncate(String(text), { length: limit, separator: ' ' });
+  return _truncate(String(text), { length: limit, separator: ' ' });
 };
 
 export const toCamelCase = (text: string): string => {
-  return _.camelCase(String(text));
+  return _camelCase(String(text));
 };
 
 export const toKebabCase = (text: string): string => {
-  return _.kebabCase(String(text));
+  return _kebabCase(String(text));
 };
 
 export const toCapitalize = (text: string): string => {
-  return _.capitalize(String(text));
+  return _capitalize(String(text));
 };
 
 export const removeSpecialCharacters = (text: string): string => {

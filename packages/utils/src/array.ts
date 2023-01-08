@@ -1,4 +1,11 @@
-import * as _ from 'lodash';
+import {
+  head as _head,
+  last as _last,
+  nth as _nth,
+  remove as _remove,
+  uniq as _uniq,
+  compact as _compact
+} from 'lodash-es';
 import type { TBasic } from './index';
 
 export type TArray<T = TBasic> = Array<T>;
@@ -6,15 +13,15 @@ export type TArrayDouble<T = TBasic> = [Array<T>, Array<T>];
 export type TArrayCriteriaSplit<T = TBasic> = (value: T, index: number) => boolean;
 
 export const first = <T>(array: TArray<T>): T | undefined => {
-  return _.head(array);
+  return _head(array);
 };
 
 export const last = <T>(array: TArray<T>): T | undefined => {
-  return _.last(array);
+  return _last(array);
 };
 
 export const nth = <T>(array: TArray<T>, position: number): T | undefined => {
-  return _.nth<T>(array, position);
+  return _nth<T>(array, position);
 };
 
 export const remove = <T>(array: TArray<T>, position: number): TArray<T> => {
@@ -23,11 +30,11 @@ export const remove = <T>(array: TArray<T>, position: number): TArray<T> => {
 };
 
 export const uniq = <T>(array: TArray<T>): TArray<T> => {
-  return _.uniq<T>(array);
+  return _uniq<T>(array);
 };
 
 export const compact = <T>(array: TArray<T>): TArray<T> => {
-  return _.compact<T>(array);
+  return _compact<T>(array);
 };
 
 export const multiply = <T>(array: TArray<T>, size: number): TArray<T> => {
@@ -46,5 +53,5 @@ export const splitByCriteria = <T>(
   criteria: TArrayCriteriaSplit<T>
 ): TArrayDouble<T> => {
   const _array = [...Array.from(array)];
-  return [_.remove<T>(_array, criteria), _array];
+  return [_remove<T>(_array, criteria), _array];
 };
