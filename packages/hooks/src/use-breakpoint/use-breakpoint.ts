@@ -63,7 +63,9 @@ export const useBreakpoint = (
   isLargeDesktop: boolean;
 } => {
   const [windowWidth, setWindowWidth] = useState<number>(() => (isClient ? window.innerWidth : 0));
-  const [config, setConfig] = useState<BreakpointsHelper>(createBreakpoints({ rules }));
+  const [config, setConfig] = useState<BreakpointsHelper>(() =>
+    isClient ? createBreakpoints({ rules }) : ({} as BreakpointsHelper)
+  );
 
   useEffect(() => {
     const handleResize = () => {
