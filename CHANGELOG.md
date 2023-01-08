@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.20.1](https://github.com/joel3112/react-jopau/compare/v0.20.0...v0.20.1) (2023-01-08)
+
+### 🏠 Internal
+
+- **utils:** lodash es module ([ec3e491](https://github.com/joel3112/react-jopau/commit/ec3e491bcb33a2a26049f613f6d328d2cd647781))
+
 ## [0.20.0](https://github.com/joel3112/react-jopau/compare/v0.19.0...v0.20.0) (2023-01-07)
 
 ### 🚀 New Features

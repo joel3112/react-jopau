@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.20.1](https://github.com/joel3112/react-jopau/compare/v0.20.0...v0.20.1) (2023-01-08)
+
+**Note:** Version bump only for package @react-jopau/components
+
 ## [0.20.0](https://github.com/joel3112/react-jopau/compare/v0.19.0...v0.20.0) (2023-01-07)
 
 ### 🏠 Internal
