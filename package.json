@@ -107,6 +107,7 @@
     "ts-json-schema-generator": "^1.1.2",
     "ts-node": "^10.9.1",
     "tsconfig-paths-webpack-plugin": "^4.0.0",
+    "tsup": "^6.5.0",
     "typescript": "^4.8.4"
   },
   "dependencies": {

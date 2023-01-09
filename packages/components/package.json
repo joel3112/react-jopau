@@ -10,13 +10,13 @@
   "license": "MIT",
   "homepage": "https://github.com/joel3112/react-jopau/tree/main/packages/components#readme",
   "type": "module",
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/esm/index.js",
-      "require": "./dist/cjs/index.js"
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
     }
   },
   "files": [
@@ -25,7 +25,8 @@
     "package.json"
   ],
   "scripts": {
-    "build": "rimraf dist && rollup -c",
+    "buildr": "rimraf dist && rollup -c",
+    "build": "rimraf dist && tsup ",
     "test": "jest --config=../../jest.config.js --selectProjects=@react-jopau/components"
   },
   "publishConfig": {
@@ -40,7 +41,6 @@
     "@stitches/react": "^1.2.8",
     "react": "^18.0.0",
     "react-hotkeys-hook": "^4.3.0",
-    "react-icons": "^4.7.1",
     "react-is": "^18.2.0",
     "react-text-mask": "^5.5.0"
   },
@@ -49,6 +49,7 @@
     "@types/react": "^18.0.0",
     "@types/react-is": "^17.0.3",
     "@types/react-text-mask": "^5.4.11",
+    "react-icons": "^4.7.1",
     "typescript": "^4.8.4"
   }
 }
