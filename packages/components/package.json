@@ -9,14 +9,13 @@
   "author": "Joel Paucarima Franco <joel.dev.3112@outlook.es>",
   "license": "MIT",
   "homepage": "https://github.com/joel3112/react-jopau/tree/main/packages/components#readme",
-  "type": "module",
-  "main": "dist/index.cjs",
-  "module": "dist/index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
+      "require": "./dist/index.js",
+      "default": "./dist/index.mjs"
     }
   },
   "files": [
@@ -26,7 +25,7 @@
   ],
   "scripts": {
     "buildr": "rimraf dist && rollup -c",
-    "build": "rimraf dist && tsup ",
+    "build": "rimraf dist && tsup",
     "test": "jest --config=../../jest.config.js --selectProjects=@react-jopau/components"
   },
   "publishConfig": {
