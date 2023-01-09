@@ -5,7 +5,7 @@ If you need to make a group of buttons you can use the compound component Button
 #### Import
 
 ```jsx
-import { Button } from '@react-jopau/components/ui';
+import { Button } from '@react-jopau/components';
 ```
 
 #### Examples

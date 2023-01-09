@@ -11,7 +11,7 @@ import { StyledRadioGroup } from '../radio.styled';
  * @param   {RadioGroupProps} props - Props injected to the component.
  * @returns {JSX.Element} Rendered component.
  *
- * @imports import { Radio } from '@react-jopau/components/ui';
+ * @imports import { Radio } from '@react-jopau/components';
  * @example
  * <Radio.Group defaultValue="A">
  *  <Radio value="A">Option A</Radio>

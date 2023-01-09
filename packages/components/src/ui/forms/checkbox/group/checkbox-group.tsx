@@ -11,7 +11,7 @@ import { StyledCheckboxGroup } from '../checkbox.styled';
  * @param   {CheckboxGroupProps} props - Props injected to the component.
  * @returns {JSX.Element} Rendered component.
  *
- * @imports import { Checkbox } from '@react-jopau/components/ui';
+ * @imports import { Checkbox } from '@react-jopau/components';
  * @example
  * <Checkbox.Group defaultValue={["A"]}>
  *  <Checkbox value="A">Option A</Checkbox>

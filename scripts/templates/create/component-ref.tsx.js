@@ -14,7 +14,7 @@ import { Styled${context.pascalName} } from './${context.name}.styled';
   * @param   {${context.pascalName}Props} props - Props injected to the component.
   * @returns {JSX.Element} Rendered component.
   *
-  * @imports import { ${context.pascalName} } from '@react-jopau/components/ui';
+  * @imports import { ${context.pascalName} } from '@react-jopau/components';
   * @example
   * <${context.pascalName} title="Title">
   *    <div>Content</div>

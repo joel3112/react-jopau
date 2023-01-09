@@ -10,9 +10,9 @@ import {
 } from 'react';
 import { mergeProps } from '@react-aria/utils';
 import { useFocusRing } from '@react-aria/focus';
-import { BiChevronDown } from 'react-icons/bi';
 import { classes } from '@react-jopau/utils';
 import { forwardRef, useControlValue, withFormControl } from '@/components/shared';
+import { ChevronDown } from '@/components/icons';
 import { SelectGroupProps } from './group/select-group-props';
 import { SelectGroup } from './group/select-group';
 import { SelectOptionProps } from './option/select-option-props';
@@ -31,7 +31,7 @@ import {
  * @param   {SelectProps} props - Props injected to the component.
  * @returns {JSX.Element} Rendered component.
  *
- * @imports import { Select } from '@react-jopau/components/ui';
+ * @imports import { Select } from '@react-jopau/components';
  * @example
  * <Select value="A">
  *  <Select.Option value="A">A</Select.Option>
@@ -160,7 +160,7 @@ export const Select = withFormControl<SelectProps, HTMLSelectElement>(
             fullWidth={!!fullWidth}
             icon={
               <StyledSelectArrow size={size}>
-                <BiChevronDown />
+                <ChevronDown />
               </StyledSelectArrow>
             }
             iconPosition="right"

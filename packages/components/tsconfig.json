@@ -17,5 +17,5 @@
       "@/components/*": ["src/*"]
     }
   },
-  "exclude": ["node_modules", "src/**/*.test.ts", "src/**/*.stories.tsx"]
+  "exclude": ["node_modules", "src/**/*.test.ts"]
 }

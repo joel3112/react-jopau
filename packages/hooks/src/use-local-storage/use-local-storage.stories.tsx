@@ -1,5 +1,5 @@
 import { FormEvent } from 'react';
-import { Button, Container, Heading, Input, Space, Text } from '@react-jopau/components/ui';
+import { Button, Container, Heading, Input, Space, Text } from '@react-jopau/components';
 import { prepareParameters, SBCode } from '@react-jopau/shared/stories';
 import { useLocalStorage } from './use-local-storage';
 import docs from './readme.mdx';

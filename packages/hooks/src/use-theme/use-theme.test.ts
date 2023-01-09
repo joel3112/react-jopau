@@ -1,5 +1,5 @@
 import { act, waitFor } from '@testing-library/react';
-import { ThemeProvider } from '@react-jopau/components/contexts';
+import { ThemeProvider } from '@react-jopau/components';
 import { defaultTheme } from '@react-jopau/styles';
 import { renderHookWithWrapper } from '../utils';
 import { useTheme } from './use-theme';

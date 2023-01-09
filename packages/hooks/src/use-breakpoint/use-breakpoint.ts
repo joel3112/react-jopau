@@ -62,9 +62,9 @@ export const useBreakpoint = (
   isDesktop: boolean;
   isLargeDesktop: boolean;
 } => {
-  const [windowWidth, setWindowWidth] = useState<number>(() => (isClient ? window.innerWidth : 0));
-  const [config, setConfig] = useState<BreakpointsHelper>(() =>
-    isClient ? createBreakpoints({ rules }) : ({} as BreakpointsHelper)
+  const [windowWidth, setWindowWidth] = useState<number>(() => 0);
+  const [config, setConfig] = useState<BreakpointsHelper | null>(() =>
+    isClient ? createBreakpoints({ rules }) : null
   );
 
   useEffect(() => {
@@ -81,6 +81,17 @@ export const useBreakpoint = (
   useEffect(() => {
     setConfig(createBreakpoints({ rules, targetWidth: windowWidth }));
   }, [windowWidth]);
+
+  if (!config) {
+    return {
+      key: null,
+      isMobile: false,
+      isTablet: false,
+      isSmallDesktop: false,
+      isDesktop: false,
+      isLargeDesktop: false
+    };
+  }
 
   return {
     key: config.current,

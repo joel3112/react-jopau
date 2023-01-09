@@ -9,7 +9,7 @@ import { StyledContainer } from './container.styled';
  * @param   {ContainerProps} props - Props injected to the component.
  * @returns {JSX.Element} Rendered component.
  *
- * @imports import { Container } from '@react-jopau/components/ui';
+ * @imports import { Container } from '@react-jopau/components';
  * @example
  * <Container gap={10} maxWidth={1000} centered>
  *    <p>lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>

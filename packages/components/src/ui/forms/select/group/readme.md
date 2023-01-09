@@ -5,7 +5,7 @@ Component that is used as an option group in a Select component.
 #### Import
 
 ```jsx
-import { Select } from '@react-jopau/components/ui';
+import { Select } from '@react-jopau/components';
 ```
 
 #### Examples

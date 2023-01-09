@@ -5,7 +5,7 @@ Textarea component is a multi-line Input which allows you to write large texts.
 #### Import
 
 ```jsx
-import { Textarea } from '@react-jopau/components/ui';
+import { Textarea } from '@react-jopau/components';
 ```
 
 #### Examples
