@@ -17,5 +17,5 @@
       "@react-jopau/components": ["../components/dist"]
     }
   },
-  "exclude": ["node_modules", "src/**/*.test.ts", "src/**/*.stories.tsx"]
+  "exclude": ["node_modules", "src/**/*.test.ts"]
 }

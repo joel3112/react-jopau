@@ -1,165 +1,259 @@
-import {
-  StyledSwitch as StyledSwitchNextUI,
-  StyledSwitchCircle as StyledSwitchCircleNextUI,
-  StyledSwitchContainer as StyledSwitchContainerNextUI,
-  StyledSwitchInput as StyledSwitchInputNextUI
-} from '@nextui-org/react';
-import { NextUIOverrideCSS, styledTheme } from '@/components/shared';
+import { sharedFocus, sharedVisuallyHidden, styledTheme } from '@/components/shared';
 
-enum NextUIEl {
-  SWITCH = '.nextui-switch',
-  SWITCH_CIRCLE = '.nextui-switch-circle'
-}
+export const StyledSwitchWrapper = styledTheme('label', {
+  WebkitTapHighlightColor: 'transparent',
+  display: 'inline-flex',
+  alignItems: 'center',
+  whiteSpace: 'nowrap',
+  userSelect: 'none',
+  position: 'relative',
+  cursor: 'pointer',
+  padding: '$space$1 0',
+  transition: '$transitions$default',
+  width: '$space$fit',
+  height: '$$switchControlHeight',
 
-export const StyledSwitchWrapper = styledTheme(
-  StyledSwitchContainerNextUI,
+  variants: {
+    size: {
+      xs: {
+        $$switchLabelFontSize: '$space$7',
+        $$switchControlWidth: '$space$12',
+        $$switchControlHeight: '$space$9'
+      },
+      sm: {
+        $$switchLabelFontSize: '$space$8',
+        $$switchControlWidth: '$space$14',
+        $$switchControlHeight: '$space$10'
+      },
+      md: {
+        $$switchLabelFontSize: '$space$9',
+        $$switchControlWidth: '$space$15',
+        $$switchControlHeight: '$space$11'
+      },
+      lg: {
+        $$switchLabelFontSize: '$space$10',
+        $$switchControlWidth: '$space$17',
+        $$switchControlHeight: '$space$12'
+      },
+      xl: {
+        $$switchLabelFontSize: '$space$11',
+        $$switchControlWidth: '$space$18',
+        $$switchControlHeight: '$space$13'
+      }
+    },
+    color: {
+      primary: {
+        $$switchControlColor: '$colors$primary500',
+        $$switchHoverControlColor: '$colors$primary700'
+      },
+      secondary: {
+        $$switchControlColor: '$colors$secondary500',
+        $$switchHoverControlColor: '$colors$secondary700'
+      },
+      tertiary: {
+        $$switchControlColor: '$colors$tertiary500',
+        $$switchHoverControlColor: '$colors$tertiary700'
+      },
+      info: {
+        $$switchControlColor: '$colors$blue500',
+        $$switchHoverControlColor: '$colors$blue700'
+      },
+      success: {
+        $$switchControlColor: '$colors$green500',
+        $$switchHoverControlColor: '$colors$green700'
+      },
+      error: {
+        $$switchControlColor: '$colors$red500',
+        $$switchHoverControlColor: '$colors$red700'
+      },
+      warning: {
+        $$switchControlColor: '$colors$yellow500',
+        $$switchHoverControlColor: '$colors$yellow700'
+      }
+    },
+    status: {
+      default: {
+        $$switchControlColor: '$colors$primary500',
+        $$switchHoverControlColor: '$colors$primary700',
+        $$switchLabelColor: '$colors$text'
+      },
+      primary: {
+        $$switchControlColor: '$colors$primary500',
+        $$switchHoverControlColor: '$colors$primary700',
+        $$switchLabelColor: '$colors$primary500'
+      },
+      secondary: {
+        $$switchControlColor: '$colors$secondary500',
+        $$switchHoverControlColor: '$colors$secondary700',
+        $$switchLabelColor: '$colors$secondary500'
+      },
+      tertiary: {
+        $$switchControlColor: '$colors$tertiary500',
+        $$switchHoverControlColor: '$colors$tertiary700',
+        $$switchLabelColor: '$colors$tertiary500'
+      },
+      info: {
+        $$switchControlColor: '$colors$blue500',
+        $$switchHoverControlColor: '$colors$blue700',
+        $$switchLabelColor: '$colors$blue500'
+      },
+      success: {
+        $$switchControlColor: '$colors$green500',
+        $$switchHoverControlColor: '$colors$green700',
+        $$switchLabelColor: '$colors$green500'
+      },
+      error: {
+        $$switchControlColor: '$colors$red500',
+        $$switchHoverControlColor: '$colors$red700',
+        $$switchLabelColor: '$colors$red500'
+      },
+      warning: {
+        $$switchControlColor: '$colors$yellow500',
+        $$switchHoverControlColor: '$colors$yellow700',
+        $$switchLabelColor: '$colors$yellow500'
+      }
+    },
+    disabled: {
+      true: {
+        cursor: 'not-allowed'
+      }
+    }
+  }
+});
+
+export const StyledSwitchCircle = styledTheme('span', {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  transition: 'transform 0.25s ease, width 0.2s ease',
+  position: 'absolute',
+  left: '0',
+  background: '$colors$background',
+  top: 'calc(50% - $$switchControlHeight * 0.35)',
+  size: 'calc($$switchControlHeight * 0.7)',
+  borderRadius: '$radii$pill',
+
+  '& svg': {
+    background: 'transparent',
+    size: 'calc($$switchControlHeight * 0.44)'
+  }
+});
+
+export const StyledSwitch = styledTheme(
+  'div',
   {
-    '&[class*="size"]': {
-      display: 'inline-flex',
-      userSelect: 'none',
-      alignItems: 'center',
-      p: 0,
-      maxWidth: 'initial',
-      width: '$space$fit'
-    },
-    [`${NextUIEl.SWITCH}`]: { minWidth: '$$switchControlWidth' },
-    [`${NextUIEl.SWITCH}--unchecked`]: { background: '$colors$border', opacity: 0.7 },
-    [`${NextUIEl.SWITCH}--unchecked ${NextUIEl.SWITCH_CIRCLE}`]: {
-      background: '$colors$background'
-    },
-    [`${NextUIEl.SWITCH}-checked`]: { background: '$$switchControlColor' },
-    [`${NextUIEl.SWITCH}-checked:hover:not(${NextUIEl.SWITCH}-checked-true:active)`]: {
-      background: '$$switchHoverControlColor'
-    },
-    [`${NextUIEl.SWITCH}--unchecked[class*="bordered-true"]`]: {
-      borderColor: '$$switchControlColor'
-    },
-    [`${NextUIEl.SWITCH}-disabled`]: { opacity: '$opacity$40' },
+    position: 'relative',
+    overflow: 'hidden',
+    padding: 0,
+    opacity: '$opacity$80',
+    borderRadius: '$radii$pill',
+    background: '$colors$border',
+    width: '$$switchControlWidth',
+    height: '$$switchControlHeight',
+    transition: '$transition$sdefault',
 
-    '--nextui--switchWidth': '$$switchControlWidth',
-    '--nextui--switchHeight': '$$switchControlHeight',
-    '--nextui--switchBorderW': '$borderWidths$normal',
+    '&:active': {
+      [`& ${StyledSwitchCircle}`]: {
+        width: 'calc($$switchControlHeight * 0.7 + ($$switchControlWidth / 10))'
+      }
+    },
 
     variants: {
-      size: {
-        xs: {
-          $$switchLabelFontSize: '$space$7',
-          $$switchControlWidth: '$space$12',
-          $$switchControlHeight: '$space$9'
-        },
-        sm: {
-          $$switchLabelFontSize: '$space$8',
-          $$switchControlWidth: '$space$14',
-          $$switchControlHeight: '$space$10'
-        },
-        md: {
-          $$switchLabelFontSize: '$space$9',
-          $$switchControlWidth: '$space$15',
-          $$switchControlHeight: '$space$11'
-        },
-        lg: {
-          $$switchLabelFontSize: '$space$10',
-          $$switchControlWidth: '$space$17',
-          $$switchControlHeight: '$space$12'
-        },
-        xl: {
-          $$switchLabelFontSize: '$space$11',
-          $$switchControlWidth: '$space$18',
-          $$switchControlHeight: '$space$13'
-        }
-      },
-      color: {
-        primary: {
-          $$switchControlColor: '$colors$primary500',
-          $$switchHoverControlColor: '$colors$primary700'
-        },
-        secondary: {
-          $$switchControlColor: '$colors$secondary500',
-          $$switchHoverControlColor: '$colors$secondary700'
-        },
-        tertiary: {
-          $$switchControlColor: '$colors$tertiary500',
-          $$switchHoverControlColor: '$colors$tertiary700'
-        },
-        info: {
-          $$switchControlColor: '$colors$blue500',
-          $$switchHoverControlColor: '$colors$blue700'
-        },
-        success: {
-          $$switchControlColor: '$colors$green500',
-          $$switchHoverControlColor: '$colors$green700'
-        },
-        error: {
-          $$switchControlColor: '$colors$red500',
-          $$switchHoverControlColor: '$colors$red700'
-        },
-        warning: {
-          $$switchControlColor: '$colors$yellow500',
-          $$switchHoverControlColor: '$colors$yellow700'
-        }
-      },
-      status: {
-        default: {
-          $$switchControlColor: '$colors$primary500',
-          $$switchHoverControlColor: '$colors$primary700',
-          $$switchLabelColor: '$colors$text'
-        },
-        primary: {
-          $$switchControlColor: '$colors$primary500',
-          $$switchHoverControlColor: '$colors$primary700',
-          $$switchLabelColor: '$colors$primary500'
-        },
-        secondary: {
-          $$switchControlColor: '$colors$secondary500',
-          $$switchHoverControlColor: '$colors$secondary700',
-          $$switchLabelColor: '$colors$secondary500'
-        },
-        tertiary: {
-          $$switchControlColor: '$colors$tertiary500',
-          $$switchHoverControlColor: '$colors$tertiary700',
-          $$switchLabelColor: '$colors$tertiary500'
-        },
-        info: {
-          $$switchControlColor: '$colors$blue500',
-          $$switchHoverControlColor: '$colors$blue700',
-          $$switchLabelColor: '$colors$blue500'
-        },
-        success: {
-          $$switchControlColor: '$colors$green500',
-          $$switchHoverControlColor: '$colors$green700',
-          $$switchLabelColor: '$colors$green500'
-        },
-        error: {
-          $$switchControlColor: '$colors$red500',
-          $$switchHoverControlColor: '$colors$red700',
-          $$switchLabelColor: '$colors$red500'
-        },
-        warning: {
-          $$switchControlColor: '$colors$yellow500',
-          $$switchHoverControlColor: '$colors$yellow700',
-          $$switchLabelColor: '$colors$yellow500'
+      checked: {
+        true: {
+          opacity: '$opacity$100',
+          background: '$$switchControlColor',
+
+          '&:hover:not(&:active)': { background: '$$switchHoverControlColor' }
         }
       },
       bordered: {
         true: {
-          [`${NextUIEl.SWITCH}-checked`]: { borderColor: 'transparent' }
+          border: '$borderWidths$normal solid $$switchControlColor',
+
+          '&:hover': { borderColor: '$$switchControlColor' },
+          [`& ${StyledSwitchCircle}`]: { background: '$colors$background' }
         }
       },
-      checked: {
+      squared: {
         true: {
-          '&:hover': {
-            [`${NextUIEl.SWITCH}`]: { background: '$$switchHoverControlColor' }
+          borderRadius: '2px',
+
+          [`& ${StyledSwitchCircle}`]: { borderRadius: '2px' }
+        }
+      },
+      disabled: {
+        true: {
+          borderColor: '$colors$border',
+          background: '$colors$border',
+          opacity: '$opacity$40'
+        }
+      }
+    },
+    compoundVariants: [
+      {
+        checked: true,
+        disabled: true,
+        css: {
+          background: '$$switchControlColor'
+        }
+      },
+      {
+        checked: true,
+        bordered: true,
+        css: {
+          background: '$$switchControlColor',
+          border: '$borderWidths$normal solid transparent',
+
+          '&:hover:not(&:active)': { borderColor: 'transparent' },
+          [`& ${StyledSwitchCircle}`]: { background: '$colors$background' }
+        }
+      }
+    ]
+  },
+  sharedFocus
+);
+
+export const StyledSwitchInput = styledTheme(
+  'input',
+  {
+    [`& + ${StyledSwitch} > ${StyledSwitchCircle}`]: {
+      transform: 'translateX(calc($$switchControlWidth / 15))'
+    },
+    [`&:checked + ${StyledSwitch} > ${StyledSwitchCircle}`]: {
+      transform:
+        'translateX(calc($$switchControlWidth - $$switchControlWidth / 15 - $$switchControlHeight * 0.7))'
+    },
+    [`& + ${StyledSwitch}:active > ${StyledSwitchCircle}`]: {
+      transform: 'translateX(calc($$switchControlWidth / 7.5))'
+    },
+    [`&:checked + ${StyledSwitch}:active > ${StyledSwitchCircle}`]: {
+      transform:
+        'translateX(calc($$switchControlWidth - $$switchControlWidth / 7.5 - $$switchControlWidth / 10 - $$switchControlHeight * 0.7))'
+    },
+    variants: {
+      bordered: {
+        true: {
+          [`& + ${StyledSwitch} > ${StyledSwitchCircle}`]: {
+            transform: 'translateX(calc($$switchControlWidth / 15 - $borderWidths$normal / 2))'
+          },
+          [`&:checked + ${StyledSwitch} > ${StyledSwitchCircle}`]: {
+            transform:
+              'translateX(calc($$switchControlWidth - $$switchControlWidth / 15 - $borderWidths$normal * 1.5 - $$switchControlHeight * 0.7))'
+          },
+          [`& + ${StyledSwitch}:active > ${StyledSwitchCircle}`]: {
+            transform: 'translateX(calc($$switchControlWidth / 7.5 - $borderWidths$normal / 2))'
+          },
+          [`&:checked + ${StyledSwitch}:active > ${StyledSwitchCircle}`]: {
+            transform:
+              'translateX(calc($$switchControlWidth - $$switchControlWidth / 7.5 - $$switchControlWidth / 10 - $borderWidths$normal * 1.5 - $$switchControlHeight * 0.7))'
           }
         }
       }
     }
   },
-  NextUIOverrideCSS
+  sharedVisuallyHidden
 );
-
-export const StyledSwitchInput = StyledSwitchInputNextUI;
-
-export const StyledSwitch = StyledSwitchNextUI;
 
 export const StyledSwitchLabel = styledTheme('label', {
   cursor: 'pointer',
@@ -168,5 +262,3 @@ export const StyledSwitchLabel = styledTheme('label', {
   pl: 'calc($$switchLabelFontSize * 0.57)',
   color: '$$switchLabelColor'
 });
-
-export const StyledSwitchCircle = StyledSwitchCircleNextUI;

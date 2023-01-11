@@ -7,6 +7,7 @@ on:
       - '!CHANGELOG.md'
       - '!lerna.json'
       - '!packages/**/CHANGELOG.md'
+      - '!packages/**/package.json'
     branches:
       - main
 
