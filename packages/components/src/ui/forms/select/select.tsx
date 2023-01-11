@@ -8,8 +8,8 @@ import {
   useCallback,
   useRef
 } from 'react';
-import { mergeProps } from '@react-aria/utils';
-import { useFocusRing } from '@react-aria/focus';
+import * as reactAriaUtils from '@react-aria/utils';
+import * as reactAriaFocus from '@react-aria/focus';
 import { classes } from '@react-jopau/utils';
 import { forwardRef, useControlValue, withFormControl } from '@/components/shared';
 import { ChevronDown } from '@/components/icons';
@@ -71,7 +71,7 @@ export const Select = withFormControl<SelectProps, HTMLSelectElement>(
         onBlur
       } = props;
 
-      const { isFocusVisible, focusProps } = useFocusRing({ autoFocus });
+      const { isFocusVisible, focusProps } = reactAriaFocus.useFocusRing({ autoFocus });
       const boxRef = useRef<HTMLInputElement>(null);
       const boxValue: (selectedValue: string | undefined) => string = useCallback(
         (selectedValue) => {
@@ -128,7 +128,7 @@ export const Select = withFormControl<SelectProps, HTMLSelectElement>(
             }
             isHelperTextVisible={!!helperText}
             onChange={handleChange}
-            {...mergeProps({ onFocus, onBlur }, focusProps)}>
+            {...reactAriaUtils.mergeProps({ onFocus, onBlur }, focusProps)}>
             {placeholder && (
               <Select.Option key={placeholder} value="">
                 {placeholder}

@@ -24,7 +24,6 @@
     "package.json"
   ],
   "scripts": {
-    "buildr": "rimraf dist && rollup -c",
     "build": "rimraf dist && tsup",
     "test": "jest --config=../../jest.config.js --selectProjects=@react-jopau/components"
   },
@@ -33,8 +32,8 @@
   },
   "dependencies": {
     "@nextui-org/react": "1.0.0-beta.10",
-    "@react-aria/focus": "^3.10.1",
-    "@react-aria/utils": "^3.14.2",
+    "@react-aria/focus": "3.10.1",
+    "@react-aria/utils": "3.14.2",
     "@react-jopau/styles": "^0.21.0",
     "@react-jopau/utils": "^0.21.0",
     "@stitches/react": "^1.2.8",

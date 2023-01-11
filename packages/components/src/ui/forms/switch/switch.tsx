@@ -55,7 +55,6 @@ export const Switch = withFormControl<SwitchProps, HTMLInputElement>(
 
       const { ref: switchRef, id, ariaLabel } = useControlChecked(props, {}, ref);
 
-      const preClass = 'nextui-switch';
       const [selfChecked, setSelfChecked] = useState(defaultChecked);
 
       useEffect(() => {
@@ -109,11 +108,7 @@ export const Switch = withFormControl<SwitchProps, HTMLInputElement>(
           status={status}
           size={size}
           disabled={disabled}
-          borderWeight="normal"
-          bordered={variant === 'bordered'}
-          data-state={getState}
-          checked={selfChecked}
-          animated={true}>
+          data-state={getState}>
           <StyledSwitchInput
             ref={switchRef}
             tabIndex={-1}
@@ -125,9 +120,7 @@ export const Switch = withFormControl<SwitchProps, HTMLInputElement>(
             autoFocus={autoFocus}
             checked={selfChecked}
             disabled={disabled}
-            className={`${preClass}-input`}
             bordered={variant === 'bordered'}
-            animated={true}
             onChange={handleChange}
           />
           <StyledSwitch
@@ -138,21 +131,16 @@ export const Switch = withFormControl<SwitchProps, HTMLInputElement>(
             aria-disabled={disabled}
             checked={selfChecked}
             disabled={disabled}
-            className={classes(className, preClass, `${preClass}--${getState}`, {
-              [`${preClass}-checked`]: selfChecked,
-              [`${preClass}-disabled`]: disabled
-            })}
+            className={classes('switch', className)}
             css={{
               ...style
             }}
             bordered={variant === 'bordered'}
-            animated={true}
-            shadow={false}
             squared={squared}
             {...bindings}>
-            <StyledSwitchCircle className={`${preClass}-circle`}>{circleIcon}</StyledSwitchCircle>
+            <StyledSwitchCircle>{circleIcon}</StyledSwitchCircle>
           </StyledSwitch>
-          <StyledSwitchLabel htmlFor={id}>{children}</StyledSwitchLabel>
+          {children && <StyledSwitchLabel htmlFor={id}>{children}</StyledSwitchLabel>}
         </StyledSwitchWrapper>
       );
     }
