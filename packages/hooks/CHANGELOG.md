@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.21.2](https://github.com/joel3112/react-jopau/compare/v0.21.1...v0.21.2) (2023-01-11)
+
+### 🛠 Refactors
+
+- **components:** resolve nextui modules ([2041faf](https://github.com/joel3112/react-jopau/commit/2041faf17d0a1a95df937dce45d1da620bcfec7f))
+
 ## [0.21.1](https://github.com/joel3112/react-jopau/compare/v0.21.0...v0.21.1) (2023-01-09)
 
 **Note:** Version bump only for package @react-jopau/hooks
