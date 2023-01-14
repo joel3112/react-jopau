@@ -97,22 +97,20 @@ const generateHookDocs = async () => {
           if (returnsCustomType) {
             // Parse custom types
             const customType = get(returnsCustomType, 'type.names', [])[0];
-            return {
-              // Parse array of custom types
-              ...(customType === 'Array' &&
-                returnsCustomType.properties.reduce((acc, item) => {
-                  acc[`result[${item.name}]`] = checkIsCallback(item, jsdocSchema, false);
-                  return acc;
-                }, {})),
-              // Parse object of custom types
-              ...(customType === 'Object' &&
-                returnsCustomType.properties.reduce((acc, item) => {
-                  acc[`result.${item.name}`] = checkIsCallback(item, jsdocSchema, false);
-                  return acc;
-                }, {}))
-            };
+
+            if (customType === 'Object') {
+              return returnsCustomType.properties.reduce((acc, item) => {
+                acc[`result.${item.name}`] = checkIsCallback(item, jsdocSchema, false);
+                return acc;
+              }, {});
+            } else if (customType === 'Array') {
+              return returnsCustomType.properties.reduce((acc, item) => {
+                acc[`result[${item.name}]`] = checkIsCallback(item, jsdocSchema, false);
+                return acc;
+              }, {});
+            }
           }
-          acc[item.name] = parseJSONSchemaProps(item, false);
+          acc[item.name || 'result'] = parseJSONSchemaProps(item, false);
           return acc;
         }, {})
       };

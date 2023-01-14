@@ -8,7 +8,7 @@ const StyledDocsContainer = styled('div', {
 
   // Story
   '.sbdocs-wrapper': { background: 'transparent' },
-  '.sbdocs-preview .os-host-scrollbar-vertical-hidden': {
+  '.sbdocs-preview > .os-host-scrollbar-vertical-hidden': {
     backgroundColor: 'var(--rjopau-colors-backgroundContrast)'
   },
   '.docs-story': {

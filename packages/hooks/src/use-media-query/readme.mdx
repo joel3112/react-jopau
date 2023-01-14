@@ -1,0 +1,49 @@
+import {
+  SBDescription,
+  SBLinks,
+  SBPureArgsTable,
+  SBSubTitle,
+  SBTitle
+} from '@react-jopau/shared/stories';
+
+<SBTitle>useMediaQuery</SBTitle>
+
+<SBLinks>
+  <SBLinks.Item href="hooks-usemediaquery--default">Playground</SBLinks.Item>
+</SBLinks>
+
+<SBDescription>
+  Reactive media query hook that returns the truthy value of the media query.
+</SBDescription>
+
+```tsx dark
+import { useMediaQuery } from '@react-jopau/hooks';
+```
+
+<SBSubTitle>Examples</SBSubTitle>
+
+```tsx dark
+const isLargeScreen = useMediaQuery('(min-width: 600px)');
+
+console.log(isLargeScreen); // true or false
+```
+
+<SBPureArgsTable
+  heading="Params"
+  rows={{
+    query: { name: 'query', description: 'Media query string', required: true, type: 'string' }
+  }}
+/>
+
+<SBPureArgsTable
+  heading="Returns"
+  noDefaults
+  rows={{
+    result: {
+      name: 'result',
+      description: 'Truthy value of the media query',
+      required: false,
+      type: 'boolean'
+    }
+  }}
+/>

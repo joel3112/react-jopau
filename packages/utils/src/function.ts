@@ -4,7 +4,8 @@ import {
   noop as _noop,
   random as _random,
   range as _range,
-  throttle as _throttle
+  throttle as _throttle,
+  uniqueId as _uniqueId
 } from 'lodash-es';
 import type { TAny } from './index';
 
@@ -19,6 +20,7 @@ export const noop = _noop;
 export const random = _random;
 export const range = _range;
 export const throttle = _throttle;
+export const uniqueId = _uniqueId;
 
 export const anysort = (a: TAny, b: TAny, order: string[]): number => {
   const generateAnysort = (criteria = []) => {
