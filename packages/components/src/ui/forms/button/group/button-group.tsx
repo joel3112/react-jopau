@@ -1,4 +1,5 @@
 import { classes } from '@react-jopau/utils';
+import { prefixClass } from '@/components/shared';
 import { ButtonContext } from '../button-context';
 import { ButtonGroupProps, defaultProps } from './button-group-props';
 import { StyledButtonGroup } from '../button.styled';
@@ -33,7 +34,7 @@ export const ButtonGroup = (props: ButtonGroupProps) => {
   return (
     <ButtonContext.Provider value={{ variant, size, color, shape, disabled, fullWidth: true }}>
       <StyledButtonGroup
-        className={classes('button-group', className)}
+        className={classes(prefixClass + '-button-group', className)}
         css={{
           ...style
         }}

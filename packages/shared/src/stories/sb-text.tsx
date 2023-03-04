@@ -1,9 +1,13 @@
 import { ReactNode } from 'react';
 import { classes } from '@react-jopau/utils';
 
-export const SBCode = ({ children }: { children: ReactNode }) => {
+export const SBCode = ({ children, className }: { children: ReactNode; className?: string }) => {
   return (
-    <div className="inline-block font-code text-black text-sm w-fit py-1 px-2 rounded-[5px] bg-[#dedede]">
+    <div
+      className={classes(
+        'inline-block font-code text-black text-sm w-fit py-1 px-2 rounded-[5px] bg-[#dedede]',
+        className
+      )}>
       {children}
     </div>
   );
@@ -37,7 +41,7 @@ export const SBSubTitle = ({ children }: { children: string }) => {
 
 export const SBTextSeparator = ({ children }: { children: string }) => {
   return (
-    <p className="border-t border-b border-t-gray-700 border-b-gray-700 py-3 my-8 border-text text-[13px] text-gray-700 font-semibold text-text first:mt-0">
+    <p className="border-t border-b border-t-gray-700 border-b-gray-700 w-full py-3 my-6 border-text text-[13px] text-gray-700 font-semibold text-text">
       {children}
     </p>
   );

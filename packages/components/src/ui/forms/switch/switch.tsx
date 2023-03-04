@@ -9,7 +9,7 @@ import {
 } from 'react';
 import { KeyCode, useKeyboard } from '@nextui-org/react';
 import { classes } from '@react-jopau/utils';
-import { forwardRef, useControlChecked, withFormControl } from '@/components/shared';
+import { forwardRef, prefixClass, useControlChecked, withFormControl } from '@/components/shared';
 import { SwitchProps, defaultProps } from './switch-props';
 import {
   StyledSwitch,
@@ -131,7 +131,7 @@ export const Switch = withFormControl<SwitchProps, HTMLInputElement>(
             aria-disabled={disabled}
             checked={selfChecked}
             disabled={disabled}
-            className={classes('switch', className)}
+            className={classes(prefixClass + '-switch', className)}
             css={{
               ...style
             }}

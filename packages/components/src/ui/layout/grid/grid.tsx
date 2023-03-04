@@ -1,6 +1,6 @@
 import { ForwardRefExoticComponent, useCallback } from 'react';
 import { classes } from '@react-jopau/utils';
-import { useSpacing } from '@/components/shared';
+import { prefixClass, useSpacing } from '@/components/shared';
 import { GridContext } from './grid-context';
 import { GridItem } from './item/grid-item';
 import { defaultProps, GridProps } from './grid-props';
@@ -47,7 +47,7 @@ export const Grid = (({
     <GridContext.Provider value={{ columns }}>
       <StyledGrid
         as={as}
-        className={classes('rjopau-grid', className)}
+        className={classes(prefixClass + '-grid', className)}
         css={{
           display: 'flex',
           flexDirection: direction,

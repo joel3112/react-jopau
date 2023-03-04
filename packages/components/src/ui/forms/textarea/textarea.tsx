@@ -1,6 +1,6 @@
 import { ForwardRefExoticComponent, Ref, RefAttributes } from 'react';
 import { classes } from '@react-jopau/utils';
-import { forwardRef, useControlValue, withFormControl } from '@/components/shared';
+import { forwardRef, prefixClass, useControlValue, withFormControl } from '@/components/shared';
 import { TextareaProps, defaultProps } from './textarea-props';
 import { StyledLabelGap } from '../input/input.styled';
 import { StyledTextarea, StyledTextareaWrapper } from './textarea.styled';
@@ -78,7 +78,7 @@ export const Textarea = withFormControl<TextareaProps, HTMLTextAreaElement>(
             autoComplete={autoComplete}
             required={required}
             autoFocus={autoFocus}
-            className={classes('textarea', className)}
+            className={classes(prefixClass + '-textarea', className)}
             css={{
               ...style
             }}

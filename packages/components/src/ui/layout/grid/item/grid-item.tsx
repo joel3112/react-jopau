@@ -1,5 +1,6 @@
 import { CSSProperties, useContext, useMemo } from 'react';
 import { classes } from '@react-jopau/utils';
+import { prefixClass } from '@/components/shared';
 import { GridContext } from '../grid-context';
 import { GridItemProps, defaultProps } from './grid-item-props';
 import { StyleGridItem } from '../grid.styled';
@@ -50,7 +51,7 @@ export const GridItem = ({ className, style, children, as, xs, sm, md, lg, xl }:
   return (
     <StyleGridItem
       as={as}
-      className={classes('rjopau-grid-item', breakClasses, className)}
+      className={classes(prefixClass + '-grid-item', breakClasses, className)}
       css={{
         '&.xs': { ...getItemLayout(xs) },
         '@xl': {

@@ -1,6 +1,12 @@
 import { ForwardRefExoticComponent, Ref, RefAttributes, useContext } from 'react';
 import { classes } from '@react-jopau/utils';
-import { cleanedProps, forwardRef, useControlChecked, withFormControl } from '@/components/shared';
+import {
+  cleanedProps,
+  forwardRef,
+  prefixClass,
+  useControlChecked,
+  withFormControl
+} from '@/components/shared';
 import { CheckboxContext } from './checkbox-context';
 import { CheckboxGroup } from './group/checkbox-group';
 import { CheckboxProps, defaultProps } from './checkbox-props';
@@ -60,7 +66,7 @@ export const Checkbox = withFormControl<CheckboxProps, HTMLInputElement>(
           isDisabled={disabled}
           isRequired={required}
           autoFocus={autoFocus}
-          className={classes('checkbox', className)}
+          className={classes(prefixClass + '-checkbox', className)}
           css={{
             ...style
           }}

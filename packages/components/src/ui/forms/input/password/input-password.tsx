@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import { classes } from '@react-jopau/utils';
+import { prefixClass } from '@/components/shared';
 import { Input } from '../input';
 import { defaultProps, InputPasswordProps } from './input-password-props';
 
@@ -27,7 +28,7 @@ export const InputPassword = (props: InputPasswordProps) => {
   return (
     <Input
       {...inputProps}
-      className={classes('input-password', props.className)}
+      className={classes(prefixClass + '-input-password', props.className)}
       type={visible ? 'text' : 'password'}
       icon={icon}
       iconPosition="right"
