@@ -18,6 +18,8 @@ export type Shape = 'default' | 'round' | 'square';
 
 export type ContentPosition = 'left' | 'right';
 
+export type Wrap = 'wrap' | 'nowrap' | 'wrap-reverse';
+
 export type WithIcon = {
   /**
    * Defines the render of the icon of the component.
@@ -27,6 +29,12 @@ export type WithIcon = {
    * Defines the position of the icon in the component.
    */
   iconPosition?: ContentPosition;
+};
+export type WithGap = {
+  /**
+   * Defines the spacing between the items.
+   */
+  gap?: number | Array<number> | { [key in NormalSize]?: number | Array<number> };
 };
 
 export type FormControl = {

@@ -1,0 +1,39 @@
+import {
+  SBArgsTable,
+  SBDescription,
+  SBLinks,
+  SBStories,
+  SBTitle
+} from '@react-jopau/shared/stories';
+import { Grid } from './grid';
+
+<SBTitle>Grid</SBTitle>
+
+<SBLinks>
+  <SBLinks.Item href="components-layout-grid--default">Playground</SBLinks.Item>
+  <SBLinks.Item href="components-layout-grid--item-docs">Grid.Item</SBLinks.Item>
+</SBLinks>
+
+<SBDescription>
+  The layout Grid adapts to screen size and orientation, ensuring consistency across layouts.
+</SBDescription>
+
+```jsx dark
+import { Grid } from '@react-jopau/components';
+```
+
+<SBStories.Default id="components-layout-grid--default" />
+
+<SBArgsTable component={Grid} />
+
+<SBStories>
+  <SBStories.Item label="Fluid" id="components-layout-grid--fluid" />
+  <SBStories.Item label="Responsive" id="components-layout-grid--responsive" />
+  <SBStories.Item label="Auto Width" id="components-layout-grid--auto-width" />
+  <SBStories.Item label="Hide Elements" id="components-layout-grid--hide-elements" />
+  <SBStories.Item label="Gap" id="components-layout-grid--gap" />
+  <SBStories.Item label="Direction" id="components-layout-grid--direction" />
+  <SBStories.Item label="Justify" id="components-layout-grid--justify" />
+  <SBStories.Item label="Align" id="components-layout-grid--align" />
+  <SBStories.Item label="Columns" id="components-layout-grid--columns" />
+</SBStories>
