@@ -1,48 +1,38 @@
+import { useCallback } from 'react';
 import { classes } from '@react-jopau/utils';
-import { useSpacing } from '@/components/shared';
+import { prefixClass } from '@/components/shared';
 import { defaultProps, SpaceProps } from './space-props';
 import { StyledSpace } from './space.styled';
 
 /**
- * Component flexbox-based spacing.
+ * Provide empty space.
  *
  * @param   {SpaceProps} props - Props injected to the component.
  * @returns {JSX.Element} Rendered component.
  *
  * @imports import { Space } from '@react-jopau/components';
  * @example
- * <Space direction="row" align="center" justify="center" gap={10}>
- *    <div>Item 1</div>
- *    <div>Item 2</div>
- * </Space>
+ * <Space y={1} />
  */
-export const Space = ({
-  className,
-  style,
-  children,
-  as,
-  direction,
-  wrap,
-  gap,
-  justify,
-  align
-}: SpaceProps) => {
-  const spacing = useSpacing(gap);
+export const Space = ({ className, style, as, x, y, inline }: SpaceProps) => {
+  const getMargin = useCallback(
+    (num: number): string => {
+      return `calc(${num * 15.25}pt + 1px * ${num - 1})`;
+    },
+    [x, y]
+  );
 
   return (
     <StyledSpace
       as={as}
-      className={classes('space', className)}
+      className={classes(prefixClass + '-space', className)}
       css={{
-        flexDirection: direction,
-        gap: spacing,
+        marginLeft: `${getMargin(x || 1)} !important`,
+        marginTop: `${getMargin(y || 1)} !important`,
         ...style
       }}
-      justify={justify}
-      align={align}
-      wrap={wrap}>
-      {children}
-    </StyledSpace>
+      inline={!!inline}
+    />
   );
 };
 

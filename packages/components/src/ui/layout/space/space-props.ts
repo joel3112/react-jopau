@@ -1,43 +1,26 @@
-import { ReactNode } from 'react';
 import type { ElementHTML } from '@/components/shared';
-
-type BasicPosition = 'start' | 'center' | 'end';
-export type DirectionSpace = 'row' | 'column' | 'row-reverse' | 'column-reverse';
-export type JustifySpace = BasicPosition | 'between' | 'around';
-export type AlignSpace = BasicPosition | 'baseline' | 'stretch';
 
 export type SpaceProps = ElementHTML & {
   /**
-   * Defines the children of the component.
-   */
-  children: ReactNode;
-  /**
    * Changes which tag component outputs
    */
-  as?: keyof HTMLElementTagNameMap;
+  as?: keyof JSX.IntrinsicElements;
   /**
-   * Defines the direction of the flex container.
+   * y-axis spacing
    */
-  direction?: Required<DirectionSpace>;
+  y?: number;
   /**
-   * Defines if the flex container is wrapped or not.
+   * x-axis spacing
    */
-  wrap?: boolean;
+  x?: number;
   /**
-   * Defines the gap between the flex container's children.
+   * Defines the inline space
    */
-  gap?: number | Array<number>;
-  /**
-   * Defines the justify-content style property.
-   */
-  justify?: JustifySpace;
-  /**
-   * Defines the align-items style property.
-   */
-  align?: AlignSpace;
+  inline?: boolean;
 } & Partial<typeof defaultProps>;
 
 export const defaultProps = {
   as: 'div',
-  direction: 'row'
+  x: 1,
+  y: 1
 };
