@@ -6,7 +6,7 @@ import {
   SBCode,
   SBTextSeparator
 } from '@react-jopau/shared/stories';
-import { Space } from '../../../layout';
+import { Stack } from '../../../layout';
 import { Radio } from '../radio';
 import docs from './readme.mdx';
 
@@ -78,7 +78,7 @@ GroupStatus.args = {
 };
 
 export const GroupOrientation = () => (
-  <Space direction="column" gap={10}>
+  <Stack direction="column" gap={1}>
     <SBTextSeparator>Vertical</SBTextSeparator>
     <Radio.Group orientation="vertical" value="2">
       {Options}
@@ -87,7 +87,7 @@ export const GroupOrientation = () => (
     <Radio.Group orientation="horizontal" value="2">
       {Options}
     </Radio.Group>
-  </Space>
+  </Stack>
 );
 
 export const GroupRequired = Template.bind({});
@@ -110,7 +110,7 @@ export const GroupUncontrolledVSControlled = () => {
   const [valueControlled, setValueControlled] = useState('C');
 
   return (
-    <Space direction="column" gap={10}>
+    <Stack direction="column" gap={1}>
       <SBTextSeparator>Uncontrolled</SBTextSeparator>
       <Radio.Group defaultValue="A" ref={refUncontrolled}>
         <Radio value="A">Option A</Radio>
@@ -127,6 +127,6 @@ export const GroupUncontrolledVSControlled = () => {
       <span>
         Selected: <SBCode>{valueControlled}</SBCode>
       </span>
-    </Space>
+    </Stack>
   );
 };

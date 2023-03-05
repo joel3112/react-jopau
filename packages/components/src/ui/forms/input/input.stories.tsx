@@ -8,7 +8,7 @@ import {
   SBSelectorContainer,
   SBCode
 } from '@react-jopau/shared/stories';
-import { Space } from '../../layout';
+import { Stack } from '../../layout';
 import { Input } from './input';
 import docs from './readme.mdx';
 
@@ -67,49 +67,49 @@ const variantItems = [
 ];
 
 export const Types = () => (
-  <Space direction="column" gap={10}>
+  <Stack direction="column" gap={1}>
     <Input type="text" label="Text" />
     <Input type="password" label="Password" />
     <Input type="email" label="Email" />
     <Input type="number" label="Number" />
     <Input type="tel" label="Telephone" />
     <Input type="url" label="URL" />
-  </Space>
+  </Stack>
 );
 
 export const LabelAndPlaceholder = () => (
-  <Space direction="column" gap={10}>
+  <Stack direction="column" gap={1}>
     <SBTextSeparator>Same Label and placeholder</SBTextSeparator>
     <Input labelPlaceholder="Name" />
     <SBTextSeparator>Label and placeholder are different</SBTextSeparator>
     <Input label="Email" placeholder="example@mail.com" />
     <SBTextSeparator>Only placeholder</SBTextSeparator>
     <Input placeholder="Your name" />
-  </Space>
+  </Stack>
 );
 
 export const Sizes = () => (
-  <Space direction="column" gap={10}>
+  <Stack direction="column" gap={1}>
     <Input size="xs" label="Mini" />
     <Input size="sm" label="Small" />
     <Input size="md" label="Medium" />
     <Input size="lg" label="Large" />
     <Input size="xl" label="XLarge" />
-  </Space>
+  </Stack>
 );
 
 export const Variants = () => (
-  <Space direction="column" gap={10}>
+  <Stack direction="column" gap={1}>
     <Input variant="default" label="Default" placeholder="placeholder" />
     <Input variant="bordered" label="Bordered" placeholder="placeholder" />
     <Input variant="underlined" label="Underlined" placeholder="placeholder" />
-  </Space>
+  </Stack>
 );
 
 export const Color = () => (
   <SBSelectorContainer label={['Select variant']} items={[variantItems]} value={['default']}>
     {([variant]) => (
-      <Space gap={10} wrap>
+      <Stack gap={1} className="flex-wrap">
         <Input variant={variant} label="Default" />
         <Input variant={variant} color="primary" label="Primary" />
         <Input variant={variant} color="secondary" label="Secondary" />
@@ -118,7 +118,7 @@ export const Color = () => (
         <Input variant={variant} color="success" label="Success" />
         <Input variant={variant} color="error" label="Error" />
         <Input variant={variant} color="warning" label="Warning" />
-      </Space>
+      </Stack>
     )}
   </SBSelectorContainer>
 );
@@ -126,7 +126,7 @@ export const Color = () => (
 export const Status = () => (
   <SBSelectorContainer label={['Select variant']} items={[variantItems]} value={['default']}>
     {([variant]) => (
-      <Space gap={10} wrap>
+      <Stack gap={1} className="flex-wrap">
         <Input variant={variant} labelPlaceholder="Default" />
         <Input variant={variant} status="primary" labelPlaceholder="Primary" />
         <Input variant={variant} status="secondary" labelPlaceholder="Secondary" />
@@ -135,47 +135,47 @@ export const Status = () => (
         <Input variant={variant} status="success" labelPlaceholder="Success" />
         <Input variant={variant} status="error" labelPlaceholder="Error" />
         <Input variant={variant} status="warning" labelPlaceholder="Warning" />
-      </Space>
+      </Stack>
     )}
   </SBSelectorContainer>
 );
 
 export const HelperText = () => (
-  <Space direction="column" gap={30}>
-    <Space direction="column" gap={0}>
+  <Stack direction="column" gap={5}>
+    <Stack direction="column">
       <SBTextSeparator>With Variants</SBTextSeparator>
-      <Space gap={10}>
+      <Stack gap={1}>
         <Input helperText="Helper text" label="Name" />
         <Input variant="underlined" helperText="Helper text" label="Name" />
-      </Space>
-    </Space>
-    <Space direction="column" gap={0}>
+      </Stack>
+    </Stack>
+    <Stack direction="column">
       <SBTextSeparator>With Status</SBTextSeparator>
-      <Space gap={10}>
+      <Stack gap={1}>
         <Input helperText="Helper text" status="secondary" label="Secondary" />
         <Input helperText="Helper text" status="success" label="Success" />
         <Input helperText="Helper text" status="error" label="Error" />
-      </Space>
-    </Space>
-    <Space direction="column" gap={0}>
+      </Stack>
+    </Stack>
+    <Stack direction="column">
       <SBTextSeparator>With Size</SBTextSeparator>
-      <Space gap={10} align="start">
+      <Stack gap={1} align="start">
         <Input helperText="Helper text" size="xs" label="Size xs" />
         <Input helperText="Helper text" size="sm" label="Size sm" />
         <Input helperText="Helper text" size="md" label="Size md" />
         <Input helperText="Helper text" size="lg" label="Size lg" />
         <Input helperText="Helper text" size="xl" label="Size xl" />
-      </Space>
-    </Space>
-  </Space>
+      </Stack>
+    </Stack>
+  </Stack>
 );
 
 export const Content = () => (
   <SBSelectorContainer label={['Select variant']} items={[variantItems]} value={['default']}>
     {([variant]) => (
-      <Space direction="column" gap={10}>
+      <Stack direction="column" gap={1}>
         <SBTextSeparator>Position</SBTextSeparator>
-        <Space gap={10}>
+        <Stack gap={1}>
           <Input variant={variant} icon={<MdSearch />} label="Label" placeholder="Search" />
           <Input
             variant={variant}
@@ -184,14 +184,14 @@ export const Content = () => (
             label="Label"
             placeholder="Search"
           />
-        </Space>
+        </Stack>
         <SBTextSeparator>With Size</SBTextSeparator>
         <Input variant={variant} size="xs" icon={<MdSearch />} placeholder="Search Mini" />
         <Input variant={variant} size="sm" icon={<MdSearch />} placeholder="Search Small" />
         <Input variant={variant} size="md" icon={<MdSearch />} placeholder="Search Medium" />
         <Input variant={variant} size="lg" icon={<MdSearch />} placeholder="Search Large" />
         <SBTextSeparator>With Status</SBTextSeparator>
-        <Space gap={10}>
+        <Stack gap={1}>
           <Input
             variant={variant}
             status="secondary"
@@ -205,8 +205,8 @@ export const Content = () => (
             placeholder="Search Success"
           />
           <Input variant={variant} status="error" icon={<MdSearch />} placeholder="Search Error" />
-        </Space>
-      </Space>
+        </Stack>
+      </Stack>
     )}
   </SBSelectorContainer>
 );
@@ -214,7 +214,7 @@ export const Content = () => (
 export const LabelLeftAndRight = () => (
   <SBSelectorContainer label={['Select variant']} items={[variantItems]} value={['default']}>
     {([variant]) => (
-      <Space direction="column" gap={10}>
+      <Stack direction="column" gap={1}>
         <SBTextSeparator>Label left</SBTextSeparator>
         <Input variant={variant} labelLeft="https://" placeholder="example" />
         <SBTextSeparator>Label right</SBTextSeparator>
@@ -222,55 +222,55 @@ export const LabelLeftAndRight = () => (
         <SBTextSeparator>Label left and right</SBTextSeparator>
         <Input variant={variant} labelLeft="https://" labelRight=".com" placeholder="example" />
         <SBTextSeparator>With Status</SBTextSeparator>
-        <Space gap={10}>
+        <Stack gap={1}>
           <Input variant={variant} status="secondary" labelLeft="https://" placeholder="example" />
           <Input variant={variant} status="success" labelLeft="https://" placeholder="example" />
           <Input variant={variant} status="error" labelLeft="https://" placeholder="example" />
-        </Space>
-      </Space>
+        </Stack>
+      </Stack>
     )}
   </SBSelectorContainer>
 );
 
 export const Shape = () => (
-  <Space direction="column" gap={10}>
+  <Stack direction="column" gap={1}>
     <SBTextSeparator>Default</SBTextSeparator>
-    <Space gap={10}>
+    <Stack gap={1}>
       <Input variant="default" placeholder="Default" />
       <Input variant="bordered" placeholder="Bordered" />
       <Input labelLeft="https://" labelRight=".com" placeholder="example" />
-    </Space>
+    </Stack>
     <SBTextSeparator>Round</SBTextSeparator>
-    <Space gap={10}>
+    <Stack gap={1}>
       <Input variant="default" shape="round" placeholder="Round" />
       <Input variant="bordered" shape="round" placeholder="Bordered" />
       <Input shape="round" labelLeft="https://" labelRight=".com" placeholder="example" />
-    </Space>
+    </Stack>
     <SBTextSeparator>Square</SBTextSeparator>
-    <Space gap={10}>
+    <Stack gap={1}>
       <Input variant="default" shape="square" placeholder="Square" />
       <Input variant="bordered" shape="square" placeholder="Bordered" />
       <Input shape="square" labelLeft="https://" labelRight=".com" placeholder="example" />
-    </Space>
-  </Space>
+    </Stack>
+  </Stack>
 );
 
 export const HotKey = () => (
   <SBSelectorContainer label={['Select variant']} items={[variantItems]} value={['default']}>
     {([variant]) => (
-      <Space direction="column" gap={10} wrap>
-        <Space gap={10}>
+      <Stack direction="column" gap={1} className="flex-wrap">
+        <Stack gap={1}>
           <Input variant={variant} hotKey="ctrl+k+1" label="Size xs" size="xs" />
           <Input variant={variant} hotKey="ctrl+k+2" label="Size sm" size="sm" />
           <Input variant={variant} hotKey="ctrl+k+3" label="Size lg" size="lg" />
-        </Space>
-        <Space gap={10}>
+        </Stack>
+        <Stack gap={1}>
           <Input variant={variant} hotKey="ctrl+shift+1" label="Secondary" color="secondary" />
           <Input variant={variant} hotKey="ctrl+shift+2" label="Info" color="info" />
           <Input variant={variant} hotKey="meta+j" label="Success" status="success" />
           <Input variant={variant} hotKey="meta+k" label="Error" status="error" />
-        </Space>
-      </Space>
+        </Stack>
+      </Stack>
     )}
   </SBSelectorContainer>
 );
@@ -305,7 +305,7 @@ FullWidth.args = {
 };
 
 export const Mask = () => (
-  <Space direction="column" gap={10}>
+  <Stack direction="column" gap={1}>
     <Input
       label="Date mask"
       placeholder="dd/mm/yyyy"
@@ -344,7 +344,7 @@ export const Mask = () => (
       mask={['+', '3', '4', ' ', /\d/, /\d/, /\d/, ' ', /\d/, /\d/, /\d/, ' ', /\d/, /\d/, /\d/]}
       icon={<MdPhone />}
     />
-  </Space>
+  </Stack>
 );
 
 export const UncontrolledVSControlled = () => {
@@ -352,7 +352,7 @@ export const UncontrolledVSControlled = () => {
   const [valueControlled, setValueControlled] = useState('John Doe');
 
   return (
-    <Space direction="column" gap={10}>
+    <Stack direction="column" gap={1}>
       <SBTextSeparator>Uncontrolled</SBTextSeparator>
       <Input labelPlaceholder="Name" defaultValue="John Doe" ref={refUncontrolled} />
 
@@ -365,6 +365,6 @@ export const UncontrolledVSControlled = () => {
       <span>
         Value input: <SBCode>{valueControlled}</SBCode>
       </span>
-    </Space>
+    </Stack>
   );
 };

@@ -1,4 +1,4 @@
-import { Button, Container, Header, Heading, Space, Text } from '../ui';
+import { Button, Container, Header, Heading, Text } from '../ui';
 
 export const MockApp = () => {
   return (
@@ -8,20 +8,20 @@ export const MockApp = () => {
       </header>
 
       <main>
-        <Container maxWidth="lg" centered>
-          <Space direction="column" gap={20} className="text-text mt-10">
-            <Heading as="h4" color="primary">
-              Content
-            </Heading>
+        <Container maxWidth="lg" centered className="text-text">
+          <Heading as="h4" color="primary" className="mt-10">
+            Content
+          </Heading>
 
-            <Text>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. At culpa deleniti ea esse ex
-              exercitationem molestias nulla quod ratione repellat, sequi veniam. Et fugit maiores
-              odit sint voluptatem! Obcaecati, reiciendis.
-            </Text>
+          <Text>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. At culpa deleniti ea esse ex
+            exercitationem molestias nulla quod ratione repellat, sequi veniam. Et fugit maiores
+            odit sint voluptatem! Obcaecati, reiciendis.
+          </Text>
 
-            <Button color="secondary">Button</Button>
-          </Space>
+          <Button color="secondary" className="mt-8">
+            Button
+          </Button>
         </Container>
       </main>
     </div>

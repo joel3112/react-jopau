@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { prepareArgTypes, prepareParameters } from '@react-jopau/shared/stories';
-import { Space } from '../../../layout';
+import { Stack } from '../../../layout';
 import { Button } from '../button';
 import docs from './readme.mdx';
 
@@ -41,27 +41,27 @@ GroupDefault.storyName = '[Group] Playground';
 GroupDefault.parameters = { viewMode: 'story' };
 
 export const GroupSizes = () => (
-  <Space direction="column" gap={10}>
+  <Stack direction="column" gap={1}>
     <Button.Group size="xs">{Buttons}</Button.Group>
     <Button.Group size="sm">{Buttons}</Button.Group>
     <Button.Group size="md">{Buttons}</Button.Group>
     <Button.Group size="lg">{Buttons}</Button.Group>
     <Button.Group size="xl">{Buttons}</Button.Group>
-  </Space>
+  </Stack>
 );
 
 export const GroupVariants = () => (
-  <Space direction="column" gap={10}>
+  <Stack direction="column" gap={1}>
     <Button.Group variant="solid">{Buttons}</Button.Group>
     <Button.Group variant="bordered">{Buttons}</Button.Group>
     <Button.Group variant="flat">{Buttons}</Button.Group>
     <Button.Group variant="ghost">{Buttons}</Button.Group>
     <Button.Group variant="clear">{Buttons}</Button.Group>
-  </Space>
+  </Stack>
 );
 
 export const GroupColors = () => (
-  <Space direction="column" gap={10}>
+  <Stack direction="column" gap={1}>
     <Button.Group color="primary">{Buttons}</Button.Group>
     <Button.Group color="secondary">{Buttons}</Button.Group>
     <Button.Group color="tertiary">{Buttons}</Button.Group>
@@ -71,21 +71,21 @@ export const GroupColors = () => (
     <Button.Group color="warning">{Buttons}</Button.Group>
     <Button.Group color="light">{Buttons}</Button.Group>
     <Button.Group color="dark">{Buttons}</Button.Group>
-  </Space>
+  </Stack>
 );
 
 export const GroupShape = () => (
-  <Space direction="column" gap={10}>
+  <Stack direction="column" gap={1}>
     <Button.Group>{Buttons}</Button.Group>
     <Button.Group shape="round">{Buttons}</Button.Group>
     <Button.Group shape="square">{Buttons}</Button.Group>
-  </Space>
+  </Stack>
 );
 
 export const GroupOrientation = () => (
-  <Space direction="column" gap={10}>
+  <Stack direction="column" gap={1}>
     <Button.Group orientation="horizontal">{Buttons}</Button.Group>
-    <Space gap={20}>
+    <Stack gap={5}>
       <Button.Group orientation="vertical">{Buttons}</Button.Group>
       <Button.Group variant="bordered" orientation="vertical">
         {Buttons}
@@ -93,8 +93,8 @@ export const GroupOrientation = () => (
       <Button.Group variant="flat" color="success" orientation="vertical">
         {Buttons}
       </Button.Group>
-    </Space>
-  </Space>
+    </Stack>
+  </Stack>
 );
 
 export const GroupDisabled = Template.bind({});

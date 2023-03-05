@@ -1,9 +1,9 @@
 import { ReactElement } from 'react';
-import type { ElementHTML, WithGap, Wrap } from '@/components/shared';
+import type { ElementHTML, WithFlex, Wrap } from '@/components/shared';
 import { GridItemProps } from './item/grid-item-props';
 
 export type GridProps = ElementHTML &
-  WithGap & {
+  WithFlex & {
     /**
      * Defines the children of the component.
      */
@@ -17,18 +17,6 @@ export type GridProps = ElementHTML &
      */
     wrap?: Wrap;
     /**
-     * Defines the direction of the flex container.
-     */
-    direction?: 'row' | 'column' | 'row-reverse' | 'column-reverse';
-    /**
-     * Defines the justify-content style property.
-     */
-    justify?: 'start' | 'center' | 'end' | 'between' | 'around' | 'evenly';
-    /**
-     * Defines the align-items style property.
-     */
-    align?: 'start' | 'center' | 'end' | 'baseline' | 'stretch';
-    /**
      * Defines the number of columns of the grid
      */
     columns?: number;
@@ -37,6 +25,6 @@ export type GridProps = ElementHTML &
 export const defaultProps = {
   as: 'div',
   wrap: 'wrap',
-  gap: 0 as WithGap['gap'],
+  gap: 0,
   columns: 12
 };

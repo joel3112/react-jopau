@@ -1,0 +1,33 @@
+import {
+  SBArgsTable,
+  SBDescription,
+  SBLinks,
+  SBStories,
+  SBTitle
+} from '@react-jopau/shared/stories';
+import { Stack } from './stack';
+
+<SBTitle>Stack</SBTitle>
+
+<SBLinks>
+  <SBLinks.Item href="components-layout-stack--default">Playground</SBLinks.Item>
+</SBLinks>
+
+<SBDescription>
+  Stack is a layout component used to group elements together and apply a space between them.
+</SBDescription>
+
+```jsx dark
+import { Stack } from '@react-jopau/components';
+```
+
+<SBStories.Default id="components-layout-stack--default" />
+
+<SBArgsTable component={Stack} />
+
+<SBStories>
+  <SBStories.Item label="Gap" id="components-layout-stack--gap" />
+  <SBStories.Item label="Direction" id="components-layout-stack--direction" />
+  <SBStories.Item label="Justify" id="components-layout-stack--justify" />
+  <SBStories.Item label="Align" id="components-layout-stack--align" />
+</SBStories>

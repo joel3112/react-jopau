@@ -6,7 +6,7 @@ import {
   SBCode,
   SBTextSeparator
 } from '@react-jopau/shared/stories';
-import { Space } from '../../layout';
+import { Stack } from '../../layout';
 import { Checkbox } from './checkbox';
 import docs from './readme.mdx';
 
@@ -46,7 +46,7 @@ Default.storyName = 'Playground';
 Default.parameters = { viewMode: 'story' };
 
 export const Sizes = () => (
-  <Space direction="column" gap={10}>
+  <Stack direction="column" gap={1}>
     <Checkbox defaultChecked size="xs">
       Mini
     </Checkbox>
@@ -62,11 +62,11 @@ export const Sizes = () => (
     <Checkbox defaultChecked size="xl">
       XLarge
     </Checkbox>
-  </Space>
+  </Stack>
 );
 
 export const Color = () => (
-  <Space direction="column" gap={10}>
+  <Stack direction="column" gap={1}>
     <Checkbox defaultChecked color="primary">
       Primary
     </Checkbox>
@@ -88,11 +88,11 @@ export const Color = () => (
     <Checkbox defaultChecked color="warning">
       Warning
     </Checkbox>
-  </Space>
+  </Stack>
 );
 
 export const Status = () => (
-  <Space direction="column" gap={10}>
+  <Stack direction="column" gap={1}>
     <Checkbox defaultChecked status="default">
       Default
     </Checkbox>
@@ -117,7 +117,7 @@ export const Status = () => (
     <Checkbox defaultChecked status="warning">
       Warning
     </Checkbox>
-  </Space>
+  </Stack>
 );
 
 export const Indeterminate = Template.bind({});
@@ -150,7 +150,7 @@ export const UncontrolledVSControlled = () => {
   const [checkedControlled, setCheckedControlled] = useState(true);
 
   return (
-    <Space direction="column" gap={10}>
+    <Stack direction="column" gap={1}>
       <SBTextSeparator>Uncontrolled</SBTextSeparator>
       <Checkbox defaultChecked ref={refUncontrolled}>
         Uncontrolled
@@ -163,6 +163,6 @@ export const UncontrolledVSControlled = () => {
       <span>
         Checked: <SBCode>{JSON.stringify(checkedControlled)}</SBCode>
       </span>
-    </Space>
+    </Stack>
   );
 };

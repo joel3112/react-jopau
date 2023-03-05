@@ -1,4 +1,4 @@
-import { Container, Space, Text } from '@react-jopau/components';
+import { Container, Stack, Text } from '@react-jopau/components';
 import { prepareParameters, SBCode } from '@react-jopau/shared/stories';
 import { useBreakpoint } from './use-breakpoint';
 import docs from './readme.mdx';
@@ -13,39 +13,35 @@ export const Default = () => {
   const { key, isMobile, isTablet, isDesktop, isSmallDesktop, isLargeDesktop } = useBreakpoint();
 
   return (
-    <Container maxWidth={450}>
+    <Container className="py-10" maxWidth={450}>
       <Text size="lg">{`Target width: ${window.innerWidth}px`}</Text>
 
-      <Space className="mt-10" direction="column" gap={10}>
-        <Space align="center" gap={10}>
+      <Stack className="mt-10" direction="column" gap={1}>
+        <Stack align="center" gap={1}>
           <SBCode>key:</SBCode>
-          {key && (
-            <code>
-              <Text>{key}</Text>
-            </code>
-          )}
-        </Space>
-        <Space align="center" gap={10}>
+          {key && <Text as="code">{key}</Text>}
+        </Stack>
+        <Stack align="center" gap={1}>
           <SBCode>isMobile:</SBCode>
           {isMobile ? '✅' : '❌'}
-        </Space>
-        <Space align="center" gap={10}>
+        </Stack>
+        <Stack align="center" gap={1}>
           <SBCode>isTablet:</SBCode>
           {isTablet ? '✅' : '❌'}
-        </Space>
-        <Space align="center" gap={10}>
+        </Stack>
+        <Stack align="center" gap={1}>
           <SBCode>isSmallDesktop:</SBCode>
           {isSmallDesktop ? '✅' : '❌'}
-        </Space>
-        <Space align="center" gap={10}>
+        </Stack>
+        <Stack align="center" gap={1}>
           <SBCode>isDesktop:</SBCode>
           {isDesktop ? '✅' : '❌'}
-        </Space>
-        <Space align="center" gap={10}>
+        </Stack>
+        <Stack align="center" gap={1}>
           <SBCode>isLargeDesktop:</SBCode>
           {isLargeDesktop ? '✅' : '❌'}
-        </Space>
-      </Space>
+        </Stack>
+      </Stack>
     </Container>
   );
 };

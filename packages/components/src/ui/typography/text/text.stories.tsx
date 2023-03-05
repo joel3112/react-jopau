@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { prepareArgTypes, prepareParameters, SBTextSeparator } from '@react-jopau/shared/stories';
-import { Space } from '../../layout';
+import { prepareArgTypes, prepareParameters } from '@react-jopau/shared/stories';
+import { Stack } from '../../layout';
 import { Text } from './text';
 import docs from './readme.mdx';
 
@@ -28,16 +28,17 @@ Default.storyName = 'Playground';
 Default.parameters = { viewMode: 'story' };
 
 export const As = () => (
-  <Space direction="column" gap={10}>
-    <SBTextSeparator>p</SBTextSeparator>
-    <Text as="p" className="bg-gray-100">
-      Lorem ipsum dolor sit amet
+  <Stack direction="column" gap={1}>
+    <Text as="p" className="bg-background-content px-1">
+      p. Lorem ipsum dolor sit amet
     </Text>
-    <SBTextSeparator>span</SBTextSeparator>
-    <Text as="span" className="bg-gray-100">
-      Lorem ipsum dolor sit amet
+    <Text as="span" className="bg-background-content px-1">
+      span. Lorem ipsum dolor sit amet
     </Text>
-  </Space>
+    <Text as="code" className="bg-background-content px-1">
+      code. Lorem ipsum dolor sit amet
+    </Text>
+  </Stack>
 );
 
 export const Sizes = () => (

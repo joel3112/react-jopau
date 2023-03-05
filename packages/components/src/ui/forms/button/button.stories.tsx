@@ -7,7 +7,7 @@ import {
   SBTextSeparator,
   SBSelectorContainer
 } from '@react-jopau/shared/stories';
-import { Space } from '../../layout';
+import { Stack } from '../../layout';
 import { Button } from './button';
 import docs from './readme.mdx';
 
@@ -45,24 +45,24 @@ Default.storyName = 'Playground';
 Default.parameters = { viewMode: 'story' };
 
 export const Sizes = () => (
-  <Space direction="column" gap={10}>
+  <Stack direction="column" gap={1}>
     <Button size="xs">Mini</Button>
     <Button size="sm">Small</Button>
     <Button size="md">Medium</Button>
     <Button size="lg">Large</Button>
     <Button size="xl">XLarge</Button>
     <Button auto>Auto</Button>
-  </Space>
+  </Stack>
 );
 
 export const Variants = () => (
-  <Space gap={10} wrap>
+  <Stack gap={1} className="flex-wrap">
     <Button variant="solid">Solid</Button>
     <Button variant="bordered">Bordered</Button>
     <Button variant="flat">Flat</Button>
     <Button variant="ghost">Ghost</Button>
     <Button variant="clear">Clear</Button>
-  </Space>
+  </Stack>
 );
 
 export const Colors = () => (
@@ -79,7 +79,7 @@ export const Colors = () => (
     ]}
     value={['solid']}>
     {([variant]) => (
-      <Space gap={10} wrap>
+      <Stack gap={1} className="flex-wrap">
         <Button color="primary" variant={variant}>
           Primary
         </Button>
@@ -107,7 +107,7 @@ export const Colors = () => (
         <Button color="dark" variant={variant}>
           Dark
         </Button>
-      </Space>
+      </Stack>
     )}
   </SBSelectorContainer>
 );
@@ -126,28 +126,28 @@ export const IconOnly = () => (
     ]}
     value={['solid']}>
     {([variant]) => (
-      <Space align="center" gap={10}>
+      <Stack align="center" gap={1}>
         <Button size="xs" variant={variant} icon={<MdAdd />} />
         <Button size="sm" variant={variant} icon={<MdAdd />} />
         <Button size="md" variant={variant} icon={<MdAdd />} />
         <Button size="lg" variant={variant} icon={<MdAdd />} />
         <Button size="xl" variant={variant} icon={<MdAdd />} />
-      </Space>
+      </Stack>
     )}
   </SBSelectorContainer>
 );
 
 export const TextAndIcon = () => (
-  <Space gap={10} direction="column">
+  <Stack gap={1} direction="column">
     <SBTextSeparator>Position</SBTextSeparator>
-    <Space gap={10}>
+    <Stack gap={1}>
       <Button icon={<MdAdd />}>Icon Left</Button>
       <Button icon={<MdAdd />} iconPosition="right">
         Icon Right
       </Button>
-    </Space>
+    </Stack>
     <SBTextSeparator>With Size</SBTextSeparator>
-    <Space direction="column" gap={10}>
+    <Stack direction="column" gap={1}>
       <Button size="xs" icon={<MdAdd />}>
         Mini
       </Button>
@@ -166,8 +166,8 @@ export const TextAndIcon = () => (
       <Button auto icon={<MdAdd />}>
         Auto
       </Button>
-    </Space>
-  </Space>
+    </Stack>
+  </Stack>
 );
 
 export const Shape = () => (
@@ -183,17 +183,17 @@ export const Shape = () => (
     ]}
     value={['solid']}>
     {([variant]) => (
-      <Space direction="column" gap={10}>
+      <Stack direction="column" gap={1}>
         <SBTextSeparator>Default</SBTextSeparator>
-        <Space gap={10}>
+        <Stack gap={1}>
           <Button variant={variant}>Button</Button>
           <Button variant={variant} icon={<MdAdd />}>
             Button
           </Button>
           <Button variant={variant} icon={<MdAdd />} />
-        </Space>
+        </Stack>
         <SBTextSeparator>Round</SBTextSeparator>
-        <Space gap={10}>
+        <Stack gap={1}>
           <Button variant={variant} shape="round">
             Button
           </Button>
@@ -201,9 +201,9 @@ export const Shape = () => (
             Button
           </Button>
           <Button variant={variant} shape="round" icon={<MdAdd />} />
-        </Space>
+        </Stack>
         <SBTextSeparator>Square</SBTextSeparator>
-        <Space gap={10}>
+        <Stack gap={1}>
           <Button variant={variant} shape="square">
             Button
           </Button>
@@ -211,14 +211,14 @@ export const Shape = () => (
             Button
           </Button>
           <Button variant={variant} shape="square" icon={<MdAdd />} />
-        </Space>
-      </Space>
+        </Stack>
+      </Stack>
     )}
   </SBSelectorContainer>
 );
 
 export const Disabled = () => (
-  <Space gap={10}>
+  <Stack gap={1}>
     <Button disabled>Disabled</Button>
     <Button disabled icon={<MdAdd />}>
       Disabled
@@ -227,12 +227,12 @@ export const Disabled = () => (
       Disabled
     </Button>
     <Button disabled icon={<MdAdd />} shape="round" />
-  </Space>
+  </Stack>
 );
 
 export const FullWidth = () => (
-  <Space direction="column" gap={5}>
-    <Space gap={10}>
+  <Stack direction="column" gap={5}>
+    <Stack gap={1}>
       <Button fullWidth icon={<MdAdd />}>
         Button
       </Button>
@@ -242,13 +242,13 @@ export const FullWidth = () => (
       <Button fullWidth icon={<MdAdd />}>
         Button
       </Button>
-    </Space>
-    <Space gap={10}>
+    </Stack>
+    <Stack gap={1}>
       <Button fullWidth icon={<MdAdd />} shape="round">
         Button
       </Button>
-    </Space>
-  </Space>
+    </Stack>
+  </Stack>
 );
 
 export const Ref = () => {
@@ -259,9 +259,9 @@ export const Ref = () => {
   };
 
   return (
-    <Space direction="column" gap={10}>
+    <Stack direction="column" gap={1}>
       <p>Click the "handler" button below to trigger click event on the "button-1" button</p>
-      <Space gap={10}>
+      <Stack gap={1}>
         <Button color="light" onClick={handleClick}>
           handler
         </Button>
@@ -270,7 +270,7 @@ export const Ref = () => {
           ref={ref}>
           button-1
         </Button>
-      </Space>
-    </Space>
+      </Stack>
+    </Stack>
   );
 };

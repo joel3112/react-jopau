@@ -1,5 +1,5 @@
 import { UIEvent, useRef, useState } from 'react';
-import { Container, Heading, Space, Text } from '@react-jopau/components';
+import { Container, Heading, Stack, Text } from '@react-jopau/components';
 import { prepareParameters, SBCard, SBCode } from '@react-jopau/shared/stories';
 import { useEventListener } from './use-event-listener';
 import docs from './readme.mdx';
@@ -32,7 +32,7 @@ export const Default = () => {
 
   return (
     <Container className="h-[3000px]">
-      <Space direction="column" gap={10} className="fixed top-12 left-12 w-[400px] max-w-[80%]">
+      <Stack direction="column" gap={1} className="fixed top-12 left-12 w-[400px] max-w-[80%]">
         <SBCard title={<SBCode>[target: Window, event: 'scroll']</SBCode>}>
           <Text size="sm" className="mb-5">
             ■ Scroll the page to see the scroll position change
@@ -47,7 +47,7 @@ export const Default = () => {
           Current cursor position:
           <Heading as="h3">{`[x=${cursorPosition[0]}, y=${cursorPosition[1]}]`}</Heading>
         </SBCard>
-      </Space>
+      </Stack>
     </Container>
   );
 };

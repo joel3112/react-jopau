@@ -1,6 +1,6 @@
-import { ForwardRefExoticComponent, useCallback } from 'react';
+import { ForwardRefExoticComponent } from 'react';
 import { classes } from '@react-jopau/utils';
-import { prefixClass, useSpacing } from '@/components/shared';
+import { computedFlexPosition, prefixClass, useSpacing } from '@/components/shared';
 import { GridContext } from './grid-context';
 import { GridItem } from './item/grid-item';
 import { defaultProps, GridProps } from './grid-props';
@@ -33,32 +33,20 @@ export const Grid = (({
 }: GridProps) => {
   const [gapUnitX, gapUnitY] = useSpacing(gap);
 
-  const computePosition = useCallback((key: string): never => {
-    return ({
-      start: 'flex-start',
-      end: 'flex-end',
-      between: 'space-between',
-      around: 'space-around',
-      evenly: 'space-evenly'
-    }[key] || key) as never;
-  }, []);
-
   return (
     <GridContext.Provider value={{ columns }}>
       <StyledGrid
         as={as}
         className={classes(prefixClass + '-grid', className)}
         css={{
-          display: 'flex',
           flexDirection: direction,
-          ...(justify && { justifyContent: computePosition(justify) }),
-          ...(align && { alignItems: computePosition(align) }),
           flexWrap: wrap,
           $$gridGapUnitX: gapUnitX,
           $$gridGapUnitY: gapUnitY,
-          boxSizing: 'border-box',
           margin: 'calc(-1 * $$gridGapUnitY) calc(-1 * $$gridGapUnitX)',
           width: 'calc(100% + $$gridGapUnitX * 2)',
+          ...(justify && { justifyContent: computedFlexPosition(justify) }),
+          ...(align && { alignItems: computedFlexPosition(align) }),
           ...style
         }}>
         {children}

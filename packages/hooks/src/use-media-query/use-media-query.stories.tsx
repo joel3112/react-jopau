@@ -1,4 +1,4 @@
-import { Container, Space } from '@react-jopau/components';
+import { Container, Stack } from '@react-jopau/components';
 import { prepareParameters, SBCard, SBCode } from '@react-jopau/shared/stories';
 import { useMediaQuery } from './use-media-query';
 import docs from './readme.mdx';
@@ -15,8 +15,8 @@ export const Default = () => {
   const prefersDark = useMediaQuery('(prefers-color-scheme: dark)');
 
   return (
-    <Container maxWidth={450}>
-      <Space direction="column" gap={10}>
+    <Container className="py-10" maxWidth={450}>
+      <Stack direction="column" gap={1}>
         <SBCard title={<SBCode>(min-width: 1024px)</SBCode>}>
           isLargeScreen: {isLargeScreen ? 'true' : 'false'}
         </SBCard>
@@ -24,7 +24,7 @@ export const Default = () => {
         <SBCard title={<SBCode>(prefers-color-scheme: dark)</SBCode>}>
           prefersDark: {prefersDark ? 'true' : 'false'}
         </SBCard>
-      </Space>
+      </Stack>
     </Container>
   );
 };

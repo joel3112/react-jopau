@@ -1,12 +1,14 @@
+import { FormEvent, useContext } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import { Inter } from '@next/font/google';
-import styles from '../styles/Home.module.css';
 import { MdOutlineDarkMode, MdOutlineLightMode, MdSearch } from 'react-icons/md';
+import { useBreakpoint } from '@react-jopau/hooks';
 import {
   Button,
   Checkbox,
   Container,
+  Grid,
   Header,
   Heading,
   Input,
@@ -14,9 +16,9 @@ import {
   Select,
   Space,
   Switch,
-  Textarea
+  Textarea,
+  ThemeContext
 } from '@react-jopau/components';
-import { useBreakpoint, useTheme } from '@react-jopau/hooks';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -28,8 +30,12 @@ const Logo = () => (
 );
 
 const Home = () => {
-  const { darkMode, onToggle } = useTheme();
+  const { darkMode, onToggle } = useContext(ThemeContext);
   const breakpoint = useBreakpoint();
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+  };
 
   return (
     <>
@@ -41,68 +47,76 @@ const Home = () => {
       </Head>
       <header>
         <Header logo={<Logo />} maxWidth="lg">
-          <Space align="center" gap={10}>
-            <Input
-              className="max-sm:hidden"
-              variant="bordered"
-              placeholder="Search"
-              hotKey="meta+k"
-            />
-            <Button className="sm:hidden" color="primary" variant="flat" icon={<MdSearch />} />
-            <Button
-              variant="flat"
-              color={!darkMode ? 'light' : 'dark'}
-              icon={darkMode ? <MdOutlineLightMode /> : <MdOutlineDarkMode />}
-              onClick={onToggle}
-            />
-          </Space>
+          <Grid align="center" gap={1} className="!w-fit">
+            <Grid.Item>
+              <Input
+                className="max-sm:hidden"
+                variant="bordered"
+                placeholder="Search"
+                hotKey="meta+k"
+              />
+            </Grid.Item>
+            <Grid.Item className="sm:hidden">
+              <Button color="primary" variant="flat" icon={<MdSearch />} />
+            </Grid.Item>
+            <Grid.Item>
+              <Button
+                variant="flat"
+                color={!darkMode ? 'light' : 'dark'}
+                icon={darkMode ? <MdOutlineLightMode /> : <MdOutlineDarkMode />}
+                onClick={onToggle}
+              />
+            </Grid.Item>
+          </Grid>
         </Header>
       </header>
-      <main className={styles.main}>
-        <Container maxWidth="lg" centered>
+
+      <main>
+        <Container maxWidth="lg" centered className="py-14">
           <h4 className={inter.className}>Current breakpoint: {breakpoint.key}</h4>
 
-          <Space direction="column" gap={20} className="mt-16">
-            <Heading as="h4" color="primary">
-              Form
-            </Heading>
-            <form className="w-[700px] max-w-[100%] flex-col grid grid-cols-2 gap-10 max-sm:flex">
-              <Input label="Name" placeholder="John Doe" fullWidth />
-              <Select size="sm" label="Country" fullWidth>
-                <Select.Option value="FR">France</Select.Option>
-                <Select.Option value="ES">Spain</Select.Option>
-                <Select.Option value="IT">Italy</Select.Option>
-                <Select.Option value="DE">Germany</Select.Option>
-              </Select>
-              <Checkbox.Group size="sm" orientation="horizontal" label="Preferences">
-                <Checkbox value="football">Football</Checkbox>
-                <Checkbox value="food">Food</Checkbox>
-                <Checkbox value="other">Other</Checkbox>
-              </Checkbox.Group>
-              <Radio.Group
-                size="sm"
-                orientation="horizontal"
-                label="Contact me via"
-                defaultValue="email">
-                <Radio value="email">Email</Radio>
-                <Radio value="phone">Phone</Radio>
-                <Radio value="not">Dont contact me</Radio>
-              </Radio.Group>
-              <Space direction="column" gap={8} className="col-span-2">
-                <Textarea
-                  label="Message"
-                  minRows={10}
-                  maxRows={15}
-                  placeholder="Your message"
-                  fullWidth
-                />
-                <Switch size="xs">Subscribe to newsletter</Switch>
-              </Space>
-              <Button type="submit" color="secondary">
-                Contact me
-              </Button>
-            </form>
-          </Space>
+          <Space y={1} />
+
+          <Heading as="h4" color="primary">
+            Form
+          </Heading>
+
+          <Space y={0.5} />
+
+          <form onSubmit={handleSubmit} className="w-[400px] max-w-[100%] flex flex-col gap-8">
+            <Input label="Name" placeholder="John Doe" fullWidth />
+            <Select size="sm" label="Country" fullWidth>
+              <Select.Option value="FR">France</Select.Option>
+              <Select.Option value="ES">Spain</Select.Option>
+              <Select.Option value="IT">Italy</Select.Option>
+              <Select.Option value="DE">Germany</Select.Option>
+            </Select>
+            <Checkbox.Group size="sm" orientation="horizontal" label="Preferences">
+              <Checkbox value="football">Football</Checkbox>
+              <Checkbox value="food">Food</Checkbox>
+              <Checkbox value="other">Other</Checkbox>
+            </Checkbox.Group>
+            <Radio.Group
+              size="sm"
+              orientation="horizontal"
+              label="Contact me via"
+              defaultValue="email">
+              <Radio value="email">Email</Radio>
+              <Radio value="phone">Phone</Radio>
+              <Radio value="not">Dont contact me</Radio>
+            </Radio.Group>
+            <Textarea
+              label="Message"
+              minRows={10}
+              maxRows={15}
+              placeholder="Your message"
+              fullWidth
+            />
+            <Switch size="xs">Subscribe to newsletter</Switch>
+            <Button type="submit" color="secondary">
+              Contact me
+            </Button>
+          </form>
         </Container>
       </main>
     </>

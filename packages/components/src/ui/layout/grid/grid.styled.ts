@@ -7,5 +7,6 @@ export const StyleGridItem = styledTheme('div', {
 });
 
 export const StyledGrid = styledTheme('div', {
+  display: 'flex',
   boxSizing: 'border-box'
 });

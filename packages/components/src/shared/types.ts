@@ -30,11 +30,28 @@ export type WithIcon = {
    */
   iconPosition?: ContentPosition;
 };
-export type WithGap = {
+export type WithGap<T = number | Array<number>> = {
   /**
    * Defines the spacing between the items.
    */
-  gap?: number | Array<number> | { [key in NormalSize]?: number | Array<number> };
+  gap?: T | { [key in NormalSize]?: T };
+};
+export type WithFlex<
+  TDirection = 'row' | 'column' | 'row-reverse' | 'column-reverse',
+  TGap = number | Array<number>
+> = WithGap<TGap> & {
+  /**
+   * Defines the direction of the flex container.
+   */
+  direction?: TDirection;
+  /**
+   * Defines the justify-content style property.
+   */
+  justify?: 'start' | 'center' | 'end' | 'between' | 'around' | 'evenly';
+  /**
+   * Defines the align-items style property.
+   */
+  align?: 'start' | 'center' | 'end' | 'baseline' | 'stretch';
 };
 
 export type FormControl = {

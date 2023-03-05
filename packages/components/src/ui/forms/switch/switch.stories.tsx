@@ -1,7 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { MdMic, MdOutlineDarkMode, MdOutlineLightMode } from 'react-icons/md';
 import { prepareArgTypes, prepareParameters, SBTextSeparator } from '@react-jopau/shared/stories';
-import { Space } from '../../layout';
+import { Stack } from '../../layout';
 import { Switch } from './switch';
 import docs from './readme.mdx';
 
@@ -35,7 +35,7 @@ Default.storyName = 'Playground';
 Default.parameters = { viewMode: 'story' };
 
 export const Sizes = () => (
-  <Space direction="column" gap={10}>
+  <Stack direction="column" gap={1}>
     <Switch defaultChecked size="xs">
       xs
     </Switch>
@@ -51,11 +51,11 @@ export const Sizes = () => (
     <Switch defaultChecked size="xl">
       xl
     </Switch>
-  </Space>
+  </Stack>
 );
 
 export const Color = () => (
-  <Space direction="column" gap={10}>
+  <Stack direction="column" gap={1}>
     <Switch defaultChecked color="primary">
       Primary
     </Switch>
@@ -77,11 +77,11 @@ export const Color = () => (
     <Switch defaultChecked color="warning">
       Warning
     </Switch>
-  </Space>
+  </Stack>
 );
 
 export const Status = () => (
-  <Space direction="column" gap={10}>
+  <Stack direction="column" gap={1}>
     <Switch defaultChecked status="primary">
       Primary
     </Switch>
@@ -103,11 +103,11 @@ export const Status = () => (
     <Switch defaultChecked status="warning">
       Warning
     </Switch>
-  </Space>
+  </Stack>
 );
 
 export const Bordered = () => (
-  <Space direction="column" gap={10}>
+  <Stack direction="column" gap={1}>
     <Switch variant="bordered" />
     <Switch variant="bordered" color="secondary" />
     <Switch variant="bordered" color="tertiary" />
@@ -115,7 +115,7 @@ export const Bordered = () => (
     <Switch variant="bordered" color="success" />
     <Switch variant="bordered" color="error" />
     <Switch variant="bordered" color="warning" />
-  </Space>
+  </Stack>
 );
 
 export const Disabled = Template.bind({});
@@ -129,7 +129,7 @@ Squared.args = {
 };
 
 export const Icons = () => (
-  <Space direction="column" gap={10}>
+  <Stack direction="column" gap={1}>
     <SBTextSeparator>Both</SBTextSeparator>
     <Switch defaultChecked size="xl" icon={<MdMic />} />
     <SBTextSeparator>On/Off</SBTextSeparator>
@@ -139,5 +139,5 @@ export const Icons = () => (
       iconOn={<MdOutlineDarkMode />}
       iconOff={<MdOutlineLightMode />}
     />
-  </Space>
+  </Stack>
 );

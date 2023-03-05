@@ -7,3 +7,13 @@ export const cleanedProps = <P extends object>(props: P) => {
   });
   return newProps as P;
 };
+
+export const computedFlexPosition = (key: string): string => {
+  return ({
+    start: 'flex-start',
+    end: 'flex-end',
+    between: 'space-between',
+    around: 'space-around',
+    evenly: 'space-evenly'
+  }[key] || key) as never;
+};
