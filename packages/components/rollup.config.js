@@ -1,7 +1,8 @@
-import * as path from 'path';
+import path from 'path';
 import esbuild from 'rollup-plugin-esbuild';
-import multi from '@rollup/plugin-multi-entry';
 import dts from 'rollup-plugin-dts';
+import glob from 'glob-promise';
+import lodash from 'lodash';
 
 const bundle = (config) => ({
   ...config,
@@ -28,10 +29,24 @@ const alias = (entries = {}) => {
   };
 };
 
+const exportProps = () => {
+  return {
+    name: 'export-props',
+    async generateBundle(options, bundle) {
+      const files = await glob(`src/**/*-props.ts`, {});
+      const types = files.map((file) => path.basename(file, path.extname(file)));
+      const formatTypes = types.map((type) => lodash.startCase(String(type)).replace(/\s/g, ''));
+      const exportTypes = `export { ${lodash.sortBy(formatTypes).join(', ')} };`;
+
+      bundle['index.d.ts'].code += exportTypes;
+    }
+  };
+};
+
 export default [
   {
-    plugins: [dts(), multi()],
-    input: 'src/**/*.ts',
+    plugins: [dts(), exportProps()],
+    input: 'src/index.ts',
     output: {
       format: 'es',
       file: 'dist/index.d.ts'
@@ -48,11 +63,11 @@ export default [
     output: [
       {
         format: 'cjs',
-        file: 'dist/cjs/index.js'
+        file: 'dist/index.js'
       },
       {
         format: 'es',
-        file: 'dist/esm/index.js'
+        file: 'dist/index.mjs'
       }
     ]
   })
