@@ -1,5 +1,5 @@
-import { useBreakpoint } from '@react-jopau/hooks';
 import { NormalSize, WithGap } from './types';
+import { useCurrentBreakpoint } from './use-current-breakpoint';
 
 const computeSpacing = (gap: WithGap['gap']): [string, string] => {
   let gapArray = [0, 0];
@@ -14,7 +14,7 @@ const computeSpacing = (gap: WithGap['gap']): [string, string] => {
 };
 
 export const useSpacing = (gap?: WithGap['gap']): [string, string] => {
-  const { key } = useBreakpoint();
+  const key = useCurrentBreakpoint();
 
   if (!gap) {
     return computeSpacing(gap);

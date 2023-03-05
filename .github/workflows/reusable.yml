@@ -59,6 +59,4 @@ jobs:
       - name: 📥 Setup node - Install dependencies
         uses: ./.github/actions/setup
       - name: ✅ Test
-        run: |
-          yarn build
-          yarn test
+        run: yarn test

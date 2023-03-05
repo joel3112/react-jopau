@@ -8,6 +8,7 @@ export * from './use-control-checked';
 export * from './use-control-group';
 export * from './use-control-value';
 export * from './use-controlled';
+export * from './use-current-breakpoint';
 export * from './use-hot-key';
 export * from './use-max-width';
 export * from './use-spacing';
