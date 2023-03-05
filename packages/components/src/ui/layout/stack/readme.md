@@ -11,7 +11,7 @@ import { Stack } from '@react-jopau/components';
 #### Examples
 
 ```jsx
-<Stack direction="column" gap={2}>
+<Stack direction="column" gap={3}>
   <div>Item 1</div>
   <div>Item 2</div>
   <div>Item 3</div>
