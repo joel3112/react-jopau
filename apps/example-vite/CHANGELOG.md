@@ -3,12 +3,6 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [0.22.0](https://github.com/joel3112/react-jopau/compare/v0.21.2...v0.22.0) (2023-03-05)
-
-### 🚀 New Features
-
-- **components:** add stack component ([c59652a](https://github.com/joel3112/react-jopau/commit/c59652a4c01109709665ad754e2aa4d8fa4ab754))
-
 ## [0.21.2](https://github.com/joel3112/react-jopau/compare/v0.21.1...v0.21.2) (2023-01-11)
 
 ### 🛠 Refactors

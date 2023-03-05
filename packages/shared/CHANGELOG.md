@@ -3,17 +3,6 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [0.22.0](https://github.com/joel3112/react-jopau/compare/v0.21.2...v0.22.0) (2023-03-05)
-
-### 🚀 New Features
-
-- **hooks:** add useMediaQuery hook ([00d22d9](https://github.com/joel3112/react-jopau/commit/00d22d9f6119bf234aef30a831f8bbd360ef9c5a))
-- manage prefix theme ([dca1aa3](https://github.com/joel3112/react-jopau/commit/dca1aa3ca9e76fa8e3b02f44653555f567ee5086))
-
-### 🏠 Internal
-
-- **components:** update build setup ([4946b61](https://github.com/joel3112/react-jopau/commit/4946b617e12619b5041a7823dda8bb3caab97f48))
-
 ## [0.21.0](https://github.com/joel3112/react-jopau/compare/v0.20.1...v0.21.0) (2023-01-09)
 
 **Note:** Version bump only for package @react-jopau/shared
