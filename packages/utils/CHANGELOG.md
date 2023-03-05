@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.22.0](https://github.com/joel3112/react-jopau/compare/v0.21.2...v0.22.0) (2023-03-05)
+
+### 🚀 New Features
+
+- **hooks:** add useMediaQuery hook ([00d22d9](https://github.com/joel3112/react-jopau/commit/00d22d9f6119bf234aef30a831f8bbd360ef9c5a))
+- **utils:** add toPascalCase method ([92251d9](https://github.com/joel3112/react-jopau/commit/92251d9c88604e85450dc47aac7455d66f973cfb))
+
 ## [0.21.0](https://github.com/joel3112/react-jopau/compare/v0.20.1...v0.21.0) (2023-01-09)
 
 **Note:** Version bump only for package @react-jopau/utils

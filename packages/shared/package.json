@@ -1,6 +1,6 @@
 {
   "name": "@react-jopau/shared",
-  "version": "0.21.0",
+  "version": "0.22.0",
   "description": "Shared code for react-jopau",
   "repository": {
     "type": "git",
@@ -31,7 +31,7 @@
     "build": "rimraf dist && tsc"
   },
   "dependencies": {
-    "@react-jopau/utils": "^0.21.0",
+    "@react-jopau/utils": "^0.22.0",
     "react-icons": "^4.7.1"
   },
   "devDependencies": {
