@@ -1,6 +1,6 @@
 import { ForwardRefExoticComponent, Ref, RefAttributes, useContext } from 'react';
 import { classes } from '@react-jopau/utils';
-import { cleanedProps, forwardRef, useControlChecked } from '@/components/shared';
+import { cleanedProps, forwardRef, prefixClass, useControlChecked } from '@/components/shared';
 import { RadioContext } from './radio-context';
 import { RadioGroup } from './group/radio-group';
 import { defaultProps, RadioProps } from './radio-props';
@@ -32,7 +32,7 @@ export const Radio = forwardRef<RadioProps, 'input'>(
         aria-label={ariaLabel}
         isDisabled={disabled}
         autoFocus={autoFocus}
-        className={classes('radio', className)}
+        className={classes(prefixClass + '-radio', className)}
         css={{
           ...style
         }}

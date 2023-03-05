@@ -6,7 +6,7 @@ import {
   SBCode,
   SBTextSeparator
 } from '@react-jopau/shared/stories';
-import { Space } from '../../../layout';
+import { Stack } from '../../../layout';
 import { Checkbox } from '../checkbox';
 import docs from './readme.mdx';
 
@@ -78,7 +78,7 @@ GroupStatus.args = {
 };
 
 export const GroupOrientation = () => (
-  <Space direction="column" gap={10}>
+  <Stack direction="column" gap={1}>
     <SBTextSeparator>Vertical</SBTextSeparator>
     <Checkbox.Group orientation="vertical" value={['1', '3']}>
       {Options}
@@ -87,7 +87,7 @@ export const GroupOrientation = () => (
     <Checkbox.Group orientation="horizontal" value={['1', '3']}>
       {Options}
     </Checkbox.Group>
-  </Space>
+  </Stack>
 );
 
 export const GroupRequired = Template.bind({});
@@ -110,7 +110,7 @@ export const GroupUncontrolledVSControlled = () => {
   const [valueControlled, setValueControlled] = useState(['C']);
 
   return (
-    <Space direction="column" gap={10}>
+    <Stack direction="column" gap={1}>
       <SBTextSeparator>Uncontrolled</SBTextSeparator>
       <Checkbox.Group defaultValue={['A']} ref={refUncontrolled}>
         <Checkbox value="A">Option A</Checkbox>
@@ -127,6 +127,6 @@ export const GroupUncontrolledVSControlled = () => {
       <span>
         Selected: {valueControlled.length > 0 && <SBCode>{valueControlled.join(',')}</SBCode>}
       </span>
-    </Space>
+    </Stack>
   );
 };

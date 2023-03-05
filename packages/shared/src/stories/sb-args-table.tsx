@@ -1,6 +1,7 @@
 import { ComponentType, ElementType, ReactNode } from 'react';
 import { styled } from '@stitches/react';
 import { ArgTypes } from '@storybook/addons';
+import { useTheme } from '@storybook/theming';
 import { ArgsTable as PureArgsTable, TabsState } from '@storybook/components';
 import { disableArgTypes, prepareArgTypesWithContext, sortedArgTypes } from './utils';
 import { SBCollapsable } from './sb-collapsable';
@@ -9,10 +10,19 @@ const ArgsTableStyled = styled('div', {
   margin: '25px 0 30px 0',
   borderRadius: '4px',
   overflow: 'hidden',
-  border: 'var(--rjopau-borderWidths-light) solid var(--rjopau-colors-borderContrast)',
-  boxShadow: 'var(--rjopau-shadows-table)',
+  borderWidth: '1px',
 
   variants: {
+    darkMode: {
+      true: {
+        borderColor: 'rgba(255,255,255,.1)',
+        boxShadow: 'rgb(0 0 0 / 20%) 0 2px 5px 0'
+      },
+      false: {
+        borderColor: 'rgba(0,0,0,.1)',
+        boxShadow: 'rgb(0 0 0 / 10%) 0 1px 3px 0'
+      }
+    },
     noDefaults: {
       true: {
         'th:nth-of-type(2), td:nth-of-type(2)': {
@@ -44,9 +54,11 @@ export const SBPureArgsTable = ({
   >;
   noDefaults?: boolean;
 }) => {
+  const { base } = useTheme();
+
   return (
     <SBCollapsable title={heading} opened>
-      <ArgsTableStyled noDefaults={noDefaults}>
+      <ArgsTableStyled noDefaults={noDefaults} darkMode={base === 'dark'}>
         <PureArgsTable
           inAddonPanel
           sort="requiredFirst"
@@ -97,6 +109,8 @@ export const SBArgsTable = ({
   subcomponents?: Record<string, ComponentType>;
   exclude?: string[];
 }) => {
+  const { base } = useTheme();
+
   const allComponents = [
     getTabComponentItem(component.displayName, component, exclude),
     ...(Object.entries(subcomponents || {}).map(([label, component]) => {
@@ -111,7 +125,7 @@ export const SBArgsTable = ({
   if (entries.length === 1) {
     return (
       <SBCollapsable title="Properties" opened>
-        <ArgsTableStyled>
+        <ArgsTableStyled darkMode={base === 'dark'}>
           <PureArgsTable rows={entries[0][1].rows} sort="requiredFirst" inAddonPanel />
         </ArgsTableStyled>
       </SBCollapsable>
@@ -120,7 +134,7 @@ export const SBArgsTable = ({
 
   return (
     <SBCollapsable title="Properties" opened>
-      <ArgsTableStyled>
+      <ArgsTableStyled darkMode={base === 'dark'}>
         <TabsState>
           {entries.map((entry) => {
             const [label, table] = entry;

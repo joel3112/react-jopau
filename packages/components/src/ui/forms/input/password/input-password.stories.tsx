@@ -1,7 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { VscEye, VscEyeClosed } from 'react-icons/vsc';
 import { prepareArgTypes, prepareParameters } from '@react-jopau/shared/stories';
-import { Space } from '../../../layout';
+import { Stack } from '../../../layout';
 import { Input } from '../input';
 import docs from './readme.mdx';
 
@@ -52,15 +52,15 @@ PasswordDefault.storyName = '[Password] Playground';
 PasswordDefault.parameters = { viewMode: 'story' };
 
 export const PasswordVariants = () => (
-  <Space direction="column" gap={10}>
+  <Stack direction="column" gap={1}>
     <Input.Password variant="default" label="Default" placeholder="placeholder" />
     <Input.Password variant="bordered" label="Bordered" placeholder="placeholder" />
     <Input.Password variant="underlined" label="Underlined" placeholder="placeholder" />
-  </Space>
+  </Stack>
 );
 
 export const PasswordStatus = () => (
-  <Space gap={10} wrap>
+  <Stack gap={1} className="flex-wrap">
     <Input.Password labelPlaceholder="Default" />
     <Input.Password status="primary" labelPlaceholder="Primary" />
     <Input.Password status="secondary" labelPlaceholder="Secondary" />
@@ -69,13 +69,13 @@ export const PasswordStatus = () => (
     <Input.Password status="success" labelPlaceholder="Success" />
     <Input.Password status="error" labelPlaceholder="Error" />
     <Input.Password status="warning" labelPlaceholder="Warning" />
-  </Space>
+  </Stack>
 );
 
 export const PasswordCustomIcon = () => (
-  <Space direction="column" gap={10}>
+  <Stack direction="column" gap={1}>
     <Input.Password visibleIcon={<VscEyeClosed />} hiddenIcon={<VscEye />} label="Custom Icon" />
-  </Space>
+  </Stack>
 );
 
 export const PasswordHideToggle = () => (

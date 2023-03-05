@@ -5,7 +5,7 @@ import {
   SBSelectorContainer,
   SBTextSeparator
 } from '@react-jopau/shared/stories';
-import { Space } from '../../layout';
+import { Stack } from '../../layout';
 import { Select } from './select';
 import docs from './readme.mdx';
 
@@ -63,18 +63,18 @@ Default.storyName = 'Playground';
 Default.parameters = { viewMode: 'story' };
 
 export const LabelAndPlaceholder = () => (
-  <Space direction="column" gap={10}>
+  <Stack direction="column" gap={1}>
     <SBTextSeparator>Label and placeholder</SBTextSeparator>
     <Select label="Label" placeholder="Select option">
       {Options}
     </Select>
     <SBTextSeparator>No placeholder</SBTextSeparator>
     <Select>{Options}</Select>
-  </Space>
+  </Stack>
 );
 
 export const Sizes = () => (
-  <Space direction="column" gap={10}>
+  <Stack direction="column" gap={1}>
     <Select size="xs" label="Mini">
       {Options}
     </Select>
@@ -90,11 +90,11 @@ export const Sizes = () => (
     <Select size="xl" label="XLarge">
       {Options}
     </Select>
-  </Space>
+  </Stack>
 );
 
 export const Variants = () => (
-  <Space direction="column" gap={10}>
+  <Stack direction="column" gap={1}>
     <Select variant="default" label="Default" placeholder="Select option">
       {Options}
     </Select>
@@ -104,13 +104,13 @@ export const Variants = () => (
     <Select variant="underlined" label="Underlined" placeholder="Select option">
       {Options}
     </Select>
-  </Space>
+  </Stack>
 );
 
 export const Color = () => (
   <SBSelectorContainer label={['Select variant']} items={[variantItems]} value={['default']}>
     {([variant]) => (
-      <Space gap={10} wrap>
+      <Stack gap={1} className="flex-wrap">
         <Select variant={variant} label="Default">
           {Options}
         </Select>
@@ -135,7 +135,7 @@ export const Color = () => (
         <Select variant={variant} color="warning" label="Warning">
           {Options}
         </Select>
-      </Space>
+      </Stack>
     )}
   </SBSelectorContainer>
 );
@@ -143,7 +143,7 @@ export const Color = () => (
 export const Status = () => (
   <SBSelectorContainer label={['Select variant']} items={[variantItems]} value={['default']}>
     {([variant]) => (
-      <Space gap={10} wrap>
+      <Stack gap={1} className="flex-wrap">
         <Select variant={variant} label="Default">
           {Options}
         </Select>
@@ -168,27 +168,27 @@ export const Status = () => (
         <Select variant={variant} status="warning" label="Warning">
           {Options}
         </Select>
-      </Space>
+      </Stack>
     )}
   </SBSelectorContainer>
 );
 
 export const HelperText = () => (
-  <Space direction="column" gap={30}>
-    <Space direction="column" gap={0}>
+  <Stack direction="column" gap={5}>
+    <Stack direction="column">
       <SBTextSeparator>With Variants</SBTextSeparator>
-      <Space gap={10}>
+      <Stack gap={1}>
         <Select helperText="Helper text" label="Name">
           {Options}
         </Select>
         <Select variant="underlined" helperText="Helper text" label="Name">
           {Options}
         </Select>
-      </Space>
-    </Space>
-    <Space direction="column" gap={0}>
+      </Stack>
+    </Stack>
+    <Stack direction="column">
       <SBTextSeparator>With Status</SBTextSeparator>
-      <Space gap={10}>
+      <Stack gap={1}>
         <Select helperText="Helper text" status="secondary" label="Secondary">
           {Options}
         </Select>
@@ -198,41 +198,41 @@ export const HelperText = () => (
         <Select helperText="Helper text" status="error" label="Error">
           {Options}
         </Select>
-      </Space>
-    </Space>
-  </Space>
+      </Stack>
+    </Stack>
+  </Stack>
 );
 
 export const Shape = () => (
-  <Space direction="column" gap={10}>
+  <Stack direction="column" gap={1}>
     <SBTextSeparator>Default</SBTextSeparator>
-    <Space gap={10}>
+    <Stack gap={1}>
       <Select variant="default" placeholder="Default">
         {Options}
       </Select>
       <Select variant="bordered" placeholder="Bordered">
         {Options}
       </Select>
-    </Space>
+    </Stack>
     <SBTextSeparator>Round</SBTextSeparator>
-    <Space gap={10}>
+    <Stack gap={1}>
       <Select variant="default" shape="round" placeholder="Round">
         {Options}
       </Select>
       <Select variant="bordered" shape="round" placeholder="Bordered">
         {Options}
       </Select>
-    </Space>
+    </Stack>
     <SBTextSeparator>Square</SBTextSeparator>
-    <Space gap={10}>
+    <Stack gap={1}>
       <Select variant="default" shape="square" placeholder="Square">
         {Options}
       </Select>
       <Select variant="bordered" shape="square" placeholder="Bordered">
         {Options}
       </Select>
-    </Space>
-  </Space>
+    </Stack>
+  </Stack>
 );
 
 export const Required = Template.bind({});

@@ -7,7 +7,7 @@ import {
   SBSelectorContainer,
   SBTextSeparator
 } from '@react-jopau/shared/stories';
-import { Space } from '../../layout';
+import { Stack } from '../../layout';
 import { Textarea } from './textarea';
 import docs from './readme.mdx';
 
@@ -59,38 +59,38 @@ const variantItems = [
 ];
 
 export const LabelAndPlaceholder = () => (
-  <Space direction="column" gap={10}>
+  <Stack direction="column" gap={1}>
     <SBTextSeparator>Same Label and placeholder</SBTextSeparator>
     <Textarea labelPlaceholder="Name" />
     <SBTextSeparator>Label and placeholder are different</SBTextSeparator>
     <Textarea label="Email" placeholder="example@mail.com" />
     <SBTextSeparator>Only placeholder</SBTextSeparator>
     <Textarea placeholder="Your name" />
-  </Space>
+  </Stack>
 );
 
 export const Sizes = () => (
-  <Space direction="column" gap={10}>
+  <Stack direction="column" gap={1}>
     <Textarea size="xs" label="Mini" />
     <Textarea size="sm" label="Small" />
     <Textarea size="md" label="Medium" />
     <Textarea size="lg" label="Large" />
     <Textarea size="xl" label="XLarge" />
-  </Space>
+  </Stack>
 );
 
 export const Variants = () => (
-  <Space direction="column" gap={10}>
+  <Stack direction="column" gap={1}>
     <Textarea variant="default" label="Default" placeholder="placeholder" />
     <Textarea variant="bordered" label="Bordered" placeholder="placeholder" />
     <Textarea variant="underlined" label="Underlined" placeholder="placeholder" />
-  </Space>
+  </Stack>
 );
 
 export const Color = () => (
   <SBSelectorContainer label={['Select variant']} items={[variantItems]} value={['default']}>
     {([variant]) => (
-      <Space gap={10} wrap>
+      <Stack gap={1} className="flex-wrap">
         <Textarea variant={variant} label="Default" />
         <Textarea variant={variant} color="primary" label="Primary" />
         <Textarea variant={variant} color="secondary" label="Secondary" />
@@ -99,7 +99,7 @@ export const Color = () => (
         <Textarea variant={variant} color="success" label="Success" />
         <Textarea variant={variant} color="error" label="Error" />
         <Textarea variant={variant} color="warning" label="Warning" />
-      </Space>
+      </Stack>
     )}
   </SBSelectorContainer>
 );
@@ -107,7 +107,7 @@ export const Color = () => (
 export const Status = () => (
   <SBSelectorContainer label={['Select variant']} items={[variantItems]} value={['default']}>
     {([variant]) => (
-      <Space gap={10} wrap>
+      <Stack gap={1} className="flex-wrap">
         <Textarea variant={variant} labelPlaceholder="Default" />
         <Textarea variant={variant} status="primary" labelPlaceholder="Primary" />
         <Textarea variant={variant} status="secondary" labelPlaceholder="Secondary" />
@@ -116,53 +116,53 @@ export const Status = () => (
         <Textarea variant={variant} status="success" labelPlaceholder="Success" />
         <Textarea variant={variant} status="error" labelPlaceholder="Error" />
         <Textarea variant={variant} status="warning" labelPlaceholder="Warning" />
-      </Space>
+      </Stack>
     )}
   </SBSelectorContainer>
 );
 
 export const HelperText = () => (
-  <Space direction="column" gap={30}>
-    <Space direction="column" gap={0}>
+  <Stack direction="column" gap={5}>
+    <Stack direction="column">
       <SBTextSeparator>With Variants</SBTextSeparator>
-      <Space gap={10}>
+      <Stack gap={1}>
         <Textarea helperText="Helper text" label="Name" />
         <Textarea variant="underlined" helperText="Helper text" label="Name" />
-      </Space>
-    </Space>
-    <Space direction="column" gap={0}>
+      </Stack>
+    </Stack>
+    <Stack direction="column">
       <SBTextSeparator>With Status</SBTextSeparator>
-      <Space gap={10}>
+      <Stack gap={1}>
         <Textarea helperText="Helper text" status="secondary" label="Secondary" />
         <Textarea helperText="Helper text" status="success" label="Success" />
         <Textarea helperText="Helper text" status="error" label="Error" />
-      </Space>
-    </Space>
-  </Space>
+      </Stack>
+    </Stack>
+  </Stack>
 );
 
 export const Shape = () => (
-  <Space direction="column" gap={10}>
+  <Stack direction="column" gap={1}>
     <SBTextSeparator>Default</SBTextSeparator>
-    <Space gap={10}>
+    <Stack gap={1}>
       <Textarea variant="default" placeholder="Default" />
       <Textarea variant="bordered" placeholder="Bordered" />
-    </Space>
+    </Stack>
     <SBTextSeparator>Round</SBTextSeparator>
-    <Space gap={10}>
+    <Stack gap={1}>
       <Textarea variant="default" shape="round" placeholder="Round" />
       <Textarea variant="bordered" shape="round" placeholder="Bordered" />
-    </Space>
+    </Stack>
     <SBTextSeparator>Square</SBTextSeparator>
-    <Space gap={10}>
+    <Stack gap={1}>
       <Textarea variant="default" shape="square" placeholder="Square" />
       <Textarea variant="bordered" shape="square" placeholder="Bordered" />
-    </Space>
-  </Space>
+    </Stack>
+  </Stack>
 );
 
 export const Rows = () => (
-  <Space direction="column" gap={10}>
+  <Stack direction="column" gap={1}>
     <SBTextSeparator>Static</SBTextSeparator>
     <Textarea rows={4} placeholder="Static rows, rows(4)" />
     <SBTextSeparator>Minimum</SBTextSeparator>
@@ -173,7 +173,7 @@ export const Rows = () => (
       maxRows={10}
       placeholder="Max rows (10), Min rows (1), write something large..."
     />
-  </Space>
+  </Stack>
 );
 
 export const Required = Template.bind({});
@@ -206,7 +206,7 @@ export const UncontrolledVSControlled = () => {
   );
 
   return (
-    <Space direction="column" gap={10}>
+    <Stack direction="column" gap={1}>
       <SBTextSeparator>Uncontrolled</SBTextSeparator>
       <Textarea
         labelPlaceholder="Name"
@@ -223,6 +223,6 @@ export const UncontrolledVSControlled = () => {
       <span>
         Value textarea: <SBCode>{valueControlled}</SBCode>
       </span>
-    </Space>
+    </Stack>
   );
 };

@@ -8,8 +8,10 @@ export const StyledText = styledTheme('p', {
 
   variants: {
     as: {
+      p: {},
+      div: {},
       span: { display: 'inline-block', width: '$space$max' },
-      p: {}
+      code: { display: 'inline-block', width: '$space$max', fontFamily: '$fonts$code' }
     },
     color: {
       inherit: { color: 'inherit' },

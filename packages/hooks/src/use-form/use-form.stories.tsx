@@ -7,7 +7,7 @@ import {
   Input,
   Radio,
   Select,
-  Space,
+  Stack,
   Switch
 } from '@react-jopau/components';
 import { prepareParameters, SBJSONPreview } from '@react-jopau/shared/stories';
@@ -54,9 +54,9 @@ export const Default = () => {
   };
 
   return (
-    <Container maxWidth={900}>
+    <Container className="py-10" maxWidth={900}>
       {/* Configuration */}
-      <Space direction="column" gap={10} wrap className="border border-border p-6 mb-10">
+      <Stack direction="column" gap={1} className="border border-border p-6 mb-10 flex-wrap">
         <Heading as="h6">Config:</Heading>
         <Radio.Group
           orientation="horizontal"
@@ -70,7 +70,7 @@ export const Default = () => {
           <Radio value="onTouched">onTouched</Radio>
           <Radio value="all">all</Radio>
         </Radio.Group>
-        <Space gap={4} className="mt-2" wrap>
+        <Stack gap={4} className="mt-2 flex-wrap">
           <Button color="light" size="xs" onClick={() => setValue('username', 'Adrian')}>
             Set Username to Adrian
           </Button>
@@ -83,11 +83,11 @@ export const Default = () => {
           <Button color="light" size="xs" onClick={() => setValue('terms', false)}>
             Disable Terms
           </Button>
-        </Space>
-      </Space>
+        </Stack>
+      </Stack>
 
       {/* Form example */}
-      <Space gap={10} justify="between" wrap>
+      <Stack gap={1} justify="between" className="flex-wrap">
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="max-w-[100%] h-fit flex flex-col gap-10 min-[600px]:basis-[45%]">
@@ -132,14 +132,14 @@ export const Default = () => {
             I agree to the terms and conditions
           </Switch>
 
-          <Space gap={10}>
+          <Stack gap={1}>
             <Button auto variant="bordered" color="secondary" onClick={() => reset()}>
               Reset
             </Button>
             <Button auto type="submit" color="secondary">
               Submit
             </Button>
-          </Space>
+          </Stack>
         </form>
 
         <div className="min-[600px]:basis-[45%]">
@@ -149,7 +149,7 @@ export const Default = () => {
           <h6>Errors:</h6>
           <SBJSONPreview className="scale-[90%] origin-top-left" code={formState.errors} />
         </div>
-      </Space>
+      </Stack>
     </Container>
   );
 };

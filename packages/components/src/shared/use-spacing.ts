@@ -1,12 +1,27 @@
-const spacing = (gap?: number | Array<number>): string => {
-  if (Array.isArray(gap) && gap.length === 2) {
-    return gap.map((s: number) => `${s}px`).join(' ');
-  } else if (typeof gap === 'number') {
-    return [`${gap}px`, `${gap}px`].join(' ');
+import { useBreakpoint } from '@react-jopau/hooks';
+import { NormalSize, WithGap } from './types';
+
+const computeSpacing = (gap: WithGap['gap']): [string, string] => {
+  let gapArray = [0, 0];
+  if (typeof gap === 'number') {
+    gapArray = [gap, gap];
   }
-  return '0';
+  if (Array.isArray(gap)) {
+    gapArray = gap.slice(0, 2);
+  }
+
+  return gapArray.map((value) => `calc(${value} * $space$3)`) as [string, string];
 };
 
-export const useSpacing = (gap?: number | Array<number>) => {
-  return spacing(gap);
+export const useSpacing = (gap?: WithGap['gap']): [string, string] => {
+  const { key } = useBreakpoint();
+
+  if (!gap) {
+    return computeSpacing(gap);
+  }
+  if (typeof gap === 'number' || Array.isArray(gap)) {
+    return computeSpacing(gap);
+  }
+
+  return key ? computeSpacing((gap as Record<NormalSize, never>)[key]) : computeSpacing(gap);
 };

@@ -9,7 +9,7 @@ import {
 } from 'react';
 import { PressEvent } from '@react-types/shared/src/events';
 import { classes } from '@react-jopau/utils';
-import { cleanedProps, forwardRef } from '@/components/shared';
+import { cleanedProps, forwardRef, prefixClass } from '@/components/shared';
 import { ButtonContext } from './button-context';
 import { ButtonGroup } from './group/button-group';
 import { ButtonProps, defaultProps } from './button-props';
@@ -51,7 +51,7 @@ export const Button = forwardRef<ButtonProps, 'button'>(
         ref={buttonRef}
         type={type}
         disabled={!!disabled}
-        className={classes('button', className)}
+        className={classes(prefixClass + '-button', className)}
         css={{
           ...style
         }}

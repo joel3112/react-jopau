@@ -6,9 +6,10 @@
     "type": "git",
     "url": "git+https://github.com/joel3112/react-jopau.git"
   },
-  "author": "Joel Paucarima Franco <joel.dev.3112@outlook.es>",
+  "author": "Joel Paucarima Franco <joel.dev.3112@gmail.com>",
   "license": "MIT",
   "homepage": "https://github.com/joel3112/react-jopau/tree/main/packages/components#readme",
+  "type": "module",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -24,7 +25,7 @@
     "package.json"
   ],
   "scripts": {
-    "build": "rimraf dist && tsup",
+    "build": "rimraf dist && rollup -c",
     "test": "jest --config=../../jest.config.js --selectProjects=@react-jopau/components"
   },
   "publishConfig": {
@@ -34,6 +35,7 @@
     "@nextui-org/react": "1.0.0-beta.10",
     "@react-aria/focus": "3.10.1",
     "@react-aria/utils": "3.14.2",
+    "@react-jopau/hooks": "^0.21.2",
     "@react-jopau/styles": "^0.21.0",
     "@react-jopau/utils": "^0.21.0",
     "@stitches/react": "^1.2.8",

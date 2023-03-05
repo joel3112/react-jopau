@@ -5,6 +5,7 @@ import {
   toCamelCase,
   toCapitalize,
   toKebabCase,
+  toPascalCase,
   truncate
 } from '../src/string';
 
@@ -38,6 +39,15 @@ describe('String helper methods', () => {
   describe('toCapitalize', () => {
     test('returns a string with capitalize format', () => {
       expect(toCapitalize('test')).toBe('Test');
+    });
+  });
+
+  describe('toPascalCase', () => {
+    test('returns a string with format pascal case', () => {
+      expect(toPascalCase('test component')).toBe('TestComponent');
+    });
+    test('returns a string with format pascal case from snake case', () => {
+      expect(toPascalCase('test-component')).toBe('TestComponent');
     });
   });
 

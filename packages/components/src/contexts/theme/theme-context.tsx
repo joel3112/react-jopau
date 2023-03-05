@@ -7,6 +7,7 @@ import {
   ThemeConfig,
   ThemeSchemes
 } from '@react-jopau/styles';
+import { prefixClass } from '@/components/shared';
 import { defaultProps, ThemeProviderProps } from './theme-context-props';
 
 /* ==== context ================================================================ */
@@ -26,27 +27,27 @@ const globalStyles = ({ xs, sm, md, xl, lg }: BreakpointsRules) =>
   globalCss({
     ...globalCSS,
     ':root': {
-      '--rjopau-breakpoint-xs': `${xs}px`,
-      '--rjopau-breakpoint-sm': `${sm}px`,
-      '--rjopau-breakpoint-md': `${md}px`,
-      '--rjopau-breakpoint-lg': `${lg}px`,
-      '--rjopau-breakpoint-xl': `${xl}px`
+      [`--${prefixClass}-breakpoint-xs`]: `${xs}px`,
+      [`--${prefixClass}-breakpoint-sm`]: `${sm}px`,
+      [`--${prefixClass}-breakpoint-md`]: `${md}px`,
+      [`--${prefixClass}-breakpoint-lg`]: `${lg}px`,
+      [`--${prefixClass}-breakpoint-xl`]: `${xl}px`
     },
     body: {
-      background: 'var(--rjopau-colors-background)',
-      color: 'var(--rjopau-colors-text)'
+      background: `var(--${prefixClass}-colors-background)`,
+      color: `var(--${prefixClass}-colors-text)`
     },
     '*, button, input': {
-      fontFamily: 'var(--rjopau-fonts-base)'
+      fontFamily: `var(--${prefixClass}-fonts-base)`
     },
     'pre *, code *, .react-json-view *': {
-      fontFamily: 'var(--rjopau-fonts-code) !important'
+      fontFamily: `var(--${prefixClass}-fonts-code) !important`
     }
   });
 
 const StyledContent = styled('div', {
-  background: 'var(--rjopau-colors-background)',
-  color: 'var(--rjopau-colors-text)'
+  background: `var(--${prefixClass}-colors-background)`,
+  color: `var(--${prefixClass}-colors-text)`
 });
 
 /**

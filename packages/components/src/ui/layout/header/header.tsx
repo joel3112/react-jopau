@@ -1,4 +1,5 @@
 import { classes } from '@react-jopau/utils';
+import { prefixClass } from '@/components/shared';
 import { Heading } from '../../typography';
 import { defaultProps, HeaderProps } from './header-props';
 import { StyledHeaderContent, StyledHeaderLogo, StyledHeader } from './header.styled';
@@ -18,12 +19,12 @@ import { StyledHeaderContent, StyledHeaderLogo, StyledHeader } from './header.st
 export const Header = ({ className, style, children, logo, title, maxWidth }: HeaderProps) => {
   return (
     <StyledHeader
-      className={classes('header', className)}
+      className={classes(prefixClass + '-header', className)}
       css={{
         ...style
       }}>
       <StyledHeaderContent maxWidth={maxWidth} centered>
-        <StyledHeaderLogo direction="row" align="center" gap={8}>
+        <StyledHeaderLogo>
           {logo}
           {title && <Heading as="h4">{title}</Heading>}
         </StyledHeaderLogo>

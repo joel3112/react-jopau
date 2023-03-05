@@ -1,6 +1,6 @@
 import { ForwardRefExoticComponent, Ref, RefAttributes } from 'react';
 import { classes } from '@react-jopau/utils';
-import { forwardRef, useControlGroup, withFormControl } from '@/components/shared';
+import { forwardRef, prefixClass, useControlGroup, withFormControl } from '@/components/shared';
 import { CheckboxContext } from '../checkbox-context';
 import { CheckboxGroupProps, defaultProps } from './checkbox-group-props';
 import { StyledCheckboxGroup } from '../checkbox.styled';
@@ -58,7 +58,7 @@ export const CheckboxGroup = withFormControl<CheckboxGroupProps, HTMLDivElement>
             isDisabled={disabled}
             isReadOnly={readOnly}
             required={required}
-            className={classes('checkbox-group', className)}
+            className={classes(prefixClass + '-checkbox-group', className)}
             css={{
               ...style
             }}

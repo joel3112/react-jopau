@@ -1,6 +1,6 @@
 import { ForwardRefExoticComponent, Ref, RefAttributes } from 'react';
 import { classes } from '@react-jopau/utils';
-import { forwardRef, useControlGroup, withFormControl } from '@/components/shared';
+import { forwardRef, prefixClass, useControlGroup, withFormControl } from '@/components/shared';
 import { RadioContext } from '../radio-context';
 import { defaultProps, RadioGroupProps } from './radio-group-props';
 import { StyledRadioGroup } from '../radio.styled';
@@ -58,7 +58,7 @@ export const RadioGroup = withFormControl<RadioGroupProps, HTMLDivElement>(
             isDisabled={disabled}
             isReadOnly={readOnly}
             isRequired={required}
-            className={classes('radio-group', className)}
+            className={classes(prefixClass + '-radio-group', className)}
             css={{
               ...style
             }}

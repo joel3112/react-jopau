@@ -18,6 +18,8 @@ export type Shape = 'default' | 'round' | 'square';
 
 export type ContentPosition = 'left' | 'right';
 
+export type Wrap = 'wrap' | 'nowrap' | 'wrap-reverse';
+
 export type WithIcon = {
   /**
    * Defines the render of the icon of the component.
@@ -27,6 +29,29 @@ export type WithIcon = {
    * Defines the position of the icon in the component.
    */
   iconPosition?: ContentPosition;
+};
+export type WithGap<T = number | Array<number>> = {
+  /**
+   * Defines the spacing between the items.
+   */
+  gap?: T | { [key in NormalSize]?: T };
+};
+export type WithFlex<
+  TDirection = 'row' | 'column' | 'row-reverse' | 'column-reverse',
+  TGap = number | Array<number>
+> = WithGap<TGap> & {
+  /**
+   * Defines the direction of the flex container.
+   */
+  direction?: TDirection;
+  /**
+   * Defines the justify-content style property.
+   */
+  justify?: 'start' | 'center' | 'end' | 'between' | 'around' | 'evenly';
+  /**
+   * Defines the align-items style property.
+   */
+  align?: 'start' | 'center' | 'end' | 'baseline' | 'stretch';
 };
 
 export type FormControl = {

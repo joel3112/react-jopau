@@ -149,6 +149,7 @@ export const StyledSwitch = styledTheme(
     borderRadius: '$radii$pill',
     background: '$colors$border',
     width: '$$switchControlWidth',
+    minWidth: '$$switchControlWidth',
     height: '$$switchControlHeight',
     transition: '$transition$sdefault',
 

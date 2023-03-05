@@ -1,5 +1,5 @@
 import { FormEvent } from 'react';
-import { Button, Container, Heading, Input, Space, Text } from '@react-jopau/components';
+import { Button, Container, Heading, Input, Stack, Text } from '@react-jopau/components';
 import { prepareParameters, SBCode } from '@react-jopau/shared/stories';
 import { useLocalStorage } from './use-local-storage';
 import docs from './readme.mdx';
@@ -21,7 +21,7 @@ export const Default = () => {
   };
 
   return (
-    <Container maxWidth={450}>
+    <Container className="py-10" maxWidth={450}>
       <form onSubmit={handleSubmit}>
         <Input
           name="text"
@@ -35,15 +35,15 @@ export const Default = () => {
         </Button>
       </form>
 
-      <Space className="mt-10" direction="column" gap={10}>
+      <Stack className="mt-10" direction="column" gap={1}>
         <Heading as="h6">LocalStorage:</Heading>
-        <Space align="center" gap={10} wrap>
+        <Stack align="center" gap={1} className="flex-wrap">
           <SBCode>{key}:</SBCode>
           <code>
             <Text>{value}</Text>
           </code>
-        </Space>
-      </Space>
+        </Stack>
+      </Stack>
     </Container>
   );
 };

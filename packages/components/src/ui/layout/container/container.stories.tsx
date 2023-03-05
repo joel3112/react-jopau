@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { prepareArgTypes, prepareParameters, SBTextSeparator } from '@react-jopau/shared/stories';
-import { Space } from '../../layout';
+import { Stack } from '../../layout';
 import { Container } from './container';
 import docs from './readme.mdx';
 
@@ -34,7 +34,7 @@ const children =
   'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet architecto asperiores autem, blanditiis ducimus excepturi fugiat inventore ipsum nam nesciunt nobis odit quae quas repellendus sequi, sit suscipit! Enim, ratione.';
 
 export const Gap = () => (
-  <Space direction="column" gap={10}>
+  <Stack direction="column" gap={1}>
     <SBTextSeparator>Unique</SBTextSeparator>
     <Container className={className} gap={15}>
       {children}
@@ -43,11 +43,11 @@ export const Gap = () => (
     <Container className={className} gap={[30, 50]}>
       {children}
     </Container>
-  </Space>
+  </Stack>
 );
 
 export const MaxWidth = () => (
-  <Space direction="column" gap={10}>
+  <Stack direction="column" gap={1}>
     <SBTextSeparator>xs</SBTextSeparator>
     <Container className={className} maxWidth="xs">
       {children}
@@ -72,7 +72,7 @@ export const MaxWidth = () => (
     <Container className={className} maxWidth={600}>
       {children}
     </Container>
-  </Space>
+  </Stack>
 );
 
 export const Centered = Template.bind({});

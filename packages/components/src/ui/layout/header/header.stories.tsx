@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { prepareArgTypes, prepareParameters, SBTextSeparator } from '@react-jopau/shared/stories';
-import { Space } from '../../layout';
+import { Stack } from '../../layout';
 import { Header } from './header';
 import docs from './readme.mdx';
 
@@ -26,23 +26,23 @@ Default.storyName = 'Playground';
 Default.parameters = { viewMode: 'story' };
 
 export const Logo = () => (
-  <Space direction="column" gap={10}>
+  <Stack direction="column" gap={1}>
     <SBTextSeparator>Logo and Title</SBTextSeparator>
     <Header title="Title" logo={<img src="./images/logo.png" alt="Logo" className="h-[45px]" />} />
     <SBTextSeparator>Only Logo</SBTextSeparator>
     <Header
       logo={
-        <Space align="center" gap={10}>
+        <Stack align="center" gap={1}>
           <img src="./images/logo.png" alt="Logo" className="h-[45px]" />
           <h5 className="bg-secondary-300">Header</h5>
-        </Space>
+        </Stack>
       }
     />
-  </Space>
+  </Stack>
 );
 
 export const MaxWidth = () => (
-  <Space direction="column" gap={10}>
+  <Stack direction="column" gap={1}>
     <SBTextSeparator>xs</SBTextSeparator>
     <Header title="Title" maxWidth="xs" />
     <SBTextSeparator>sm</SBTextSeparator>
@@ -55,7 +55,7 @@ export const MaxWidth = () => (
     <Header title="Title" maxWidth="xl" />
     <SBTextSeparator>400px</SBTextSeparator>
     <Header title="Title" maxWidth={400} />
-  </Space>
+  </Stack>
 );
 
 export const WithActions = Template.bind({});

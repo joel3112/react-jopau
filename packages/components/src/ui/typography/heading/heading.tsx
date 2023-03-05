@@ -1,4 +1,5 @@
 import { classes } from '@react-jopau/utils';
+import { prefixClass } from '@/components/shared';
 import { defaultProps, HeadingProps } from './heading-props';
 import { StyledHeading } from './heading.styled';
 
@@ -16,7 +17,7 @@ export const Heading = ({ className, style, children, as, color }: HeadingProps)
   return (
     <StyledHeading
       as={as}
-      className={classes('heading', className)}
+      className={classes(prefixClass + '-heading', className)}
       css={{
         ...style
       }}

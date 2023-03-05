@@ -2,6 +2,7 @@ import { ForwardRefExoticComponent, ReactElement, Ref, RefAttributes } from 'rea
 import { classes } from '@react-jopau/utils';
 import {
   forwardRef,
+  prefixClass,
   useControlValue,
   useHotKey,
   withFormControl,
@@ -104,7 +105,7 @@ export const Input = withFormControl<InputProps, HTMLInputElement>(
               autoComplete={autoComplete}
               required={required}
               autoFocus={autoFocus}
-              className={classes('input', className)}
+              className={classes(prefixClass + '-input', className)}
               css={{
                 ...style
               }}

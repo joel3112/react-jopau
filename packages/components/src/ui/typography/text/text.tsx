@@ -1,4 +1,5 @@
 import { classes } from '@react-jopau/utils';
+import { prefixClass } from '@/components/shared';
 import { defaultProps, TextProps } from './text-props';
 import { StyledText } from './text.styled';
 
@@ -16,7 +17,7 @@ export const Text = ({ className, style, children, color, as, size, maxLines }: 
   return (
     <StyledText
       as={as}
-      className={classes('text', className)}
+      className={classes(prefixClass + '-text', className)}
       css={{
         ...(maxLines && { lineClamp: maxLines }),
         ...style

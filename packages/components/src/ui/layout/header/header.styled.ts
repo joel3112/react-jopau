@@ -1,5 +1,5 @@
 import { styledTheme } from '@/components/shared';
-import { Container, Space } from '../../layout';
+import { Container } from '../../layout';
 
 export const StyledHeaderContent = styledTheme(Container, {
   display: 'flex !important',
@@ -9,7 +9,10 @@ export const StyledHeaderContent = styledTheme(Container, {
   maxWidth: 'inherit'
 });
 
-export const StyledHeaderLogo = styledTheme(Space, {
+export const StyledHeaderLogo = styledTheme('div', {
+  display: 'flex',
+  alignItems: 'center',
+  gap: '$space$3',
   width: '$space$fit',
   height: '$space$full'
 });

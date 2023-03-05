@@ -2,7 +2,8 @@ import {
   truncate as _truncate,
   camelCase as _camelCase,
   kebabCase as _kebabCase,
-  capitalize as _capitalize
+  capitalize as _capitalize,
+  startCase as _startCase
 } from 'lodash-es';
 
 export const truncate = (text: string, limit: number): string => {
@@ -19,6 +20,10 @@ export const toKebabCase = (text: string): string => {
 
 export const toCapitalize = (text: string): string => {
   return _capitalize(String(text));
+};
+
+export const toPascalCase = (text: string): string => {
+  return _startCase(String(text)).replace(/\s/g, '');
 };
 
 export const removeSpecialCharacters = (text: string): string => {

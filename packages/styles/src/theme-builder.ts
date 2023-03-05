@@ -11,6 +11,8 @@ import {
 import { defaultTheme as defaultConfig } from './themes';
 import themeUtils from './themes/utils';
 
+export const prefix = 'rjopau';
+
 export class ThemeBuilder {
   currentConfig: ThemeConfig = defaultConfig;
   styledTheme: ThemeStyled = styled;
@@ -36,7 +38,7 @@ export class ThemeBuilder {
         {}
       ),
       utils: themeUtils,
-      prefix: 'rjopau'
+      prefix
     });
 
     this.styledTheme = styled;

@@ -250,8 +250,7 @@ export default {
       pill: '9999px'
     },
     shadows: {
-      box: 'rgb(231 235 250) 0 -1px 1px inset',
-      table: 'rgb(0 0 0 / 10%) 0 1px 3px 0'
+      box: 'rgb(231 235 250) 0 -1px 1px inset'
     },
     zIndices: {
       hide: -1,
@@ -286,8 +285,7 @@ export default {
       disabled: '#989696'
     },
     shadows: {
-      box: 'rgb(67 67 67) 0 -1px 1px inset',
-      table: 'rgb(0 0 0 / 20%) 0 2px 5px 0'
+      box: 'rgb(67 67 67) 0 -1px 1px inset'
     }
   },
   media: {

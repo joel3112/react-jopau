@@ -11,7 +11,7 @@ import {
 import * as reactAriaUtils from '@react-aria/utils';
 import * as reactAriaFocus from '@react-aria/focus';
 import { classes } from '@react-jopau/utils';
-import { forwardRef, useControlValue, withFormControl } from '@/components/shared';
+import { forwardRef, prefixClass, useControlValue, withFormControl } from '@/components/shared';
 import { ChevronDown } from '@/components/icons';
 import { SelectGroupProps } from './group/select-group-props';
 import { SelectGroup } from './group/select-group';
@@ -146,7 +146,7 @@ export const Select = withFormControl<SelectProps, HTMLSelectElement>(
             readOnly
             disabled={disabled}
             required={required}
-            className={classes('select-wrapper', className)}
+            className={classes(prefixClass + '-select', className)}
             css={{
               ...style
             }}

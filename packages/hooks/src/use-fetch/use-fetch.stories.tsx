@@ -1,5 +1,5 @@
 import { FormEvent, useState } from 'react';
-import { Button, Container, Input, Space, Text } from '@react-jopau/components';
+import { Button, Container, Input, Stack, Text } from '@react-jopau/components';
 import { prepareParameters, SBCode, SBJSONPreview } from '@react-jopau/shared/stories';
 import { useFetch } from './use-fetch';
 import docs from './readme.mdx';
@@ -38,7 +38,7 @@ export const Default = () => {
   };
 
   return (
-    <Container maxWidth={450}>
+    <Container className="py-10" maxWidth={450}>
       <form onSubmit={handleSubmit}>
         <Input name="path" label="Path" fullWidth variant="bordered" defaultValue={defaultPath} />
         <Button className="mt-4" auto color="secondary" type="submit">
@@ -46,22 +46,22 @@ export const Default = () => {
         </Button>
       </form>
 
-      <Space className="mt-10" direction="column" gap={10}>
-        <Space align="start" gap={10}>
+      <Stack className="mt-10" direction="column" gap={1}>
+        <Stack align="start" gap={1}>
           <SBCode>loading:</SBCode>
           <code>
             <Text>{loading ? 'true' : 'false'}</Text>
           </code>
-        </Space>
-        <Space align="start" gap={10} wrap>
+        </Stack>
+        <Stack align="start" gap={1} className="flex-wrap">
           <SBCode>data:</SBCode>
           <SBJSONPreview code={data} />
-        </Space>
-        <Space align="start" gap={10} wrap>
+        </Stack>
+        <Stack align="start" gap={1} className="flex-wrap">
           <SBCode>error:</SBCode>
           <SBJSONPreview code={error} />
-        </Space>
-      </Space>
+        </Stack>
+      </Stack>
     </Container>
   );
 };
