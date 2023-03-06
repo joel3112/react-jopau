@@ -60,3 +60,16 @@ jobs:
         uses: ./.github/actions/setup
       - name: ✅ Test
         run: yarn test
+
+  visual-tests:
+    needs: [lint, build]
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⬇️ Check out repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: '0'
+      - name: 📥 Setup node - Install dependencies
+        uses: ./.github/actions/setup
+      - name: ✅ Test
+        run: yarn chromatic
