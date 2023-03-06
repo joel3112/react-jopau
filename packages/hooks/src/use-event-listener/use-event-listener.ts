@@ -1,6 +1,6 @@
 import { RefObject, useEffect, useRef } from 'react';
 import { isClient } from '@react-jopau/utils';
-import { useIsomorphicLayoutEffect } from '../index';
+import { useIsomorphicLayoutEffect } from '../utils';
 
 /**
  * @callback HandlerCallback

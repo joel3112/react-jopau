@@ -1,5 +1,6 @@
-import { JSXElementConstructor } from 'react';
+import { JSXElementConstructor, useEffect, useLayoutEffect } from 'react';
 import { renderHook } from '@testing-library/react';
+import { isClient } from '@react-jopau/utils';
 
 export const renderHookWithWrapper = <Result, Props>(
   render: (initialProps: Props) => Result,
@@ -10,3 +11,5 @@ export const renderHookWithWrapper = <Result, Props>(
     wrapper: ({ children }) => <Wrapper>{children}</Wrapper>
   });
 };
+
+export const useIsomorphicLayoutEffect = isClient ? useLayoutEffect : useEffect;
