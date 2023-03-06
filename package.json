@@ -24,6 +24,7 @@
     "type-check": "tsc --pretty --noEmit",
     "storybook": "start-storybook -p 6006 --no-open",
     "build-storybook": "build-storybook -o ./dist/storybook -c .storybook",
+    "build-storybook-chromatic": "yarn build && yarn build-storybook",
     "link:app": "node scripts/link-app",
     "create": "node scripts/create",
     "chromatic": "npx chromatic --exit-zero-on-changes"

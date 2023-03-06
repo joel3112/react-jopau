@@ -23,14 +23,14 @@ import { StyledButton, StyledButtonIcon } from './button.styled';
  *
  * @imports import { Button } from '@react-jopau/components';
  * @example
- * <Button>Click me</Button>
+ * <Button color="primary">Click me</Button>
  */
 export const Button = forwardRef<ButtonProps, 'button'>(
   (props: ButtonProps, ref: Ref<HTMLButtonElement | null>) => {
     const buttonRef = useRef<HTMLButtonElement>(null);
     useImperativeHandle(ref, () => buttonRef.current);
 
-    const { className, style, children, auto, iconPosition, icon, type, onClick } = props;
+    const { className, style, children, type, auto, iconPosition, icon, onClick } = props;
     const contextProps = useContext(ButtonContext);
 
     const { color, size, variant, disabled, shape, fullWidth } = {
