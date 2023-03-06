@@ -1,6 +1,5 @@
-import { useContext } from 'react';
 import type { BreakpointsRules } from '@react-jopau/styles';
-import { ThemeContext } from '../contexts';
+import { breakpoints } from '@/components/shared/theme';
 
 const computeMaxWidth = (
   breakpoints: BreakpointsRules = {},
@@ -16,7 +15,5 @@ const computeMaxWidth = (
 };
 
 export const useMaxWidth = (maxWidth?: number | keyof BreakpointsRules) => {
-  const { config } = useContext(ThemeContext);
-
-  return computeMaxWidth(config.media, maxWidth);
+  return computeMaxWidth(breakpoints, maxWidth);
 };

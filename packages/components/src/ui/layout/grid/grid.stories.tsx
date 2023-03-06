@@ -5,6 +5,7 @@ import {
   prepareParameters,
   SBSelectorContainer
 } from '@react-jopau/shared/stories';
+import { useCurrentBreakpoint } from '@/components/shared';
 import { Text } from '../../typography';
 import { Grid } from './grid';
 import docs from './readme.mdx';
@@ -67,7 +68,7 @@ export const Fluid = () => (
 );
 
 export const Responsive = () => {
-  const isMd = useBreakpoint().key === 'md';
+  const isMd = useCurrentBreakpoint() === 'md';
 
   return (
     <Grid gap={2} justify="center">

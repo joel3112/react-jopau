@@ -31,7 +31,7 @@ export class BreakpointsHelper {
       sm: this.between('xs', 'sm'),
       md: this.between('sm', 'md'),
       lg: this.between('md', 'lg'),
-      xl: this.between('lg', 'xl')
+      xl: this.up('lg')
     };
   }
 

@@ -47,7 +47,8 @@ module.exports = {
     },
     './addons/expand-all-addon/register',
     './addons/theme-selector-addon/register',
-    './addons/dark-mode-addon/register'
+    './addons/dark-mode-addon/register',
+    './addons/current-breakpoint-addon/register'
   ],
   webpackFinal: async (config) => {
     config.resolve.plugins = [

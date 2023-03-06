@@ -4,7 +4,7 @@ import { addons, types } from '@storybook/addons';
 import { IconButton, TooltipLinkList, WithTooltip } from '@storybook/components';
 import { FiMoon, FiSun } from 'react-icons/fi';
 import { useLocalStorage } from '@react-jopau/hooks';
-import { DARK_MODE_STORAGE_KEY, getColors, getThemeStored } from '@react-jopau/styles';
+import { DARK_MODE_STORAGE_KEY } from '@react-jopau/styles';
 
 const COLOR_SCHEMES = [
   { id: 'light', title: 'Light' },
@@ -17,7 +17,6 @@ const ICON_SCHEMES = {
 };
 
 const renderIcon = (scheme) => {
-  const { gray700 } = getColors(getThemeStored());
   const Icon = ICON_SCHEMES[scheme];
 
   return (
@@ -26,7 +25,7 @@ const renderIcon = (scheme) => {
         width: 15,
         height: 15,
         opacity: 1,
-        color: gray700,
+        color: 'inherit',
         display: 'flex',
         alignItems: 'center'
       }}
