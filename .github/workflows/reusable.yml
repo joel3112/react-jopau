@@ -73,3 +73,5 @@ jobs:
         uses: ./.github/actions/setup
       - name: ✅ Test
         run: yarn chromatic
+        env:
+          CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}

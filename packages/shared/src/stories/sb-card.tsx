@@ -28,7 +28,7 @@ export const SBCard = ({
           'min-h-[150px] group relative p-8 flex flex-col gap-6 bg-background border border-gray-700 border-solid shadow-md rounded-sm',
           className
         )}>
-        <div className="text-secondary font-semibold text-[18px]">{title}</div>
+        <div className="font-semibold text-secondary text-[18px]">{title}</div>
         {childrenTmpl}
       </div>
     );
@@ -41,10 +41,10 @@ export const SBCard = ({
           'min-h-[150px] group relative p-8 flex flex-col gap-4 bg-background hover:bg-input border border-gray-700 border-solid shadow-md rounded-sm cursor-pointer',
           className
         )}>
-        <div className="text-secondary font-semibold text-[18px]">{title}</div>
+        <div className="font-semibold text-secondary text-[18px]">{title}</div>
         {childrenTmpl}
 
-        <BiLinkExternal className="text-secondary text-[20px] absolute top-[10px] right-[10px] hidden group-hover:flex" />
+        <BiLinkExternal className="absolute hidden text-secondary text-[20px] top-[10px] right-[10px] group-hover:flex" />
       </div>
     </LinkTo>
   );

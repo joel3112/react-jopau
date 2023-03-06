@@ -36,12 +36,12 @@ export const SBDescription = ({
 };
 
 export const SBSubTitle = ({ children }: { children: string }) => {
-  return <h4 className="text-lg font-semibold border-b pb-4 border-gray-900">{children}</h4>;
+  return <h4 className="border-b border-gray-900 pb-4 text-lg font-semibold">{children}</h4>;
 };
 
 export const SBTextSeparator = ({ children }: { children: string }) => {
   return (
-    <p className="border-t border-b border-t-gray-700 border-b-gray-700 w-full py-3 my-6 border-text text-[13px] text-gray-700 font-semibold text-text">
+    <p className="my-6 w-full border-t border-b border-t-gray-700 border-b-gray-700 py-3 font-semibold text-gray-700 border-text text-[13px] text-text">
       {children}
     </p>
   );

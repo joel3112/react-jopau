@@ -11,7 +11,7 @@ export const SbBreadcrumbs = ({
   }>;
 }) => {
   return (
-    <div className="flex items-center gap-2 mb-8 text-sm">
+    <div className="mb-8 flex items-center gap-2 text-sm">
       {items.map(({ label, href }, index) => {
         if (items.length - 1 === index) {
           return (

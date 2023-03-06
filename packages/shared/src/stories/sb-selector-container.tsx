@@ -22,7 +22,7 @@ export const SBSelectorContainer = ({
   return (
     <>
       <div
-        className="px-6 py-6 border-b border-b-border bg-background-contrast font-bold text-[13px]"
+        className="border-b px-6 py-6 font-bold border-b-border bg-background-contrast text-[13px]"
         style={{
           margin: '-30px -20px',
           width: 'calc(100% + 40px)',
@@ -30,11 +30,11 @@ export const SBSelectorContainer = ({
         }}>
         {items.map((innerItems, index) => (
           <form className="flex flex-wrap gap-2" key={index}>
-            <label className="flex-[0_0_100%] font-semibold text-gray-700">{label[index]}</label>
+            <label className="font-semibold text-gray-700 flex-[0_0_100%]">{label[index]}</label>
             {innerItems.map((item) => (
               <label
                 key={item.value}
-                className="font-semibold cursor-pointer flex items-center mr-10">
+                className="mr-10 flex cursor-pointer items-center font-semibold">
                 <input
                   className="mr-2 appearance-none text-secondary checked:bg-secondary"
                   style={{ boxShadow: 'none' }}

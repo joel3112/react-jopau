@@ -29,7 +29,7 @@ export default {
 } as ComponentMeta<typeof Grid>;
 
 const Item = (children: string) => (
-  <div className="text-text font-medium border border-secondary rounded-sm h-[55px] w-full flex justify-center items-center px-10">
+  <div className="flex w-full items-center justify-center rounded-sm border px-10 font-medium text-text border-secondary h-[55px]">
     {children}
   </div>
 );

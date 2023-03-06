@@ -33,13 +33,13 @@ export const SBDocTabState = ({
   const [activeTab, setActiveTab] = useState(titles[0]);
 
   return (
-    <div className="sb-doc-tab-state flex flex-col">
-      <div className="sb-doc-tab-state__tabs flex flex-row gap-8 -mt-6 mb-8">
+    <div className="flex flex-col sb-doc-tab-state">
+      <div className="-mt-6 mb-8 flex flex-row gap-8 sb-doc-tab-state__tabs">
         {titles.map((title) => (
           <div
             key={title}
             role="button"
-            className="b-doc-tab-state__tab-item cursor-pointer"
+            className="cursor-pointer b-doc-tab-state__tab-item"
             onClick={() => setActiveTab(title)}>
             <SBTitle
               className={classes({
