@@ -15,28 +15,6 @@ jobs:
   ci:
     uses: ./.github/workflows/reusable.yml
 
-  publish_chromatic:
-    needs: ci
-    runs-on: ubuntu-latest
-    steps:
-      - name: ⬇️ Check out repository
-        uses: actions/checkout@v3
-        with:
-          token: ${{ secrets.GH_TOKEN }}
-          fetch-depth: '0'
-      - name: 📥 Setup Node and Install dependencies
-        uses: ./.github/actions/setup
-      - name: ✅ Chromatic Publish
-        uses: chromaui/action@v1
-        with:
-          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-          token: ${{ secrets.GH_TOKEN }}
-          buildScriptName: build-storybook-chromatic
-          exitZeroOnChanges: true
-          exitOnceUploaded: true
-        env:
-          CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-
   deploy_preview:
     needs: ci
     runs-on: ubuntu-latest
