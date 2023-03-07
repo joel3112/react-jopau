@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.22.1](https://github.com/joel3112/react-jopau/compare/v0.22.0...v0.22.1) (2023-03-07)
+
+### 🐛 Bug Fixes
+
+- **components:** tailwind classes formatter ([ad542b7](https://github.com/joel3112/react-jopau/commit/ad542b73b0e46771e888e2a311d594788d215d71))
+
+### 🏠 Internal
+
+- chromatic workflow ([808b1ac](https://github.com/joel3112/react-jopau/commit/808b1accb6a86f25abb7ddda8c199fdadee95f36))
+- chromatic workflow exit once uploaded ([46fb320](https://github.com/joel3112/react-jopau/commit/46fb320bbcdfbe445d62c6a28c0bc67bd79f6b2e))
+
 ## [0.22.0](https://github.com/joel3112/react-jopau/compare/v0.21.2...v0.22.0) (2023-03-06)
 
 ### 🛠 Refactors

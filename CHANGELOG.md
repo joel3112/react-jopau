@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.22.1](https://github.com/joel3112/react-jopau/compare/v0.22.0...v0.22.1) (2023-03-07)
+
+### 🐛 Bug Fixes
+
+- **components:** tailwind classes formatter ([ad542b7](https://github.com/joel3112/react-jopau/commit/ad542b73b0e46771e888e2a311d594788d215d71))
+
+### 🏠 Internal
+
+- chromatic in pr workflow ([911ef11](https://github.com/joel3112/react-jopau/commit/911ef110538a393bb6e61eacaef774fee6aa9747))
+- chromatic workflow ([808b1ac](https://github.com/joel3112/react-jopau/commit/808b1accb6a86f25abb7ddda8c199fdadee95f36))
+- chromatic workflow exit once uploaded ([46fb320](https://github.com/joel3112/react-jopau/commit/46fb320bbcdfbe445d62c6a28c0bc67bd79f6b2e))
+- configure chromatic tests ([e98e68c](https://github.com/joel3112/react-jopau/commit/e98e68c5025fa7ec5462ac09d2f3e939326bf71f))
+- **hooks:** resolve circular dependencies ([a91cfd8](https://github.com/joel3112/react-jopau/commit/a91cfd89253d7e119165351015dd0bef57ecb89b))
+- separate chromatic workflow ([f7340ae](https://github.com/joel3112/react-jopau/commit/f7340ae6dc897f2ef58b77b0c1936242cbb269e9))
+
 ## [0.22.0](https://github.com/joel3112/react-jopau/compare/v0.21.2...v0.22.0) (2023-03-06)
 
 ### 🛠 Refactors
