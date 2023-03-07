@@ -47,7 +47,7 @@ export const SBCollapsable = ({
   const [open, setOpen] = useState<boolean>(!!opened);
 
   return (
-    <div className="sb-collapsable flex flex-col mb-10">
+    <div className="mb-10 flex flex-col sb-collapsable">
       <div
         role="button"
         className={classes('sb-collapsable__header relative', {

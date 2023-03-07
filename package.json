@@ -6,7 +6,7 @@
     "type": "git",
     "url": "git+https://github.com/joel3112/react-jopau.git"
   },
-  "author": "Joel Paucarima Franco <jopau3112@gmail.com>",
+  "author": "Joel Paucarima Franco <joel.dev.3112@gmail.com>",
   "license": "MIT",
   "homepage": "https://github.com/joel3112/react-jopau#readme",
   "private": true,
@@ -24,8 +24,10 @@
     "type-check": "tsc --pretty --noEmit",
     "storybook": "start-storybook -p 6006 --no-open",
     "build-storybook": "build-storybook -o ./dist/storybook -c .storybook",
+    "build-storybook-chromatic": "yarn build && yarn build-storybook",
     "link:app": "node scripts/link-app",
-    "create": "node scripts/create"
+    "create": "node scripts/create",
+    "chromatic": "npx chromatic --exit-zero-on-changes"
   },
   "workspaces": [
     "apps/*",
@@ -70,6 +72,7 @@
     "@typescript-eslint/parser": "^5.37.0",
     "autoprefixer": "^10.4.12",
     "babel-loader": "^8.2.5",
+    "chromatic": "^6.17.1",
     "cli-color": "^2.0.3",
     "commander": "^9.4.1",
     "copyfiles": "^2.4.1",

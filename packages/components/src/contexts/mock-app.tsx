@@ -2,7 +2,7 @@ import { Button, Container, Header, Heading, Text } from '../ui';
 
 export const MockApp = () => {
   return (
-    <div className="bg-background pb-10">
+    <div className="pb-10 bg-background">
       <header>
         <Header title="Example app" maxWidth="lg" />
       </header>

@@ -2,6 +2,7 @@
 .idea/*
 .run/*
 .DS_Store
+.env
 
 # dependencies
 node_modules/
@@ -24,6 +25,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
+build-storybook.log*
 
 # typescript
 *.tsbuildinfo

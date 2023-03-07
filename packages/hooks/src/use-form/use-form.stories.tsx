@@ -56,7 +56,7 @@ export const Default = () => {
   return (
     <Container className="py-10" maxWidth={900}>
       {/* Configuration */}
-      <Stack direction="column" gap={1} className="border border-border p-6 mb-10 flex-wrap">
+      <Stack direction="column" gap={1} className="mb-10 flex-wrap border p-6 border-border">
         <Heading as="h6">Config:</Heading>
         <Radio.Group
           orientation="horizontal"
@@ -90,15 +90,15 @@ export const Default = () => {
       <Stack gap={1} justify="between" className="flex-wrap">
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="max-w-[100%] h-fit flex flex-col gap-10 min-[600px]:basis-[45%]">
+          className="flex h-fit flex-col gap-10 max-w-[100%] min-[600px]:basis-[45%]">
           {/*Native controls*/}
           <input
-            className="border border-border h-fit text-black"
+            className="h-fit border text-black border-border"
             placeholder="Username"
             {...register('username')}
           />
           {formState.errors?.username && (
-            <span className="text-xs text-red -mt-8">Username is required</span>
+            <span className="-mt-8 text-xs text-red">Username is required</span>
           )}
 
           {/* Custom controls components */}
@@ -144,10 +144,10 @@ export const Default = () => {
 
         <div className="min-[600px]:basis-[45%]">
           <h6>Values:</h6>
-          <SBJSONPreview className="scale-[90%] origin-top-left" code={values} />
+          <SBJSONPreview className="origin-top-left scale-[90%]" code={values} />
 
           <h6>Errors:</h6>
-          <SBJSONPreview className="scale-[90%] origin-top-left" code={formState.errors} />
+          <SBJSONPreview className="origin-top-left scale-[90%]" code={formState.errors} />
         </div>
       </Stack>
     </Container>

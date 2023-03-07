@@ -29,7 +29,7 @@ const Items = (count: number) => (
     {multiply([null], count).map((_, index) => (
       <div
         key={index}
-        className="text-text font-medium border border-secondary rounded-sm h-[55px] w-[55px] flex justify-center items-center px-10">
+        className="flex items-center justify-center rounded-sm border px-10 font-medium text-text border-secondary h-[55px] w-[55px]">
         {index + 1}
       </div>
     ))}

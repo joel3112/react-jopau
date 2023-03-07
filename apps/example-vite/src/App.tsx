@@ -26,7 +26,7 @@ const App = () => {
   };
 
   return (
-    <div className="app bg-background pb-10">
+    <div className="pb-10 app bg-background">
       <header>
         <Header title="Example app" maxWidth="lg">
           <Grid align="center" gap={1} className="w-fit">
@@ -67,7 +67,7 @@ const App = () => {
 
           <Space y={0.5} />
 
-          <form onSubmit={handleSubmit} className="w-[400px] max-w-[100%] flex flex-col gap-8">
+          <form onSubmit={handleSubmit} className="flex flex-col gap-8 w-[400px] max-w-[100%]">
             <Input label="Name" placeholder="John Doe" fullWidth />
             <Input.Password label="Password" placeholder="********" fullWidth />
             <Checkbox.Group size="sm" orientation="horizontal" label="Preferences">

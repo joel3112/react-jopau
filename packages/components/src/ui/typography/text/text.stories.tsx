@@ -29,13 +29,13 @@ Default.parameters = { viewMode: 'story' };
 
 export const As = () => (
   <Stack direction="column" gap={1}>
-    <Text as="p" className="bg-background-content px-1">
+    <Text as="p" className="px-1 bg-background-content">
       p. Lorem ipsum dolor sit amet
     </Text>
-    <Text as="span" className="bg-background-content px-1">
+    <Text as="span" className="px-1 bg-background-content">
       span. Lorem ipsum dolor sit amet
     </Text>
-    <Text as="code" className="bg-background-content px-1">
+    <Text as="code" className="px-1 bg-background-content">
       code. Lorem ipsum dolor sit amet
     </Text>
   </Stack>

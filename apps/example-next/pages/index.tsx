@@ -23,7 +23,7 @@ import {
 const inter = Inter({ subsets: ['latin'] });
 
 const Logo = () => (
-  <div className="text-text flex gap-4 h-[20px]">
+  <div className="flex gap-4 text-text h-[20px]">
     <Image src="/next.svg" alt="Next.js Logo" width={110} height={37} />
     <Image src="/thirteen.svg" alt="13" width={30} height={31} />
   </div>
@@ -83,7 +83,7 @@ const Home = () => {
 
           <Space y={0.5} />
 
-          <form onSubmit={handleSubmit} className="w-[400px] max-w-[100%] flex flex-col gap-8">
+          <form onSubmit={handleSubmit} className="flex flex-col gap-8 w-[400px] max-w-[100%]">
             <Input label="Name" placeholder="John Doe" fullWidth />
             <Select size="sm" label="Country" fullWidth>
               <Select.Option value="FR">France</Select.Option>

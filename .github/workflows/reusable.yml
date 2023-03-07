@@ -3,6 +3,9 @@ name: reusable workflow
 on:
   workflow_call:
 
+env:
+  CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+
 jobs:
   avoid_reduncy:
     runs-on: ubuntu-latest

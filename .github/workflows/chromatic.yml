@@ -1,0 +1,32 @@
+name: chromatic
+
+on:
+  push:
+    branches-ignore:
+      - main
+
+jobs:
+  publish_chromatic:
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⬇️ Check out repository
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GH_TOKEN }}
+          fetch-depth: '0'
+      - name: 📥 Setup Node and Install dependencies
+        uses: ./.github/actions/setup
+      - name: ✅ Chromatic Publish
+        id: chromatic
+        uses: chromaui/action@v1
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          token: ${{ secrets.GH_TOKEN }}
+          buildScriptName: build-storybook-chromatic
+          exitZeroOnChanges: true
+          exitOnceUploaded: true
+          onlyChanged: true
+        env:
+          CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+      - name: Publish Summary
+        run: echo -e "| Results |  |\n| --- | --- |\n| Build Results | ${{steps.chromatic.outputs.buildUrl}} |\n| Storybook Preview | ${{steps.chromatic.outputs.storybookUrl}} |\n| Component Count | ${{steps.chromatic.outputs.componentCount}} |\n| Changes Count | ${{steps.chromatic.outputs.changeCount}} |" >> $GITHUB_STEP_SUMMARY
