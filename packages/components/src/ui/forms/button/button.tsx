@@ -30,7 +30,7 @@ export const Button = forwardRef<ButtonProps, 'button'>(
     const buttonRef = useRef<HTMLButtonElement>(null);
     useImperativeHandle(ref, () => buttonRef.current);
 
-    const { className, style, children, type, auto, iconPosition, icon, onClick } = props;
+    const { className, style, children, type, auto, icon, iconPosition, onClick } = props;
     const contextProps = useContext(ButtonContext);
 
     const { color, size, variant, disabled, shape, fullWidth } = {

@@ -31,8 +31,9 @@ jobs:
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           token: ${{ secrets.GH_TOKEN }}
-          exitZeroOnChanges: true
           buildScriptName: build-storybook-chromatic
+          exitZeroOnChanges: true
+          exitOnceUploaded: true
         env:
           CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
 
