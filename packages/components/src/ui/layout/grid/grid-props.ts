@@ -1,9 +1,11 @@
 import { ReactElement } from 'react';
 import type { ElementHTML, WithFlex, Wrap } from '@/components/shared';
 import { GridItemProps } from './item/grid-item-props';
+import { WithGap } from '@/components/shared';
 
 export type GridProps = ElementHTML &
-  WithFlex & {
+  WithFlex &
+  WithGap<number | Array<number>> & {
     /**
      * Defines the children of the component.
      */
@@ -25,6 +27,5 @@ export type GridProps = ElementHTML &
 export const defaultProps = {
   as: 'div',
   wrap: 'wrap',
-  gap: 0,
   columns: 12
 };

@@ -1,9 +1,8 @@
 import { ReactNode } from 'react';
-import type { ElementHTML } from '@/components/shared';
-import { WithGap } from '@/components/shared';
+import type { ElementHTML, WithGap } from '@/components/shared';
 
 export type ContainerProps = ElementHTML &
-  WithGap & {
+  WithGap<number | Array<number>> & {
     /**
      * Defines the children of the component.
      */

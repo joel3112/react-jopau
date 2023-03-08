@@ -1,7 +1,7 @@
-import { NormalSize, WithGap } from './types';
+import { BreakpointValue, NormalSize } from './types';
 import { useCurrentBreakpoint } from './use-current-breakpoint';
 
-const computeSpacing = (gap: WithGap['gap']): [string, string] => {
+const computeSpacing = <T>(gap: T | BreakpointValue<T> | undefined): [string, string] => {
   let gapArray = [0, 0];
   if (typeof gap === 'number') {
     gapArray = [gap, gap];
@@ -13,15 +13,15 @@ const computeSpacing = (gap: WithGap['gap']): [string, string] => {
   return gapArray.map((value) => `calc(${value} * $space$3)`) as [string, string];
 };
 
-export const useSpacing = (gap?: WithGap['gap']): [string, string] => {
+export const useSpacing = <T>(gap?: T | BreakpointValue<T>): [string, string] => {
   const key = useCurrentBreakpoint();
 
   if (!gap) {
-    return computeSpacing(gap);
+    return computeSpacing<T>(gap);
   }
   if (typeof gap === 'number' || Array.isArray(gap)) {
-    return computeSpacing(gap);
+    return computeSpacing<T>(gap);
   }
 
-  return key ? computeSpacing((gap as Record<NormalSize, never>)[key]) : computeSpacing(gap);
+  return key ? computeSpacing<T>((gap as Record<NormalSize, never>)[key]) : computeSpacing(gap);
 };

@@ -104,7 +104,7 @@ export default {
       backgroundContent: '#f6f6f6',
       border: '#dedede',
       borderContrast: 'rgba(0,0,0,.1)',
-      input: '#f1f3f5',
+      input: '#e6e8eb',
       placeholder: '#889096',
       disabled: '#a8afb2'
     },

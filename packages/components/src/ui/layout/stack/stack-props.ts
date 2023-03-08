@@ -1,8 +1,9 @@
 import { ReactNode } from 'react';
-import type { ElementHTML, WithFlex } from '@/components/shared';
+import type { ElementHTML, WithFlex, WithGap } from '@/components/shared';
 
 export type StackProps = ElementHTML &
-  WithFlex<'row' | 'column', number> & {
+  WithFlex<'row' | 'column'> &
+  WithGap & {
     /**
      * Defines the children of the component.
      */
@@ -14,6 +15,5 @@ export type StackProps = ElementHTML &
   } & Partial<typeof defaultProps>;
 
 export const defaultProps = {
-  as: 'div',
-  gap: 0
+  as: 'div'
 };
