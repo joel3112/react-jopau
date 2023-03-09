@@ -14,7 +14,7 @@ export default {
     size: 'md',
     color: 'default',
     children: 'Joe',
-    src: 'https://picsum.photos/200',
+    src: 'https://i.pravatar.cc/300',
     squared: false,
     bordered: false,
     zoomed: false,
@@ -69,11 +69,11 @@ export const Colors = () => (
 
 export const Images = () => (
   <Stack gap={1}>
-    <Avatar src="https://picsum.photos/200" size="xs" />
-    <Avatar src="https://picsum.photos/200" size="sm" />
-    <Avatar src="https://picsum.photos/200" size="md" />
-    <Avatar src="https://picsum.photos/200" size="lg" />
-    <Avatar src="https://picsum.photos/200" size="xl" />
+    <Avatar src="https://i.pravatar.cc/300" size="xs" />
+    <Avatar src="https://i.pravatar.cc/300" size="sm" />
+    <Avatar src="https://i.pravatar.cc/300" size="md" />
+    <Avatar src="https://i.pravatar.cc/300" size="lg" />
+    <Avatar src="https://i.pravatar.cc/300" size="xl" />
   </Stack>
 );
 
@@ -90,7 +90,7 @@ export const Icons = () => (
 
 export const Squared = () => (
   <Stack gap={1}>
-    <Avatar squared color="primary" src="https://picsum.photos/200" />
+    <Avatar squared color="primary" src="https://i.pravatar.cc/300" />
     <Avatar squared color="secondary">
       Joe
     </Avatar>
@@ -100,23 +100,23 @@ export const Squared = () => (
 
 export const Bordered = () => (
   <Stack gap={1}>
-    <Avatar bordered src="https://picsum.photos/200" />
-    <Avatar bordered color="primary" src="https://picsum.photos/200" />
-    <Avatar bordered color="secondary" src="https://picsum.photos/200" />
-    <Avatar bordered color="tertiary" src="https://picsum.photos/200" />
-    <Avatar bordered color="success" src="https://picsum.photos/200" />
-    <Avatar bordered color="error" squared src="https://picsum.photos/200" />
-    <Avatar bordered color="warning" squared src="https://picsum.photos/200" />
-    <Avatar bordered color="info" squared src="https://picsum.photos/200" />
+    <Avatar bordered src="https://i.pravatar.cc/300" />
+    <Avatar bordered color="primary" src="https://i.pravatar.cc/300" />
+    <Avatar bordered color="secondary" src="https://i.pravatar.cc/300" />
+    <Avatar bordered color="tertiary" src="https://i.pravatar.cc/300" />
+    <Avatar bordered color="success" src="https://i.pravatar.cc/300" />
+    <Avatar bordered color="error" squared src="https://i.pravatar.cc/300" />
+    <Avatar bordered color="warning" squared src="https://i.pravatar.cc/300" />
+    <Avatar bordered color="info" squared src="https://i.pravatar.cc/300" />
   </Stack>
 );
 
 export const Zoomed = () => (
   <Stack gap={1}>
-    <Avatar zoomed src="https://picsum.photos/200" size="xs" />
-    <Avatar zoomed src="https://picsum.photos/200" size="sm" />
-    <Avatar zoomed src="https://picsum.photos/200" size="md" />
-    <Avatar zoomed src="https://picsum.photos/200" size="lg" />
-    <Avatar zoomed src="https://picsum.photos/200" size="xl" />
+    <Avatar zoomed src="https://i.pravatar.cc/300" size="xs" />
+    <Avatar zoomed src="https://i.pravatar.cc/300" size="sm" />
+    <Avatar zoomed src="https://i.pravatar.cc/300" size="md" />
+    <Avatar zoomed src="https://i.pravatar.cc/300" size="lg" />
+    <Avatar zoomed src="https://i.pravatar.cc/300" size="xl" />
   </Stack>
 );

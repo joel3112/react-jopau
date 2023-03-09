@@ -58,7 +58,6 @@ export const GroupCount = () => (
 );
 
 export const GroupAnimated = Template.bind({});
-GroupAnimated.storyName = '[Group] Animated';
 GroupAnimated.args = {
   animated: true
 };

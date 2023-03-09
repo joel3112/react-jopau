@@ -22,6 +22,10 @@ export const range = _range;
 export const throttle = _throttle;
 export const uniqueId = _uniqueId;
 
+export const numberId = (): number => {
+  return Number(uniqueId());
+};
+
 export const anysort = (a: TAny, b: TAny, order: string[]): number => {
   const generateAnysort = (criteria = []) => {
     return function sorter(a: never, b: never) {

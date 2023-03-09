@@ -1,0 +1,36 @@
+import {
+  SBArgsTable,
+  SBDescription,
+  SBLinks,
+  SBStories,
+  SBTitle
+} from '@react-jopau/shared/stories';
+import { Badge } from './badge';
+
+<SBTitle>Badge</SBTitle>
+
+<SBLinks>
+  <SBLinks.Item href="components-display-badge--default">Playground</SBLinks.Item>
+</SBLinks>
+
+<SBDescription>
+  Badges are used as a small numerical value or status descriptor for UI elements.
+</SBDescription>
+
+```jsx dark
+import { Badge } from '@react-jopau/components';
+```
+
+<SBStories.Default id="components-display-badge--default" />
+
+<SBArgsTable component={Badge} />
+
+<SBStories>
+  <SBStories.Item label="Sizes" id="components-display-badge--sizes" />
+  <SBStories.Item label="Variants" id="components-display-badge--variants" />
+  <SBStories.Item label="Colors" id="components-display-badge--colors" />
+  <SBStories.Item label="Squared" id="components-display-badge--squared" />
+  <SBStories.Item label="Placement" id="components-display-badge--placement" />
+  <SBStories.Item label="Content" id="components-display-badge--content" />
+  <SBStories.Item label="Offset" id="components-display-badge--offset" />
+</SBStories>
