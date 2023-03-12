@@ -4,6 +4,7 @@ export default {
       white: '#fff',
       black: '#000',
       accent: '#0070f3',
+      mark: '#ffe58f',
 
       primary100: '#c5f0f7',
       primary200: '#8fdcee',

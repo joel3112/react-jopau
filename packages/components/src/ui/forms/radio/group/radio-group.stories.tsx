@@ -1,12 +1,8 @@
 import { useRef, useState } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import {
-  prepareArgTypes,
-  prepareParameters,
-  SBCode,
-  SBTextSeparator
-} from '@react-jopau/shared/stories';
+import { prepareArgTypes, prepareParameters, SBTextSeparator } from '@react-jopau/shared/stories';
 import { Stack } from '../../../layout';
+import { Text } from '../../../typography';
 import { Radio } from '../radio';
 import docs from './readme.mdx';
 
@@ -124,9 +120,9 @@ export const GroupUncontrolledVSControlled = () => {
         <Radio value="C">Option C</Radio>
         <Radio value="D">Option D</Radio>
       </Radio.Group>
-      <span>
-        Selected: <SBCode>{valueControlled}</SBCode>
-      </span>
+      <Stack align="center" gap={1}>
+        Selected: <Text as="code">{valueControlled}</Text>
+      </Stack>
     </Stack>
   );
 };

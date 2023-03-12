@@ -1,18 +1,6 @@
 import { ReactNode } from 'react';
 import { classes } from '@react-jopau/utils';
 
-export const SBCode = ({ children, className }: { children: ReactNode; className?: string }) => {
-  return (
-    <div
-      className={classes(
-        'inline-block font-code text-black text-sm w-fit py-1 px-2 rounded-[5px] bg-[#dedede]',
-        className
-      )}>
-      {children}
-    </div>
-  );
-};
-
 export const SBTitle = ({ children, className }: { children: string; className?: string }) => {
   return (
     <h1 className={classes('text-3xl border-0 font-semibold mb-10 -mt-4', className)}>

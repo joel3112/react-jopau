@@ -9,6 +9,7 @@ module.exports = {
       black: `var(--${prefixClass}-colors-black)`,
       white: `var(--${prefixClass}-colors-white)`,
       accent: `var(--${prefixClass}-colors-accent)`,
+      mark: `var(--${prefixClass}-colors-mark)`,
       primary: {
         DEFAULT: `var(--${prefixClass}-colors-primary500)`,
         100: `var(--${prefixClass}-colors-primary100)`,
@@ -275,7 +276,12 @@ module.exports = {
         pill: `var(--${prefixClass}-radii-pill)`
       },
       boxShadow: {
-        DEFAULT: `var(--${prefixClass}-shadows-box)`
+        DEFAULT: `var(--${prefixClass}-shadows-box)`,
+        xs: `var(--${prefixClass}-shadows-xs)`,
+        sm: `var(--${prefixClass}-shadows-sm)`,
+        md: `var(--${prefixClass}-shadows-md)`,
+        lg: `var(--${prefixClass}-shadows-lg)`,
+        xl: `var(--${prefixClass}-shadows-xl)`
       },
       zIndex: {
         hide: `var(--${prefixClass}-zIndices-hide)`,

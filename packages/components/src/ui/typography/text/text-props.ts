@@ -9,7 +9,7 @@ export type TextProps = ElementHTML & {
   /**
    * Changes which tag component outputs
    */
-  as?: 'p' | 'span' | 'div' | 'code';
+  as?: 'p' | 'div' | 'span' | 'code' | 'mark' | 'kbd' | 'strong' | 'del' | 'i' | 'u';
   /**
    * Defines the color of the text.
    */

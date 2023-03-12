@@ -5,10 +5,10 @@ import {
   prepareArgTypes,
   prepareParameters,
   SBTextSeparator,
-  SBSelectorContainer,
-  SBCode
+  SBSelectorContainer
 } from '@react-jopau/shared/stories';
 import { Stack } from '../../layout';
+import { Text } from '../../typography';
 import { Input } from './input';
 import docs from './readme.mdx';
 
@@ -362,9 +362,9 @@ export const UncontrolledVSControlled = () => {
         value={valueControlled}
         onChange={(e) => setValueControlled(e.target.value)}
       />
-      <span>
-        Value input: <SBCode>{valueControlled}</SBCode>
-      </span>
+      <Stack align="center" gap={1}>
+        Value input: <Text as="code">{valueControlled}</Text>
+      </Stack>
     </Stack>
   );
 };

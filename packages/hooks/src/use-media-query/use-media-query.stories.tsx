@@ -1,5 +1,5 @@
-import { Container, Stack } from '@react-jopau/components';
-import { prepareParameters, SBCard, SBCode } from '@react-jopau/shared/stories';
+import { Container, Stack, Text } from '@react-jopau/components';
+import { prepareParameters, SBCard } from '@react-jopau/shared/stories';
 import { useMediaQuery } from './use-media-query';
 import docs from './readme.mdx';
 
@@ -17,11 +17,11 @@ export const Default = () => {
   return (
     <Container className="py-10" maxWidth={450}>
       <Stack direction="column" gap={1}>
-        <SBCard title={<SBCode>(min-width: 1024px)</SBCode>}>
+        <SBCard title={<Text as="code">(min-width: 1024px)</Text>}>
           isLargeScreen: {isLargeScreen ? 'true' : 'false'}
         </SBCard>
 
-        <SBCard title={<SBCode>(prefers-color-scheme: dark)</SBCode>}>
+        <SBCard title={<Text as="code">(prefers-color-scheme: dark)</Text>}>
           prefersDark: {prefersDark ? 'true' : 'false'}
         </SBCard>
       </Stack>
