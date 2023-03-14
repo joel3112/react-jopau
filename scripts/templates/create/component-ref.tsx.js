@@ -2,7 +2,7 @@ const { template } = require('react-docgen-renderer-template');
 const templateCreator = template({});
 
 const templateObject = templateCreator`${({ context }) => `
-import { Ref, useImperativeHandle, useRef } from 'react';
+import { ForwardRefExoticComponent, Ref, useImperativeHandle, useRef } from 'react';
 import { classes } from '@react-jopau/utils';
 import { forwardRef } from '@/components/shared';
 import { ${context.pascalName}Props, defaultProps } from './${context.name}-props';
@@ -45,7 +45,9 @@ export const ${context.pascalName} = forwardRef<${context.pascalName}Props, 'div
       </Styled${context.pascalName}>
     );
   }
-);
+) as ForwardRefExoticComponent<
+  ${context.pascalName}Props & Partial<typeof defaultProps> & RefAttributes<HTMLDivElement>
+> & {};
 
 ${context.pascalName}.defaultProps = defaultProps;
 `}
