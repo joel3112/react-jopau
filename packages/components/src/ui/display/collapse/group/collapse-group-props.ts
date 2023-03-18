@@ -31,7 +31,7 @@ export type CollapseGroupProps = ElementHTML & {
    * Function to be called when the value is changed.
    */
   onChange?: (index: number, value: boolean) => void;
-} & Partial<typeof defaultProps>;
+};
 
 export const defaultProps = {
   divider: true

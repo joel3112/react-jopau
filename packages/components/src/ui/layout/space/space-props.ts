@@ -17,7 +17,7 @@ export type SpaceProps = ElementHTML & {
    * Defines the inline space
    */
   inline?: boolean;
-} & Partial<typeof defaultProps>;
+};
 
 export const defaultProps = {
   as: 'div',

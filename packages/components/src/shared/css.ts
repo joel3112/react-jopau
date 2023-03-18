@@ -2,7 +2,7 @@ import { css } from '@stitches/react';
 
 export const NextUIOverrideCSS = {
   '--nextui-colors-background': '$colors$background',
-  '--nextui-colors-primary': '$colors$accent'
+  '--nextui-colors-primary': '$colors$accent0'
 };
 
 export const sharedFocus = css({
@@ -12,7 +12,7 @@ export const sharedFocus = css({
   },
   '&:focus': {
     outline: 'none',
-    boxShadow: '0 0 0 2px $colors$background, 0 0 0 4px $colors$accent'
+    boxShadow: '0 0 0 2px $colors$background, 0 0 0 4px $colors$accent0'
   },
   '@safari': {
     WebkitTapHighlightColor: 'transparent',

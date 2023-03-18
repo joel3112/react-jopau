@@ -1,6 +1,6 @@
-import { ForwardRefExoticComponent, useContext } from 'react';
+import { useContext } from 'react';
 import { classes, numberId } from '@react-jopau/utils';
-import { cleanedProps, prefixClass } from '@/components/shared';
+import { cleanedProps, prefixClass, withCompoundComponents } from '@/components/shared';
 import { CollapseContext } from './collapse-context';
 import { CollapseGroup } from './group/collapse-group';
 import { CollapseProps, defaultProps } from './collapse-props';
@@ -15,58 +15,57 @@ import { StyledCollapse } from './collapse.styled';
  * @imports import { Collapse } from '@react-jopau/components';
  * @example
  * <Collapse title="Title">
- *    lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+ *    lorem ipsum dolor sit amet, consectetur adipiscing elit
  * </Collapse>
  */
-export const Collapse = ((props: CollapseProps) => {
-  const {
-    className,
-    style,
-    children,
-    title,
-    subtitle,
-    arrowIcon,
-    contentLeft,
-    hideArrow,
-    disabled,
-    expanded,
-    index,
-    disableArrowAnimation,
-    bordered,
-    onChange
-  } = props;
-  const contextProps = useContext(CollapseContext);
+export const Collapse = withCompoundComponents<CollapseProps, { Group: typeof CollapseGroup }>(
+  (props: CollapseProps) => {
+    const {
+      className,
+      style,
+      children,
+      title,
+      subtitle,
+      arrowIcon,
+      contentLeft,
+      hideArrow,
+      disabled,
+      expanded,
+      index,
+      disableArrowAnimation,
+      bordered,
+      onChange
+    } = props;
+    const contextProps = useContext(CollapseContext);
 
-  const { divider, shadow } = {
-    ...props,
-    ...cleanedProps(contextProps)
-  };
+    const { divider, shadow } = {
+      ...props,
+      ...cleanedProps(contextProps)
+    };
 
-  return (
-    <StyledCollapse
-      className={classes(prefixClass + '-collapse', className)}
-      css={{
-        ...style
-      }}
-      title={title}
-      subtitle={subtitle}
-      arrowIcon={arrowIcon}
-      divider={!!divider}
-      shadow={shadow}
-      contentLeft={contentLeft}
-      showArrow={!hideArrow}
-      disabled={disabled}
-      expanded={expanded}
-      bordered={!!bordered}
-      index={index || numberId()}
-      disableArrowAnimation={disableArrowAnimation}
-      onChange={onChange}>
-      {children}
-    </StyledCollapse>
-  );
-}) as ForwardRefExoticComponent<CollapseProps & Partial<typeof defaultProps>> & {
-  Group: typeof CollapseGroup;
-};
-
-Collapse.defaultProps = defaultProps as Partial<CollapseProps>;
-Collapse.Group = CollapseGroup;
+    return (
+      <StyledCollapse
+        className={classes(prefixClass + '-collapse', className)}
+        css={{
+          ...style
+        }}
+        title={title}
+        subtitle={subtitle}
+        arrowIcon={arrowIcon}
+        divider={!!divider}
+        shadow={shadow}
+        contentLeft={contentLeft}
+        showArrow={!hideArrow}
+        disabled={disabled}
+        expanded={expanded}
+        bordered={!!bordered}
+        index={index || numberId()}
+        disableArrowAnimation={disableArrowAnimation}
+        onChange={onChange}>
+        {children}
+      </StyledCollapse>
+    );
+  },
+  defaultProps,
+  { Group: CollapseGroup }
+);

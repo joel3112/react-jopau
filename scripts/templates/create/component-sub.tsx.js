@@ -7,7 +7,7 @@ const templateObject = templateCreator`${({ context }) => {
 
   return `
 import { classes } from '@react-jopau/utils';
-import { prefixClass } from '@/components/shared';
+import { prefixClass, withDefaults } from '@/components/shared';
 import { ${pascalName}Props, defaultProps } from './${name}-props';
 import { Styled${pascalName} } from '../${context.parentName}.styled';
 
@@ -23,12 +23,9 @@ import { Styled${pascalName} } from '../${context.parentName}.styled';
   *    <div>Content</div>
   * </${pascalName}>
   */
-export const ${pascalName} = ({
-  className,
-  style,
-  children,
-  title
-}: ${pascalName}Props) => {
+export const ${pascalName} = withDefaults<${pascalName}Props>((props: ${pascalName}Props) => {
+  const { className, style, children, title } = props;
+
   return (
     <Styled${pascalName}
       className={classes(prefixClass + '-${name}', className)}
@@ -39,9 +36,7 @@ export const ${pascalName} = ({
       {children}
     </Styled${pascalName}>
   );
-};
-
-${pascalName}.defaultProps = defaultProps;
+}, defaultProps);
 `;
 }}
 `;

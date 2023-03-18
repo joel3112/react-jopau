@@ -8,8 +8,6 @@ module.exports = {
     colors: {
       black: `var(--${prefixClass}-colors-black)`,
       white: `var(--${prefixClass}-colors-white)`,
-      accent: `var(--${prefixClass}-colors-accent)`,
-      mark: `var(--${prefixClass}-colors-mark)`,
       primary: {
         DEFAULT: `var(--${prefixClass}-colors-primary500)`,
         100: `var(--${prefixClass}-colors-primary100)`,
@@ -121,6 +119,9 @@ module.exports = {
         800: `var(--${prefixClass}-colors-dark800)`,
         900: `var(--${prefixClass}-colors-dark900)`
       },
+      accent0: `var(--${prefixClass}-colors-accent0)`,
+      accent1: `var(--${prefixClass}-colors-accent1)`,
+      mark: `var(--${prefixClass}-colors-mark)`,
       text: `var(--${prefixClass}-colors-text)`,
       background: {
         DEFAULT: `var(--${prefixClass}-colors-background)`,
@@ -283,6 +284,14 @@ module.exports = {
         lg: `var(--${prefixClass}-shadows-lg)`,
         xl: `var(--${prefixClass}-shadows-xl)`
       },
+      dropShadow: {
+        DEFAULT: `var(--${prefixClass}-dropShadows-drop)`,
+        xs: `var(--${prefixClass}-dropShadows-xs)`,
+        sm: `var(--${prefixClass}-dropShadows-sm)`,
+        md: `var(--${prefixClass}-dropShadows-md)`,
+        lg: `var(--${prefixClass}-dropShadows-lg)`,
+        xl: `var(--${prefixClass}-dropShadows-xl)`
+      },
       zIndex: {
         hide: `var(--${prefixClass}-zIndices-hide)`,
         auto: `var(--${prefixClass}-zIndices-auto)`,
@@ -300,7 +309,8 @@ module.exports = {
       },
       animation: {
         default: `var(--${prefixClass}-transitions-default)`,
-        button: `var(--${prefixClass}-transitions-button)`
+        button: `var(--${prefixClass}-transitions-button)`,
+        card: `var(--${prefixClass}-transitions-card)`
       }
     }
   },

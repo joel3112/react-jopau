@@ -25,5 +25,5 @@
     },
     "types": ["node", "react", "jest", "mdx"]
   },
-  "exclude": ["node_modules", "__tests__", "**/*.test.tsx", "**/*.test.ts"]
+  "exclude": ["node_modules", "dist", "__tests__", "**/*.test.tsx", "**/*.test.ts"]
 }

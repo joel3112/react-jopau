@@ -30,9 +30,8 @@ export type GridItemProps = ElementHTML & {
    * Defines the number of columns the component is going to use in extra large devices.
    */
   xl?: boolean | number;
-} & Partial<typeof defaultProps>;
+};
 
 export const defaultProps = {
-  as: 'div',
-  direction: 'row'
+  as: 'div'
 };

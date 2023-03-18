@@ -12,14 +12,8 @@ import { CollapseGroup } from '@react-jopau/components';
 
 ```jsx
 <CollapseGroup divider>
-  <Collapse title="Title 1">
-    lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-    labore et dolore magna aliqua.
-  </Collapse>
-  <Collapse title="Title 2">
-    lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-    labore et dolore magna aliqua.
-  </Collapse>
+  <Collapse title="Title 1">lorem ipsum dolor sit amet, consectetur adipiscing elit</Collapse>
+  <Collapse title="Title 2">lorem ipsum dolor sit amet, consectetur adipiscing elit</Collapse>
 </CollapseGroup>
 ```
 

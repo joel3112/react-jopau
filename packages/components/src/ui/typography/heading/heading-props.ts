@@ -14,7 +14,7 @@ export type HeadingProps = ElementHTML & {
    * Defines the color of the heading.
    */
   color?: TextColor;
-} & Partial<typeof defaultProps>;
+};
 
 export const defaultProps = {
   as: 'h1',

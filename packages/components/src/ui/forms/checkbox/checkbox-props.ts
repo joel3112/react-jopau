@@ -42,7 +42,7 @@ export type CheckboxProps = ElementHTML &
      * Function to be called when the element value is changed.
      */
     onChange?: (e: boolean) => void;
-  } & Partial<typeof defaultProps>;
+  };
 
 export const defaultProps = {
   defaultChecked: false,

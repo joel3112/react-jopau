@@ -18,6 +18,6 @@ export type HeaderProps = ElementHTML & {
    * Maximum width of the container or breakpoint.
    */
   maxWidth?: number | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-} & Partial<typeof defaultProps>;
+};
 
 export const defaultProps = {};

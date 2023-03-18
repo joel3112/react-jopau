@@ -46,7 +46,7 @@ export type TextareaProps = ElementHTML &
      * Function to be called when the height of the textarea changes.
      */
     onHeightChange?: (height: number) => void;
-  } & Partial<typeof defaultProps>;
+  };
 
 export const defaultProps = {
   defaultValue: '',

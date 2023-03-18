@@ -1,5 +1,5 @@
 import { classes } from '@react-jopau/utils';
-import { prefixClass, useMaxWidth, useSpacing } from '@/components/shared';
+import { prefixClass, useMaxWidth, useSpacing, withDefaults } from '@/components/shared';
 import { ContainerProps, defaultProps } from './container-props';
 import { StyledContainer } from './container.styled';
 
@@ -15,14 +15,9 @@ import { StyledContainer } from './container.styled';
  *    <p>lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
  * </Container>
  */
-export const Container = ({
-  className,
-  children,
-  style,
-  gap,
-  maxWidth,
-  centered
-}: ContainerProps) => {
+export const Container = withDefaults<ContainerProps>((props: ContainerProps) => {
+  const { className, children, style, gap, maxWidth, centered } = props;
+
   const breakpointMaxWidth = useMaxWidth(maxWidth);
   const [spacingX, spacingY] = useSpacing(gap);
 
@@ -39,6 +34,4 @@ export const Container = ({
       {children}
     </StyledContainer>
   );
-};
-
-Container.defaultProps = defaultProps;
+}, defaultProps);

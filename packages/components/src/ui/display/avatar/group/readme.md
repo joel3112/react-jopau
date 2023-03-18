@@ -1,6 +1,7 @@
 ### Avatar.Group
 
-If you need to make a group of avatars you can use the compound component Avatar.Group and inside the avatars you want to group.
+If you need to make a group of avatars you can use the compound component Avatar.Group and
+inside the avatars you want to group.
 
 #### Import
 

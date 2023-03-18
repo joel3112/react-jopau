@@ -1,6 +1,6 @@
 import { isValidElement } from 'react';
 import { classes } from '@react-jopau/utils';
-import { prefixClass } from '@/components/shared';
+import { prefixClass, withDefaults } from '@/components/shared';
 import { BadgeProps, defaultProps } from './badge-props';
 import { StyledBadge } from './badge.styled';
 
@@ -14,20 +14,22 @@ import { StyledBadge } from './badge.styled';
  * @example
  * <Badge color="primary" size="md">new</Badge>
  */
-export const Badge = ({
-  className,
-  style,
-  children,
-  content,
-  variant,
-  size,
-  color,
-  shape,
-  squared,
-  horizontalOffset,
-  verticalOffset,
-  placement
-}: BadgeProps) => {
+export const Badge = withDefaults<BadgeProps>((props: BadgeProps) => {
+  const {
+    className,
+    style,
+    children,
+    content,
+    variant,
+    size,
+    color,
+    shape,
+    squared,
+    horizontalOffset,
+    verticalOffset,
+    placement
+  } = props;
+
   return (
     <StyledBadge
       className={classes(prefixClass + '-badge', className)}
@@ -50,6 +52,4 @@ export const Badge = ({
       {children}
     </StyledBadge>
   );
-};
-
-Badge.defaultProps = defaultProps;
+}, defaultProps);

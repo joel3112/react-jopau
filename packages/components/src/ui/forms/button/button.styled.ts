@@ -149,8 +149,8 @@ export const StyledButton = styledTheme(
     '&[disabled]': {
       opacity: '$opacity$80',
       color: '$colors$disabled',
-      $$buttonBackgroundColor: '$colors$input',
-      $$borderColor: '$colors$input'
+      $$buttonBackgroundColor: '$colors$accent1',
+      $$borderColor: '$colors$accent1'
     },
 
     variants: {

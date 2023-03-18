@@ -43,7 +43,7 @@ export type ButtonProps = ElementHTML &
      * Function to be called when the button is clicked.
      */
     onClick?: (e: MouseEvent<HTMLButtonElement>) => void;
-  } & Partial<typeof defaultProps>;
+  };
 
 export const defaultProps = {
   color: 'primary',

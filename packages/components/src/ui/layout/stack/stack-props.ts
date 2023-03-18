@@ -12,7 +12,7 @@ export type StackProps = ElementHTML &
      * Changes which tag component outputs
      */
     as?: keyof HTMLElementTagNameMap;
-  } & Partial<typeof defaultProps>;
+  };
 
 export const defaultProps = {
   as: 'div'

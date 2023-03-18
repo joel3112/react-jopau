@@ -1,7 +1,6 @@
 import {
-  ForwardRefExoticComponent,
+  ForwardedRef,
   MouseEvent,
-  Ref,
   RefAttributes,
   useContext,
   useImperativeHandle,
@@ -9,14 +8,15 @@ import {
 } from 'react';
 import { PressEvent } from '@react-types/shared/src/events';
 import { classes } from '@react-jopau/utils';
-import { cleanedProps, forwardRef, prefixClass } from '@/components/shared';
+import { cleanedProps, forwardRef, prefixClass, withCompoundComponents } from '@/components/shared';
 import { ButtonContext } from './button-context';
 import { ButtonGroup } from './group/button-group';
 import { ButtonProps, defaultProps } from './button-props';
 import { StyledButton, StyledButtonIcon } from './button.styled';
 
 /**
- * Button component is a clickable element that is used to trigger an action or event, such as submitting a form, opening a dialog, canceling an action, or performing a delete operation.
+ * Button component is a clickable element that is used to trigger an action or event,
+ * such as submitting a form, opening a dialog, canceling an action, or performing a delete operation.
  *
  * @param   {ButtonProps} props - Props injected to the component.
  * @returns {JSX.Element} Rendered component.
@@ -25,10 +25,13 @@ import { StyledButton, StyledButtonIcon } from './button.styled';
  * @example
  * <Button color="primary">Click me</Button>
  */
-export const Button = forwardRef<ButtonProps, 'button'>(
-  (props: ButtonProps, ref: Ref<HTMLButtonElement | null>) => {
+export const Button = withCompoundComponents<
+  ButtonProps & RefAttributes<HTMLButtonElement>,
+  { Group: typeof ButtonGroup }
+>(
+  forwardRef<ButtonProps, 'button'>((props: ButtonProps, ref: ForwardedRef<HTMLButtonElement>) => {
     const buttonRef = useRef<HTMLButtonElement>(null);
-    useImperativeHandle(ref, () => buttonRef.current);
+    useImperativeHandle(ref, () => buttonRef.current as HTMLButtonElement);
 
     const { className, style, children, type, auto, icon, iconPosition, onClick } = props;
     const contextProps = useContext(ButtonContext);
@@ -75,12 +78,7 @@ export const Button = forwardRef<ButtonProps, 'button'>(
         {children}
       </StyledButton>
     );
-  }
-) as ForwardRefExoticComponent<
-  ButtonProps & Partial<typeof defaultProps> & RefAttributes<HTMLButtonElement>
-> & {
-  Group: typeof ButtonGroup;
-};
-
-Button.defaultProps = defaultProps as Partial<ButtonProps>;
-Button.Group = ButtonGroup;
+  }),
+  defaultProps,
+  { Group: ButtonGroup }
+);

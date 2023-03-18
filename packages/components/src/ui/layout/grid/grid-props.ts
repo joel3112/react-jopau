@@ -22,7 +22,7 @@ export type GridProps = ElementHTML &
      * Defines the number of columns of the grid
      */
     columns?: number;
-  } & Partial<typeof defaultProps>;
+  };
 
 export const defaultProps = {
   as: 'div',

@@ -14,7 +14,7 @@ export type ${context.pascalParentName}${context.pascalName}Props = ElementHTML 
   * Title of the component.
   */
   title?: string;
-} & Partial<typeof defaultProps>;
+};
 
 export const defaultProps = {};
 `}

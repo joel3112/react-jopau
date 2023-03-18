@@ -17,7 +17,7 @@ export type InputPasswordProps = Omit<InputProps, 'type' | 'icon' | 'iconPositio
    * See <a href="https://react-icons.github.io/react-icons/" target="_blank">react-icons</a> for more details.
    */
   hiddenIcon?: ReactNode;
-} & Partial<typeof defaultProps>;
+};
 
 export const defaultProps = {
   size: 'md',

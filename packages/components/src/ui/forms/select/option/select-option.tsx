@@ -1,3 +1,4 @@
+import { withDefaults } from '@/components/shared';
 import { SelectOptionProps, defaultProps } from './select-option-props';
 
 /**
@@ -10,7 +11,7 @@ import { SelectOptionProps, defaultProps } from './select-option-props';
  * @example
  * <Select.Option value="A">A</Select.Option>
  */
-export const SelectOption = (props: SelectOptionProps) => {
+export const SelectOption = withDefaults<SelectOptionProps>((props: SelectOptionProps) => {
   const { children, value, label, disabled } = props;
 
   return (
@@ -18,6 +19,4 @@ export const SelectOption = (props: SelectOptionProps) => {
       {children}
     </option>
   );
-};
-
-SelectOption.defaultProps = defaultProps;
+}, defaultProps);

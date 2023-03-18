@@ -1,5 +1,5 @@
 import { classes } from '@react-jopau/utils';
-import { prefixClass } from '@/components/shared';
+import { prefixClass, withDefaults } from '@/components/shared';
 import { CollapseContext } from '../collapse-context';
 import { StyledCollapseGroup } from '../collapse.styled';
 import { CollapseGroupProps, defaultProps } from './collapse-group-props';
@@ -14,24 +14,17 @@ import { CollapseGroupProps, defaultProps } from './collapse-group-props';
  * @example
  * <CollapseGroup divider>
  *    <Collapse title="Title 1">
- *      lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+ *      lorem ipsum dolor sit amet, consectetur adipiscing elit
  *    </Collapse>
  *    <Collapse title="Title 2">
- *      lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+ *      lorem ipsum dolor sit amet, consectetur adipiscing elit
  *    </Collapse>
  * </CollapseGroup>
  */
-export const CollapseGroup = ({
-  className,
-  style,
-  children,
-  accordion,
-  divider,
-  shadow,
-  splitted,
-  bordered,
-  onChange
-}: CollapseGroupProps) => {
+export const CollapseGroup = withDefaults<CollapseGroupProps>((props: CollapseGroupProps) => {
+  const { className, style, children, accordion, divider, shadow, splitted, bordered, onChange } =
+    props;
+
   return (
     <CollapseContext.Provider value={{ divider: !!divider, shadow: splitted }}>
       <StyledCollapseGroup
@@ -49,6 +42,4 @@ export const CollapseGroup = ({
       </StyledCollapseGroup>
     </CollapseContext.Provider>
   );
-};
-
-CollapseGroup.defaultProps = defaultProps;
+}, defaultProps);

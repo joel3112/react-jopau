@@ -58,6 +58,6 @@ export type CollapseProps = ElementHTML & {
    * Function to be called when the value is changed.
    */
   onChange?: (e: ChangeEvent, index: number, value: boolean) => void;
-} & Partial<typeof defaultProps>;
+};
 
 export const defaultProps = {};

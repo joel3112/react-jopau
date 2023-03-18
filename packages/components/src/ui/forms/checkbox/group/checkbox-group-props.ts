@@ -32,7 +32,7 @@ export type CheckboxGroupProps = ElementHTML &
      * Function to be called when the element value is changed.
      */
     onChange?: (e: string[]) => void;
-  } & Partial<typeof defaultProps>;
+  };
 
 export const defaultProps = {
   defaultValue: [] as string[],

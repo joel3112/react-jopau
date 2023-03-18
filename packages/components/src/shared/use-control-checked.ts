@@ -1,4 +1,4 @@
-import { ChangeEvent, Ref, RefObject, useId } from 'react';
+import { ChangeEvent, ForwardedRef, MutableRefObject, useId } from 'react';
 import { FormControl } from './types';
 import { useControlled } from './use-controlled';
 
@@ -12,9 +12,9 @@ type ControlProps = FormControl & ChangeChecked;
 export const useControlChecked = (
   props: ControlProps,
   contextProps: Object = {},
-  ref: Ref<Partial<HTMLInputElement> | null> = null
+  ref: ForwardedRef<HTMLInputElement>
 ): {
-  ref: RefObject<HTMLInputElement>;
+  ref: MutableRefObject<HTMLInputElement>;
   id: string;
   ariaLabel: string;
 } & ChangeChecked => {
@@ -38,7 +38,7 @@ export const useControlChecked = (
   };
 
   return {
-    ref: inputRef,
+    ref: inputRef as MutableRefObject<HTMLInputElement>,
     id: inputId,
     ariaLabel: inputAriaLabel,
     ...controlledChecked,

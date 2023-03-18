@@ -1,10 +1,11 @@
 import { classes } from '@react-jopau/utils';
-import { prefixClass } from '@/components/shared';
+import { prefixClass, withDefaults } from '@/components/shared';
 import { AvatarGroupProps, defaultProps } from './avatar-group-props';
 import { StyledAvatarGroup } from '../avatar.styled';
 
 /**
- * If you need to make a group of avatars you can use the compound component Avatar.Group and inside the avatars you want to group.
+ * If you need to make a group of avatars you can use the compound component Avatar.Group and
+ * inside the avatars you want to group.
  *
  * @param   {AvatarGroupProps} props - Props injected to the component.
  * @returns {JSX.Element} Rendered component.
@@ -18,7 +19,9 @@ import { StyledAvatarGroup } from '../avatar.styled';
  *    <Avatar>JR</Avatar>
  * </AvatarGroup>
  */
-export const AvatarGroup = ({ className, style, children, count, animated }: AvatarGroupProps) => {
+export const AvatarGroup = withDefaults<AvatarGroupProps>((props: AvatarGroupProps) => {
+  const { className, style, children, count, animated } = props;
+
   return (
     <StyledAvatarGroup
       className={classes(prefixClass + '-avatar-group', className)}
@@ -30,6 +33,4 @@ export const AvatarGroup = ({ className, style, children, count, animated }: Ava
       {children}
     </StyledAvatarGroup>
   );
-};
-
-AvatarGroup.defaultProps = defaultProps;
+}, defaultProps);

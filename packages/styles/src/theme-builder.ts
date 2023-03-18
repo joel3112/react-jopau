@@ -38,7 +38,7 @@ export class ThemeBuilder {
         {}
       ),
       utils: themeUtils,
-      prefix
+      prefix: prefix
     });
 
     this.styledTheme = styled;

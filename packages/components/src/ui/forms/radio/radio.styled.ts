@@ -69,7 +69,7 @@ export const StyledRadio = styledTheme(
     display: 'inline-block',
 
     [`&${NextUIEl.RADIO}--is-hovered:not([class*="isChecked-true"]) ${NextUIEl.RADIO_POINT}`]: {
-      backgroundColor: '$colors$input',
+      backgroundColor: '$colors$accent1',
       backgroundColorDarker: 0.2
     },
     [`&${NextUIEl.RADIO}--is-hovered ${NextUIEl.RADIO_POINT}::after`]: {

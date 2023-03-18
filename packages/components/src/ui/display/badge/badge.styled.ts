@@ -11,7 +11,7 @@ const colorTokens = (color: NonNullable<BadgeProps['color']>) => {
   return {
     default: {
       $$badgeBackgroundColor: '$colors$border',
-      $$badgeFlatBackgroundColor: '$colors$input',
+      $$badgeFlatBackgroundColor: '$colors$accent1',
       $$badgeColor: '$colors$text',
       $$badgeFlatColor: '$colors$placeholder'
     },

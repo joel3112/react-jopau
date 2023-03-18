@@ -1,6 +1,12 @@
-import { ForwardRefExoticComponent, Ref, RefAttributes, useContext } from 'react';
+import { ForwardedRef, RefAttributes, useContext } from 'react';
 import { classes } from '@react-jopau/utils';
-import { cleanedProps, forwardRef, prefixClass, useControlChecked } from '@/components/shared';
+import {
+  cleanedProps,
+  forwardRef,
+  prefixClass,
+  useControlChecked,
+  withCompoundComponents
+} from '@/components/shared';
 import { RadioContext } from './radio-context';
 import { RadioGroup } from './group/radio-group';
 import { defaultProps, RadioProps } from './radio-props';
@@ -16,8 +22,11 @@ import { StyledRadio } from './radio.styled';
  * @example
  * <Radio value="A">Option A</Radio>
  */
-export const Radio = forwardRef<RadioProps, 'input'>(
-  (props: RadioProps, ref: Ref<Partial<HTMLInputElement> | null>) => {
+export const Radio = withCompoundComponents<
+  RadioProps & RefAttributes<HTMLInputElement>,
+  { Group: typeof RadioGroup }
+>(
+  forwardRef<RadioProps, 'input'>((props: RadioProps, ref: ForwardedRef<HTMLInputElement>) => {
     const { className, style, children, value, description, autoFocus, squared } = props;
     const contextProps = useContext(RadioContext);
 
@@ -44,12 +53,7 @@ export const Radio = forwardRef<RadioProps, 'input'>(
         {children}
       </StyledRadio>
     );
-  }
-) as ForwardRefExoticComponent<
-  RadioProps & Partial<typeof defaultProps> & RefAttributes<HTMLInputElement>
-> & {
-  Group: typeof RadioGroup;
-};
-
-Radio.defaultProps = defaultProps as Partial<RadioProps>;
-Radio.Group = RadioGroup;
+  }),
+  defaultProps,
+  { Group: RadioGroup }
+);

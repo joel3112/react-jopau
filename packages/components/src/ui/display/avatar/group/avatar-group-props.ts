@@ -15,6 +15,6 @@ export type AvatarGroupProps = ElementHTML & {
    * Display animation on hover.
    */
   animated?: boolean;
-} & Partial<typeof defaultProps>;
+};
 
 export const defaultProps = {};

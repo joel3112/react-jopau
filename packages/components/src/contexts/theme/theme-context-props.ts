@@ -14,7 +14,7 @@ export type ThemeProviderProps = {
    * Flag to enable dark mode.
    */
   darkMode?: boolean;
-} & Partial<typeof defaultProps>;
+};
 
 export const defaultProps = {
   darkMode: false

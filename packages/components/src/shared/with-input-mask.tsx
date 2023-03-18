@@ -1,12 +1,12 @@
 /* eslint-disable react/prop-types,react/display-name */
-import { forwardRef, Ref } from 'react';
+import { ComponentType, ForwardedRef, forwardRef } from 'react';
 import MaskedInput from 'react-text-mask';
 import { FormControl } from './types';
 
 export const withInputMask = <T extends FormControl & { mask?: Array<string | RegExp> | false }>(
-  Component: (props: T) => JSX.Element
+  Component: ComponentType<T>
 ) => {
-  return forwardRef((controlProps: T, ref: Ref<HTMLInputElement>) => {
+  return forwardRef((controlProps: T, ref: ForwardedRef<HTMLInputElement>) => {
     const { mask, ...props } = controlProps;
 
     if (!mask) {

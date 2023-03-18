@@ -6,7 +6,7 @@ const templateObject = templateCreator`${({ context }) => {
   const pascalName = `${context.pascalParentName}${context.pascalName}`;
 
   return `
-import { Ref, useImperativeHandle, useRef } from 'react';
+import { ForwardedRef, useImperativeHandle, useRef } from 'react';
 import { classes } from '@react-jopau/utils';
 import { forwardRef } from '@/components/shared';
 import { ${pascalName}Props, defaultProps } from './${name}-props';
@@ -32,11 +32,11 @@ export const ${pascalName} = forwardRef<${pascalName}Props, 'div'>(
       children,
       title
     }: ${pascalName}Props,
-    ref: Ref<HTMLDivElement | null>
+    ref: ForwardedRef<HTMLDivElement>
   ) => {
     const elementRef = useRef<HTMLDivElement>(null);
     useImperativeHandle(ref, () => elementRef.current);
-    
+
     return (
       <Styled${pascalName}
         ref={elementRef}

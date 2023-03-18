@@ -11,10 +11,7 @@ import { Collapse } from '@react-jopau/components';
 #### Examples
 
 ```jsx
-<Collapse title="Title">
-  lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-  labore et dolore magna aliqua.
-</Collapse>
+<Collapse title="Title">lorem ipsum dolor sit amet, consectetur adipiscing elit</Collapse>
 ```
 
 #### Props

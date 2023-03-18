@@ -3,6 +3,7 @@ const templateCreator = template({});
 
 const templateObject = templateCreator`${({ context }) => `
 import { createContext, useState } from 'react';
+import { withDefaults } from '@/components/shared';
 import { ${context.pascalName}ProviderProps, defaultProps } from './${context.name}-context-props';
 
 /* ==== context ================================================================ */
@@ -29,9 +30,11 @@ export const ${context.pascalName}Context = createContext<{
  *    <div>Content</div>
  * </${context.pascalName}Provider>
  */
-export const ${context.pascalName}Provider = ({ children, initialValue }: ${context.pascalName}ProviderProps) => {
+export const ${context.pascalName}Provider = withDefaults<${context.pascalName}Props>((props: ${context.pascalName}ProviderProps) => {
+  const { children, initialValue } = props;
+
   const [value, setValue] = useState<number>(initialValue);
- 
+
   return (
     <${context.pascalName}Context.Provider
       value={{
@@ -41,9 +44,7 @@ export const ${context.pascalName}Provider = ({ children, initialValue }: ${cont
       {children}
     </${context.pascalName}Context.Provider>
   );
-};
-
-${context.pascalName}Provider.defaultProps = defaultProps;
+}, defaultProps);
 `}
 `;
 

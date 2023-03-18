@@ -22,7 +22,7 @@ export type TextProps = ElementHTML & {
    * Defines the line clamp of the component.
    */
   maxLines?: number;
-} & Partial<typeof defaultProps>;
+};
 
 export const defaultProps = {
   as: 'p',

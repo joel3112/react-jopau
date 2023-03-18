@@ -1,5 +1,5 @@
 import { classes } from '@react-jopau/utils';
-import { prefixClass } from '@/components/shared';
+import { prefixClass, withDefaults } from '@/components/shared';
 import { Heading } from '../../typography';
 import { defaultProps, HeaderProps } from './header-props';
 import { StyledHeaderContent, StyledHeaderLogo, StyledHeader } from './header.styled';
@@ -16,7 +16,9 @@ import { StyledHeaderContent, StyledHeaderLogo, StyledHeader } from './header.st
  *    <div>Action 1</div>
  * </Header>
  */
-export const Header = ({ className, style, children, logo, title, maxWidth }: HeaderProps) => {
+export const Header = withDefaults<HeaderProps>((props: HeaderProps) => {
+  const { className, style, children, logo, title, maxWidth } = props;
+
   return (
     <StyledHeader
       className={classes(prefixClass + '-header', className)}
@@ -33,6 +35,4 @@ export const Header = ({ className, style, children, logo, title, maxWidth }: He
       </StyledHeaderContent>
     </StyledHeader>
   );
-};
-
-Header.defaultProps = defaultProps;
+}, defaultProps);

@@ -1,10 +1,11 @@
-import { ForwardRefExoticComponent, ReactElement, Ref, RefAttributes } from 'react';
+import { ForwardedRef, RefAttributes } from 'react';
 import { classes } from '@react-jopau/utils';
 import {
   forwardRef,
   prefixClass,
   useControlValue,
   useHotKey,
+  withCompoundComponents,
   withFormControl,
   withInputMask
 } from '@/components/shared';
@@ -12,10 +13,10 @@ import { InputPassword } from './password/input-password';
 import { defaultProps, InputProps } from './input-props';
 import {
   StyledContent,
-  StyledInput,
   StyledLabelGap,
   StyledInputWrapper,
-  StyledHotKey
+  StyledHotKey,
+  StyledInput
 } from './input.styled';
 
 /**
@@ -28,10 +29,13 @@ import {
  * @example
  * <Input label="Label" placeholder="placeholder" value="text" />
  */
-export const Input = withFormControl<InputProps, HTMLInputElement>(
-  withInputMask<InputProps>(
-    forwardRef<InputProps, 'input'>(
-      (props: InputProps, ref: Ref<Partial<HTMLInputElement> | null>) => {
+export const Input = withCompoundComponents<
+  InputProps & RefAttributes<HTMLInputElement>,
+  { Password: typeof InputPassword }
+>(
+  withFormControl<InputProps, HTMLInputElement>(
+    withInputMask<InputProps>(
+      forwardRef<InputProps, 'input'>((props: InputProps, ref: ForwardedRef<HTMLInputElement>) => {
         const {
           ref: inputRef,
           id,
@@ -149,15 +153,10 @@ export const Input = withFormControl<InputProps, HTMLInputElement>(
             />
           </StyledInputWrapper>
         );
-      }
-    )
-  ) as (props: InputProps) => ReactElement,
-  'input'
-) as ForwardRefExoticComponent<
-  InputProps & Partial<typeof defaultProps> & RefAttributes<HTMLInputElement>
-> & {
-  Password: typeof InputPassword;
-};
-
-Input.defaultProps = defaultProps as Partial<InputProps>;
-Input.Password = InputPassword;
+      })
+    ),
+    'input'
+  ),
+  defaultProps,
+  { Password: InputPassword }
+);

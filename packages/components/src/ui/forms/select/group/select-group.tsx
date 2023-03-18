@@ -1,3 +1,4 @@
+import { withDefaults } from '@/components/shared';
 import { SelectGroupProps, defaultProps } from './select-group-props';
 
 /**
@@ -15,7 +16,7 @@ import { SelectGroupProps, defaultProps } from './select-group-props';
  *  </Select.Group>
  * </Select>
  */
-export const SelectGroup = (props: SelectGroupProps) => {
+export const SelectGroup = withDefaults<SelectGroupProps>((props: SelectGroupProps) => {
   const { children, label, disabled } = props;
 
   return (
@@ -23,6 +24,4 @@ export const SelectGroup = (props: SelectGroupProps) => {
       {children}
     </optgroup>
   );
-};
-
-SelectGroup.defaultProps = defaultProps;
+}, defaultProps);

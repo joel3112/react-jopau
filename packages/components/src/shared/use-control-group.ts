@@ -1,4 +1,4 @@
-import { Ref, RefObject, useId } from 'react';
+import { ForwardedRef, RefObject, useId } from 'react';
 import { FormControl } from './types';
 import { useControlled } from './use-controlled';
 
@@ -11,7 +11,7 @@ type ControlProps<T> = FormControl & ChangeValue<T> & { value?: T };
 
 export const useControlGroup = <T>(
   props: ControlProps<T>,
-  ref: Ref<Partial<HTMLDivElement> | null>
+  ref: ForwardedRef<HTMLDivElement>
 ): {
   ref: RefObject<HTMLDivElement>;
   id: string;

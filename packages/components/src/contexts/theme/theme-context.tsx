@@ -7,7 +7,7 @@ import {
   ThemeConfig,
   ThemeSchemes
 } from '@react-jopau/styles';
-import { prefixClass } from '@/components/shared';
+import { prefixClass, withDefaults } from '@/components/shared';
 import { defaultProps, ThemeProviderProps } from './theme-context-props';
 
 /* ==== context ================================================================ */
@@ -62,7 +62,9 @@ const StyledContent = styled('div', {
  *    <div>Content</div>
  * </ThemeProvider>
  */
-export const ThemeProvider = ({ children, config, darkMode }: ThemeProviderProps) => {
+export const ThemeProvider = withDefaults<ThemeProviderProps>((props: ThemeProviderProps) => {
+  const { children, config, darkMode } = props;
+
   const [dark, setDark] = useState<boolean>();
   const [configTheme, setConfigTheme] = useState<ThemeConfig | null>(null);
   const [schemes, setSchemes] = useState<ThemeSchemes>({});
@@ -102,6 +104,4 @@ export const ThemeProvider = ({ children, config, darkMode }: ThemeProviderProps
       </StyledContent>
     </ThemeContext.Provider>
   );
-};
-
-ThemeProvider.defaultProps = defaultProps;
+}, defaultProps);

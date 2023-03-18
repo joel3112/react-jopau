@@ -1,5 +1,5 @@
 import { classes } from '@react-jopau/utils';
-import { computedFlexPosition, prefixClass, useSpacing } from '@/components/shared';
+import { computedFlexPosition, prefixClass, useSpacing, withDefaults } from '@/components/shared';
 import { StackProps, defaultProps } from './stack-props';
 import { StyledStack } from './stack.styled';
 
@@ -17,16 +17,9 @@ import { StyledStack } from './stack.styled';
  *    <div>Item 3</div>
  * </Stack>
  */
-export const Stack = ({
-  className,
-  style,
-  children,
-  as,
-  direction,
-  gap,
-  justify,
-  align
-}: StackProps) => {
+export const Stack = withDefaults<StackProps>((props: StackProps) => {
+  const { className, style, children, as, direction, gap, justify, align } = props;
+
   const [gapUnit] = useSpacing(gap);
 
   return (
@@ -43,6 +36,4 @@ export const Stack = ({
       {children}
     </StyledStack>
   );
-};
-
-Stack.defaultProps = defaultProps;
+}, defaultProps);

@@ -15,7 +15,7 @@ export type ContainerProps = ElementHTML &
      * Centered horizontally the container.
      */
     centered?: boolean;
-  } & Partial<typeof defaultProps>;
+  };
 
 export const defaultProps = {
   centered: false

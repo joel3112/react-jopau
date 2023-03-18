@@ -61,7 +61,7 @@ export type SelectProps = ElementHTML &
      * Function to be called when the element is blurred.
      */
     onBlur?: (e: FocusEvent<HTMLSelectElement>) => void;
-  } & Partial<typeof defaultProps>;
+  };
 
 export const defaultProps = {
   defaultValue: '',

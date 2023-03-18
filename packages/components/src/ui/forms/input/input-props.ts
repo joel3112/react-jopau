@@ -108,7 +108,7 @@ export type InputProps = ElementHTML &
      * Function to be called when the clear button is clicked.
      */
     onClearClick?: (e: MouseEvent) => void;
-  } & Partial<typeof defaultProps>;
+  };
 
 export const defaultProps = {
   as: 'input',

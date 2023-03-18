@@ -2,9 +2,9 @@ const { template } = require('react-docgen-renderer-template');
 const templateCreator = template({});
 
 const templateObject = templateCreator`${({ context }) => `
-import { ForwardRefExoticComponent, Ref, useImperativeHandle, useRef } from 'react';
+import { ForwardedRef, useImperativeHandle, useRef } from 'react';
 import { classes } from '@react-jopau/utils';
-import { forwardRef } from '@/components/shared';
+import { forwardRef, withDefaults } from '@/components/shared';
 import { ${context.pascalName}Props, defaultProps } from './${context.name}-props';
 import { Styled${context.pascalName} } from './${context.name}.styled';
 
@@ -20,36 +20,27 @@ import { Styled${context.pascalName} } from './${context.name}.styled';
   *    <div>Content</div>
   * </${context.pascalName}>
   */
-export const ${context.pascalName} = forwardRef<${context.pascalName}Props, 'div'>(
-  (
-    {
-      className,
-      style,
-      children,
-      title
-    }: ${context.pascalName}Props,
-    ref: Ref<HTMLDivElement | null>
-  ) => {
-    const elementRef = useRef<HTMLDivElement>(null);
-    useImperativeHandle(ref, () => elementRef.current);
-    
-    return (
-      <Styled${context.pascalName}
-        ref={elementRef}
-        className={classes('${context.name}-wrapper', className)}
-        css={{
-          ...style
-        }}>
-        <h2>{title}</h2>
-        {children}
-      </Styled${context.pascalName}>
-    );
-  }
-) as ForwardRefExoticComponent<
-  ${context.pascalName}Props & Partial<typeof defaultProps> & RefAttributes<HTMLDivElement>
-> & {};
+export const ${context.pascalName} = withDefaults<${context.pascalName}Props>(
+  forwardRef<${context.pascalName}Props, 'div'>(
+    (props: ${context.pascalName}Props, ref: ForwardedRef<HTMLDivElement>) => {
+      const { className, style, children, title } = props;
 
-${context.pascalName}.defaultProps = defaultProps;
+      const elementRef = useRef<HTMLDivElement>(null);
+      useImperativeHandle(ref, () => elementRef.current);
+
+      return (
+        <Styled${context.pascalName}
+          ref={elementRef}
+          className={classes('${context.name}-wrapper', className)}
+          css={{
+            ...style
+          }}>
+          <h2>{title}</h2>
+          {children}
+        </Styled${context.pascalName}>
+      );
+    }
+  ), defaultProps);
 `}
 `;
 

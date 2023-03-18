@@ -1,6 +1,6 @@
-import { ForwardRefExoticComponent, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { classes } from '@react-jopau/utils';
-import { prefixClass, useBreakpointValue } from '@/components/shared';
+import { prefixClass, useBreakpointValue, withCompoundComponents } from '@/components/shared';
 import { AvatarGroup } from './group/avatar-group';
 import { AvatarProps, defaultProps } from './avatar-props';
 import { StyledAvatar, StyledAvatarIcon } from './avatar.styled';
@@ -15,58 +15,59 @@ import { StyledAvatar, StyledAvatarIcon } from './avatar.styled';
  * @example
  * <Avatar size="xl" src="https://via.placeholder.com/150" />
  */
-export const Avatar = (({
-  className,
-  style,
-  children,
-  size,
-  color,
-  src,
-  icon,
-  squared,
-  bordered,
-  zoomed,
-  pointer
-}: AvatarProps) => {
-  const [numberSize, setNumberSize] = useState<number>(0);
-  const breakpointValue = useBreakpointValue<number>(typeof size === 'object' ? size : {});
+export const Avatar = withCompoundComponents<AvatarProps, { Group: typeof AvatarGroup }>(
+  (props: AvatarProps) => {
+    const {
+      className,
+      style,
+      children,
+      size,
+      color,
+      src,
+      icon,
+      squared,
+      bordered,
+      zoomed,
+      pointer
+    } = props;
 
-  useEffect(() => {
-    if (typeof size === 'number') {
-      setNumberSize(size);
-      return;
-    }
-    if (typeof size === 'object') {
-      breakpointValue && setNumberSize(breakpointValue);
-    }
-  }, [size, breakpointValue]);
+    const [numberSize, setNumberSize] = useState<number>(0);
+    const breakpointValue = useBreakpointValue<number>(typeof size === 'object' ? size : {});
 
-  return (
-    <StyledAvatar
-      className={classes(prefixClass + '-avatar', className)}
-      css={{
-        ...style,
-        ...(numberSize && {
-          size: numberSize,
-          minWidth: numberSize
-        })
-      }}
-      text={children}
-      {...(size && !numberSize && { size })}
-      color={color}
-      {...(!children && { src })}
-      {...(!children && { icon: <StyledAvatarIcon>{icon}</StyledAvatarIcon> })}
-      squared={squared}
-      zoomed={zoomed}
-      bordered={!!bordered}
-      pointer={pointer}
-      hasImage={children ? false : !!src}
-      hasNumberSize={!!numberSize}
-    />
-  );
-}) as ForwardRefExoticComponent<AvatarProps & Partial<typeof defaultProps>> & {
-  Group: typeof AvatarGroup;
-};
+    useEffect(() => {
+      if (typeof size === 'number') {
+        setNumberSize(size);
+        return;
+      }
+      if (typeof size === 'object') {
+        breakpointValue && setNumberSize(breakpointValue);
+      }
+    }, [size, breakpointValue]);
 
-Avatar.defaultProps = defaultProps as Partial<AvatarProps>;
-Avatar.Group = AvatarGroup;
+    return (
+      <StyledAvatar
+        className={classes(prefixClass + '-avatar', className)}
+        css={{
+          ...style,
+          ...(numberSize && {
+            size: numberSize,
+            minWidth: numberSize
+          })
+        }}
+        text={children}
+        {...(size && !numberSize && { size })}
+        color={color}
+        {...(!children && { src })}
+        {...(!children && { icon: <StyledAvatarIcon>{icon}</StyledAvatarIcon> })}
+        squared={squared}
+        zoomed={zoomed}
+        bordered={!!bordered}
+        pointer={pointer}
+        hasImage={children ? false : !!src}
+        hasNumberSize={!!numberSize}
+      />
+    );
+  },
+  defaultProps,
+  { Group: AvatarGroup }
+);

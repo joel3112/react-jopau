@@ -35,7 +35,7 @@ export type ButtonGroupProps = ElementHTML & {
    * Defines the axis radio group is aligned.
    */
   orientation?: 'horizontal' | 'vertical';
-} & Partial<typeof defaultProps>;
+};
 
 export const defaultProps = {
   variant: 'solid',

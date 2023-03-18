@@ -38,7 +38,7 @@ export type AvatarProps = ElementHTML & {
    * Display pointer cursor on hover.
    */
   pointer?: boolean;
-} & Partial<typeof defaultProps>;
+};
 
 export const defaultProps = {
   color: 'default'

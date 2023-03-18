@@ -13,7 +13,7 @@ export type ${context.pascalName}ProviderProps = {
    * Defines the initial value.
    */
   initialValue: number;
-} & Partial<typeof defaultProps>;
+};
 
 export const defaultProps = {};
 `}

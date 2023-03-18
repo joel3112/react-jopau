@@ -1,7 +1,15 @@
 node_modules
+.vscode
+.idea
+.vercel
+.env
+
+
 # Ignore artifacts:
 coverage
 dist
 
 CHANGELOG.md
 lerna.json
+
+apps/example-next/.next

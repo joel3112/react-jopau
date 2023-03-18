@@ -16,7 +16,7 @@ enum NextUIEl {
 const colorTokens = (color: NonNullable<AvatarProps['color']>) => {
   return {
     default: {
-      $$avatarBackgroundColor: '$colors$input',
+      $$avatarBackgroundColor: '$colors$accent1',
       $$avatarColor: '$colors$text'
     },
     primary: {

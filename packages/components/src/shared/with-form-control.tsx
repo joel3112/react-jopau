@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types,react/display-name */
-import { forwardRef, Ref, useId } from 'react';
+import { ComponentType, ForwardedRef, forwardRef, useId } from 'react';
 import {
   Control,
   FieldErrors,
@@ -34,10 +34,10 @@ export const withFormControl = <
   T extends FormControl & { control?: Control; rules?: RegisterOptions },
   K extends HTMLElement
 >(
-  Component: (props: T) => JSX.Element,
+  Component: ComponentType<T>,
   controlType: keyof typeof defaultValuesByType
 ) => {
-  return forwardRef((controlProps: T, ref: Ref<Partial<K>>) => {
+  return forwardRef((controlProps: T, ref: ForwardedRef<K>) => {
     const { control, rules, ...props } = controlProps;
     const required = props.required || !!rules?.required;
 

@@ -42,7 +42,7 @@ export type BadgeProps = ElementHTML & {
    * Defines the vertical offset of the badge content.
    */
   verticalOffset?: string | number;
-} & Partial<typeof defaultProps>;
+};
 
 export const defaultProps = {
   size: 'md',

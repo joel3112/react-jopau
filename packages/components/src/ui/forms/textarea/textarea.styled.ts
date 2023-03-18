@@ -1,4 +1,4 @@
-import { ComponentType, Ref } from 'react';
+import { ComponentType, ForwardedRef } from 'react';
 import { Textarea as TextareaNextUI } from '@nextui-org/react';
 import { TextareaProps as TextareaPropsNextUI } from '@nextui-org/react/types/textarea';
 import { NextUIOverrideCSS, styledTheme } from '@/components/shared';
@@ -13,7 +13,7 @@ export const StyledTextarea = styledTheme(
   TextareaNextUI as ComponentType<
     Partial<
       Omit<TextareaPropsNextUI, keyof TextareaProps | 'ref'> &
-        TextareaProps & { ref: Ref<HTMLTextAreaElement> }
+        TextareaProps & { ref: ForwardedRef<HTMLTextAreaElement> }
     >
   >,
   {

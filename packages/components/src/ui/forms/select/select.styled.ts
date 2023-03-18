@@ -105,7 +105,7 @@ export const StyledSelect = styledTheme('select', {
       true: {
         outline: 'transparent solid $borderWidths$normal !important',
         outlineOffset: '$borderWidths$normal !important',
-        boxShadow: '0 0 0 2px $colors$background, 0 0 0 4px $colors$accent !important'
+        boxShadow: '0 0 0 2px $colors$background, 0 0 0 4px $colors$accent0 !important'
       }
     }
   },
