@@ -5,7 +5,7 @@ import {
   AvatarProps as AvatarPropsNextUI
 } from '@nextui-org/react';
 import { styledTheme } from '@/components/shared';
-import { AvatarProps } from './avatar-props';
+import { AvatarProps } from './avatar.props';
 
 enum NextUIEl {
   BACKGROUND = '.nextui-avatar-bg',

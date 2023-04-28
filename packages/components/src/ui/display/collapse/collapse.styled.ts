@@ -5,8 +5,8 @@ import {
   CollapseProps as CollapsePropsNextUI
 } from '@nextui-org/react';
 import { styledTheme } from '@/components/shared';
-import { CollapseGroupProps } from './group/collapse-group-props';
-import { CollapseProps } from './collapse-props';
+import { CollapseGroupProps } from './group/collapse-group.props';
+import { CollapseProps } from './collapse.props';
 
 enum NextUIEl {
   COLLAPSE = '.nextui-collapse',

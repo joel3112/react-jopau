@@ -1,7 +1,7 @@
 import { ChangeEvent, FocusEvent, ReactElement } from 'react';
 import type { ElementHTML, FormControl, NormalSize, Shape, SimpleColor } from '@/components/shared';
-import { SelectOptionProps } from './option/select-option-props';
-import { SelectGroupProps } from './group/select-group-props';
+import { SelectOptionProps } from './option/select-option.props';
+import { SelectGroupProps } from './group/select-group.props';
 
 export type SelectProps = ElementHTML &
   Omit<FormControl, 'readOnly'> & {

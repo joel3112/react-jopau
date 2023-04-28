@@ -1,7 +1,7 @@
 import { ComponentType, Ref } from 'react';
 import { Button as ButtonNextUI, ButtonProps as ButtonPropsNextUI } from '@nextui-org/react';
 import { NextUIOverrideCSS, styledTheme } from '@/components/shared';
-import { ButtonProps } from './button-props';
+import { ButtonProps } from './button.props';
 
 const colorTokens = (color: NonNullable<ButtonProps['color']>) => {
   const {

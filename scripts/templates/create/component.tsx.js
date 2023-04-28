@@ -4,7 +4,7 @@ const templateCreator = template({});
 const templateObject = templateCreator`${({ context }) => `
 import { classes } from '@react-jopau/utils';
 import { prefixClass, withDefaults } from '@/components/shared';
-import { ${context.pascalName}Props, defaultProps } from './${context.name}-props';
+import { ${context.pascalName}Props, defaultProps } from './${context.name}.props';
 import { Styled${context.pascalName} } from './${context.name}.styled';
 
 /**

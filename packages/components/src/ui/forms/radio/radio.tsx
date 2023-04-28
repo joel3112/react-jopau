@@ -9,7 +9,7 @@ import {
 } from '@/components/shared';
 import { RadioContext } from './radio-context';
 import { RadioGroup } from './group/radio-group';
-import { defaultProps, RadioProps } from './radio-props';
+import { defaultProps, RadioProps } from './radio.props';
 import { StyledRadio } from './radio.styled';
 
 /**

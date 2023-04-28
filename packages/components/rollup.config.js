@@ -33,7 +33,7 @@ const exportProps = () => {
   return {
     name: 'export-props',
     async generateBundle(options, bundle) {
-      const files = await glob(`src/**/*-props.ts`, {});
+      const files = await glob(`src/**/*.props.ts`, {});
       const types = files.map((file) => path.basename(file, path.extname(file)));
       const formatTypes = types.map((type) => lodash.startCase(String(type)).replace(/\s/g, ''));
       const exportTypes = `export { ${lodash.sortBy(formatTypes).join(', ')} };`;

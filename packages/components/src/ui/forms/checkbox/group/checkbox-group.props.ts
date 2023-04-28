@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import type { ElementHTML, FormControl, NormalColor, NormalSize } from '@/components/shared';
-import { CheckboxProps } from '../checkbox-props';
+import { CheckboxProps } from '../checkbox.props';
 
 export type CheckboxGroupProps = ElementHTML &
   FormControl & {

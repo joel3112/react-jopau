@@ -3,7 +3,7 @@ import { classes, numberId } from '@react-jopau/utils';
 import { cleanedProps, prefixClass, withCompoundComponents } from '@/components/shared';
 import { CollapseContext } from './collapse-context';
 import { CollapseGroup } from './group/collapse-group';
-import { CollapseProps, defaultProps } from './collapse-props';
+import { CollapseProps, defaultProps } from './collapse.props';
 import { StyledCollapse } from './collapse.styled';
 
 /**

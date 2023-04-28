@@ -7,7 +7,7 @@ import {
 } from '@/components/shared';
 import { GridContext } from './grid-context';
 import { GridItem } from './item/grid-item';
-import { defaultProps, GridProps } from './grid-props';
+import { defaultProps, GridProps } from './grid.props';
 import { StyledGrid } from './grid.styled';
 
 /**

@@ -8,7 +8,7 @@ import {
   ThemeSchemes
 } from '@react-jopau/styles';
 import { prefixClass, withDefaults } from '@/components/shared';
-import { defaultProps, ThemeProviderProps } from './theme-context-props';
+import { defaultProps, ThemeProviderProps } from './theme-context.props';
 
 /* ==== context ================================================================ */
 

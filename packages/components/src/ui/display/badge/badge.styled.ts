@@ -1,7 +1,7 @@
 import { ComponentType } from 'react';
 import { Badge as BadgeNextUI, BadgeProps as BadgePropsNextUI } from '@nextui-org/react';
 import { styledTheme } from '@/components/shared';
-import { BadgeProps } from './badge-props';
+import { BadgeProps } from './badge.props';
 
 enum NextUIEl {
   BADGE = '.nextui-badge'

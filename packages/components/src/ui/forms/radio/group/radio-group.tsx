@@ -8,7 +8,7 @@ import {
   withFormControl
 } from '@/components/shared';
 import { RadioContext } from '../radio-context';
-import { defaultProps, RadioGroupProps } from './radio-group-props';
+import { defaultProps, RadioGroupProps } from './radio-group.props';
 import { StyledRadioGroup } from '../radio.styled';
 
 /**

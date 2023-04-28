@@ -7,7 +7,7 @@ import {
   withDefaults,
   withFormControl
 } from '@/components/shared';
-import { TextareaProps, defaultProps } from './textarea-props';
+import { TextareaProps, defaultProps } from './textarea.props';
 import { StyledLabelGap } from '../input/input.styled';
 import { StyledTextarea, StyledTextareaWrapper } from './textarea.styled';
 

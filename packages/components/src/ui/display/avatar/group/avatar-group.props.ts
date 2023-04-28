@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import type { ElementHTML } from '@/components/shared';
-import { AvatarProps } from '../avatar-props';
+import { AvatarProps } from '../avatar.props';
 
 export type AvatarGroupProps = ElementHTML & {
   /**

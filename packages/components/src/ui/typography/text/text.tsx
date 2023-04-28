@@ -1,6 +1,6 @@
 import { classes } from '@react-jopau/utils';
 import { prefixClass, withDefaults } from '@/components/shared';
-import { defaultProps, TextProps } from './text-props';
+import { defaultProps, TextProps } from './text.props';
 import { StyledText } from './text.styled';
 
 /**

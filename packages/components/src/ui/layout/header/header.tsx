@@ -1,7 +1,7 @@
 import { classes } from '@react-jopau/utils';
 import { prefixClass, withDefaults } from '@/components/shared';
 import { Heading } from '../../typography';
-import { defaultProps, HeaderProps } from './header-props';
+import { defaultProps, HeaderProps } from './header.props';
 import { StyledHeaderContent, StyledHeaderLogo, StyledHeader } from './header.styled';
 
 /**

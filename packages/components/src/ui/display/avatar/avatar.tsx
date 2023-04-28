@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { classes } from '@react-jopau/utils';
 import { prefixClass, useBreakpointValue, withCompoundComponents } from '@/components/shared';
 import { AvatarGroup } from './group/avatar-group';
-import { AvatarProps, defaultProps } from './avatar-props';
+import { AvatarProps, defaultProps } from './avatar.props';
 import { StyledAvatar, StyledAvatarIcon } from './avatar.styled';
 
 /**

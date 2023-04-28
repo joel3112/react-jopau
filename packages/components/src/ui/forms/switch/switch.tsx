@@ -8,7 +8,7 @@ import {
   withDefaults,
   withFormControl
 } from '@/components/shared';
-import { SwitchProps, defaultProps } from './switch-props';
+import { SwitchProps, defaultProps } from './switch.props';
 import {
   StyledSwitch,
   StyledSwitchCircle,

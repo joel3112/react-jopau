@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import type { ElementHTML, WithFlex, Wrap } from '@/components/shared';
-import { GridItemProps } from './item/grid-item-props';
+import { GridItemProps } from './item/grid-item.props';
 import { WithGap } from '@/components/shared';
 
 export type GridProps = ElementHTML &

@@ -10,7 +10,7 @@ import {
   withInputMask
 } from '@/components/shared';
 import { InputPassword } from './password/input-password';
-import { defaultProps, InputProps } from './input-props';
+import { defaultProps, InputProps } from './input.props';
 import {
   StyledContent,
   StyledLabelGap,

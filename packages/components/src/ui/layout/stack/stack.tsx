@@ -1,6 +1,6 @@
 import { classes } from '@react-jopau/utils';
 import { computedFlexPosition, prefixClass, useSpacing, withDefaults } from '@/components/shared';
-import { StackProps, defaultProps } from './stack-props';
+import { StackProps, defaultProps } from './stack.props';
 import { StyledStack } from './stack.styled';
 
 /**

@@ -1,7 +1,7 @@
 import { classes } from '@react-jopau/utils';
 import { prefixClass, withDefaults } from '@/components/shared';
 import { ButtonContext } from '../button-context';
-import { ButtonGroupProps, defaultProps } from './button-group-props';
+import { ButtonGroupProps, defaultProps } from './button-group.props';
 import { StyledButtonGroup } from '../button.styled';
 
 /**

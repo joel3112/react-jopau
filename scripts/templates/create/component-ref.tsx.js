@@ -5,7 +5,7 @@ const templateObject = templateCreator`${({ context }) => `
 import { ForwardedRef, useImperativeHandle, useRef } from 'react';
 import { classes } from '@react-jopau/utils';
 import { forwardRef, withDefaults } from '@/components/shared';
-import { ${context.pascalName}Props, defaultProps } from './${context.name}-props';
+import { ${context.pascalName}Props, defaultProps } from './${context.name}.props';
 import { Styled${context.pascalName} } from './${context.name}.styled';
 
 /**

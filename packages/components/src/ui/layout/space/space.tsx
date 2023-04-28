@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import { classes } from '@react-jopau/utils';
 import { prefixClass, withDefaults } from '@/components/shared';
-import { defaultProps, SpaceProps } from './space-props';
+import { defaultProps, SpaceProps } from './space.props';
 import { StyledSpace } from './space.styled';
 
 /**

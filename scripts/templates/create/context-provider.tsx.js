@@ -4,7 +4,7 @@ const templateCreator = template({});
 const templateObject = templateCreator`${({ context }) => `
 import { createContext, useState } from 'react';
 import { withDefaults } from '@/components/shared';
-import { ${context.pascalName}ProviderProps, defaultProps } from './${context.name}-context-props';
+import { ${context.pascalName}ProviderProps, defaultProps } from './${context.name}-context.props';
 
 /* ==== context ================================================================ */
 

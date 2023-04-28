@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import type { ElementHTML } from '@/components/shared';
-import { CollapseProps } from '../collapse-props';
+import { CollapseProps } from '../collapse.props';
 
 export type CollapseGroupProps = ElementHTML & {
   /**

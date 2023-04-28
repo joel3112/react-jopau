@@ -18,11 +18,11 @@ import {
   withFormControl
 } from '@/components/shared';
 import { ChevronDown } from '@/components/icons';
-import { SelectGroupProps } from './group/select-group-props';
+import { SelectGroupProps } from './group/select-group.props';
 import { SelectGroup } from './group/select-group';
-import { SelectOptionProps } from './option/select-option-props';
+import { SelectOptionProps } from './option/select-option.props';
 import { SelectOption } from './option/select-option';
-import { SelectProps, defaultProps } from './select-props';
+import { SelectProps, defaultProps } from './select.props';
 import {
   StyledSelect,
   StyledSelectArrow,

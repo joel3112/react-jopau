@@ -1,6 +1,6 @@
 import { classes } from '@react-jopau/utils';
 import { prefixClass, withDefaults } from '@/components/shared';
-import { AvatarGroupProps, defaultProps } from './avatar-group-props';
+import { AvatarGroupProps, defaultProps } from './avatar-group.props';
 import { StyledAvatarGroup } from '../avatar.styled';
 
 /**

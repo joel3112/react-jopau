@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { Eye, EyeOff } from '@/components/icons';
-import { InputProps } from '../input-props';
+import { InputProps } from '../input.props';
 
 export type InputPasswordProps = Omit<InputProps, 'type' | 'icon' | 'iconPosition'> & {
   /**

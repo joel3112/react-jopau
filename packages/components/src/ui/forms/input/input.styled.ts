@@ -1,7 +1,7 @@
 import { ComponentType, Ref } from 'react';
 import { Input as InputNextUI, InputProps as InputPropsNextUI } from '@nextui-org/react';
 import { NextUIOverrideCSS, SimpleColor, styledTheme } from '@/components/shared';
-import { InputProps } from './input-props';
+import { InputProps } from './input.props';
 
 const colorTokens = (color: SimpleColor) => {
   return {

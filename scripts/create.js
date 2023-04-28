@@ -55,8 +55,8 @@ const createSubComponent = async (name, ref) => {
     },
     {
       name: 'props',
-      path: `${parentPath}/${name}/${parentName}-${name}-props.ts`,
-      templatePath: './templates/create/component-sub-props.ts.js'
+      path: `${parentPath}/${name}/${parentName}-${name}.props.ts`,
+      templatePath: './templates/create/component-sub.props.ts.js'
     },
     {
       name: 'stories',
@@ -109,8 +109,8 @@ const createComponent = async () => {
     },
     {
       name: 'props',
-      path: `packages/components/src/ui/${type}/${name}/${name}-props.ts`,
-      templatePath: './templates/create/component-props.ts.js'
+      path: `packages/components/src/ui/${type}/${name}/${name}.props.ts`,
+      templatePath: './templates/create/component.props.ts.js'
     },
     {
       name: 'stories',
@@ -153,8 +153,8 @@ const createContextProvider = async () => {
     },
     {
       name: 'props',
-      path: `packages/components/src/contexts/${name}/${name}-context-props.ts`,
-      templatePath: './templates/create/context-provider-props.ts.js'
+      path: `packages/components/src/contexts/${name}/${name}-context.props.ts`,
+      templatePath: './templates/create/context-provider.props.ts.js'
     },
     {
       name: 'stories',

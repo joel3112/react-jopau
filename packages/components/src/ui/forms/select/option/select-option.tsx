@@ -1,5 +1,5 @@
 import { withDefaults } from '@/components/shared';
-import { SelectOptionProps, defaultProps } from './select-option-props';
+import { SelectOptionProps, defaultProps } from './select-option.props';
 
 /**
  * Component that is used as an option in a Select component.

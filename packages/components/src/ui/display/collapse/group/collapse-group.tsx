@@ -2,7 +2,7 @@ import { classes } from '@react-jopau/utils';
 import { prefixClass, withDefaults } from '@/components/shared';
 import { CollapseContext } from '../collapse-context';
 import { StyledCollapseGroup } from '../collapse.styled';
-import { CollapseGroupProps, defaultProps } from './collapse-group-props';
+import { CollapseGroupProps, defaultProps } from './collapse-group.props';
 
 /**
  * Group of collapse components that can be expanded/collapsed to reveal more information.

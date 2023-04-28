@@ -8,7 +8,7 @@ import {
   withFormControl
 } from '@/components/shared';
 import { CheckboxContext } from '../checkbox-context';
-import { CheckboxGroupProps, defaultProps } from './checkbox-group-props';
+import { CheckboxGroupProps, defaultProps } from './checkbox-group.props';
 import { StyledCheckboxGroup } from '../checkbox.styled';
 
 /**

@@ -10,7 +10,7 @@ import {
 } from '@/components/shared';
 import { CheckboxContext } from './checkbox-context';
 import { CheckboxGroup } from './group/checkbox-group';
-import { CheckboxProps, defaultProps } from './checkbox-props';
+import { CheckboxProps, defaultProps } from './checkbox.props';
 import { StyledCheckbox } from './checkbox.styled';
 
 /**

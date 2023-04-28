@@ -1,7 +1,7 @@
 import { isValidElement } from 'react';
 import { classes } from '@react-jopau/utils';
 import { prefixClass, withDefaults } from '@/components/shared';
-import { BadgeProps, defaultProps } from './badge-props';
+import { BadgeProps, defaultProps } from './badge.props';
 import { StyledBadge } from './badge.styled';
 
 /**

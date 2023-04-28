@@ -11,7 +11,7 @@ import { classes } from '@react-jopau/utils';
 import { cleanedProps, forwardRef, prefixClass, withCompoundComponents } from '@/components/shared';
 import { ButtonContext } from './button-context';
 import { ButtonGroup } from './group/button-group';
-import { ButtonProps, defaultProps } from './button-props';
+import { ButtonProps, defaultProps } from './button.props';
 import { StyledButton, StyledButtonIcon } from './button.styled';
 
 /**

@@ -1,5 +1,5 @@
 import { withDefaults } from '@/components/shared';
-import { SelectGroupProps, defaultProps } from './select-group-props';
+import { SelectGroupProps, defaultProps } from './select-group.props';
 
 /**
  * Component that is used as an option group in a Select component.
