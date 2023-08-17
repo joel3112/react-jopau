@@ -5,6 +5,17 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [0.23.1](https://github.com/joel3112/react-jopau/compare/v0.23.0...v0.23.1) (2023-08-17)
 
+### 🏠 Internal
+
+- **release:** v0.23.1 ([4e932b4](https://github.com/joel3112/react-jopau/commit/4e932b4e5299f5ff930d57d229089176739250b5))
+
+### 🐛 Bug Fixes
+
+- **components:** move button prop ([09370c1](https://github.com/joel3112/react-jopau/commit/09370c1b2abc3be802d46a93fee4145f9fd6b24e))
+- **components:** move button prop [skip ci] ([32e070e](https://github.com/joel3112/react-jopau/commit/32e070eb0639edeca0228cc420bd4e307568b213))
+
+## [0.23.1](https://github.com/joel3112/react-jopau/compare/v0.23.0...v0.23.1) (2023-08-17)
+
 ### 🐛 Bug Fixes
 
 - **components:** move button prop ([09370c1](https://github.com/joel3112/react-jopau/commit/09370c1b2abc3be802d46a93fee4145f9fd6b24e))
