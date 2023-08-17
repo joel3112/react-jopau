@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.23.0](https://github.com/joel3112/react-jopau/compare/v0.22.1...v0.23.0) (2023-08-17)
+
+### 🚀 New Features
+
+- **components:** add avatar component ([7658456](https://github.com/joel3112/react-jopau/commit/7658456dfa4f545899714370c64676f21931f9a8))
+- **components:** add badge component ([fa6ef9d](https://github.com/joel3112/react-jopau/commit/fa6ef9d528baa95ad5246ca36dfdd35479ba661b))
+- **components:** add collapse component ([73b22d1](https://github.com/joel3112/react-jopau/commit/73b22d1adbb238c13ddbb9967c8011506a3ad648))
+- **components:** refactor hooks compounds components ([2ae3fa2](https://github.com/joel3112/react-jopau/commit/2ae3fa29467fb0a55538c3a2bf62b32939d4c791))
+- **components:** update text variants ([1eb7d50](https://github.com/joel3112/react-jopau/commit/1eb7d50e35958970b624d956ce69f9c76e620c66))
+
+### 🏠 Internal
+
+- **components:** rename props files ([c5f72d7](https://github.com/joel3112/react-jopau/commit/c5f72d77fa19578f30b9ecd8ff8543fe39d267ee))
+- support sub-component in create script ([e31a8a6](https://github.com/joel3112/react-jopau/commit/e31a8a64fd1d463f42dc4e6ddb52c52d510366b7))
+
+### 🐛 Bug Fixes
+
+- **components:** move button prop ([8cc6cae](https://github.com/joel3112/react-jopau/commit/8cc6cae850891999b6f4c27b278218b5eee322e2))
+- **utils:** update test yearsFromNow ([e9af6b9](https://github.com/joel3112/react-jopau/commit/e9af6b97fcf9e80043ab5be2145067b4ca967ae1))
+
 ## [0.22.1](https://github.com/joel3112/react-jopau/compare/v0.22.0...v0.22.1) (2023-03-07)
 
 ### 🐛 Bug Fixes

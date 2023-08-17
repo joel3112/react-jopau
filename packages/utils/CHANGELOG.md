@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.23.0](https://github.com/joel3112/react-jopau/compare/v0.22.1...v0.23.0) (2023-08-17)
+
+### 🚀 New Features
+
+- **components:** add badge component ([fa6ef9d](https://github.com/joel3112/react-jopau/commit/fa6ef9d528baa95ad5246ca36dfdd35479ba661b))
+- **components:** refactor hooks compounds components ([2ae3fa2](https://github.com/joel3112/react-jopau/commit/2ae3fa29467fb0a55538c3a2bf62b32939d4c791))
+
+### 🐛 Bug Fixes
+
+- **utils:** update test yearsFromNow ([e9af6b9](https://github.com/joel3112/react-jopau/commit/e9af6b97fcf9e80043ab5be2145067b4ca967ae1))
+
 ## [0.22.0](https://github.com/joel3112/react-jopau/compare/v0.21.2...v0.22.0) (2023-03-06)
 
 ### 🚀 New Features

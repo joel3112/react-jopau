@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.23.0](https://github.com/joel3112/react-jopau/compare/v0.22.1...v0.23.0) (2023-08-17)
+
+### 🚀 New Features
+
+- **components:** update text variants ([1eb7d50](https://github.com/joel3112/react-jopau/commit/1eb7d50e35958970b624d956ce69f9c76e620c66))
+
 ## [0.22.1](https://github.com/joel3112/react-jopau/compare/v0.22.0...v0.22.1) (2023-03-07)
 
 ### 🐛 Bug Fixes
