@@ -3,8 +3,8 @@ import { Radio as RadioNextUI } from '@nextui-org/react';
 import { RadioProps as RadioPropsNextUI } from '@nextui-org/react/types/radio/radio';
 import { RadioGroupProps as RadioGroupPropsNextUI } from '@nextui-org/react/types/radio/radio-group';
 import { NextUIOverrideCSS, styledTheme } from '@/components/shared';
-import { RadioProps } from './radio-props';
-import { RadioGroupProps } from './group/radio-group-props';
+import { RadioProps } from './radio.props';
+import { RadioGroupProps } from './group/radio-group.props';
 
 enum NextUIEl {
   RADIO_GROUP = '.nextui-radio-group',
@@ -69,7 +69,7 @@ export const StyledRadio = styledTheme(
     display: 'inline-block',
 
     [`&${NextUIEl.RADIO}--is-hovered:not([class*="isChecked-true"]) ${NextUIEl.RADIO_POINT}`]: {
-      backgroundColor: '$colors$input',
+      backgroundColor: '$colors$accent1',
       backgroundColorDarker: 0.2
     },
     [`&${NextUIEl.RADIO}--is-hovered ${NextUIEl.RADIO_POINT}::after`]: {

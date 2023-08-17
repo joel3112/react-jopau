@@ -1,9 +1,9 @@
-import { ComponentType, Ref } from 'react';
+import { ComponentType, MutableRefObject, Ref } from 'react';
 import { Checkbox as CheckboxNextUI } from '@nextui-org/react';
 import { CheckboxProps as CheckboxPropsNextUI } from '@nextui-org/react/types/checkbox/checkbox';
 import { NextUIOverrideCSS, styledTheme } from '@/components/shared';
-import { CheckboxProps } from './checkbox-props';
-import { CheckboxGroupProps } from './group/checkbox-group-props';
+import { CheckboxProps } from './checkbox.props';
+import { CheckboxGroupProps } from './group/checkbox-group.props';
 
 enum NextUIEl {
   CHECKBOX_GROUP = '.nextui-checkbox-group',
@@ -66,7 +66,7 @@ export const StyledCheckbox = styledTheme(
   CheckboxNextUI as ComponentType<
     Partial<
       Omit<CheckboxPropsNextUI, keyof CheckboxProps | 'ref'> &
-        CheckboxProps & { ref: Ref<HTMLInputElement> }
+        CheckboxProps & { ref: MutableRefObject<HTMLInputElement> }
     >
   >,
   {

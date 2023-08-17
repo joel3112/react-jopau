@@ -16,10 +16,10 @@ import { Heading } from '@react-jopau/components';
 
 #### Props
 
-| Name                  | Type                                                                                                                               | Default value | Description                            |
-| --------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ------------- | -------------------------------------- |
-| children _(required)_ | `ReactNode`                                                                                                                        |               | Defines the children of the component. |
-| as                    | `"h1"` \| `"h2"` \| `"h3"` \| `"h4"` \| `"h5"` \| `"h6"`                                                                           |               | Changes which tag component outputs    |
-| className             | `string`                                                                                                                           |               | Classnames applied to root element     |
-| color                 | `"inherit"` \| `"primary"` \| `"secondary"` \| `"tertiary"` \| `"info"` \| `"error"` \| `"success"` \| `"warning"` \| `"disabled"` |               | Defines the color of the heading.      |
-| style                 | `CSSProperties`                                                                                                                    |               | Styles applied to root element         |
+| Name                  | Type                                                     | Default value | Description                            |
+| --------------------- | -------------------------------------------------------- | ------------- | -------------------------------------- |
+| children _(required)_ | `ReactNode`                                              |               | Defines the children of the component. |
+| as                    | `"h1"` \| `"h2"` \| `"h3"` \| `"h4"` \| `"h5"` \| `"h6"` |               | Changes which tag component outputs    |
+| className             | `string`                                                 |               | Classnames applied to root element     |
+| color                 | `TextColor`                                              |               | Defines the color of the heading.      |
+| style                 | `CSSProperties`                                          |               | Styles applied to root element         |

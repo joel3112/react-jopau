@@ -1,5 +1,5 @@
 import { Container, Stack, Text } from '@react-jopau/components';
-import { prepareParameters, SBCode } from '@react-jopau/shared/stories';
+import { prepareParameters } from '@react-jopau/shared/stories';
 import { useBreakpoint } from './use-breakpoint';
 import docs from './readme.mdx';
 
@@ -18,27 +18,27 @@ export const Default = () => {
 
       <Stack className="mt-10" direction="column" gap={1}>
         <Stack align="center" gap={1}>
-          <SBCode>key:</SBCode>
+          <Text as="code">key:</Text>
           {key && <Text as="code">{key}</Text>}
         </Stack>
         <Stack align="center" gap={1}>
-          <SBCode>isMobile:</SBCode>
+          <Text as="code">isMobile:</Text>
           {isMobile ? '✅' : '❌'}
         </Stack>
         <Stack align="center" gap={1}>
-          <SBCode>isTablet:</SBCode>
+          <Text as="code">isTablet:</Text>
           {isTablet ? '✅' : '❌'}
         </Stack>
         <Stack align="center" gap={1}>
-          <SBCode>isSmallDesktop:</SBCode>
+          <Text as="code">isSmallDesktop:</Text>
           {isSmallDesktop ? '✅' : '❌'}
         </Stack>
         <Stack align="center" gap={1}>
-          <SBCode>isDesktop:</SBCode>
+          <Text as="code">isDesktop:</Text>
           {isDesktop ? '✅' : '❌'}
         </Stack>
         <Stack align="center" gap={1}>
-          <SBCode>isLargeDesktop:</SBCode>
+          <Text as="code">isLargeDesktop:</Text>
           {isLargeDesktop ? '✅' : '❌'}
         </Stack>
       </Stack>

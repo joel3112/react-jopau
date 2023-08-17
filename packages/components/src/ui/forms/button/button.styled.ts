@@ -1,7 +1,7 @@
 import { ComponentType, Ref } from 'react';
 import { Button as ButtonNextUI, ButtonProps as ButtonPropsNextUI } from '@nextui-org/react';
 import { NextUIOverrideCSS, styledTheme } from '@/components/shared';
-import { ButtonProps } from './button-props';
+import { ButtonProps } from './button.props';
 
 const colorTokens = (color: NonNullable<ButtonProps['color']>) => {
   const {
@@ -149,8 +149,8 @@ export const StyledButton = styledTheme(
     '&[disabled]': {
       opacity: '$opacity$80',
       color: '$colors$disabled',
-      $$buttonBackgroundColor: '$colors$input',
-      $$borderColor: '$colors$input'
+      $$buttonBackgroundColor: '$colors$accent1',
+      $$borderColor: '$colors$accent1'
     },
 
     variants: {

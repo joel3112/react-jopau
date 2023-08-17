@@ -3,11 +3,11 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import {
   prepareArgTypes,
   prepareParameters,
-  SBCode,
   SBSelectorContainer,
   SBTextSeparator
 } from '@react-jopau/shared/stories';
 import { Stack } from '../../layout';
+import { Text } from '../../typography';
 import { Textarea } from './textarea';
 import docs from './readme.mdx';
 
@@ -220,9 +220,9 @@ export const UncontrolledVSControlled = () => {
         value={valueControlled}
         onChange={(e) => setValueControlled(e.target.value)}
       />
-      <span>
-        Value textarea: <SBCode>{valueControlled}</SBCode>
-      </span>
+      <Stack align="center" gap={1}>
+        Value textarea: <Text as="code">{valueControlled}</Text>
+      </Stack>
     </Stack>
   );
 };

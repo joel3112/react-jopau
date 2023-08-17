@@ -31,7 +31,7 @@ export const use${context.pascalName} = (initialValue: number): {
   setValue: (value: number) => void;
 } => {
   const [value, setValue] = useState<number>(0);
-  
+
   useEffect(() => {
     setValue(initialValue);
   }, [initialValue]);

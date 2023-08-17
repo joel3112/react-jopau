@@ -1,12 +1,8 @@
 import { useRef, useState } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import {
-  prepareArgTypes,
-  prepareParameters,
-  SBCode,
-  SBTextSeparator
-} from '@react-jopau/shared/stories';
+import { prepareArgTypes, prepareParameters, SBTextSeparator } from '@react-jopau/shared/stories';
 import { Stack } from '../../../layout';
+import { Text } from '../../../typography';
 import { Checkbox } from '../checkbox';
 import docs from './readme.mdx';
 
@@ -124,9 +120,9 @@ export const GroupUncontrolledVSControlled = () => {
         <Checkbox value="C">Option C</Checkbox>
         <Checkbox value="D">Option D</Checkbox>
       </Checkbox.Group>
-      <span>
-        Selected: {valueControlled.length > 0 && <SBCode>{valueControlled.join(',')}</SBCode>}
-      </span>
+      <Stack align="center" gap={1}>
+        Selected: {valueControlled.length > 0 && <Text as="code">{valueControlled.join(',')}</Text>}
+      </Stack>
     </Stack>
   );
 };

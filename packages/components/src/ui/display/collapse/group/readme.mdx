@@ -1,0 +1,34 @@
+import {
+  SBArgsTable,
+  SBDescription,
+  SBLinks,
+  SBStories,
+  SBTitle
+} from '@react-jopau/shared/stories';
+import { Collapse } from '../collapse';
+
+<SBTitle>Collapse.Group</SBTitle>
+
+<SBLinks>
+  <SBLinks.Item href="components-display-collapse--group-default">Playground</SBLinks.Item>
+</SBLinks>
+
+<SBDescription>
+  Group of collapse components that can be expanded/collapsed to reveal more information.
+</SBDescription>
+
+```jsx dark
+import { CollapseGroup } from '@react-jopau/components';
+```
+
+<SBStories.Default id="components-display-collapse--group-default" />
+
+<SBArgsTable component={Collapse.Group} />
+
+<SBStories>
+  <SBStories.Item label="[Group] Accordion" id="components-display-collapse--group-accordion" />
+  <SBStories.Item label="[Group] No Divider" id="components-display-collapse--group-no-divider" />
+  <SBStories.Item label="[Group] Shadow" id="components-display-collapse--group-shadow" />
+  <SBStories.Item label="[Group] Splitted" id="components-display-collapse--group-splitted" />
+  <SBStories.Item label="[Group] Bordered" id="components-display-collapse--group-bordered" />
+</SBStories>

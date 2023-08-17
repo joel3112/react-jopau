@@ -1,11 +1,12 @@
 import { classes } from '@react-jopau/utils';
-import { prefixClass } from '@/components/shared';
+import { prefixClass, withDefaults } from '@/components/shared';
 import { ButtonContext } from '../button-context';
-import { ButtonGroupProps, defaultProps } from './button-group-props';
+import { ButtonGroupProps, defaultProps } from './button-group.props';
 import { StyledButtonGroup } from '../button.styled';
 
 /**
- * If you need to make a group of buttons you can use the compound component Button.Group and inside the buttons you want to group.
+ * If you need to make a group of buttons you can use the compound component Button.Group
+ * and inside the buttons you want to group.
  *
  * @param   {ButtonGroupProps} props - Props injected to the component.
  * @returns {JSX.Element} Rendered component.
@@ -17,7 +18,7 @@ import { StyledButtonGroup } from '../button.styled';
  *  <Button>Button B</Button>
  * </Button.Group>
  */
-export const ButtonGroup = (props: ButtonGroupProps) => {
+export const ButtonGroup = withDefaults<ButtonGroupProps>((props: ButtonGroupProps) => {
   const {
     className,
     style,
@@ -46,6 +47,4 @@ export const ButtonGroup = (props: ButtonGroupProps) => {
       </StyledButtonGroup>
     </ButtonContext.Provider>
   );
-};
-
-ButtonGroup.defaultProps = defaultProps;
+}, defaultProps);

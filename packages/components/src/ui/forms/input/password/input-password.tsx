@@ -1,8 +1,8 @@
 import { useMemo, useState } from 'react';
 import { classes } from '@react-jopau/utils';
-import { prefixClass } from '@/components/shared';
+import { prefixClass, withDefaults } from '@/components/shared';
+import { defaultProps, InputPasswordProps } from './input-password.props';
 import { Input } from '../input';
-import { defaultProps, InputPasswordProps } from './input-password-props';
 
 /**
  * Input component is a component that is used to get user password input in a text field.
@@ -14,13 +14,13 @@ import { defaultProps, InputPasswordProps } from './input-password-props';
  * @example
  * <Input.Password label="Password" placeholder="Your password" />
  */
-export const InputPassword = (props: InputPasswordProps) => {
+export const InputPassword = withDefaults<InputPasswordProps>((props: InputPasswordProps) => {
   const { hideToggle, visibleIcon, hiddenIcon, ...inputProps } = props;
 
   const [visible, setVisible] = useState<boolean>(false);
 
   const icon = useMemo(() => {
-    if (hideToggle) return null;
+    if (hideToggle) return false;
 
     return visible ? visibleIcon : hiddenIcon;
   }, [hideToggle, visible, visibleIcon, hiddenIcon]);
@@ -35,6 +35,4 @@ export const InputPassword = (props: InputPasswordProps) => {
       onIconClick={() => setVisible((v) => !v)}
     />
   );
-};
-
-InputPassword.defaultProps = defaultProps;
+}, defaultProps);

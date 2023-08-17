@@ -1,0 +1,39 @@
+import {
+  SBArgsTable,
+  SBDescription,
+  SBLinks,
+  SBStories,
+  SBTitle
+} from '@react-jopau/shared/stories';
+import { Collapse } from './collapse';
+
+<SBTitle>Collapse</SBTitle>
+
+<SBLinks>
+  <SBLinks.Item href="components-display-collapse--default">Playground</SBLinks.Item>
+  <SBLinks.Item href="components-display-collapse--group-docs">Collapse.Group</SBLinks.Item>
+</SBLinks>
+
+<SBDescription>
+  Collapse display a list of high-level options that can expand/collapse to reveal more information.
+</SBDescription>
+
+```jsx dark
+import { Collapse } from '@react-jopau/components';
+```
+
+<SBStories.Default id="components-display-collapse--default" />
+
+<SBArgsTable component={Collapse} />
+
+<SBStories>
+  <SBStories.Item label="Initial Expanded" id="components-display-collapse--initial-expanded" />
+  <SBStories.Item label="With Subtitle" id="components-display-collapse--with-subtitle" />
+  <SBStories.Item label="With Content Left" id="components-display-collapse--with-content-left" />
+  <SBStories.Item label="Custom Arrow Icon" id="components-display-collapse--custom-arrow-icon" />
+  <SBStories.Item label="Hide Arrow" id="components-display-collapse--hide-arrow" />
+  <SBStories.Item label="Shadow" id="components-display-collapse--shadow" />
+  <SBStories.Item label="Bordered" id="components-display-collapse--bordered" />
+  <SBStories.Item label="Divider" id="components-display-collapse--divider" />
+  <SBStories.Item label="Disabled" id="components-display-collapse--disabled" />
+</SBStories>

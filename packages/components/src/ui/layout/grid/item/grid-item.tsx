@@ -1,8 +1,8 @@
 import { CSSProperties, useContext, useMemo } from 'react';
 import { classes } from '@react-jopau/utils';
-import { prefixClass } from '@/components/shared';
+import { prefixClass, withDefaults } from '@/components/shared';
 import { GridContext } from '../grid-context';
-import { GridItemProps, defaultProps } from './grid-item-props';
+import { GridItemProps, defaultProps } from './grid-item.props';
 import { StyleGridItem } from '../grid.styled';
 
 /**
@@ -15,7 +15,9 @@ import { StyleGridItem } from '../grid.styled';
  * @example
  * <Grid.Item>1 of 2</Grid.Item>
  */
-export const GridItem = ({ className, style, children, as, xs, sm, md, lg, xl }: GridItemProps) => {
+export const GridItem = withDefaults<GridItemProps>((props: GridItemProps) => {
+  const { className, style, children, as, xs, sm, md, lg, xl } = props;
+
   const { columns } = useContext(GridContext);
 
   const breakClasses = useMemo(() => {
@@ -74,6 +76,4 @@ export const GridItem = ({ className, style, children, as, xs, sm, md, lg, xl }:
       {children}
     </StyleGridItem>
   );
-};
-
-GridItem.defaultProps = defaultProps;
+}, defaultProps);

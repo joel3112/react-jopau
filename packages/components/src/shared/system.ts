@@ -9,6 +9,7 @@ import {
   ComponentType,
   ElementType,
   forwardRef as baseForwardRef,
+  ForwardRefExoticComponent,
   ForwardRefRenderFunction,
   ValidationMap,
   WeakValidationMap
@@ -53,11 +54,27 @@ export const forwardRef = <Props extends object, Component extends As>(
   return baseForwardRef(component) as unknown as ComponentWithAs<Component, Props>;
 };
 
-export const withDefaults = <P, DP>(component: ComponentType<P>, defaultProps: DP) => {
-  type Props = Partial<DP> & Omit<P, keyof DP>;
-  (component as any).defaultProps = defaultProps;
+export const withDefaults = <P, DP extends object = object>(
+  Component: ComponentType<P>,
+  defaultProps: DP
+) => {
+  Component.defaultProps = defaultProps;
 
-  return component as ComponentType<Props>;
+  return Component as ForwardRefExoticComponent<P>;
+};
+
+export const withCompoundComponents = <P, CC extends object, DP extends object = object>(
+  Component: ComponentType<P>,
+  defaultProps: DP,
+  compoundComponents: CC
+) => {
+  Component.defaultProps = defaultProps;
+  Component.displayName = Component.displayName;
+  Object.entries(compoundComponents).forEach(([key, value]) => {
+    (Component as any)[key] = value;
+  });
+
+  return Component as ForwardRefExoticComponent<P> & CC;
 };
 
 export const isForwardRef = (Component: any) => Component.$$typeof === ReactIs.ForwardRef;

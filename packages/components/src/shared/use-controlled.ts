@@ -1,7 +1,15 @@
-import { Ref, RefObject, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react';
+import {
+  ForwardedRef,
+  RefObject,
+  useEffect,
+  useImperativeHandle,
+  useMemo,
+  useRef,
+  useState
+} from 'react';
 
 export const useControlled = <K, T>(
-  ref: Ref<Partial<K> | null>,
+  ref: ForwardedRef<K>,
   value?: T,
   defaultValue?: T
 ): [
@@ -13,7 +21,7 @@ export const useControlled = <K, T>(
   (value: T) => void
 ] => {
   const controlRef = useRef<K>(null);
-  useImperativeHandle(ref, () => controlRef.current);
+  useImperativeHandle(ref, () => controlRef.current as K);
 
   const valueKey = typeof value === 'boolean' ? 'checked' : 'value';
   const defaultValueKey = typeof defaultValue === 'boolean' ? 'defaultChecked' : 'defaultValue';

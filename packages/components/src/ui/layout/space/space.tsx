@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import { classes } from '@react-jopau/utils';
-import { prefixClass } from '@/components/shared';
-import { defaultProps, SpaceProps } from './space-props';
+import { prefixClass, withDefaults } from '@/components/shared';
+import { defaultProps, SpaceProps } from './space.props';
 import { StyledSpace } from './space.styled';
 
 /**
@@ -14,7 +14,9 @@ import { StyledSpace } from './space.styled';
  * @example
  * <Space y={1} />
  */
-export const Space = ({ className, style, as, x, y, inline }: SpaceProps) => {
+export const Space = withDefaults<SpaceProps>((props: SpaceProps) => {
+  const { className, style, as, x, y, inline } = props;
+
   const getMargin = useCallback(
     (num: number): string => {
       return `calc(${num * 15.25}pt + 1px * ${num - 1})`;
@@ -34,6 +36,4 @@ export const Space = ({ className, style, as, x, y, inline }: SpaceProps) => {
       inline={!!inline}
     />
   );
-};
-
-Space.defaultProps = defaultProps;
+}, defaultProps);

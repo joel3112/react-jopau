@@ -1,16 +1,14 @@
-import {
-  ChangeEvent,
-  ForwardRefExoticComponent,
-  Ref,
-  RefAttributes,
-  useEffect,
-  useMemo,
-  useState
-} from 'react';
+import { ChangeEvent, ForwardedRef, useEffect, useMemo, useState } from 'react';
 import { KeyCode, useKeyboard } from '@nextui-org/react';
 import { classes } from '@react-jopau/utils';
-import { forwardRef, prefixClass, useControlChecked, withFormControl } from '@/components/shared';
-import { SwitchProps, defaultProps } from './switch-props';
+import {
+  forwardRef,
+  prefixClass,
+  useControlChecked,
+  withDefaults,
+  withFormControl
+} from '@/components/shared';
+import { SwitchProps, defaultProps } from './switch.props';
 import {
   StyledSwitch,
   StyledSwitchCircle,
@@ -30,9 +28,9 @@ import {
  * @example
  * <Switch defaultChecked />
  */
-export const Switch = withFormControl<SwitchProps, HTMLInputElement>(
-  forwardRef<SwitchProps, 'input'>(
-    (props: SwitchProps, ref: Ref<Partial<HTMLInputElement> | null>) => {
+export const Switch = withDefaults<SwitchProps>(
+  withFormControl<SwitchProps, HTMLInputElement>(
+    forwardRef<SwitchProps, 'input'>((props: SwitchProps, ref: ForwardedRef<HTMLInputElement>) => {
       const {
         className,
         style,
@@ -70,7 +68,7 @@ export const Switch = withFormControl<SwitchProps, HTMLInputElement>(
         const hasIconOn = Boolean(iconOn);
         const hasIconOff = Boolean(iconOff);
 
-        if (!hasIcon) return null;
+        if (!hasIcon) return false;
         if (hasIconOn && selfChecked) return iconOn;
         if (hasIconOff && !selfChecked) return iconOff;
 
@@ -143,11 +141,8 @@ export const Switch = withFormControl<SwitchProps, HTMLInputElement>(
           {children && <StyledSwitchLabel htmlFor={id}>{children}</StyledSwitchLabel>}
         </StyledSwitchWrapper>
       );
-    }
+    }),
+    'switch'
   ),
-  'switch'
-) as ForwardRefExoticComponent<
-  SwitchProps & Partial<typeof defaultProps> & RefAttributes<HTMLInputElement>
->;
-
-Switch.defaultProps = defaultProps as Partial<SwitchProps>;
+  defaultProps
+);

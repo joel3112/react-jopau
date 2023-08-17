@@ -1,0 +1,38 @@
+import {
+  SBArgsTable,
+  SBDescription,
+  SBLinks,
+  SBStories,
+  SBTitle
+} from '@react-jopau/shared/stories';
+import { Avatar } from './avatar';
+
+<SBTitle>Avatar</SBTitle>
+
+<SBLinks>
+  <SBLinks.Item href="components-display-avatar--default">Playground</SBLinks.Item>
+  <SBLinks.Item href="components-display-avatar--group-docs">Avatar.Group</SBLinks.Item>
+</SBLinks>
+
+<SBDescription>
+  The Avatar component is used to represent a user, and displays the profile picture, initials or
+  fallback icon.
+</SBDescription>
+
+```jsx dark
+import { Avatar } from '@react-jopau/components';
+```
+
+<SBStories.Default id="components-display-avatar--default" />
+
+<SBArgsTable component={Avatar} />
+
+<SBStories>
+  <SBStories.Item label="Sizes" id="components-display-avatar--sizes" />
+  <SBStories.Item label="Colors" id="components-display-avatar--colors" />
+  <SBStories.Item label="Images" id="components-display-avatar--images" />
+  <SBStories.Item label="Icons" id="components-display-avatar--icons" />
+  <SBStories.Item label="Squared" id="components-display-avatar--squared" />
+  <SBStories.Item label="Bordered" id="components-display-avatar--bordered" />
+  <SBStories.Item label="Zoomed" id="components-display-avatar--zoomed" />
+</SBStories>

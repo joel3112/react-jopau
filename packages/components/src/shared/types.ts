@@ -12,7 +12,10 @@ export type SimpleColor = NormalColor | 'default';
 export type TextColor = NormalColor | 'inherit' | 'disabled';
 export type ButtonColor = NormalColor | 'light' | 'dark';
 
+export type BreakpointValue<T> = Partial<{ [key in NormalSize]: T }>;
+
 export type NormalSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+export type BreakpointsSize = BreakpointValue<number>;
 
 export type Shape = 'default' | 'round' | 'square';
 
@@ -30,16 +33,13 @@ export type WithIcon = {
    */
   iconPosition?: ContentPosition;
 };
-export type WithGap<T = number | Array<number>> = {
+export type WithGap<T = number> = {
   /**
    * Defines the spacing between the items.
    */
-  gap?: T | { [key in NormalSize]?: T };
+  gap?: T | BreakpointValue<T>;
 };
-export type WithFlex<
-  TDirection = 'row' | 'column' | 'row-reverse' | 'column-reverse',
-  TGap = number | Array<number>
-> = WithGap<TGap> & {
+export type WithFlex<TDirection = 'row' | 'column' | 'row-reverse' | 'column-reverse'> = {
   /**
    * Defines the direction of the flex container.
    */

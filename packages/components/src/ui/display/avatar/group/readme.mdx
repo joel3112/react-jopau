@@ -1,0 +1,32 @@
+import {
+  SBArgsTable,
+  SBDescription,
+  SBLinks,
+  SBStories,
+  SBTitle
+} from '@react-jopau/shared/stories';
+import { Avatar } from '../avatar';
+
+<SBTitle>Avatar.Group</SBTitle>
+
+<SBLinks>
+  <SBLinks.Item href="components-display-avatar--group-default">Playground</SBLinks.Item>
+</SBLinks>
+
+<SBDescription>
+  If you need to make a group of avatars you can use the compound component Avatar.Group and inside
+  the avatars you want to group.
+</SBDescription>
+
+```jsx dark
+import { AvatarGroup } from '@react-jopau/components';
+```
+
+<SBStories.Default id="components-display-avatar--group-default" />
+
+<SBArgsTable component={Avatar.Group} />
+
+<SBStories>
+  <SBStories.Item label="[Group] Count" id="components-display-avatar--group-count" />
+  <SBStories.Item label="[Group] Animated" id="components-display-avatar--group-animated" />
+</SBStories>

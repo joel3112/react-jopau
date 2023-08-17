@@ -1,6 +1,6 @@
 import { classes } from '@react-jopau/utils';
-import { prefixClass } from '@/components/shared';
-import { defaultProps, TextProps } from './text-props';
+import { prefixClass, withDefaults } from '@/components/shared';
+import { defaultProps, TextProps } from './text.props';
 import { StyledText } from './text.styled';
 
 /**
@@ -13,7 +13,9 @@ import { StyledText } from './text.styled';
  * @example
  * <Text size="md" as="span">Content</Text>
  */
-export const Text = ({ className, style, children, color, as, size, maxLines }: TextProps) => {
+export const Text = withDefaults<TextProps>((props: TextProps) => {
+  const { className, style, children, color, as, size, maxLines } = props;
+
   return (
     <StyledText
       as={as}
@@ -27,6 +29,4 @@ export const Text = ({ className, style, children, color, as, size, maxLines }: 
       {children}
     </StyledText>
   );
-};
-
-Text.defaultProps = defaultProps;
+}, defaultProps);

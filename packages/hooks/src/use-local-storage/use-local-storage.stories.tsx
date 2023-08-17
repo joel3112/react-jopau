@@ -1,6 +1,6 @@
 import { FormEvent } from 'react';
 import { Button, Container, Heading, Input, Stack, Text } from '@react-jopau/components';
-import { prepareParameters, SBCode } from '@react-jopau/shared/stories';
+import { prepareParameters } from '@react-jopau/shared/stories';
 import { useLocalStorage } from './use-local-storage';
 import docs from './readme.mdx';
 
@@ -38,7 +38,7 @@ export const Default = () => {
       <Stack className="mt-10" direction="column" gap={1}>
         <Heading as="h6">LocalStorage:</Heading>
         <Stack align="center" gap={1} className="flex-wrap">
-          <SBCode>{key}:</SBCode>
+          <Text as="code">{key}:</Text>
           <code>
             <Text>{value}</Text>
           </code>

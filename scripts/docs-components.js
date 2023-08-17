@@ -43,7 +43,7 @@ const parseOptions = {
 const generateComponentDocs = async (type, componentNameOne) => {
   introComponentsProps = [];
   let files = await glob(`packages/components/src/${type}/**/${componentNameOne || ''}*.tsx`, {
-    ignore: ['**/*.{test,stories,styled}.{ts,tsx}', '**/index.{ts,tsx}', '**/*-props.{ts,tsx}']
+    ignore: ['**/*.{test,stories,styled}.{ts,tsx}', '**/index.{ts,tsx}', '**/*.props.{ts,tsx}']
   });
 
   files.sort((a, b) => {

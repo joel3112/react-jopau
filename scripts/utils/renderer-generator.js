@@ -159,16 +159,21 @@ class RendererGenerator {
     );
   }
 
-  renderComponent({ componentName, componentType }) {
+  renderComponent({ parentComponentName, componentName, componentType }) {
+    const toPascalCase = (str) =>
+      str
+        .replace(/( |-)+/g, '-')
+        .split('-')
+        .map(capitalize)
+        .join('');
+
     return this.options.template.instantiate(
       {
         name: componentName,
-        pascalName: componentName
-          .replace(/( |-)+/g, '-')
-          .split('-')
-          .map(capitalize)
-          .join(''),
-        type: componentType
+        parentName: parentComponentName,
+        type: componentType,
+        ...(componentName && { pascalName: toPascalCase(componentName) }),
+        ...(parentComponentName && { pascalParentName: toPascalCase(parentComponentName) })
       },
       this.extension
     );

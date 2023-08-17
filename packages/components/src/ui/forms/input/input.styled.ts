@@ -1,7 +1,7 @@
 import { ComponentType, Ref } from 'react';
 import { Input as InputNextUI, InputProps as InputPropsNextUI } from '@nextui-org/react';
 import { NextUIOverrideCSS, SimpleColor, styledTheme } from '@/components/shared';
-import { InputProps } from './input-props';
+import { InputProps } from './input.props';
 
 const colorTokens = (color: SimpleColor) => {
   return {
@@ -57,7 +57,7 @@ const statusTokens = (status: SimpleColor) => {
       $$inputBorderedControlColor: '$colors$text',
       $$inputControlBorderColor: '$colors$border',
       $$inputControlFocusBorderColor: '$colors$text',
-      $$inputControlBackgroundColor: '$colors$input',
+      $$inputControlBackgroundColor: '$colors$accent1',
       $$inputControlBackgroundColorOpacity: 0,
       $$inputHotkeyBackgroundColor: '$colors$background'
     },
@@ -184,7 +184,7 @@ export const StyledHotKey = styledTheme('div', {
   marginRight: '$space$4',
   opacity: '$opacity$80',
   borderRadius: '$radii$xs',
-  background: '$colors$input',
+  background: '$colors$accent1',
 
   kbd: {
     boxShadow: 'none',
@@ -304,7 +304,7 @@ export const StyledInputWrapper = styledTheme('div', {
       },
       bordered: {
         $$inputLabelGap: '$space$3',
-        $$inputHotkeyBackgroundColor: '$colors$input',
+        $$inputHotkeyBackgroundColor: '$colors$accent1',
 
         [`${NextUIEl.LABEL}`]: { color: '$$inputLabelColor' },
         [`${NextUIEl.INPUT_WRAPPER}`]: {

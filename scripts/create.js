@@ -1,10 +1,20 @@
 const fs = require('fs');
 const path = require('path');
 const clc = require('cli-color');
-const { kebabCase } = require('lodash');
-const { promptInput, promptSelect, promptToggle } = require('./utils/prompt');
+const glob = require('glob-promise');
+const { kebabCase, uniq } = require('lodash');
+const { promptInput, promptSelect, promptToggle, promptAutoComplete } = require('./utils/prompt');
 const RendererGenerator = require('./utils/renderer-generator.js');
 const { writeFile } = require('./utils/schema');
+
+const parentComponents = async () => {
+  const files = await glob('packages/components/src/ui/**/*.tsx');
+  const parents = files
+    .map((f) => path.parse(f).dir)
+    .map((f) => (f.split('/').length === 6 ? f : null));
+
+  return uniq(parents.filter((p) => p !== null));
+};
 
 const generateFiles = async (files, props) => {
   return new Promise(async (resolve, reject) => {
@@ -28,10 +38,58 @@ const generateFiles = async (files, props) => {
   });
 };
 
+const createSubComponent = async (name, ref) => {
+  const parentPaths = await parentComponents();
+  const parentName = await promptAutoComplete(
+    'Parent component?',
+    parentPaths.map((p) => p.split('/').pop())
+  );
+  const parentPath = parentPaths.find((p) => p.split('/').includes(parentName));
+  const files = [
+    {
+      name: 'component',
+      path: `${parentPath}/${name}/${parentName}-${name}.tsx`,
+      templatePath: !ref
+        ? './templates/create/component-sub.tsx.js'
+        : './templates/create/component-sub-ref.tsx.js'
+    },
+    {
+      name: 'props',
+      path: `${parentPath}/${name}/${parentName}-${name}.props.ts`,
+      templatePath: './templates/create/component-sub.props.ts.js'
+    },
+    {
+      name: 'stories',
+      path: `${parentPath}/${name}/${parentName}-${name}.stories.tsx`,
+      templatePath: './templates/create/component-sub.stories.tsx.js'
+    }
+  ];
+
+  generateFiles(files, {
+    parentComponentName: parentName,
+    componentName: name,
+    type: path.parse(parentPath).dir.split('/').pop()
+  })
+    .then(() => {
+      console.log(clc.green('Component created!'));
+    })
+    .catch((error) => {
+      throw error;
+    });
+};
+
 const createComponent = async () => {
   console.log(clc.green('Creating component...'));
 
   const name = kebabCase(await promptInput('Component name', 'example', kebabCase));
+  const ref = await promptToggle('Should the component be a ref?', false);
+  const isSubComponent = await promptToggle('Is this a subcomponent?', false);
+
+  if (isSubComponent) {
+    await createSubComponent(name, ref);
+    return;
+  }
+
   const type = await promptSelect('Component category', [
     'display',
     'feedback',
@@ -41,8 +99,6 @@ const createComponent = async () => {
     'overlay',
     'typography'
   ]);
-  const ref = await promptToggle('Should the component be a ref?', false);
-
   const files = [
     {
       name: 'component',
@@ -53,8 +109,8 @@ const createComponent = async () => {
     },
     {
       name: 'props',
-      path: `packages/components/src/ui/${type}/${name}/${name}-props.ts`,
-      templatePath: './templates/create/component-props.ts.js'
+      path: `packages/components/src/ui/${type}/${name}/${name}.props.ts`,
+      templatePath: './templates/create/component.props.ts.js'
     },
     {
       name: 'stories',
@@ -97,8 +153,8 @@ const createContextProvider = async () => {
     },
     {
       name: 'props',
-      path: `packages/components/src/contexts/${name}/${name}-context-props.ts`,
-      templatePath: './templates/create/context-provider-props.ts.js'
+      path: `packages/components/src/contexts/${name}/${name}-context.props.ts`,
+      templatePath: './templates/create/context-provider.props.ts.js'
     },
     {
       name: 'stories',

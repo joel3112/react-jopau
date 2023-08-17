@@ -1,6 +1,6 @@
 import { UIEvent, useRef, useState } from 'react';
 import { Container, Heading, Stack, Text } from '@react-jopau/components';
-import { prepareParameters, SBCard, SBCode } from '@react-jopau/shared/stories';
+import { prepareParameters, SBCard } from '@react-jopau/shared/stories';
 import { useEventListener } from './use-event-listener';
 import docs from './readme.mdx';
 
@@ -33,14 +33,14 @@ export const Default = () => {
   return (
     <Container className="h-[3000px]">
       <Stack direction="column" gap={1} className="fixed top-12 left-12 w-[400px] max-w-[80%]">
-        <SBCard title={<SBCode>[target: Window, event: 'scroll']</SBCode>}>
+        <SBCard title={<Text as="code">[target: Window, event: 'scroll']</Text>}>
           <Text size="sm" className="mb-5">
             ■ Scroll the page to see the scroll position change
           </Text>
           Current scroll position:
           <Heading as="h3">{scrollPosition.toString()}</Heading>
         </SBCard>
-        <SBCard title={<SBCode>[target: Document, event: 'mousemove']</SBCode>}>
+        <SBCard title={<Text as="code">[target: Document, event: 'mousemove']</Text>}>
           <Text size="sm" className="mb-5">
             ■ Move the mouse to see the cursor position change
           </Text>

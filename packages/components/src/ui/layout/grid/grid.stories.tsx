@@ -1,5 +1,4 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { useBreakpoint } from '@react-jopau/hooks';
 import {
   prepareArgTypes,
   prepareParameters,
@@ -107,7 +106,7 @@ export const AutoWidth = () => (
 );
 
 export const HideElements = () => {
-  const isMd = useBreakpoint().key === 'md';
+  const isMd = useCurrentBreakpoint() === 'md';
 
   return (
     <>

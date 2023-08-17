@@ -1,12 +1,8 @@
 import { useRef, useState } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import {
-  prepareArgTypes,
-  prepareParameters,
-  SBCode,
-  SBTextSeparator
-} from '@react-jopau/shared/stories';
+import { prepareArgTypes, prepareParameters, SBTextSeparator } from '@react-jopau/shared/stories';
 import { Stack } from '../../layout';
+import { Text } from '../../typography';
 import { Checkbox } from './checkbox';
 import docs from './readme.mdx';
 
@@ -160,9 +156,9 @@ export const UncontrolledVSControlled = () => {
       <Checkbox checked={checkedControlled} onChange={setCheckedControlled}>
         Controlled
       </Checkbox>
-      <span>
-        Checked: <SBCode>{JSON.stringify(checkedControlled)}</SBCode>
-      </span>
+      <Stack align="center" gap={1}>
+        Checked: <Text as="code">{JSON.stringify(checkedControlled)}</Text>
+      </Stack>
     </Stack>
   );
 };

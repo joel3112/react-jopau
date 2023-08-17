@@ -3,7 +3,6 @@ export default {
     colors: {
       white: '#fff',
       black: '#000',
-      accent: '#0070f3',
 
       primary100: '#c5f0f7',
       primary200: '#8fdcee',
@@ -98,13 +97,15 @@ export default {
       dark800: '#090d12',
       dark900: '#05090f',
 
+      mark: '#ffe58f',
+      accent0: '#0070f3',
+      accent1: '#f1f3f5',
       text: '#000',
       background: '#fcfcfc',
       backgroundContrast: '#fff',
       backgroundContent: '#f6f6f6',
       border: '#dedede',
       borderContrast: 'rgba(0,0,0,.1)',
-      input: '#f1f3f5',
       placeholder: '#889096',
       disabled: '#a8afb2'
     },
@@ -250,7 +251,19 @@ export default {
       pill: '9999px'
     },
     shadows: {
-      box: 'rgb(231 235 250) 0 -1px 1px inset'
+      box: 'rgb(231 235 250) 0 -1px 1px inset',
+      xs: '0 2px 8px 1px rgb(104 112 118 / 0.07), 0 1px 1px -1px rgb(104 112 118 / 0.04)',
+      sm: '0 2px 8px 2px rgb(104 112 118 / 0.07), 0 2px 4px -1px rgb(104 112 118 / 0.04)',
+      md: '0 12px 20px 6px rgb(104 112 118 / 0.08)',
+      lg: '0 12px 34px 6px rgb(104 112 118 / 0.18)',
+      xl: '0 25px 65px 0px rgb(104 112 118 / 0.35)'
+    },
+    dropShadows: {
+      xs: 'drop-shadow(0 2px 4px rgb(104 112 118 / 0.07)) drop-shadow(0 1px 1px rgb(104 112 118 / 0.04))',
+      sm: 'drop-shadow(0 2px 8px rgb(104 112 118 / 0.07)) drop-shadow(0 2px 4px rgb(104 112 118 / 0.04))',
+      md: 'drop-shadow(0 4px 12px rgb(104 112 118 / 0.08)) drop-shadow(0 20px 8px rgb(104 112 118 / 0.04))',
+      lg: 'drop-shadow(0 12px 24px rgb(104 112 118 / 0.15)) drop-shadow(0 12px 14px rgb(104 112 118 / 0.1))',
+      xl: 'drop-shadow(0 25px 34px rgb(104 112 118 / 0.35))'
     },
     zIndices: {
       hide: -1,
@@ -270,22 +283,36 @@ export default {
     transitions: {
       default: 'all 250ms ease',
       button:
-        'background 0.25s ease 0s, color 0.25s ease 0s, border-color 0.25s ease 0s, box-shadow 0.25s ease 0s, transform 0.25s ease 0s, opacity 0.25s ease 0s'
+        'background 0.25s ease 0s, color 0.25s ease 0s, border-color 0.25s ease 0s, box-shadow 0.25s ease 0s, transform 0.25s ease 0s, opacity 0.25s ease 0s',
+      card: 'transform 0.25s ease 0s, filter 0.25s ease 0s, box-shadow 0.25s ease 0s'
     }
   },
   darkTheme: {
     colors: {
+      accent1: '#3b3b3b',
       text: '#fff',
       background: '#1d1f20',
       backgroundContrast: '#111',
       backgroundContent: '#333',
       border: '#555',
       borderContrast: 'rgba(255,255,255,.1)',
-      input: '#3b3b3b',
       disabled: '#989696'
     },
     shadows: {
-      box: 'rgb(67 67 67) 0 -1px 1px inset'
+      box: 'rgb(67 67 67) 0 -1px 1px inset',
+      xs: '0 2px 8px 1px rgb(0 0 0 / 0.07), 0 1px 1px -1px rgb(0 0 0 / 0.04)',
+      sm: '0 2px 8px 2px rgb(0 0 0 / 0.07), 0 2px 4px -1px rgb(0 0 0 / 0.04)',
+      md: '0 12px 20px 6px rgb(0 0 0 / 0.08)',
+      lg: '0 12px 34px 6px rgb(0 0 0 / 0.18)',
+      xl: '0 25px 65px 0px rgb(0 0 0 / 0.35)'
+    },
+    dropShadows: {
+      box: 'rgb(67 67 67) 0 -1px 1px inset',
+      xs: 'drop-shadow(0 2px 4px rgb(0 0 0 / 0.07)) drop-shadow(0 1px 1px rgb(0 0 0 / 0.04))',
+      sm: 'drop-shadow(0 2px 8px rgb(0 0 0 / 0.07)) drop-shadow(0 2px 4px rgb(0 0 0 / 0.04))',
+      md: 'drop-shadow(0 4px 12px rgb(0 0 0 / 0.08)) drop-shadow(0 20px 8px rgb(0 0 0 / 0.04))',
+      lg: 'drop-shadow(0 12px 24px rgb(0 0 0 / 0.15)) drop-shadow(0 12px 14px rgb(0 0 0 / 0.1))',
+      xl: 'drop-shadow(0 25px 34px rgb(0 0 0 / 0.35))'
     }
   },
   media: {

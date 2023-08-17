@@ -1,4 +1,4 @@
-import { ChangeEvent, MouseEvent, Ref, RefObject, useId } from 'react';
+import { ChangeEvent, ForwardedRef, MouseEvent, RefObject, useId } from 'react';
 import { FormControl } from './types';
 import { useControlled } from './use-controlled';
 
@@ -26,7 +26,7 @@ const simulateChangeEvent = <T extends FormElement>(el: T, event: MouseEvent): C
 
 export const useControlValue = <T extends FormElement>(
   props: ControlProps<T>,
-  ref: Ref<Partial<T> | null>
+  ref: ForwardedRef<T>
 ): {
   ref: RefObject<T>;
   id: string;
@@ -66,7 +66,7 @@ export const useControlValue = <T extends FormElement>(
 
     setValue('');
     onClearClick && onClearClick(event);
-    if (!inputRef.current) return;
+    if (!inputRef?.current) return;
 
     const changeEvent = simulateChangeEvent<T>(inputRef.current, event);
 

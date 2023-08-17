@@ -1,6 +1,6 @@
 import { classes } from '@react-jopau/utils';
-import { prefixClass } from '@/components/shared';
-import { defaultProps, HeadingProps } from './heading-props';
+import { prefixClass, withDefaults } from '@/components/shared';
+import { defaultProps, HeadingProps } from './heading.props';
 import { StyledHeading } from './heading.styled';
 
 /**
@@ -13,7 +13,9 @@ import { StyledHeading } from './heading.styled';
  * @example
  * <Heading as="h2">Title</Heading>
  */
-export const Heading = ({ className, style, children, as, color }: HeadingProps) => {
+export const Heading = withDefaults<HeadingProps>((props: HeadingProps) => {
+  const { className, style, children, as, color } = props;
+
   return (
     <StyledHeading
       as={as}
@@ -25,6 +27,4 @@ export const Heading = ({ className, style, children, as, color }: HeadingProps)
       {children}
     </StyledHeading>
   );
-};
-
-Heading.defaultProps = defaultProps;
+}, defaultProps);

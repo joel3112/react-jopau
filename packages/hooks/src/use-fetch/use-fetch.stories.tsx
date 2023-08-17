@@ -1,6 +1,6 @@
 import { FormEvent, useState } from 'react';
 import { Button, Container, Input, Stack, Text } from '@react-jopau/components';
-import { prepareParameters, SBCode, SBJSONPreview } from '@react-jopau/shared/stories';
+import { prepareParameters, SBJSONPreview } from '@react-jopau/shared/stories';
 import { useFetch } from './use-fetch';
 import docs from './readme.mdx';
 
@@ -48,17 +48,17 @@ export const Default = () => {
 
       <Stack className="mt-10" direction="column" gap={1}>
         <Stack align="start" gap={1}>
-          <SBCode>loading:</SBCode>
+          <Text as="code">loading:</Text>
           <code>
             <Text>{loading ? 'true' : 'false'}</Text>
           </code>
         </Stack>
         <Stack align="start" gap={1} className="flex-wrap">
-          <SBCode>data:</SBCode>
+          <Text as="code">data:</Text>
           <SBJSONPreview code={data} />
         </Stack>
         <Stack align="start" gap={1} className="flex-wrap">
-          <SBCode>error:</SBCode>
+          <Text as="code">error:</Text>
           <SBJSONPreview code={error} />
         </Stack>
       </Stack>

@@ -29,20 +29,21 @@ Default.parameters = { viewMode: 'story' };
 
 export const As = () => (
   <Stack direction="column" gap={1}>
-    <Text as="p" className="px-1 bg-background-content">
-      p. Lorem ipsum dolor sit amet
-    </Text>
-    <Text as="span" className="px-1 bg-background-content">
-      span. Lorem ipsum dolor sit amet
-    </Text>
-    <Text as="code" className="px-1 bg-background-content">
-      code. Lorem ipsum dolor sit amet
-    </Text>
+    <Text as="p">p. Lorem ipsum dolor sit amet</Text>
+    <Text as="div">div. Lorem ipsum dolor sit amet</Text>
+    <Text as="span">span. Lorem ipsum dolor sit amet</Text>
+    <Text as="strong">strong. Lorem ipsum dolor sit amet</Text>
+    <Text as="code">code. Lorem ipsum dolor sit amet</Text>
+    <Text as="kbd">kbd. Lorem ipsum dolor sit amet</Text>
+    <Text as="mark">mark. Lorem ipsum dolor sit amet</Text>
+    <Text as="u">u. Lorem ipsum dolor sit amet</Text>
+    <Text as="i">i. Lorem ipsum dolor sit amet</Text>
+    <Text as="del">del. Lorem ipsum dolor sit amet</Text>
   </Stack>
 );
 
 export const Sizes = () => (
-  <>
+  <Stack direction="column" gap={1}>
     <Text size="xs">Text xs: Lorem ipsum dolor sit amet</Text>
     <Text size="sm">Text sm: Lorem ipsum dolor sit amet</Text>
     <Text size="md">Text md: Lorem ipsum dolor sit amet</Text>
@@ -50,11 +51,11 @@ export const Sizes = () => (
     <Text size="xl">Text xl: Lorem ipsum dolor sit amet</Text>
     <Text size="2xl">Text 2xl: Lorem ipsum dolor sit amet</Text>
     <Text size="3xl">Text 3xl: Lorem ipsum dolor sit amet</Text>
-  </>
+  </Stack>
 );
 
 export const Colors = () => (
-  <>
+  <Stack direction="column" gap={1}>
     <Text color="inherit">Inherit</Text>
     <Text color="primary">Primary</Text>
     <Text color="secondary">Secondary</Text>
@@ -64,7 +65,7 @@ export const Colors = () => (
     <Text color="error">Error</Text>
     <Text color="success">Success</Text>
     <Text color="warning">Warning</Text>
-  </>
+  </Stack>
 );
 
 export const MaxLines = Template.bind({});
