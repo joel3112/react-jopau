@@ -64,8 +64,8 @@ export const Button = withCompoundComponents<
         solid={variant === 'solid'}
         bordered={variant === 'bordered'}
         ghost={variant === 'ghost'}
-        light={variant === 'clear'}
         flat={variant === 'flat'}
+        light={variant === 'clear'}
         iconOnly={!!icon && !children}
         shape={shape}
         auto={auto}
