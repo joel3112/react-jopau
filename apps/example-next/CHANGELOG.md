@@ -7,6 +7,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### 🏠 Internal
 
+- **release:** v0.23.1 ([8598856](https://github.com/joel3112/react-jopau/commit/8598856198099511a44229e7321c599a9c68dab5))
+- **release:** v0.23.1 ([4e932b4](https://github.com/joel3112/react-jopau/commit/4e932b4e5299f5ff930d57d229089176739250b5))
+
+## [0.23.1](https://github.com/joel3112/react-jopau/compare/v0.23.0...v0.23.1) (2023-08-17)
+
+### 🏠 Internal
+
 - **release:** v0.23.1 ([4e932b4](https://github.com/joel3112/react-jopau/commit/4e932b4e5299f5ff930d57d229089176739250b5))
 
 ## [0.23.1](https://github.com/joel3112/react-jopau/compare/v0.23.0...v0.23.1) (2023-08-17)
