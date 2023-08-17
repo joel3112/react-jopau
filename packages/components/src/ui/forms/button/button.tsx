@@ -58,6 +58,7 @@ export const Button = withCompoundComponents<
         css={{
           ...style
         }}
+        borderWeight="light"
         color={color}
         size={size}
         solid={variant === 'solid'}
@@ -69,7 +70,6 @@ export const Button = withCompoundComponents<
         shape={shape}
         auto={auto}
         fullWidth={!!fullWidth}
-        borderWeight="light"
         {...(icon && {
           icon: iconPosition === 'left' && <StyledButtonIcon>{icon}</StyledButtonIcon>,
           iconRight: iconPosition === 'right' && <StyledButtonIcon>{icon}</StyledButtonIcon>
