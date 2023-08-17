@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.23.1](https://github.com/joel3112/react-jopau/compare/v0.23.0...v0.23.1) (2023-08-17)
+
+**Note:** Version bump only for package @react-jopau/utils
+
 ## [0.23.0](https://github.com/joel3112/react-jopau/compare/v0.22.1...v0.23.0) (2023-08-17)
 
 ### 🚀 New Features
